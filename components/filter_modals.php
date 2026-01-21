@@ -1,0 +1,633 @@
+<!-- filters modals  -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 d-flex align-items-center justify-content-center">
+            <div id="groomModal" class="modal">
+                <div class="modal-dialog">
+                    <button class="modal-close" aria-label="Close">&times;</button>
+
+                    <h2 class="modal-filter-svg d-flex align-items-center modal-title">
+                        Filter
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"
+                            fill="none">
+                            <path
+                                d="M3 9.75C2.40326 9.75 1.83097 9.51295 1.40901 9.09099C0.987053 8.66903 0.75 8.09674 0.75 7.5C0.75 6.90326 0.987053 6.33097 1.40901 5.90901C1.83097 5.48705 2.40326 5.25 3 5.25M3 9.75C3.59674 9.75 4.16903 9.51295 4.59099 9.09099C5.01295 8.66903 5.25 8.09674 5.25 7.5C5.25 6.90326 5.01295 6.33097 4.59099 5.90901C4.16903 5.48705 3.59674 5.25 3 5.25M3 9.75V18.75M3 5.25V0.75M9.75 16.5C9.15326 16.5 8.58097 16.2629 8.15901 15.841C7.73705 15.419 7.5 14.8467 7.5 14.25C7.5 13.6533 7.73705 13.081 8.15901 12.659C8.58097 12.2371 9.15326 12 9.75 12M9.75 16.5C10.3467 16.5 10.919 16.2629 11.341 15.841C11.7629 15.419 12 14.8467 12 14.25C12 13.6533 11.7629 13.081 11.341 12.659C10.919 12.2371 10.3467 12 9.75 12M9.75 16.5V18.75M9.75 12V0.75M16.5 6.375C15.9033 6.375 15.331 6.13795 14.909 5.71599C14.4871 5.29403 14.25 4.72174 14.25 4.125C14.25 3.52826 14.4871 2.95597 14.909 2.53401C15.331 2.11205 15.9033 1.875 16.5 1.875M16.5 6.375C17.0967 6.375 17.669 6.13795 18.091 5.71599C18.5129 5.29403 18.75 4.72174 18.75 4.125C18.75 3.52826 18.5129 2.95597 18.091 2.53401C17.669 2.11205 17.0967 1.875 16.5 1.875M16.5 6.375V18.75M16.5 1.875V0.75"
+                                stroke="#3B3731" stroke-width="1.5" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </h2>
+
+                    <div class="modal-input-fields d-flex align-items-center flex-wrap mt-5">
+
+                        <div class="w-auto">
+                            <div class="search-input">
+                                <p class="label">Search Groomer</p>
+                                <input type="text" value="London, NW3 1AA">
+                                <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                    fill="gray" viewBox="0 0 16 16">
+                                    <path
+                                        d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85zm-5.242.656a5 5 0 1 1 0-10 5 5 0 0 1 0 10z" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="w-auto">
+                            <div class="service-type-select">
+                                <p class="label">Service Type</p>
+                                <div class="custom-select custom-select-streched">
+                                    <div class="select-trigger">
+                                        <span class="selected-text">Full Groom</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="8"
+                                            viewBox="0 0 15 8" fill="none">
+                                            <path d="M13.8737 0.5L7.13022 7.24344L0.499976 0.613201"
+                                                stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+                                    </div>
+
+                                    <ul class="select-options">
+                                        <li data-value="full-groom">Full Groom</li>
+                                        <li data-value="face-trim-only">Face Trim Only</li>
+                                        <li data-value="tail-trim-only">Tail Trim Only</li>
+                                        <li data-value="bath-and-wash">Bath & Brush</li>
+                                        <li data-value="nail-trim">Nail Trim</li>
+                                    </ul>
+
+                                    <input type="hidden" name="serviceType">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-auto">
+                            <div class="datetime-wrapper" id="datetime">
+                                <!-- Date field -->
+                                <div class="field-group">
+                                    <p class="label">Date</p>
+                                    <div class="field date streched" id="dateField">
+                                        <div class="input-row streched" tabindex="0" role="button"
+                                            aria-haspopup="dialog" aria-expanded="false">
+                                            <input class="fake-input" id="dateInput" readonly placeholder="02/11/25"
+                                                aria-label="Date input" />
+                                            <!-- chevron down svg -->
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="8"
+                                                viewBox="0 0 15 8" fill="none">
+                                                <path d="M13.5105 0.5L6.95017 7.06033L0.499971 0.610127"
+                                                    stroke="#3B3731" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </svg>
+                                        </div>
+
+                                        <div class="popover" id="datePopover" data-type="date">
+                                            <div style="display:flex;flex-direction: column;">
+                                                <div class="panel calendar">
+                                                    <div class="month-nav">
+                                                        <button type="button" id="prevMonth" title="Previous month"
+                                                            aria-label="Previous month">
+                                                            <svg class="chev rotate-left" viewBox="0 0 24 24"
+                                                                fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M6 9l6 6 6-6" stroke="#444"
+                                                                    stroke-width="1.6" stroke-linecap="round"
+                                                                    stroke-linejoin="round" />
+                                                            </svg>
+                                                        </button>
+
+                                                        <div id="monthLabel">November 2025</div>
+
+                                                        <button type="button" id="nextMonth" title="Next month"
+                                                            aria-label="Next month">
+                                                            <svg class="chev rotate-right" viewBox="0 0 24 24"
+                                                                fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M6 9l6 6 6-6" stroke="#444"
+                                                                    stroke-width="1.6" stroke-linecap="round"
+                                                                    stroke-linejoin="round" />
+                                                            </svg>
+                                                        </button>
+                                                    </div>
+                                                    <div class="weekday-row" id="weekdayRow"></div>
+                                                    <div class="days-grid" id="daysGrid"></div>
+                                                </div>
+
+                                                <div class="time-col">
+                                                    <div class="title">
+                                                        <div>Time</div>
+                                                    </div>
+                                                    <div class="time-list" id="timeList" role="listbox"
+                                                        aria-label="Time options"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Time field -->
+                                <div class="field-group">
+                                    <p class="label">Time</p>
+                                    <div class="field time streched" id="timeField">
+                                        <div class="input-row streched" tabindex="0" role="button"
+                                            aria-haspopup="dialog" aria-expanded="false">
+                                            <input class="fake-input" id="timeInput" readonly placeholder="13:00"
+                                                aria-label="Time input" />
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="8"
+                                                viewBox="0 0 15 8" fill="none">
+                                                <path d="M13.5105 0.5L6.95017 7.06033L0.499971 0.610127"
+                                                    stroke="#3B3731" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-auto">
+                            <div class="pet-type-wrapper">
+                                <p class="label">Pet Type</p>
+
+                                <div class="pet-toggle">
+                                    <button type="button" class="pet-option highlight" data-pet="other">
+                                        <span>Other</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="16"
+                                            viewBox="0 0 20 16" fill="none">
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M6.42074 0C5.71446 0 5.16085 0.437285 4.81841 0.961736C4.47169 1.49055 4.28049 2.18061 4.28049 2.90555C4.28049 3.63048 4.47169 4.32055 4.81841 4.84936C5.16085 5.37236 5.71446 5.8111 6.42074 5.8111C7.12702 5.8111 7.68063 5.37381 8.02307 4.84936C8.36979 4.32055 8.56099 3.63048 8.56099 2.90555C8.56099 2.18061 8.36979 1.49055 8.02307 0.961736C7.68063 0.438738 7.12702 0 6.42074 0ZM13.5549 0C12.8486 0 12.295 0.437285 11.9526 0.961736C11.6058 1.49055 11.4147 2.18061 11.4147 2.90555C11.4147 3.63048 11.6058 4.32055 11.9526 4.84936C12.295 5.37236 12.8486 5.8111 13.5549 5.8111C14.2612 5.8111 14.8148 5.37381 15.1572 4.84936C15.504 4.32055 15.6951 3.63048 15.6951 2.90555C15.6951 2.18061 15.504 1.49055 15.1572 0.961736C14.8148 0.438738 14.2612 0 13.5549 0ZM2.14025 6.53748C1.43397 6.53748 0.880355 6.97477 0.537915 7.49922C0.191195 8.02803 0 8.7181 0 9.44303C0 10.168 0.191195 10.858 0.537915 11.3868C0.880355 11.9098 1.43397 12.3486 2.14025 12.3486C2.84653 12.3486 3.40014 11.9113 3.74258 11.3868C4.0893 10.858 4.28049 10.168 4.28049 9.44303C4.28049 8.7181 4.0893 8.02803 3.74258 7.49922C3.40014 6.97622 2.84653 6.53748 2.14025 6.53748ZM9.98782 6.53748C8.27562 6.53748 7.00717 7.47307 6.19673 8.63383C5.39628 9.77717 4.99391 11.1965 4.99391 12.3486C4.99391 13.6909 5.7858 14.6251 6.75747 15.1844C7.71345 15.7364 8.91199 15.9805 9.98782 15.9805C11.0637 15.9805 12.2622 15.7379 13.2182 15.1844C14.1884 14.6236 14.9817 13.6909 14.9817 12.3486C14.9817 11.1965 14.5794 9.77717 13.7789 8.63383C12.9699 7.47162 11.7014 6.53748 9.98782 6.53748ZM17.8354 6.53748C17.1291 6.53748 16.5755 6.97477 16.2331 7.49922C15.8863 8.02803 15.6951 8.7181 15.6951 9.44303C15.6951 10.168 15.8863 10.858 16.2331 11.3868C16.5755 11.9098 17.1291 12.3486 17.8354 12.3486C18.5417 12.3486 19.0953 11.9113 19.4377 11.3868C19.7844 10.858 19.9756 10.168 19.9756 9.44303C19.9756 8.7181 19.7844 8.02803 19.4377 7.49922C19.0953 6.97622 18.5417 6.53748 17.8354 6.53748Z"
+                                                fill="white" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-auto">
+                            <div class="pet-weight-wrapper">
+                                <p class="label">Pet Size</p>
+
+                                <div class="weight-toggle">
+                                    <button type="button" class="weight-option large active" data-weight="large">
+                                        <span>Large 19+ kg</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h2 class="modal-title mt-3">Price Range</h2>
+                    <div class="range-slider">
+                        <span class="output"></span>
+                        <span class="full-range"></span>
+                        <span class="incl-range"></span>
+                        <input type="range" name="rangeOne" min="0" max="95" step="1" value="75">
+                        <span class="max-price">£95</span>
+                    </div>
+
+                    <div class="filter-options-section dropdown mt-3">
+
+                        <h2 class="modal-title mt-3">Home Conditions</h2>
+                        <ul>
+                            <li class="active">
+                                <span class="radio-circle"></span>
+                                <span class="option-text">Fenced yard</span>
+                            </li>
+                            <li>
+                                <span class="radio-circle"></span>
+                                <span class="option-text">No other pets</span>
+                            </li>
+                            <li>
+                                <span class="radio-circle"></span>
+                                <span class="option-text">No children</span>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <div class="filter-options-section dropdown mt-3">
+                        <h2 class="modal-title">Other main service</h2>
+                        <ul>
+                            <li class="active">
+                                <span class="radio-circle"></span>
+                                <span class="option-text">Full Groom (bath, dry, haircut)</span>
+                            </li>
+                            <li>
+                                <span class="radio-circle"></span>
+                                <span class="option-text">Face Trim Only</span>
+                            </li>
+                            <li>
+                                <span class="radio-circle"></span>
+                                <span class="option-text">Tail Trim Only</span>
+                            </li>
+                            <li>
+                                <span class="radio-circle"></span>
+                                <span class="option-text">Bath & Brush</span>
+                            </li>
+                            <li>
+                                <span class="radio-circle"></span>
+                                <span class="option-text">Nail Trim</span>
+                            </li>
+                            <li>
+                                <span class="radio-circle"></span>
+                                <span class="option-text">Ear Cleaning</span>
+                            </li>
+                            <li>
+                                <span class="radio-circle"></span>
+                                <span class="option-text">Luxury Spa</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="filter-options-section dropdown mt-3">
+                        <h2 class="modal-title">Add-on</h2>
+                        <ul>
+                            <li class="active">
+                                <span class="radio-circle"></span>
+                                <span class="option-text">Flea & Tick Treatment</span>
+                            </li>
+                            <li>
+                                <span class="radio-circle"></span>
+                                <span class="option-text">Deep Conditioning Masky</span>
+                            </li>
+                            <li>
+                                <span class="radio-circle"></span>
+                                <span class="option-text">Hypoallergenic Shampoo Upgrade</span>
+                            </li>
+                            <li>
+                                <span class="radio-circle"></span>
+                                <span class="option-text">Shed-Control Shampoo</span>
+                            </li>
+                            <li>
+                                <span class="radio-circle"></span>
+                                <span class="option-text">Tear-Stain Treatment</span>
+                            </li>
+                            <li>
+                                <span class="radio-circle"></span>
+                                <span class="option-text">Deodorising Treatment</span>
+                            </li>
+                            <li>
+                                <span class="radio-circle"></span>
+                                <span class="option-text">Coat Shine Spray</span>
+                            </li>
+                            <li>
+                                <span class="radio-circle"></span>
+                                <span class="option-text">Anti-Itch Treatment</span>
+                            </li>
+                            <li>
+                                <span class="radio-circle"></span>
+                                <span class="option-text">Breath Freshner Gel</span>
+                            </li>
+                            <li>
+                                <span class="radio-circle"></span>
+                                <span class="option-text">Nail Grinding</span>
+                            </li>
+                            <li>
+                                <span class="radio-circle"></span>
+                                <span class="option-text">Soft-Claws / Nail Caps Application </span>
+                            </li>
+                            <li>
+                                <span class="radio-circle"></span>
+                                <span class="option-text">Coat Colour Enhancing Shampoo</span>
+                            </li>
+                            <li>
+                                <span class="radio-circle"></span>
+                                <span class="option-text">Premium Fragrance Upgrade</span>
+                            </li>
+                            <li>
+                                <span class="radio-circle"></span>
+                                <span class="option-text">Fast-Dry Service (express grooming)</span>
+                            </li>
+                            <li>
+                                <span class="radio-circle"></span>
+                                <span class="option-text">Paw Fur Shaping</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="filter-options-section dropdown mt-3">
+                        <h2 class="modal-title">Accepts non-neutered pets</h2>
+                        <ul>
+                            <li class="active">
+                                <span class="radio-circle"></span>
+                                <span class="option-text">Accepts non-neutered pets</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="filter-options-section dropdown mt-3">
+                        <h2 class="modal-title">Extras</h2>
+                        <ul>
+                            <li class="active">
+                                <span class="radio-circle"></span>
+                                <span class="option-text">Bathing</span>
+                            </li>
+                            <li>
+                                <span class="radio-circle"></span>
+                                <span class="option-text">First-aid certified</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="filter-options-section dropdown mt-3">
+                        <h2 class="modal-title">Space Type</h2>
+                        <ul>
+                            <li class="active">
+                                <span class="radio-circle"></span>
+                                <span class="option-text">Shared space</span>
+                            </li>
+                            <li>
+                                <span class="radio-circle"></span>
+                                <span class="option-text">Entire Space just for you</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="modal-footer mt-3">
+                        <button class="modal-footer-btn">Clear All</button>
+                        <button class="modal-footer-btn apply">Apply</button>
+                    </div>
+
+                </div>
+            </div>
+            <div id="spaceModal" class="modal">
+                <div class="modal-dialog">
+                    <button class="modal-close" aria-label="Close">&times;</button>
+
+                    <h2 class="modal-filter-svg d-flex align-items-center modal-title">
+                        Filter
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"
+                            fill="none">
+                            <path
+                                d="M3 9.75C2.40326 9.75 1.83097 9.51295 1.40901 9.09099C0.987053 8.66903 0.75 8.09674 0.75 7.5C0.75 6.90326 0.987053 6.33097 1.40901 5.90901C1.83097 5.48705 2.40326 5.25 3 5.25M3 9.75C3.59674 9.75 4.16903 9.51295 4.59099 9.09099C5.01295 8.66903 5.25 8.09674 5.25 7.5C5.25 6.90326 5.01295 6.33097 4.59099 5.90901C4.16903 5.48705 3.59674 5.25 3 5.25M3 9.75V18.75M3 5.25V0.75M9.75 16.5C9.15326 16.5 8.58097 16.2629 8.15901 15.841C7.73705 15.419 7.5 14.8467 7.5 14.25C7.5 13.6533 7.73705 13.081 8.15901 12.659C8.58097 12.2371 9.15326 12 9.75 12M9.75 16.5C10.3467 16.5 10.919 16.2629 11.341 15.841C11.7629 15.419 12 14.8467 12 14.25C12 13.6533 11.7629 13.081 11.341 12.659C10.919 12.2371 10.3467 12 9.75 12M9.75 16.5V18.75M9.75 12V0.75M16.5 6.375C15.9033 6.375 15.331 6.13795 14.909 5.71599C14.4871 5.29403 14.25 4.72174 14.25 4.125C14.25 3.52826 14.4871 2.95597 14.909 2.53401C15.331 2.11205 15.9033 1.875 16.5 1.875M16.5 6.375C17.0967 6.375 17.669 6.13795 18.091 5.71599C18.5129 5.29403 18.75 4.72174 18.75 4.125C18.75 3.52826 18.5129 2.95597 18.091 2.53401C17.669 2.11205 17.0967 1.875 16.5 1.875M16.5 6.375V18.75M16.5 1.875V0.75"
+                                stroke="#3B3731" stroke-width="1.5" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </h2>
+
+                    <div class="modal-input-fields d-flex align-items-center flex-wrap mt-5">
+
+                        <div class="w-auto">
+                            <div class="search-input">
+                                <p class="label">Search Groomer</p>
+                                <input type="text" value="London, NW3 1AA">
+                                <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                    fill="gray" viewBox="0 0 16 16">
+                                    <path
+                                        d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85zm-5.242.656a5 5 0 1 1 0-10 5 5 0 0 1 0 10z" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="service-type-select">
+                            <p class="label">Space Type</p>
+                            <div class="custom-select custom-select-streched">
+                                <div class="select-trigger">
+                                    <span class="selected-text">Mobile Station</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="8" viewBox="0 0 15 8"
+                                        fill="none">
+                                        <path d="M13.8737 0.5L7.13022 7.24344L0.499976 0.613201" stroke="#3B3731"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </div>
+
+                                <ul class="select-options">
+                                    <li data-value="private-rooms">Private Rooms</li>
+                                    <li data-value="salon">Salon</li>
+                                    <li data-value="mobile-station">Mobile Station</li>
+                                    <li data-value="garden/shed">Garden / Shed</li>
+                                    <li data-value="others">Others</li>
+                                </ul>
+
+                                <input type="hidden" name="serviceType">
+                            </div>
+                        </div>
+                        <div class="w-auto">
+                            <div class="datetime-wrapper" id="datetime">
+                                <!-- Date field -->
+                                <div class="field-group">
+                                    <p class="label">Date</p>
+                                    <div class="field date streched" id="dateField">
+                                        <div class="input-row streched" tabindex="0" role="button"
+                                            aria-haspopup="dialog" aria-expanded="false">
+                                            <input class="fake-input" id="dateInput" readonly placeholder="02/11/25"
+                                                aria-label="Date input" />
+                                            <!-- chevron down svg -->
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="8"
+                                                viewBox="0 0 15 8" fill="none">
+                                                <path d="M13.5105 0.5L6.95017 7.06033L0.499971 0.610127"
+                                                    stroke="#3B3731" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </svg>
+                                        </div>
+
+                                        <div class="popover" id="datePopover" data-type="date">
+                                            <div style="display:flex;flex-direction: column;">
+                                                <div class="panel calendar">
+                                                    <div class="month-nav">
+                                                        <button type="button" id="prevMonth" title="Previous month"
+                                                            aria-label="Previous month">
+                                                            <svg class="chev rotate-left" viewBox="0 0 24 24"
+                                                                fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M6 9l6 6 6-6" stroke="#444"
+                                                                    stroke-width="1.6" stroke-linecap="round"
+                                                                    stroke-linejoin="round" />
+                                                            </svg>
+                                                        </button>
+
+                                                        <div id="monthLabel">November 2025</div>
+
+                                                        <button type="button" id="nextMonth" title="Next month"
+                                                            aria-label="Next month">
+                                                            <svg class="chev rotate-right" viewBox="0 0 24 24"
+                                                                fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M6 9l6 6 6-6" stroke="#444"
+                                                                    stroke-width="1.6" stroke-linecap="round"
+                                                                    stroke-linejoin="round" />
+                                                            </svg>
+                                                        </button>
+                                                    </div>
+                                                    <div class="weekday-row" id="weekdayRow"></div>
+                                                    <div class="days-grid" id="daysGrid"></div>
+                                                </div>
+
+                                                <div class="time-col">
+                                                    <div class="title">
+                                                        <div>Time</div>
+                                                    </div>
+                                                    <div class="time-list" id="timeList" role="listbox"
+                                                        aria-label="Time options"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Time field -->
+                                <div class="field-group">
+                                    <p class="label">Time</p>
+                                    <div class="field time streched" id="timeField">
+                                        <div class="input-row streched" tabindex="0" role="button"
+                                            aria-haspopup="dialog" aria-expanded="false">
+                                            <input class="fake-input" id="timeInput" readonly placeholder="13:00"
+                                                aria-label="Time input" />
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="8"
+                                                viewBox="0 0 15 8" fill="none">
+                                                <path d="M13.5105 0.5L6.95017 7.06033L0.499971 0.610127"
+                                                    stroke="#3B3731" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-auto">
+                            <div class="pet-type-wrapper">
+                                <p class="label">Pet Type</p>
+
+                                <div class="pet-toggle">
+                                    <button type="button" class="pet-option highlight" data-pet="other">
+                                        <span>Other</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="16"
+                                            viewBox="0 0 20 16" fill="none">
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M6.42074 0C5.71446 0 5.16085 0.437285 4.81841 0.961736C4.47169 1.49055 4.28049 2.18061 4.28049 2.90555C4.28049 3.63048 4.47169 4.32055 4.81841 4.84936C5.16085 5.37236 5.71446 5.8111 6.42074 5.8111C7.12702 5.8111 7.68063 5.37381 8.02307 4.84936C8.36979 4.32055 8.56099 3.63048 8.56099 2.90555C8.56099 2.18061 8.36979 1.49055 8.02307 0.961736C7.68063 0.438738 7.12702 0 6.42074 0ZM13.5549 0C12.8486 0 12.295 0.437285 11.9526 0.961736C11.6058 1.49055 11.4147 2.18061 11.4147 2.90555C11.4147 3.63048 11.6058 4.32055 11.9526 4.84936C12.295 5.37236 12.8486 5.8111 13.5549 5.8111C14.2612 5.8111 14.8148 5.37381 15.1572 4.84936C15.504 4.32055 15.6951 3.63048 15.6951 2.90555C15.6951 2.18061 15.504 1.49055 15.1572 0.961736C14.8148 0.438738 14.2612 0 13.5549 0ZM2.14025 6.53748C1.43397 6.53748 0.880355 6.97477 0.537915 7.49922C0.191195 8.02803 0 8.7181 0 9.44303C0 10.168 0.191195 10.858 0.537915 11.3868C0.880355 11.9098 1.43397 12.3486 2.14025 12.3486C2.84653 12.3486 3.40014 11.9113 3.74258 11.3868C4.0893 10.858 4.28049 10.168 4.28049 9.44303C4.28049 8.7181 4.0893 8.02803 3.74258 7.49922C3.40014 6.97622 2.84653 6.53748 2.14025 6.53748ZM9.98782 6.53748C8.27562 6.53748 7.00717 7.47307 6.19673 8.63383C5.39628 9.77717 4.99391 11.1965 4.99391 12.3486C4.99391 13.6909 5.7858 14.6251 6.75747 15.1844C7.71345 15.7364 8.91199 15.9805 9.98782 15.9805C11.0637 15.9805 12.2622 15.7379 13.2182 15.1844C14.1884 14.6236 14.9817 13.6909 14.9817 12.3486C14.9817 11.1965 14.5794 9.77717 13.7789 8.63383C12.9699 7.47162 11.7014 6.53748 9.98782 6.53748ZM17.8354 6.53748C17.1291 6.53748 16.5755 6.97477 16.2331 7.49922C15.8863 8.02803 15.6951 8.7181 15.6951 9.44303C15.6951 10.168 15.8863 10.858 16.2331 11.3868C16.5755 11.9098 17.1291 12.3486 17.8354 12.3486C18.5417 12.3486 19.0953 11.9113 19.4377 11.3868C19.7844 10.858 19.9756 10.168 19.9756 9.44303C19.9756 8.7181 19.7844 8.02803 19.4377 7.49922C19.0953 6.97622 18.5417 6.53748 17.8354 6.53748Z"
+                                                fill="white" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-auto">
+                            <div class="pet-weight-wrapper">
+                                <p class="label">Pet Size</p>
+
+                                <div class="weight-toggle">
+                                    <button type="button" class="weight-option large active" data-weight="large">
+                                        <span>Large 19+ kg</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h2 class="modal-title mt-3">Price Range</h2>
+                    <div class="range-slider">
+                        <span class="output"></span>
+                        <span class="full-range"></span>
+                        <span class="incl-range"></span>
+                        <input type="range" name="rangeOne" min="0" max="95" step="1" value="75">
+                        <span class="max-price">£95</span>
+                    </div>
+
+                    <div class="filter-options-section dropdown mt-3">
+                        <h2 class="modal-title">Amenities</h2>
+                        <ul>
+                            <li>
+                                <span class="radio-circle"></span>
+                                <span class="option-text">Bath</span>
+                            </li>
+                            <li>
+                                <span class="radio-circle"></span>
+                                <span class="option-text">Table</span>
+                            </li>
+                            <li>
+                                <span class="radio-circle"></span>
+                                <span class="option-text">Dryer</span>
+                            </li>
+                            <li>
+                                <span class="radio-circle"></span>
+                                <span class="option-text">Towels</span>
+                            </li>
+                            <li>
+                                <span class="radio-circle"></span>
+                                <span class="option-text">Parking</span>
+                            </li>
+                            <li>
+                                <span class="radio-circle"></span>
+                                <span class="option-text">Wi-Fi</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="filter-options-section dropdown mt-3">
+                        <h2 class="modal-title">Housing Conditions</h2>
+                        <ul>
+                            <li>
+                                <span class="radio-circle"></span>
+                                <span class="option-text">Fenced yard</span>
+                            </li>
+                            <li>
+                                <span class="radio-circle"></span>
+                                <span class="option-text">No other pets</span>
+                            </li>
+                            <li>
+                                <span class="radio-circle"></span>
+                                <span class="option-text">No children</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="filter-options-section dropdown mt-3">
+                        <h2 class="modal-title">Space Type</h2>
+                        <ul>
+                            <li class="active">
+                                <span class="radio-circle"></span>
+                                <span class="option-text">Shared space</span>
+                            </li>
+                            <li>
+                                <span class="radio-circle"></span>
+                                <span class="option-text">Entire space just for you</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="filter-options-section dropdown mt-3">
+                        <h2 class="modal-title">Accepts non-neutered pets</h2>
+                        <ul>
+                            <li class="active">
+                                <span class="radio-circle"></span>
+                                <span class="option-text">Accepts non-neutered pets</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="filter-options-section dropdown mt-3">
+                        <h2 class="modal-title">Suitable service</h2>
+                        <ul>
+                            <li>
+                                <span class="radio-circle"></span>
+                                <span class="option-text">Full Groom (bath, dry, haircut)</span>
+                            </li>
+                            <li>
+                                <span class="radio-circle"></span>
+                                <span class="option-text">Face Trim Only</span>
+                            </li>
+                            <li>
+                                <span class="radio-circle"></span>
+                                <span class="option-text">Tail Trim Only</span>
+                            </li>
+                            <li>
+                                <span class="radio-circle"></span>
+                                <span class="option-text">Bath & Brush</span>
+                            </li>
+                            <li>
+                                <span class="radio-circle"></span>
+                                <span class="option-text">Nail Trim</span>
+                            </li>
+                            <li>
+                                <span class="radio-circle"></span>
+                                <span class="option-text">Ear Cleaning</span>
+                            </li>
+                            <li>
+                                <span class="radio-circle"></span>
+                                <span class="option-text">Luxury Spa</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="filter-options-section dropdown mt-3">
+                        <h2 class="modal-title">Extras</h2>
+                        <ul>
+                            <li class="active">
+                                <span class="radio-circle"></span>
+                                <span class="option-text">Bathing</span>
+                            </li>
+                            <li>
+                                <span class="radio-circle"></span>
+                                <span class="option-text">First-aid certified</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="modal-footer mt-3">
+                        <button class="modal-footer-btn">Clear All</button>
+                        <button class="modal-footer-btn apply">Apply</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- filters modals  -->
