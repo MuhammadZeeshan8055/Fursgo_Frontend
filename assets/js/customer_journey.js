@@ -91,6 +91,112 @@
 //     });
 // });
 
+function groomerTooltipCardSVG(imageUrl, clipId) {
+    return `
+    <svg xmlns="http://www.w3.org/2000/svg"
+         width="60"
+         height="60"
+         viewBox="0 0 170 246"
+         style="display:block;">
+        <defs>
+            <clipPath id="${clipId}">
+                <path d="M165 0C167.761 0 170 2.23858 170 5V241C170 243.761 167.761 246 165 246H5C2.23858 246 0 243.761 0 241V37C0 34.2386 2.23858 32 5 32H27C29.7614 32 32 29.7614 32 27V5C32 2.23858 34.2386 0 37 0H165Z"/>
+            </clipPath>
+        </defs>
+
+        <image
+            href="${imageUrl}"
+            width="170"
+            height="246"
+            preserveAspectRatio="xMidYMid slice"
+            clip-path="url(#${clipId})" />
+    </svg>`;
+}
+
+function spaceTooltipCardSVG(imageUrl, clipId) {
+    return `
+    <svg xmlns="http://www.w3.org/2000/svg"
+         width="60"
+         height="60"
+         viewBox="0 0 170 246"
+         style="display:block;">
+        <defs>
+            <clipPath id="${clipId}">
+                <path d="M165 0C167.761 0 170 2.23858 170 5V241C170 243.761 167.761 246 165 246H5C2.23858 246 0 243.761 0 241V37C0 34.2386 2.23858 32 5 32H27C29.7614 32 32 29.7614 32 27V5C32 2.23858 34.2386 0 37 0H165Z"/>
+            </clipPath>
+        </defs>
+
+        <image
+            href="${imageUrl}"
+            width="170"
+            height="246"
+            preserveAspectRatio="xMidYMid slice"
+            clip-path="url(#${clipId})" />
+    </svg>`;
+}
+
+// New custom SVG function
+function customTooltipSVG(color = '#C9DDA0', width = 21, height = 22) {
+    return `
+    <div class="custom-svg-wrapper" style="width:${width}px; height:${height}px; display:flex; align-items:center; justify-content:center;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 21 22" fill="none">
+            <rect x="4.14746" y="4.14746" width="12.443" height="13.8256"
+                  rx="3" fill="white" />
+            <path d="M10.9482 0.125295C10.7667 0.043205 10.5723 0 10.3692 0C10.1662 0 9.97174 0.043205 9.79028 0.125295L1.65477 3.57738C0.704262 3.97918 -0.00430085 4.91673 1.96518e-05 6.0487C0.0216222 10.3346 1.78439 18.1764 9.22861 21.7408C9.95014 22.0864 10.7883 22.0864 11.5098 21.7408C18.9541 18.1764 20.7168 10.3346 20.7384 6.0487C20.7428 4.91673 20.0342 3.97918 19.0837 3.57738L10.9482 0.125295ZM6.26043 12.3653C6.46781 12.4171 6.68816 12.443 6.91282 12.443C8.43796 12.443 9.67795 11.2031 9.67795 9.67793V6.9128H11.5876C12.1104 6.9128 12.59 7.2066 12.8233 7.67753L13.1343 8.29537H15.8995C16.2797 8.29537 16.5907 8.60644 16.5907 8.98665V10.3692C16.5907 12.2789 15.044 13.8256 13.1343 13.8256H11.0605V16.0161C11.0605 16.3315 10.8056 16.5907 10.4859 16.5907C10.4081 16.5907 10.3303 16.5734 10.2612 16.5432L5.99688 14.7156C5.71172 14.5947 5.53026 14.3138 5.53026 14.0071C5.53026 13.8861 5.55619 13.7694 5.61235 13.6614L6.26043 12.3653ZM6.22154 6.9128H8.29538V9.67793C8.29538 10.4427 7.67755 11.0605 6.91282 11.0605C6.1481 11.0605 5.53026 10.4427 5.53026 9.67793V7.60408C5.53026 7.22388 5.84134 6.9128 6.22154 6.9128ZM11.7518 8.98665C11.7518 8.80331 11.679 8.62748 11.5493 8.49784C11.4197 8.3682 11.2438 8.29537 11.0605 8.29537C10.8772 8.29537 10.7013 8.3682 10.5717 8.49784C10.4421 8.62748 10.3692 8.80331 10.3692 8.98665C10.3692 9.16998 10.4421 9.34581 10.5717 9.47545C10.7013 9.60509 10.8772 9.67793 11.0605 9.67793C11.2438 9.67793 11.4197 9.60509 11.5493 9.47545C11.679 9.34581 11.7518 9.16998 11.7518 8.98665Z"
+                  fill="${color}" />
+        </svg>
+    </div>
+    `;
+}
+
+function spaceCustomTooltipSVG(color = '#CBDCE8', width = 21, height = 22) {
+    return `
+    <div class="custom-svg-wrapper"
+         style="width:${width}px;height:${height}px;display:flex;align-items:center;justify-content:center;">
+        <svg xmlns="http://www.w3.org/2000/svg"
+             width="${width}"
+             height="${height}"
+             viewBox="0 0 21 22"
+             fill="none">
+
+            <!-- Main shape -->
+            <path
+                d="M10.9482 0.125295C10.7667 0.043205 10.5723 0 10.3692 0C10.1662 0 9.97174 0.043205 9.79028 0.125295L1.65477 3.57738C0.704261 3.97918 -0.00430085 4.91673 1.96518e-05 6.0487C0.0216222 10.3346 1.78439 18.1764 9.22861 21.7408C9.95014 22.0864 10.7883 22.0864 11.5098 21.7408C18.9541 18.1764 20.7168 10.3346 20.7384 6.0487C20.7428 4.91673 20.0342 3.97918 19.0837 3.57738L10.9482 0.125295Z"
+                fill="${color}" />
+
+            <!-- Inner details -->
+            <path
+                d="M16 6L11.5556 10.7222M9.58111 10.4917C8.20333 11.0206 7.10167 10.93 6 10.4933C6.27778 14.0728 7.94667 15.4489 10.1717 16C10.1717 16 11.8478 14.8144 12.0894 12.0039C12.1156 11.6994 12.1283 11.5478 12.0656 11.3761C12.0022 11.2044 11.8778 11.0817 11.6294 10.8356C11.2206 10.4311 11.0167 10.2289 10.7739 10.1778C10.5311 10.1278 10.2144 10.2489 9.58111 10.4917Z"
+                fill="${color}" />
+
+            <!-- Strokes -->
+            <path
+                d="M16 6L11.5556 10.7222M9.58111 10.4917C8.20333 11.0206 7.10167 10.93 6 10.4933C6.27778 14.0728 7.94667 15.4489 10.1717 16C10.1717 16 11.8478 14.8144 12.0894 12.0039"
+                stroke="white"
+                stroke-linecap="round"
+                stroke-linejoin="round" />
+
+            <path
+                d="M6.83331 13.4703C6.83331 13.4703 8.2222 13.7392 9.61109 12.667"
+                stroke="white"
+                stroke-linecap="round"
+                stroke-linejoin="round" />
+
+            <path
+                d="M9.05558 8.36144C9.05558 8.54561 8.98241 8.72225 8.85218 8.85248C8.72194 8.98272 8.54531 9.05588 8.36113 9.05588C8.17695 9.05588 8.00032 8.98272 7.87009 8.85248C7.73985 8.72225 7.66669 8.54561 7.66669 8.36144C7.66669 8.17726 7.73985 8.00062 7.87009 7.87039C8.00032 7.74016 8.17695 7.66699 8.36113 7.66699C8.54531 7.66699 8.72194 7.74016 8.85218 7.87039C8.98241 8.00062 9.05558 8.17726 9.05558 8.36144Z"
+                fill="${color}"
+                stroke="white" />
+
+            <path
+                d="M10.4445 6.55554V6.6111"
+                stroke="white"
+                stroke-linecap="round"
+                stroke-linejoin="round" />
+        </svg>
+    </div>`;
+}
+
+
 document.addEventListener('DOMContentLoaded', function () {
     // Initialize Leaflet map globally
     window.map = L.map('map', {
@@ -138,33 +244,177 @@ document.addEventListener('DOMContentLoaded', function () {
         popupAnchor: [0, -26]
     });
 
-    // Locations for groomer map
-    const locations = [
-        { name: 'Waterloo Station', lat: 51.5033, lng: -0.1147 },
-        { name: 'Westminster', lat: 51.4995, lng: -0.1248 },
-        { name: 'Strand', lat: 51.511227, lng: -0.119470 }
+    // groomerLocations for groomer map
+    const groomerLocations = [
+        {
+            loc_name: 'Sarah\'s Grooming Studio',
+            name: 'Sarah W.',
+            lat: 51.5033,
+            lng: -0.1147,
+            image: 'http://localhost/fursgo/assets/images/card1.png', // Add groomer image
+            distance: '2.5 mi',
+            rating: '4.3',
+            reviews: '20'
+        },
+        {
+            loc_name: 'Westminster Pet Spa',
+            name: 'Sarah W.',
+            lat: 51.4995,
+            lng: -0.1248,
+            image: 'http://localhost/fursgo/assets/images/card2.png',
+            distance: '3.1 mi',
+            rating: '4.7',
+            reviews: '45'
+        },
+        {
+            loc_name: 'Strand Grooming',
+            name: 'Sarah W.',
+            lat: 51.511227,
+            lng: -0.119470,
+            image: 'http://localhost/fursgo/assets/images/card3.png',
+            distance: '1.8 mi',
+            rating: '4.5',
+            reviews: '32'
+        }
     ];
 
-    // Locations for space map (different locations as example)
+    // Locations for groomer map
     const spaceLocations = [
-        { name: 'Hyde Park', lat: 51.5074, lng: -0.1657 },
-        { name: 'Kensington Gardens', lat: 51.5074, lng: -0.1850 },
-        { name: 'Regent\'s Park', lat: 51.5313, lng: -0.1568 }
+        {
+            loc_name: 'Furs & Co. Studio',
+            name: 'Dev É',
+            lat: 51.5074,
+            lng: -0.1657,
+            image: 'http://localhost/fursgo/assets/images/space_card3.png', // Add groomer image
+            distance: '2.5 mi',
+            rating: '4.3',
+            reviews: '20'
+        },
+        {
+            loc_name: 'Kensington Gardens',
+            name: 'Kensington Gardens',
+            lat: 51.5074,
+            lng: -0.1850,
+            image: 'http://localhost/fursgo/assets/images/space_card1.png',
+            distance: '3.1 mi',
+            rating: '4.7',
+            reviews: '45'
+        },
+        {
+            loc_name: 'Regent\'s Park',
+            name: 'Regent\'s Park',
+            lat: 51.5313,
+            lng: -0.1568,
+            image: 'http://localhost/fursgo/assets/images/space_card2.png',
+            distance: '1.8 mi',
+            rating: '4.5',
+            reviews: '32'
+        }
     ];
+
+    // Small location SVG
+    const locationSVG = `
+    <svg xmlns="http://www.w3.org/2000/svg" width="10" height="14" viewBox="0 0 10 14" fill="none" style="vertical-align:middle; margin-right:2px;">
+        <path d="M5 6.65C4.5264 6.65 4.0722 6.46563 3.73731 6.13744C3.40242 5.80925 3.21429 5.36413 3.21429 4.9C3.21429 4.43587 3.40242 3.99075 3.73731 3.66256C4.0722 3.33437 4.5264 3.15 5 3.15C5.4736 3.15 5.9278 3.33437 6.26269 3.66256C6.59758 3.99075 6.78571 4.43587 6.78571 4.9C6.78571 5.12981 6.73953 5.35738 6.64979 5.5697C6.56004 5.78202 6.42851 5.97493 6.26269 6.13744C6.09687 6.29994 5.90002 6.42884 5.68336 6.51679C5.46671 6.60473 5.2345 6.65 5 6.65ZM5 0C3.67392 0 2.40215 0.516248 1.46447 1.43518C0.526784 2.3541 0 3.60044 0 4.9C0 8.575 5 14 5 14C5 14 10 8.575 10 4.9C10 3.60044 9.47322 2.3541 8.53553 1.43518C7.59785 0.516248 6.32608 0 5 0Z" fill="#FFC97A"/>
+    </svg>
+    `;
+
+    // Small star SVG
+    const starSVG = `
+    <svg xmlns="http://www.w3.org/2000/svg" width="10" height="14" viewBox="0 0 14 14" fill="none" style="vertical-align:middle; margin-right:2px;">
+        <path d="M6.12956 0.660476C6.40354 -0.220161 7.59647 -0.220158 7.87045 0.660479L8.89548 3.95519C9.01801 4.34902 9.36942 4.61566 9.76593 4.61566H13.083C13.9696 4.61566 14.3383 5.80055 13.621 6.34481L10.9374 8.38106C10.6166 8.62446 10.4824 9.0559 10.6049 9.44973L11.63 12.7444C11.9039 13.6251 10.9388 14.3574 10.2215 13.8131L7.53797 11.7769C7.21719 11.5335 6.78282 11.5335 6.46204 11.7769L3.77846 13.8131C3.06117 14.3574 2.09607 13.6251 2.37005 12.7444L3.39508 9.44973C3.51761 9.0559 3.38338 8.62446 3.0626 8.38106L0.37903 6.34481C-0.338258 5.80055 0.0303816 4.61566 0.916998 4.61566H4.23408C4.63058 4.61566 4.98199 4.34902 5.10452 3.95519L6.12956 0.660476Z" fill="#FFC97A"/>
+    </svg>
+    `;
 
     // Add markers to groomer map
-    locations.forEach(loc => {
+    groomerLocations.forEach((loc, index) => {
+
+        const imageUrl = loc.image || 'https://via.placeholder.com/300';
+        const svgImage = groomerTooltipCardSVG(imageUrl, `groomer-clip-${index}`);
+
+        const tooltipContent = `
+        <div style="min-width:215px;position:relative;">
+            <div class="map-top-left-svg">
+                ${customTooltipSVG('#C9DDA0', 7, 8)}
+            </div>
+            <div style="display:flex; gap:2px;">
+                ${svgImage}
+                <div style="flex:1;">
+                    <h2 class="name" style="margin:0 0 0px;font-size:14px;font-weight:600;color:#333;">
+                        ${loc.loc_name}
+                    </h2>
+                    <span class="studio"> ${loc.name}</span>
+                    <div class="map-meta d-flex align-items-center justify-content-between mt-2" style="font-size:12px;color:#666;line-height:1.4;">
+                        <span class="d-flex align-items-center">${locationSVG} ${loc.distance || '2.5 mi'}</span>
+                        <span class="d-flex align-items-center">${starSVG} ${loc.rating || '4.3'} (${loc.reviews || '20'})</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        `;
+
         L.marker([loc.lat, loc.lng], { icon: yellowPin })
             .addTo(window.map)
-            .bindPopup(`<strong>${loc.name}</strong>`);
+            .bindPopup(tooltipContent, {
+                closeButton: false, // remove the X
+                autoClose: false,   // don't close other popups
+                className: 'custom-popup',
+                offset: [0, -35]
+            })
+            .on('mouseover', function (e) {
+                this.openPopup();
+            })
+            .on('mouseout', function (e) {
+                this.closePopup();
+            });
     });
 
+
+
+
     // Add markers to space map
-    spaceLocations.forEach(loc => {
+    spaceLocations.forEach((loc, index) => {
+
+        const imageUrl = loc.image || 'https://via.placeholder.com/300';
+        const svgImage = spaceTooltipCardSVG(imageUrl, `space-clip-${index}`);
+
+        const tooltipContent = `
+        <div style="min-width:215px;position:relative;">
+            <div class="map-top-left-svg">
+                ${spaceCustomTooltipSVG('#CBDCE8', 7, 8)}
+            </div>
+            <div style="display:flex; gap:2px;">
+                ${svgImage}
+                <div style="flex:1;">
+                    <h2 class="name" style="margin:0 0 0px;font-size:14px;font-weight:600;color:#333;">
+                        ${loc.loc_name}
+                    </h2>
+                    <h2 class="name" style="margin:0 0 0px;font-size:14px;font-weight:600;color:#333;">Hosted by <span class="studio"> ${loc.name}</span></h2>                
+                    <div class="map-meta d-flex align-items-center justify-content-between mt-2" style="font-size:12px;color:#666;line-height:1.4;">
+                        <span class="d-flex align-items-center">${locationSVG} ${loc.distance || '2.5 mi'}</span>
+                        <span class="d-flex align-items-center">${starSVG} ${loc.rating || '4.3'} (${loc.reviews || '20'})</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        `;
+
         L.marker([loc.lat, loc.lng], { icon: yellowPin })
             .addTo(window.spaceMap)
-            .bindPopup(`<strong>${loc.name}</strong>`);
+            .bindPopup(tooltipContent, {
+                closeButton: false, // remove the X
+                autoClose: false,   // don't close other popups
+                className: 'custom-popup',
+                offset: [0, -35]
+            })
+            .on('mouseover', function (e) {
+                this.openPopup();
+            })
+            .on('mouseout', function (e) {
+                this.closePopup();
+            });
     });
+
 
     // ---- Custom Tabs ----
     document.querySelectorAll('.tabs').forEach(tabSection => {
@@ -181,7 +431,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     setTimeout(() => {
                         window.map.invalidateSize();
                         window.map.fitBounds(
-                            locations.map(l => [l.lat, l.lng]),
+                            groomerLocations.map(l => [l.lat, l.lng]),
                             {
                                 padding: [40, 40],
                                 maxZoom: 15
@@ -268,12 +518,13 @@ document.querySelectorAll('.venu-sorting-section').forEach(container => {
 
 // selected filter remove js starts
 
-document.querySelector('.selected-item-section')
-    .addEventListener('click', e => {
+document.querySelectorAll('.selected-item-section').forEach(section => {
+    section.addEventListener('click', e => {
         if (e.target.classList.contains('cross')) {
-            e.target.closest('.selected-item').remove();
+            e.target.closest('.selected-item')?.remove();
         }
     });
+});
 
 // selected filter remove js ends
 

@@ -620,7 +620,7 @@ input#dateInput#streched {
     color: var(--groomer-color);
 }
 
-.selected-item  .cross.svg{
+.selected-item .cross.svg {
     cursor: pointer;
 }
 
@@ -837,8 +837,6 @@ ul.grommers-options li {
 /* card css  */
 
 .card {
-    /* width: 610px;
-            height: 286px; */
     width: 100%;
     display: flex;
     gap: 10px;
@@ -846,12 +844,44 @@ ul.grommers-options li {
     border-radius: 16px;
     padding: 18px;
     border: 1px solid #D4D4D4;
+    cursor: pointer;
 }
 
 .card:hover {
     border: 1px solid var(--active-bg);
     box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.15);
 }
+
+/* map card styling */
+
+.custom-popup .leaflet-popup-content-wrapper {
+    padding: 12px;
+    border-radius: 5px;
+    background: #FFF;
+    box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.05);
+}
+
+.custom-popup .leaflet-popup-content {
+    margin: 0;
+    min-width: 200px;
+}
+
+.custom-popup .leaflet-popup-tip {
+    background: white;
+}
+
+.map-top-left-svg {
+    position: absolute;
+    top: -1px;
+    left: 10px;
+}
+
+a.leaflet-popup-close-button {
+    display: none;
+}
+
+/* map card styling */
+
 
 .left {
     width: 180px;
@@ -996,7 +1026,8 @@ ul.grommers-options li {
     flex-wrap: wrap;
     gap: 10px;
     margin-top: 8px;
-    /* width: 278px; */
+    width: 100%;
+    max-width: 278px;
 }
 
 #groomer-list-view .slots {
