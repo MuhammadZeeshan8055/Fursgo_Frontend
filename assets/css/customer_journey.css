@@ -642,7 +642,7 @@ p.not-found-message {
 p.not-found-message span {
     color: var(--font-color);
     font-family: "Playfair Display";
-    font-size: 28px;
+    font-size: 26px;
     font-style: normal;
     font-weight: 600;
     line-height: normal;
@@ -880,6 +880,9 @@ a.leaflet-popup-close-button {
     display: none;
 }
 
+.leaflet-popup.custom-popup.leaflet-zoom-animated {
+    bottom: 8px !important;
+}
 /* map card styling */
 
 
@@ -1156,12 +1159,6 @@ button.load-more {
 
 .card.specific .left {
     width: auto;
-}
-
-.card.specific .top-left-svg {
-    position: absolute;
-    left: 9%;
-    top: 1%;
 }
 
 .hosted-by {

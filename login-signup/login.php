@@ -1,3 +1,4 @@
+<?php include '../function_helper.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,9 +6,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fursgo - Login page</title>
-    <link rel="stylesheet" href="../assets/css/responsive.css">
-    <link rel="stylesheet" href="../assets/css/bootstrap.css">
-    <link rel="stylesheet" href="../assets/css/media_query.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/responsive.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/bootstrap.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/media_query.css">
     <style>
         .login-image-wrapper {
             overflow: hidden;
@@ -280,7 +281,7 @@
             <div class="col-lg-6">
                 <div class="login-image-form">
                     <div class="login-image-wrapper">
-                        <img src="../assets/images/login-page.png" alt="">
+                        <img src="<?= BASE_URL ?>/assets/images/login-page.png" alt="">
                     </div>
                 </div>
             </div>

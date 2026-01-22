@@ -3,7 +3,7 @@
     <div class="row">
         <div class="col-lg-12 d-flex align-items-center justify-content-center">
             <div id="groomModal" class="modal">
-                <div class="modal-dialog">
+                <div class="modal-dialog mb-5">
                     <button class="modal-close" aria-label="Close">&times;</button>
 
                     <h2 class="modal-filter-svg d-flex align-items-center modal-title">
@@ -335,7 +335,7 @@
                 </div>
             </div>
             <div id="spaceModal" class="modal">
-                <div class="modal-dialog">
+                <div class="modal-dialog mb-5">
                     <button class="modal-close" aria-label="Close">&times;</button>
 
                     <h2 class="modal-filter-svg d-flex align-items-center modal-title">

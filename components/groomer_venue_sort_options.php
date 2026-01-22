@@ -2,27 +2,23 @@
      <div class="selection-box d-flex align-items-center justify-content-between">
          <div class="selected-item-section d-flex align-items-center">
              <div class="selected-item d-flex align-items-center">
-                 <img src="assets/icons/fire.svg" class="svg" alt="">
+                 <img src="<?= BASE_URL ?>/assets/icons/fire.svg" class="svg" alt="">
                  <p>Top Rated</p>
-                 <img src="assets/icons/cross.svg" class="cross svg" alt="">
+                 <img src="<?= BASE_URL ?>/assets/icons/cross.svg" class="cross svg" alt="">
              </div>
              <div class="selected-item d-flex align-items-center">
                  <p>Mobile Station</p>
-                 <img src="assets/icons/cross.svg" class="cross svg" alt="">
+                 <img src="<?= BASE_URL ?>/assets/icons/cross.svg" class="cross svg" alt="">
              </div>
          </div>
          <div class="venu-sorting-section d-flex align-items-center">
              <div class="venue-selection">
                  Groomer Venue
                  &nbsp;
-                 <img src="assets/icons/filter-arrow-down.svg" class="svg" alt="">
+                 <img src="<?= BASE_URL ?>/assets/icons/filter-arrow-down.svg" class="svg" alt="">
                  <div class="venue-list">
                      <div class="venu dropdown">
                          <ul>
-                             <li class="active">
-                                 <span class="option-text">Recommended (default)</span>
-                                 <span class="radio-circle"></span>
-                             </li>
                              <li>
                                  <span class="option-text">Salons</span>
                                  <span class="radio-circle"></span>
@@ -70,7 +66,7 @@
              <div class="sort-by">
                  Sort
                  &nbsp;
-                 <img src="assets/icons/filter-arrow-down.svg" class="svg" alt="">
+                 <img src="<?= BASE_URL ?>/assets/icons/filter-arrow-down.svg" class="svg" alt="">
                  <div class="sort-by-filter">
                      <div class="sort dropdown">
                          <ul>

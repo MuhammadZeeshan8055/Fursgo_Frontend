@@ -1,3 +1,4 @@
+<?php include 'function_helper.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,13 +6,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fursgo</title>
-    <link rel="stylesheet" href="assets/css/responsive.css">
-    <link rel="stylesheet" href="assets/css/bootstrap.css">
-    <link rel="stylesheet" href="assets/css/media_query.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/responsive.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/bootstrap.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/media_query.css">
 </head>
 
 <body>
-   
+
     <?php include 'components/header.php'; ?>
 
     <!-- hero section -->
@@ -21,7 +22,7 @@
                 <div class="col-lg-12">
                     <div class="hero-section">
                         <div class="inverted-radius">
-                            <img src="assets/images/hero_section.png">
+                            <img src="<?= BASE_URL ?>/assets/images/hero_section.png">
                         </div>
                         <div class="bottom-left">
                             <div class="find-grommer-content">
@@ -491,7 +492,7 @@
                 </div>
                 <div class="col-lg-4 p-0 m-0">
                     <div class="img-fluid">
-                        <img src="assets/images/dog.png" alt="" style="border-radius: 10px;">
+                        <img src="<?= BASE_URL ?>/assets/images/dog.png" alt="" style="border-radius: 10px;">
                     </div>
                 </div>
                 <div class="col-lg-4 align-items-center">
@@ -560,7 +561,7 @@
                     <div class="how-step">
                         <div class="how-it-works-image-content-area">
                             <div class="search-image">
-                                <img src="assets/images/search.png" class="how-it-works-images" alt="">
+                                <img src="<?= BASE_URL ?>/assets/images/search.png" class="how-it-works-images" alt="">
                             </div>
                             <div class="numbering">
                                 <span>1</span>
@@ -588,7 +589,7 @@
                     <div class="how-step">
                         <div class="how-it-works-image-content-area">
                             <div class="book-and-pay-content">
-                                <img src="assets/images/book_and_pay.png" class="how-it-works-images" alt="">
+                                <img src="<?= BASE_URL ?>/assets/images/book_and_pay.png" class="how-it-works-images" alt="">
                             </div>
                             <div class="numbering">
                                 <span>2</span>
@@ -616,7 +617,7 @@
                     <div class="how-step">
                         <div class="how-it-works-image-content-area">
                             <div class="relax-content">
-                                <img src="assets/images/relax.png" class="how-it-works-images" alt="">
+                                <img src="<?= BASE_URL ?>/assets/images/relax.png" class="how-it-works-images" alt="">
                             </div>
                             <div class="numbering">
                                 <span>3</span>
@@ -654,7 +655,7 @@
             <div class="popular-services-content-grid section">
                 <div class="popular-content-area">
                     <div class="image-wrapper oval">
-                        <img src="assets/images/popular-services-1.png" alt="">
+                        <img src="<?= BASE_URL ?>/assets/images/popular-services-1.png" alt="">
                     </div>
                     <div class="text-area">
                         <h2>Full Groom</h2>
@@ -663,7 +664,7 @@
                 </div>
                 <div class="popular-content-area">
                     <div class="image-wrapper circle">
-                        <img src="assets/images/popular-services-2.png" alt="">
+                        <img src="<?= BASE_URL ?>/assets/images/popular-services-2.png" alt="">
                     </div>
                     <div class="text-area">
                         <h2>Bath & Tidy</h2>
@@ -672,7 +673,7 @@
                 </div>
                 <div class="popular-content-area">
                     <div class="image-wrapper rectangle">
-                        <img src="assets/images/popular-services-3.png" alt="">
+                        <img src="<?= BASE_URL ?>/assets/images/popular-services-3.png" alt="">
                     </div>
                     <div class="text-area">
                         <h2>Nail Trim</h2>
@@ -681,7 +682,7 @@
                 </div>
                 <div class="popular-content-area">
                     <div class="image-wrapper oval">
-                        <img src="assets/images/popular-services-4.png" alt="">
+                        <img src="<?= BASE_URL ?>/assets/images/popular-services-4.png" alt="">
                     </div>
                     <div class="text-area">
                         <h2>Pet Spa</h2>
@@ -690,7 +691,7 @@
                 </div>
                 <div class="popular-content-area">
                     <div class="image-wrapper circle">
-                        <img src="assets/images/popular-services-5.png" alt="">
+                        <img src="<?= BASE_URL ?>/assets/images/popular-services-5.png" alt="">
                     </div>
                     <div class="text-area">
                         <h2>Mobile Grooming</h2>
@@ -843,7 +844,7 @@
                                                 </svg>
                                             </div>
                                         </div>
-                                        <div class="testimonial-photo"><img src="assets/images/testimonial-1.png" />
+                                        <div class="testimonial-photo"><img src="<?= BASE_URL ?>/assets/images/testimonial-1.png" />
                                         </div>
                                         <div class="avatar-meta">
                                             <div class="avatar">
@@ -973,7 +974,7 @@
             <div class="our-mission row d-flex justify-content-center align-items-center">
                 <div class="col-lg-7">
                     <div class="image-wrapper">
-                        <img src="assets/images/our_mission.png" style="border-radius: 10px;">
+                        <img src="<?= BASE_URL ?>/assets/images/our_mission.png" style="border-radius: 10px;">
                     </div>
                 </div>
                 <div class="col-lg-5 content-column">
@@ -1015,7 +1016,7 @@
                         </ul>
                         <p class="link">More Coming soon.</p>
                         <div class="fursgo-map-image-wrapper">
-                            <img src="assets/images/Intersect.png" alt="">
+                            <img src="<?= BASE_URL ?>/assets/images/Intersect.png" alt="">
                         </div>
                     </div>
                 </div>
@@ -1026,7 +1027,7 @@
     <?php include('components/footer.php'); ?>
 
 
-    <script src="assets/js/custom.js"></script>
+    <script src="<?= BASE_URL ?>/assets/js/custom.js"></script>
 
 </body>
 

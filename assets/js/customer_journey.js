@@ -116,8 +116,8 @@ function groomerTooltipCardSVG(imageUrl, clipId) {
 function spaceTooltipCardSVG(imageUrl, clipId) {
     return `
     <svg xmlns="http://www.w3.org/2000/svg"
-         width="60"
-         height="60"
+         width="65"
+         height="65"
          viewBox="0 0 170 246"
          style="display:block;">
         <defs>

@@ -2,13 +2,13 @@
     <div class="selection-box d-flex align-items-center justify-content-between">
         <div class="selected-item-section d-flex align-items-center">
             <div class="selected-item d-flex align-items-center">
-                <img src="assets/icons/fire.svg" class="svg" alt="">
+                <img src="<?= BASE_URL ?>/assets/icons/fire.svg" class="svg" alt="">
                 <p>Top Rated</p>
-                <img src="assets/icons/cross.svg" class="cross svg" alt="">
+                <img src="<?= BASE_URL ?>/assets/icons/cross.svg" class="cross svg" alt="">
             </div>
             <div class="selected-item d-flex align-items-center">
                 <p>Garden / Shed</p>
-                <img src="assets/icons/cross.svg" class="cross svg" alt="">
+                <img src="<?= BASE_URL ?>/assets/icons/cross.svg" class="cross svg" alt="">
             </div>
         </div>
         <div class="venu-sorting-section d-flex align-items-center">

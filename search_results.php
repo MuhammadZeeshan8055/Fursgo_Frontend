@@ -1,3 +1,4 @@
+<?php include 'function_helper.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,10 +6,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fursgo</title>
-    <link rel="stylesheet" href="assets/css/responsive.css">
-    <link rel="stylesheet" href="assets/css/bootstrap.css">
-    <link rel="stylesheet" href="assets/css/media_query.css">
-    <link rel="stylesheet" href="assets/css/customer_journey.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/responsive.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/bootstrap.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/media_query.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/customer_journey.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 
 </head>
@@ -477,7 +478,7 @@
                                                     </defs>
 
                                                     <!-- Image with clip path -->
-                                                    <image href="assets/images/card1.png"
+                                                    <image href="<?= BASE_URL ?>/assets/images/card1.png"
                                                         preserveAspectRatio="xMidYMid slice"
                                                         clip-path="url(#cardClip)" />
                                                 </svg>
@@ -598,7 +599,7 @@
                                                     </defs>
 
                                                     <!-- Image with clip path -->
-                                                    <image href="assets/images/card2.png"
+                                                    <image href="<?= BASE_URL ?>/assets/images/card2.png"
                                                         preserveAspectRatio="xMidYMid slice"
                                                         clip-path="url(#cardClip)" />
                                                 </svg>
@@ -719,7 +720,7 @@
                                                     </defs>
 
                                                     <!-- Image with clip path -->
-                                                    <image href="assets/images/card3.png"
+                                                    <image href="<?= BASE_URL ?>/assets/images/card3.png"
                                                         preserveAspectRatio="xMidYMid slice"
                                                         clip-path="url(#cardClip)" />
                                                 </svg>
@@ -840,7 +841,7 @@
                                                     </defs>
 
                                                     <!-- Image with clip path -->
-                                                    <image href="assets/images/card1.png"
+                                                    <image href="<?= BASE_URL ?>/assets/images/card1.png"
                                                         preserveAspectRatio="xMidYMid slice"
                                                         clip-path="url(#cardClip)" />
                                                 </svg>
@@ -973,7 +974,7 @@
                                                     </defs>
 
                                                     <!-- Image with clip path -->
-                                                    <image href="assets/images/card1.png"
+                                                    <image href="<?= BASE_URL ?>/assets/images/card1.png"
                                                         preserveAspectRatio="xMidYMid slice"
                                                         clip-path="url(#cardClip-map-1)" />
                                                 </svg>
@@ -1092,7 +1093,7 @@
                                                     </defs>
 
                                                     <!-- Image with clip path -->
-                                                    <image href="assets/images/card1.png"
+                                                    <image href="<?= BASE_URL ?>/assets/images/card1.png"
                                                         preserveAspectRatio="xMidYMid slice"
                                                         clip-path="url(#cardClip-map-1)" />
                                                 </svg>
@@ -1211,7 +1212,7 @@
                                                     </defs>
 
                                                     <!-- Image with clip path -->
-                                                    <image href="assets/images/card1.png"
+                                                    <image href="<?= BASE_URL ?>/assets/images/card1.png"
                                                         preserveAspectRatio="xMidYMid slice"
                                                         clip-path="url(#cardClip-map-1)" />
                                                 </svg>
@@ -1352,7 +1353,7 @@
                                                     </defs>
 
                                                     <!-- Image with clip path -->
-                                                    <image href="assets/images/card1.png"
+                                                    <image href="<?= BASE_URL ?>/assets/images/card1.png"
                                                         preserveAspectRatio="xMidYMid slice"
                                                         clip-path="url(#cardClip-list-1)" />
                                                 </svg>
@@ -1474,7 +1475,7 @@
                                                     </defs>
 
                                                     <!-- Image with clip path -->
-                                                    <image href="assets/images/card1.png"
+                                                    <image href="<?= BASE_URL ?>/assets/images/card1.png"
                                                         preserveAspectRatio="xMidYMid slice"
                                                         clip-path="url(#cardClip-list-1)" />
                                                 </svg>
@@ -1596,7 +1597,7 @@
                                                     </defs>
 
                                                     <!-- Image with clip path -->
-                                                    <image href="assets/images/card1.png"
+                                                    <image href="<?= BASE_URL ?>/assets/images/card1.png"
                                                         preserveAspectRatio="xMidYMid slice"
                                                         clip-path="url(#cardClip-list-1)" />
                                                 </svg>
@@ -1809,7 +1810,7 @@
                                                     <defs>
                                                         <pattern id="pattern-card-1" patternUnits="userSpaceOnUse"
                                                             width="255" height="130">
-                                                            <image href="assets/images/space_card1.png" width="255"
+                                                            <image href="<?= BASE_URL ?>/assets/images/space_card1.png" width="255"
                                                                 height="130" preserveAspectRatio="xMidYMid slice" />
                                                         </pattern>
                                                     </defs>
@@ -1957,7 +1958,7 @@
                                                     <defs>
                                                         <pattern id="pattern-card-2" patternUnits="userSpaceOnUse"
                                                             width="255" height="130">
-                                                            <image href="assets/images/space_card2.png" width="255"
+                                                            <image href="<?= BASE_URL ?>/assets/images/space_card2.png" width="255"
                                                                 height="130" preserveAspectRatio="xMidYMid slice" />
                                                         </pattern>
                                                     </defs>
@@ -2105,7 +2106,7 @@
                                                     <defs>
                                                         <pattern id="pattern-card-3" patternUnits="userSpaceOnUse"
                                                             width="255" height="130">
-                                                            <image href="assets/images/space_card3.png" width="255"
+                                                            <image href="<?= BASE_URL ?>/assets/images/space_card3.png" width="255"
                                                                 height="130" preserveAspectRatio="xMidYMid slice" />
                                                         </pattern>
                                                     </defs>
@@ -2253,7 +2254,7 @@
                                                     <defs>
                                                         <pattern id="pattern-card-4" patternUnits="userSpaceOnUse"
                                                             width="255" height="130">
-                                                            <image href="assets/images/space_card1.png" width="255"
+                                                            <image href="<?= BASE_URL ?>/assets/images/space_card1.png" width="255"
                                                                 height="130" preserveAspectRatio="xMidYMid slice" />
                                                         </pattern>
                                                     </defs>
@@ -2417,7 +2418,7 @@
                                                                 <pattern id="pattern-card-5"
                                                                     patternUnits="userSpaceOnUse" width="255"
                                                                     height="130">
-                                                                    <image href="assets/images/space_card1.png"
+                                                                    <image href="<?= BASE_URL ?>/assets/images/space_card1.png"
                                                                         width="255" height="130"
                                                                         preserveAspectRatio="xMidYMid slice" />
                                                                 </pattern>
@@ -2571,7 +2572,7 @@
                                                                 <pattern id="pattern-card-6"
                                                                     patternUnits="userSpaceOnUse" width="255"
                                                                     height="130">
-                                                                    <image href="assets/images/space_card2.png"
+                                                                    <image href="<?= BASE_URL ?>/assets/images/space_card2.png"
                                                                         width="255" height="130"
                                                                         preserveAspectRatio="xMidYMid slice" />
                                                                 </pattern>
@@ -2725,7 +2726,7 @@
                                                                 <pattern id="pattern-card-7"
                                                                     patternUnits="userSpaceOnUse" width="255"
                                                                     height="130">
-                                                                    <image href="assets/images/space_card3.png"
+                                                                    <image href="<?= BASE_URL ?>/assets/images/space_card3.png"
                                                                         width="255" height="130"
                                                                         preserveAspectRatio="xMidYMid slice" />
                                                                 </pattern>
@@ -2879,7 +2880,7 @@
                                                                 <pattern id="pattern-card-8"
                                                                     patternUnits="userSpaceOnUse" width="255"
                                                                     height="130">
-                                                                    <image href="assets/images/space_card1.png"
+                                                                    <image href="<?= BASE_URL ?>/assets/images/space_card1.png"
                                                                         width="255" height="130"
                                                                         preserveAspectRatio="xMidYMid slice" />
                                                                 </pattern>
@@ -3036,7 +3037,7 @@
                                                     <defs>
                                                         <pattern id="pattern-card-10" patternUnits="userSpaceOnUse"
                                                             width="312" height="229">
-                                                            <image href="assets/images/space_card3.png" width="312"
+                                                            <image href="<?= BASE_URL ?>/assets/images/space_card3.png" width="312"
                                                                 height="229" preserveAspectRatio="xMidYMid slice" />
                                                         </pattern>
                                                     </defs>
@@ -3169,7 +3170,7 @@
                                                     <defs>
                                                         <pattern id="pattern-card-11" patternUnits="userSpaceOnUse"
                                                             width="312" height="229">
-                                                            <image href="assets/images/space_card2.png" width="312"
+                                                            <image href="<?= BASE_URL ?>/assets/images/space_card2.png" width="312"
                                                                 height="229" preserveAspectRatio="xMidYMid slice" />
                                                         </pattern>
                                                     </defs>
@@ -3301,7 +3302,7 @@
                                                     <defs>
                                                         <pattern id="pattern-card-12" patternUnits="userSpaceOnUse"
                                                             width="312" height="229">
-                                                            <image href="assets/images/space_card1.png" width="312"
+                                                            <image href="<?= BASE_URL ?>/assets/images/space_card1.png" width="312"
                                                                 height="229" preserveAspectRatio="xMidYMid slice" />
                                                         </pattern>
                                                     </defs>
@@ -3434,7 +3435,7 @@
     <!-- footer -->
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script src="assets/js/customer_journey.js"></script>
+    <script src="<?= BASE_URL ?>/assets/js/customer_journey.js"></script>
 
 
 </body>
