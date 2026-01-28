@@ -1,7 +1,11 @@
+.container-fluid{
+    padding-left: 0;
+}
+
 .login-image-wrapper {
     overflow: hidden;
-    height: 700px;
-    border-radius: 10px;
+    height: 800px;
+    border-radius: 0 10px 10px 0;
     /* container controls height */
 }
 
@@ -15,7 +19,7 @@ body {
     object-fit: cover;
     display: block;
     margin-top: -1%;
-    border-radius: 10px;
+    border-radius: 0 10px 10px 0;
 }
 
 h1.heading {

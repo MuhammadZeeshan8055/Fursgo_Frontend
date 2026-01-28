@@ -20,7 +20,7 @@
     <!-- header ends -->
 
     <div class="container-fluid mt-5">
-        <div class="row">
+        <div class="row"  style="gap: 4%;">
             <div class="col-lg-6">
                 <div class="login-image-form">
                     <div class="login-image-wrapper">
@@ -28,7 +28,6 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-1"></div>
             <div class="col-lg-3 d-flex align-items-center">
                 <div class="login-form mt-5">
                     <h1 class="heading">Sign Up to Fursgo</h1>
