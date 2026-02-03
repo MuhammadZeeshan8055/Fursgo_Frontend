@@ -48,7 +48,7 @@
             </div>
             <div class="col-lg-5 mt-xs-5">
                 <div class="footer-description">
-                    <p>Join Fursgo to grow your business <br> with verified bookings and loyal clients.
+                    <p>Join FursGo to grow your business <br> with verified bookings and loyal clients.
                         <br>
                         <br>
                         Become a Provider · <a href=""><u><b> Learn More </b></u></a>
@@ -108,7 +108,7 @@
                     </ul>
 
                     <div class="app-coming-soon mt-xs-5">
-                        <p>Fursgo App Coming Soon</p>
+                        <p>FursGo App Coming Soon</p>
                     </div>
                 </div>
 

@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fursgo - Signup Form</title>
+    <title>FursGo - Signup Form</title>
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/responsive.css">
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/bootstrap.css">
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/media_query.css">
@@ -30,7 +30,7 @@
             </div>
             <div class="col-lg-3 d-flex align-items-center">
                 <div class="login-form">
-                    <h1 class="heading">Sign Up to Fursgo</h1>
+                    <h1 class="heading">Sign Up to FursGo</h1>
 
                     <form action="" class="mt-4">
                         <!-- Name -->
@@ -145,7 +145,7 @@
                         </div>
                     </form>
                     <div class="signup-divider"></div>
-                    <div class="footer-text"> Already have a Fursgo account? <a href="#">Log in now</a> </div>
+                    <div class="footer-text"> Already have a FursGo account? <a href="#">Log in now</a> </div>
 
                 </div>
             </div>

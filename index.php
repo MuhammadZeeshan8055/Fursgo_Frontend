@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fursgo</title>
+    <title>FursGo</title>
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/responsive.css">
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/bootstrap.css">
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/media_query.css">
@@ -1005,7 +1005,7 @@
                 </div>
                 <div class="col-lg-11 mt-xs-5">
                     <div class="fursgo-address-map">
-                        <h1 class="fursgo-address-heading">Fursgo across the UK</h1>
+                        <h1 class="fursgo-address-heading">FursGo across the UK</h1>
                         <p class="fursgo-sub-heading">Now serving pet owners across the UK .</p>
                         <ul class="fursgo-locations">
                             <li>London</li>
