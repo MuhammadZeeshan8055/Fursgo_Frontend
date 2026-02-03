@@ -470,7 +470,7 @@
                         </div>
                         <h1>4.9 average rating from 5,000 + pet owners.</h1>
                     </div>
-                    <p class="rating-sub-text text-center pt-3">All groomers are ID-verified and insured through Fursgo
+                    <p class="rating-sub-text text-center pt-3">All groomers are ID-verified and insured through FursGo
                         Protect.</p>
                 </div>
             </div>
@@ -959,7 +959,7 @@
                         </svg>
                         &nbsp;
                         &nbsp;
-                        <p class="protected-text">All payments and messages are protected through Fursgo.</p>
+                        <p class="protected-text">All payments and messages are protected through FursGo.</p>
                     </div>
 
                 </div>
