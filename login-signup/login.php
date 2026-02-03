@@ -109,7 +109,7 @@
                     </div>
 
                     <div class="signup-text">
-                        Not signed up yet? <a href="#">Sign up now</a>
+                        Not signed up yet? <a href="<?= BASE_URL ?>login-signup/signup_form.php">Sign up now</a>
                     </div>
                 </div>
             </div>

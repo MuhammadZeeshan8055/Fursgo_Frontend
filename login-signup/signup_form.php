@@ -145,7 +145,7 @@
                         </div>
                     </form>
                     <div class="signup-divider"></div>
-                    <div class="footer-text"> Already have a FursGo account? <a href="#">Log in now</a> </div>
+                    <div class="footer-text"> Already have a FursGo account? <a href="<?= BASE_URL ?>login-signup/login.php">Log in now</a> </div>
 
                 </div>
             </div>
