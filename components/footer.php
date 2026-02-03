@@ -61,7 +61,7 @@
                     <ul class="footer-list">
                         <li><a href="#"><b>About Us</b></a></li>
                         <li><a href="#">Our Mission</a></li>
-                        <li><a href="#">Contact Usy</a></li>
+                        <li><a href="#">Contact Us</a></li>
                     </ul>
                     <div class="social-icons d-flex">
                         <a href="#">
