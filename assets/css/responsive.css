@@ -135,12 +135,15 @@ nav ul a.active {
     border-radius: 25px;
     cursor: pointer;
 }
+.login-btn:hover{
+    color: var(--font-color);
+}
 
 .signup-btn.active {
-    background-color: var(--groomer-color);
-    ;
+    background-color: var(--groomer-color);;
     color: white;
     border: none;
+    text-decoration: none;
 }
 
 /* Hamburger icon */
@@ -188,6 +191,10 @@ img {
     width: 100%;
 }
 
+a{
+    text-decoration: none;
+    color: var(--font-color);
+}
 
 .hero-section img {
     width: 100%;
@@ -1501,11 +1508,11 @@ ul.fursgo-locations li {
 }
 
 .help-center {
-    gap: 63px;
+    gap: 52px;
 }
 
 .about-us{
-    gap: 80px;
+    gap: 70px;
 }
 
 .app-coming-soon {

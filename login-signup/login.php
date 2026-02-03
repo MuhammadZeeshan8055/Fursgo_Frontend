@@ -19,7 +19,7 @@
     <?php include '../components/header.php' ?>
     <!-- header ends -->
 
-    <div class="container-fluid mt-5">
+    <div class="container-fluid mt-5 mb-5">
         <div class="row" style="gap: 4%;">
             <div class="col-lg-6">
                 <div class="login-image-form">
@@ -61,7 +61,7 @@
                             </div>
                         </div>
 
-                        <button type="submit" class="btn-custom login-width text-center">Log in</button>
+                        <button type="submit" class="btn-custom btn-active-bg btn-custom-hover btn-shadow login-width text-center">Log in</button>
                     </form>
                     <div class="divider">— Or Sign in with —</div>
 

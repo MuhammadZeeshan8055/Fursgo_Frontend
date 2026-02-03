@@ -19,7 +19,7 @@
     <?php include '../components/header.php' ?>
     <!-- header ends -->
 
-    <div class="container-fluid mt-5">
+    <div class="container-fluid mt-5 mb-5">
         <div class="row"  style="gap: 4%;">
             <div class="col-lg-6">
                 <div class="login-image-form">

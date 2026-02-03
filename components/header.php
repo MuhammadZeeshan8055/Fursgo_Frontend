@@ -43,8 +43,8 @@
                          <li><a href="#">Help Centre</a></li>
                          <li>
                              <div class="login-signup-div">
-                                 <button class="login-btn">Log in</button>
-                                 <button class="signup-btn active">Sign Up</button>
+                                 <a href="<?= BASE_URL ?>login-signup/login.php" class="login-btn">Log in</a>
+                                 <a href="<?= BASE_URL ?>login-signup/signup_form.php" class="signup-btn active">Sign Up</a>
                              </div>
                          </li>
                      </ul>
