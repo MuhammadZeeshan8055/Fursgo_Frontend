@@ -40,8 +40,8 @@
                  <div class="col-lg-8">
                      <ul class="menu-items">
                          <li><a href="#" class="active">How it works</a></li>
-                         <li><a href="#">For Groomers</a></li>
-                         <li><a href="#">For Hosts</a></li>
+                         <li><a href="#">For Groomers & Hosts</a></li>
+                         <!-- <li><a href="#">For Hosts</a></li> -->
                          <li><a href="#">Help Centre</a></li>
                          <li>
                              <div class="login-signup-div">
