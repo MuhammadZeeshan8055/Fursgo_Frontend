@@ -618,6 +618,7 @@ input#dateInput#streched {
     line-height: normal;
     gap: 10px;
     color: var(--groomer-color);
+    height: 32px;
 }
 
 .selected-item .cross.svg {
@@ -684,6 +685,7 @@ img.svg {
     font-weight: 500;
     line-height: normal;
     cursor: pointer;
+    height: 32px;
 }
 
 .sort-by,
@@ -883,6 +885,7 @@ a.leaflet-popup-close-button {
 .leaflet-popup.custom-popup.leaflet-zoom-animated {
     bottom: 8px !important;
 }
+
 /* map card styling */
 
 
@@ -1273,6 +1276,8 @@ button.load-more {
 /* calendar css */
 
 
+
+
 .calendar-header {
     display: flex;
     align-items: center;
@@ -1285,7 +1290,7 @@ button.load-more {
     display: flex;
     align-items: center;
     gap: 25px;
-    margin-top: 25px;
+    margin-top: 20px;
 }
 
 .nav button {
@@ -1294,6 +1299,16 @@ button.load-more {
     font-size: 16px;
     cursor: pointer;
     color: var(--muted);
+    padding: 8px;
+    transition: transform 0.2s;
+}
+
+.nav button:hover {
+    transform: scale(1.1);
+}
+
+.nav button:active {
+    transform: scale(0.95);
 }
 
 .range {
@@ -1305,6 +1320,7 @@ button.load-more {
     font-weight: 700;
     line-height: normal;
     margin-top: -5px;
+    min-width: 150px;
 }
 
 .month {
@@ -1317,11 +1333,23 @@ button.load-more {
     line-height: 60px;
 }
 
-/* week */
+.week-container {
+    overflow: hidden;
+    position: relative;
+    cursor: grab;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: pan-y;
+    width: 100%;
+}
+
+.week-container.dragging {
+    cursor: grabbing;
+}
+
 .week {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 50px;
+    display: flex;
+    gap: 10px;
     padding: 10px 0 20px;
     color: var(--font-color);
     text-align: center;
@@ -1329,12 +1357,19 @@ button.load-more {
     font-size: 20px;
     font-style: normal;
     font-weight: 700;
+    transition: transform 0.3s cubic-bezier(0.22, 0.9, 0.25, 1);
+    will-change: transform;
+}
+
+.week.no-transition {
+    transition: none;
 }
 
 .week-days {
     text-align: center;
     cursor: pointer;
-    width: 100px;
+    min-width: calc((100% - 60px) / 7);
+    flex-shrink: 0;
 }
 
 .dow {
@@ -1342,6 +1377,7 @@ button.load-more {
     font-weight: normal;
     transition: all 0.2s;
     padding: 8px 14px;
+    border-radius: 8px;
 }
 
 .date {
@@ -1350,22 +1386,48 @@ button.load-more {
     font-weight: 600;
     transition: all 0.2s;
     color: var(--muted);
+    border-radius: 8px;
 }
 
-/* ---------- HIGHLIGHT ACTIVE ---------- */
 .dow.active {
     background: var(--active-bg);
     color: #fff;
-    border-color: var(--active-bg);
-    font-weight: 700;
-    border-radius: 10px;
 }
 
 .date.active {
-    background: #fff;
-    color: var(--active-bg);
     border-color: var(--active-bg);
-    border-radius: 10px;
+    color: var(--active-bg);
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+
+    .calendar-header {
+        flex-direction: column-reverse;
+        gap: 20px;
+        align-items: flex-start;
+    }
+
+    .month {
+        font-size: 28px;
+        line-height: 1.2;
+    }
+
+    .week {
+        gap: 8px;
+    }
+
+    .week-days {
+        min-width: calc((100% - 48px) / 7);
+    }
+
+    .dow,
+    .date {
+        padding: 6px 8px;
+        font-size: 14px;
+    }
 }
 
 /* Dropdown container */
@@ -1406,14 +1468,13 @@ button.load-more {
     background-color: #f5f5f5;
 }
 
-/* Option text */
-.option-text {
-    font-size: 16px;
-    color: #333;
+/* Hide native checkbox */
+input[type="checkbox"] {
+    display: none;
 }
 
-/* Custom radio circle */
-.radio-circle {
+/* Circle (same as radio) */
+.check-circle {
     width: 25px;
     height: 25px;
     border: 1px solid var(--groomer-color);
@@ -1421,9 +1482,12 @@ button.load-more {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-right: 5px;
+    position: relative;
 }
 
-.radio-circle::after {
+/* Inner dot (hidden by default) */
+.check-circle::after {
     content: '';
     width: 15px;
     height: 15px;
@@ -1432,8 +1496,23 @@ button.load-more {
     display: none;
 }
 
-li.active .radio-circle::after {
+/* Show dot when checked */
+input[type="checkbox"]:checked + .check-circle::after {
     display: block;
+}
+
+/* Option text */
+.option-text {
+    font-size: 16px;
+    color: #333;
+    vertical-align: middle;
+}
+
+/* Cursor pointer */
+label {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
 }
 
 .tooltip {

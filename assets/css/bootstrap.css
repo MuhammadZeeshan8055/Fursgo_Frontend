@@ -246,7 +246,7 @@
     width: 100%
 }
 .w-auto{
-    width: auto;
+    width: auto !important;
 }
 .offset-1 {
     margin-left: 8.33333333%

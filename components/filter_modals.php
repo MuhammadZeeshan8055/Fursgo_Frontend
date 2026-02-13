@@ -175,157 +175,249 @@
                     </div>
 
                     <div class="filter-options-section dropdown mt-3">
-
                         <h2 class="modal-title mt-3">Home Conditions</h2>
                         <ul>
-                            <li class="active">
-                                <span class="radio-circle"></span>
-                                <span class="option-text">Fenced yard</span>
+                            <li>
+                                <label>
+                                    <input type="checkbox" name="home_condition[]" value="Fenced yard">
+                                    <span class="check-circle"></span>
+                                    <span class="option-text">Fenced yard</span>
+                                </label>
                             </li>
                             <li>
-                                <span class="radio-circle"></span>
-                                <span class="option-text">No other pets</span>
+                                <label>
+                                    <input type="checkbox" name="home_condition[]" value="No other pets">
+                                    <span class="check-circle"></span>
+                                    <span class="option-text">No other pets</span>
+                                </label>
                             </li>
                             <li>
-                                <span class="radio-circle"></span>
-                                <span class="option-text">No children</span>
+                                <label>
+                                    <input type="checkbox" name="home_condition[]" value="No children">
+                                    <span class="check-circle"></span>
+                                    <span class="option-text">No children</span>
+                                </label>
                             </li>
-
                         </ul>
                     </div>
                     <div class="filter-options-section dropdown mt-3">
                         <h2 class="modal-title">Other main service</h2>
                         <ul>
-                            <li class="active">
-                                <span class="radio-circle"></span>
-                                <span class="option-text">Full Groom (bath, dry, haircut)</span>
+                            <li>
+                                <label>
+                                    <input type="checkbox" name="main-service[]" value="Full Groom (bath, dry, haircut)" checked>
+                                    <span class="check-circle"></span>
+                                    <span class="option-text">Full Groom (bath, dry, haircut)</span>
+                                </label>
                             </li>
                             <li>
-                                <span class="radio-circle"></span>
-                                <span class="option-text">Face Trim Only</span>
+                                <label>
+                                    <input type="checkbox" name="main-service[]" value="Face Trim Only">
+                                    <span class="check-circle"></span>
+                                    <span class="option-text">Face Trim Only</span>
+                                </label>
                             </li>
                             <li>
-                                <span class="radio-circle"></span>
-                                <span class="option-text">Tail Trim Only</span>
+                                <label>
+                                    <input type="checkbox" name="main-service[]" value="Tail Trim Only">
+                                    <span class="check-circle"></span>
+                                    <span class="option-text">Tail Trim Only</span>
+                                </label>
                             </li>
                             <li>
-                                <span class="radio-circle"></span>
-                                <span class="option-text">Bath & Brush</span>
+                                <label>
+                                    <input type="checkbox" name="main-service[]" value="Bath & Brush">
+                                    <span class="check-circle"></span>
+                                    <span class="option-text">Bath & Brush</span>
+                                </label>
                             </li>
                             <li>
-                                <span class="radio-circle"></span>
-                                <span class="option-text">Nail Trim</span>
+                                <label>
+                                    <input type="checkbox" name="main-service[]" value="Nail Trim">
+                                    <span class="check-circle"></span>
+                                    <span class="option-text">Nail Trim</span>
+                                </label>
                             </li>
                             <li>
-                                <span class="radio-circle"></span>
-                                <span class="option-text">Ear Cleaning</span>
+                                <label>
+                                    <input type="checkbox" name="main-service[]" value="Ear Cleaning">
+                                    <span class="check-circle"></span>
+                                    <span class="option-text">Ear Cleaning</span>
+                                </label>
                             </li>
                             <li>
-                                <span class="radio-circle"></span>
-                                <span class="option-text">Luxury Spa</span>
+                                <label>
+                                    <input type="checkbox" name="main-service[]" value="Luxury Spa">
+                                    <span class="check-circle"></span>
+                                    <span class="option-text">Luxury Spa</span>
+                                </label>
                             </li>
                         </ul>
                     </div>
+
                     <div class="filter-options-section dropdown mt-3">
                         <h2 class="modal-title">Add-on</h2>
                         <ul>
-                            <li class="active">
-                                <span class="radio-circle"></span>
-                                <span class="option-text">Flea & Tick Treatment</span>
+                            <li>
+                                <label>
+                                    <input type="checkbox" name="addon[]" value="Flea & Tick Treatment" checked>
+                                    <span class="check-circle"></span>
+                                    <span class="option-text">Flea & Tick Treatment</span>
+                                </label>
                             </li>
                             <li>
-                                <span class="radio-circle"></span>
-                                <span class="option-text">Deep Conditioning Masky</span>
+                                <label>
+                                    <input type="checkbox" name="addon[]" value="Deep Conditioning Masky">
+                                    <span class="check-circle"></span>
+                                    <span class="option-text">Deep Conditioning Masky</span>
+                                </label>
                             </li>
                             <li>
-                                <span class="radio-circle"></span>
-                                <span class="option-text">Hypoallergenic Shampoo Upgrade</span>
+                                <label>
+                                    <input type="checkbox" name="addon[]" value="Hypoallergenic Shampoo Upgrade">
+                                    <span class="check-circle"></span>
+                                    <span class="option-text">Hypoallergenic Shampoo Upgrade</span>
+                                </label>
                             </li>
                             <li>
-                                <span class="radio-circle"></span>
-                                <span class="option-text">Shed-Control Shampoo</span>
+                                <label>
+                                    <input type="checkbox" name="addon[]" value="Shed-Control Shampoo">
+                                    <span class="check-circle"></span>
+                                    <span class="option-text">Shed-Control Shampoo</span>
+                                </label>
                             </li>
                             <li>
-                                <span class="radio-circle"></span>
-                                <span class="option-text">Tear-Stain Treatment</span>
+                                <label>
+                                    <input type="checkbox" name="addon[]" value="Tear-Stain Treatment">
+                                    <span class="check-circle"></span>
+                                    <span class="option-text">Tear-Stain Treatment</span>
+                                </label>
                             </li>
                             <li>
-                                <span class="radio-circle"></span>
-                                <span class="option-text">Deodorising Treatment</span>
+                                <label>
+                                    <input type="checkbox" name="addon[]" value="Deodorising Treatment">
+                                    <span class="check-circle"></span>
+                                    <span class="option-text">Deodorising Treatment</span>
+                                </label>
                             </li>
                             <li>
-                                <span class="radio-circle"></span>
-                                <span class="option-text">Coat Shine Spray</span>
+                                <label>
+                                    <input type="checkbox" name="addon[]" value="Coat Shine Spray">
+                                    <span class="check-circle"></span>
+                                    <span class="option-text">Coat Shine Spray</span>
+                                </label>
                             </li>
                             <li>
-                                <span class="radio-circle"></span>
-                                <span class="option-text">Anti-Itch Treatment</span>
+                                <label>
+                                    <input type="checkbox" name="addon[]" value="Anti-Itch Treatment">
+                                    <span class="check-circle"></span>
+                                    <span class="option-text">Anti-Itch Treatment</span>
+                                </label>
                             </li>
                             <li>
-                                <span class="radio-circle"></span>
-                                <span class="option-text">Breath Freshner Gel</span>
+                                <label>
+                                    <input type="checkbox" name="addon[]" value="Breath Freshner Gel">
+                                    <span class="check-circle"></span>
+                                    <span class="option-text">Breath Freshner Gel</span>
+                                </label>
                             </li>
                             <li>
-                                <span class="radio-circle"></span>
-                                <span class="option-text">Nail Grinding</span>
+                                <label>
+                                    <input type="checkbox" name="addon[]" value="Nail Grinding">
+                                    <span class="check-circle"></span>
+                                    <span class="option-text">Nail Grinding</span>
+                                </label>
                             </li>
                             <li>
-                                <span class="radio-circle"></span>
-                                <span class="option-text">Soft-Claws / Nail Caps Application </span>
+                                <label>
+                                    <input type="checkbox" name="addon[]" value="Soft-Claws / Nail Caps Application">
+                                    <span class="check-circle"></span>
+                                    <span class="option-text">Soft-Claws / Nail Caps Application</span>
+                                </label>
                             </li>
                             <li>
-                                <span class="radio-circle"></span>
-                                <span class="option-text">Coat Colour Enhancing Shampoo</span>
+                                <label>
+                                    <input type="checkbox" name="addon[]" value="Coat Colour Enhancing Shampoo">
+                                    <span class="check-circle"></span>
+                                    <span class="option-text">Coat Colour Enhancing Shampoo</span>
+                                </label>
                             </li>
                             <li>
-                                <span class="radio-circle"></span>
-                                <span class="option-text">Premium Fragrance Upgrade</span>
+                                <label>
+                                    <input type="checkbox" name="addon[]" value="Premium Fragrance Upgrade">
+                                    <span class="check-circle"></span>
+                                    <span class="option-text">Premium Fragrance Upgrade</span>
+                                </label>
                             </li>
                             <li>
-                                <span class="radio-circle"></span>
-                                <span class="option-text">Fast-Dry Service (express grooming)</span>
+                                <label>
+                                    <input type="checkbox" name="addon[]" value="Fast-Dry Service (express grooming)">
+                                    <span class="check-circle"></span>
+                                    <span class="option-text">Fast-Dry Service (express grooming)</span>
+                                </label>
                             </li>
                             <li>
-                                <span class="radio-circle"></span>
-                                <span class="option-text">Paw Fur Shaping</span>
+                                <label>
+                                    <input type="checkbox" name="addon[]" value="Paw Fur Shaping">
+                                    <span class="check-circle"></span>
+                                    <span class="option-text">Paw Fur Shaping</span>
+                                </label>
                             </li>
                         </ul>
                     </div>
                     <div class="filter-options-section dropdown mt-3">
                         <h2 class="modal-title">Accepts non-neutered pets</h2>
                         <ul>
-                            <li class="active">
-                                <span class="radio-circle"></span>
-                                <span class="option-text">Accepts non-neutered pets</span>
+                            <li>
+                                <label>
+                                    <input type="checkbox" name="non-neutered[]" value="Accepts non-neutered pets" checked>
+                                    <span class="check-circle"></span>
+                                    <span class="option-text">Accepts non-neutered pets</span>
+                                </label>
                             </li>
                         </ul>
                     </div>
+
                     <div class="filter-options-section dropdown mt-3">
                         <h2 class="modal-title">Extras</h2>
                         <ul>
-                            <li class="active">
-                                <span class="radio-circle"></span>
-                                <span class="option-text">Bathing</span>
+                            <li>
+                                <label>
+                                    <input type="checkbox" name="extras[]" value="Bathing" checked>
+                                    <span class="check-circle"></span>
+                                    <span class="option-text">Bathing</span>
+                                </label>
                             </li>
                             <li>
-                                <span class="radio-circle"></span>
-                                <span class="option-text">First-aid certified</span>
+                                <label>
+                                    <input type="checkbox" name="extras[]" value="First-aid certified">
+                                    <span class="check-circle"></span>
+                                    <span class="option-text">First-aid certified</span>
+                                </label>
                             </li>
                         </ul>
                     </div>
+
                     <div class="filter-options-section dropdown mt-3">
                         <h2 class="modal-title">Space Type</h2>
                         <ul>
-                            <li class="active">
-                                <span class="radio-circle"></span>
-                                <span class="option-text">Shared space</span>
+                            <li>
+                                <label>
+                                    <input type="checkbox" name="space-type[]" value="Shared space" checked>
+                                    <span class="check-circle"></span>
+                                    <span class="option-text">Shared space</span>
+                                </label>
                             </li>
                             <li>
-                                <span class="radio-circle"></span>
-                                <span class="option-text">Entire Space just for you</span>
+                                <label>
+                                    <input type="checkbox" name="space-type[]" value="Entire Space just for you">
+                                    <span class="check-circle"></span>
+                                    <span class="option-text">Entire Space just for you</span>
+                                </label>
                             </li>
                         </ul>
                     </div>
+
 
                     <div class="modal-footer mt-3">
                         <button class="modal-footer-btn">Clear All</button>
@@ -508,113 +600,180 @@
                         <h2 class="modal-title">Amenities</h2>
                         <ul>
                             <li>
-                                <span class="radio-circle"></span>
-                                <span class="option-text">Bath</span>
+                                <label>
+                                    <input type="checkbox" name="amenities" value="Bath" checked>
+                                    <span class="check-circle"></span>
+                                    <span class="option-text">Bath</span>
+                                </label>
                             </li>
                             <li>
-                                <span class="radio-circle"></span>
-                                <span class="option-text">Table</span>
+                                <label>
+                                    <input type="checkbox" name="amenities" value="Table">
+                                    <span class="check-circle"></span>
+                                    <span class="option-text">Table</span>
+                                </label>
                             </li>
                             <li>
-                                <span class="radio-circle"></span>
-                                <span class="option-text">Dryer</span>
+                                <label>
+                                    <input type="checkbox" name="amenities" value="Dryer">
+                                    <span class="check-circle"></span>
+                                    <span class="option-text">Dryer</span>
+                                </label>
                             </li>
                             <li>
-                                <span class="radio-circle"></span>
-                                <span class="option-text">Towels</span>
+                                <label>
+                                    <input type="checkbox" name="amenities" value="Towels">
+                                    <span class="check-circle"></span>
+                                    <span class="option-text">Towels</span>
+                                </label>
                             </li>
                             <li>
-                                <span class="radio-circle"></span>
-                                <span class="option-text">Parking</span>
+                                <label>
+                                    <input type="checkbox" name="amenities" value="Parking">
+                                    <span class="check-circle"></span>
+                                    <span class="option-text">Parking</span>
+                                </label>
                             </li>
                             <li>
-                                <span class="radio-circle"></span>
-                                <span class="option-text">Wi-Fi</span>
+                                <label>
+                                    <input type="checkbox" name="amenities" value="Wi-Fi">
+                                    <span class="check-circle"></span>
+                                    <span class="option-text">Wi-Fi</span>
+                                </label>
                             </li>
                         </ul>
                     </div>
+
                     <div class="filter-options-section dropdown mt-3">
                         <h2 class="modal-title">Housing Conditions</h2>
                         <ul>
                             <li>
-                                <span class="radio-circle"></span>
-                                <span class="option-text">Fenced yard</span>
+                                <label>
+                                    <input type="checkbox" name="housing-conditions" value="Fenced yard" checked>
+                                    <span class="check-circle"></span>
+                                    <span class="option-text">Fenced yard</span>
+                                </label>
                             </li>
                             <li>
-                                <span class="radio-circle"></span>
-                                <span class="option-text">No other pets</span>
+                                <label>
+                                    <input type="checkbox" name="housing-conditions" value="No other pets">
+                                    <span class="check-circle"></span>
+                                    <span class="option-text">No other pets</span>
+                                </label>
                             </li>
                             <li>
-                                <span class="radio-circle"></span>
-                                <span class="option-text">No children</span>
+                                <label>
+                                    <input type="checkbox" name="housing-conditions" value="No children">
+                                    <span class="check-circle"></span>
+                                    <span class="option-text">No children</span>
+                                </label>
                             </li>
                         </ul>
                     </div>
                     <div class="filter-options-section dropdown mt-3">
                         <h2 class="modal-title">Space Type</h2>
                         <ul>
-                            <li class="active">
-                                <span class="radio-circle"></span>
-                                <span class="option-text">Shared space</span>
+                            <li>
+                                <label>
+                                    <input type="checkbox" name="space-type[]" value="Shared space" checked>
+                                    <span class="check-circle"></span>
+                                    <span class="option-text">Shared space</span>
+                                </label>
                             </li>
                             <li>
-                                <span class="radio-circle"></span>
-                                <span class="option-text">Entire space just for you</span>
+                                <label>
+                                    <input type="checkbox" name="space-type[]" value="Entire space just for you">
+                                    <span class="check-circle"></span>
+                                    <span class="option-text">Entire space just for you</span>
+                                </label>
                             </li>
                         </ul>
                     </div>
+
                     <div class="filter-options-section dropdown mt-3">
                         <h2 class="modal-title">Accepts non-neutered pets</h2>
                         <ul>
-                            <li class="active">
-                                <span class="radio-circle"></span>
-                                <span class="option-text">Accepts non-neutered pets</span>
+                            <li>
+                                <label>
+                                    <input type="checkbox" name="non-neutered[]" value="Accepts non-neutered pets" checked>
+                                    <span class="check-circle"></span>
+                                    <span class="option-text">Accepts non-neutered pets</span>
+                                </label>
                             </li>
                         </ul>
                     </div>
+
                     <div class="filter-options-section dropdown mt-3">
                         <h2 class="modal-title">Suitable service</h2>
                         <ul>
                             <li>
-                                <span class="radio-circle"></span>
-                                <span class="option-text">Full Groom (bath, dry, haircut)</span>
+                                <label>
+                                    <input type="checkbox" name="suitable-service" value="Full Groom (bath, dry, haircut)" checked>
+                                    <span class="check-circle"></span>
+                                    <span class="option-text">Full Groom (bath, dry, haircut)</span>
+                                </label>
                             </li>
                             <li>
-                                <span class="radio-circle"></span>
-                                <span class="option-text">Face Trim Only</span>
+                                <label>
+                                    <input type="checkbox" name="suitable-service" value="Face Trim Only">
+                                    <span class="check-circle"></span>
+                                    <span class="option-text">Face Trim Only</span>
+                                </label>
                             </li>
                             <li>
-                                <span class="radio-circle"></span>
-                                <span class="option-text">Tail Trim Only</span>
+                                <label>
+                                    <input type="checkbox" name="suitable-service" value="Tail Trim Only">
+                                    <span class="check-circle"></span>
+                                    <span class="option-text">Tail Trim Only</span>
+                                </label>
                             </li>
                             <li>
-                                <span class="radio-circle"></span>
-                                <span class="option-text">Bath & Brush</span>
+                                <label>
+                                    <input type="checkbox" name="suitable-service" value="Bath & Brush">
+                                    <span class="check-circle"></span>
+                                    <span class="option-text">Bath & Brush</span>
+                                </label>
                             </li>
                             <li>
-                                <span class="radio-circle"></span>
-                                <span class="option-text">Nail Trim</span>
+                                <label>
+                                    <input type="checkbox" name="suitable-service" value="Nail Trim">
+                                    <span class="check-circle"></span>
+                                    <span class="option-text">Nail Trim</span>
+                                </label>
                             </li>
                             <li>
-                                <span class="radio-circle"></span>
-                                <span class="option-text">Ear Cleaning</span>
+                                <label>
+                                    <input type="checkbox" name="suitable-service" value="Ear Cleaning">
+                                    <span class="check-circle"></span>
+                                    <span class="option-text">Ear Cleaning</span>
+                                </label>
                             </li>
                             <li>
-                                <span class="radio-circle"></span>
-                                <span class="option-text">Luxury Spa</span>
+                                <label>
+                                    <input type="checkbox" name="suitable-service" value="Luxury Spa">
+                                    <span class="check-circle"></span>
+                                    <span class="option-text">Luxury Spa</span>
+                                </label>
                             </li>
                         </ul>
                     </div>
+
                     <div class="filter-options-section dropdown mt-3">
                         <h2 class="modal-title">Extras</h2>
                         <ul>
-                            <li class="active">
-                                <span class="radio-circle"></span>
-                                <span class="option-text">Bathing</span>
+                            <li>
+                                <label>
+                                    <input type="checkbox" name="extras[]" value="Bathing" checked>
+                                    <span class="check-circle"></span>
+                                    <span class="option-text">Bathing</span>
+                                </label>
                             </li>
                             <li>
-                                <span class="radio-circle"></span>
-                                <span class="option-text">First-aid certified</span>
+                                <label>
+                                    <input type="checkbox" name="extras[]" value="First-aid certified">
+                                    <span class="check-circle"></span>
+                                    <span class="option-text">First-aid certified</span>
+                                </label>
                             </li>
                         </ul>
                     </div>

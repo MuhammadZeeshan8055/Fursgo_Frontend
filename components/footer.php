@@ -126,3 +126,7 @@
         </div>
     </div>
 </footer>
+
+<script>
+    const BASE_URL = "<?= BASE_URL ?>";
+</script>

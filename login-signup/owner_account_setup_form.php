@@ -74,7 +74,7 @@
             bottom: -35px;
         }
 
-        .upload-card.pet-details::after{
+        .upload-card.pet-details::after {
             right: 0;
         }
 
@@ -249,6 +249,12 @@
             background-color: #C9DDA0;
             border-radius: 4px;
             transition: width 0.3s ease;
+        }
+
+        .groomer-service-button.active {
+            border: 1px solid var(--groomer-color);
+            background-color: var(--groomer-color);
+            color: #fff;
         }
 
         /* Animation for demo purposes */
@@ -847,13 +853,13 @@
                                 <div class="col-lg-5 mt-lg-5">
                                     <!-- Pet Type -->
                                     <div class="form-field mt-4">
-                                        <label>Pet Type</label>
+                                        <label id="pet_type_label">Pet Type</label>
                                         <div class="input-wrapper">
                                             <input type="text" id="pet_type" placeholder="e.g. Rabbit, Guinea Pig ...">
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-4">
+                                <div class="col-lg-4" id="breed">
                                     <div class="form-field mt-4">
                                         <label>Breed(s)</label>
                                         <div class="custom-select has-value">
@@ -925,12 +931,16 @@
                                                 position: relative;
                                             }
 
+                                            .radio-item input:checked+.custom-radio {
+                                                border-color: #FFC97A;
+                                            }
+
                                             /* Inner filled circle */
                                             .radio-item input:checked+.custom-radio::after {
                                                 content: '';
                                                 width: 12px;
                                                 height: 12px;
-                                                background: #EAE8E5;
+                                                background: #FFC97A;
                                                 border-radius: 50%;
                                                 position: absolute;
                                                 top: 50%;
@@ -1008,12 +1018,12 @@
 
                                     </div>
                                 </div>
-                                <div class="col-lg-4">
+                                <div class="col-lg-5">
                                     <!-- Weight -->
                                     <div class="form-field mt-4">
                                         <label>Weight (kg)</label>
                                         <div class="input-wrapper" style="width: 30%;">
-                                            <input type="number" value="4" min="0" id="weightInput">
+                                            <input type="number" value="4" min="0" max="99" id="weightInput">
 
                                             <div class="custom-arrows">
                                                 <button type="button" onclick="changeValue(1)">
@@ -1100,19 +1110,22 @@
                                     <div class="form-field mt-4">
                                         <label>Preferred groomer service</label>
                                         <div class="input-wrapper d-flex align-items-center" style="gap:20px">
-                                            <button type="button" class="btn-custom btn-groomer-bg">
+                                            <button type="button" class="btn-custom btn-no-bg groomer-service-button">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="10" viewBox="0 0 14 10" fill="none">
                                                     <path d="M13.6793 0.289386C13.5867 0.197689 13.4765 0.124907 13.3551 0.0752394C13.2337 0.0255714 13.1035 0 12.972 0C12.8405 0 12.7103 0.0255714 12.5889 0.0752394C12.4675 0.124907 12.3574 0.197689 12.2647 0.289386L4.84329 7.58766L1.72529 4.51573C1.62913 4.42451 1.51563 4.35279 1.39125 4.30465C1.26688 4.25652 1.13406 4.23291 1.0004 4.23518C0.86673 4.23745 0.734828 4.26555 0.612221 4.31789C0.489614 4.37022 0.378704 4.44576 0.285823 4.54019C0.192942 4.63462 0.119909 4.74609 0.0708932 4.86824C0.0218778 4.99039 -0.00216024 5.12082 0.000152332 5.25209C0.0024649 5.38336 0.0310826 5.5129 0.0843711 5.63331C0.13766 5.75372 0.214575 5.86265 0.310727 5.95386L4.13601 9.71062C4.22862 9.80231 4.3388 9.87509 4.46019 9.92476C4.58158 9.97443 4.71179 10 4.84329 10C4.9748 10 5.105 9.97443 5.22639 9.92476C5.34779 9.87509 5.45796 9.80231 5.55057 9.71062L13.6793 1.72752C13.7804 1.63591 13.8611 1.52472 13.9163 1.40096C13.9715 1.2772 14 1.14356 14 1.00845C14 0.873344 13.9715 0.7397 13.9163 0.615943C13.8611 0.492186 13.7804 0.380998 13.6793 0.289386Z" fill="white" />
                                                 </svg>
                                                 Mobile Groomer
                                             </button>
-                                            <button type="button" class="btn-custom btn-groomer-bg">
+                                            <button type="button" class="btn-custom btn-no-bg groomer-service-button">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="10" viewBox="0 0 14 10" fill="none">
                                                     <path d="M13.6793 0.289386C13.5867 0.197689 13.4765 0.124907 13.3551 0.0752394C13.2337 0.0255714 13.1035 0 12.972 0C12.8405 0 12.7103 0.0255714 12.5889 0.0752394C12.4675 0.124907 12.3574 0.197689 12.2647 0.289386L4.84329 7.58766L1.72529 4.51573C1.62913 4.42451 1.51563 4.35279 1.39125 4.30465C1.26688 4.25652 1.13406 4.23291 1.0004 4.23518C0.86673 4.23745 0.734828 4.26555 0.612221 4.31789C0.489614 4.37022 0.378704 4.44576 0.285823 4.54019C0.192942 4.63462 0.119909 4.74609 0.0708932 4.86824C0.0218778 4.99039 -0.00216024 5.12082 0.000152332 5.25209C0.0024649 5.38336 0.0310826 5.5129 0.0843711 5.63331C0.13766 5.75372 0.214575 5.86265 0.310727 5.95386L4.13601 9.71062C4.22862 9.80231 4.3388 9.87509 4.46019 9.92476C4.58158 9.97443 4.71179 10 4.84329 10C4.9748 10 5.105 9.97443 5.22639 9.92476C5.34779 9.87509 5.45796 9.80231 5.55057 9.71062L13.6793 1.72752C13.7804 1.63591 13.8611 1.52472 13.9163 1.40096C13.9715 1.2772 14 1.14356 14 1.00845C14 0.873344 13.9715 0.7397 13.9163 0.615943C13.8611 0.492186 13.7804 0.380998 13.6793 0.289386Z" fill="white" />
                                                 </svg>
                                                 At-home Groomer
                                             </button>
-                                            <button type="button" class="btn-custom btn-no-bg">
+                                            <button type="button" class="btn-custom btn-no-bg groomer-service-button">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="10" viewBox="0 0 14 10" fill="none">
+                                                    <path d="M13.6793 0.289386C13.5867 0.197689 13.4765 0.124907 13.3551 0.0752394C13.2337 0.0255714 13.1035 0 12.972 0C12.8405 0 12.7103 0.0255714 12.5889 0.0752394C12.4675 0.124907 12.3574 0.197689 12.2647 0.289386L4.84329 7.58766L1.72529 4.51573C1.62913 4.42451 1.51563 4.35279 1.39125 4.30465C1.26688 4.25652 1.13406 4.23291 1.0004 4.23518C0.86673 4.23745 0.734828 4.26555 0.612221 4.31789C0.489614 4.37022 0.378704 4.44576 0.285823 4.54019C0.192942 4.63462 0.119909 4.74609 0.0708932 4.86824C0.0218778 4.99039 -0.00216024 5.12082 0.000152332 5.25209C0.0024649 5.38336 0.0310826 5.5129 0.0843711 5.63331C0.13766 5.75372 0.214575 5.86265 0.310727 5.95386L4.13601 9.71062C4.22862 9.80231 4.3388 9.87509 4.46019 9.92476C4.58158 9.97443 4.71179 10 4.84329 10C4.9748 10 5.105 9.97443 5.22639 9.92476C5.34779 9.87509 5.45796 9.80231 5.55057 9.71062L13.6793 1.72752C13.7804 1.63591 13.8611 1.52472 13.9163 1.40096C13.9715 1.2772 14 1.14356 14 1.00845C14 0.873344 13.9715 0.7397 13.9163 0.615943C13.8611 0.492186 13.7804 0.380998 13.6793 0.289386Z" fill="white" />
+                                                </svg>
                                                 Salon Groomer
                                             </button>
                                         </div>
@@ -1426,17 +1439,72 @@
         const pet_options = document.querySelectorAll('.pet-option');
         const weight_options = document.querySelectorAll('.weight-option');
 
-        toggleActive(pet_options, 'highlight');
-        toggleActive(weight_options, 'active');
+        toggleActive(pet_options, 'highlight', true);
+        toggleActive(weight_options, 'active', false);
 
-        function toggleActive(items, activeClass) {
+        // Check on load if a pet option is already selected
+        handleInitialPetSelection();
+
+        function toggleActive(items, activeClass, checkOther) {
             items.forEach(item => {
                 item.addEventListener('click', () => {
                     items.forEach(i => i.classList.remove(activeClass));
                     item.classList.add(activeClass);
+
+                    if (checkOther) {
+                        handlePetOption(item);
+                    }
                 });
             });
         }
+
+        function handlePetOption(item) {
+            const spanValue = item.querySelector('span').textContent;
+            const pet_type = document.getElementById('pet_type');
+            const pet_type_label = document.getElementById('pet_type_label');
+            const breed = document.getElementById('breed');
+
+            if (spanValue === 'Other') {
+                pet_type.style.display = 'block';
+                pet_type_label.style.display = 'block';
+                breed.style.display = 'none';
+                breed.disabled = true; // Will prevent it from being submitted
+                pet_type.disabled = false; // enable so value is submitted
+            } else {
+                pet_type.style.display = 'none';
+                pet_type_label.style.display = 'none';
+                breed.style.display = 'block';
+                breed.disabled = false; // Re-enable when visible
+                pet_type.disabled = true; // disable so value is NOT submitted
+            }
+        }
+
+        function handleInitialPetSelection() {
+            const selectedPet = document.querySelector('.pet-option.highlight');
+            if (selectedPet) {
+                handlePetOption(selectedPet);
+            }
+        }
+
+        // Weight (kg) input should allow a maximum of 2 digits. 
+        const weightInput = document.getElementById('weightInput');
+
+        weightInput.addEventListener('input', () => {
+            if (weightInput.value.length > 2) {
+                weightInput.value = weightInput.value.slice(0, 2);
+            }
+        });
+
+
+        // Preferred groomer service button selection 
+        const groomerServiceButtons = document.querySelectorAll('.groomer-service-button');
+
+        groomerServiceButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Toggle 'active' on the clicked button
+                button.classList.toggle('active');
+            });
+        });
 
 
         let currentStep = 0;
@@ -1497,6 +1565,12 @@
                 // Both buttons → spread apart
                 buttonsContainer.style.justifyContent = "space-between";
             }
+
+            // Scroll page to top on step change
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
         }
 
 
@@ -1504,10 +1578,10 @@
         const formOuterDiv = document.querySelector(".form-outer-div");
 
         function nextPrev(n) {
-            // Guard: step might not exist (pet list view)
+            // Guard: step might not exist
             if (!steps[currentStep]) return;
 
-            // Optional validation
+            // Optional validation (current step)
             const input = steps[currentStep].querySelector("input, textarea");
             if (n === 1 && input && !input.checkValidity()) {
                 input.reportValidity();
@@ -1516,14 +1590,28 @@
 
             currentStep += n;
 
+            // Final step → show pet list
             if (currentStep >= steps.length) {
                 formOuterDiv.style.display = "none";
                 petListSection.style.display = "block";
                 petListSection.classList.add("active");
+
+                // Ensure pet list loads from top
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+                });
                 return;
             }
 
+            // Show next/previous step
             showStep(currentStep);
+
+            // Scroll page to top on step change
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
         }
 
 
