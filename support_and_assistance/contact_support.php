@@ -17,13 +17,13 @@
                 </svg>
                 <p class="normal-font-bold">Submit a Request</p>
                 <p class="simple-font text-center">For more detailed questions, submit a request and our support team will follow up by email.</p>
-                <button class="normal-font-bold btn-custom btn-no-bg text-center mt-3" data-modal-open="modalOne" style="color:#FBAC83;border:1px solid #FBAC83">Submit request</button>
+                <button class="normal-font-bold btn-custom btn-no-bg text-center mt-3" data-modal-open="request_modal" style="color:#FBAC83;border:1px solid #FBAC83">Submit request</button>
                 <p class="simple-font">Responses usually within 24 hours</p>
             </div>
 
             <!-- Modal  -->
 
-            <div class="modal" id="modalOne">
+            <div class="modal" id="request_modal">
                 <div class="modal-content size">
                     <div class="container">
                         <div class="row">
@@ -69,7 +69,7 @@
                                             <li data-value="other">Other</li>
                                         </ul>
 
-                                        <input type="hidden" name="serviceType">
+                                        <input type="hidden" name="category">
                                     </div>
                                 </div>
                                 <div class="form-field mt-4">

@@ -82,8 +82,22 @@ body {
 .normal-font-bold {
     color: #3B3731;
     font-family: Lato;
-    font-size: 16px;
-    font-weight: 600;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+}
+
+.medium-font-bold {
+    color: #3B3731;
+    font-family: Lato;
+    font-size: 18px !important;
+    font-weight: 600 !important;
+}
+
+.medium-light-font {
+    color: #3B3731;
+    font-family: Lato;
+    font-size: 18px !important;
+    font-weight: 400 !important;
 }
 
 .light-color-font {
@@ -91,6 +105,13 @@ body {
     font-family: Lato;
     font-size: 14px;
     font-weight: 600;
+}
+
+.dark-color-font {
+    color: var(--font-color);
+    font-family: Lato;
+    font-size: 14px !important;
+    font-weight: 600 !important;
 }
 
 .simple-light-font {
@@ -171,6 +192,26 @@ body {
     font-family: Lato;
     font-size: 18px;
     font-weight: 400;
+}
+
+.tab-panel .link-tag {
+    color: #3B3731;
+    font-family: Lato;
+    font-size: 18px;
+    font-weight: 400;
+    text-decoration-line: underline;
+    text-decoration-style: solid;
+    text-underline-offset: 4px;
+}
+
+.tab-panel .small-link-tag {
+    color: #3B3731;
+    font-family: Lato;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration-line: underline;
+    text-decoration-style: solid;
+    text-underline-offset: 4px;
 }
 
 .tab-panel.active {
@@ -398,14 +439,48 @@ a.underline {
     background: none;
 }
 
+#request_modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(59, 55, 49, 0.10);
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(2px);
+    overflow-y: auto;
+}
 
-.modal-content.size {
+#request_modal .modal-content {
+    padding: 20px;
+    border-radius: 10px;
+    background: #FDFCF8;
+    width: 820px;
+    height: auto;
+}
+
+#request_modal .modal-footer {
+    text-align: right;
+    margin-top: 15px;
+}
+
+#request_modal .modal-footer-btn {
+    padding: 8px 16px;
+    border: none;
+    background: #ffb26b;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#request_modal .modal-content.size {
     width: 820px;
     height: auto;
     padding: 40px 0px;
 }
 
-.modal-cross{
+#request_modal .modal-cross {
     padding: 0 20px 0 0;
 }
 
@@ -486,4 +561,274 @@ a.underline {
 
 .remove-btn:hover {
     color: #000;
+}
+
+.toggle-button-content .bold-font,
+.settings-section-content .bold-font,
+.active-sessions .bold-font {
+    color: #3B3731;
+    font-family: Lato;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+
+/* toggle button */
+/* Container for the toggle */
+.toggle-switch {
+    position: relative;
+    width: 88px;
+    height: 48px;
+    background: rgba(255, 201, 122, 0.50);
+    /* off color */
+    border-radius: 24px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+/* Circle inside toggle */
+.toggle-circle {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 40px;
+    height: 40px;
+    background-color: white;
+    border-radius: 50%;
+    transition: transform 0.3s;
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
+}
+
+/* Checkmark inside circle */
+.toggle-circle::after {
+    /* content: '\2714';
+    font-family: "Segoe UI Symbol", Arial, sans-serif;
+    font-style: normal;
+    color: #FFC97A;
+    font-size: 24px;
+    font-weight: 900;
+    display: none; */
+}
+
+.toggle-switch.on .toggle-circle {
+    background-color: transparent;
+    /* or any color you like */
+    transform: translateX(34px);
+    /* moves the circle to right */
+}
+
+/* ON state styles */
+.toggle-switch.on {
+    background-color: #FFC97A;
+}
+
+.toggle-switch.on .toggle-circle {
+    transform: translateX(40px);
+}
+
+.toggle-switch.on .toggle-circle::after {
+    display: block;
+}
+
+
+.user-sessions {
+    width: 100%;
+}
+
+.logged-devices {
+    padding: 0 0px 20px 20px
+}
+
+.rounded-circle {
+    border-radius: 50px;
+    width: 56px;
+    height: 56px;
+}
+
+img.social-icons {
+    height: 25px;
+    width: 25px;
+}
+
+.border-and-bg {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #D4D4D4;
+}
+
+
+/* light and dark mode css */
+.toggle-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+}
+
+.label {
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #8b7355;
+    transition: color 0.5s;
+}
+
+body.dark .label {
+    color: #9090b0;
+}
+
+/* The toggle */
+.toggle-dark-light {
+    position: relative;
+    width: 88px;
+    height: 48px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.toggle-dark-light input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    position: absolute;
+}
+
+.track {
+    position: absolute;
+    inset: 0;
+    border-radius: 999px;
+    background: #FFC97A;
+    transition: background 0.45s cubic-bezier(.4, 0, .2, 1);
+}
+
+.toggle-dark-light input:checked~.track {
+    background: #3B3731;
+}
+
+.thumb {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    transition: transform 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.toggle-dark-light input:checked~.track .thumb {
+    transform: translateX(36px);
+}
+
+.icon-dark-light {
+    position: absolute;
+    transition: opacity 0.3s, transform 0.4s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-sun {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+}
+
+.icon-moon {
+    opacity: 0;
+    transform: scale(0.5) rotate(-30deg);
+}
+
+.toggle-dark-light input:checked~.track .thumb .icon-sun {
+    opacity: 0;
+    transform: scale(0.5) rotate(30deg);
+}
+
+.toggle-dark-light input:checked~.track .thumb .icon-moon {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+}
+
+
+/* payments tab css */
+
+.card-details {
+    border-radius: 10px;
+    border: 1px solid #EEE;
+    background: #FFF;
+    min-width: 550px;
+    padding: 20px 30px;
+}
+
+.card-details.active {
+    border-radius: 10px;
+    background: #FFF;
+    box-shadow: 0 4px 20px 5px rgba(0, 0, 0, 0.05);
+    padding: 20px 30px;
+}
+
+.default-selection {
+    background: rgba(59, 55, 49, 0.13);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 38px;
+}
+
+/* custom table */
+table.custom-table {
+    border-radius: 10px;
+    border: 1px solid #E2E2E2;
+    background: #FFF;
+    width: 100%;
+}
+
+table.custom-table td,
+table.custom-table td,
+table.custom-table th,
+table.custom-table thead {
+    padding: 12px;
+    border-bottom: 1px solid #E2E2E2;
+}
+
+/* Remove border from last row */
+table.custom-table tr:last-child td {
+    border-bottom: none !important;
+}
+
+
+/* invoice modal css */
+#invoice_modal {
+    backdrop-filter: blur(2px);
+}
+
+#invoice_modal .invoice-font {
+    color: #3B3731;
+    font-family: Lato;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+#invoice_modal .modal-content {
+    border-radius: 10px;
+    border: 1px solid #D4D4D4;
+    background: #FFF;
+    width: 670px;
+    padding: 0;
+}
+
+#invoice_modal .modal-head {
+    border-radius: 10px 10px 0 0;
+    border: 1px solid #D4D4D4;
+    background: #F8F8F8;
+    padding: 15px;
+}
+
+#invoice_modal .modal-body {
+    padding: 25px;
 }

@@ -134,7 +134,7 @@ input::placeholder {
 .modal-content {
     padding: 20px;
     border-radius: 10px;
-    background: #FDFCF8;
+    background: #fff;
     width: 820px;
     height: auto;
 }
