@@ -1,4 +1,4 @@
-<footer class="mb-5">
+<footer class="mt-5 mb-5">
     <section class="section">
         <div class="container">
             <div class="row align-items-end">

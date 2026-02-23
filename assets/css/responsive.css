@@ -135,12 +135,14 @@ nav ul a.active {
     border-radius: 25px;
     cursor: pointer;
 }
-.login-btn:hover{
+
+.login-btn:hover {
     color: var(--font-color);
 }
 
 .signup-btn.active {
-    background-color: var(--groomer-color);;
+    background-color: var(--groomer-color);
+    ;
     color: white;
     border: none;
     text-decoration: none;
@@ -191,7 +193,7 @@ img {
     width: 100%;
 }
 
-a{
+a {
     text-decoration: none;
     color: var(--font-color);
 }
@@ -1511,7 +1513,7 @@ ul.fursgo-locations li {
     gap: 52px;
 }
 
-.about-us{
+.about-us {
     gap: 70px;
 }
 
@@ -1836,6 +1838,7 @@ input#dateInput {
     max-width: 350px;
     font-weight: 400;
     font-family: "lato";
+    z-index: 101;
 }
 
 .custom-select .select-trigger {

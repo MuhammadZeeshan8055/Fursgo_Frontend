@@ -1,0 +1,156 @@
+.form-field .input-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+label {
+    display: block;
+    color: #3B3731;
+    font-family: Lato;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin-bottom: 10px;
+}
+
+input {
+    width: 100%;
+    padding: 14px 44px 14px 14px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    outline: none;
+    color: #3B3731;
+    font-family: Lato;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.icon {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    display: none;
+}
+
+.icon.success {
+    display: block;
+}
+
+.input-wrapper textarea {
+    width: 100%;
+    max-width: auto;
+    resize: vertical;
+    padding: 14px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    outline: none;
+    min-height: 96px;
+    resize: none;
+    color: var(--font-color);
+    font-family: Lato;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+textarea::placeholder,
+input::placeholder {
+    color: #D4D4D4;
+    font-family: Lato;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.btn-active-bg {
+    background: #FFC97A;
+}
+
+.btn-custom {
+    padding: 14px 35px;
+    border-radius: 96px;
+    font-family: Lato;
+    color: #fff;
+    border: none;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-shadow {
+    box-shadow: 0 5px 8px rgba(0, 0, 0, 0.10);
+}
+
+/* Variants */
+.btn-active-bg {
+    background: #FFC97A;
+}
+
+.btn-groomer-bg {
+    background: var(--groomer-color);
+}
+
+.btn-space-bg {
+    background: var(--space-color);
+}
+
+.btn-no-bg {
+    border: 1px solid var(--font-color);
+    background: none;
+    color: var(--font-color);
+}
+
+.btn-custom-hover:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(251, 198, 88, 0.3);
+}
+
+.cursor {
+    cursor: pointer;
+}
+
+/* modal css */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(59, 55, 49, 0.10);
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(2px);
+    overflow-y: auto;
+}
+
+.modal-content {
+    padding: 20px;
+    border-radius: 10px;
+    background: #FDFCF8;
+    width: 820px;
+    height: auto;
+}
+
+.modal-footer {
+    text-align: right;
+    margin-top: 15px;
+}
+
+.modal-footer-btn {
+    padding: 8px 16px;
+    border: none;
+    background: #ffb26b;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* modal css  */
