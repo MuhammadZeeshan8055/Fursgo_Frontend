@@ -121,98 +121,98 @@
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="<?= BASE_URL ?>/assets/js/customer_journey.js"></script>
     <script>
-    // Groomer Module
-    const groomModal = document.querySelector('#groomModal');
-    const groomApplyBtn = document.querySelector('#groomModal .modal-footer-btn.apply');
-    const groomSelectedSection = document.querySelector('#groomerSelectedSection');
+        // Groomer Module
+        const groomModal = document.querySelector('#groomModal');
+        const groomApplyBtn = document.querySelector('#groomModal .modal-footer-btn.apply');
+        const groomSelectedSection = document.querySelector('#groomerSelectedSection');
 
-    groomApplyBtn.addEventListener('click', () => {
-        const checkedItems = document.querySelectorAll('#groomModal .filter-options-section input[type="checkbox"]:checked');
-        const uncheckedItems = document.querySelectorAll('#groomModal .filter-options-section input[type="checkbox"]:not(:checked)');
+        groomApplyBtn.addEventListener('click', () => {
+            const checkedItems = document.querySelectorAll('#groomModal .filter-options-section input[type="checkbox"]:checked');
+            const uncheckedItems = document.querySelectorAll('#groomModal .filter-options-section input[type="checkbox"]:not(:checked)');
 
-        // Remove unchecked items from the list
-        uncheckedItems.forEach(item => {
-            const value = item.value;
-            const existingItem = [...groomSelectedSection.querySelectorAll('.selected-item')]
-                .find(div => div.querySelector('p').textContent === value);
-            if (existingItem) {
-                existingItem.remove();
-            }
-        });
+            // Remove unchecked items from the list
+            uncheckedItems.forEach(item => {
+                const value = item.value;
+                const existingItem = [...groomSelectedSection.querySelectorAll('.selected-item')]
+                    .find(div => div.querySelector('p').textContent === value);
+                if (existingItem) {
+                    existingItem.remove();
+                }
+            });
 
-        // Add checked items to the list
-        checkedItems.forEach(item => {
-            const value = item.value;
+            // Add checked items to the list
+            checkedItems.forEach(item => {
+                const value = item.value;
 
-            const alreadyAdded = [...groomSelectedSection.querySelectorAll('.selected-item p')]
-                .some(p => p.textContent === value);
-            if (alreadyAdded) return;
+                const alreadyAdded = [...groomSelectedSection.querySelectorAll('.selected-item p')]
+                    .some(p => p.textContent === value);
+                if (alreadyAdded) return;
 
-            const div = document.createElement('div');
-            div.className = 'selected-item d-flex align-items-center';
-            div.innerHTML = `
+                const div = document.createElement('div');
+                div.className = 'selected-item d-flex align-items-center';
+                div.innerHTML = `
                 <p>${value}</p>
                 <img src="<?= BASE_URL ?>/assets/icons/cross.svg" class="cross svg" alt="remove">
             `;
 
-            div.querySelector('.cross').addEventListener('click', () => {
-                div.remove();
-                item.checked = false;
+                div.querySelector('.cross').addEventListener('click', () => {
+                    div.remove();
+                    item.checked = false;
+                });
+
+                groomSelectedSection.appendChild(div);
             });
 
-            groomSelectedSection.appendChild(div);
+            // Close modal after applying filters
+            groomModal.style.display = 'none';
         });
 
-        // Close modal after applying filters
-        groomModal.style.display = 'none';
-    });
+        // Space Module
+        const spaceModal = document.querySelector('#spaceModal');
+        const spaceApplyBtn = document.querySelector('#spaceModal .modal-footer-btn.apply');
+        const spaceSelectedSection = document.querySelector('#spaceSelectedSection');
 
-    // Space Module
-    const spaceModal = document.querySelector('#spaceModal');
-    const spaceApplyBtn = document.querySelector('#spaceModal .modal-footer-btn.apply');
-    const spaceSelectedSection = document.querySelector('#spaceSelectedSection');
+        spaceApplyBtn.addEventListener('click', () => {
+            const checkedItems = document.querySelectorAll('#spaceModal .filter-options-section input[type="checkbox"]:checked');
+            const uncheckedItems = document.querySelectorAll('#spaceModal .filter-options-section input[type="checkbox"]:not(:checked)');
 
-    spaceApplyBtn.addEventListener('click', () => {
-        const checkedItems = document.querySelectorAll('#spaceModal .filter-options-section input[type="checkbox"]:checked');
-        const uncheckedItems = document.querySelectorAll('#spaceModal .filter-options-section input[type="checkbox"]:not(:checked)');
+            // Remove unchecked items from the list
+            uncheckedItems.forEach(item => {
+                const value = item.value;
+                const existingItem = [...spaceSelectedSection.querySelectorAll('.selected-item')]
+                    .find(div => div.querySelector('p').textContent === value);
+                if (existingItem) {
+                    existingItem.remove();
+                }
+            });
 
-        // Remove unchecked items from the list
-        uncheckedItems.forEach(item => {
-            const value = item.value;
-            const existingItem = [...spaceSelectedSection.querySelectorAll('.selected-item')]
-                .find(div => div.querySelector('p').textContent === value);
-            if (existingItem) {
-                existingItem.remove();
-            }
-        });
+            // Add checked items to the list
+            checkedItems.forEach(item => {
+                const value = item.value;
 
-        // Add checked items to the list
-        checkedItems.forEach(item => {
-            const value = item.value;
+                const alreadyAdded = [...spaceSelectedSection.querySelectorAll('.selected-item p')]
+                    .some(p => p.textContent === value);
+                if (alreadyAdded) return;
 
-            const alreadyAdded = [...spaceSelectedSection.querySelectorAll('.selected-item p')]
-                .some(p => p.textContent === value);
-            if (alreadyAdded) return;
-
-            const div = document.createElement('div');
-            div.className = 'selected-item d-flex align-items-center';
-            div.innerHTML = `
+                const div = document.createElement('div');
+                div.className = 'selected-item d-flex align-items-center';
+                div.innerHTML = `
                 <p>${value}</p>
                 <img src="<?= BASE_URL ?>/assets/icons/cross.svg" class="cross svg" alt="remove">
             `;
 
-            div.querySelector('.cross').addEventListener('click', () => {
-                div.remove();
-                item.checked = false;
+                div.querySelector('.cross').addEventListener('click', () => {
+                    div.remove();
+                    item.checked = false;
+                });
+
+                spaceSelectedSection.appendChild(div);
             });
 
-            spaceSelectedSection.appendChild(div);
+            // Close modal after applying filters
+            spaceModal.style.display = 'none';
         });
-
-        // Close modal after applying filters
-        spaceModal.style.display = 'none';
-    });
-</script>
+    </script>
 
 </body>
 
