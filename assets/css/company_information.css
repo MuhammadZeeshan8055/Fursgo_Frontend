@@ -1,5 +1,5 @@
 .top-head.d-flex.align-items-center.justify-content-center {
-    padding: 30px 50px;
+    padding: 25px 50px;
     border-radius: 10px;
     background: #F8F8F8;
 }
@@ -65,6 +65,21 @@ body {
     line-height: 60px;
 }
 
+.side-heading {
+    max-width: 295px; 
+    width: 100%;
+}
+
+.card-text-width{
+    max-width: 300px;
+    width: 100%;
+}
+
+.aim-text-width{
+    max-width: 610px;
+    width: 100%;
+}
+
 .medium-font {
     color: #3B3731;
     font-family: Lato;
@@ -77,6 +92,13 @@ body {
     font-family: Lato;
     font-size: 16px;
     font-weight: 400;
+}
+
+.normal-font-weight.active {
+    color: #3B3731;
+    font-family: Lato;
+    font-size: 16px;
+    font-weight: 600;
 }
 
 .normal-font-bold {
@@ -140,7 +162,7 @@ body {
 
 /* Tab buttons */
 .tabs {
-    width: 30%;
+    width: 33%;
 }
 
 .tab-btn {
@@ -577,8 +599,8 @@ a.underline {
 /* Container for the toggle */
 .toggle-switch {
     position: relative;
-    width: 88px;
-    height: 48px;
+    width: 58px;
+    height: 33px;
     background: rgba(255, 201, 122, 0.50);
     /* off color */
     border-radius: 24px;
@@ -591,8 +613,8 @@ a.underline {
     position: absolute;
     top: 3px;
     left: 3px;
-    width: 40px;
-    height: 40px;
+    width: 27px;
+    height: 27px;
     background-color: white;
     border-radius: 50%;
     transition: transform 0.3s;
@@ -625,7 +647,7 @@ a.underline {
 }
 
 .toggle-switch.on .toggle-circle {
-    transform: translateX(40px);
+    transform: translateX(26px);
 }
 
 .toggle-switch.on .toggle-circle::after {
@@ -682,8 +704,8 @@ body.dark .label {
 /* The toggle */
 .toggle-dark-light {
     position: relative;
-    width: 88px;
-    height: 48px;
+    width: 58px;
+    height: 33px;
     cursor: pointer;
     -webkit-tap-highlight-color: transparent;
 }
@@ -711,8 +733,8 @@ body.dark .label {
     position: absolute;
     top: 4px;
     left: 4px;
-    width: 40px;
-    height: 40px;
+    width: 27px;
+    height: 27px;
     border-radius: 50%;
     transition: transform 0.3s;
     display: flex;
@@ -722,7 +744,7 @@ body.dark .label {
 }
 
 .toggle-dark-light input:checked~.track .thumb {
-    transform: translateX(36px);
+    transform: translateX(26px);
 }
 
 .icon-dark-light {

@@ -78,7 +78,7 @@
 
                     <div class="divider">— Or Sign in with —</div>
 
-                    <button type="submit" class="sign-up-email-btn text-center d-flex align-items-center justify-content-center">
+                    <button type="submit" class="sign-up-email-btn text-center d-flex align-items-center justify-content-center gap-20">
                         <svg xmlns="http://www.w3.org/2000/svg" width="19" height="15" viewBox="0 0 19 15" fill="none">
                             <path
                                 d="M1.5 0.5H17.5C18.05 0.5 18.5 0.95 18.5 1.5V13.5C18.5 14.05 18.05 14.5 17.5 14.5H1.5C0.95 14.5 0.5 14.05 0.5 13.5V1.5C0.5 0.95 0.95 0.5 1.5 0.5Z"
@@ -86,8 +86,6 @@
                             <path d="M0.5 2L9.5 7.5L18.5 2" stroke="#3B3731" stroke-linecap="round"
                                 stroke-linejoin="round" />
                         </svg>
-                        &nbsp;
-                        &nbsp;
                         Sign up with email
                     </button>
 

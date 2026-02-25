@@ -174,7 +174,7 @@ label {
 .social-login {
     display: flex;
     justify-content: center;
-    gap: 12px;
+    gap: 15px;
     margin-bottom: 24px;
 }
 
@@ -269,7 +269,7 @@ label {
 .sign-up-email-btn {
     width: 100%;
     max-width: 100%;
-    padding: 14px;
+    padding: 14px 116px;
     border-radius: 5px;
     background: #FFF;
     border: 1px solid #3B3731;

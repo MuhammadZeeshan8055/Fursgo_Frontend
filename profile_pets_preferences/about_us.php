@@ -29,10 +29,10 @@
                         </div>
                     </div>
                     <div class="col-lg-4">
-                        <h2 class="medium-font mt-5">FursGo is shaped by the people who use it and the pets at the centre of it all. </h2>
+                        <h2 class="medium-font side-heading mt-5">FursGo is shaped by the people who use it and the pets at the centre of it all. </h2>
                     </div>
                     <div class="col-lg-8">
-                        <p class="normal-font-weight mt-5">We aim to make pet care accessible and trusted — bringing pet owners, groomers, and space hosts together with care, transparency, and trust at the heart of everything we do. <br><br> Every interaction, booking, and conversation — from first hellos to freshly groomed tails — helps move us closer to a more connected, caring way of approaching pet care.</p>
+                        <p class="normal-font-weight aim-text-width mt-5">We aim to make pet care accessible and trusted — bringing pet owners, groomers, and space hosts together with care, transparency, and trust at the heart of everything we do. <br><br> Every interaction, booking, and conversation — from first hellos to freshly groomed tails — helps move us closer to a more connected, caring way of approaching pet care.</p>
                     </div>
                     <div class="col-lg-12">
                         <h1 class="large-font mt-5">Who is FursGo for?</h1>
@@ -44,25 +44,25 @@
                                 <img src="<?= BASE_URL ?>/assets/images/our-mission-1.png" alt="">
                                 <div class="contact-image-bottom-left large-font" style="color:var(--active-bg);">Pet Owners</div>
                             </div>
-                            <p class="normal-font-weight mt-5">Looking for reliable, caring pet services — and a little peace of mind while their pets are in safe hands.</p>
+                            <p class="normal-font-weight card-text-width mt-5">Looking for reliable, caring pet services — and a little peace of mind while their pets are in safe hands.</p>
                         </div>
                     </div>
                     <div class="col-lg-4">
                         <div class="image-with-text cursor mt-5">
                             <div class="contact-image">
                                 <img src="<?= BASE_URL ?>/assets/images/our-mission-2.png" alt="">
-                                <div class="contact-image-bottom-left large-font" style="color: var(--groomer-color);">Pet Owners</div>
+                                <div class="contact-image-bottom-left large-font" style="color: var(--groomer-color);">Pet Groomers</div>
                             </div>
-                            <p class="normal-font-weight mt-5">Offering mobile or independent grooming services, and doing what you do best: caring for pets, one appointment at a time.</p>
+                            <p class="normal-font-weight card-text-width mt-5">Offering mobile or independent grooming services, and doing what you do best: caring for pets, one appointment at a time.</p>
                         </div>
                     </div>
                     <div class="col-lg-4">
                         <div class="image-with-text cursor mt-5">
                             <div class="contact-image">
                                 <img src="<?= BASE_URL ?>/assets/images/our-mission-3.png" alt="">
-                                <div class="contact-image-bottom-left large-font" style="color: #FFA899;">Pet Owners</div>
+                                <div class="contact-image-bottom-left large-font" style="color: #FFA899;">Space Hosts</div>
                             </div>
-                            <p class="normal-font-weight mt-5">Providing professional grooming environments where pets feel comfortable, calm, and welcome.</p>
+                            <p class="normal-font-weight card-text-width mt-5">Providing professional grooming environments where pets feel comfortable, calm, and welcome.</p>
                         </div>
                     </div>
                     <div class="col-lg-12">
