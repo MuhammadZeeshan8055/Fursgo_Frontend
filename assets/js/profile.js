@@ -229,3 +229,14 @@ document.querySelectorAll('[data-multiselect]').forEach(select => {
         }
     });
 });
+
+// fav button
+const favButton = document.querySelector('.fav');
+
+favButton.addEventListener('click', () => {
+    favButton.classList.toggle('active');
+
+    const pressed = favButton.getAttribute('aria-pressed') === 'true';
+    favButton.setAttribute('aria-pressed', !pressed);
+});
+// fav button

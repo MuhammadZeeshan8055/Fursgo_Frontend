@@ -133,7 +133,12 @@ h1 {
 
 .pill.toprated {
     background: #FFA899;
-    color: #FFF
+    color: #FFF;
+    font-family: Lato;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
 }
 
 .pill.serive-card {
@@ -148,7 +153,13 @@ h1 {
 
 .pill.security-verified {
     background: #D5E5B5;
-    color: #FFF
+    color: #FFF;
+    color: #FFF;
+    font-family: Lato;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
 }
 
 .socials {
@@ -202,6 +213,24 @@ h1 {
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+    transition: color 0.3s;
+}
+
+.fav svg path {
+    stroke: #3B3731;
+    fill: none;
+    transition: fill 0.3s, stroke 0.3s;
+}
+
+.fav.active svg path {
+    fill: red;
+    stroke: red;
+}
+
+.fav span {
+    margin-left: 5px;
+    color: #3B3731;
+    transition: color 0.3s;
 }
 
 .icon-btn {

@@ -66,16 +66,16 @@ body {
 }
 
 .side-heading {
-    max-width: 295px; 
+    max-width: 295px;
     width: 100%;
 }
 
-.card-text-width{
+.card-text-width {
     max-width: 300px;
     width: 100%;
 }
 
-.aim-text-width{
+.aim-text-width {
     max-width: 610px;
     width: 100%;
 }
@@ -158,11 +158,18 @@ body {
 .tabs-wrapper {
     display: flex;
     min-height: 300px;
+    align-items: flex-start;
 }
 
 /* Tab buttons */
 .tabs {
     width: 33%;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 24px;
+    align-self: flex-start;
+    height: fit-content;
+    z-index: 5;
 }
 
 .tab-btn {
@@ -197,6 +204,11 @@ body {
 .tab-panels {
     width: 70%;
     margin-left: 15%;
+}
+
+/* Make the panel scrollable and smooth when jumping to top */
+.tab-panels {
+    scroll-behavior: smooth;
 }
 
 .help-panel.tab-panels {
@@ -254,6 +266,11 @@ body {
 
     .tab-btn {
         text-align: center;
+    }
+
+    /* disable sticky on small screens */
+    .tabs {
+        position: static;
     }
 }
 

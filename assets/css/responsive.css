@@ -1559,8 +1559,7 @@ ul.fursgo-locations li {
     max-width: 280px;
     width: 222px;
     height: 48px;
-    border-bottom-left-radius: 10px;
-    border-top-left-radius: 12px;
+    border-radius: 12px 0 0 10px !important;
 }
 
 .field.time {
@@ -1838,7 +1837,6 @@ input#dateInput {
     max-width: 350px;
     font-weight: 400;
     font-family: "lato";
-    z-index: 101;
 }
 
 .custom-select .select-trigger {
@@ -1920,6 +1918,7 @@ input#dateInput {
 /* active/open */
 .custom-select.open .select-options {
     display: block;
+    z-index: 101;
 }
 
 .custom-select.open .select-trigger svg {

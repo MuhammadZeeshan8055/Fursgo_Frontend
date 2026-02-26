@@ -215,7 +215,6 @@
     <?php include '../components/footer.php' ?>
     <script src="<?= BASE_URL ?>/assets/js/common.js"></script>
 
-
 </body>
 
 </html>
