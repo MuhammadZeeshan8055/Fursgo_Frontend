@@ -1,4 +1,5 @@
 <?php include '../function_helper.php';
+include_once __DIR__ . '/../components/birthday-calendar.php';
 $imagePath = BASE_URL . '/assets/images/card1.png';
 ?>
 <!DOCTYPE html>
@@ -282,7 +283,6 @@ $imagePath = BASE_URL . '/assets/images/card1.png';
             gap: 8px;
         }
 
-
         .card-body-info>div>span {
             color: #9D9B98;
             font-family: Lato;
@@ -495,7 +495,6 @@ $imagePath = BASE_URL . '/assets/images/card1.png';
         }
 
         /* the visible circle */
-        /* the visible circle */
         .radio--visual {
             width: 22px;
             height: 22px;
@@ -557,10 +556,7 @@ $imagePath = BASE_URL . '/assets/images/card1.png';
             outline-offset: 2px;
         }
 
-        /* optional hover tactile feedback */
-        .radio--small:hover .radio--visual {
-            border-color: #bfcf95;
-        }
+
 
 
         .full-width {
@@ -732,11 +728,6 @@ $imagePath = BASE_URL . '/assets/images/card1.png';
             font-style: normal;
             font-weight: 500;
             line-height: normal;
-            gap: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-top: 10px;
         }
 
         .service-summary>div:nth-child(2)>div:nth-child(2)>div:nth-child(2) span {
@@ -897,13 +888,6 @@ $imagePath = BASE_URL . '/assets/images/card1.png';
             border-radius: 96px;
             background: #F8F8F8;
             border: transparent;
-            color: #DDD;
-            text-align: center;
-            font-family: Lato;
-            font-size: 18px;
-            font-style: normal;
-            font-weight: 600;
-            line-height: normal;
         }
 
         .caution {
@@ -1330,12 +1314,7 @@ $imagePath = BASE_URL . '/assets/images/card1.png';
                                                         fill="#FFC97A" />
                                                 </svg>
                                                 <p>4.3</p>
-                                                <span style="            color: #9D9B98;
-            font-family: Lato;
-            font-size: 14px;
-            font-style: normal;
-            font-weight: 500;
-            line-height: normal;">
+                                                <span>
                                                     (20 reviews)
                                                 </span>
                                             </div>
@@ -1433,10 +1412,7 @@ $imagePath = BASE_URL . '/assets/images/card1.png';
                                     <input type="text">
                                 </div>
 
-                                <div class="form-group">
-                                    <label>Birthday</label>
-                                    <input type="date" />
-                                </div>
+                                <?php renderBirthdayCalendar('birthday'); ?>
 
                                 <div class="form-group">
                                     <label>Pet Type</label>
@@ -1542,7 +1518,8 @@ $imagePath = BASE_URL . '/assets/images/card1.png';
                                     <div>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="36"
                                             viewBox="0 0 32 36" fill="none">
-                                            <ellipse cx="17.3667" cy="18.0807" rx="10.2458" ry="9.64315" fill="white" />
+                                            <ellipse cx="17.3667" cy="18.0807" rx="10.2458" ry="9.64315"
+                                                fill="white" />
                                             <path
                                                 d="M16.8932 0.202494C16.6132 0.0698256 16.3132 0 15.9998 0C15.6865 0 15.3865 0.0698256 15.1065 0.202494L2.55333 5.78156C1.08668 6.43094 -0.00663626 7.94615 3.03229e-05 9.77559C0.0333633 16.7023 2.75333 29.3756 14.2399 35.1362C15.3532 35.6949 16.6465 35.6949 17.7598 35.1362C29.2463 29.3756 31.9663 16.7023 31.9996 9.77559C32.0063 7.94615 30.913 6.43094 29.4463 5.78156L16.8932 0.202494ZM9.65991 19.9841C9.97991 20.0679 10.3199 20.1098 10.6666 20.1098C13.0199 20.1098 14.9332 18.1058 14.9332 15.6409V11.1721H17.8798C18.6865 11.1721 19.4265 11.6469 19.7865 12.408L20.2665 13.4065H24.5331C25.1197 13.4065 25.5997 13.9093 25.5997 14.5237V16.7581C25.5997 19.8444 23.2131 22.3442 20.2665 22.3442H17.0665V25.8844C17.0665 26.3941 16.6732 26.813 16.1798 26.813C16.0598 26.813 15.9398 26.7851 15.8332 26.7362L9.25325 23.7826C8.81326 23.5871 8.53326 23.1332 8.53326 22.6375C8.53326 22.4419 8.57326 22.2534 8.65993 22.0789L9.65991 19.9841ZM9.59992 11.1721H12.7999V15.6409C12.7999 16.8769 11.8466 17.8754 10.6666 17.8754C9.48658 17.8754 8.53326 16.8769 8.53326 15.6409V12.2893C8.53326 11.6748 9.01326 11.1721 9.59992 11.1721ZM18.1331 14.5237C18.1331 14.2274 18.0208 13.9433 17.8207 13.7337C17.6207 13.5242 17.3494 13.4065 17.0665 13.4065C16.7836 13.4065 16.5123 13.5242 16.3123 13.7337C16.1122 13.9433 15.9998 14.2274 15.9998 14.5237C15.9998 14.82 16.1122 15.1042 16.3123 15.3137C16.5123 15.5232 16.7836 15.6409 17.0665 15.6409C17.3494 15.6409 17.6207 15.5232 17.8207 15.3137C18.0208 15.1042 18.1331 14.82 18.1331 14.5237Z"
                                                 fill="#C9DDA0" />
@@ -1571,12 +1548,7 @@ $imagePath = BASE_URL . '/assets/images/card1.png';
                                                     <path
                                                         d="M7.88086 0.849183C8.23312 -0.283064 9.76689 -0.28306 10.1191 0.849187L11.437 5.08524C11.5946 5.5916 12.0464 5.93442 12.5562 5.93442H16.821C17.9609 5.93442 18.4349 7.45785 17.5127 8.15762L14.0624 10.7756C13.6499 11.0886 13.4774 11.6433 13.6349 12.1497L14.9528 16.3857C15.3051 17.518 14.0642 18.4595 13.142 17.7597L9.69167 15.1417C9.27924 14.8287 8.72076 14.8287 8.30833 15.1417L4.85802 17.7597C3.93579 18.4595 2.69495 17.518 3.04721 16.3857L4.36511 12.1497C4.52264 11.6433 4.35007 11.0886 3.93763 10.7756L0.487324 8.15762C-0.434903 7.45785 0.0390621 5.93442 1.179 5.93442H5.44381C5.95361 5.93442 6.40542 5.59159 6.56296 5.08524L7.88086 0.849183Z"
                                                         fill="#FFC97A" />
-                                                </svg>4.3 <span style="            color: #9D9B98;
-            font-family: Lato;
-            font-size: 14px;
-            font-style: normal;
-            font-weight: 500;
-            line-height: normal;">(20 reviews)</span></p>
+                                                </svg>4.3 <span>(20 reviews)</span></p>
                                         </div>
                                     </div>
                                 </div>
@@ -1643,12 +1615,8 @@ $imagePath = BASE_URL . '/assets/images/card1.png';
                                 </div>
                                 <div class="payment"><button>Confirm & Pay</button></div>
                                 <div class="caution">
-
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48"
-                                        fill="none">
-                                        <path
-                                            d="M24 4.8C34.5864 4.8 43.2 13.4136 43.2 24C43.2 34.5864 34.5864 43.2 24 43.2C13.4136 43.2 4.8 34.5864 4.8 24C4.8 13.4136 13.4136 4.8 24 4.8ZM24 0C10.7448 0 0 10.7448 0 24C0 37.2552 10.7448 48 24 48C37.2552 48 48 37.2552 48 24C48 10.7448 37.2552 0 24 0ZM26.4 31.2H21.6V36H26.4V31.2ZM21.6 26.4H26.4L27.6 12H20.4L21.6 26.4Z"
-                                            fill="#FFC97A" />
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+                                        <path d="M24 4.8C34.5864 4.8 43.2 13.4136 43.2 24C43.2 34.5864 34.5864 43.2 24 43.2C13.4136 43.2 4.8 34.5864 4.8 24C4.8 13.4136 13.4136 4.8 24 4.8ZM24 0C10.7448 0 0 10.7448 0 24C0 37.2552 10.7448 48 24 48C37.2552 48 48 37.2552 48 24C48 10.7448 37.2552 0 24 0ZM26.4 31.2H21.6V36H26.4V31.2ZM21.6 26.4H26.4L27.6 12H20.4L21.6 26.4Z" fill="#FFC97A" />
                                     </svg>
                                     <p>
                                         Free cancellations up to 24 hours before appointment.
@@ -1656,25 +1624,14 @@ $imagePath = BASE_URL . '/assets/images/card1.png';
                                     </p>
                                 </div>
                             </div>
-                            <div class="need-help mt-4">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="34" height="28" viewBox="0 0 34 28"
-                                    fill="none">
-                                    <path
-                                        d="M3.08333 13.875C1.3875 13.875 0 12.4875 0 10.7917V3.08333C0 1.3875 1.3875 0 3.08333 0H15.4167C17.1125 0 18.5 1.3875 18.5 3.08333V10.7917C18.5 12.4875 17.1125 13.875 15.4167 13.875H12.3333V18.5L7.70833 13.875H3.08333ZM30.8333 23.125C32.5292 23.125 33.9167 21.7375 33.9167 20.0417V12.3333C33.9167 10.6375 32.5292 9.25 30.8333 9.25H21.5833V10.7917C21.5833 14.1833 18.8083 16.9583 15.4167 16.9583V20.0417C15.4167 21.7375 16.8042 23.125 18.5 23.125H21.5833V27.75L26.2083 23.125H30.8333Z"
-                                        fill="#D8E8B7" />
-                                </svg>
-                                <p>Need help? Chat with <a href="#">Fursgo Support.</a></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
     </section>
 
     <?php include('../components/footer.php'); ?>
+    <?php include_once '../components/birthday-calendar.php';
+    bcAssets(); ?>
     <script src=" <?= BASE_URL ?>/assets/js/custom.js"></script>
     <script>
-        (function () {
+        (function() {
             // Create opener buttons for every .form-group that has an input[type="date"]
             document.querySelectorAll('.form-group').forEach(group => {
                 const input = group.querySelector('input[type="date"]');
@@ -1753,27 +1710,103 @@ $imagePath = BASE_URL . '/assets/images/card1.png';
 
 
 
-        const addons = [
-            { id: 1, name: 'Flea & Tick Treatment', price: 14, col: 'left' },
-            { id: 2, name: 'Hypoallergenic Shampoo Upgrade', price: 20, col: 'left' },
-            { id: 3, name: 'Tear-Stain Treatment', price: 5, col: 'left' },
-            { id: 4, name: 'Coat Shine Spray', price: 10, col: 'left' },
-            { id: 5, name: 'Nail Grinding', price: 25, col: 'left' },
-            { id: 6, name: 'Coat Colour Enhancing Shampoo', price: 10, col: 'left' },
-            { id: 7, name: 'Fast-Dry Service (express grooming)', price: 8, col: 'left' },
-            { id: 8, name: 'Breath Freshner Gel', price: 2, col: 'left' },
-            { id: 9, name: 'Deep Conditioning Mask', price: 20, col: 'right' },
-            { id: 10, name: 'Shed-Control Shampoo', price: 10, col: 'right' },
-            { id: 11, name: 'Deodorising Treatment', price: 2, col: 'right' },
-            { id: 12, name: 'Anti-Itch Treatment', price: 10, col: 'right' },
-            { id: 13, name: 'Soft-Claws / Nail Caps Application', price: 60, col: 'right' },
-            { id: 14, name: 'Premium Fragrance Upgrade', price: 10, col: 'right' },
-            { id: 15, name: 'Paw Fur Shaping', price: 23, col: 'right' },
+        const addons = [{
+                id: 1,
+                name: 'Flea & Tick Treatment',
+                price: 14,
+                col: 'left'
+            },
+            {
+                id: 2,
+                name: 'Hypoallergenic Shampoo Upgrade',
+                price: 20,
+                col: 'left'
+            },
+            {
+                id: 3,
+                name: 'Tear-Stain Treatment',
+                price: 5,
+                col: 'left'
+            },
+            {
+                id: 4,
+                name: 'Coat Shine Spray',
+                price: 10,
+                col: 'left'
+            },
+            {
+                id: 5,
+                name: 'Nail Grinding',
+                price: 25,
+                col: 'left'
+            },
+            {
+                id: 6,
+                name: 'Coat Colour Enhancing Shampoo',
+                price: 10,
+                col: 'left'
+            },
+            {
+                id: 7,
+                name: 'Fast-Dry Service (express grooming)',
+                price: 8,
+                col: 'left'
+            },
+            {
+                id: 8,
+                name: 'Breath Freshner Gel',
+                price: 2,
+                col: 'left'
+            },
+            {
+                id: 9,
+                name: 'Deep Conditioning Mask',
+                price: 20,
+                col: 'right'
+            },
+            {
+                id: 10,
+                name: 'Shed-Control Shampoo',
+                price: 10,
+                col: 'right'
+            },
+            {
+                id: 11,
+                name: 'Deodorising Treatment',
+                price: 2,
+                col: 'right'
+            },
+            {
+                id: 12,
+                name: 'Anti-Itch Treatment',
+                price: 10,
+                col: 'right'
+            },
+            {
+                id: 13,
+                name: 'Soft-Claws / Nail Caps Application',
+                price: 60,
+                col: 'right'
+            },
+            {
+                id: 14,
+                name: 'Premium Fragrance Upgrade',
+                price: 10,
+                col: 'right'
+            },
+            {
+                id: 15,
+                name: 'Paw Fur Shaping',
+                price: 23,
+                col: 'right'
+            },
         ];
 
         const selected = new Set([2, 7, 12]); // default selections matching screenshot
 
-        function formatPrice(p) { return `£${p}`; }
+        function formatPrice(p) {
+            return `£${p}`;
+        }
 
         function renderOptions() {
             const colLeft = document.getElementById('col-left');
