@@ -660,7 +660,6 @@ $imagePath = BASE_URL . '/assets/images/card1.png';
 
         .service-summary {
             width: 400px;
-            height: 987px;
             border-radius: 10px;
             border: 1px solid #FFC97A;
             background: #FFF;
@@ -795,6 +794,7 @@ $imagePath = BASE_URL . '/assets/images/card1.png';
             font-style: normal;
             font-weight: 600;
             line-height: normal;
+            display: none;
         }
 
         .service-summary>div:nth-child(6)>div>div {
@@ -1589,18 +1589,7 @@ $imagePath = BASE_URL . '/assets/images/card1.png';
                                 <div>
                                     <p>Extras & Add-ons</p>
                                     <div>
-                                        <div>
-                                            <p>Fast-Dry Service (express grooming)</p>
-                                            <p>£8</p>
-                                        </div>
-                                        <div>
-                                            <p>Hypoallergenic Shampoo Upgrade</p>
-                                            <p>£20</p>
-                                        </div>
-                                        <div>
-                                            <p>Anti-Itch Treatment</p>
-                                            <p>£10</p>
-                                        </div>
+                                        <!-- Add-ons will be inserted here by JavaScript -->
                                     </div>
                                 </div>
 
@@ -1610,15 +1599,7 @@ $imagePath = BASE_URL . '/assets/images/card1.png';
                                 </div>
 
                                 <div class="sum">
-                                    <div>
-                                        <p>Service:</p><span>£45.00</span>
-                                    </div>
-                                    <div>
-                                        <p>Service:</p><span>£45.00</span>
-                                    </div>
-                                    <div>
-                                        <p>Service:</p><span>£45.00</span>
-                                    </div>
+                                    <div></div>
                                 </div>
                                 <div class="divider"></div>
                                 <div class="total">
@@ -1935,7 +1916,7 @@ $imagePath = BASE_URL . '/assets/images/card1.png';
         },
         ];
 
-        const selected = new Set([2, 7, 12]); // default selections matching screenshot
+        const selected = new Set(); // no default selections
 
         function formatPrice(p) {
             return `£${p}`;
@@ -1976,15 +1957,88 @@ $imagePath = BASE_URL . '/assets/images/card1.png';
             });
         }
 
+        function renderServiceSummaryAddons() {
+            const addonsContainer = document.querySelector('.service-summary>div:nth-child(6)>div');
+            if (!addonsContainer) return;
+
+            // Clear existing addon divs
+            const addonDivs = addonsContainer.querySelectorAll('div');
+            addonDivs.forEach(div => div.remove());
+
+            // Add selected addons
+            const selectedAddons = addons.filter(a => selected.has(a.id));
+            selectedAddons.forEach(addon => {
+                const div = document.createElement('div');
+                div.style.cssText = 'display: flex; justify-content: space-between; align-items: center;';
+                div.innerHTML = `
+                    <p style="margin: 0; color: #3B3731; font-family: Lato; font-size: 14px; font-weight: 400;">${addon.name}</p>
+                    <p style="margin: 0; color: #3B3731; font-family: Lato; font-size: 14px; font-weight: 400;">${formatPrice(addon.price)}</p>
+                `;
+                addonsContainer.appendChild(div);
+            });
+
+            // Show/hide the "Extras & Add-ons" heading based on whether add-ons are selected
+            const addonsSection = document.querySelector('.service-summary>div:nth-child(6)');
+            const addonsHeading = addonsSection.querySelector('p');
+            if (selectedAddons.length > 0) {
+                addonsHeading.style.display = 'block';
+            } else {
+                addonsHeading.style.display = 'none';
+            }
+
+            updateServiceSummaryTotals();
+        }
+
+        function updateServiceSummaryTotals() {
+            // Calculate base service price (Full Groom: £48)
+            const baseServicePrice = 48;
+
+            // Calculate addons total
+            const addonsTotal = Array.from(selected).reduce((sum, id) => {
+                const addon = addons.find(a => a.id === id);
+                return sum + (addon ? addon.price : 0);
+            }, 0);
+
+            // Update the sum section
+            const sumContainer = document.querySelector('.sum');
+            if (sumContainer) {
+                const serviceDiv = sumContainer.querySelector('div:first-child');
+                if (serviceDiv) {
+                    serviceDiv.innerHTML = `<p>Service:</p><span>${formatPrice(baseServicePrice)}</span>`;
+                }
+
+                // Update or add addons sum div
+                let addonsDiv = sumContainer.querySelector('div:nth-child(2)');
+                if (addonsTotal > 0) {
+                    if (!addonsDiv) {
+                        addonsDiv = document.createElement('div');
+                        serviceDiv.parentNode.insertBefore(addonsDiv, serviceDiv.nextSibling);
+                    }
+                    addonsDiv.innerHTML = `<p>Add-ons:</p><span>${formatPrice(addonsTotal)}</span>`;
+                } else if (addonsDiv) {
+                    addonsDiv.remove();
+                }
+            }
+
+            // Update total
+            const totalPrice = baseServicePrice + addonsTotal;
+            const totalContainer = document.querySelector('.total');
+            if (totalContainer) {
+                totalContainer.innerHTML = `<p>Total:</p><span>${formatPrice(totalPrice)}</span>`;
+            }
+        }
+
         function toggle(id) {
             if (selected.has(id)) selected.delete(id);
             else selected.add(id);
             renderOptions();
             renderTags();
+            renderServiceSummaryAddons();
         }
 
         renderOptions();
         renderTags();
+        renderServiceSummaryAddons();
 
         function toggleHomeAddress(el) {
             el.classList.toggle('selected');
