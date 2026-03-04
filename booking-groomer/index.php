@@ -12,6 +12,7 @@ $imagePath = BASE_URL . '/assets/images/card1.png';
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/responsive.css">
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/bootstrap.css">
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/media_query.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/common.css">
     <style>
         body {
             background: #FDFCF8;
