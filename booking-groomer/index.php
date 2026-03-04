@@ -1628,7 +1628,7 @@ $imagePath = BASE_URL . '/assets/images/card1.png';
     </section>
 
     <?php include('../components/footer.php'); ?>
-    <?php include_once '../components/birthday-calendar.php';
+    <?php 
     bcAssets(); ?>
     <script src=" <?= BASE_URL ?>/assets/js/custom.js"></script>
     <script>
