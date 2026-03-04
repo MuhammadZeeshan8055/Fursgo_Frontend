@@ -445,6 +445,14 @@ $imagePath = BASE_URL . '/assets/images/card1.png';
             border: 0;
         }
 
+        /* Pet Type Auto-Detection Suggestions */
+        #petTypeSuggestions {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        #petTypeSuggestions>div:last-child {
+            border-bottom: none;
+        }
 
         /* clickable (transparent) button that forwards to the input picker */
         .form-group .picker-opener {
@@ -1416,13 +1424,17 @@ $imagePath = BASE_URL . '/assets/images/card1.png';
 
                                 <div class="form-group">
                                     <label>Pet Type</label>
-                                    <input placeholder="e.g. Rabbit, Guinea Pig ..." type="text">
+                                    <input type="text" id="petTypeInput" placeholder="e.g. Dog, Cat, Rabbit..."
+                                        autocomplete="off">
+                                    <div id="petTypeSuggestions"
+                                        style="display: none; border: 1px solid #D4D4D4; border-top: none; border-radius: 0 0 10px 10px; background: #FFF; max-height: 200px; overflow-y: auto; position: absolute; width: calc(100% - 20px); z-index: 10;">
+                                    </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label>Breed(s)</label>
-                                    <select>
-                                        <option value="">Labrador</option>
+                                    <select id="petBreedSelect">
+                                        <option value="">Select a Breed</option>
                                     </select>
                                 </div>
 
@@ -1518,8 +1530,7 @@ $imagePath = BASE_URL . '/assets/images/card1.png';
                                     <div>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="36"
                                             viewBox="0 0 32 36" fill="none">
-                                            <ellipse cx="17.3667" cy="18.0807" rx="10.2458" ry="9.64315"
-                                                fill="white" />
+                                            <ellipse cx="17.3667" cy="18.0807" rx="10.2458" ry="9.64315" fill="white" />
                                             <path
                                                 d="M16.8932 0.202494C16.6132 0.0698256 16.3132 0 15.9998 0C15.6865 0 15.3865 0.0698256 15.1065 0.202494L2.55333 5.78156C1.08668 6.43094 -0.00663626 7.94615 3.03229e-05 9.77559C0.0333633 16.7023 2.75333 29.3756 14.2399 35.1362C15.3532 35.6949 16.6465 35.6949 17.7598 35.1362C29.2463 29.3756 31.9663 16.7023 31.9996 9.77559C32.0063 7.94615 30.913 6.43094 29.4463 5.78156L16.8932 0.202494ZM9.65991 19.9841C9.97991 20.0679 10.3199 20.1098 10.6666 20.1098C13.0199 20.1098 14.9332 18.1058 14.9332 15.6409V11.1721H17.8798C18.6865 11.1721 19.4265 11.6469 19.7865 12.408L20.2665 13.4065H24.5331C25.1197 13.4065 25.5997 13.9093 25.5997 14.5237V16.7581C25.5997 19.8444 23.2131 22.3442 20.2665 22.3442H17.0665V25.8844C17.0665 26.3941 16.6732 26.813 16.1798 26.813C16.0598 26.813 15.9398 26.7851 15.8332 26.7362L9.25325 23.7826C8.81326 23.5871 8.53326 23.1332 8.53326 22.6375C8.53326 22.4419 8.57326 22.2534 8.65993 22.0789L9.65991 19.9841ZM9.59992 11.1721H12.7999V15.6409C12.7999 16.8769 11.8466 17.8754 10.6666 17.8754C9.48658 17.8754 8.53326 16.8769 8.53326 15.6409V12.2893C8.53326 11.6748 9.01326 11.1721 9.59992 11.1721ZM18.1331 14.5237C18.1331 14.2274 18.0208 13.9433 17.8207 13.7337C17.6207 13.5242 17.3494 13.4065 17.0665 13.4065C16.7836 13.4065 16.5123 13.5242 16.3123 13.7337C16.1122 13.9433 15.9998 14.2274 15.9998 14.5237C15.9998 14.82 16.1122 15.1042 16.3123 15.3137C16.5123 15.5232 16.7836 15.6409 17.0665 15.6409C17.3494 15.6409 17.6207 15.5232 17.8207 15.3137C18.0208 15.1042 18.1331 14.82 18.1331 14.5237Z"
                                                 fill="#C9DDA0" />
@@ -1615,8 +1626,11 @@ $imagePath = BASE_URL . '/assets/images/card1.png';
                                 </div>
                                 <div class="payment"><button>Confirm & Pay</button></div>
                                 <div class="caution">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
-                                        <path d="M24 4.8C34.5864 4.8 43.2 13.4136 43.2 24C43.2 34.5864 34.5864 43.2 24 43.2C13.4136 43.2 4.8 34.5864 4.8 24C4.8 13.4136 13.4136 4.8 24 4.8ZM24 0C10.7448 0 0 10.7448 0 24C0 37.2552 10.7448 48 24 48C37.2552 48 48 37.2552 48 24C48 10.7448 37.2552 0 24 0ZM26.4 31.2H21.6V36H26.4V31.2ZM21.6 26.4H26.4L27.6 12H20.4L21.6 26.4Z" fill="#FFC97A" />
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48"
+                                        fill="none">
+                                        <path
+                                            d="M24 4.8C34.5864 4.8 43.2 13.4136 43.2 24C43.2 34.5864 34.5864 43.2 24 43.2C13.4136 43.2 4.8 34.5864 4.8 24C4.8 13.4136 13.4136 4.8 24 4.8ZM24 0C10.7448 0 0 10.7448 0 24C0 37.2552 10.7448 48 24 48C37.2552 48 48 37.2552 48 24C48 10.7448 37.2552 0 24 0ZM26.4 31.2H21.6V36H26.4V31.2ZM21.6 26.4H26.4L27.6 12H20.4L21.6 26.4Z"
+                                            fill="#FFC97A" />
                                     </svg>
                                     <p>
                                         Free cancellations up to 24 hours before appointment.
@@ -1631,7 +1645,126 @@ $imagePath = BASE_URL . '/assets/images/card1.png';
     bcAssets(); ?>
     <script src=" <?= BASE_URL ?>/assets/js/custom.js"></script>
     <script>
-        (function() {
+        // ===== Pet Type Auto-Detection and Breed Population ===== 
+        let petBreedsData = {};
+        let selectedPetType = '';
+
+        // Load the pet breeds JSON file
+        async function loadPetBreedsData() {
+            try {
+                const response = await fetch('<?= BASE_URL ?>/assets/data/pet-breeds.json');
+                if (!response.ok) {
+                    throw new Error(`Failed to load pet breeds: ${response.statusText}`);
+                }
+                const data = await response.json();
+                petBreedsData = data;
+                setupPetTypeAutoDetection();
+            } catch (error) {
+                console.error('Error loading pet breeds data:', error);
+            }
+        }
+
+        // Setup auto-detection for pet type input
+        function setupPetTypeAutoDetection() {
+            const petTypeInput = document.getElementById('petTypeInput');
+            const suggestionBox = document.getElementById('petTypeSuggestions');
+            const petBreedSelect = document.getElementById('petBreedSelect');
+
+            if (!petTypeInput || !petBreedsData.petTypes) return;
+
+            // Listen for input changes
+            petTypeInput.addEventListener('input', function () {
+                const inputValue = this.value.trim().toLowerCase();
+                suggestionBox.innerHTML = '';
+
+                if (inputValue.length === 0) {
+                    suggestionBox.style.display = 'none';
+                    petBreedSelect.innerHTML = '<option value="">Select a Breed</option>';
+                    selectedPetType = '';
+                    return;
+                }
+
+                // Find matching pet types
+                const matches = petBreedsData.petTypes.filter(petType =>
+                    petType.name.toLowerCase().includes(inputValue)
+                );
+
+                if (matches.length > 0) {
+                    suggestionBox.style.display = 'block';
+                    suggestionBox.innerHTML = '';
+
+                    matches.forEach(match => {
+                        const suggestionItem = document.createElement('div');
+                        suggestionItem.style.cssText = 'padding: 10px; cursor: pointer; border-bottom: 1px solid #EEE; color: #3B3731; font-family: Lato;';
+                        suggestionItem.textContent = match.name;
+
+                        suggestionItem.addEventListener('mouseover', function () {
+                            this.style.backgroundColor = '#f5f5f5';
+                        });
+                        suggestionItem.addEventListener('mouseout', function () {
+                            this.style.backgroundColor = 'transparent';
+                        });
+
+                        suggestionItem.addEventListener('click', function () {
+                            petTypeInput.value = match.name;
+                            selectedPetType = match.name;
+                            suggestionBox.style.display = 'none';
+                            populateBreeds(match);
+                        });
+
+                        suggestionBox.appendChild(suggestionItem);
+                    });
+                } else {
+                    suggestionBox.style.display = 'none';
+                    petBreedSelect.innerHTML = '<option value="">Select a Breed</option>';
+                }
+
+                // Check for exact match and auto-populate breeds
+                const exactMatch = petBreedsData.petTypes.find(p => p.name.toLowerCase() === inputValue);
+                if (exactMatch) {
+                    selectedPetType = exactMatch.name;
+                    populateBreeds(exactMatch);
+                    suggestionBox.style.display = 'none';
+                }
+            });
+
+            // Hide suggestions when clicking outside
+            document.addEventListener('click', function (e) {
+                if (e.target !== petTypeInput && e.target !== suggestionBox) {
+                    suggestionBox.style.display = 'none';
+                }
+            });
+
+            // Show suggestions on focus if input has value
+            petTypeInput.addEventListener('focus', function () {
+                if (this.value.trim().length > 0) {
+                    suggestionBox.style.display = 'block';
+                }
+            });
+        }
+
+        // Populate breed dropdown based on selected pet type
+        function populateBreeds(petType) {
+            const petBreedSelect = document.getElementById('petBreedSelect');
+            petBreedSelect.innerHTML = '<option value="">Select a Breed</option>';
+
+            if (petType && petType.breeds) {
+                petType.breeds.forEach(breed => {
+                    const option = document.createElement('option');
+                    option.value = breed;
+                    option.textContent = breed;
+                    petBreedSelect.appendChild(option);
+                });
+            }
+        }
+
+        // Initialize on DOM ready
+        document.addEventListener('DOMContentLoaded', function () {
+            loadPetBreedsData();
+        });
+        // ===== End Pet Type Auto-Detection =====
+
+        (function () {
             // Create opener buttons for every .form-group that has an input[type="date"]
             document.querySelectorAll('.form-group').forEach(group => {
                 const input = group.querySelector('input[type="date"]');
@@ -1711,95 +1844,95 @@ $imagePath = BASE_URL . '/assets/images/card1.png';
 
 
         const addons = [{
-                id: 1,
-                name: 'Flea & Tick Treatment',
-                price: 14,
-                col: 'left'
-            },
-            {
-                id: 2,
-                name: 'Hypoallergenic Shampoo Upgrade',
-                price: 20,
-                col: 'left'
-            },
-            {
-                id: 3,
-                name: 'Tear-Stain Treatment',
-                price: 5,
-                col: 'left'
-            },
-            {
-                id: 4,
-                name: 'Coat Shine Spray',
-                price: 10,
-                col: 'left'
-            },
-            {
-                id: 5,
-                name: 'Nail Grinding',
-                price: 25,
-                col: 'left'
-            },
-            {
-                id: 6,
-                name: 'Coat Colour Enhancing Shampoo',
-                price: 10,
-                col: 'left'
-            },
-            {
-                id: 7,
-                name: 'Fast-Dry Service (express grooming)',
-                price: 8,
-                col: 'left'
-            },
-            {
-                id: 8,
-                name: 'Breath Freshner Gel',
-                price: 2,
-                col: 'left'
-            },
-            {
-                id: 9,
-                name: 'Deep Conditioning Mask',
-                price: 20,
-                col: 'right'
-            },
-            {
-                id: 10,
-                name: 'Shed-Control Shampoo',
-                price: 10,
-                col: 'right'
-            },
-            {
-                id: 11,
-                name: 'Deodorising Treatment',
-                price: 2,
-                col: 'right'
-            },
-            {
-                id: 12,
-                name: 'Anti-Itch Treatment',
-                price: 10,
-                col: 'right'
-            },
-            {
-                id: 13,
-                name: 'Soft-Claws / Nail Caps Application',
-                price: 60,
-                col: 'right'
-            },
-            {
-                id: 14,
-                name: 'Premium Fragrance Upgrade',
-                price: 10,
-                col: 'right'
-            },
-            {
-                id: 15,
-                name: 'Paw Fur Shaping',
-                price: 23,
-                col: 'right'
-            },
+            id: 1,
+            name: 'Flea & Tick Treatment',
+            price: 14,
+            col: 'left'
+        },
+        {
+            id: 2,
+            name: 'Hypoallergenic Shampoo Upgrade',
+            price: 20,
+            col: 'left'
+        },
+        {
+            id: 3,
+            name: 'Tear-Stain Treatment',
+            price: 5,
+            col: 'left'
+        },
+        {
+            id: 4,
+            name: 'Coat Shine Spray',
+            price: 10,
+            col: 'left'
+        },
+        {
+            id: 5,
+            name: 'Nail Grinding',
+            price: 25,
+            col: 'left'
+        },
+        {
+            id: 6,
+            name: 'Coat Colour Enhancing Shampoo',
+            price: 10,
+            col: 'left'
+        },
+        {
+            id: 7,
+            name: 'Fast-Dry Service (express grooming)',
+            price: 8,
+            col: 'left'
+        },
+        {
+            id: 8,
+            name: 'Breath Freshner Gel',
+            price: 2,
+            col: 'left'
+        },
+        {
+            id: 9,
+            name: 'Deep Conditioning Mask',
+            price: 20,
+            col: 'right'
+        },
+        {
+            id: 10,
+            name: 'Shed-Control Shampoo',
+            price: 10,
+            col: 'right'
+        },
+        {
+            id: 11,
+            name: 'Deodorising Treatment',
+            price: 2,
+            col: 'right'
+        },
+        {
+            id: 12,
+            name: 'Anti-Itch Treatment',
+            price: 10,
+            col: 'right'
+        },
+        {
+            id: 13,
+            name: 'Soft-Claws / Nail Caps Application',
+            price: 60,
+            col: 'right'
+        },
+        {
+            id: 14,
+            name: 'Premium Fragrance Upgrade',
+            price: 10,
+            col: 'right'
+        },
+        {
+            id: 15,
+            name: 'Paw Fur Shaping',
+            price: 23,
+            col: 'right'
+        },
         ];
 
         const selected = new Set([2, 7, 12]); // default selections matching screenshot
