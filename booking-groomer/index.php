@@ -1599,7 +1599,8 @@ $imagePath = BASE_URL . '/assets/images/card1.png';
                                 </div>
 
                                 <div class="sum">
-                                    <div></div>
+                                    <div>
+                                    </div>
                                 </div>
                                 <div class="divider"></div>
                                 <div class="total">
@@ -1992,6 +1993,7 @@ $imagePath = BASE_URL . '/assets/images/card1.png';
         function updateServiceSummaryTotals() {
             // Calculate base service price (Full Groom: £48)
             const baseServicePrice = 48;
+            const platformFee = 2;
 
             // Calculate addons total
             const addonsTotal = Array.from(selected).reduce((sum, id) => {
@@ -2018,10 +2020,24 @@ $imagePath = BASE_URL . '/assets/images/card1.png';
                 } else if (addonsDiv) {
                     addonsDiv.remove();
                 }
+
+                // Update or add platform fee div
+                let feeDiv = sumContainer.querySelector('div:nth-child(3)') || sumContainer.querySelector('div:last-child');
+                if (!feeDiv || feeDiv === serviceDiv || feeDiv === addonsDiv) {
+                    feeDiv = document.createElement('div');
+                    if (addonsDiv && addonsDiv.parentNode === sumContainer) {
+                        sumContainer.insertBefore(feeDiv, addonsDiv.nextSibling);
+                    } else if (serviceDiv) {
+                        sumContainer.insertBefore(feeDiv, serviceDiv.nextSibling);
+                    } else {
+                        sumContainer.appendChild(feeDiv);
+                    }
+                }
+                feeDiv.innerHTML = `<p>Platform fee:</p><span>${formatPrice(platformFee)}</span>`;
             }
 
             // Update total
-            const totalPrice = baseServicePrice + addonsTotal;
+            const totalPrice = baseServicePrice + addonsTotal + platformFee;
             const totalContainer = document.querySelector('.total');
             if (totalContainer) {
                 totalContainer.innerHTML = `<p>Total:</p><span>${formatPrice(totalPrice)}</span>`;
