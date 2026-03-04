@@ -221,7 +221,7 @@ span.output {
     font-weight: bold;
 }
 
-input[type=range] {
+.range-slider input[type=range] {
     -webkit-appearance: none;
     position: absolute;
     top: 15px;
@@ -1497,21 +1497,24 @@ input[type="checkbox"] {
 }
 
 /* Show dot when checked */
-input[type="checkbox"]:checked + .check-circle::after {
+input[type="checkbox"]:checked+.check-circle::after {
     display: block;
 }
 
 /* Option text */
 .option-text {
-    font-size: 16px;
-    color: #333;
-    vertical-align: middle;
+    color: #9D9B98;
+    font-family: Lato;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
 }
 
 /* Cursor pointer */
 label {
     cursor: pointer;
-    display: flex;
+    display: flex !important;
     align-items: center;
 }
 

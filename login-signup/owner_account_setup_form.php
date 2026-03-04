@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/bootstrap.css">
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/media_query.css">
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/login_signup.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/common.css">
+
     <style>
         :root {
             --owner-account-inside-padding: 2% 12%;
