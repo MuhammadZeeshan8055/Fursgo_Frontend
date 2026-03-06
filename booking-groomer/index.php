@@ -2140,6 +2140,44 @@ $imagePath = BASE_URL . '/assets/images/card1.png';
                                 <h1>Confirm & Pay</h1>
                             </div>
                             <div class="confirm-pay">
+                                <div id="confirmPayDisplay"
+                                    style="display: none; background: #F9F9F9; padding: 24px 30px; border-radius: 12px; margin-bottom: 2rem; align-items: center; justify-content: space-between;">
+                                    <div style="display: flex; gap: 24px; align-items: center;">
+                                        <div id="confirmPayInitials"
+                                            style="width: 50px; height: 50px; border-radius: 50%; border: 1px solid #9D9B98; display: flex; align-items: center; justify-content: center; font-family: Lato; font-size: 16px; font-weight: 500; color: #3B3731; flex-shrink: 0; background: #FFF;">
+                                            MV
+                                        </div>
+                                        <div style="font-family: Lato; line-height: 1.6;">
+                                            <p id="confirmPayEmail" style="color: #3B3731;
+font-family: Lato;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;">
+                                                emailaddress@gmail.com</p>
+                                            <p id="confirmPayAddress" style="color: #3B3731;
+font-family: Lato;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+margin: 10px auto;">
+                                                Full Name, 234 Elm Street, Springfield, IL 62704, United Kingdom - 07123
+                                                456789</p>
+                                            <p id="confirmPayMessage" style="color: #9D9B98;
+font-family: Lato;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;">Optional Message -
+                                                Lorem ipsum dolor sit amet.</p>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <button type="button" id="confirmPayChangeBtn"
+                                            style="background: #EBEBEB; border: none; border-radius: 20px; padding: 8px 20px; font-family: Lato; font-size: 14px; font-weight: 500; color: #3B3731; cursor: pointer;">Change</button>
+                                    </div>
+                                </div>
                                 <form id="demoForm" novalidate>
                                     <div class="form-grid">
 
@@ -2732,7 +2770,7 @@ line-height: 1.5;">
     </section>
 
     <?php include('../components/footer.php'); ?>
-    <?php 
+    <?php
     bcAssets(); ?>
     <script src=" <?= BASE_URL ?>/assets/js/custom.js"></script>
     <script src=" <?= BASE_URL ?>/assets/js/custom-dropdown.js"></script>
@@ -3872,14 +3910,54 @@ line-height: 1.5;">
                     if (!good) ok = false;
                 });
                 if (ok) {
-                    alert('Form looks good — submitting (demo).');
-                    // here you would do an actual submit or ajax request
+                    const fullname = form.elements['fullname'].value.trim();
+                    const email = form.elements['email'].value.trim();
+                    const address = form.elements['address'].value.trim();
+                    const city = form.elements['city'].value.trim();
+                    const postcode = form.elements['postcode'].value.trim();
+                    const countrySelect = form.elements['country'];
+                    const countryText = countrySelect.options[countrySelect.selectedIndex]?.text || '';
+                    const phone = form.elements['phone'].value.trim();
+                    const message = form.elements['message'].value.trim();
+
+                    let initials = "MV";
+                    if (fullname) {
+                        let parts = fullname.split(' ');
+                        if (parts.length > 1) {
+                            initials = (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+                        } else {
+                            initials = parts[0].substring(0, Math.min(2, parts[0].length)).toUpperCase();
+                        }
+                    }
+
+                    document.getElementById('confirmPayInitials').innerText = initials;
+                    document.getElementById('confirmPayEmail').innerText = email;
+
+                    const addressString = [address, city, postcode, countryText].filter(Boolean).join(', ');
+                    document.getElementById('confirmPayAddress').innerText = `${fullname}, ${addressString} - ${phone}`;
+
+                    if (message) {
+                        document.getElementById('confirmPayMessage').innerText = `Optional Message - ${message}`;
+                    } else {
+                        document.getElementById('confirmPayMessage').innerText = '';
+                    }
+
+                    form.style.display = 'none';
+                    document.getElementById('confirmPayDisplay').style.display = 'flex';
                 } else {
                     // scroll to first error
                     const firstErr = document.querySelector('.input-wrap.error');
                     if (firstErr) firstErr.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 }
             });
+
+            const changeBtn = document.getElementById('confirmPayChangeBtn');
+            if (changeBtn) {
+                changeBtn.addEventListener('click', function () {
+                    document.getElementById('confirmPayDisplay').style.display = 'none';
+                    form.style.display = 'block';
+                });
+            }
 
             // reset visuals
             window.resetStates = function () {
