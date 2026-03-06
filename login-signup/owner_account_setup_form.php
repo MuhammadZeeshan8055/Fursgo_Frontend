@@ -1,4 +1,7 @@
-<?php include '../function_helper.php'; ?>
+<?php
+include '../function_helper.php';
+include '../components/birthday-calendar.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,6 +13,8 @@
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/bootstrap.css">
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/media_query.css">
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/login_signup.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/common.css">
+
     <style>
         :root {
             --owner-account-inside-padding: 2% 12%;
@@ -519,6 +524,23 @@
             opacity: 1;
             /* show */
         }
+
+        /* calendar border set */
+        .bc-trigger {
+            border: 1px solid var(--border) !important;
+        }
+
+        .bc-trigger.bc-open {
+            border-color: var(--border) !important;
+        }
+
+        .bc-trigger:hover {
+            border-color: var(--border) !important;
+        }
+
+        .bc-dropdown {
+            border-color: var(--border) !important;
+        }
     </style>
 </head>
 
@@ -842,12 +864,9 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-3 mt-lg-5">
-                                    <!-- Birth -->
                                     <div class="form-field mt-4">
-                                        <label>Birthday</label>
-                                        <div class="input-wrapper">
-                                            <input type="date" id="Birth">
-                                        </div>
+                                        <!-- Birth -->
+                                        <?php renderBirthdayCalendar('birthday'); ?>
                                     </div>
                                 </div>
                                 <div class="col-lg-5 mt-lg-5">
@@ -1384,7 +1403,9 @@
     <!-- footer starts -->
     <?php include '../components/footer.php' ?>
     <!-- footer starts -->
-
+    <?php
+    bcAssets();
+    ?>
     <script>
         // custom select dropdown js  
 

@@ -182,3 +182,21 @@ document.querySelectorAll('.tab-wrapper').forEach(wrapper => {
     // activate first tab
     if (buttons.length) activateTab(buttons[0].dataset.tab);
 });
+
+
+// show hide divs 
+// Reusable toggle function
+function toggleDisplay(triggerSelector, targetSelector) {
+    const trigger = document.querySelector(triggerSelector);
+    const target = document.querySelector(targetSelector);
+
+    if (!trigger || !target) return; // safety check
+
+    trigger.addEventListener('click', () => {
+        target.style.display = (target.style.display === 'block') ? 'none' : 'block';
+    });
+}
+
+// Usage
+// toggleDisplay('.sort-by', '.sort-by-filter');
+// toggleDisplay('.mark-notification-dots-svg', '.clear-read.dropdown');

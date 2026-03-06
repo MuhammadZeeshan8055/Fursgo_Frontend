@@ -80,9 +80,9 @@ function renderBirthdayCalendar(
             <div class="bc-view" id="bc-cal-<?= $uid ?>">
                 <div class="bc-hdr">
                     <button type="button" class="bc-nav bc-prev" aria-label="Previous month">
-                        <svg width="7" height="11" viewBox="0 0 7 11" fill="none">
-                            <path d="M6 1L1 5.5L6 10" stroke="#3B3731" stroke-width="1.5" stroke-linecap="round"
-                                stroke-linejoin="round" />
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <circle cx="10" cy="10" r="9.5" transform="matrix(-1 0 0 1 20 0)" stroke="#3B3731" stroke-opacity="0.25" />
+                            <path d="M11 6L6.93171 10.0683L10.9317 14.0683" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
                     </button>
                     <div class="bc-hdr-chips">
@@ -94,9 +94,9 @@ function renderBirthdayCalendar(
                         </button>
                     </div>
                     <button type="button" class="bc-nav bc-next" aria-label="Next month">
-                        <svg width="7" height="11" viewBox="0 0 7 11" fill="none">
-                            <path d="M1 1L6 5.5L1 10" stroke="#3B3731" stroke-width="1.5" stroke-linecap="round"
-                                stroke-linejoin="round" />
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <circle cx="10" cy="10" r="9.5" fill="#F5F5F5" stroke="#F5F5F5" />
+                            <path d="M9 6L13.0683 10.0683L9.06829 14.0683" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
                     </button>
                 </div>
@@ -262,7 +262,7 @@ function bcAssets(): void
             height: 28px;
             border-radius: 50%;
             border: none;
-            background: #F0EDE8;
+            background: none;
             cursor: pointer;
             flex-shrink: 0;
             display: flex;
@@ -316,15 +316,27 @@ function bcAssets(): void
         .bc-dow span {
             text-align: center;
             font-family: Lato, sans-serif;
-            font-size: 11px;
-            font-weight: 700;
+            font-size: 14px;
+            font-weight: 600;
             color: #9D9B98;
             padding-bottom: 5px;
         }
 
-        .bc-dow .bc-wknd {
-            color: #FFC97A;
+        span.bc-ml {
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 500;
         }
+
+        span.bc-yl {
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 500;
+        }
+
+        /* .bc-dow .bc-wknd {
+            color: #FFC97A;
+        } */
 
         /* ── Day grid ────────────────────────────────────────────────────────────── */
         .bc-grid {
@@ -340,8 +352,8 @@ function bcAssets(): void
             justify-content: center;
             border-radius: 50%;
             font-family: Lato, sans-serif;
-            font-size: 13px;
-            font-weight: 400;
+            font-size: 14px;
+            font-weight: 600;
             color: #3B3731;
             cursor: pointer;
             user-select: none;
@@ -359,8 +371,13 @@ function bcAssets(): void
             pointer-events: none;
         }
 
-        .bc-wkd:not(.bc-sel) {
+        /* .bc-wkd:not(.bc-sel) {
             color: #C9845A;
+        } */
+
+        span#bc-display-birthday_1 {
+            font-size: 16px;
+            font-weight: 400;
         }
 
         .bc-today:not(.bc-sel)::after {

@@ -12,6 +12,7 @@ $imagePath = BASE_URL . '/assets/images/card1.png';
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/responsive.css">
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/bootstrap.css">
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/media_query.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/common.css">
     <style>
         body {
             background: #FDFCF8;
@@ -2731,7 +2732,7 @@ line-height: 1.5;">
     </section>
 
     <?php include('../components/footer.php'); ?>
-    <?php include_once '../components/birthday-calendar.php';
+    <?php 
     bcAssets(); ?>
     <script src=" <?= BASE_URL ?>/assets/js/custom.js"></script>
     <script src=" <?= BASE_URL ?>/assets/js/custom-dropdown.js"></script>

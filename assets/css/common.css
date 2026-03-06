@@ -83,10 +83,21 @@
 }
 
 .normal-font-weight.active {
-    color: #3B3731;
+    color: #FFC97A;
     font-family: Lato;
     font-size: 16px;
     font-weight: 600;
+}
+
+.normal-font-weight-active-color {
+    color: #FFC97A;
+    font-family: Lato;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.muted-color {
+    color: #9D9B98 !important;
 }
 
 .normal-font-bold {
@@ -105,6 +116,13 @@
 
 .medium-light-font {
     color: #3B3731;
+    font-family: Lato;
+    font-size: 18px !important;
+    font-weight: 400 !important;
+}
+
+.medium-muted-font {
+    color: #9C9790;
     font-family: Lato;
     font-size: 18px !important;
     font-weight: 400 !important;
@@ -143,6 +161,17 @@
     font-family: Lato;
     font-size: 14px !important;
     font-weight: 600 !important;
+}
+
+.tags.active .dark-color-font {
+    color: #FFC97A;
+}
+
+.small-bolder-color-font {
+    color: var(--font-color);
+    font-family: Lato;
+    font-size: 14px;
+    font-weight: 700;
 }
 
 .simple-light-font {
@@ -256,6 +285,213 @@ nav ul a.active {
     text-decoration: none;
 }
 
+.notification-tags {
+    padding: 15px 15px 15px 15px;
+    gap: 4px;
+}
+
+.notification-content-tab,
+.messages-content-tab,
+.user-content-tab {
+    position: relative;
+}
+
+/* messages card notification */
+.chat-card {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.chat-card.unread {
+    background: #F8F8F8;
+}
+
+.chat-card.locked {
+    opacity: 0.4;
+}
+
+.chat-info {
+    width: 100%;
+}
+
+.profile-image-wrapper {
+    position: relative;
+}
+
+.top-left-svg {
+    position: absolute;
+    top: 0;
+}
+
+.rounded-image {
+    border-radius: 50px;
+    width: 56px;
+    height: 56px;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+}
+
+.rounded-image.large-size {
+    width: 67px;
+    height: 67px;
+}
+
+p.messages-count {
+    width: 22px;
+    height: 22px;
+    background: #FFC97A;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    color: #fff;
+}
+
+/* messages card notification */
+
+.header-notifications,
+.messages-notifications {
+    position: absolute;
+    width: 545px;
+    height: auto;
+    border-radius: 10px 0 10px 10px;
+    border: 1px solid #E2E2E2;
+    background: #FFF;
+    right: 0;
+    top: 45px;
+    z-index: 1001;
+    display: none;
+}
+
+.messages-notifications {
+    width: 500px;
+}
+
+/* user profile options  */
+.user-profile-options {
+    position: absolute;
+    width: 280px;
+    height: auto;
+    border-radius: 10px 0 10px 10px;
+    border: 1px solid #E2E2E2;
+    background: #FFF;
+    right: 0;
+    top: 45px;
+    z-index: 1001;
+    display: none;
+}
+
+.user-profile-image {
+    border-bottom: 1px solid #E2E2E2;
+    padding: 25px;
+}
+
+.profile-menu a {
+    padding: 15px 25px 15px 25px;
+}
+
+.logout-option{
+    border-top: 1px solid #E2E2E2;
+    padding: 0 25px 15px 25px;
+}
+
+.profile-item:hover {
+    background: rgba(255, 201, 122, 0.25);
+}
+
+/* user profile options  */
+
+
+.header-notifications-header {
+    border-bottom: 1px solid #E2E2E2;
+    padding: 25px;
+
+}
+
+.header-notifications-div,
+.messages-notifications-div {
+    padding: 0px 15px 0px 15px;
+    border-top: 1px solid #E2E2E2;
+
+}
+
+.header-notifications-list {
+    border-radius: 10px;
+    padding-right: 25px;
+}
+
+.header-notifications-list.booking-confirmed {
+    border: 1px solid #D8E8B7;
+    background: rgba(216, 232, 183, 0.20);
+}
+
+.header-notifications-list.booking-reminder {
+    border: 1px solid #FFC97A;
+    background: rgba(255, 201, 122, 0.20);
+}
+
+.header-notifications-list.booking-updated {
+    border: 1px solid #D8E8B7;
+    background: rgba(216, 232, 183, 0.20);
+}
+
+.header-notifications-list.payment-failed {
+    border: 1px solid #FFA899;
+    background: rgba(255, 168, 153, 0.20);
+}
+
+.view-all-mark-read {
+    border-top: 1px solid #E2E2E2;
+    padding: 25px;
+}
+
+.notification-tags .tags.active {
+    background: rgba(255, 201, 122, 0.20);
+    color: #FFC97A;
+}
+
+.notification-tags .tags {
+    border-radius: 96px;
+    background: #F8F8F8;
+    color: #FFC97A;
+    padding: 5px 8px;
+    text-align: center;
+    font-family: "Lato";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.notification-tags span.count.active {
+    background: #FFC97A;
+    color: #fff;
+}
+
+.notification-tags span.count {
+    padding: 10px;
+    background: #D4D4D4;
+    color: #fff;
+    width: 26px;
+    height: 26px;
+    aspect-ratio: 1 / 1;
+    border-radius: 27px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 5px;
+}
+
+
+.link-tag {
+    text-decoration-line: underline;
+    text-decoration-style: solid;
+    text-underline-offset: 4px;
+}
+
 /* Hamburger icon */
 .menu-toggle {
     display: none;
@@ -274,7 +510,7 @@ nav ul a.active {
     width: 100%;
 }
 
-label {
+.form-field label {
     display: block;
     color: #3B3731;
     font-family: Lato;
@@ -285,7 +521,7 @@ label {
     margin-bottom: 10px;
 }
 
-input {
+.form-field input {
     width: 100%;
     padding: 14px 44px 14px 14px;
     border-radius: 10px;
@@ -420,14 +656,14 @@ input::placeholder {
     margin-top: 15px;
 }
 
-.modal-footer-btn {
+/* .modal-footer-btn {
     padding: 8px 16px;
     border: none;
     background: #ffb26b;
     color: #fff;
     border-radius: 4px;
     cursor: pointer;
-}
+} */
 
 /* modal css  */
 
@@ -519,4 +755,16 @@ input::placeholder {
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+}
+
+.search-box {
+    position: relative;
+}
+
+.search-icon {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
 }

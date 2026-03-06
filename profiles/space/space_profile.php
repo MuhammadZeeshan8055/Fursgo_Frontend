@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/bootstrap.css">
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/media_query.css">
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/groomer_space_profile.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/common.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <style>
         .image-grid {
