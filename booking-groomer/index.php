@@ -1,3 +1,5 @@
+<!-- Booking Groomer -->
+
 <?php include '../function_helper.php';
 include_once __DIR__ . '/../components/birthday-calendar.php';
 $imagePath = BASE_URL . '/assets/images/card1.png';
