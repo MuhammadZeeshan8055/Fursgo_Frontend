@@ -247,45 +247,44 @@ document.addEventListener('DOMContentLoaded', function () {
     // groomerLocations for groomer map
     const groomerLocations = [
         {
-            loc_name: 'Sarah\'s Grooming Studio',
-            name: 'Sarah W.',
+            loc_name: "Sarah's Grooming Studio",
+            name: "Sarah W.",
             lat: 51.5033,
             lng: -0.1147,
-            image: 'http://localhost/fursgo/assets/images/card1.png', // Add groomer image
+            image: BASE_URL + 'assets/images/card1.png', // use BASE_URL
             distance: '2.5 mi',
             rating: '4.3',
             reviews: '20'
         },
         {
-            loc_name: 'Westminster Pet Spa',
-            name: 'Sarah W.',
+            loc_name: "Westminster Pet Spa",
+            name: "Sarah W.",
             lat: 51.4995,
             lng: -0.1248,
-            image: 'http://localhost/fursgo/assets/images/card2.png',
+            image: BASE_URL + 'assets/images/card2.png',
             distance: '3.1 mi',
             rating: '4.7',
             reviews: '45'
         },
         {
-            loc_name: 'Strand Grooming',
-            name: 'Sarah W.',
+            loc_name: "Strand Grooming",
+            name: "Sarah W.",
             lat: 51.511227,
             lng: -0.119470,
-            image: 'http://localhost/fursgo/assets/images/card3.png',
+            image: BASE_URL + 'assets/images/card3.png',
             distance: '1.8 mi',
             rating: '4.5',
             reviews: '32'
         }
     ];
 
-    // Locations for groomer map
     const spaceLocations = [
         {
             loc_name: 'Furs & Co. Studio',
             name: 'Dev É',
             lat: 51.5074,
             lng: -0.1657,
-            image: 'http://localhost/fursgo/assets/images/space_card3.png', // Add groomer image
+            image: BASE_URL + 'assets/images/space_card3.png',
             distance: '2.5 mi',
             rating: '4.3',
             reviews: '20'
@@ -295,22 +294,23 @@ document.addEventListener('DOMContentLoaded', function () {
             name: 'Kensington Gardens',
             lat: 51.5074,
             lng: -0.1850,
-            image: 'http://localhost/fursgo/assets/images/space_card1.png',
+            image: BASE_URL + 'assets/images/space_card1.png',
             distance: '3.1 mi',
             rating: '4.7',
             reviews: '45'
         },
         {
-            loc_name: 'Regent\'s Park',
-            name: 'Regent\'s Park',
+            loc_name: "Regent's Park",
+            name: "Regent's Park",
             lat: 51.5313,
             lng: -0.1568,
-            image: 'http://localhost/fursgo/assets/images/space_card2.png',
+            image: BASE_URL + 'assets/images/space_card2.png',
             distance: '1.8 mi',
             rating: '4.5',
             reviews: '32'
         }
     ];
+
 
     // Small location SVG
     const locationSVG = `
@@ -986,218 +986,232 @@ document.querySelectorAll('.service-type-select .custom-select').forEach(select 
 
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.scroll-calendar').forEach(calendar => {
-        // ---------- state ----------
-        let selectedDate = new Date();
+        // ---------- Elements ----------
+        const weekContainer = calendar.querySelector('.week-container');
         const weekEl = calendar.querySelector('.week');
         const rangeEl = calendar.querySelector('.range');
         const monthEl = calendar.querySelector('.month');
         const prev = calendar.querySelector('.prev');
         const next = calendar.querySelector('.next');
+        const centerIndicator = calendar.querySelector('.center-indicator');
 
-        weekEl.tabIndex = 0;
-        weekEl.setAttribute('role', 'list');
+        // ---------- State ----------
+        let selectedDate = new Date();
+        let isDragging = false;
+        let startX = 0;
+        let currentTranslate = 0;
+        let previousTranslate = 0;
+        let velocityX = 0;
+        let lastMoveTime = 0;
+        let lastMoveX = 0;
+        let hasMoved = false;
 
+        // How many tiles to render (odd number so selected is exactly centered)
+        const RENDER_COUNT = 21; // 10 days on each side; changeable
+        const CENTER_INDEX = Math.floor(RENDER_COUNT / 2);
+
+        // ---------- Helper Functions ----------
         const addDays = (d, n) => new Date(d.getFullYear(), d.getMonth(), d.getDate() + n);
         const monday = d => addDays(d, -((d.getDay() + 6) % 7));
         const pad = n => String(n).padStart(2, '0');
 
-        let DAY_WIDTH = 0;
-        let isDragging = false;
-        let startX = 0;
-        let dragOffset = 0;
-        let movedSinceDown = false;
-        const posHistory = [];
-        const POS_HISTORY_MS = 120;
-
-        function computeDayWidth() {
+        function getDayWidth() {
             const children = Array.from(weekEl.children);
             if (children.length >= 2) {
                 const r0 = children[0].getBoundingClientRect();
                 const r1 = children[1].getBoundingClientRect();
-                DAY_WIDTH = Math.round(r1.left - r0.left) || Math.round(children[0].offsetWidth);
-            } else {
-                DAY_WIDTH = 60;
+                return r1.left - r0.left;
             }
+            // fallback estimate based on container
+            return (weekContainer.clientWidth / 7) || 100;
         }
 
-        function applyTransform(offsetPx, withTransition = false) {
-            Array.from(weekEl.children).forEach(child => {
-                child.style.transition = withTransition ? 'transform 240ms cubic-bezier(.22,.9,.25,1)' : 'none';
-                child.style.transform = `translateX(${offsetPx}px)`;
-            });
+        function computeCenterTranslate(dayWidth) {
+            // translate so that the center tile is positioned at container center
+            const containerWidth = weekContainer.clientWidth;
+            const centerTranslate = -dayWidth * CENTER_INDEX + (containerWidth - dayWidth) / 2;
+            return centerTranslate;
         }
 
-        function pushPos(x) {
-            const now = performance.now();
-            posHistory.push({ x, t: now });
-            while (posHistory.length && now - posHistory[0].t > POS_HISTORY_MS) posHistory.shift();
-        }
+        function render(skipTransition = false) {
+            if (skipTransition) weekEl.classList.add('no-transition');
+            else weekEl.classList.remove('no-transition');
 
-        function calcVelocityPxPerMs() {
-            if (posHistory.length < 2) return 0;
-            const first = posHistory[0];
-            const last = posHistory[posHistory.length - 1];
-            const dt = last.t - first.t;
-            if (dt <= 0) return 0;
-            return (last.x - first.x) / dt;
-        }
-
-        function consumeWholeDaysIfNeeded() {
-            if (DAY_WIDTH <= 5) return;
-            if (dragOffset <= -DAY_WIDTH || dragOffset >= DAY_WIDTH) {
-                if (dragOffset <= -DAY_WIDTH) {
-                    const n = Math.floor((-dragOffset) / DAY_WIDTH);
-                    selectedDate = addDays(selectedDate, n);
-                    startX += n * DAY_WIDTH * -1;
-                    dragOffset += n * DAY_WIDTH;
-                    render();
-                    computeDayWidth();
-                } else {
-                    const n = Math.floor(dragOffset / DAY_WIDTH);
-                    selectedDate = addDays(selectedDate, -n);
-                    startX += n * DAY_WIDTH;
-                    dragOffset -= n * DAY_WIDTH;
-                    render();
-                    computeDayWidth();
-                }
-                applyTransform(dragOffset, false);
-            }
-        }
-
-        function render() {
             weekEl.innerHTML = '';
-            const start = monday(selectedDate);
-            rangeEl.textContent = `${pad(start.getDate())} - ${pad(addDays(start, 6).getDate())} ${start.toLocaleString(undefined, { month: 'long' })}`;
+
+            // centerDate is the selected date
+            const startDate = addDays(selectedDate, -CENTER_INDEX);
+
+            // Update range: show the 7 visible days centered around selectedDate
+            // (3 days before → selected → 3 days after = 7 tiles visible)
+            const visibleStart = addDays(selectedDate, -3);
+            const visibleEnd   = addDays(selectedDate,  3);
+            const startMonth   = visibleStart.toLocaleString(undefined, { month: 'long' });
+            const endMonth     = visibleEnd.toLocaleString(undefined,   { month: 'long' });
+            const rangeMonth   = startMonth === endMonth
+                ? startMonth
+                : `${startMonth} / ${endMonth}`;
+            rangeEl.textContent = `${pad(visibleStart.getDate())} - ${pad(visibleEnd.getDate())} ${rangeMonth}`;
             monthEl.textContent = selectedDate.toLocaleString(undefined, { month: 'long', year: 'numeric' });
 
-            for (let i = 0; i < 7; i++) {
-                const d = addDays(start, i);
+            // Render RENDER_COUNT days centered around selectedDate
+            for (let i = 0; i < RENDER_COUNT; i++) {
+                const d = addDays(startDate, i);
+                const isActive = d.toDateString() === selectedDate.toDateString();
                 const day = document.createElement('div');
                 day.className = 'week-days';
-                day.setAttribute('role', 'listitem');
                 day.innerHTML = `
-                    <div class="dow${d.toDateString() === selectedDate.toDateString() ? ' active' : ''}">
+                    <div class="dow${isActive ? ' active' : ''}">
                         ${d.toLocaleString(undefined, { weekday: 'short' })}
                     </div>
-                    <div class="date${d.toDateString() === selectedDate.toDateString() ? ' active' : ''}">
+                    <div class="date${isActive ? ' active' : ''}">
                         ${pad(d.getDate())}
                     </div>
                 `;
-                day.onclick = () => { selectedDate = d; render(); };
+                day.onclick = (e) => {
+                    // only select if it wasn't a drag motion
+                    if (!hasMoved) {
+                        selectedDate = d;
+                        render(false);
+                    }
+                };
                 weekEl.appendChild(day);
             }
 
-            Array.from(weekEl.children).forEach(c => {
-                c.style.transition = '';
-                c.style.transform = '';
+            // Force layout to measure
+            requestAnimationFrame(() => {
+                const dayWidth = getDayWidth();
+                // compute translate that centers the middle tile
+                const centerTranslate = computeCenterTranslate(dayWidth);
+
+                // set transforms
+                previousTranslate = centerTranslate;
+                currentTranslate = centerTranslate;
+                setTranslate(centerTranslate);
+
+                // remove no-transition after a short delay if skipTransition was true
+                if (skipTransition) {
+                    setTimeout(() => weekEl.classList.remove('no-transition'), 20);
+                }
             });
         }
 
-        // ---------- navigation ----------
-        if (prev) prev.onclick = () => { selectedDate = addDays(selectedDate, -7); render(); };
-        if (next) next.onclick = () => { selectedDate = addDays(selectedDate, 7); render(); };
-
-        // ---------- dragging ----------
-        function getClientXFromEvent(ev) {
-            if (ev.touches && ev.touches[0]) return ev.touches[0].clientX;
-            if (ev.changedTouches && ev.changedTouches[0]) return ev.changedTouches[0].clientX;
-            return ev.clientX;
+        function setTranslate(position) {
+            weekEl.style.transform = `translateX(${position}px)`;
         }
 
-        function onDown(e) {
-            if (e.type === 'mousedown' && e.button !== 0) return;
-            e.preventDefault();
+        // ---------- Drag handling ----------
+        function dragStart(e) {
             isDragging = true;
-            movedSinceDown = false;
-            startX = getClientXFromEvent(e);
-            dragOffset = 0;
-            posHistory.length = 0;
-            pushPos(startX);
-            computeDayWidth();
-            weekEl.style.userSelect = 'none';
-            weekEl.style.cursor = 'grabbing';
+            hasMoved = false;
+            weekContainer.classList.add('dragging');
+
+            startX = e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
+            velocityX = 0;
+            lastMoveTime = Date.now();
+            lastMoveX = startX;
+
+            weekEl.classList.add('no-transition');
         }
 
-        function onMove(e) {
+        function drag(e) {
             if (!isDragging) return;
-            const x = getClientXFromEvent(e);
-            const diff = x - startX;
-            if (Math.abs(diff) > 3) movedSinceDown = true;
-            dragOffset = diff;
-            pushPos(x);
-            applyTransform(dragOffset, false);
-            consumeWholeDaysIfNeeded();
+            e.preventDefault();
+
+            const currentX = e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
+            const diff = currentX - startX;
+
+            if (Math.abs(diff) > 5) hasMoved = true;
+
+            currentTranslate = previousTranslate + diff;
+
+            // velocity
+            const now = Date.now();
+            const dt = now - lastMoveTime;
+            if (dt > 0) {
+                velocityX = (currentX - lastMoveX) / dt;
+                lastMoveTime = now;
+                lastMoveX = currentX;
+            }
+
+            setTranslate(currentTranslate);
         }
 
-        function onUp(e) {
+        function dragEnd() {
             if (!isDragging) return;
             isDragging = false;
-            weekEl.style.userSelect = '';
-            weekEl.style.cursor = 'grab';
+            weekContainer.classList.remove('dragging');
+            weekEl.classList.remove('no-transition');
 
-            const vel = calcVelocityPxPerMs();
-            const velPxPerSec = vel * 1000;
+            const dayWidth = getDayWidth();
 
-            if (DAY_WIDTH <= 5) {
-                applyTransform(0, true);
-                setTimeout(render, 200);
-                return;
+            // apply momentum (scale velocity for nicer feel)
+            const momentum = velocityX * 200; // tweak scalar if desired
+            let finalTranslate = currentTranslate + momentum;
+
+            // compute how many whole day-widths moved relative to previousTranslate
+            const movedDays = Math.round((previousTranslate - finalTranslate) / dayWidth);
+
+            if (movedDays !== 0) {
+                selectedDate = addDays(selectedDate, movedDays);
+                // render will compute new center and animate into place
+                render(false);
+            } else {
+                // snap back to center (no date change)
+                setTranslate(previousTranslate);
             }
 
-            let finalDays = 0;
-            if (dragOffset < 0) {
-                const base = Math.round((-dragOffset) / DAY_WIDTH);
-                const extra = Math.round((Math.max(0, -velPxPerSec) / DAY_WIDTH) * 0.18);
-                finalDays = base + extra;
-                if (finalDays === 0 && movedSinceDown) finalDays = 1;
-                selectedDate = addDays(selectedDate, finalDays);
-            } else if (dragOffset > 0) {
-                const base = Math.round(dragOffset / DAY_WIDTH);
-                const extra = Math.round((Math.max(0, velPxPerSec) / DAY_WIDTH) * 0.18);
-                finalDays = base + extra;
-                if (finalDays === 0 && movedSinceDown) finalDays = 1;
-                selectedDate = addDays(selectedDate, -finalDays);
+            // reset velocities
+            velocityX = 0;
+            hasMoved = false;
+        }
+
+        // ---------- Event listeners ----------
+        // Mouse
+        weekContainer.addEventListener('mousedown', dragStart);
+        window.addEventListener('mousemove', drag);
+        window.addEventListener('mouseup', dragEnd);
+
+        // Touch
+        weekContainer.addEventListener('touchstart', dragStart, { passive: true });
+        weekContainer.addEventListener('touchmove', drag, { passive: false });
+        weekContainer.addEventListener('touchend', dragEnd);
+
+        // Buttons: move one day left/right
+        if (prev) prev.onclick = () => {
+            selectedDate = addDays(selectedDate, -1);
+            render(false);
+        };
+        if (next) next.onclick = () => {
+            selectedDate = addDays(selectedDate, 1);
+            render(false);
+        };
+
+        // keyboard navigation (container needs tabindex)
+        weekContainer.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') {
+                e.preventDefault();
+                selectedDate = addDays(selectedDate, -1);
+                render(false);
+            } else if (e.key === 'ArrowRight') {
+                e.preventDefault();
+                selectedDate = addDays(selectedDate, 1);
+                render(false);
             }
-
-            applyTransform(0, true);
-
-            const onTransitionEnd = () => {
-                Array.from(weekEl.children).forEach(c => { c.style.transition = ''; c.style.transform = ''; });
-                render();
-                const first = weekEl.firstChild;
-                if (first) first.removeEventListener('transitionend', onTransitionEnd);
-            };
-            if (weekEl.firstChild) weekEl.firstChild.addEventListener('transitionend', onTransitionEnd);
-            else setTimeout(render, 220);
-        }
-
-        const supportsPointer = !!window.PointerEvent;
-        if (supportsPointer) {
-            weekEl.addEventListener('pointerdown', onDown, { passive: false });
-            document.addEventListener('pointermove', onMove);
-            document.addEventListener('pointerup', onUp);
-            weekEl.addEventListener('pointercancel', onUp);
-        } else {
-            weekEl.addEventListener('mousedown', onDown, { passive: false });
-            document.addEventListener('mousemove', onMove);
-            document.addEventListener('mouseup', onUp);
-            weekEl.addEventListener('touchstart', onDown, { passive: false });
-            weekEl.addEventListener('touchmove', onMove, { passive: false });
-            weekEl.addEventListener('touchend', onUp);
-            weekEl.addEventListener('touchcancel', onUp);
-        }
-
-        // ---------- keyboard support ----------
-        weekEl.addEventListener('keydown', ev => {
-            if (ev.key === 'ArrowLeft') { selectedDate = addDays(selectedDate, -1); render(); ev.preventDefault(); }
-            else if (ev.key === 'ArrowRight') { selectedDate = addDays(selectedDate, 1); render(); ev.preventDefault(); }
-            else if (ev.key === 'PageUp') { selectedDate = addDays(selectedDate, -7); render(); ev.preventDefault(); }
-            else if (ev.key === 'PageDown') { selectedDate = addDays(selectedDate, 7); render(); ev.preventDefault(); }
         });
 
-        // ---------- init ----------
+        // handle resize so center remains accurate
+        window.addEventListener('resize', () => {
+            // recompute center translate after resize
+            requestAnimationFrame(() => {
+                const dayWidth = getDayWidth();
+                previousTranslate = computeCenterTranslate(dayWidth);
+                setTranslate(previousTranslate);
+            });
+        });
+
+        // ---------- Initialize ----------
         render();
-        requestAnimationFrame(() => computeDayWidth());
     });
 });
 
