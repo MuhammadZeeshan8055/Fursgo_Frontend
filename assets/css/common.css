@@ -68,11 +68,27 @@
     line-height: 60px;
 }
 
+.large-font-bold {
+    color: #3B3731;
+    font-family: "Playfair Display";
+    font-size: 28px;
+    font-style: italic;
+    font-weight: 900;
+}
+
+
 .medium-font {
     color: #3B3731;
     font-family: Lato;
     font-size: 20px;
     font-weight: 600;
+}
+
+.medium-font-m-bold {
+    color: #000;
+    font-family: Lato;
+    font-size: 20px;
+    font-weight: 500;
 }
 
 .normal-font-weight {
@@ -99,6 +115,16 @@
 .muted-color {
     color: #9D9B98 !important;
 }
+
+.font-color {
+    color: var(--font-color) !important;
+}
+
+.line-default {
+    line-height: normal !important;
+}
+
+
 
 .normal-font-bold {
     color: #3B3731;
@@ -393,7 +419,7 @@ p.messages-count {
     padding: 15px 25px 15px 25px;
 }
 
-.logout-option{
+.logout-option {
     border-top: 1px solid #E2E2E2;
     padding: 0 25px 15px 25px;
 }
@@ -535,6 +561,20 @@ p.messages-count {
     line-height: normal;
 }
 
+.search-box input {
+    width: 100%;
+    padding: 14px 44px 14px 14px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    outline: none;
+    color: #3B3731;
+    font-family: Lato;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
 .icon {
     position: absolute;
     right: 12px;
@@ -632,7 +672,7 @@ input::placeholder {
     background: rgba(59, 55, 49, 0.10);
     justify-content: center;
     align-items: center;
-    z-index: 999;
+    z-index: 1001;
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(2px);
     overflow-y: auto;
@@ -767,4 +807,33 @@ input::placeholder {
     top: 50%;
     transform: translateY(-50%);
     font-size: 18px;
+}
+
+/* avatar badge */
+.avatar-wrap {
+    position: relative;
+    flex: 0 0 auto
+}
+
+.avatar {
+    width: 83px;
+    height: 83px;
+    aspect-ratio: 1/1;
+    border-radius: 999px;
+    object-fit: cover;
+    display: block;
+}
+
+.badge-shield {
+    position: absolute;
+    left: -3px;
+    top: 3px;
+    background: var(--white);
+    color: #fff;
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

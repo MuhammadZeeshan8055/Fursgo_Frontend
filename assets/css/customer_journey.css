@@ -1431,10 +1431,6 @@ button.load-more {
 }
 
 /* Dropdown container */
-.venu.dropdown,
-.sort.dropdown {
-    width: 250px;
-}
 
 /* Options list */
 .venu.dropdown ul,
@@ -1488,12 +1484,16 @@ input[type="checkbox"] {
 
 /* Inner dot (hidden by default) */
 .check-circle::after {
-    content: '';
+    content: "";
     width: 15px;
     height: 15px;
     background-color: var(--groomer-color);
     border-radius: 50%;
     display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 /* Show dot when checked */
@@ -1503,9 +1503,9 @@ input[type="checkbox"]:checked+.check-circle::after {
 
 /* Option text */
 .option-text {
-    color: #9D9B98;
+    color: #3B3731;
     font-family: Lato;
-    font-size: 18px;
+    font-size: 14px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
@@ -1516,6 +1516,8 @@ label {
     cursor: pointer;
     display: flex !important;
     align-items: center;
+    width: 100%;
+    justify-content: space-between;
 }
 
 .tooltip {

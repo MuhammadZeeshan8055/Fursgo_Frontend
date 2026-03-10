@@ -161,11 +161,15 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
 
 document.querySelectorAll('.tab-wrapper').forEach(wrapper => {
     const buttons = wrapper.querySelectorAll('.tablinks');
-    const contents = wrapper.querySelectorAll('.tabcontent');
+    const contents = document.querySelectorAll('.tabcontent');
 
     function activateTab(tabName) {
         contents.forEach(c => {
-            c.style.display = c.dataset.tabContent === tabName ? 'flex' : 'none';
+            if (c.dataset.tabContent === tabName) {
+                c.style.display = c.dataset.display || 'flex';
+            } else {
+                c.style.display = 'none';
+            }
         });
 
         buttons.forEach(b => {
@@ -179,8 +183,13 @@ document.querySelectorAll('.tab-wrapper').forEach(wrapper => {
         });
     });
 
-    // activate first tab
-    if (buttons.length) activateTab(buttons[0].dataset.tab);
+    // activate the button that already has 'active', otherwise first button
+    const activeBtn = wrapper.querySelector('.tablinks.active');
+    if (activeBtn) {
+        activateTab(activeBtn.dataset.tab);
+    } else if (buttons.length) {
+        activateTab(buttons[0].dataset.tab);
+    }
 });
 
 
