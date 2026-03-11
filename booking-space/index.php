@@ -539,25 +539,41 @@ $imagePath = BASE_URL . '/assets/images/booking-space-card-image.svg';
         /* ── Pet Card ── */
         .pet-card {
             background: #F8F8F8;
-            border-radius: 14px;
-            padding: 18px 22px;
+            border-radius: 12px;
+            padding: 20px 24px;
             display: flex;
             align-items: center;
-            gap: 18px;
+            gap: 1rem;
             cursor: pointer;
-            border: 2px solid transparent;
-            transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+            border: 1px solid transparent;
+            transition: all 0.2s;
+            position: relative;
+        }
+
+        .pet-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(248, 248, 248, 0.6);
+            border-radius: 12px;
+            opacity: 0.5;
+            pointer-events: none;
+            transition: opacity 0.2s;
+        }
+
+        .pet-card.selected::after {
+            opacity: 0;
         }
 
         .pet-card:hover {
-            background: #fff;
-            box-shadow: 0 4px 14px rgba(59, 55, 49, 0.06);
+            box-shadow: 0 4px 14px rgba(59, 55, 49, 0.04);
         }
 
         .pet-card.selected {
-            border-color: #C9DDA0;
-            background: #fff;
-            box-shadow: 0 4px 14px rgba(201, 221, 160, 0.18);
+            background: #F8F8F8;
         }
 
         /* ── Radio Dot ── */
@@ -565,24 +581,24 @@ $imagePath = BASE_URL . '/assets/images/booking-space-card-image.svg';
             width: 22px;
             height: 22px;
             border-radius: 50%;
-            border: 2px solid #D0CEC9;
+            border: 1px solid #D0CEC9;
+            background: #fff;
             flex-shrink: 0;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: border-color 0.2s, background 0.2s;
+            transition: border-color 0.2s;
         }
 
         .pet-card.selected .pet-radio {
             border-color: #FFC97A;
-            background: #FFC97A;
         }
 
         .pet-radio-inner {
-            width: 8px;
-            height: 8px;
+            width: 14px;
+            height: 14px;
             border-radius: 50%;
-            background: #fff;
+            background: #FFC97A;
             opacity: 0;
             transition: opacity 0.2s;
         }
@@ -593,8 +609,8 @@ $imagePath = BASE_URL . '/assets/images/booking-space-card-image.svg';
 
         /* ── Avatar ── */
         .pet-avatar {
-            width: 64px;
-            height: 64px;
+            width: 76px;
+            height: 76px;
             border-radius: 50%;
             overflow: hidden;
             flex-shrink: 0;
@@ -614,50 +630,38 @@ $imagePath = BASE_URL . '/assets/images/booking-space-card-image.svg';
         /* ── Info Grid ── */
         .pet-info-grid {
             flex: 1;
-            display: flex;
+            display: grid;
+            grid-template-columns: 2fr 1fr 0.8fr 2fr;
             align-items: center;
-            gap: 28px;
-            flex-wrap: wrap;
-        }
-
-        .pet-info-primary .pet-name {
-            color: #3B3731;
-            font-family: Lato, sans-serif;
-            font-size: 15px;
-            font-weight: 700;
-            margin: 0 0 3px;
-        }
-
-        .pet-info-primary .pet-breed {
-            color: #9D9B98;
-            font-family: Lato, sans-serif;
-            font-size: 13px;
-            font-weight: 400;
-            margin: 0;
+            gap: 20px;
         }
 
         .pet-field {
             display: flex;
             flex-direction: column;
-            gap: 2px;
-            min-width: 80px;
+            gap: 6px;
         }
 
         .pet-field-label {
             display: flex;
             align-items: center;
-            gap: 4px;
+            gap: 6px;
             color: #9D9B98;
             font-family: Lato, sans-serif;
-            font-size: 12px;
-            font-weight: 600;
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        .pet-field-label svg {
+            width: 15px;
+            height: 15px;
         }
 
         .pet-field-value {
             color: #3B3731;
             font-family: Lato, sans-serif;
-            font-size: 13px;
-            font-weight: 400;
+            font-size: 16px;
+            font-weight: 500;
             margin: 0;
         }
 
@@ -670,6 +674,8 @@ $imagePath = BASE_URL . '/assets/images/booking-space-card-image.svg';
 
         /* ── Edit Button ── */
         .pet-edit-btn {
+            visibility: hidden;
+            opacity: 0;
             background: #EAE8E5;
             border: none;
             border-radius: 100px;
@@ -681,7 +687,12 @@ $imagePath = BASE_URL . '/assets/images/booking-space-card-image.svg';
             cursor: pointer;
             white-space: nowrap;
             flex-shrink: 0;
-            transition: background 0.2s;
+            transition: background 0.2s, opacity 0.2s, visibility 0.2s;
+        }
+
+        .pet-card.selected .pet-edit-btn {
+            visibility: visible;
+            opacity: 1;
         }
 
         .pet-edit-btn:hover {
@@ -712,6 +723,7 @@ $imagePath = BASE_URL . '/assets/images/booking-space-card-image.svg';
             font-weight: 600;
             line-height: normal;
             transition: opacity 0.2s;
+            cursor: pointer;
         }
 
         .pet-save-btn:disabled {
@@ -743,7 +755,705 @@ $imagePath = BASE_URL . '/assets/images/booking-space-card-image.svg';
             text-underline-position: from-font;
             background: transparent;
             border: none;
+            cursor: pointer;
         }
+
+        /* Pet Details Display Styles */
+        .pet-details-display {
+            display: none;
+            margin-top: 30px;
+            padding: 30px;
+            border-radius: 10px;
+            border-radius: 10px;
+            background: #F8F8F8;
+            border: none;
+        }
+
+        .pet-details-display.active {
+            display: flex;
+            align-items: center;
+            justify-content: space-between
+        }
+
+        .pet-details-display h2 {
+            color: #3B3731;
+            font-family: "Playfair Display";
+            font-size: 24px;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        .pet-details-display-content {
+            display: flex;
+            gap: 4rem;
+        }
+
+        .pet-detail-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .pet-detail-item label {
+            display: flex;
+            align-items: center;
+            color: #9D9B98;
+            font-family: Lato;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            gap: 5px
+        }
+
+        .pet-detail-item span {
+            color: #3B3731;
+            font-family: Lato;
+            font-size: 16px;
+            font-weight: 400;
+        }
+
+        .pet-detail-item.full-width {
+            grid-column: span 2;
+        }
+
+        .pet-display-action-btns {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+            justify-content: flex-end;
+        }
+
+        .pet-display-action-btns button {
+            width: 67px;
+            height: 32px;
+            border-radius: 100px;
+            background: #EAE8E5;
+            border: none;
+            cursor: pointer;
+            color: #3B3731;
+            text-align: center;
+            font-family: Lato;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+        }
+
+
+        .pet-details-form.hidden {
+            display: none;
+        }
+
+        .pet-photo-preview {
+            position: relative;
+            width: 85px;
+            height: 85px;
+            border-radius: 50%;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .pet-photo-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .pet-photo-col-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .pet-photo-action-btns {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex: 1;
+        }
+
+        .pet-photo-edit-btn {
+            background-color: transparent;
+            color: #3B3731;
+            border: 1px solid #D4D4D4;
+            height: 48px;
+            padding: 0 20px;
+            border-radius: 96px;
+            cursor: pointer;
+            font-family: Lato;
+            font-size: 14px;
+            font-weight: 600;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .pet-photo-save-btn {
+            background-color: transparent;
+            border: 1px solid #FFC97A;
+            color: #FFC97A;
+            height: 48px;
+            padding: 0 20px;
+            border-radius: 96px;
+            cursor: pointer;
+            font-family: Lato;
+            font-size: 14px;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .pet-photo-edit-btn,
+        .pet-photo-save-btn {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 96px;
+            cursor: pointer;
+            font-family: Lato;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .pet-photo-edit-btn {
+            background-color: transparent;
+            color: #3B3731;
+            border: 1px solid #D4D4D4;
+            width: 139px;
+            height: 48px;
+
+        }
+
+        .pet-photo-edit-btn:hover {
+            background-color: #E8E7E6;
+            border-color: #C0BFBE;
+        }
+
+        .pet-photo-save-btn {
+            background-color: transparent;
+            border: 1px solid #FFC97A;
+            color: #FFC97A;
+            width: 120px;
+            height: 48px;
+        }
+
+        .pet-photo-save-btn:hover {
+            background-color: #FFB85C;
+            color: #FFF;
+        }
+
+        .dot {
+            width: 6px;
+            height: 6px;
+            background-color: #3B3731;
+            border-radius: 50%;
+            display: inline-block;
+            margin: 0 4px;
+        }
+
+        .confirm-pay {
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        .confirm-pay form {
+            width: 100%;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px 24px;
+            align-items: start;
+        }
+
+        .full-row {
+            grid-column: 1 / -1;
+        }
+
+
+        .form-grid>div>label {
+            color: #3B3731;
+            font-family: Lato;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+        }
+
+        .form-grid>div>label>span {
+            color: #9D9B98;
+            font-family: Lato;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+        }
+
+        .input-wrap {
+            position: relative;
+            margin: 8px 0;
+        }
+
+        .input-wrap>input,
+        .input-wrap>select {
+            border-radius: 10px !important;
+            border: 1px solid #D4D4D4 !important;
+            background: #FFF !important;
+        }
+
+        .input-wrap input[type="text"],
+        .input-wrap input[type="tel"],
+        .input-wrap input[type="email"],
+        .input-wrap select,
+        .input-wrap textarea {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 12px 44px 12px 14px;
+            border-radius: 8px;
+            border: 1px solid #eee6dd;
+            background: #FFF;
+            font-size: 14px;
+            outline: none;
+            transition: border-color .15s, box-shadow .12s;
+        }
+
+        .input-wrap select {
+            -webkit-appearance: none;
+            appearance: none;
+            padding-right: 44px;
+            background-image: none;
+            cursor: pointer;
+        }
+
+        .input-wrap.select-wrap {
+            position: relative;
+        }
+
+
+        .input-wrap.select-wrap.open::after {
+            transform: translateY(-50%) rotate(180deg);
+        }
+
+
+
+        .input-wrap select {
+            -webkit-appearance: none;
+            appearance: none;
+            padding-right: 44px;
+            background-color: #FFF;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="15" height="8" viewBox="0 0 15 8" fill="none"><path d="M13.5105 0.5L6.95017 7.06033L0.499971 0.610127" stroke="%233B3731" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 14px center;
+            background-size: 15px 8px;
+            cursor: pointer;
+        }
+
+        .input-wrap textarea {
+            min-height: 38px;
+            resize: vertical;
+        }
+
+        .input-wrap input:focus,
+        .input-wrap select:focus,
+        .input-wrap textarea:focus {
+            border-color: #e6dccd;
+            box-shadow: 0 0 0 3px rgba(201, 221, 160, 0.12);
+        }
+
+
+
+
+        /* window.__autogenerated_css_start__ */
+        .pet-details-form {
+            margin-top: 30px;
+        }
+
+        .pet-details-form>div>h2 {
+            color: #3B3731;
+            font-family: "Playfair Display";
+            font-size: 28px;
+            font-style: normal;
+            font-weight: 800;
+            line-height: normal;
+        }
+
+        .pet-details-form>div:nth-child(2) {
+            margin-top: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: start;
+            gap: 40px;
+        }
+
+        .pet-details-form>div>button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+            width: 189px;
+            height: 48px;
+            border-radius: 96px;
+            border: 1px solid #3B3731;
+            background: transparent;
+            cursor: pointer;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-top: 2rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            /* ADDED: for pseudo icon and opener button */
+        }
+
+        .form-group .input-check-icon {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            pointer-events: none;
+            display: none;
+            line-height: 0;
+            z-index: 5;
+        }
+
+        .form-group .input-check-icon.visible {
+            display: block;
+        }
+
+        .form-group label {
+            margin-bottom: 15px;
+            color: #3B3731;
+            font-family: Lato;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+        }
+
+        .form-group label>span {
+            color: #9D9B98;
+            font-family: Lato;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group option {
+            padding: 8px 10px;
+            font-size: 14px;
+            border-radius: 10px;
+            border: 1px solid #D4D4D4;
+            background: #FFF;
+            color: #3B3731;
+            font-family: Lato;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+            height: 48px;
+        }
+
+        .form-group select {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            padding-right: 40px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="15" height="8" viewBox="0 0 15 8" fill="none"><path d="M13.5105 0.5L6.95017 7.06033L0.499971 0.610127" stroke="%233B3731" stroke-linecap="round" stroke-linejoin="round"/></svg>') !important;
+            background-repeat: no-repeat !important;
+            background-position: right 14px center;
+            background-size: 15px 8px;
+            cursor: pointer;
+        }
+
+        .form-group input[type="number"] {
+            width: 85px;
+            height: 48px;
+        }
+
+        .form-group textarea {
+            padding: 8px 10px;
+            border-radius: 10px;
+            border: 1px solid #D4D4D4;
+            background: #FFF;
+            color: #D4D4D4;
+            font-family: Lato;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+        }
+
+        /* REPLACE the entire rule for the date input with this */
+        .form-group input[type="date"] {
+            -webkit-appearance: none;
+            -moz-appearance: textfield;
+            appearance: none;
+
+            padding: 8px 44px 8px 10px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 10px 10px 0 0;
+            border: 1px solid #D4D4D4;
+
+            /* keep color separate so it doesn't override background-image */
+            background-color: #FFF;
+            color: #3B3731;
+
+            /* SVG arrow (note: # must be encoded as %23) */
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="15" height="8" viewBox="0 0 15 8" fill="none"><path d="M13.5105 0.5L6.95017 7.06033L0.499971 0.610127" stroke="%233B3731" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 14px center;
+            /* 14px from right + vertically centered */
+            background-size: 15px 8px;
+
+            height: 48px;
+            box-sizing: border-box;
+            outline: none;
+        }
+
+        /* Hide native calendar picker in WebKit (Chrome/Safari) */
+        .form-group input[type="date"]::-webkit-calendar-picker-indicator {
+            display: none;
+        }
+
+        /* hide inner clear/spin controls if present */
+        .form-group input[type="date"]::-webkit-clear-button,
+        .form-group input[type="date"]::-webkit-inner-spin-button {
+            display: none;
+        }
+
+        /* Firefox tweaks */
+        .form-group input[type="date"]::-moz-focus-inner {
+            border: 0;
+        }
+
+        /* Pet Type Auto-Detection Suggestions */
+        #petTypeSuggestions {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        #petTypeSuggestions>div:last-child {
+            border-bottom: none;
+        }
+
+        /* clickable (transparent) button that forwards to the input picker */
+        .form-group .picker-opener {
+            position: absolute;
+            right: 6px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 34px;
+            height: 34px;
+            border: 0;
+            background: transparent;
+            cursor: pointer;
+            padding: 0;
+            margin: 0;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* sex small circular radios (matches the screenshot) */
+        .sex-options {
+            display: flex;
+            gap: 28px;
+            height: 100%;
+            align-items: center;
+            margin-top: 1.3rem;
+        }
+
+        /* label that wraps each radio */
+        .radio--small {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            /* gap between circle and text */
+            cursor: pointer;
+            user-select: none;
+            position: relative;
+        }
+
+        /* keep native input for accessibility but hide native radio */
+        .radio--small input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            width: 1px;
+            height: 1px;
+            margin: 0;
+            pointer-events: none;
+        }
+
+        /* the visible circle */
+        .radio--visual {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            border: 2px solid #ccc;
+            box-sizing: border-box;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: #fff;
+            transition: border-color 0.15s;
+            flex: 0 0 auto;
+            position: relative;
+        }
+
+        /* inner dot for checked state */
+        .radio--visual::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 0.9rem;
+            height: 0.9rem;
+            transform: translate(-50%, -50%) scale(0);
+            border-radius: 50%;
+            background: #FFD88C;
+            transition: transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1);
+            pointer-events: none;
+        }
+
+        /* checked styles */
+        .radio--small input[type="radio"]:checked+.radio--visual {
+            border-color: #FFD88C;
+        }
+
+        .radio--small input[type="radio"]:checked+.radio--visual::after {
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        /* label text styling */
+        .radio--text {
+            color: #9D9B98;
+            font-family: Lato;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+        }
+
+
+
+        .radio--small input[type="radio"]:checked+.radio--visual::after {
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        /* focus-visible for keyboard users */
+        .radio--small input[type="radio"]:focus+.radio--visual {
+            outline: 3px solid rgba(201, 221, 160, 0.22);
+            outline-offset: 2px;
+        }
+
+
+
+
+        .full-width {
+            grid-column: span 3;
+        }
+
+        /* placeholder color for inputs & textareas (cross-browser) */
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: #D4D4D4;
+            opacity: 1;
+            /* ensure consistent opacity across browsers */
+        }
+
+        /* WebKit/Blink */
+        .form-group input::-webkit-input-placeholder,
+        .form-group textarea::-webkit-input-placeholder {
+            color: #D4D4D4;
+        }
+
+        /* Mozilla Firefox 19+ */
+        .form-group input::-moz-placeholder,
+        .form-group textarea::-moz-placeholder {
+            color: #D4D4D4;
+        }
+
+        /* Mozilla Firefox 4 - 18 */
+        .form-group input:-moz-placeholder,
+        .form-group textarea:-moz-placeholder {
+            color: #D4D4D4;
+        }
+
+        /* Internet Explorer 10+ */
+        .form-group input:-ms-input-placeholder,
+        .form-group textarea:-ms-input-placeholder {
+            color: #D4D4D4;
+        }
+
+        /* Select "placeholder" (first disabled option) — note: styling options is inconsistent across browsers */
+        .form-group select option[disabled][selected] {
+            color: #D4D4D4;
+        }
+
+        .form-btns {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 2rem;
+        }
+
+        .form-btns div {
+            display: flex;
+            justify-content: flex-end;
+            gap: 30px;
+
+        }
+
+        .form-btns div>button:first-child {
+            color: #3B3731;
+            text-align: center;
+            font-family: Lato;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+            text-decoration-line: underline;
+            text-decoration-style: solid;
+            text-decoration-skip-ink: auto;
+            text-decoration-thickness: auto;
+            text-underline-offset: auto;
+            text-underline-position: from-font;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+        }
+
+        .form-btns div>button:last-child {
+            border-radius: 96px;
+            border: 1px solid #FFC97A;
+            background: #FFF;
+            box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.05);
+            width: 120px;
+            height: 48px;
+            cursor: pointer;
+            color: #FFC97A;
+            text-align: center;
+            font-family: Lato;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+
+        }
+
+        /* window.__autogenerated_css_end__ */
     </style>
 </head>
 
@@ -985,6 +1695,130 @@ $imagePath = BASE_URL . '/assets/images/booking-space-card-image.svg';
 
                         <!-- Inline pet list (shown in place of buttons) -->
                         <div class="pet-list" id="petList"></div>
+<div class="pet-details-form hidden">
+                                <div>
+                                    <h2>Pet Details</h2>
+                                </div>
+                                <div>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="85" height="85" viewBox="0 0 85 85"
+                                        fill="none" id="petPhotoPlaceholder">
+                                        <mask id="path-1-inside-1_85_569" fill="white">
+                                            <path
+                                                d="M43.5 0C66.4198 0 85 18.5802 85 41.5V43.5C85 66.4198 66.4198 85 43.5 85H41.5C18.5802 85 0 66.4198 0 43.5V41.5C0 18.5802 18.5802 0 41.5 0H43.5ZM43 39.3184C39.2287 39.3184 36.4346 41.367 34.6494 43.9092C32.8863 46.4133 32 49.5227 32 52.0459C32.0002 54.9857 33.7446 57.0319 35.8848 58.2568C37.9904 59.4658 40.6304 60 43 60C45.3696 60 48.0096 59.469 50.1152 58.2568C52.2523 57.0287 53.9998 54.9857 54 52.0459C54 49.5227 53.1137 46.4133 51.3506 43.9092C49.5686 41.3638 46.7745 39.3184 43 39.3184ZM25.7139 39.3184C24.1584 39.3185 22.9388 40.2763 22.1846 41.4248C21.421 42.5829 21 44.0941 21 45.6816C21 47.2694 21.4209 48.7813 22.1846 49.9395C22.9388 51.0848 24.1584 52.0457 25.7139 52.0459C27.2696 52.0459 28.4899 51.0881 29.2441 49.9395C30.0079 48.7813 30.4287 47.2694 30.4287 45.6816C30.4287 44.0942 30.0077 42.5829 29.2441 41.4248C28.4899 40.2794 27.2696 39.3184 25.7139 39.3184ZM60.2861 39.3184C58.7304 39.3184 57.5101 40.2762 56.7559 41.4248C55.9923 42.5829 55.5713 44.0942 55.5713 45.6816C55.5713 47.2694 55.9921 48.7813 56.7559 49.9395C57.5102 51.0849 58.7304 52.0459 60.2861 52.0459C61.8416 52.0457 63.0612 51.0879 63.8154 49.9395C64.5791 48.7813 65 47.2694 65 45.6816C65 44.0941 64.579 42.5829 63.8154 41.4248C63.0612 40.2795 61.8416 39.3185 60.2861 39.3184ZM35.1426 25C33.587 25.0001 32.3675 25.9579 31.6133 27.1064C30.8497 28.2645 30.4288 29.7757 30.4287 31.3633C30.4287 32.951 30.8496 34.4629 31.6133 35.6211C32.3675 36.7665 33.587 37.7274 35.1426 37.7275C36.6982 37.7275 37.9176 36.7696 38.6719 35.6211C39.4356 34.4629 39.8574 32.951 39.8574 31.3633C39.8574 29.7757 39.4355 28.2645 38.6719 27.1064C37.9176 25.961 36.6982 25 35.1426 25ZM50.8574 25C49.3018 25 48.0824 25.9579 47.3281 27.1064C46.5645 28.2645 46.1426 29.7757 46.1426 31.3633C46.1426 32.951 46.5644 34.4629 47.3281 35.6211C48.0824 36.7664 49.3019 37.7275 50.8574 37.7275C52.413 37.7274 53.6325 36.7696 54.3867 35.6211C55.1504 34.4629 55.5713 32.951 55.5713 31.3633C55.5712 29.7757 55.1503 28.2645 54.3867 27.1064C53.6325 25.9611 52.413 25.0001 50.8574 25Z" />
+                                        </mask>
+                                        <path
+                                            d="M43.5 0C66.4198 0 85 18.5802 85 41.5V43.5C85 66.4198 66.4198 85 43.5 85H41.5C18.5802 85 0 66.4198 0 43.5V41.5C0 18.5802 18.5802 0 41.5 0H43.5ZM43 39.3184C39.2287 39.3184 36.4346 41.367 34.6494 43.9092C32.8863 46.4133 32 49.5227 32 52.0459C32.0002 54.9857 33.7446 57.0319 35.8848 58.2568C37.9904 59.4658 40.6304 60 43 60C45.3696 60 48.0096 59.469 50.1152 58.2568C52.2523 57.0287 53.9998 54.9857 54 52.0459C54 49.5227 53.1137 46.4133 51.3506 43.9092C49.5686 41.3638 46.7745 39.3184 43 39.3184ZM25.7139 39.3184C24.1584 39.3185 22.9388 40.2763 22.1846 41.4248C21.421 42.5829 21 44.0941 21 45.6816C21 47.2694 21.4209 48.7813 22.1846 49.9395C22.9388 51.0848 24.1584 52.0457 25.7139 52.0459C27.2696 52.0459 28.4899 51.0881 29.2441 49.9395C30.0079 48.7813 30.4287 47.2694 30.4287 45.6816C30.4287 44.0942 30.0077 42.5829 29.2441 41.4248C28.4899 40.2794 27.2696 39.3184 25.7139 39.3184ZM60.2861 39.3184C58.7304 39.3184 57.5101 40.2762 56.7559 41.4248C55.9923 42.5829 55.5713 44.0942 55.5713 45.6816C55.5713 47.2694 55.9921 48.7813 56.7559 49.9395C57.5102 51.0849 58.7304 52.0459 60.2861 52.0459C61.8416 52.0457 63.0612 51.0879 63.8154 49.9395C64.5791 48.7813 65 47.2694 65 45.6816C65 44.0941 64.579 42.5829 63.8154 41.4248C63.0612 40.2795 61.8416 39.3185 60.2861 39.3184ZM35.1426 25C33.587 25.0001 32.3675 25.9579 31.6133 27.1064C30.8497 28.2645 30.4288 29.7757 30.4287 31.3633C30.4287 32.951 30.8496 34.4629 31.6133 35.6211C32.3675 36.7665 33.587 37.7274 35.1426 37.7275C36.6982 37.7275 37.9176 36.7696 38.6719 35.6211C39.4356 34.4629 39.8574 32.951 39.8574 31.3633C39.8574 29.7757 39.4355 28.2645 38.6719 27.1064C37.9176 25.961 36.6982 25 35.1426 25ZM50.8574 25C49.3018 25 48.0824 25.9579 47.3281 27.1064C46.5645 28.2645 46.1426 29.7757 46.1426 31.3633C46.1426 32.951 46.5644 34.4629 47.3281 35.6211C48.0824 36.7664 49.3019 37.7275 50.8574 37.7275C52.413 37.7274 53.6325 36.7696 54.3867 35.6211C55.1504 34.4629 55.5713 32.951 55.5713 31.3633C55.5712 29.7757 55.1503 28.2645 54.3867 27.1064C53.6325 25.9611 52.413 25.0001 50.8574 25Z"
+                                            fill="#D4D4D4" />
+                                        <path
+                                            d="M43.5 0V-1V0ZM43.5 85V86V85ZM34.6494 43.9092L35.4671 44.4849L35.4678 44.4839L34.6494 43.9092ZM32 52.0459H31V52.046L32 52.0459ZM35.8848 58.2568L36.3827 57.3896L36.3815 57.3889L35.8848 58.2568ZM50.1152 58.2568L49.617 57.3898L49.6163 57.3902L50.1152 58.2568ZM54 52.0459L55 52.046V52.0459H54ZM51.3506 43.9092L50.5314 44.4827L50.5329 44.4849L51.3506 43.9092ZM25.7139 39.3184V38.3184H25.7138L25.7139 39.3184ZM22.1846 41.4248L23.0194 41.9753L23.0205 41.9737L22.1846 41.4248ZM21 45.6816L20 45.6816V45.6816H21ZM22.1846 49.9395L23.0197 49.3895L23.0194 49.389L22.1846 49.9395ZM25.7139 52.0459L25.7138 53.0459H25.7139V52.0459ZM29.2441 49.9395L28.4093 49.389L28.4083 49.3905L29.2441 49.9395ZM30.4287 45.6816H31.4287V45.6816L30.4287 45.6816ZM29.2441 41.4248L28.409 41.9748L28.4093 41.9752L29.2441 41.4248ZM60.2861 39.3184L60.2862 38.3184H60.2861V39.3184ZM56.7559 41.4248L57.5907 41.9752L57.5917 41.9737L56.7559 41.4248ZM55.5713 45.6816L54.5713 45.6816V45.6816H55.5713ZM56.7559 49.9395L57.591 49.3895L57.5907 49.389L56.7559 49.9395ZM60.2861 52.0459V53.0459H60.2862L60.2861 52.0459ZM63.8154 49.9395L62.9806 49.389L62.9796 49.3905L63.8154 49.9395ZM65 45.6816H66V45.6816L65 45.6816ZM63.8154 41.4248L62.9802 41.9748L62.9806 41.9753L63.8154 41.4248ZM35.1426 25V24H35.1425L35.1426 25ZM31.6133 27.1064L32.4481 27.6569L32.4492 27.6554L31.6133 27.1064ZM30.4287 31.3633L29.4287 31.3632V31.3633H30.4287ZM31.6133 35.6211L32.4485 35.0711L32.4481 35.0706L31.6133 35.6211ZM35.1426 37.7275L35.1425 38.7275H35.1426V37.7275ZM38.6719 35.6211L37.837 35.0706L37.836 35.0721L38.6719 35.6211ZM39.8574 31.3633H40.8574V31.3632L39.8574 31.3633ZM38.6719 27.1064L37.8367 27.6564L37.837 27.6569L38.6719 27.1064ZM50.8574 25L50.8575 24H50.8574V25ZM47.3281 27.1064L48.163 27.6569L48.164 27.6554L47.3281 27.1064ZM46.1426 31.3633L45.1426 31.3632V31.3633H46.1426ZM47.3281 35.6211L48.1633 35.0711L48.163 35.0706L47.3281 35.6211ZM50.8574 37.7275V38.7275H50.8575L50.8574 37.7275ZM54.3867 35.6211L53.5519 35.0706L53.5508 35.0722L54.3867 35.6211ZM55.5713 31.3633H56.5713V31.3632L55.5713 31.3633ZM54.3867 27.1064L53.5515 27.6564L53.5519 27.6569L54.3867 27.1064ZM43.5 0V1C65.8675 1 84 19.1325 84 41.5H85H86C86 18.0279 66.9721 -1 43.5 -1V0ZM85 41.5H84V43.5H85H86V41.5H85ZM85 43.5H84C84 65.8675 65.8675 84 43.5 84V85V86C66.9721 86 86 66.9721 86 43.5H85ZM43.5 85V84H41.5V85V86H43.5V85ZM41.5 85V84C19.1325 84 1 65.8675 1 43.5H0H-1C-1 66.9721 18.0279 86 41.5 86V85ZM0 43.5H1V41.5H0H-1V43.5H0ZM0 41.5H1C1 19.1325 19.1325 1 41.5 1V0V-1C18.0279 -1 -1 18.0279 -1 41.5H0ZM41.5 0V1H43.5V0V-1H41.5V0ZM43 39.3184V38.3184C38.8207 38.3184 35.7506 40.601 33.831 43.3345L34.6494 43.9092L35.4678 44.4839C37.1186 42.1331 39.6367 40.3184 43 40.3184V39.3184ZM34.6494 43.9092L33.8318 43.3335C31.9482 46.0085 31 49.3196 31 52.0459H32H33C33 49.7258 33.8243 46.818 35.4671 44.4849L34.6494 43.9092ZM32 52.0459L31 52.046C31.0002 55.4494 33.0401 57.7809 35.388 59.1247L35.8848 58.2568L36.3815 57.3889C34.4491 56.2829 33.0001 54.5219 33 52.0458L32 52.0459ZM35.8848 58.2568L35.3869 59.1241C37.6792 60.4402 40.5013 61 43 61V60V59C40.7595 59 38.3016 58.4914 36.3827 57.3896L35.8848 58.2568ZM43 60V61C45.4977 61 48.3206 60.4438 50.6141 59.1235L50.1152 58.2568L49.6163 57.3902C47.6986 58.4942 45.2415 59 43 59V60ZM50.1152 58.2568L50.6135 59.1239C52.9556 57.7779 54.9998 55.4505 55 52.046L54 52.0459L53 52.0458C52.9999 54.5208 51.549 56.2795 49.617 57.3898L50.1152 58.2568ZM54 52.0459H55C55 49.3196 54.0518 46.0085 52.1682 43.3335L51.3506 43.9092L50.5329 44.4849C52.1757 46.818 53 49.7258 53 52.0459H54ZM51.3506 43.9092L52.1698 43.3357C50.2525 40.5971 47.1818 38.3184 43 38.3184V39.3184V40.3184C46.3671 40.3184 48.8846 42.1305 50.5314 44.4827L51.3506 43.9092ZM25.7139 39.3184L25.7138 38.3184C23.7118 38.3186 22.2182 39.5518 21.3487 40.8759L22.1846 41.4248L23.0205 41.9737C23.6594 41.0007 24.6049 40.3185 25.714 40.3184L25.7139 39.3184ZM22.1846 41.4248L21.3497 40.8744C20.4636 42.2183 20 43.9272 20 45.6816L21 45.6816L22 45.6817C22 44.2611 22.3784 42.9475 23.0194 41.9753L22.1846 41.4248ZM21 45.6816H20C20 47.4362 20.4634 49.1458 21.3497 50.49L22.1846 49.9395L23.0194 49.389C22.3783 48.4167 22 47.1026 22 45.6816H21ZM22.1846 49.9395L21.3494 50.4894C22.2178 51.8082 23.7109 53.0457 25.7138 53.0459L25.7139 52.0459L25.714 51.0459C24.6059 51.0458 23.6598 50.3614 23.0197 49.3895L22.1846 49.9395ZM25.7139 52.0459V53.0459C27.7159 53.0459 29.2103 51.8127 30.08 50.4884L29.2441 49.9395L28.4083 49.3905C27.7694 50.3634 26.8232 51.0459 25.7139 51.0459V52.0459ZM29.2441 49.9395L30.079 50.49C30.9653 49.1458 31.4287 47.4362 31.4287 45.6816H30.4287H29.4287C29.4287 47.1026 29.0504 48.4167 28.4093 49.389L29.2441 49.9395ZM30.4287 45.6816L31.4287 45.6816C31.4287 43.9272 30.965 42.2183 30.079 40.8744L29.2441 41.4248L28.4093 41.9752C29.0503 42.9475 29.4287 44.2611 29.4287 45.6817L30.4287 45.6816ZM29.2441 41.4248L30.0793 40.8748C29.2107 39.5558 27.7169 38.3184 25.7139 38.3184V39.3184V40.3184C26.8223 40.3184 27.769 41.0029 28.409 41.9748L29.2441 41.4248ZM60.2861 39.3184V38.3184C58.2841 38.3184 56.7896 39.5515 55.92 40.8759L56.7559 41.4248L57.5917 41.9737C58.2306 41.0008 59.1768 40.3184 60.2861 40.3184V39.3184ZM56.7559 41.4248L55.921 40.8744C55.035 42.2183 54.5713 43.9272 54.5713 45.6816L55.5713 45.6816L56.5713 45.6817C56.5713 44.2611 56.9497 42.9475 57.5907 41.9752L56.7559 41.4248ZM55.5713 45.6816H54.5713C54.5713 47.4362 55.0347 49.1458 55.921 50.49L56.7559 49.9395L57.5907 49.389C56.9496 48.4167 56.5713 47.1026 56.5713 45.6816H55.5713ZM56.7559 49.9395L55.9207 50.4894C56.7893 51.8085 58.2832 53.0459 60.2861 53.0459V52.0459V51.0459C59.1777 51.0459 58.231 50.3613 57.591 49.3895L56.7559 49.9395ZM60.2861 52.0459L60.2862 53.0459C62.2881 53.0457 63.7818 51.8124 64.6513 50.4884L63.8154 49.9395L62.9796 49.3905C62.3406 50.3635 61.395 51.0458 60.286 51.0459L60.2861 52.0459ZM63.8154 49.9395L64.6503 50.49C65.5366 49.1458 66 47.4362 66 45.6816H65H64C64 47.1026 63.6217 48.4167 62.9806 49.389L63.8154 49.9395ZM65 45.6816L66 45.6816C66 43.9272 65.5364 42.2183 64.6503 40.8744L63.8154 41.4248L62.9806 41.9753C63.6216 42.9475 64 44.2611 64 45.6817L65 45.6816ZM63.8154 41.4248L64.6506 40.8748C63.7822 39.556 62.2891 38.3186 60.2862 38.3184L60.2861 39.3184L60.286 40.3184C61.3942 40.3185 62.3402 41.0029 62.9802 41.9748L63.8154 41.4248ZM35.1426 25L35.1425 24C33.1404 24.0001 31.6469 25.2335 30.7774 26.5575L31.6133 27.1064L32.4492 27.6554C33.0882 26.6823 34.0336 26.0001 35.1427 26L35.1426 25ZM31.6133 27.1064L30.7784 26.556C29.8923 27.8999 29.4288 29.6088 29.4287 31.3632L30.4287 31.3633L31.4287 31.3633C31.4288 29.9427 31.8071 28.6291 32.4481 27.6569L31.6133 27.1064ZM30.4287 31.3633H29.4287C29.4287 33.1178 29.8921 34.8275 30.7784 36.1716L31.6133 35.6211L32.4481 35.0706C31.807 34.0984 31.4287 32.7842 31.4287 31.3633H30.4287ZM31.6133 35.6211L30.7781 36.1711C31.6465 37.4898 33.1395 38.7274 35.1425 38.7275L35.1426 37.7275L35.1427 36.7275C34.0345 36.7275 33.0885 36.0431 32.4485 35.0711L31.6133 35.6211ZM35.1426 37.7275V38.7275C37.1448 38.7275 38.6383 37.4939 39.5077 36.1701L38.6719 35.6211L37.836 35.0721C37.1969 36.0453 36.2515 36.7275 35.1426 36.7275V37.7275ZM38.6719 35.6211L39.5067 36.1716C40.3928 34.8278 40.8574 33.1183 40.8574 31.3633H39.8574H38.8574C38.8574 32.7837 38.4784 34.098 37.837 35.0706L38.6719 35.6211ZM39.8574 31.3633L40.8574 31.3632C40.8574 29.6083 40.3927 27.8996 39.5067 26.5559L38.6719 27.1064L37.837 27.6569C38.4784 28.6295 38.8574 29.9431 38.8574 31.3633L39.8574 31.3633ZM38.6719 27.1064L39.507 26.5565C38.6386 25.2378 37.1458 24 35.1426 24V25V26C36.2507 26 37.1965 26.6843 37.8367 27.6564L38.6719 27.1064ZM50.8574 25V24C48.8552 24 47.3617 25.2335 46.4923 26.5575L47.3281 27.1064L48.164 27.6554C48.8031 26.6822 49.7484 26 50.8574 26V25ZM47.3281 27.1064L46.4933 26.5559C45.6073 27.8996 45.1426 29.6083 45.1426 31.3632L46.1426 31.3633L47.1426 31.3633C47.1426 29.9431 47.5217 28.6295 48.163 27.6569L47.3281 27.1064ZM46.1426 31.3633H45.1426C45.1426 33.1183 45.6072 34.8278 46.4933 36.1716L47.3281 35.6211L48.163 35.0706C47.5216 34.098 47.1426 32.7837 47.1426 31.3633H46.1426ZM47.3281 35.6211L46.493 36.1711C47.3614 37.4897 48.8543 38.7275 50.8574 38.7275V37.7275V36.7275C49.7494 36.7275 48.8035 36.0431 48.1633 35.0711L47.3281 35.6211ZM50.8574 37.7275L50.8575 38.7275C52.8595 38.7274 54.3531 37.494 55.2226 36.17L54.3867 35.6211L53.5508 35.0722C52.9118 36.0452 51.9664 36.7275 50.8573 36.7275L50.8574 37.7275ZM54.3867 35.6211L55.2216 36.1716C56.1079 34.8275 56.5713 33.1178 56.5713 31.3633H55.5713H54.5713C54.5713 32.7842 54.193 34.0984 53.5519 35.0706L54.3867 35.6211ZM55.5713 31.3633L56.5713 31.3632C56.5712 29.6088 56.1077 27.8999 55.2216 26.556L54.3867 27.1064L53.5519 27.6569C54.1929 28.6291 54.5712 29.9427 54.5713 31.3633L55.5713 31.3633ZM54.3867 27.1064L55.2219 26.5565C54.3535 25.2377 52.8605 24.0001 50.8575 24L50.8574 25L50.8573 26C51.9655 26.0001 52.9115 26.6844 53.5515 27.6564L54.3867 27.1064Z"
+                                            fill="#C9C9C9" mask="url(#path-1-inside-1_85_569)" />
+                                    </svg>
+                                    <!-- Hidden file input -->
+                                    <input type="file" id="petPhotoInput" accept="image/*" style="display: none;">
+                                    <button type="button" id="petPhotoUploadBtn">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
+                                            viewBox="0 0 14 14" fill="none">
+                                            <path
+                                                d="M7 10.3162C6.72386 10.3162 6.5 10.0923 6.5 9.8162V1.6662L4.52903 3.63716C4.33115 3.83504 4.00998 3.83392 3.81349 3.63465C3.61896 3.43738 3.62005 3.1201 3.81593 2.92416L6.55492 0.184403C6.80072 -0.0614672 7.19931 -0.0614954 7.44514 0.184341L10.185 2.92419C10.3809 3.12014 10.3822 3.43747 10.1877 3.63493C9.99116 3.83455 9.66959 3.83579 9.47149 3.63769L7.5 1.6662V9.8162C7.5 10.0923 7.27614 10.3162 7 10.3162ZM1.616 13.7392C1.15533 13.7392 0.771 13.5852 0.463 13.2772C0.155 12.9692 0.000666667 12.5845 0 12.1232V10.2002C0 9.92405 0.223858 9.7002 0.5 9.7002C0.776142 9.7002 1 9.92406 1 10.2002V12.1232C1 12.2772 1.064 12.4185 1.192 12.5472C1.32 12.6759 1.461 12.7399 1.615 12.7392H12.385C12.5383 12.7392 12.6793 12.6752 12.808 12.5472C12.9367 12.4192 13.0007 12.2779 13 12.1232V10.2002C13 9.92405 13.2239 9.7002 13.5 9.7002C13.7761 9.7002 14 9.92406 14 10.2002V12.1232C14 12.5839 13.846 12.9682 13.538 13.2762C13.23 13.5842 12.8453 13.7385 12.384 13.7392H1.616Z"
+                                                fill="#3B3731" />
+                                        </svg>
+                                        Upload Pet Photo
+                                    </button>
+                                </div>
+                                <div class="form-grid">
+                                    <div class="form-group">
+                                        <label>Name</label>
+                                        <div style="position:relative; display:block;">
+                                            <input type="text" id="petName"
+                                                style="padding-right:40px; width:100%; display:block;">
+                                            <span class="input-check-icon" id="petNameCheck">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19"
+                                                    viewBox="0 0 19 19" fill="none">
+                                                    <path
+                                                        d="M9.5 0C4.275 0 0 4.275 0 9.5C0 14.725 4.275 19 9.5 19C14.725 19 19 14.725 19 9.5C19 4.275 14.725 0 9.5 0ZM7.6 14.25L2.85 9.5L4.1895 8.1605L7.6 11.5615L14.8105 4.351L16.15 5.7L7.6 14.25Z"
+                                                        fill="#C9DDA0" />
+                                                </svg>
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <?php renderBirthdayCalendar('birthday'); ?>
+
+                                    <div class="form-group">
+                                        <label>Pet Type</label>
+                                        <div style="position:relative; display:block;">
+                                            <input type="text" id="petTypeInput" placeholder="e.g. Dog, Cat, Rabbit..."
+                                                autocomplete="off"
+                                                style="padding-right:40px; width:100%; display:block;">
+                                            <span class="input-check-icon" id="petTypeCheck">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19"
+                                                    viewBox="0 0 19 19" fill="none">
+                                                    <path
+                                                        d="M9.5 0C4.275 0 0 4.275 0 9.5C0 14.725 4.275 19 9.5 19C14.725 19 19 14.725 19 9.5C19 4.275 14.725 0 9.5 0ZM7.6 14.25L2.85 9.5L4.1895 8.1605L7.6 11.5615L14.8105 4.351L16.15 5.7L7.6 14.25Z"
+                                                        fill="#C9DDA0" />
+                                                </svg>
+                                            </span>
+                                        </div>
+                                        <div id="petTypeSuggestions"
+                                            style="display: none; border: 1px solid #D4D4D4; border-top: none; border-radius: 0 0 10px 10px; background: #FFF; max-height: 200px; overflow-y: auto; position: absolute; width: calc(100% - 20px); z-index: 10;">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Breed(s)</label>
+                                        <div class="input-wrap select-wrap">
+                                            <select data-furs-dropdown data-furs-searchable id="petBreedSelect">
+                                                <option value="">Select a Breed</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Sex</label>
+
+                                        <div class="sex-options" role="radiogroup" aria-label="Sex">
+                                            <label class="radio--small">
+                                                <input type="radio" name="sex" value="male" id="petSexMale">
+                                                <span class="radio--visual" aria-hidden="true"></span>
+                                                <span class="radio--text">Male</span>
+                                            </label>
+
+                                            <label class="radio--small">
+                                                <input type="radio" name="sex" value="female" id="petSexFemale">
+                                                <span class="radio--visual" aria-hidden="true"></span>
+                                                <span class="radio--text">Female</span>
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Weight <span>(kg)</span></label>
+                                        <input value="4" type="number" id="petWeight">
+                                    </div>
+
+                                    <div class="form-group full-width">
+                                        <label>Notes <span>(Optional)</span></label>
+                                        <textarea placeholder="Anything your groomer should know?
+(e.g. anxious around dryers, allergies, behaviour cues)" rows="4" cols="50" id="petNotes"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-btns" id="petFormBtns">
+                                <div>
+                                    <button type="button" id="petFormCancelBtn">Cancel</button>
+                                    <button type="button" id="petFormSaveBtn">Save</button>
+                                </div>
+                            </div>
+
+                            <!-- Pet Details Display Section -->
+                            <div class="pet-details-display" id="petDetailsDisplay">
+                                <div class="pet-details-display-content" id="petDetailsContent">
+                                </div>
+                                <div class="pet-display-action-btns">
+                                    <button type="button" id="petDisplayChangeBtn">Edit</button>
+                                </div>
+                            </div>
+                            
                     </div>
                     <div class="add-ons">
                         <h2 class="add-ons-title">Add-ons Services</h2>
@@ -1069,6 +1903,7 @@ $imagePath = BASE_URL . '/assets/images/booking-space-card-image.svg';
     <?php
     bcAssets(); ?>
     <script src=" <?= BASE_URL ?>/assets/js/custom.js"></script>
+    <script src="<?= BASE_URL ?>/assets/js/custom-dropdown.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             // JS to handle add-on card selection styling
@@ -1104,9 +1939,24 @@ $imagePath = BASE_URL . '/assets/images/booking-space-card-image.svg';
         (function () {
 
             const icons = {
-                birthday: `<svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#9D9B98" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-8a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8"/><path d="M4 16s.5-1 2-1 2.5 2 4 2 2.5-2 4-2 2.5 2 4 2 2-1 2-1"/><path d="M2 21h20"/><path d="M7 8v2"/><path d="M12 8v2"/><path d="M17 8v2"/></svg>`,
-                sex: `<svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#9D9B98" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="11" r="4"/><path d="M12 15v6"/><path d="m9 18 3 3 3-3"/></svg>`,
-                notes: `<svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#9D9B98" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>`,
+                paw: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="15" viewBox="0 0 16 15" fill="none">
+  <path d="M8 6.02632C5.73786 6.02632 3.82643 8.06405 3.20929 10.6813C2.93786 11.8323 3.34714 13.0539 4.35179 13.6279C5.14821 14.0829 6.33286 14.5 8 14.5C9.66714 14.5 10.8521 14.0829 11.6486 13.6279C12.6532 13.0539 13.0621 11.8323 12.7907 10.6813C12.1736 8.06368 10.2621 6.02632 8 6.02632ZM0.5 5.45305C0.5 6.47063 1.13929 7.5 1.92857 7.5C2.71786 7.5 3.35714 6.47063 3.35714 5.45305C3.35714 4.43547 2.71786 3.81579 1.92857 3.81579C1.13929 3.81579 0.5 4.43584 0.5 5.45305ZM15.5 5.45305C15.5 6.47063 14.8607 7.5 14.0714 7.5C13.2821 7.5 12.6429 6.47063 12.6429 5.45305C12.6429 4.43547 13.2821 3.81579 14.0714 3.81579C14.8607 3.81579 15.5 4.43584 15.5 5.45305ZM4.25 2.13726C4.25 3.15484 4.88929 4.18421 5.67857 4.18421C6.46786 4.18421 7.10714 3.15484 7.10714 2.13726C7.10714 1.11968 6.46786 0.5 5.67857 0.5C4.88929 0.5 4.25 1.12005 4.25 2.13726ZM11.75 2.13726C11.75 3.15484 11.1107 4.18421 10.3214 4.18421C9.53214 4.18421 8.89286 3.15484 8.89286 2.13726C8.89286 1.11968 9.53214 0.5 10.3214 0.5C11.1107 0.5 11.75 1.12005 11.75 2.13726Z" stroke="#9D9B98" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>`,
+                birthday: `<svg xmlns="http://www.w3.org/2000/svg" width="15" height="17" viewBox="0 0 15 17" fill="none">
+  <path d="M1.27778 11.7778V14.5C1.27778 14.9126 1.44167 15.3082 1.73339 15.5999C2.02511 15.8917 2.42077 16.0556 2.83333 16.0556H12.1667C12.5792 16.0556 12.9749 15.8917 13.2666 15.5999C13.5583 15.3082 13.7222 14.9126 13.7222 14.5V11.7778M0.5 9.83333V9.05556C0.5 8.643 0.663888 8.24734 0.955612 7.95561C1.24733 7.66389 1.643 7.5 2.05556 7.5H12.9444C13.357 7.5 13.7527 7.66389 14.0444 7.95561C14.3361 8.24734 14.5 8.643 14.5 9.05556V9.83333M7.5 5.16667V7.5M7.5 5.16667C8.48156 5.16667 9.05556 4.41378 9.05556 3.125C9.05556 1.83622 7.5 0.5 7.5 0.5C7.5 0.5 5.94444 1.83622 5.94444 3.125C5.94444 4.41378 6.51844 5.16667 7.5 5.16667Z" stroke="#9D9B98" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M0.5 9.83325C0.5 10.4521 0.745833 11.0456 1.18342 11.4832C1.621 11.9208 2.21449 12.1666 2.83333 12.1666C3.45217 12.1666 4.04566 11.9208 4.48325 11.4832C4.92083 11.0456 5.16667 10.4521 5.16667 9.83325C5.16667 10.4521 5.4125 11.0456 5.85008 11.4832C6.28767 11.9208 6.88116 12.1666 7.5 12.1666C8.11884 12.1666 8.71233 11.9208 9.14992 11.4832C9.5875 11.0456 9.83333 10.4521 9.83333 9.83325C9.83333 10.4521 10.0792 11.0456 10.5168 11.4832C10.9543 11.9208 11.5478 12.1666 12.1667 12.1666C12.7855 12.1666 13.379 11.9208 13.8166 11.4832C14.2542 11.0456 14.5 10.4521 14.5 9.83325" stroke="#9D9B98" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>`,
+                sexMale: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#9D9B98" class="bi bi-gender-male" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M9.5 2a.5.5 0 0 1 0-1h5a.5.5 0 0 1 .5.5v5a.5.5 0 0 1-1 0V2.707L9.871 6.836a5 5 0 1 1-.707-.707L13.293 2zM6 6a4 4 0 1 0 0 8 4 4 0 0 0 0-8"/>
+</svg>`,
+                sexFemale: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#9D9B98" class="bi bi-gender-female" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M8 1a4 4 0 1 0 0 8 4 4 0 0 0 0-8M3 5a5 5 0 1 1 5.5 4.975V12h2a.5.5 0 0 1 0 1h-2v2.5a.5.5 0 0 1-1 0V13h-2a.5.5 0 0 1 0-1h2V9.975A5 5 0 0 1 3 5"/>
+</svg>`,
+                notes: `<svg xmlns="http://www.w3.org/2000/svg" width="15" height="16" viewBox="0 0 15 16" fill="none">
+  <path d="M13.5905 8.11123L13.9601 6.73016C14.3918 5.1182 14.6084 4.31257 14.4462 3.61489C14.3176 3.0641 14.0285 2.56382 13.6155 2.17734C13.093 1.68768 12.2866 1.4718 10.6747 1.04003C9.0627 0.607553 8.25636 0.391671 7.55939 0.55394C7.0086 0.682549 6.50833 0.971618 6.12185 1.38458C5.70224 1.83207 5.4835 2.48758 5.15824 3.67851L4.98382 4.32544L4.61425 5.70651C4.18177 7.31847 3.96589 8.1241 4.12816 8.82178C4.25677 9.37257 4.54584 9.87285 4.9588 10.2593C5.48135 10.749 6.28769 10.9649 7.89966 11.3974C9.35221 11.7862 10.1507 12 10.8048 11.9192C10.8763 11.9101 10.9463 11.8977 11.0149 11.882C11.5655 11.7538 12.0658 11.4652 12.4525 11.0528C12.9421 10.5295 13.158 9.7232 13.5905 8.11123Z" stroke="#9D9B98"/>
+  <path d="M10.8047 11.9191C10.6553 12.3769 10.3927 12.7895 10.0413 13.1186C9.51875 13.6083 8.71241 13.8242 7.10045 14.2559C5.48848 14.6877 4.68214 14.9043 3.98517 14.7413C3.43447 14.6129 2.9342 14.3241 2.54763 13.9114C2.05796 13.3888 1.84137 12.5825 1.4096 10.9705L1.04003 9.58946C0.607553 7.9775 0.391671 7.17116 0.55394 6.47419C0.682549 5.9234 0.971618 5.42313 1.38458 5.03665C1.90713 4.54698 2.71347 4.3311 4.32544 3.89862C4.62948 3.81665 4.90708 3.74302 5.15823 3.67773" stroke="#9D9B98"/>
+  <path d="M7.48951 6.21899L10.9422 7.144M6.93408 8.2906L9.00569 8.84532" stroke="#9D9B98" stroke-linecap="round"/>
+</svg>`,
             };
 
             function petEmoji(type) {
@@ -1132,15 +1982,11 @@ $imagePath = BASE_URL . '/assets/images/booking-space-card-image.svg';
             async function loadPets() {
                 petList.innerHTML = '<p style="color:#9D9B98;font-family:Lato,sans-serif;font-size:14px;padding:8px 0;">Loading…</p>';
                 try {
-                    const res = await fetch('pets-data.json');
+                    const res = await fetch('<?= BASE_URL ?>/assets/data/pets-data.json');
                     allPets = await res.json();
-                } catch (_) {
-                    // Fallback to your provided sample data
-                    allPets = [
-                        { id: 1, name: "Buddy", type: "Dog", breed: "Golden Retriever", birthday: "22/08/2018", sex: "Male", image: "images/buddy.jpg", notes: "Very friendly and loves to play fetch." },
-                        { id: 2, name: "Luna", type: "Cat", breed: "Persian", birthday: "14/03/2020", sex: "Female", image: "images/luna.jpg", notes: "A bit shy but enjoys petting. Needs regular grooming." },
-                        { id: 3, name: "Charlie", type: "Dog", breed: "Bulldog", birthday: "05/11/2017", sex: "Male", image: "images/charlie.jpg", notes: "Has a sensitive stomach, needs special diet plan." }
-                    ];
+                } catch (err) {
+                    console.error('Failed to load pets from pets-data.json:', err);
+                    allPets = [];
                 }
                 allPets = allPets.map((p, i) => ({ id: p.id ?? i + 1, ...p }));
                 renderCards();
@@ -1162,22 +2008,26 @@ $imagePath = BASE_URL . '/assets/images/booking-space-card-image.svg';
                onerror="this.parentElement.innerHTML='${petEmoji(pet.type)}'">
         </div>
         <div class="pet-info-grid">
-          <div class="pet-info-primary">
-            <p class="pet-name">${pet.name}</p>
-            <p class="pet-breed">${pet.type} &bull; ${pet.breed}</p>
+          <div class="pet-field">
+            <span class="pet-field-label">${icons.paw} ${pet.name}</span>
+            <p class="pet-field-value">${pet.type} &bull; ${pet.breed}</p>
           </div>
-          ${pet.birthday ? `<div class="pet-field">
+          <div class="pet-field">
+            ${pet.birthday ? `
             <span class="pet-field-label">${icons.birthday} Birthday</span>
             <p class="pet-field-value">${pet.birthday}</p>
-          </div>` : ''}
+            ` : ''}
+          </div>
           <div class="pet-field">
-            <span class="pet-field-label">${icons.sex} Sex</span>
+            <span class="pet-field-label">${pet.sex && pet.sex.toLowerCase() === 'female' ? icons.sexFemale : icons.sexMale} Sex</span>
             <p class="pet-field-value">${pet.sex}</p>
           </div>
-          ${pet.notes ? `<div class="pet-field notes">
+          <div class="pet-field notes">
+            ${pet.notes ? `
             <span class="pet-field-label">${icons.notes} Notes</span>
             <p class="pet-field-value" title="${pet.notes}">${pet.notes}</p>
-          </div>` : ''}
+            ` : ''}
+          </div>
         </div>
         <button class="pet-edit-btn" data-pet-id="${pet.id}">Edit</button>
       `;
@@ -1209,9 +2059,11 @@ $imagePath = BASE_URL . '/assets/images/booking-space-card-image.svg';
     `;
                 petList.appendChild(actions);
 
+                updateConfirmBtn();
+
                 document.getElementById('petCancelBtn').addEventListener('click', function () {
                     selectedIds.clear();
-                    petList.classList.remove('visible');
+                    petList.classList.remove('visible', 'has-selection');
                     petList.innerHTML = '';
                     actionBtns.style.display = '';
                 });
@@ -1226,10 +2078,599 @@ $imagePath = BASE_URL . '/assets/images/booking-space-card-image.svg';
             function updateConfirmBtn() {
                 const btn = document.getElementById('petConfirmBtn');
                 if (btn) btn.disabled = selectedIds.size === 0;
+
+                if (selectedIds.size > 0) {
+                    petList.classList.add('has-selection');
+                } else {
+                    petList.classList.remove('has-selection');
+                }
             }
 
         })();
-    </script>
+    
+// ===== Pet Type Auto-Detection and Breed Population ===== 
+        let petBreedsData = {};
+        let selectedPetType = '';
+
+        // Load the pet breeds JSON file
+        async function loadPetBreedsData() {
+            try {
+                const response = await fetch('<?= BASE_URL ?>/assets/data/pet-breeds.json');
+                if (!response.ok) {
+                    throw new Error(`Failed to load pet breeds: ${response.statusText}`);
+                }
+                const data = await response.json();
+                petBreedsData = data;
+                setupPetTypeAutoDetection();
+            } catch (error) {
+                console.error('Error loading pet breeds data:', error);
+            }
+        }
+
+        // Setup auto-detection for pet type input
+        function setupPetTypeAutoDetection() {
+            const petTypeInput = document.getElementById('petTypeInput');
+            const suggestionBox = document.getElementById('petTypeSuggestions');
+            const petBreedSelect = document.getElementById('petBreedSelect');
+
+            if (!petTypeInput || !petBreedsData.petTypes) return;
+
+            // Listen for input changes
+            petTypeInput.addEventListener('input', function () {
+                const inputValue = this.value.trim().toLowerCase();
+                suggestionBox.innerHTML = '';
+
+                if (inputValue.length === 0) {
+                    suggestionBox.style.display = 'none';
+                    petBreedSelect.innerHTML = '<option value="">Select a Breed</option>';
+                    if (petBreedSelect._fursDD) petBreedSelect._fursDD.refresh();
+                    selectedPetType = '';
+                    return;
+                }
+
+                // Find matching pet types
+                const matches = petBreedsData.petTypes.filter(petType =>
+                    petType.name.toLowerCase().includes(inputValue)
+                );
+
+                if (matches.length > 0) {
+                    suggestionBox.style.display = 'block';
+                    suggestionBox.innerHTML = '';
+
+                    matches.forEach(match => {
+                        const suggestionItem = document.createElement('div');
+                        suggestionItem.style.cssText = 'padding: 10px; cursor: pointer; border-bottom: 1px solid #EEE; color: #3B3731; font-family: Lato;';
+                        suggestionItem.textContent = match.name;
+
+                        suggestionItem.addEventListener('mouseover', function () {
+                            this.style.backgroundColor = '#f5f5f5';
+                        });
+                        suggestionItem.addEventListener('mouseout', function () {
+                            this.style.backgroundColor = 'transparent';
+                        });
+
+                        suggestionItem.addEventListener('click', function () {
+                            petTypeInput.value = match.name;
+                            selectedPetType = match.name;
+                            suggestionBox.style.display = 'none';
+                            populateBreeds(match);
+                        });
+
+                        suggestionBox.appendChild(suggestionItem);
+                    });
+                } else {
+                    suggestionBox.style.display = 'none';
+                    petBreedSelect.innerHTML = '<option value="">Select a Breed</option>';
+                    if (petBreedSelect._fursDD) petBreedSelect._fursDD.refresh();
+                }
+
+                // Check for exact match and auto-populate breeds
+                const exactMatch = petBreedsData.petTypes.find(p => p.name.toLowerCase() === inputValue);
+                if (exactMatch) {
+                    selectedPetType = exactMatch.name;
+                    populateBreeds(exactMatch);
+                    suggestionBox.style.display = 'none';
+                }
+            });
+
+            // Hide suggestions when clicking outside
+            document.addEventListener('click', function (e) {
+                if (e.target !== petTypeInput && e.target !== suggestionBox) {
+                    suggestionBox.style.display = 'none';
+                }
+            });
+
+            // Show suggestions on focus if input has value
+            petTypeInput.addEventListener('focus', function () {
+                if (this.value.trim().length > 0) {
+                    suggestionBox.style.display = 'block';
+                }
+            });
+        }
+
+        // Populate breed dropdown based on selected pet type
+        function populateBreeds(petType) {
+            const petBreedSelect = document.getElementById('petBreedSelect');
+            petBreedSelect.innerHTML = '<option value="">Select a Breed</option>';
+
+            if (petType && petType.breeds) {
+                petType.breeds.forEach(breed => {
+                    const option = document.createElement('option');
+                    option.value = breed;
+                    option.textContent = breed;
+                    petBreedSelect.appendChild(option);
+                });
+            }
+            if (petBreedSelect._fursDD) petBreedSelect._fursDD.refresh();
+        }
+
+        // Initialize on DOM ready
+        document.addEventListener('DOMContentLoaded', function () {
+            loadPetBreedsData();
+        });
+        // ===== End Pet Type Auto-Detection =====
+
+// ===== Pet Details Storage & Display =====
+        const petFormCancelBtn = document.getElementById('petFormCancelBtn');
+        const petFormSaveBtn = document.getElementById('petFormSaveBtn');
+        const petDisplayChangeBtn = document.getElementById('petDisplayChangeBtn');
+        const petDetailsDisplay = document.getElementById('petDetailsDisplay');
+        const petDetailsContent = document.getElementById('petDetailsContent');
+        const petDetailsForm = document.querySelector('.pet-details-form');
+        const petFormBtns = document.getElementById('petFormBtns');
+        const petPhotoUploadBtn = document.getElementById('petPhotoUploadBtn');
+        const petPhotoInput = document.getElementById('petPhotoInput');
+        const petPhotoPlaceholder = document.getElementById('petPhotoPlaceholder');
+
+        // Store pet photo base64
+        let petPhotoBase64 = null;
+
+        // Image upload button click
+        petPhotoUploadBtn.addEventListener('click', function (e) {
+            e.preventDefault();
+            petPhotoInput.click();
+        });
+
+        // Handle file selection
+        petPhotoInput.addEventListener('change', function (e) {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            // Validate file type
+            if (!file.type.startsWith('image/')) {
+                alert('Please select an image file');
+                return;
+            }
+
+            // Validate file size (max 5MB)
+            const maxSize = 5 * 1024 * 1024;
+            if (file.size > maxSize) {
+                alert('Image size must be less than 5MB');
+                return;
+            }
+
+            // Read file as base64
+            const reader = new FileReader();
+            reader.onload = function (event) {
+                petPhotoBase64 = event.target.result;
+                displayPetPhotoPreview(petPhotoBase64);
+            };
+            reader.readAsDataURL(file);
+        });
+
+        function displayPetPhotoPreview(photoBase64) {
+            // Remove existing wrapper if any
+            const existingWrapper = petPhotoPlaceholder.parentElement.querySelector('.pet-photo-col-wrapper');
+            if (existingWrapper) existingWrapper.remove();
+
+            // Create preview element
+            const previewDiv = document.createElement('div');
+            previewDiv.className = 'pet-photo-preview';
+            const img = document.createElement('img');
+            img.src = photoBase64;
+            previewDiv.appendChild(img);
+
+            // Hide placeholder and upload button
+            petPhotoPlaceholder.style.display = 'none';
+            petPhotoUploadBtn.style.display = 'none';
+
+            // Create column wrapper
+            const colWrapper = document.createElement('div');
+            colWrapper.className = 'pet-photo-col-wrapper';
+
+            // Create action buttons container
+            const actionBtnsDiv = document.createElement('div');
+            actionBtnsDiv.className = 'pet-photo-action-btns';
+
+            const editBtn = document.createElement('button');
+            editBtn.type = 'button';
+            editBtn.className = 'pet-photo-edit-btn';
+            editBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+<path d="M7.78125 2.1875L11.8125 6.21875M1.3125 12.6875H3.64583L11.8125 4.52083C12.4419 3.89148 12.4419 2.87114 11.8125 2.2418C11.1832 1.61245 10.1628 1.61245 9.53345 2.2418L1.3125 10.4627V12.6875Z" stroke="#3B3731" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg> Edit photo`;
+            editBtn.addEventListener('click', function () {
+                petPhotoInput.click();
+            });
+
+            const saveBtn = document.createElement('button');
+            saveBtn.type = 'button';
+            saveBtn.className = 'pet-photo-save-btn';
+            saveBtn.textContent = 'Save';
+            saveBtn.addEventListener('click', onPhotosaveConfirm);
+
+            actionBtnsDiv.appendChild(editBtn);
+            actionBtnsDiv.appendChild(saveBtn);
+
+            // Display: preview on left, buttons on right
+            colWrapper.appendChild(previewDiv);
+            colWrapper.appendChild(actionBtnsDiv);
+
+            petPhotoPlaceholder.parentElement.insertBefore(colWrapper, petPhotoPlaceholder);
+        }
+
+        // Function to handle photo save confirmation
+        function onPhotosaveConfirm() {
+            console.log('Photo saved successfully');
+        }
+
+        function removePetPhoto() {
+            petPhotoBase64 = null;
+            petPhotoInput.value = '';
+            const wrapper = petPhotoPlaceholder.parentElement.querySelector('.pet-photo-col-wrapper');
+            if (wrapper) wrapper.remove();
+            petPhotoPlaceholder.style.display = 'block';
+            petPhotoUploadBtn.style.display = 'block';
+        }
+
+        // Function to collect pet details from form
+        function collectPetDetails() {
+            // Get pet name
+            const petNameInput = document.getElementById('petName');
+            const petName = petNameInput ? petNameInput.value.trim() : '';
+
+            // Get birthday from hidden input (created by renderBirthdayCalendar)
+            const petBirthdayInput = document.querySelector('input[name="birthday"]');
+            const petBirthday = petBirthdayInput ? petBirthdayInput.value : '';
+
+            // Get pet type
+            const petTypeInput = document.getElementById('petTypeInput');
+            const petType = petTypeInput ? petTypeInput.value.trim() : '';
+
+            // Get pet breed
+            const petBreedSelect = document.getElementById('petBreedSelect');
+            const petBreed = petBreedSelect ? petBreedSelect.value : '';
+
+            // Get pet sex
+            const petSexInput = document.querySelector('input[name="sex"]:checked');
+            const petSex = petSexInput ? petSexInput.value : '';
+
+            // Get pet weight
+            const petWeightInput = document.getElementById('petWeight');
+            const petWeight = petWeightInput ? petWeightInput.value : '';
+
+            // Get pet notes
+            const petNotesInput = document.getElementById('petNotes');
+            const petNotes = petNotesInput ? petNotesInput.value.trim() : '';
+
+            return {
+                name: petName,
+                birthday: petBirthday,
+                type: petType,
+                breed: petBreed,
+                sex: petSex,
+                weight: petWeight,
+                notes: petNotes,
+                photo: petPhotoBase64
+            };
+        }
+
+        // Function to display pet details
+        function displayPetDetails(details) {
+            // Format birthday
+            let birthdayDisplay = 'Not provided';
+            if (details.birthday) {
+                try {
+                    const dateObj = new Date(details.birthday + 'T00:00:00');
+                    if (!isNaN(dateObj.getTime())) {
+                        const day = String(dateObj.getDate()).padStart(2, '0');
+                        const month = String(dateObj.getMonth() + 1).padStart(2, '0');
+                        const year = dateObj.getFullYear();
+                        birthdayDisplay = `${day} / ${month} / ${year}`;
+                    }
+                } catch (e) {
+                    birthdayDisplay = details.birthday;
+                }
+            }
+
+            // Handle photo separately — inject ABOVE the grid, not inside it
+            const existingPhoto = document.getElementById('petDisplayPhoto');
+            if (existingPhoto) existingPhoto.remove();
+
+            if (details.photo) {
+                const photoEl = document.createElement('div');
+                photoEl.id = 'petDisplayPhoto';
+                photoEl.innerHTML = `<img src="${details.photo}" alt="Pet photo" style="width: 85px;height: 85px;aspect-ratio: 1/1; border-radius: 50%; object-fit: cover;">`;
+                petDetailsDisplay.insertBefore(photoEl, petDetailsContent);
+            }
+
+            // Grid content — no photo here
+            petDetailsContent.innerHTML = `
+        <div class="pet-detail-item">
+            <label>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="15" viewBox="0 0 16 15" fill="none">
+  <path d="M8 6.02632C5.73786 6.02632 3.82643 8.06405 3.20929 10.6813C2.93786 11.8323 3.34714 13.0539 4.35179 13.6279C5.14821 14.0829 6.33286 14.5 8 14.5C9.66714 14.5 10.8521 14.0829 11.6486 13.6279C12.6532 13.0539 13.0621 11.8323 12.7907 10.6813C12.1736 8.06368 10.2621 6.02632 8 6.02632ZM0.5 5.45305C0.5 6.47063 1.13929 7.5 1.92857 7.5C2.71786 7.5 3.35714 6.47063 3.35714 5.45305C3.35714 4.43547 2.71786 3.81579 1.92857 3.81579C1.13929 3.81579 0.5 4.43584 0.5 5.45305ZM15.5 5.45305C15.5 6.47063 14.8607 7.5 14.0714 7.5C13.2821 7.5 12.6429 6.47063 12.6429 5.45305C12.6429 4.43547 13.2821 3.81579 14.0714 3.81579C14.8607 3.81579 15.5 4.43584 15.5 5.45305ZM4.25 2.13726C4.25 3.15484 4.88929 4.18421 5.67857 4.18421C6.46786 4.18421 7.10714 3.15484 7.10714 2.13726C7.10714 1.11968 6.46786 0.5 5.67857 0.5C4.88929 0.5 4.25 1.12005 4.25 2.13726ZM11.75 2.13726C11.75 3.15484 11.1107 4.18421 10.3214 4.18421C9.53214 4.18421 8.89286 3.15484 8.89286 2.13726C8.89286 1.11968 9.53214 0.5 10.3214 0.5C11.1107 0.5 11.75 1.12005 11.75 2.13726Z" stroke="#9D9B98" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+            ${details.name || 'N/A'}</label>
+            <span>${details.type || 'Not provided'} <span class="dot"></span> ${details.breed || 'Not provided'}</span>
+        </div>
+        <div class="pet-detail-item">
+            <label>
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="17" viewBox="0 0 15 17" fill="none">
+  <path d="M1.27778 11.7778V14.5C1.27778 14.9126 1.44167 15.3082 1.73339 15.5999C2.02511 15.8917 2.42077 16.0556 2.83333 16.0556H12.1667C12.5792 16.0556 12.9749 15.8917 13.2666 15.5999C13.5583 15.3082 13.7222 14.9126 13.7222 14.5V11.7778M0.5 9.83333V9.05556C0.5 8.643 0.663888 8.24734 0.955612 7.95561C1.24733 7.66389 1.643 7.5 2.05556 7.5H12.9444C13.357 7.5 13.7527 7.66389 14.0444 7.95561C14.3361 8.24734 14.5 8.643 14.5 9.05556V9.83333M7.5 5.16667V7.5M7.5 5.16667C8.48156 5.16667 9.05556 4.41378 9.05556 3.125C9.05556 1.83622 7.5 0.5 7.5 0.5C7.5 0.5 5.94444 1.83622 5.94444 3.125C5.94444 4.41378 6.51844 5.16667 7.5 5.16667Z" stroke="#9D9B98" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M0.5 9.8335C0.5 10.4523 0.745833 11.0458 1.18342 11.4834C1.621 11.921 2.21449 12.1668 2.83333 12.1668C3.45217 12.1668 4.04566 11.921 4.48325 11.4834C4.92083 11.0458 5.16667 10.4523 5.16667 9.8335C5.16667 10.4523 5.4125 11.0458 5.85008 11.4834C6.28767 11.921 6.88116 12.1668 7.5 12.1668C8.11884 12.1668 8.71233 11.921 9.14992 11.4834C9.5875 11.0458 9.83333 10.4523 9.83333 9.8335C9.83333 10.4523 10.0792 11.0458 10.5168 11.4834C10.9543 11.921 11.5478 12.1668 12.1667 12.1668C12.7855 12.1668 13.379 11.921 13.8166 11.4834C14.2542 11.0458 14.5 10.4523 14.5 9.8335" stroke="#9D9B98" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+            Birthday</label>
+            <span>${birthdayDisplay}</span>
+        </div>
+
+        <div class="pet-detail-item">
+            <label>
+          <svg fill="#9D9B98" width="15" height="15" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 61.13 61.13" xml:space="preserve" stroke="#000000" stroke-width="0.00061132" transform="matrix(-1, 0, 0, 1, 0, 0)"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="2.689808"></g><g id="SVGRepo_iconCarrier"> <path d="M27.482,34.031v12.317h-6.92c-1.703,0-3.084,1.381-3.084,3.084s1.381,3.084,3.084,3.084h6.92v5.531 c0,1.703,1.381,3.084,3.084,3.084s3.084-1.381,3.084-3.084v-5.531h6.92c1.703,0,3.084-1.381,3.084-3.084s-1.381-3.084-3.084-3.084 h-6.92V34.031c7.993-1.458,14.072-8.467,14.072-16.874C47.723,7.697,40.026,0,30.566,0c-9.46,0-17.157,7.697-17.157,17.157 C13.409,25.564,19.489,32.573,27.482,34.031z M30.566,6.169c6.059,0,10.988,4.929,10.988,10.988s-4.929,10.988-10.988,10.988 s-10.988-4.929-10.988-10.988S24.507,6.169,30.566,6.169z"></path> </g></svg>
+ Sex
+            </label>
+            <span>${details.sex ? details.sex.charAt(0).toUpperCase() + details.sex.slice(1) : 'Not provided'}</span>
+        </div>
+        <div class="pet-detail-item full-width">
+            <label>
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="16" viewBox="0 0 15 16" fill="none">
+  <path d="M13.5905 8.11123L13.9601 6.73016C14.3918 5.1182 14.6084 4.31257 14.4462 3.61489C14.3176 3.0641 14.0285 2.56382 13.6155 2.17734C13.093 1.68768 12.2866 1.4718 10.6747 1.04003C9.0627 0.607553 8.25636 0.391671 7.55939 0.55394C7.0086 0.682549 6.50833 0.971618 6.12185 1.38458C5.70224 1.83207 5.4835 2.48758 5.15824 3.67851L4.98382 4.32544L4.61425 5.70651C4.18177 7.31847 3.96589 8.1241 4.12816 8.82178C4.25677 9.37257 4.54584 9.87285 4.9588 10.2593C5.48135 10.749 6.28769 10.9649 7.89966 11.3974C9.35221 11.7862 10.1507 12 10.8048 11.9192C10.8763 11.9101 10.9463 11.8977 11.0149 11.882C11.5655 11.7538 12.0658 11.4652 12.4525 11.0528C12.9421 10.5295 13.158 9.7232 13.5905 8.11123Z" stroke="#9D9B98"/>
+  <path d="M10.8047 11.9191C10.6553 12.3769 10.3927 12.7895 10.0413 13.1186C9.51875 13.6083 8.71241 13.8242 7.10045 14.2559C5.48848 14.6877 4.68214 14.9043 3.98517 14.7413C3.43447 14.6129 2.9342 14.3241 2.54763 13.9114C2.05796 13.3888 1.84137 12.5825 1.4096 10.9705L1.04003 9.58946C0.607553 7.9775 0.391671 7.17116 0.55394 6.47419C0.682549 5.9234 0.971618 5.42313 1.38458 5.03665C1.90713 4.54698 2.71347 4.3311 4.32544 3.89862C4.62948 3.81665 4.90708 3.74302 5.15823 3.67773" stroke="#9D9B98"/>
+  <path d="M7.48927 6.21924L10.9419 7.14424M6.93384 8.29084L9.00544 8.84556" stroke="#9D9B98" stroke-linecap="round"/>
+</svg>
+            Notes</label>
+            <span>${details.notes || 'No notes added'}</span>
+        </div>
+    `;
+        }
+        // Function to toggle between form and display
+        function toggleFormDisplay(showDisplay = true) {
+            if (showDisplay) {
+                petDetailsForm.classList.add('hidden');
+                petDetailsDisplay.classList.add('active');
+                petFormBtns.style.display = 'none';
+            } else {
+                petDetailsForm.classList.remove('hidden');
+                petDetailsDisplay.classList.remove('active');
+                petFormBtns.style.display = 'block';
+                // Populate form with saved data and restore photo preview
+                populateFormWithSavedData();
+            }
+        }
+
+        // Populate form fields with saved pet details
+        function populateFormWithSavedData() {
+            const savedPetDetails = sessionStorage.getItem('petDetails');
+            if (!savedPetDetails) return;
+
+            try {
+                const details = JSON.parse(savedPetDetails);
+
+                // Populate pet name
+                const petNameInput = document.getElementById('petName');
+                if (petNameInput) petNameInput.value = details.name || '';
+
+                // Populate pet type
+                const petTypeInput = document.getElementById('petTypeInput');
+                if (petTypeInput) petTypeInput.value = details.type || '';
+
+                // Populate pet breed
+                const petBreedSelect = document.getElementById('petBreedSelect');
+                if (petBreedSelect && details.breed) {
+                    // First populate the options if needed
+                    if (petBreedsData.petTypes) {
+                        const selectedType = petBreedsData.petTypes.find(pt => pt.name === details.type);
+                        if (selectedType) {
+                            populateBreeds(selectedType);
+                        }
+                    }
+                    if (petBreedSelect._fursDD) {
+                        petBreedSelect._fursDD.setValue(details.breed);
+                    } else {
+                        petBreedSelect.value = details.breed;
+                    }
+                }
+
+                // Populate pet birthday
+                const petBirthdayInput = document.querySelector('input[name="birthday"]');
+                if (petBirthdayInput) petBirthdayInput.value = details.birthday || '';
+
+                // Populate pet sex
+                const petSexInputs = document.querySelectorAll('input[name="sex"]');
+                if (petSexInputs.length > 0 && details.sex) {
+                    petSexInputs.forEach(input => {
+                        input.checked = input.value === details.sex;
+                    });
+                }
+
+                // Populate pet weight
+                const petWeightInput = document.getElementById('petWeight');
+                if (petWeightInput) petWeightInput.value = details.weight || '';
+
+                // Populate pet notes
+                const petNotesInput = document.getElementById('petNotes');
+                if (petNotesInput) petNotesInput.value = details.notes || '';
+
+                // Restore photo if available
+                if (details.photo) {
+                    petPhotoBase64 = details.photo;
+                    displayPetPhotoPreview(petPhotoBase64);
+                }
+            } catch (e) {
+                console.error('Error populating form with saved details:', e);
+            }
+        }
+
+        petFormSaveBtn.addEventListener('click', function () {
+            const petDetails = collectPetDetails();
+
+            if (!petDetails.name) {
+                alert('Please enter pet name');
+                return;
+            }
+
+            sessionStorage.setItem('petDetails', JSON.stringify(petDetails));
+
+            toggleFormDisplay(true);      // show the display div FIRST
+            displayPetDetails(petDetails); // THEN inject content including photo
+        });
+
+        // Cancel button click handler
+        petFormCancelBtn.addEventListener('click', function () {
+            if (confirm('Are you sure you want to cancel? Any unsaved changes will be lost.')) {
+                // Check if there's saved pet details in sessionStorage
+                const savedPetDetails = sessionStorage.getItem('petDetails');
+
+                if (savedPetDetails) {
+                    // If there's saved data, just return to the display view
+                    toggleFormDisplay(true);
+                } else {
+                    // If no saved data, clear all form fields
+                    const petNameInput = document.getElementById('petName');
+                    if (petNameInput) petNameInput.value = '';
+
+                    const petBirthdayInput = document.querySelector('input[name="birthday"]');
+                    if (petBirthdayInput) petBirthdayInput.value = '';
+
+                    const petTypeInput = document.getElementById('petTypeInput');
+                    if (petTypeInput) petTypeInput.value = '';
+
+                    const petBreedSelect = document.getElementById('petBreedSelect');
+                    if (petBreedSelect) {
+                        if (petBreedSelect._fursDD) {
+                            petBreedSelect._fursDD.setValue('');
+                        } else {
+                            petBreedSelect.value = '';
+                        }
+                    }
+
+                    document.querySelectorAll('input[name="sex"]').forEach(input => input.checked = false);
+
+                    const petWeightInput = document.getElementById('petWeight');
+                    if (petWeightInput) petWeightInput.value = '4';
+
+                    const petNotesInput = document.getElementById('petNotes');
+                    if (petNotesInput) petNotesInput.value = '';
+
+                    // Clear photo
+                    petPhotoBase64 = null;
+                    petPhotoInput.value = '';
+                    petPhotoPlaceholder.style.display = 'block';
+                }
+            }
+        });
+
+        // Edit button click handler
+        // Change button click handler
+        petDisplayChangeBtn.addEventListener('click', function () {
+            toggleFormDisplay(false);
+        });
+
+        // Check if there are existing pet details in sessionStorage on page load
+        function checkSavedPetDetails() {
+            const savedPetDetails = sessionStorage.getItem('petDetails');
+            if (savedPetDetails) {
+                try {
+                    const petDetails = JSON.parse(savedPetDetails);
+
+                    if (petDetails.photo) {
+                        petPhotoBase64 = petDetails.photo;
+                        displayPetPhotoPreview(petPhotoBase64);
+                    }
+
+                    toggleFormDisplay(true); // makes petDetailsDisplay visible FIRST
+                    displayPetDetails(petDetails); // NOW inject photo into visible element
+
+                } catch (e) {
+                    console.error('Error parsing saved pet details:', e);
+                }
+            }
+        }
+
+        // Run on DOM ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', checkSavedPetDetails);
+        } else {
+            checkSavedPetDetails();
+        }
+        // ===== End Pet Details Storage & Display =====
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    const addNewPetBtn = document.getElementById('addNewPetBtn');
+    const petActionBtns = document.getElementById('petActionBtns');
+    const petDetailsForm = document.querySelector('.pet-details-form');
+    const petList = document.getElementById('petList');
+    const petFormCancelBtn = document.getElementById('petFormCancelBtn');
+    
+    if (addNewPetBtn) {
+        addNewPetBtn.addEventListener('click', function() {
+            petActionBtns.style.display = 'none';
+            if (petList) petList.classList.remove('visible');
+            if (petDetailsForm) {
+                petDetailsForm.classList.remove('hidden');
+            }
+        });
+    }
+
+    if (petFormCancelBtn) {
+        petFormCancelBtn.addEventListener('click', function() {
+            setTimeout(() => {
+                const savedPetDetails = sessionStorage.getItem('petDetails');
+                if (!savedPetDetails) {
+                    petDetailsForm.classList.add('hidden');
+                    petActionBtns.style.display = 'flex';
+                }
+            }, 10);
+        });
+    }
+    
+    const petDisplayChangeBtn = document.getElementById('petDisplayChangeBtn');
+    if (petDisplayChangeBtn) {
+        petDisplayChangeBtn.addEventListener('click', function () {
+            petActionBtns.style.display = 'none';
+        });
+    }
+});
+
+
+        document.querySelectorAll('.input-wrap.select-wrap select').forEach(select => {
+            const wrap = select.closest('.input-wrap.select-wrap');
+            let isOpen = false;
+
+            select.addEventListener('mousedown', function () {
+                if (isOpen) {
+                    wrap.classList.remove('open');
+                    isOpen = false;
+                } else {
+                    wrap.classList.add('open');
+                    isOpen = true;
+                }
+            });
+
+            select.addEventListener('blur', function () {
+                setTimeout(() => {
+                    if(wrap) wrap.classList.remove('open');
+                    isOpen = false;
+                }, 100);
+            });
+
+            select.addEventListener('change', function () {
+                wrap.classList.remove('open');
+                isOpen = false;
+            });
+        });
+
+</script>
 </body>
 
 </html>
