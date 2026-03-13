@@ -2,6 +2,7 @@
 
 <?php include '../function_helper.php';
 include_once __DIR__ . '/../components/birthday-calendar.php';
+include_once __DIR__ . '/../components/extras-addons.php';
 $imagePath = BASE_URL . '/assets/images/card1.png';
 ?>
 <!DOCTYPE html>
@@ -1055,77 +1056,9 @@ $imagePath = BASE_URL . '/assets/images/card1.png';
         }
 
 
-        /* Selected tags */
-        .selected-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 28px;
-            min-height: 32px;
-            margin-top: 1rem;
-        }
-
-        .tag {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: #FFD88C;
-            /* color: #fff; */
-            font-size: 0.8rem;
-            font-weight: 500;
-            padding: 5px 12px;
-            border-radius: 20px;
 
 
 
-            color: #FFF;
-            font-family: Lato;
-            font-size: 14px;
-            font-style: normal;
-            font-weight: 500;
-            line-height: normal;
-            animation: tagPop 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-
-        @keyframes tagPop {
-            from {
-                transform: scale(0.7);
-                opacity: 0;
-            }
-
-            to {
-                transform: scale(1);
-                opacity: 1;
-            }
-        }
-
-        .tag-remove {
-            background: none;
-            border: none;
-            color: #fff;
-            cursor: pointer;
-            font-size: 0.9rem;
-            line-height: 1;
-            padding: 0;
-            opacity: 0.85;
-            transition: opacity 0.15s;
-        }
-
-        .tag-remove:hover {
-            opacity: 1;
-        }
-
-        /* Grid of options */
-        .options-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0;
-        }
-
-        .options-col {
-            display: flex;
-            flex-direction: column;
-        }
 
         .option {
             display: flex;
@@ -1186,24 +1119,7 @@ $imagePath = BASE_URL . '/assets/images/card1.png';
         }
 
 
-        .option-price {
-            color: #3B3731;
-            text-align: right;
-            font-family: Lato;
-            font-size: 16px;
-            font-style: normal;
-            font-weight: 400;
-            line-height: normal;
-        }
 
-        /* Divider between columns */
-        .options-col:first-child {
-            padding-right: 32px;
-        }
-
-        .options-col:last-child {
-            padding-left: 32px;
-        }
 
         /* Add this to your <style> block */
         #home-address-option {
@@ -2113,17 +2029,15 @@ $imagePath = BASE_URL . '/assets/images/card1.png';
                                     <span class="option-name">Use home address</span>
                                 </div>
                             </div>
-                            <div>
-                                <h1>Extras &amp; Add-ons</h1>
-                                <div class="selected-tags" id="selected-tags"></div>
-
-                                <div class="options-grid">
-                                    <!-- Left column -->
-                                    <div class="options-col" id="col-left"></div>
-                                    <!-- Right column -->
-                                    <div class="options-col" id="col-right"></div>
-                                </div>
+                            <div style="margin-top: 2rem;">
+                                <!-- Extras & Add-ons -->
+                                <?php renderExtrasAddons([], [
+                                    'instance_id' => 'groomer',
+                                    'on_change_js' => 'handleExtrasChange'
+                                ]); ?>
                             </div>
+
+
                             <div class="continue-btn">
                                 <button>Continue</button>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="11" viewBox="0 0 18 11"
@@ -2978,224 +2892,62 @@ line-height: 1.5;">
 
 
 
-        const addons = [{
-            id: 1,
-            name: 'Flea & Tick Treatment',
-            price: 14,
-            col: 'left'
-        },
-        {
-            id: 2,
-            name: 'Hypoallergenic Shampoo Upgrade',
-            price: 20,
-            col: 'left'
-        },
-        {
-            id: 3,
-            name: 'Tear-Stain Treatment',
-            price: 5,
-            col: 'left'
-        },
-        {
-            id: 4,
-            name: 'Coat Shine Spray',
-            price: 10,
-            col: 'left'
-        },
-        {
-            id: 5,
-            name: 'Nail Grinding',
-            price: 25,
-            col: 'left'
-        },
-        {
-            id: 6,
-            name: 'Coat Colour Enhancing Shampoo',
-            price: 10,
-            col: 'left'
-        },
-        {
-            id: 7,
-            name: 'Fast-Dry Service (express grooming)',
-            price: 8,
-            col: 'left'
-        },
-        {
-            id: 8,
-            name: 'Breath Freshner Gel',
-            price: 2,
-            col: 'left'
-        },
-        {
-            id: 9,
-            name: 'Deep Conditioning Mask',
-            price: 20,
-            col: 'right'
-        },
-        {
-            id: 10,
-            name: 'Shed-Control Shampoo',
-            price: 10,
-            col: 'right'
-        },
-        {
-            id: 11,
-            name: 'Deodorising Treatment',
-            price: 2,
-            col: 'right'
-        },
-        {
-            id: 12,
-            name: 'Anti-Itch Treatment',
-            price: 10,
-            col: 'right'
-        },
-        {
-            id: 13,
-            name: 'Soft-Claws / Nail Caps Application',
-            price: 60,
-            col: 'right'
-        },
-        {
-            id: 14,
-            name: 'Premium Fragrance Upgrade',
-            price: 10,
-            col: 'right'
-        },
-        {
-            id: 15,
-            name: 'Paw Fur Shaping',
-            price: 23,
-            col: 'right'
-        },
-        ];
-
-        const selected = new Set(); // no default selections
-
-        function formatPrice(p) {
-            return `£${p}`;
-        }
-
-        function renderOptions() {
-            const colLeft = document.getElementById('col-left');
-            const colRight = document.getElementById('col-right');
-            colLeft.innerHTML = '';
-            colRight.innerHTML = '';
-
-            addons.forEach(addon => {
-                const el = document.createElement('div');
-                el.className = 'option' + (selected.has(addon.id) ? ' selected' : '');
-                el.dataset.id = addon.id;
-                el.innerHTML = `
-        <div class="radio"></div>
-        <span class="option-name">${addon.name}</span>
-        <span class="option-price">${formatPrice(addon.price)}</span>
-      `;
-                el.addEventListener('click', () => toggle(addon.id));
-                (addon.col === 'left' ? colLeft : colRight).appendChild(el);
-            });
-        }
-
-        function renderTags() {
-            const container = document.getElementById('selected-tags');
-            container.innerHTML = '';
-            addons.filter(a => selected.has(a.id)).forEach(addon => {
-                const tag = document.createElement('span');
-                tag.className = 'tag';
-                tag.innerHTML = `${addon.name} <button class="tag-remove" aria-label="Remove ${addon.name}">✕</button>`;
-                tag.querySelector('button').addEventListener('click', e => {
-                    e.stopPropagation();
-                    toggle(addon.id);
+        window.handleExtrasChange = function(selectedIds, total, selectedAddons) {
+            // Update summary
+            const container = document.querySelector('.service-summary>div:nth-child(6)>div');
+            if(container) {
+                container.innerHTML = '';
+                selectedAddons.forEach(a => {
+                    const div = document.createElement('div');
+                    div.style.cssText = 'display: flex; justify-content: space-between; align-items: center;';
+                    div.innerHTML = `<p style="margin: 0; color: #3B3731; font-family: Lato; font-size: 14px; font-weight: 400;">${a.name}</p>
+                                     <p style="margin: 0; color: #3B3731; font-family: Lato; font-size: 14px; font-weight: 400;">£${a.price}</p>`;
+                    container.appendChild(div);
                 });
-                container.appendChild(tag);
-            });
-        }
-
-        function renderServiceSummaryAddons() {
-            const addonsContainer = document.querySelector('.service-summary>div:nth-child(6)>div');
-            if (!addonsContainer) return;
-
-            // Clear existing addon divs
-            const addonDivs = addonsContainer.querySelectorAll('div');
-            addonDivs.forEach(div => div.remove());
-
-            // Add selected addons
-            const selectedAddons = addons.filter(a => selected.has(a.id));
-            selectedAddons.forEach(addon => {
-                const div = document.createElement('div');
-                div.style.cssText = 'display: flex; justify-content: space-between; align-items: center;';
-                div.innerHTML = `
-                    <p style="margin: 0; color: #3B3731; font-family: Lato; font-size: 14px; font-weight: 400;">${addon.name}</p>
-                    <p style="margin: 0; color: #3B3731; font-family: Lato; font-size: 14px; font-weight: 400;">${formatPrice(addon.price)}</p>
-                `;
-                addonsContainer.appendChild(div);
-            });
-
-            // Show/hide the "Extras & Add-ons" heading based on whether add-ons are selected
-            const addonsSection = document.querySelector('.service-summary>div:nth-child(6)');
-            const addonsHeading = addonsSection.querySelector('p');
-            if (selectedAddons.length > 0) {
-                addonsHeading.style.display = 'block';
-            } else {
-                addonsHeading.style.display = 'none';
+                
+                const section = document.querySelector('.service-summary>div:nth-child(6)');
+                const heading = section ? section.querySelector('p') : null;
+                if(heading) heading.style.display = selectedAddons.length > 0 ? 'block' : 'none';
             }
 
-            updateServiceSummaryTotals();
-        }
-
-        function updateServiceSummaryTotals() {
-            // Calculate base service price (Full Groom: £48)
-            const baseServicePrice = 48;
-            const platformFee = 2;
-
-            // Calculate addons total
-            const addonsTotal = Array.from(selected).reduce((sum, id) => {
-                const addon = addons.find(a => a.id === id);
-                return sum + (addon ? addon.price : 0);
-            }, 0);
-
-            // Update the sum section
+            // Update Totals
+            const base = 48;
+            const fee = 2;
             const sumContainer = document.querySelector('.sum');
-            if (sumContainer) {
-                const serviceDiv = sumContainer.querySelector('div:first-child');
-                if (serviceDiv) {
-                    serviceDiv.innerHTML = `<p>Service:</p><span>${formatPrice(baseServicePrice)}</span>`;
-                }
+            if(sumContainer) {
+                const serviceDiv = sumContainer.firstElementChild;
+                if(serviceDiv) serviceDiv.innerHTML = `<p>Service:</p><span>£${base}</span>`;
 
-                // Update or add addons sum div
-                let addonsDiv = sumContainer.querySelector('div:nth-child(2)');
-                if (addonsTotal > 0) {
-                    if (!addonsDiv) {
+                let addonsDiv = sumContainer.querySelector('.addons-sum-row');
+                if(total > 0) {
+                    if(!addonsDiv) {
                         addonsDiv = document.createElement('div');
+                        addonsDiv.className = 'addons-sum-row';
                         serviceDiv.parentNode.insertBefore(addonsDiv, serviceDiv.nextSibling);
                     }
-                    addonsDiv.innerHTML = `<p>Add-ons:</p><span>${formatPrice(addonsTotal)}</span>`;
-                } else if (addonsDiv) {
-                    addonsDiv.remove();
-                }
+                    addonsDiv.innerHTML = `<p>Add-ons:</p><span>£${total}</span>`;
+                } else if(addonsDiv) addonsDiv.remove();
 
-                // Update or add platform fee div
-                let feeDiv = sumContainer.querySelector('div:nth-child(3)') || sumContainer.querySelector('div:last-child');
-                if (!feeDiv || feeDiv === serviceDiv || feeDiv === addonsDiv) {
+                let feeDiv = sumContainer.querySelector('.fee-sum-row');
+                if(!feeDiv) {
                     feeDiv = document.createElement('div');
-                    if (addonsDiv && addonsDiv.parentNode === sumContainer) {
-                        sumContainer.insertBefore(feeDiv, addonsDiv.nextSibling);
-                    } else if (serviceDiv) {
-                        sumContainer.insertBefore(feeDiv, serviceDiv.nextSibling);
-                    } else {
-                        sumContainer.appendChild(feeDiv);
-                    }
+                    feeDiv.className = 'fee-sum-row';
+                    sumContainer.appendChild(feeDiv);
                 }
-                feeDiv.innerHTML = `<p>Platform fee:</p><span>${formatPrice(platformFee)}</span>`;
+                feeDiv.innerHTML = `<p>Platform fee:</p><span>£${fee}</span>`;
             }
 
-            // Update total
-            const totalPrice = baseServicePrice + addonsTotal + platformFee;
-            const totalContainer = document.querySelector('.total');
-            if (totalContainer) {
-                totalContainer.innerHTML = `<p>Total:</p><span>${formatPrice(totalPrice)}</span>`;
+            const totalEl = document.querySelector('.total');
+            if(totalEl) {
+                const spanTotal = totalEl.querySelector('span');
+                if(spanTotal) spanTotal.innerText = `£${base + total + fee}`;
+                else totalEl.innerHTML = `<p>Total:</p><span>£${base + total + fee}</span>`;
             }
-        }
+
+            checkContinueBtnState();
+        };
+
+        const selected = new Set();
 
 
         // ===== Continue Button Activation =====
@@ -3237,7 +2989,8 @@ line-height: 1.5;">
 
             const addressFilled = addressInput && addressInput.value.trim() !== '';
 
-            const addonsFilled = selected.size > 0;
+            const addonsRoot = document.getElementById("furs-addons-groomer");
+            const addonsFilled = addonsRoot && addonsRoot.fursAddons ? addonsRoot.fursAddons.getSelected().length > 0 : false;
 
             const allFilled = petNameFilled && petBirthdayFilled && petTypeFilled &&
                 petBreedFilled && petSexFilled && petWeightFilled &&
@@ -3255,18 +3008,7 @@ line-height: 1.5;">
         }
         // ===== End Continue Button Activation =====
 
-        function toggle(id) {
-            if (selected.has(id)) selected.delete(id);
-            else selected.add(id);
-            renderOptions();
-            renderTags();
-            renderServiceSummaryAddons();
-            checkContinueBtnState(); // ← add this line
-        }
 
-        renderOptions();
-        renderTags();
-        renderServiceSummaryAddons();
 
         function toggleHomeAddress(el) {
             el.classList.toggle('selected');
@@ -3700,7 +3442,8 @@ line-height: 1.5;">
 
                 const confirmAddonsText = document.getElementById('confirmAddonsText');
                 if (confirmAddonsText) {
-                    const selectedAddons = addons.filter(a => selected.has(a.id)).map(a => a.name);
+                    const addonsRoot = document.getElementById("furs-addons-groomer");
+                    const selectedAddons = addonsRoot && addonsRoot.fursAddons ? addonsRoot.fursAddons.getAddons().map(a => a.name) : [];
                     confirmAddonsText.textContent = selectedAddons.length > 0 ? selectedAddons.join(', ') : 'None';
                 }
 
