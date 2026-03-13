@@ -232,8 +232,7 @@ function renderConfirmPay()
             border-radius: 10px;
             border: 1px solid #D4D4D4;
             background: #FFF;
-            /* overflow: hidden; */
-            /* Removed to prevent clipping dropdown panels */
+            overflow: visible !important; /* Ensure dropdown panels are not clipped */
             max-width: 820px;
         }
 
@@ -243,6 +242,15 @@ function renderConfirmPay()
             background: #F8F8F8;
             border-top-left-radius: 10px;
             border-top-right-radius: 10px;
+        }
+
+        /* Ensure dropdown panels are taller for Month/Year selections */
+        .confirm-pay .furs-dd__list {
+            max-height: 550px !important;
+        }
+
+        .confirm-pay .furs-dd.is-open .furs-dd__panel {
+            max-height: 600px !important;
         }
 
         .card-payment-body {
