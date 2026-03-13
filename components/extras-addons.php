@@ -49,7 +49,7 @@ function renderExtrasAddons(array $addons = [], array $options = []): void
         }
 
         /* Selected tags */
-        .furs-addons-root .selected-tags {
+        .furs-addons-root .selected-furs-addons-tags {
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
@@ -58,7 +58,7 @@ function renderExtrasAddons(array $addons = [], array $options = []): void
             margin-top: 1rem;
         }
 
-        .furs-addons-root .tag {
+        .furs-addons-root .furs-addons-tag {
             display: inline-flex;
             align-items: center;
             gap: 6px;
@@ -77,11 +77,18 @@ function renderExtrasAddons(array $addons = [], array $options = []): void
         }
 
         @keyframes fursTagPop {
-            from { transform: scale(0.7); opacity: 0; }
-            to { transform: scale(1); opacity: 1; }
+            from {
+                transform: scale(0.7);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
         }
 
-        .furs-addons-root .tag-remove {
+        .furs-addons-root .furs-addons-tag-remove {
             background: none;
             border: none;
             color: #fff;
@@ -93,7 +100,7 @@ function renderExtrasAddons(array $addons = [], array $options = []): void
             transition: opacity 0.15s;
         }
 
-        .furs-addons-root .tag-remove:hover {
+        .furs-addons-root .furs-addons-tag-remove:hover {
             opacity: 1;
         }
 
@@ -188,7 +195,7 @@ function renderExtrasAddons(array $addons = [], array $options = []): void
     </style>
     <div class="furs-addons-root" id="furs-addons-<?= htmlspecialchars($id) ?>">
         <h1 style="margin-bottom: 30px;"><?= $title ?></h1>
-        <div class="selected-tags" id="furs-tags-<?= htmlspecialchars($id) ?>"></div>
+        <div class="selected-furs-addons-tags" id="furs-tags-<?= htmlspecialchars($id) ?>"></div>
 
         <div class="options-grid">
             <div class="options-col" id="furs-col-left-<?= htmlspecialchars($id) ?>"></div>
@@ -197,80 +204,80 @@ function renderExtrasAddons(array $addons = [], array $options = []): void
     </div>
 
     <script>
-    (function() {
-        const id = <?= json_encode($id) ?>;
-        const addons = <?= $addonsJson ?>;
-        const currency = <?= json_encode($currency) ?>;
-        const onChangeCb = <?= json_encode($onChangeCb) ?>;
-        const selected = new Set(<?= $defaultSelectedJson ?>);
+        (function () {
+            const id = <?= json_encode($id) ?>;
+            const addons = <?= $addonsJson ?>;
+            const currency = <?= json_encode($currency) ?>;
+            const onChangeCb = <?= json_encode($onChangeCb) ?>;
+            const selected = new Set(<?= $defaultSelectedJson ?>);
 
-        function fmt(p) { return `${currency}${p}`; }
+            function fmt(p) { return `${currency}${p}`; }
 
-        function renderOptions() {
-            const left = document.getElementById(`furs-col-left-${id}`);
-            const right = document.getElementById(`furs-col-right-${id}`);
-            if(!left || !right) return;
-            left.innerHTML = ''; right.innerHTML = '';
+            function renderOptions() {
+                const left = document.getElementById(`furs-col-left-${id}`);
+                const right = document.getElementById(`furs-col-right-${id}`);
+                if (!left || !right) return;
+                left.innerHTML = ''; right.innerHTML = '';
 
-            addons.forEach(a => {
-                const el = document.createElement('div');
-                el.className = 'option' + (selected.has(a.id) ? ' selected' : '');
-                el.innerHTML = `
+                addons.forEach(a => {
+                    const el = document.createElement('div');
+                    el.className = 'option' + (selected.has(a.id) ? ' selected' : '');
+                    el.innerHTML = `
                     <div class="radio"></div>
                     <span class="option-name">${a.name}</span>
                     <span class="option-price">${fmt(a.price)}</span>
                 `;
-                el.onclick = () => toggle(a.id);
-                (a.col === 'left' ? left : right).appendChild(el);
-            });
-        }
-
-        function renderTags() {
-            const container = document.getElementById(`furs-tags-${id}`);
-            if(!container) return;
-            container.innerHTML = '';
-            addons.filter(a => selected.has(a.id)).forEach(a => {
-                const tag = document.createElement('span');
-                tag.className = 'tag';
-                tag.innerHTML = `${a.name} <button class="tag-remove">✕</button>`;
-                tag.querySelector('button').onclick = (e) => {
-                    e.stopPropagation();
-                    toggle(a.id);
-                };
-                container.appendChild(tag);
-            });
-        }
-
-        function toggle(addonId) {
-            if(selected.has(addonId)) selected.delete(addonId);
-            else selected.add(addonId);
-            renderOptions();
-            renderTags();
-            
-            const selectedAddons = addons.filter(a => selected.has(a.id));
-            const total = selectedAddons.reduce((sum, a) => sum + a.price, 0);
-            
-            if(onChangeCb && typeof window[onChangeCb] === 'function') {
-                window[onChangeCb](Array.from(selected), total, selectedAddons);
+                    el.onclick = () => toggle(a.id);
+                    (a.col === 'left' ? left : right).appendChild(el);
+                });
             }
 
-            // Fire custom event
-            document.getElementById(`furs-addons-${id}`).dispatchEvent(new CustomEvent('furs:addons:change', {
-                detail: { selectedIds: Array.from(selected), total, selectedAddons }
-            }));
-        }
+            function renderTags() {
+                const container = document.getElementById(`furs-tags-${id}`);
+                if (!container) return;
+                container.innerHTML = '';
+                addons.filter(a => selected.has(a.id)).forEach(a => {
+                    const tag = document.createElement('span');
+                    tag.className = 'furs-addons-tag';
+                    tag.innerHTML = `${a.name} <button class="furs-addons-tag-remove">✕</button>`;
+                    tag.querySelector('button').onclick = (e) => {
+                        e.stopPropagation();
+                        toggle(a.id);
+                    };
+                    container.appendChild(tag);
+                });
+            }
 
-        // Expose public API
-        document.getElementById(`furs-addons-${id}`).fursAddons = {
-            getSelected: () => Array.from(selected),
-            getAddons: () => addons.filter(a => selected.has(a.id)),
-            getTotal: () => addons.filter(a => selected.has(a.id)).reduce((s, a) => s + a.price, 0)
-        };
+            function toggle(addonId) {
+                if (selected.has(addonId)) selected.delete(addonId);
+                else selected.add(addonId);
+                renderOptions();
+                renderTags();
 
-        // Initial render
-        renderOptions();
-        renderTags();
-    })();
+                const selectedAddons = addons.filter(a => selected.has(a.id));
+                const total = selectedAddons.reduce((sum, a) => sum + a.price, 0);
+
+                if (onChangeCb && typeof window[onChangeCb] === 'function') {
+                    window[onChangeCb](Array.from(selected), total, selectedAddons);
+                }
+
+                // Fire custom event
+                document.getElementById(`furs-addons-${id}`).dispatchEvent(new CustomEvent('furs:addons:change', {
+                    detail: { selectedIds: Array.from(selected), total, selectedAddons }
+                }));
+            }
+
+            // Expose public API
+            document.getElementById(`furs-addons-${id}`).fursAddons = {
+                getSelected: () => Array.from(selected),
+                getAddons: () => addons.filter(a => selected.has(a.id)),
+                getTotal: () => addons.filter(a => selected.has(a.id)).reduce((s, a) => s + a.price, 0)
+            };
+
+            // Initial render
+            renderOptions();
+            renderTags();
+        })();
     </script>
     <?php
 }
