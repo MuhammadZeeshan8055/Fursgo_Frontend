@@ -2033,7 +2033,8 @@ $imagePath = BASE_URL . '/assets/images/card1.png';
                                 <!-- Extras & Add-ons -->
                                 <?php renderExtrasAddons([], [
                                     'instance_id' => 'groomer',
-                                    'on_change_js' => 'handleExtrasChange'
+                                    'on_change_js' => 'handleExtrasChange',
+                                    'background' => true
                                 ]); ?>
                             </div>
 

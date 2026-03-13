@@ -31,6 +31,7 @@ function renderExtrasAddons(array $addons = [], array $options = []): void
     $id = $options['instance_id'] ?? 'main';
     $defaultSelectedSize = count($options['default_selected'] ?? []);
     $onChangeCb = $options['on_change_js'] ?? '';
+    $hasBackground = $options['background'] ?? false;
 
     $addonsJson = json_encode(array_values($addons), JSON_HEX_TAG);
     $defaultSelectedJson = json_encode($options['default_selected'] ?? []);
@@ -50,12 +51,20 @@ function renderExtrasAddons(array $addons = [], array $options = []): void
 
         /* Selected tags */
         .furs-addons-root .selected-furs-addons-tags {
-            display: flex;
+            display: none;
+            /* Hidden when empty */
             flex-wrap: wrap;
             gap: 8px;
             margin-bottom: 28px;
             min-height: 32px;
             margin-top: 1rem;
+        }
+
+        .furs-addons-root .selected-furs-addons-tags.has-background {
+            background: #F8F8F8;
+            padding: 15px;
+            border-radius: 10px;
+            border: none;
         }
 
         .furs-addons-root .furs-addons-tag {
@@ -209,6 +218,7 @@ function renderExtrasAddons(array $addons = [], array $options = []): void
             const addons = <?= $addonsJson ?>;
             const currency = <?= json_encode($currency) ?>;
             const onChangeCb = <?= json_encode($onChangeCb) ?>;
+            const hasBackground = <?= json_encode($hasBackground) ?>;
             const selected = new Set(<?= $defaultSelectedJson ?>);
 
             function fmt(p) { return `${currency}${p}`; }
@@ -236,7 +246,14 @@ function renderExtrasAddons(array $addons = [], array $options = []): void
                 const container = document.getElementById(`furs-tags-${id}`);
                 if (!container) return;
                 container.innerHTML = '';
-                addons.filter(a => selected.has(a.id)).forEach(a => {
+                const selectedItems = addons.filter(a => selected.has(a.id));
+
+                if (hasBackground) {
+                    container.classList.toggle('has-background', selectedItems.length > 0);
+                }
+                container.style.display = selectedItems.length > 0 ? 'flex' : 'none';
+
+                selectedItems.forEach(a => {
                     const tag = document.createElement('span');
                     tag.className = 'furs-addons-tag';
                     tag.innerHTML = `${a.name} <button class="furs-addons-tag-remove">✕</button>`;
