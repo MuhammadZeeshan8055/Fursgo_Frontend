@@ -12,7 +12,7 @@ $imagePath = BASE_URL . '/assets/images/card1.png';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FursGo - Booking</title>
+    <title>FursGo - Booking Groomer</title>
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/responsive.css">
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/bootstrap.css">
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/media_query.css">
@@ -2026,7 +2026,8 @@ $imagePath = BASE_URL . '/assets/images/card1.png';
                             <div class="total">
                                 <p>Total:</p><span>£58.00</span>
                             </div>
-                            <div class="payment"><button id="confirmPayBtnSidebar" disabled style="cursor: not-allowed; transition: all 0.2s ease;">Confirm & Pay</button></div>
+                            <div class="payment"><button id="confirmPayBtnSidebar" disabled
+                                    style="cursor: not-allowed; transition: all 0.2s ease;">Confirm & Pay</button></div>
                             <div class="caution">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48"
                                     fill="none">

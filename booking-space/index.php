@@ -11,7 +11,7 @@ $imagePath = BASE_URL . '/assets/images/booking-space-card-image.svg';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FursGo - Booking</title>
+    <title>FursGo - Booking Space</title>
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/responsive.css">
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/bootstrap.css">
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/media_query.css">
