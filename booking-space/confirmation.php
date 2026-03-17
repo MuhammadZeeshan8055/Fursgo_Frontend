@@ -294,7 +294,7 @@
             display: flex;
             flex-wrap: wrap;
             gap: 1rem;
-            margin-bottom: 20px;
+            margin: 20px 0;
         }
 
         .conf-amenity-pill {
