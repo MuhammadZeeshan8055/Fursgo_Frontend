@@ -46,7 +46,7 @@ include_once __DIR__ . '/../components/extras-addons.php';
                         <div class="cb-booking-groomer-card mt-5">
                             <div class="cb-profile-section">
                                 <div class="avatar-wrap">
-                                    <img class="avatar" src="http://localhost:8000/assets/images/space_card3.png" alt="Sarah's avatar">
+                                    <img class="avatar" src="<?= BASE_URL ?>assets/images/space_card3.png" alt="Sarah's avatar">
                                     <div class="badge-shield" title="Verified">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="29" height="30" viewBox="0 0 29 30" fill="none">
                                             <path d="M14.9293 0.170856C14.6819 0.058916 14.4168 0 14.1399 0C13.8629 0 13.5978 0.058916 13.3504 0.170856L2.25651 4.87824C0.960357 5.42616 -0.0058648 6.70463 2.67979e-05 8.24823C0.0294848 14.0927 2.43326 24.7859 12.5845 29.6465C13.5684 30.1178 14.7113 30.1178 15.6952 29.6465C25.8465 24.7859 28.2502 14.0927 28.2797 8.24823C28.2856 6.70463 27.3194 5.42616 26.0232 4.87824L14.9293 0.170856Z" fill="#CBDCE8"></path>

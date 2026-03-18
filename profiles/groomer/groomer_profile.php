@@ -2192,7 +2192,7 @@
                         </div>
                         <div class="col-lg-6">
                             <div class="map-div mt-5">
-                                <img src="http://localhost:8000/assets/images/profile_tab_map.png" class="map-image" alt="">
+                                <img src="<?= BASE_URL ?>assets/images/profile_tab_map.png" class="map-image" alt="">
                             </div>
                         </div>
 

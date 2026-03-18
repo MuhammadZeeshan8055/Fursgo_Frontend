@@ -2444,7 +2444,7 @@
 
                                 <div class="profile">
                                     <div class="avatar-wrap">
-                                        <img class="avatar avatar-img" src="http://localhost:8000//assets/images/groomer-profile.png" alt="Sarah's avatar">
+                                        <img class="avatar avatar-img" src="<?= BASE_URL ?>assets/images/groomer-profile.png" alt="Sarah's avatar">
                                         <div class="custom badge-shield" title="Verified">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="20" viewBox="0 0 18 20" fill="none">
                                                 <ellipse cx="9.36358" cy="9.74945" rx="5.52471" ry="5.19965" fill="white" />
@@ -2515,7 +2515,7 @@
 
                                 <div class="profile">
                                     <div class="avatar-wrap">
-                                        <img class="avatar avatar-img" src="http://localhost:8000//assets/images/space_card3.png" alt="Sarah's avatar">
+                                        <img class="avatar avatar-img" src="<?= BASE_URL ?>assets/images/space_card3.png" alt="Sarah's avatar">
                                         <div class="custom badge-shield" title="Verified">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="19" viewBox="0 0 18 19" fill="none">
                                                 <path d="M9.00978 0.103111C8.86044 0.0355555 8.70044 0 8.53333 0C8.36622 0 8.20622 0.0355555 8.05689 0.103111L1.36179 2.94399C0.57957 3.27466 -0.00353938 4.04621 1.61724e-05 4.97777C0.0177939 8.50487 1.46846 14.9582 7.59467 17.8915C8.18845 18.176 8.87822 18.176 9.472 17.8915C15.5982 14.9582 17.0489 8.50487 17.0666 4.97777C17.0702 4.04621 16.4871 3.27466 15.7049 2.94399L9.00978 0.103111Z" fill="#CBDCE8" />
@@ -3220,7 +3220,7 @@
                                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 255 130" fill="none">
                                                     <defs>
                                                         <pattern id="pattern-card-1" patternUnits="userSpaceOnUse" width="255" height="130">
-                                                            <image href="http://localhost:8000//assets/images/profile_modal_image.jpg" width="255" height="130" preserveAspectRatio="xMinYMax slice"></image>
+                                                            <image href="<?= BASE_URL ?>assets/images/profile_modal_image.jpg" width="255" height="130" preserveAspectRatio="xMinYMax slice"></image>
                                                         </pattern>
                                                     </defs>
 
@@ -3333,7 +3333,7 @@
                                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 255 130" fill="none">
                                                     <defs>
                                                         <pattern id="pattern-card-2" patternUnits="userSpaceOnUse" width="255" height="130">
-                                                            <image href="http://localhost:8000//assets/images/profile_modal_image2.jpg" width="255" height="130" preserveAspectRatio="xMinYMax slice"></image>
+                                                            <image href="<?= BASE_URL ?>assets/images/profile_modal_image2.jpg" width="255" height="130" preserveAspectRatio="xMinYMax slice"></image>
                                                         </pattern>
                                                     </defs>
 
@@ -3445,7 +3445,7 @@
                                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 255 130" fill="none">
                                                     <defs>
                                                         <pattern id="pattern-card-3" patternUnits="userSpaceOnUse" width="255" height="130">
-                                                            <image href="http://localhost:8000//assets/images/profile_modal_image3.jpg" width="255" height="130" preserveAspectRatio="xMinYMax slice"></image>
+                                                            <image href="<?= BASE_URL ?>assets/images/profile_modal_image3.jpg" width="255" height="130" preserveAspectRatio="xMinYMax slice"></image>
                                                         </pattern>
                                                     </defs>
 
@@ -3612,7 +3612,7 @@
                                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 255 130" fill="none">
                                                     <defs>
                                                         <pattern id="pattern-card-4" patternUnits="userSpaceOnUse" width="255" height="130">
-                                                            <image href="http://localhost:8000//assets/images/space_card1.png" width="255" height="130" preserveAspectRatio="xMinYMax slice"></image>
+                                                            <image href="<?= BASE_URL ?>assets/images/space_card1.png" width="255" height="130" preserveAspectRatio="xMinYMax slice"></image>
                                                         </pattern>
                                                     </defs>
 
@@ -3747,7 +3747,7 @@
                                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 255 130" fill="none">
                                                     <defs>
                                                         <pattern id="pattern-card-5" patternUnits="userSpaceOnUse" width="255" height="130">
-                                                            <image href="http://localhost:8000//assets/images/space_card2.png" width="255" height="130" preserveAspectRatio="xMinYMax slice"></image>
+                                                            <image href="<?= BASE_URL ?>assets/images/space_card2.png" width="255" height="130" preserveAspectRatio="xMinYMax slice"></image>
                                                         </pattern>
                                                     </defs>
 
@@ -3871,7 +3871,7 @@
                                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 255 130" fill="none">
                                                     <defs>
                                                         <pattern id="pattern-card-6" patternUnits="userSpaceOnUse" width="255" height="130">
-                                                            <image href="http://localhost:8000//assets/images/space_card3.png" width="255" height="130" preserveAspectRatio="xMinYMax slice"></image>
+                                                            <image href="<?= BASE_URL ?>assets/images/space_card3.png" width="255" height="130" preserveAspectRatio="xMinYMax slice"></image>
                                                         </pattern>
                                                     </defs>
 
@@ -4063,7 +4063,7 @@
 
                                         <div class="review-left">
                                             <div class="avatar-wrap">
-                                                <img class="avatar" src="http://localhost:8000/assets/images/groomer-profile.png" alt="Sarah's avatar">
+                                                <img class="avatar" src="<?= BASE_URL ?>assets/images/groomer-profile.png" alt="Sarah's avatar">
                                                 <div class="badge-shield" title="Verified">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="33" viewBox="0 0 30 33" fill="none">
                                                         <ellipse cx="15.873" cy="16.5256" rx="9.3645" ry="8.81365" fill="white"></ellipse>
@@ -4158,7 +4158,7 @@
 
                                         <div class="review-left">
                                             <div class="avatar-wrap">
-                                                <img class="avatar" src="http://localhost:8000/assets/images/space_card3.png" alt="Sarah's avatar">
+                                                <img class="avatar" src="<?= BASE_URL ?>assets/images/space_card3.png" alt="Sarah's avatar">
                                                 <div class="badge-shield" title="Verified">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="29" height="30" viewBox="0 0 29 30" fill="none">
                                                         <path d="M14.9293 0.170856C14.6819 0.058916 14.4168 0 14.1399 0C13.8629 0 13.5978 0.058916 13.3504 0.170856L2.25651 4.87824C0.960357 5.42616 -0.0058648 6.70463 2.67979e-05 8.24823C0.0294848 14.0927 2.43326 24.7859 12.5845 29.6465C13.5684 30.1178 14.7113 30.1178 15.6952 29.6465C25.8465 24.7859 28.2502 14.0927 28.2797 8.24823C28.2856 6.70463 27.3194 5.42616 26.0232 4.87824L14.9293 0.170856Z" fill="#CBDCE8"></path>
@@ -4258,7 +4258,7 @@
 
                                         <div class="review-left">
                                             <div class="avatar-wrap">
-                                                <img class="avatar" src="http://localhost:8000/assets/images/space_card3.png" alt="Sarah's avatar">
+                                                <img class="avatar" src="<?= BASE_URL ?>assets/images/space_card3.png" alt="Sarah's avatar">
                                                 <div class="badge-shield" title="Verified">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="29" height="30" viewBox="0 0 29 30" fill="none">
                                                         <path d="M14.9293 0.170856C14.6819 0.058916 14.4168 0 14.1399 0C13.8629 0 13.5978 0.058916 13.3504 0.170856L2.25651 4.87824C0.960357 5.42616 -0.0058648 6.70463 2.67979e-05 8.24823C0.0294848 14.0927 2.43326 24.7859 12.5845 29.6465C13.5684 30.1178 14.7113 30.1178 15.6952 29.6465C25.8465 24.7859 28.2502 14.0927 28.2797 8.24823C28.2856 6.70463 27.3194 5.42616 26.0232 4.87824L14.9293 0.170856Z" fill="#CBDCE8"></path>
@@ -4372,7 +4372,7 @@
                                         <div class="review-left">
 
                                             <div class="avatar-wrap">
-                                                <img class="avatar" src="http://localhost:8000/assets/images/groomer-profile.png" alt="Sarah's avatar">
+                                                <img class="avatar" src="<?= BASE_URL ?>assets/images/groomer-profile.png" alt="Sarah's avatar">
                                                 <div class="badge-shield" title="Verified">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="33" viewBox="0 0 30 33" fill="none">
                                                         <ellipse cx="15.873" cy="16.5256" rx="9.3645" ry="8.81365" fill="white"></ellipse>
@@ -4465,7 +4465,7 @@
 
                                         <div class="review-left">
                                             <div class="avatar-wrap">
-                                                <img class="avatar" src="http://localhost:8000/assets/images/space_card3.png" alt="Sarah's avatar">
+                                                <img class="avatar" src="<?= BASE_URL ?>assets/images/space_card3.png" alt="Sarah's avatar">
                                                 <div class="badge-shield" title="Verified">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="29" height="30" viewBox="0 0 29 30" fill="none">
                                                         <path d="M14.9293 0.170856C14.6819 0.058916 14.4168 0 14.1399 0C13.8629 0 13.5978 0.058916 13.3504 0.170856L2.25651 4.87824C0.960357 5.42616 -0.0058648 6.70463 2.67979e-05 8.24823C0.0294848 14.0927 2.43326 24.7859 12.5845 29.6465C13.5684 30.1178 14.7113 30.1178 15.6952 29.6465C25.8465 24.7859 28.2502 14.0927 28.2797 8.24823C28.2856 6.70463 27.3194 5.42616 26.0232 4.87824L14.9293 0.170856Z" fill="#CBDCE8"></path>
@@ -4565,7 +4565,7 @@
 
                                         <div class="review-left">
                                             <div class="avatar-wrap">
-                                                <img class="avatar" src="http://localhost:8000/assets/images/groomer-profile.png" alt="Sarah's avatar">
+                                                <img class="avatar" src="<?= BASE_URL ?>assets/images/groomer-profile.png" alt="Sarah's avatar">
                                                 <div class="badge-shield" title="Verified">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="33" viewBox="0 0 30 33" fill="none">
                                                         <ellipse cx="15.873" cy="16.5256" rx="9.3645" ry="8.81365" fill="white"></ellipse>
