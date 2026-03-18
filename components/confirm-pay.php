@@ -39,23 +39,23 @@ function renderConfirmPay()
             font-weight: 400;
         }
 
-        .input-wrap {
+        .cp-input-wrap {
             position: relative;
             margin: 0 !important;
         }
 
-        .input-wrap>input,
-        .input-wrap>select {
+        .cp-input-wrap>input,
+        .cp-input-wrap>select {
             border-radius: 10px !important;
             border: 1px solid #D4D4D4 !important;
             background: #FFF !important;
         }
 
-        .input-wrap input[type="text"],
-        .input-wrap input[type="tel"],
-        .input-wrap input[type="email"],
-        .input-wrap select,
-        .input-wrap textarea {
+        .cp-input-wrap input[type="text"],
+        .cp-input-wrap input[type="tel"],
+        .cp-input-wrap input[type="email"],
+        .cp-input-wrap select,
+        .cp-input-wrap textarea {
             width: 100%;
             box-sizing: border-box;
             padding: 12px 44px 12px 14px;
@@ -68,7 +68,7 @@ function renderConfirmPay()
             height: 48px;
         }
 
-        .input-wrap select {
+        .cp-input-wrap select {
             -webkit-appearance: none;
             appearance: none;
             padding-right: 44px;
@@ -80,15 +80,15 @@ function renderConfirmPay()
             cursor: pointer;
         }
 
-        .input-wrap textarea {
+        .cp-input-wrap textarea {
             min-height: 100px;
             resize: vertical;
             padding: 12px 14px;
         }
 
-        .input-wrap input:focus,
-        .input-wrap select:focus,
-        .input-wrap textarea:focus {
+        .cp-input-wrap input:focus,
+        .cp-input-wrap select:focus,
+        .cp-input-wrap textarea:focus {
             border-color: #e6dccd;
             box-shadow: 0 0 0 3px rgba(201, 221, 160, 0.12);
         }
@@ -108,14 +108,14 @@ function renderConfirmPay()
             transition: opacity .12s, transform .12s;
         }
 
-        .input-wrap.valid .icon {
+        .cp-input-wrap.valid .icon {
             opacity: 1;
             transform: translateY(-50%) scale(1);
         }
 
-        .input-wrap.error input,
-        .input-wrap.error textarea,
-        .input-wrap.error select {
+        .cp-input-wrap.error input,
+        .cp-input-wrap.error textarea,
+        .cp-input-wrap.error select {
             border-color: rgba(255, 107, 107, 0.22);
             box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.06);
         }
@@ -128,7 +128,7 @@ function renderConfirmPay()
             display: none;
         }
 
-        .input-wrap.error+.error-msg {
+        .cp-input-wrap.error+.error-msg {
             display: block;
         }
 
@@ -232,7 +232,8 @@ function renderConfirmPay()
             border-radius: 10px;
             border: 1px solid #D4D4D4;
             background: #FFF;
-            overflow: visible !important; /* Ensure dropdown panels are not clipped */
+            overflow: visible !important;
+            /* Ensure dropdown panels are not clipped */
             max-width: 820px;
         }
 
@@ -331,7 +332,7 @@ function renderConfirmPay()
             <div class="form-grid">
                 <div class="full-row">
                     <label for="country">Country / Region</label>
-                    <div class="input-wrap select-wrap" data-field="country">
+                    <div class="cp-input-wrap select-wrap" data-field="country">
                         <select id="country" name="country" data-furs-dropdown>
                             <option value="">Select country...</option>
                             <option value="uk">United Kingdom</option>
@@ -350,7 +351,7 @@ function renderConfirmPay()
 
                 <div>
                     <label for="fullname">Full Name</label>
-                    <div class="input-wrap" data-field="fullname">
+                    <div class="cp-input-wrap" data-field="fullname">
                         <input id="fullname" name="fullname" type="text" placeholder="Lorem Ipsum" />
                         <span class="icon" aria-hidden="true">
                             <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
@@ -364,7 +365,7 @@ function renderConfirmPay()
 
                 <div>
                     <label for="email">Email Address</label>
-                    <div class="input-wrap" data-field="email">
+                    <div class="cp-input-wrap" data-field="email">
                         <input id="email" name="email" type="email" placeholder="you@example.com" />
                         <span class="icon" aria-hidden="true">
                             <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
@@ -378,7 +379,7 @@ function renderConfirmPay()
 
                 <div class="full-row">
                     <label for="cp-address">Address</label>
-                    <div class="input-wrap" data-field="address">
+                    <div class="cp-input-wrap" data-field="address">
                         <input id="cp-address" name="address" type="text" placeholder="Start typing address..." />
                         <span class="icon" aria-hidden="true">
                             <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
@@ -392,7 +393,7 @@ function renderConfirmPay()
 
                 <div>
                     <label for="city">City</label>
-                    <div class="input-wrap" data-field="city">
+                    <div class="cp-input-wrap" data-field="city">
                         <input id="city" name="city" type="text" placeholder="Lorem Ipsum" />
                         <span class="icon" aria-hidden="true">
                             <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
@@ -406,7 +407,7 @@ function renderConfirmPay()
 
                 <div>
                     <label for="postcode">Postcode</label>
-                    <div class="input-wrap" data-field="postcode">
+                    <div class="cp-input-wrap" data-field="postcode">
                         <input id="postcode" name="postcode" type="text" placeholder="LOR 3MP" />
                         <span class="icon" aria-hidden="true">
                             <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
@@ -420,7 +421,7 @@ function renderConfirmPay()
 
                 <div>
                     <label for="phone">Phone Number</label>
-                    <div class="input-wrap" data-field="phone">
+                    <div class="cp-input-wrap" data-field="phone">
                         <input id="phone" name="phone" type="tel" placeholder="+44 7123 456789" />
                         <span class="icon check-icon" aria-hidden="true">
                             <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
@@ -442,7 +443,7 @@ function renderConfirmPay()
 
                 <div class="full-row">
                     <label for="message">Message <span>(optional)</span></label>
-                    <div class="input-wrap" data-field="message">
+                    <div class="cp-input-wrap" data-field="message">
                         <textarea id="message" name="message" placeholder="Write a note (optional)"></textarea>
                         <span class="icon" aria-hidden="true">
                             <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
@@ -498,7 +499,7 @@ function renderConfirmPay()
                     <div class="card-form-grid">
                         <div class="card-form-group full-row">
                             <label>Card Number</label>
-                            <div class="input-wrap valid">
+                            <div class="cp-input-wrap valid">
                                 <input type="text" id="cardNumber" placeholder="0000 0000 0000 0000" maxlength="19"
                                     value="0000 0000 0000 0000" />
                                 <span class="icon" style="opacity:1;">
@@ -513,7 +514,7 @@ function renderConfirmPay()
                         </div>
                         <div class="card-form-group full-row">
                             <label>Name on Card</label>
-                            <div class="input-wrap valid">
+                            <div class="cp-input-wrap valid">
                                 <input type="text" id="nameOnCard" placeholder="Lorem, Ipsum" value="Lorem, Ipsum" />
                                 <span class="icon" style="opacity:1;">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19"
@@ -546,7 +547,7 @@ function renderConfirmPay()
                         </div>
                         <div class="card-form-group">
                             <label>CVV</label>
-                            <div class="input-wrap" style="width: 175px;">
+                            <div class="cp-input-wrap" style="width: 175px;">
                                 <input type="text" placeholder="000" maxlength="4" />
                                 <span class="icon" style="opacity: 1;" title="3-4 digit security code">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
@@ -566,7 +567,12 @@ function renderConfirmPay()
                             <span id="billingInner"
                                 style="width:12px;height:12px;border-radius:50%;background:#FFD88C;display:block;"></span>
                         </div>
-                        <span>Use my address as billing address</span>
+                        <span style="color: #3B3731;
+font-family: Lato;
+font-size: 18px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;">Use my address as billing address</span>
                     </div>
                     <hr style="border: 0.5px solid #CBDCE8; margin: 0 20px;">
                     <div class="card-checkbox-row" onclick="toggleCardCheck('termsCheck','termsInner')">
@@ -575,7 +581,12 @@ function renderConfirmPay()
                             <span id="termsInner"
                                 style="width:12px;height:12px;border-radius:50%;background:#FFD88C;display:block;"></span>
                         </div>
-                        <span>I agree to Fursgo's <a href="#">Terms of Service</a> and <a href="#">Cancellation
+                        <span style="color: #3B3731;
+font-family: Lato;
+font-size: 18px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;">I agree to Fursgo's <a href="#">Terms of Service</a> and <a href="#">Cancellation
                                 Policy</a>.</span>
                     </div>
                 </div>
@@ -670,10 +681,11 @@ function renderConfirmPay()
                 </div>
             </div>
         </div>
+        </form>
     </div>
 
     <script>
-        (function () {
+        document.addEventListener('DOMContentLoaded', function () {
             const form = document.getElementById('demoForm');
             if (!form) return;
 
@@ -697,7 +709,7 @@ function renderConfirmPay()
             };
 
             function wrapFor(name) {
-                return document.querySelector('.input-wrap[data-field="' + name + '"]');
+                return document.querySelector('.cp-input-wrap[data-field="' + name + '"]');
             }
 
             function setValid(name, state) {
@@ -718,6 +730,33 @@ function renderConfirmPay()
                 }
             }
 
+            function checkAllValid() {
+                let allOk = true;
+                Object.keys(rules).forEach(name => {
+                    const el = form.elements[name];
+                    if (!el) { allOk = false; return; }
+                    const val = el.value || '';
+                    const fn = rules[name];
+                    if (fn && !fn(val)) allOk = false;
+                });
+
+                const sidebarBtn = document.getElementById('confirmPayBtnSidebar');
+                if (sidebarBtn) {
+                    if (allOk) {
+                        sidebarBtn.disabled = false;
+                        sidebarBtn.style.backgroundColor = '#C9DDA0';
+                        sidebarBtn.style.color = '#FFFFFF';
+                        sidebarBtn.style.cursor = 'pointer';
+                    } else {
+                        sidebarBtn.disabled = true;
+                        sidebarBtn.style.backgroundColor = '#F8F8F8';
+                        sidebarBtn.style.color = '#DDD';
+                        sidebarBtn.style.cursor = 'not-allowed';
+                    }
+                }
+                return allOk;
+            }
+
             function validateOne(name) {
                 const el = form.elements[name];
                 if (!el) return false;
@@ -729,6 +768,7 @@ function renderConfirmPay()
                     const err = document.getElementById('phoneError');
                     if (err) err.style.display = ok ? 'none' : 'block';
                 }
+                checkAllValid();
                 return ok;
             }
 
@@ -774,7 +814,7 @@ function renderConfirmPay()
                     form.style.display = 'none';
                     document.getElementById('confirmPayDisplay').style.display = 'flex';
                 } else {
-                    const firstErr = document.querySelector('.input-wrap.error');
+                    const firstErr = document.querySelector('.cp-input-wrap.error');
                     if (firstErr) firstErr.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 }
             });
@@ -788,7 +828,7 @@ function renderConfirmPay()
             }
 
             window.resetStates = function () {
-                document.querySelectorAll('.input-wrap').forEach(w => {
+                document.querySelectorAll('.cp-input-wrap').forEach(w => {
                     w.classList.remove('valid', 'error');
                     const x = w.querySelector('.x-icon');
                     if (x) x.style.opacity = 0;
@@ -815,8 +855,8 @@ function renderConfirmPay()
             }
 
             // Dropdown toggle logic for select-wrap
-            document.querySelectorAll('.input-wrap.select-wrap select').forEach(select => {
-                const wrap = select.closest('.input-wrap.select-wrap');
+            document.querySelectorAll('.cp-input-wrap.select-wrap select').forEach(select => {
+                const wrap = select.closest('.cp-input-wrap.select-wrap');
                 if (select.hasAttribute('data-furs-dropdown')) return; // Let FursDropdown handle it if present
 
                 let isOpen = false;
@@ -843,7 +883,33 @@ function renderConfirmPay()
                     isOpen = false;
                 });
             });
-        })();
+
+            const sidebarBtn = document.getElementById('confirmPayBtnSidebar');
+            if (sidebarBtn) {
+                sidebarBtn.addEventListener('click', function (e) {
+                    if (!sidebarBtn.disabled) {
+                        e.preventDefault();
+                        form.dispatchEvent(new Event('submit', { cancelable: true, bubbles: true }));
+                        
+                        // Check if the form was actually successfully validated
+                        let ok = true;
+                        Object.keys(rules).forEach(name => {
+                            const el = form.elements[name];
+                            if (!el) { ok = false; return; }
+                            const val = el.value || '';
+                            const fn = rules[name];
+                            if (fn && !fn(val)) ok = false;
+                        });
+
+                        if (ok) {
+                            if (window.location.pathname.includes('booking-space')) {
+                                window.location.href = '<?= BASE_URL ?>booking-space/confirmation.php';
+                            }
+                        }
+                    }
+                });
+            }
+        });
     </script>
     <?php
 }

@@ -2026,7 +2026,7 @@ $imagePath = BASE_URL . '/assets/images/card1.png';
                             <div class="total">
                                 <p>Total:</p><span>£58.00</span>
                             </div>
-                            <div class="payment"><button>Confirm & Pay</button></div>
+                            <div class="payment"><button id="confirmPayBtnSidebar" disabled style="cursor: not-allowed; transition: all 0.2s ease;">Confirm & Pay</button></div>
                             <div class="caution">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48"
                                     fill="none">
@@ -2681,7 +2681,9 @@ $imagePath = BASE_URL . '/assets/images/card1.png';
             }
         }
 
-        petFormSaveBtn.addEventListener('click', function () {
+        petFormSaveBtn.addEventListener('click', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
             const petDetails = collectPetDetails();
 
             if (!petDetails.name) {
@@ -2827,7 +2829,18 @@ $imagePath = BASE_URL . '/assets/images/card1.png';
                 if (e.target && e.target.closest('#backToStep1Btn')) {
                     const step1 = document.querySelector('.step-item:nth-child(1)');
                     const step2 = document.querySelector('.step-item:nth-child(2)');
-                    if (step1) { step1.classList.add('active'); step1.classList.remove('inactive'); }
+                    if (step1) {
+                        step1.classList.add('active');
+                        step1.classList.remove('inactive');
+                        const circle1 = step1.querySelector('.step-circle');
+                        if (circle1) {
+                            circle1.style.backgroundColor = '';
+                            circle1.innerHTML = '1';
+                            circle1.style.borderColor = '';
+                        }
+                        const label1 = step1.querySelector('.step-label');
+                        if (label1) label1.style.color = '';
+                    }
                     if (step2) { step2.classList.add('inactive'); step2.classList.remove('active'); }
 
                     const progressFill = document.querySelector('.progress-fill');
@@ -2901,7 +2914,8 @@ $imagePath = BASE_URL . '/assets/images/card1.png';
                     const circle1 = step1.querySelector('.step-circle');
                     if (circle1) {
                         circle1.style.backgroundColor = '#C9DDA0';
-
+                        circle1.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="13" viewBox="0 0 16 13" fill="none"><path d="M14.6667 1.49969L5.50004 10.6664L1.33337 6.49969" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+                        circle1.style.borderColor = '#C9DDA0';
                     }
                     const label1 = step1.querySelector('.step-label');
                     if (label1) label1.style.color = '#C9DDA0';

@@ -2,6 +2,7 @@
 
 <?php include '../function_helper.php';
 include_once __DIR__ . '/../components/birthday-calendar.php';
+include_once __DIR__ . '/../components/confirm-pay.php';
 $imagePath = BASE_URL . '/assets/images/booking-space-card-image.svg';
 ?>
 <!DOCTYPE html>
@@ -1664,6 +1665,16 @@ $imagePath = BASE_URL . '/assets/images/booking-space-card-image.svg';
             line-height: 23px;
         }
 
+        .sum div:last-child p {
+            color: #9BBA5A;
+            font-family: Lato;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 23px;
+            /* 143.75% */
+        }
+
         .sum div span {
             color: #3B3731;
             text-align: right;
@@ -1792,7 +1803,7 @@ $imagePath = BASE_URL . '/assets/images/booking-space-card-image.svg';
         <div class="d-flex align-items-end justify-content-between">
             <!-- Back button -->
             <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 2rem;">
-                <button
+                <button id="backToStep1Btn"
                     style="display: flex; align-items: center; gap: 8px; background: transparent; border: none; cursor: pointer; font-family: Lato; font-size: 16px; font-weight: 600; color: #3B3731; text-decoration: underline;">
                     <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
                         <rect width="48" height="48" rx="24" transform="matrix(-1 0 0 1 48 0)" fill="#EAE8E5" />
@@ -1808,7 +1819,7 @@ $imagePath = BASE_URL . '/assets/images/booking-space-card-image.svg';
                         <div class="steps-container">
                             <div class="step-item active">
                                 <div class="step-circle">1</div>
-                                <div class="step-label">Groomer Details</div>
+                                <div class="step-label">Space Details</div>
                             </div>
                             <div class="step-item inactive">
                                 <div class="step-circle">2</div>
@@ -2205,7 +2216,13 @@ $imagePath = BASE_URL . '/assets/images/booking-space-card-image.svg';
                     </div>
 
                 </div>
-                <!-- <div class="step-two"></div> -->
+
+                <!-- Step 2: Confirm & Pay -->
+                <div id="step2Content" style="display:none;">
+                    <?php renderConfirmPay(); ?>
+                </div>
+                <!-- End Step 2 -->
+
             </div>
             <div class="col-lg-4">
                 <div class="service-summary">
@@ -2319,7 +2336,7 @@ margin: 0;">
                             <p>Add-ons Services:</p><span>£15.00</span>
                         </div>
                         <div>
-                            <p>Promo discount:</p><span style="color: #6DBE45;">- £25.00</span>
+                            <p>Promo discount:</p><span style="color: #9BBA5A;">- £25.00</span>
                         </div>
                     </div>
 
@@ -2330,7 +2347,8 @@ margin: 0;">
                     </div>
 
                     <div class="payment">
-                        <button>Confirm &amp; Pay</button>
+                        <button id="confirmPayBtnSidebar" disabled
+                            style="cursor: not-allowed; transition: all 0.2s ease;">Confirm &amp; Pay</button>
                     </div>
 
                     <div class="caution">
@@ -2447,7 +2465,79 @@ margin: 0;">
                 continueBtn.addEventListener("click", function () {
                     const selectedAddons = Array.from(document.querySelectorAll('.add-on-checkbox:checked'))
                         .map(cb => cb.value);
-                    console.log("Selected Add-ons:", selectedAddons);
+
+                    // Update step indicators
+                    const step1 = document.querySelector('.step-item:nth-child(1)');
+                    const step2 = document.querySelector('.step-item:nth-child(2)');
+                    if (step1) {
+                        step1.classList.remove('active');
+                        step1.classList.add('inactive');
+                        // Fill step 1 circle green with checkmark
+                        const circle1 = step1.querySelector('.step-circle');
+                        if (circle1) {
+                            circle1.style.backgroundColor = '#C9DDA0';
+                            circle1.style.borderColor = '#C9DDA0';
+                            circle1.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="13" viewBox="0 0 16 13" fill="none"><path d="M14.6667 1.49969L5.50004 10.6664L1.33337 6.49969" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+                        }
+                        const label1 = step1.querySelector('.step-label');
+                        if (label1) label1.style.color = '#C9DDA0';
+                    }
+                    if (step2) { step2.classList.remove('inactive'); step2.classList.add('active'); }
+
+                    // Update progress bar
+                    const progressFill = document.querySelector('.progress-fill');
+                    if (progressFill) progressFill.style.width = '100%';
+
+                    // Show Step 2, Hide Step 1
+                    const stepOne = document.querySelector('.step-one');
+                    const stepTwo = document.getElementById('step2Content');
+                    if (stepOne && stepTwo) {
+                        stepOne.style.display = 'none';
+                        stepTwo.style.display = 'block';
+                        window.scrollTo(0, 0);
+                    }
+                });
+            }
+
+            // Back button logic to switch back to Step 1
+            const backBtn = document.getElementById('backToStep1Btn');
+            if (backBtn) {
+                backBtn.addEventListener('click', function (e) {
+                    const stepOne = document.querySelector('.step-one');
+                    const stepTwo = document.getElementById('step2Content');
+                    const isStep2Visible = stepTwo && stepTwo.style.display !== 'none';
+                    if (isStep2Visible) {
+                        e.preventDefault();
+                        stepTwo.style.display = 'none';
+                        stepOne.style.display = 'block';
+
+                        // Update step indicators
+                        const step1Indicator = document.querySelector('.step-item:nth-child(1)');
+                        const step2Indicator = document.querySelector('.step-item:nth-child(2)');
+                        if (step1Indicator) {
+                            step1Indicator.classList.add('active');
+                            step1Indicator.classList.remove('inactive');
+                            // Reset inline styles
+                            const circle1 = step1Indicator.querySelector('.step-circle');
+                            if (circle1) {
+                                circle1.style.backgroundColor = '';
+                                circle1.style.borderColor = '';
+                                circle1.innerHTML = '1';
+                            }
+                            const label1 = step1Indicator.querySelector('.step-label');
+                            if (label1) label1.style.color = '';
+                        }
+                        if (step2Indicator) { step2Indicator.classList.add('inactive'); step2Indicator.classList.remove('active'); }
+
+                        // Update progress bar
+                        const progressFill = document.querySelector('.progress-fill');
+                        if (progressFill) progressFill.style.width = '50%';
+
+                        window.scrollTo(0, 0);
+                    } else {
+                        // Regular back behavior if already on step 1
+                        history.back();
+                    }
                 });
             }
         });
@@ -2569,8 +2659,8 @@ margin: 0;">
                 const actions = document.createElement('div');
                 actions.className = 'pet-list-actions';
                 actions.innerHTML = `
-      <button class="pet-cancel-btn" id="petCancelBtn">Cancel</button>
-      <button class="pet-save-btn" id="petConfirmBtn" disabled>
+      <button class="pet-cancel-btn" id="petCancelBtn" type="button">Cancel</button>
+      <button class="pet-save-btn" id="petConfirmBtn" type="button" disabled>
         Save
       </button>
     `;
@@ -2585,7 +2675,9 @@ margin: 0;">
                     actionBtns.style.display = '';
                 });
 
-                document.getElementById('petConfirmBtn').addEventListener('click', function () {
+                document.getElementById('petConfirmBtn').addEventListener('click', function (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
                     const chosen = allPets.filter(p => selectedIds.has(p.id));
                     console.log('Selected pets:', chosen);
 
@@ -3054,7 +3146,9 @@ margin: 0;">
             }
         }
 
-        petFormSaveBtn.addEventListener('click', function () {
+        petFormSaveBtn.addEventListener('click', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
             const petDetails = collectPetDetails();
 
             if (!petDetails.name) {
