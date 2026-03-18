@@ -161,6 +161,13 @@
     font-weight: 500;
 }
 
+.normal-default-color-font {
+    color: var(--font-color);
+    font-family: Lato;
+    font-size: 16px;
+    font-weight: 500;
+}
+
 .normal-light-color {
     color: #9D9B98;
     font-family: Lato;
@@ -217,6 +224,192 @@
     font-weight: 400;
     line-height: normal;
 }
+
+
+/* ===== 28px ===== */
+
+.fs-28-600 {
+    color: #3B3731;
+    font-family: "Playfair Display";
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 60px;
+}
+
+.fs-28-900-italic {
+    color: #3B3731;
+    font-family: "Playfair Display";
+    font-size: 28px;
+    font-style: italic;
+    font-weight: 900;
+}
+
+
+/* ===== 20px ===== */
+
+.fs-20-600 {
+    color: #3B3731;
+    font-family: Lato;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.fs-20-500-black {
+    color: #000;
+    font-family: Lato;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+
+/* ===== 18px ===== */
+
+.fs-18-600 {
+    color: #3B3731;
+    font-family: Lato;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.fs-18-400 {
+    color: #3B3731;
+    font-family: Lato;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.fs-18-400-light {
+    color: #9D9B98;
+    font-family: Lato;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+
+/* ===== 16px ===== */
+
+.fs-16-600 {
+    color: #3B3731;
+    font-family: Lato;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.fs-16-600-gold {
+    color: #FFC97A;
+    font-family: Lato;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.fs-16-500-light {
+    color: #9D9B98;
+    font-family: Lato;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.fs-16-500-f-color {
+    color: var(--font-color);
+    font-family: Lato;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.fs-16-400 {
+    color: #3B3731;
+    font-family: Lato;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.fs-16-400-light {
+    color: #9D9B98;
+    font-family: Lato;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+
+/* ===== 14px ===== */
+
+.fs-14-700-f-color {
+    color: var(--font-color);
+    font-family: Lato;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.fs-14-600-light {
+    color: #9D9B98;
+    font-family: Lato;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.fs-14-600-f-color {
+    color: var(--font-color);
+    font-family: Lato;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.fs-14-500-light {
+    color: #9D9B98;
+    font-family: Lato;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.fs-14-400-light {
+    color: #9D9B98;
+    font-family: Lato;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.fs-14-400-f-color {
+    color: var(--font-color);
+    font-family: Lato;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+
+/* ===== Utility Classes ===== */
+
+.text-light {
+    color: #9D9B98 !important;
+}
+
+.text-gold {
+    color: #FFC97A !important;
+}
+
+.text-black {
+    color: #000 !important;
+}
+
+.text-default {
+    color: #3B3731 !important;
+}
+
+.text-f-color {
+    color: var(--font-color) !important;
+}
+
+.line-default {
+    line-height: normal !important;
+}
+
+
+/* ===== Special Case ===== */
+
+.tags.active .fs-14-600-f-color {
+    color: #FFC97A;
+}
+
+/* font-sizes  */
 
 .section {
     padding: 70px 0;
@@ -815,7 +1008,7 @@ input::placeholder {
     flex: 0 0 auto
 }
 
-.avatar {
+.avatar-wrap .avatar {
     width: 83px;
     height: 83px;
     aspect-ratio: 1/1;

@@ -71,7 +71,7 @@ function renderExtrasAddons(array $addons = [], array $options = []): void
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            background: #FFD88C;
+            background: #FFC97A;
             font-size: 0.8rem;
             font-weight: 500;
             padding: 5px 12px;

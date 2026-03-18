@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Progress Gauge</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: #fff;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    .gauge-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .gauge-container {
+      position: relative;
+      width: 280px;
+      height: 170px;
+    }
+
+    .gauge-container svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .gauge-label {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -20%);
+      font-size: 2.2rem;
+      font-weight: 500;
+      color: #3d3d3d;
+    }
+
+    .gauge-min {
+      position: absolute;
+      bottom: 0;
+      left: 6px;
+      font-size: 13px;
+      color: #aaa;
+    }
+
+    .gauge-max {
+      position: absolute;
+      bottom: 0;
+      right: 6px;
+      font-size: 13px;
+      color: #aaa;
+    }
+
+    .controls {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .controls label {
+      font-size: 13px;
+      color: #888;
+    }
+
+    .controls input[type="range"] {
+      width: 180px;
+      accent-color: #F5C168;
+      cursor: pointer;
+    }
+
+    .controls span {
+      font-size: 13px;
+      font-weight: 500;
+      color: #3d3d3d;
+      min-width: 36px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="gauge-wrapper">
+    <div class="gauge-container">
+      <svg viewBox="0 0 280 170" xmlns="http://www.w3.org/2000/svg">
+        <!-- Track arc -->
+        <path d="M 25 155 A 118 118 0 0 1 255 155" fill="none" stroke="#FAF0DC" stroke-width="20"
+          stroke-linecap="round" />
+        <!-- Progress arc -->
+        <path id="progress-arc" d="M 25 155 A 118 118 0 0 1 255 155" fill="none" stroke="#F5C168" stroke-width="20"
+          stroke-linecap="round" stroke-dasharray="370" stroke-dashoffset="148" />
+      </svg>
+      <div class="gauge-label" id="gauge-label">60%</div>
+      <div class="gauge-min">0%</div>
+      <div class="gauge-max">100%</div>
+    </div>
+
+    <div class="controls">
+      <label>Adjust:</label>
+      <input type="range" min="0" max="100" value="60" id="slider" />
+      <span id="slider-val">60%</span>
+    </div>
+  </div>
+
+  <script>
+    const arc = document.getElementById('progress-arc');
+    const label = document.getElementById('gauge-label');
+    const slider = document.getElementById('slider');
+    const sliderVal = document.getElementById('slider-val');
+
+    const TOTAL_LENGTH = 370;
+
+    function setProgress(pct) {
+      const offset = TOTAL_LENGTH * (1 - pct / 100);
+      arc.style.strokeDashoffset = offset.toFixed(1);
+      label.textContent = Math.round(pct) + '%';
+      sliderVal.textContent = Math.round(pct) + '%';
+    }
+
+    slider.addEventListener('input', () => setProgress(Number(slider.value)));
+
+    setProgress(60);
+  </script>
+
+</body>
+
+</html>
