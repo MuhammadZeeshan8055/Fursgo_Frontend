@@ -1177,7 +1177,6 @@ img.rounded-image.second-image {
 }
 
 .card-actions .btn-outline {
-    flex: 1;
     padding: 12px;
     border-radius: 25px;
     border: 1px solid #333;
@@ -1191,7 +1190,6 @@ img.rounded-image.second-image {
 }
 
 .card-actions .btn-green {
-    flex: 1;
     padding: 12px;
     border-radius: 25px;
     border: none;
@@ -1925,3 +1923,7 @@ img.rounded-image.second-image {
 }
 
 /* upcoming bookings space modal css ends  */
+
+
+
+/* change booking css starts */

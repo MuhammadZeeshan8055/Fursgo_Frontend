@@ -17,7 +17,7 @@ include_once __DIR__ . '/../components/extras-addons.php';
 
 </head>
 
-<body class="change-groomer">
+<body class="change-space">
 
     <?php include '../components/header.php' ?>
 
@@ -46,11 +46,17 @@ include_once __DIR__ . '/../components/extras-addons.php';
                         <div class="cb-booking-groomer-card mt-5">
                             <div class="cb-profile-section">
                                 <div class="avatar-wrap">
-                                    <img class="avatar" src="<?= BASE_URL ?>assets/images/groomer-profile.png" alt="Sarah's avatar">
+                                    <img class="avatar" src="http://localhost:8000/assets/images/space_card3.png" alt="Sarah's avatar">
                                     <div class="badge-shield" title="Verified">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="33" viewBox="0 0 30 33" fill="none">
-                                            <ellipse cx="15.873" cy="16.5256" rx="9.3645" ry="8.81365" fill="white"></ellipse>
-                                            <path d="M15.44 0.185076C15.1841 0.0638192 14.9099 0 14.6235 0C14.3372 0 14.063 0.0638192 13.8071 0.185076L2.3337 5.28423C0.993208 5.87775 -0.00606541 7.26263 2.77146e-05 8.93469C0.0304934 15.2656 2.51649 26.8487 13.015 32.1138C14.0325 32.6244 15.2146 32.6244 16.2321 32.1138C26.7306 26.8487 29.2166 15.2656 29.247 8.93469C29.2531 7.26263 28.2539 5.87775 26.9134 5.28423L15.44 0.185076ZM8.82897 18.2651C9.12144 18.3416 9.43219 18.3799 9.74903 18.3799C11.8999 18.3799 13.6486 16.5483 13.6486 14.2955V10.2111H16.3418C17.0791 10.2111 17.7554 10.645 18.0844 11.3407L18.5231 12.2533H22.4227C22.9589 12.2533 23.3976 12.7128 23.3976 13.2744V15.3166C23.3976 18.1374 21.2163 20.4222 18.5231 20.4222H15.5984V23.6578C15.5984 24.1237 15.2389 24.5066 14.7881 24.5066C14.6784 24.5066 14.5687 24.4811 14.4712 24.4364L8.45729 21.7368C8.05514 21.5581 7.79923 21.1433 7.79923 20.6902C7.79923 20.5115 7.83579 20.3392 7.915 20.1796L8.82897 18.2651ZM8.77413 10.2111H11.6988V14.2955C11.6988 15.4251 10.8275 16.3377 9.74903 16.3377C8.67055 16.3377 7.79923 15.4251 7.79923 14.2955V11.2322C7.79923 10.6706 8.23794 10.2111 8.77413 10.2111ZM16.5733 13.2744C16.5733 13.0036 16.4706 12.7439 16.2878 12.5524C16.105 12.3609 15.857 12.2533 15.5984 12.2533C15.3399 12.2533 15.0919 12.3609 14.9091 12.5524C14.7262 12.7439 14.6235 13.0036 14.6235 13.2744C14.6235 13.5452 14.7262 13.8049 14.9091 13.9964C15.0919 14.1879 15.3399 14.2955 15.5984 14.2955C15.857 14.2955 16.105 14.1879 16.2878 13.9964C16.4706 13.8049 16.5733 13.5452 16.5733 13.2744Z" fill="#C9DDA0"></path>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="29" height="30" viewBox="0 0 29 30" fill="none">
+                                            <path d="M14.9293 0.170856C14.6819 0.058916 14.4168 0 14.1399 0C13.8629 0 13.5978 0.058916 13.3504 0.170856L2.25651 4.87824C0.960357 5.42616 -0.0058648 6.70463 2.67979e-05 8.24823C0.0294848 14.0927 2.43326 24.7859 12.5845 29.6465C13.5684 30.1178 14.7113 30.1178 15.6952 29.6465C25.8465 24.7859 28.2502 14.0927 28.2797 8.24823C28.2856 6.70463 27.3194 5.42616 26.0232 4.87824L14.9293 0.170856Z" fill="#CBDCE8"></path>
+                                            <path d="M21.818 8.18213L15.7574 14.6215L21.818 8.18213ZM13.065 14.3071C11.1862 15.0283 9.68391 14.9049 8.18164 14.3094C8.56043 19.1905 10.8362 21.067 13.8703 21.8185C13.8703 21.8185 16.1559 20.2018 16.4854 16.3693C16.521 15.9541 16.5385 15.7473 16.4529 15.5132C16.3665 15.2791 16.1968 15.1117 15.8582 14.7761C15.3006 14.2246 15.0226 13.9488 14.6915 13.8791C14.3604 13.8109 13.9286 13.9761 13.065 14.3071Z" fill="#CBDCE8"></path>
+                                            <path d="M21.818 8.18213L15.7574 14.6215M13.065 14.3071C11.1862 15.0283 9.68391 14.9049 8.18164 14.3094C8.56043 19.1905 10.8362 21.067 13.8703 21.8185C13.8703 21.8185 16.1559 20.2018 16.4854 16.3693C16.521 15.9541 16.5385 15.7473 16.4529 15.5132C16.3665 15.2791 16.1968 15.1117 15.8582 14.7761C15.3006 14.2246 15.0225 13.9488 14.6915 13.8791C14.3604 13.8109 13.9286 13.9761 13.065 14.3071Z" stroke="white" stroke-linecap="round" stroke-linejoin="round"></path>
+                                            <path d="M9.31836 18.3679C9.31836 18.3679 11.2123 18.7346 13.1062 17.2725L9.31836 18.3679Z" fill="#CBDCE8"></path>
+                                            <path d="M9.31836 18.3679C9.31836 18.3679 11.2123 18.7346 13.1062 17.2725" stroke="white" stroke-linecap="round" stroke-linejoin="round"></path>
+                                            <path d="M12.3485 11.4016C12.3485 11.6527 12.2488 11.8936 12.0712 12.0712C11.8936 12.2488 11.6527 12.3485 11.4016 12.3485C11.1504 12.3485 10.9095 12.2488 10.732 12.0712C10.5544 11.8936 10.4546 11.6527 10.4546 11.4016C10.4546 11.1504 10.5544 10.9095 10.732 10.732C10.9095 10.5544 11.1504 10.4546 11.4016 10.4546C11.6527 10.4546 11.8936 10.5544 12.0712 10.732C12.2488 10.9095 12.3485 11.1504 12.3485 11.4016Z" fill="#CBDCE8" stroke="white"></path>
+                                            <path d="M14.2432 8.93896V9.01472V8.93896Z" fill="#CBDCE8"></path>
+                                            <path d="M14.2432 8.93896V9.01472" stroke="white" stroke-linecap="round" stroke-linejoin="round"></path>
                                         </svg>
                                     </div>
                                 </div>
@@ -58,28 +64,11 @@ include_once __DIR__ . '/../components/extras-addons.php';
 
                             <div class="cb-info-grid d-flex flex-column gap-15">
                                 <div class="cb-tag-row">
-                                    <span class="cb-category-tag">Home Visits</span>
+                                    <span class="cb-category-tag">Garden / Shed</span>
                                     <span class="cb-booking-ref">Booking reference: FG-10294</span>
                                 </div>
 
                                 <div class="cb-details-row">
-                                    <div class="cb-detail-item">
-                                        <div class="d-flex align-items-center gap-5">
-                                            <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="17"
-                                                    viewBox="0 0 16 17" fill="none">
-                                                    <path
-                                                        d="M4.94591 11.5544C6.23114 12.8397 9.35699 11.798 11.9274 9.22713C14.4983 6.65667 15.54 3.53082 14.2548 2.24559M8.72754 1.37259L9.30927 1.95473M6.6915 3.40904L7.27322 3.99077M4.9455 5.73636L5.52722 6.31809M4.36377 8.6454L4.9455 9.22713M11.9274 0.5L12.5092 1.08173M11.3457 3.99118L12.5092 5.15463M9.30968 6.02763L10.4731 7.19109M6.98236 7.77281L8.14581 8.93627"
-                                                        stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
-                                                    <path
-                                                        d="M4.94547 13.2998C5.42747 12.8178 5.42747 12.0364 4.94548 11.5544C4.46348 11.0724 3.68202 11.0724 3.20003 11.5544L0.872775 13.8816C0.390784 14.3636 0.390784 15.1451 0.872775 15.6271C1.35477 16.1091 2.13623 16.1091 2.61822 15.6271L4.94547 13.2998Z"
-                                                        stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
-                                                </svg></span>
-                                            <p class="cb-label"> Service</p>
-                                        </div>
-                                        <p class="cb-value">Full Groom</p>
-                                    </div>
-
-                                    <hr class="vertical-line">
 
                                     <div class="cb-detail-item">
                                         <div class="d-flex align-items-center gap-5">
@@ -132,7 +121,10 @@ include_once __DIR__ . '/../components/extras-addons.php';
                                     <hr class="vertical-line">
 
                                     <div class="cb-pet-section">
-                                        <img src="<?= BASE_URL ?>/assets/images/pet_details_1.png" alt="Pet" class="change-groomer-cb-pet-thumbnail">
+                                        <div class="details-item images-div">
+                                            <img src="<?= BASE_URL ?>assets/images/pet_details_1.png" class="rounded-image first-image" height="50px" width="50px" alt="">
+                                            <img src="<?= BASE_URL ?>assets/images/pet_details_2.png" class="rounded-image second-image" height="50px" width="50px" alt="">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -349,42 +341,55 @@ include_once __DIR__ . '/../components/extras-addons.php';
                             renderCalendar();
                         </script>
 
-                        <div class="cb-container">
-                            <div class="cb-extras-addons">
-                                <?php renderExtrasAddons([], [
-                                    'instance_id' => 'groomer',
-                                    'on_change_js' => 'handleExtrasChange',
-                                    'background' => 'true',
-                                ]); ?>
+                        <div class="addons-section cb-container">
+                            <h2>Add-ons Services</h2>
 
-                                <div class="cb-modal-footer">
-                                    <button class="cb-btn-cancel">Cancel</button>
-                                    <button class="cb-btn-save">Save</button>
+                            <div class="addons-grid">
+                                <div class="addon-card selected">
+                                    <span class="addon-name">Storage Locker</span>
+                                    <div class="addon-price">
+                                        <span class="currency">£5</span> <span class="unit">/ day</span>
+                                    </div>
+                                    <i class="fas fa-check-circle check-icon"></i>
                                 </div>
 
+                                <div class="addon-card selected">
+                                    <span class="addon-name">Deep Clean</span>
+                                    <div class="addon-price">
+                                        <span class="currency">£10</span>
+                                    </div>
+                                    <i class="fas fa-check-circle check-icon"></i>
+                                </div>
+
+                                <div class="addon-card ed-4">
+                                    <span class="addon-name">After-hours access</span>
+                                    <div class="addon-price">
+                                        <span class="currency">£20</span>
+                                    </div>
+                                </div>
                             </div>
 
+                            <div class="cb-modal-footer">
+                                <button class="cb-btn-cancel">Cancel</button>
+                                <button class="cb-btn-save">Save</button>
+                            </div>
                         </div>
 
-
-
-
-                        <section class="cb-summary-section cb-container">
-                            <div class="cb-refund-alert">
-                                You'll receive a £5.00 refund. Refunds processed in 3-5 days
+                        <div class="charge-summary cb-container">
+                            <div class="charge-alert">
+                                You'll be charged an additional £3.00.
                             </div>
-
-                            <div class="cb-price-table">
-                                <div class="cb-price-row">
-                                    <span class="cb-price-label">Original Total</span>
-                                    <span class="cb-price-value original">£48.00</span>
+                            <div class="price-breakdown">
+                                <div class="price-row">
+                                    <span>Original Total</span>
+                                    <span class="underline">£48.00</span>
                                 </div>
-                                <div class="cb-price-row">
-                                    <span class="cb-price-label bold">Updated Total</span>
-                                    <span class="cb-price-value updated bold">£43.00</span>
+                                <div class="price-row bold">
+                                    <span style="color: #3B3731">Updated Total</span>
+                                    <span class="underline">£61.00</span>
                                 </div>
                             </div>
-                        </section>
+                        </div>
 
                         <div class="cb-action-footer cb-container">
                             <button class="cb-btn-outline">Cancel changes</button>

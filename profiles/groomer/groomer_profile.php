@@ -630,6 +630,13 @@
             background: #FFC97A;
             min-width: 40px;
         }
+
+        .map-image {
+            height: 550px;
+            aspect-ratio: 107 / 32;
+            border-radius: 10px 0 0 10px;
+            object-fit: none;
+        }
     </style>
 </head>
 
@@ -681,7 +688,7 @@
                                 <p class="dark-color-font">Sarah’s Grooming Studio</p>
                                 <p class="dark-color-font muted-color">Sarah W.</p>
                             </div>
-                            <div class="star-rating d-flex">
+                            <div class="star-rating d-flex gap-5">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17" fill="none">
                                     <path d="M7.44303 0.802006C7.77572 -0.267338 9.22428 -0.267334 9.55697 0.80201L10.8017 4.80273C10.9504 5.28095 11.3772 5.60473 11.8586 5.60473H15.8865C16.9631 5.60473 17.4107 7.04353 16.5397 7.70442L13.2811 10.177C12.8916 10.4726 12.7286 10.9964 12.8774 11.4747L14.1221 15.4754C14.4548 16.5447 13.2829 17.434 12.4119 16.7731L9.15324 14.3005C8.76373 14.0049 8.23628 14.0049 7.84676 14.3005L4.58813 16.7731C3.71714 17.434 2.54523 16.5447 2.87792 15.4754L4.1226 11.4747C4.27139 10.9964 4.1084 10.4726 3.71888 10.177L0.46025 7.70442C-0.410741 7.04353 0.036892 5.60473 1.1135 5.60473H5.14138C5.62285 5.60473 6.04956 5.28095 6.19835 4.80273L7.44303 0.802006Z" fill="#FFC97A" />
                                 </svg>
@@ -2184,7 +2191,9 @@
                             </div>
                         </div>
                         <div class="col-lg-6">
-                            dsa
+                            <div class="map-div mt-5">
+                                <img src="http://localhost:8000/assets/images/profile_tab_map.png" class="map-image" alt="">
+                            </div>
                         </div>
 
                         <div class="modal-footer d-flex align-items-center justify-content-center mt-4 gap-10">
@@ -2639,7 +2648,7 @@
                         </div>
                     </div>
                     <div class="tab-go-to-section d-flex align-items-center flex-wrap justify-content-between mt-5">
-                        <a href="#services_and_pricing" class="active">Services & Pricing</a>
+                        <a href="#services_and_pricing" class="active">Services & Add-ons</a>
                         <a href="#preference_and_restrictions">Preference & Restrictions</a>
                         <a href="#reviews">Reviews</a>
                         <a href="#location">Location</a>
@@ -3143,6 +3152,64 @@
                         behavior: 'smooth'
                     });
                 });
+            });
+        });
+    </script>
+    <script>
+        document.querySelectorAll('.custom-select').forEach(select => {
+            const trigger = select.querySelector('.select-trigger');
+            const options = select.querySelectorAll('.select-options li');
+            const datePopovers = document.querySelectorAll('.popover');
+            const text = select.querySelector('.selected-text');
+            const hiddenInput = select.querySelector('input[type="hidden"]');
+
+            trigger.addEventListener('click', e => {
+                e.stopPropagation();
+
+                datePopovers.forEach(popover => {
+                    popover.style.display = 'none';
+                });
+
+                document.querySelectorAll('.custom-select').forEach(s => {
+                    if (s !== select) {
+                        s.classList.remove('open');
+                        const t = s.querySelector('.select-trigger');
+                        t.style.cssText = `
+                    border-bottom-left-radius: 12px;
+                    border-bottom-right-radius: 12px;
+                `;
+                    }
+                });
+
+                const isOpen = select.classList.toggle('open');
+
+                trigger.style.cssText = isOpen ?
+                    `border-bottom-left-radius: 0; border-bottom-right-radius: 0;` :
+                    `border-bottom-left-radius: 12px; border-bottom-right-radius: 12px;`;
+            });
+
+            options.forEach(option => {
+                option.addEventListener('click', () => {
+                    text.textContent = option.textContent;
+                    hiddenInput.value = option.dataset.value;
+
+                    select.classList.remove('open');
+                    select.classList.add('has-value'); // add class to highlight border
+
+                    trigger.style.cssText = `
+                border-bottom-left-radius: 12px;
+                border-bottom-right-radius: 12px;
+            `;
+                });
+            });
+        });
+
+        // Remove 'has-value' if clicked outside and no value
+        document.addEventListener('click', (e) => {
+            document.querySelectorAll('.custom-select').forEach(select => {
+                if (!select.contains(e.target) && !select.querySelector('input[type="hidden"]').value) {
+                    select.classList.remove('has-value');
+                }
             });
         });
     </script>

@@ -21,9 +21,9 @@
             color: #3B3731;
             font-family: "Playfair Display";
             font-size: 36px;
-            font-style: normal;
+
             font-weight: 700;
-            line-height: normal;
+
         }
 
         .profile-sidebar {
@@ -216,7 +216,7 @@
         .header-row {
             display: flex;
             justify-content: space-between;
-            align-items: flex-start;
+            align-items: center;
             margin-bottom: 20px;
         }
 
@@ -224,18 +224,18 @@
             color: #3b3731;
             font-family: "Playfair Display";
             font-size: 28px;
-            font-style: normal;
+
             font-weight: 700;
-            line-height: normal;
+
         }
 
         .header-row p {
             color: #9d9b98;
             font-family: Lato;
             font-size: 16px;
-            font-style: normal;
+
             font-weight: 400;
-            line-height: normal;
+
         }
 
         .details-grid {
@@ -287,9 +287,9 @@
             text-align: center;
             font-family: Lato;
             font-size: 36px;
-            font-style: normal;
+
             font-weight: 600;
-            line-height: normal;
+
         }
 
         /* Action Cards */
@@ -308,9 +308,9 @@
             text-align: center;
             font-family: Lato;
             font-size: 20px;
-            font-style: normal;
+
             font-weight: 600;
-            line-height: normal;
+
         }
 
         .btn-verify {
@@ -336,9 +336,9 @@
             color: #3b3731;
             font-family: Lato;
             font-size: 14px;
-            font-style: normal;
+
             font-weight: 600;
-            line-height: normal;
+
             padding-right: 1rem;
         }
 
@@ -358,9 +358,9 @@
             text-align: center;
             font-family: Lato;
             font-size: 18px;
-            font-style: normal;
+
             font-weight: 400;
-            line-height: normal;
+
         }
 
         .tab {
@@ -430,9 +430,9 @@
             color: #3b3731;
             font-family: Lato;
             font-size: 16px;
-            font-style: normal;
+
             font-weight: 600;
-            line-height: normal;
+
             display: flex;
             justify-content: start;
             align-items: center;
@@ -444,9 +444,9 @@
             color: #9d9b98;
             font-family: Lato;
             font-size: 16px;
-            font-style: normal;
+
             font-weight: 400;
-            line-height: normal;
+
         }
 
         .pet-info p {
@@ -454,9 +454,9 @@
             color: #3b3731;
             font-family: Lato;
             font-size: 16px;
-            font-style: normal;
+
             font-weight: 400;
-            line-height: normal;
+
         }
 
         .pet-card .btn-edit-outline {
@@ -464,9 +464,8 @@
             text-align: center;
             font-family: Lato;
             font-size: 16px;
-            font-style: normal;
             font-weight: 600;
-            line-height: normal;
+
         }
 
         .my-pets.btn-edit-outline {
@@ -489,9 +488,9 @@
             text-align: center;
             font-family: Lato;
             font-size: 18px;
-            font-style: normal;
+
             font-weight: 600;
-            line-height: normal;
+
             cursor: pointer;
         }
 
@@ -537,7 +536,7 @@
         .profile-details-card {
             border-radius: 10px;
             background: #fafafa;
-            height: 420px;
+            height: auto;
             margin: 0 0;
             font-family: "Lato", sans-serif;
             color: #333;
@@ -546,9 +545,6 @@
 
         .tap-details-card {
             border-radius: 15px;
-            /* padding: 40px; */
-            /* width: 920px; */
-            height: 420px;
             font-family: "Lato", sans-serif;
             color: #333;
         }
@@ -562,9 +558,9 @@
             color: #3b3731;
             font-family: Lato;
             font-size: 20px;
-            font-style: normal;
+
             font-weight: 600;
-            line-height: normal;
+
         }
 
         .divider {
@@ -616,18 +612,18 @@
             color: #3b3731;
             font-family: Lato;
             font-size: 16px;
-            font-style: normal;
+
             font-weight: 600;
-            line-height: normal;
+
         }
 
         .detail-item p {
             color: #3b3731;
             font-family: Lato;
             font-size: 16px;
-            font-style: normal;
+
             font-weight: 400;
-            line-height: normal;
+
         }
 
         .bio-section label {
@@ -681,9 +677,9 @@
             color: #3b3731;
             font-family: Lato;
             font-size: 16px;
-            font-style: normal;
+
             font-weight: 400;
-            line-height: normal;
+
             letter-spacing: 0.5;
         }
 
@@ -697,7 +693,7 @@
             border: 1px solid #333;
             background: white;
             padding: 8px 20px;
-            border-radius: 20px;
+            border-radius: 100px;
             cursor: pointer;
             display: inline-flex;
             align-items: center;
@@ -716,9 +712,9 @@
             color: #3b3731;
             font-family: Lato;
             font-size: 16px;
-            font-style: normal;
+
             font-weight: 400;
-            line-height: normal;
+
             width: 611px;
         }
 
@@ -729,7 +725,6 @@
         .edit-layout {
             display: flex;
             gap: 50px;
-            margin-top: -4rem;
         }
 
         .form-grid {
@@ -819,9 +814,9 @@
             text-align: center;
             font-family: Lato;
             font-size: 16px;
-            font-style: normal;
+
             font-weight: 700;
-            line-height: normal;
+
         }
 
         .btn-cancel {
@@ -835,9 +830,9 @@
             text-align: center;
             font-family: Lato;
             font-size: 16px;
-            font-style: normal;
+
             font-weight: 500;
-            line-height: normal;
+
         }
 
         .site-footer {
@@ -858,9 +853,9 @@
             color: #3b3731;
             font-family: "Playfair Display";
             font-size: 56px;
-            font-style: normal;
+
             font-weight: 900;
-            line-height: normal;
+
         }
 
         .cta-buttons {
@@ -1078,9 +1073,9 @@
             text-align: center;
             font-family: Lato;
             font-size: 16px;
-            font-style: normal;
+
             font-weight: 500;
-            line-height: normal;
+
         }
 
         .tabs .active {
@@ -1088,9 +1083,9 @@
             text-align: center;
             font-family: Lato;
             font-size: 16px;
-            font-style: normal;
+
             font-weight: 600;
-            line-height: normal;
+
             background: #ffc97a;
             color: #fff;
         }
@@ -1137,9 +1132,9 @@
             color: #3b3731;
             font-family: "Playfair Display";
             font-size: 28px;
-            font-style: normal;
+
             font-weight: 600;
-            line-height: normal;
+
         }
 
         .filter {
@@ -1152,9 +1147,9 @@
             text-align: center;
             font-family: Lato;
             font-size: 14px;
-            font-style: normal;
+
             font-weight: 500;
-            line-height: normal;
+
         }
 
         /* TAG */
@@ -1167,9 +1162,9 @@
             text-align: center;
             font-family: Lato;
             font-size: 14px;
-            font-style: normal;
+
             font-weight: 500;
-            line-height: normal;
+
             width: 105px;
             height: 32px;
             margin-bottom: 2rem;
@@ -1185,9 +1180,13 @@
         }
 
         /* CARD */
-        .card {
+        .balance-cards .card {
             border-radius: 16px;
-            width: auto;
+            width: 190px;
+            height: 150px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         .card-body {
@@ -1248,9 +1247,9 @@
         text-align: center;
         font-family: Lato;
         font-size: 14px;
-        font-style: normal;
+          
         font-weight: 500;
-        line-height: normal;
+         
         width: 107px;
         height: 24px;
         } */
@@ -1273,18 +1272,18 @@
             color: #3b3731;
             font-family: Lato;
             font-size: 20px;
-            font-style: normal;
+
             font-weight: 600;
-            line-height: normal;
+
         }
 
         .card-title p {
             color: #9d9b98;
             font-family: Lato;
             font-size: 14px;
-            font-style: normal;
+
             font-weight: 400;
-            line-height: normal;
+
         }
 
         /* TEXT */
@@ -1311,9 +1310,9 @@
             color: #3b3731;
             font-family: Lato;
             font-size: 14px;
-            font-style: normal;
+
             font-weight: 500;
-            line-height: normal;
+
             display: flex;
             justify-content: center;
             align-items: center;
@@ -1324,9 +1323,9 @@
             color: #3b3731;
             font-family: Lato;
             font-size: 14px;
-            font-style: normal;
+
             font-weight: 500;
-            line-height: normal;
+
             align-items: center;
             margin-right: 10px;
         }
@@ -1335,9 +1334,9 @@
             color: #9d9b98;
             font-family: Lato;
             font-size: 14px;
-            font-style: normal;
+
             font-weight: 500;
-            line-height: normal;
+
         }
 
         .card-review {
@@ -1348,9 +1347,9 @@
             color: #3b3731;
             font-family: Lato;
             font-size: 14px;
-            font-style: normal;
+
             font-weight: 400;
-            line-height: normal;
+
             margin: 10px 0;
         }
 
@@ -1367,18 +1366,18 @@
             text-align: right;
             font-family: Lato;
             font-size: 20px;
-            font-style: normal;
+
             font-weight: 600;
-            line-height: normal;
+
         }
 
         .bottom p b {
             color: #3b3731;
             font-family: Lato;
             font-size: 20px;
-            font-style: normal;
+
             font-weight: 600;
-            line-height: normal;
+
             text-decoration-line: underline;
             text-decoration-style: solid;
             text-decoration-skip-ink: auto;
@@ -1391,9 +1390,9 @@
             color: #9d9b98;
             font-family: Lato;
             font-size: 14px;
-            font-style: normal;
+
             font-weight: 600;
-            line-height: normal;
+
         }
 
         .arrow {
@@ -1416,9 +1415,9 @@
             text-align: center;
             font-family: Lato;
             font-size: 18px;
-            font-style: normal;
+
             font-weight: 600;
-            line-height: normal;
+
             cursor: pointer;
         }
 
@@ -1433,9 +1432,9 @@
             text-align: center;
             font-family: Lato;
             font-size: 18px;
-            font-style: normal;
+
             font-weight: 600;
-            line-height: normal;
+
         }
 
         /* SPACE SWITCH */
@@ -1448,9 +1447,9 @@
             text-align: center;
             font-family: Lato;
             font-size: 16px;
-            font-style: normal;
+
             font-weight: 500;
-            line-height: normal;
+
         }
 
         .switch {
@@ -1471,9 +1470,9 @@
             color: #3b3731;
             font-family: "Playfair Display";
             font-size: 28px;
-            font-style: normal;
+
             font-weight: 600;
-            line-height: normal;
+
         }
 
         .favourite-spaces .tag {
@@ -1485,9 +1484,9 @@
             text-align: center;
             font-family: Lato;
             font-size: 14px;
-            font-style: normal;
+
             font-weight: 500;
-            line-height: normal;
+
             width: 127px;
             height: 32px;
             margin-bottom: 2rem;
@@ -1540,9 +1539,9 @@
             color: #3b3731;
             font-family: Lato;
             font-size: 14px;
-            font-style: normal;
+
             font-weight: 500;
-            line-height: normal;
+
         }
 
         .favourite-spaces {
@@ -1554,27 +1553,27 @@
             color: #3b3731;
             font-family: Lato;
             font-size: 20px;
-            font-style: normal;
+
             font-weight: 600;
-            line-height: normal;
+
         }
 
         .sub {
             color: #3b3731;
             font-family: Lato;
             font-size: 14px;
-            font-style: normal;
+
             font-weight: 400;
-            line-height: normal;
+
         }
 
         .sub-title strong {
             color: #9d9b98;
             font-family: Lato;
             font-size: 14px;
-            font-style: normal;
+
             font-weight: 400;
-            line-height: normal;
+
         }
 
         /* REVIEWS SECTION */
@@ -1606,7 +1605,7 @@
 
         .stat-card {
             background: #f7f7f7;
-            padding: 20px;
+            padding: 45px;
             border-radius: 14px;
             min-width: 230px;
         }
@@ -1619,24 +1618,28 @@
             color: #3b3731;
             font-family: Lato;
             font-size: 20px;
-            font-style: normal;
+
             font-weight: 600;
-            line-height: normal;
+
             margin-bottom: 10px;
         }
 
         .stat-card h3 {
-            font-size: 24px;
-            margin-bottom: 5px;
+            color: #3B3731;
+            font-family: Lato;
+            font-size: 30px;
+
+            font-weight: 600;
+
         }
 
         .stat-card span {
             color: #9d9b98;
             font-family: Lato;
             font-size: 16px;
-            font-style: normal;
+
             font-weight: 400;
-            line-height: normal;
+
         }
 
         /* FILTER BAR */
@@ -1683,9 +1686,9 @@
             text-align: center;
             font-family: Lato;
             font-size: 16px;
-            font-style: normal;
+
             font-weight: 400;
-            line-height: normal;
+
         }
 
         .left-filters .pill-1 {
@@ -1698,9 +1701,9 @@
             text-align: center;
             font-family: Lato;
             font-size: 16px;
-            font-style: normal;
+
             font-weight: 400;
-            line-height: normal;
+
         }
 
         .left-filters .pill-3 {
@@ -1713,9 +1716,9 @@
             text-align: center;
             font-family: Lato;
             font-size: 16px;
-            font-style: normal;
+
             font-weight: 400;
-            line-height: normal;
+
         }
 
         .pill.active {
@@ -1761,9 +1764,9 @@
             color: #3b3731;
             font-family: "Playfair Display";
             font-size: 28px;
-            font-style: normal;
+
             font-weight: 600;
-            line-height: normal;
+
         }
 
         .reviews-tag {
@@ -1779,9 +1782,9 @@
             text-align: center;
             font-family: Lato;
             font-size: 14px;
-            font-style: normal;
+
             font-weight: 500;
-            line-height: normal;
+
             width: 127px;
             height: 32px;
             margin-bottom: 2rem;
@@ -1824,18 +1827,18 @@
             color: #3b3731;
             font-family: Lato;
             font-size: 14px;
-            font-style: normal;
+
             font-weight: 600;
-            line-height: normal;
+
         }
 
         .review-user p {
             color: #9d9b98;
             font-family: Lato;
             font-size: 14px;
-            font-style: normal;
+
             font-weight: 400;
-            line-height: normal;
+
         }
 
         .review-meta {
@@ -1843,13 +1846,13 @@
             color: #3b3731;
             font-family: Lato;
             font-size: 14px;
-            font-style: normal;
+
             font-weight: 500;
-            line-height: normal;
+
         }
 
         /* CONTENT */
-        
+
         .review-top {
             display: flex;
             align-items: center;
@@ -1861,9 +1864,9 @@
             color: #9d9b98;
             font-family: Lato;
             font-size: 16px;
-            font-style: normal;
+
             font-weight: 400;
-            line-height: normal;
+
         }
 
         .badge {
@@ -1873,9 +1876,9 @@
             text-align: center;
             font-family: Lato;
             font-size: 14px;
-            font-style: normal;
+
             font-weight: 500;
-            line-height: normal;
+
             padding: 2px 10px;
         }
 
@@ -1884,9 +1887,9 @@
             color: #3b3731;
             font-family: Lato;
             font-size: 18px;
-            font-style: normal;
+
             font-weight: 400;
-            line-height: normal;
+
             margin-bottom: 25px;
             width: 674px;
         }
@@ -1906,9 +1909,9 @@
             text-align: center;
             font-family: Lato;
             font-size: 14px;
-            font-style: normal;
+
             font-weight: 500;
-            line-height: normal;
+
         }
 
         /* MENU */
@@ -1955,9 +1958,9 @@
             text-align: center;
             font-family: Lato;
             font-size: 18px;
-            font-style: normal;
+
             font-weight: 600;
-            line-height: normal;
+
         }
 
         /* Jo tab select hoga uska color change ho jaye ga */
@@ -1968,9 +1971,9 @@
             text-align: center;
             font-family: Lato;
             font-size: 16px;
-            font-style: normal;
+
             font-weight: 600;
-            line-height: normal;
+
         }
 
         /* Sections ke switch hone par halka sa fade effect */
@@ -1999,9 +2002,9 @@
             color: #3b3731;
             font-family: "Playfair Display";
             font-size: 28px;
-            font-style: normal;
+
             font-weight: 600;
-            line-height: normal;
+
             margin-bottom: 5px;
         }
 
@@ -2009,9 +2012,9 @@
             color: #9d9b98;
             font-family: Lato;
             font-size: 18px;
-            font-style: normal;
+
             font-weight: 400;
-            line-height: normal;
+
             margin-bottom: 30px;
         }
 
@@ -2037,9 +2040,9 @@
             text-align: center;
             font-family: Lato;
             font-size: 30px;
-            font-style: normal;
+
             font-weight: 600;
-            line-height: normal;
+
         }
 
         .card-label {
@@ -2050,9 +2053,9 @@
             text-align: center;
             font-family: Lato;
             font-size: 16px;
-            font-style: normal;
+
             font-weight: 400;
-            line-height: normal;
+
             margin: 10px 0;
         }
 
@@ -2060,14 +2063,17 @@
         .referral-grid {
             display: grid;
             grid-template-columns: 1.5fr 1fr;
-            gap: 50px;
+            gap: 75px;
             margin-bottom: 50px;
         }
 
         .referral-grid label {
             display: block;
-            font-size: 14px;
             margin: 15px 0 5px;
+            color: #3B3731;
+            font-family: Lato;
+            font-size: 16px;
+            font-weight: 600;
         }
 
         .referral-grid .copy-box {
@@ -2084,6 +2090,10 @@
             background: #fafafa;
             width: 609px;
             height: 48px;
+            color: #3B3731;
+            font-family: Lato;
+            font-size: 16px;
+            font-weight: 400;
         }
 
         .copy-box button {
@@ -2092,6 +2102,13 @@
             padding: 0 20px;
             cursor: pointer;
             font-weight: bold;
+            color: #FFF;
+            text-align: center;
+            font-family: Lato;
+            font-size: 18px;
+
+            font-weight: 600;
+
         }
 
         .promo {
@@ -2102,23 +2119,27 @@
             color: #3b3731;
             font-family: Lato;
             font-size: 18px;
-            font-style: normal;
+
             font-weight: 700;
-            line-height: normal;
+
         }
 
         .promo p {
             color: #3b3731;
             font-family: Lato;
             font-size: 18px;
-            font-style: normal;
+
             font-weight: 400;
-            line-height: normal;
+
         }
 
         .promo-text {
             margin-right: 7rem;
             margin-top: 1rem;
+            color: #3B3731;
+            font-family: Lato;
+            font-size: 16px;
+            font-weight: 600;
         }
 
         /* Icons */
@@ -2182,35 +2203,22 @@
             z-index: 2;
         }
 
-        .icon-container {
+        .step-circle {
             position: relative;
-            width: 150px;
-            height: 150px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 20px;
         }
 
-        .glow-bg {
+        .step-svg {
             position: absolute;
             top: 50%;
-            left: -18%;
+            left: 50%;
             transform: translate(-50%, -50%);
-            width: 143.69px;
-            z-index: -1;
-            opacity: 0.7;
         }
 
-        .main-icon svg {
-            width: 70px;
-            height: auto;
-        }
-
-        .step-text {
-            display: flex;
-            align-items: center;
-            gap: 10px;
+        /* Connectors Spacing */
+        .connector {
+            margin-top: 70px;
+            width: 120px;
+            margin: auto;
         }
 
         .number {
@@ -2222,34 +2230,19 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 12px;
-            font-weight: bold;
             flex-shrink: 0;
         }
 
-        .step-text p {
-            color: #000;
-            text-align: center;
-            font-family: Lato;
-            font-size: 20px;
-            font-style: normal;
-            font-weight: 600;
-            line-height: normal;
-            margin: 0;
+
+        .step-item-2 {
+            flex: 3;
+            width: auto;
         }
 
-        /* Connectors Spacing */
-        .connector {
-            margin-top: 70px;
-            width: 120px;
-        }
-
-        .curve-down {
-            transform: translateY(10px);
-        }
-
-        .curve-up {
-            transform: translateY(-10px);
+        .step-text {
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         /* Responsive */
@@ -2274,7 +2267,7 @@
 
     <?php include '../components/header.php' ?>
 
-    <div class="container mb-5">
+    <div class="container mb-5 mt-5">
         <div class="row">
             <div class="col-lg-1"></div>
             <div class="col-lg-10">
@@ -2493,7 +2486,44 @@
                                     <h2>Just a few more details</h2>
                                     <p class="mt-1">Complete your profile to make booking quicker and easier.</p>
                                 </div>
-
+                                <div>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+                                        <g filter="url(#filter0_d)">
+                                            <circle cx="20" cy="16" r="16" fill="white" />
+                                        </g>
+                                        <path d="M22 21L16.9657 15.9657L21.9155 11.016" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                                        <defs>
+                                            <filter id="filter0_d" x="0" y="0" width="40" height="40" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                                                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                                                <feOffset dy="4" />
+                                                <feGaussianBlur stdDeviation="2" />
+                                                <feComposite in2="hardAlpha" operator="out" />
+                                                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.03 0" />
+                                                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow" />
+                                                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape" />
+                                            </filter>
+                                        </defs>
+                                    </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+                                        <g filter="url(#filter0_d)">
+                                            <circle cx="20" cy="16" r="16" fill="white" />
+                                        </g>
+                                        <path d="M18 21L23.0343 15.9657L18.0845 11.016" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                                        <defs>
+                                            <filter id="filter0_d" x="0" y="0" width="40" height="40" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                                                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                                                <feOffset dy="4" />
+                                                <feGaussianBlur stdDeviation="2" />
+                                                <feComposite in2="hardAlpha" operator="out" />
+                                                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.03 0" />
+                                                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow" />
+                                                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape" />
+                                            </filter>
+                                        </defs>
+                                    </svg>
+                                </div>
                             </div>
 
                             <div class="details-grid">
@@ -3780,7 +3810,7 @@
                                                 d="M10.251 1.39802C10.8393 -0.465986 13.4771 -0.465981 14.0655 1.39802L15.5337 6.04967C15.7964 6.88186 16.5683 7.44767 17.4409 7.44767L22.3128 7.44767C24.2361 7.44767 25.0509 9.89731 23.5106 11.0493L19.4704 14.071C18.7897 14.5801 18.5052 15.4639 18.761 16.2746L20.2806 21.0887C20.8654 22.9416 18.7314 24.456 17.1754 23.2923L13.3561 20.4358C12.6458 19.9046 11.6706 19.9046 10.9603 20.4358L7.14096 23.2923C5.58502 24.456 3.45102 22.9416 4.03585 21.0887L5.55537 16.2746C5.81124 15.4639 5.52672 14.5801 4.84598 14.071L0.805789 11.0493C-0.734458 9.89731 0.080267 7.44767 2.00365 7.44767L6.87548 7.44767C7.74814 7.44767 8.52006 6.88186 8.78273 6.04967L10.251 1.39802Z"
                                                 fill="#FFC97A" />
                                         </svg> 4.8 / 5</h3>
-                                    <span>Based on 5 reviews</span>
+                                    <span class="mt-1">Based on 5 reviews</span>
                                 </div>
 
                                 <div class="stat-card light">
@@ -4151,7 +4181,7 @@
                                     <div class="review-item">
 
                                         <div class="review-left">
-                                            
+
                                             <div class="avatar-wrap">
                                                 <img class="avatar" src="http://localhost:8000/assets/images/groomer-profile.png" alt="Sarah's avatar">
                                                 <div class="badge-shield" title="Verified">
@@ -4475,21 +4505,24 @@
                             </div>
 
                             <div class="referral-grid">
-                                <div class="input-section">
-                                    <label>Your referral code</label>
-                                    <div class="copy-box">
-                                        <input type="text" value="FURSGO-9X3P" readonly>
-                                        <button>Copy</button>
+                                <div class="input-section d-flex flex-column gap-45">
+                                    <div>
+                                        <label>Your referral code</label>
+                                        <div class="copy-box">
+                                            <input type="text" value="FURSGO-9X3P" readonly>
+                                            <button>Copy</button>
+                                        </div>
                                     </div>
-
-                                    <label>Share your referral link</label>
-                                    <div class="copy-box">
-                                        <input type="text" value="fursgo.com/ref/FURSGO-9X3P" readonly>
-                                        <button>Copy</button>
+                                    <div>
+                                        <label>Share your referral link</label>
+                                        <div class="copy-box">
+                                            <input type="text" value="fursgo.com/ref/FURSGO-9X3P" readonly>
+                                            <button>Copy</button>
+                                        </div>
                                     </div>
                                 </div>
 
-                                <div class="promo-section">
+                                <div class="promo-section d-flex flex-column gap-45">
                                     <div class="promo">
                                         <p><strong>You get £10 credit</strong></p>
                                         <p>Your friend gets £5 off their first booking</p>
@@ -4556,167 +4589,119 @@
 
                                     </div>
                                 </div>
+
                             </div>
 
-                            <!-- <div class="referral-section">
-                                <div class="steps-wrapper">
-                                    <div class="step-item">
-                                        <div class="icon-container">
-                                            <div class="glow-bg color-pink">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="344" height="346" viewBox="0 0 344 346"
-                                                    fill="none">
-                                                    <g filter="url(#filter0_f_55_951)">
-                                                        <path
-                                                            d="M233.723 135.946C227.632 123.702 219.682 115.365 211.93 109.243C205.84 104.791 187.21 96.3762 157.31 101.719C137.93 107.841 123.533 117.858 114.12 131.772C104.707 145.128 100 159.876 100 176.016C100 197.721 106.645 214.695 119.934 226.939C133.777 239.182 152.049 245.304 174.752 245.304C195.239 245.304 211.851 238.347 224.586 224.434C237.322 210.521 243.69 194.938 243.69 177.685C243.69 161.546 240.367 147.633 233.723 135.946Z"
-                                                            fill="#FFA899" fill-opacity="0.5" />
-                                                    </g>
-                                                    <defs>
-                                                        <filter id="filter0_f_55_951" x="0" y="0" width="343.689" height="345.305"
-                                                            filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                                                            <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                                                            <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix"
-                                                                result="shape" />
-                                                            <feGaussianBlur stdDeviation="50" result="effect1_foregroundBlur_55_951" />
-                                                        </filter>
-                                                    </defs>
-                                                </svg>
-                                            </div>
-                                            <div class="main-icon">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="109" height="100" viewBox="0 0 109 100"
-                                                    fill="none">
-                                                    <path
-                                                        d="M2.86526 50.6914C1.03067 52.526 0 55.0143 0 57.6088V59.7827C0 59.7827 0 82.6088 32.6088 82.6088C65.2175 82.6088 48.5492 70.3212 55.7523 60.8694L62.3522 50.6914C60.5176 48.8568 58.0294 47.8262 55.4349 47.8262H9.78263C7.18811 47.8262 4.69986 48.8568 2.86526 50.6914Z"
-                                                        fill="#3B3731" />
-                                                    <path
-                                                        d="M93.4788 23.9127C93.4788 25.9111 93.0852 27.8899 92.3204 29.7362C91.5557 31.5824 90.4348 33.26 89.0217 34.6731C87.6086 36.0861 85.9311 37.207 84.0848 37.9718C82.2386 38.7365 80.2597 39.1302 78.2614 39.1302C76.263 39.1302 74.2842 38.7365 72.4379 37.9718C70.5916 37.207 68.9141 36.0861 67.501 34.6731C66.088 33.26 64.9671 31.5824 64.2023 29.7362C63.4376 27.8899 63.0439 25.9111 63.0439 23.9127C63.0439 19.8768 64.6472 16.0062 67.501 13.1524C70.3548 10.2986 74.2255 8.69531 78.2614 8.69531C82.2973 8.69531 86.1679 10.2986 89.0217 13.1524C91.8755 16.0062 93.4788 19.8768 93.4788 23.9127Z"
-                                                        fill="#3B3731" />
-                                                    <path
-                                                        d="M32.6082 39.1305C37.7973 39.1305 42.7737 37.0692 46.4429 33.4C50.1121 29.7308 52.1735 24.7543 52.1735 19.5653C52.1735 14.3762 50.1121 9.39973 46.4429 5.73053C42.7737 2.06133 37.7973 0 32.6082 0C27.4192 0 22.4427 2.06133 18.7735 5.73053C15.1043 9.39973 13.043 14.3762 13.043 19.5653C13.043 24.7543 15.1043 29.7308 18.7735 33.4C22.4427 37.0692 27.4192 39.1305 32.6082 39.1305Z"
-                                                        fill="#3B3731" />
-                                                    <path
-                                                        d="M77.0779 43.6802C83.2322 42.9411 89.4587 44.2455 94.7986 47.3931C100.138 50.5408 104.296 55.3567 106.63 61.0992C108.963 66.8416 109.344 73.1922 107.714 79.1724L107.555 79.731C105.86 85.4812 102.378 90.549 97.6062 94.1949L97.1413 94.5425C92.3043 98.0836 86.4615 99.9977 80.4568 99.9996C75.6696 100.002 70.9602 98.7897 66.7703 96.4742L54.9607 99.9087C54.6333 100.004 54.2888 100.021 53.9548 99.9585L53.8132 99.9273C53.4829 99.8427 53.1773 99.6821 52.9216 99.4585L52.8152 99.3589C52.5742 99.1179 52.394 98.824 52.2878 98.5015L52.2468 98.3609C52.1502 97.9836 52.1564 97.5874 52.2654 97.2134L55.7175 85.4175C52.8111 80.1628 51.657 74.1234 52.4128 68.1763L52.4919 67.6011C53.3711 61.6612 56.1181 56.1609 60.3279 51.8931L60.74 51.4839C65.0438 47.2965 70.5657 44.5914 76.5017 43.7544L77.0779 43.6802ZM92.2595 51.7007C87.8643 49.11 82.7391 48.0357 77.6736 48.6441C72.6084 49.2525 67.8838 51.5094 64.2273 55.0669C60.5706 58.6248 58.1842 63.2866 57.4372 68.3335C56.6903 73.3804 57.6232 78.5332 60.0925 82.9976L61.1013 84.8209L58.5124 93.6675L67.3689 91.0923L69.1882 92.0982C72.6369 94.0041 76.5135 95.0019 80.4538 94.9996C85.5557 94.998 90.5172 93.3198 94.571 90.2222C98.6249 87.1246 101.547 82.7793 102.889 77.857C104.231 72.9349 103.918 67.7084 101.997 62.982C100.076 58.2555 96.6547 54.2915 92.2595 51.7007Z"
-                                                        fill="#3B3731" />
-                                                    <path
-                                                        d="M67.4092 67.3927C67.4092 66.8161 67.6382 66.2632 68.0459 65.8555C68.4536 65.4478 69.0065 65.2188 69.5831 65.2188H91.3223C91.8988 65.2188 92.4518 65.4478 92.8595 65.8555C93.2671 66.2632 93.4962 66.8161 93.4962 67.3927C93.4962 67.9692 93.2671 68.5222 92.8595 68.9299C92.4518 69.3375 91.8988 69.5666 91.3223 69.5666H69.5831C69.0065 69.5666 68.4536 69.3375 68.0459 68.9299C67.6382 68.5222 67.4092 67.9692 67.4092 67.3927Z"
-                                                        fill="white" />
-                                                    <path
-                                                        d="M67.4092 67.3927C67.4092 66.8161 67.6382 66.2632 68.0459 65.8555C68.4536 65.4478 69.0065 65.2188 69.5831 65.2188H91.3223C91.8988 65.2188 92.4518 65.4478 92.8595 65.8555C93.2671 66.2632 93.4962 66.8161 93.4962 67.3927C93.4962 67.9692 93.2671 68.5222 92.8595 68.9299C92.4518 69.3375 91.8988 69.5666 91.3223 69.5666H69.5831C69.0065 69.5666 68.4536 69.3375 68.0459 68.9299C67.6382 68.5222 67.4092 67.9692 67.4092 67.3927Z"
-                                                        fill="#3B3731" />
-                                                    <path
-                                                        d="M69.5831 78.2619C69.0065 78.2619 68.4536 78.0329 68.0459 77.6252C67.6382 77.2175 67.4092 76.6645 67.4092 76.088C67.4092 75.5114 67.6382 74.9585 68.0459 74.5508C68.4536 74.1431 69.0065 73.9141 69.5831 73.9141H80.4527C81.0292 73.9141 81.5822 74.1431 81.9899 74.5508C82.3976 74.9585 82.6266 75.5114 82.6266 76.088C82.6266 76.6645 82.3976 77.2175 81.9899 77.6252C81.5822 78.0329 81.0292 78.2619 80.4527 78.2619H69.5831Z"
-                                                        fill="white" />
-                                                    <path
-                                                        d="M69.5831 78.2619C69.0065 78.2619 68.4536 78.0329 68.0459 77.6252C67.6382 77.2175 67.4092 76.6645 67.4092 76.088C67.4092 75.5114 67.6382 74.9585 68.0459 74.5508C68.4536 74.1431 69.0065 73.9141 69.5831 73.9141H80.4527C81.0292 73.9141 81.5822 74.1431 81.9899 74.5508C82.3976 74.9585 82.6266 75.5114 82.6266 76.088C82.6266 76.6645 82.3976 77.2175 81.9899 77.6252C81.5822 78.0329 81.0292 78.2619 80.4527 78.2619H69.5831Z"
-                                                        fill="#3B3731" />
-                                                </svg>
-                                            </div>
-                                        </div>
-                                        <div class="step-text">
-                                            <span class="number">1</span>
-                                            <p>Share your referral link</p>
-                                        </div>
-                                    </div>
+                            <div class="steps-wrapper">
+                                <div class="step-item">
 
-                                    <div class="connector curve-down">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="123" height="20" viewBox="0 0 123 20"
-                                            fill="none">
-                                            <path d="M0.568359 0.844492C19.9187 14.2238 71.2988 32.9547 122.017 0.844492"
-                                                stroke="#3B3731" stroke-width="2" stroke-dasharray="10 10" />
+                                    <div class="step-circle">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="344" height="346" viewBox="0 0 344 346" fill="none">
+                                            <g filter="url(#filter0_f_55_951)">
+                                                <path d="M233.723 135.946C227.632 123.702 219.682 115.365 211.93 109.243C205.84 104.791 187.21 96.3762 157.31 101.719C137.93 107.841 123.533 117.858 114.12 131.772C104.707 145.128 100 159.876 100 176.016C100 197.721 106.645 214.695 119.934 226.939C133.777 239.182 152.049 245.304 174.752 245.304C195.239 245.304 211.851 238.347 224.586 224.434C237.322 210.521 243.69 194.938 243.69 177.685C243.69 161.546 240.367 147.633 233.723 135.946Z" fill="#FFA899" fill-opacity="0.5" />
+                                            </g>
+                                            <defs>
+                                                <filter id="filter0_f_55_951" x="0" y="0" width="343.689" height="345.305" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                                                    <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+                                                    <feGaussianBlur stdDeviation="50" result="effect1_foregroundBlur_55_951" />
+                                                </filter>
+                                            </defs>
                                         </svg>
-                                    </div>
-
-                                    <div class="step-item">
-                                        <div class="icon-container">
-                                            <div class="glow-bg color-blue">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="344" height="346" viewBox="0 0 344 346"
-                                                    fill="none">
-                                                    <g filter="url(#filter0_f_55_950)">
-                                                        <path
-                                                            d="M233.723 135.946C227.632 123.702 219.682 115.365 211.93 109.243C205.84 104.791 187.21 96.3762 157.31 101.719C137.93 107.841 123.533 117.858 114.12 131.772C104.707 145.128 100 159.876 100 176.016C100 197.721 106.645 214.695 119.934 226.939C133.777 239.182 152.049 245.304 174.752 245.304C195.239 245.304 211.851 238.347 224.586 224.434C237.322 210.521 243.69 194.938 243.69 177.685C243.69 161.546 240.367 147.633 233.723 135.946Z"
-                                                            fill="#CBDCE8" fill-opacity="0.5" />
-                                                    </g>
-                                                    <defs>
-                                                        <filter id="filter0_f_55_950" x="0" y="0" width="343.689" height="345.305"
-                                                            filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                                                            <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                                                            <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix"
-                                                                result="shape" />
-                                                            <feGaussianBlur stdDeviation="50" result="effect1_foregroundBlur_55_950" />
-                                                        </filter>
-                                                    </defs>
-                                                </svg>
-                                            </div>
-                                            <div class="main-icon">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="106" height="100" viewBox="0 0 106 100"
-                                                    fill="none">
-                                                    <path
-                                                        d="M18.1714 19.697C18.1714 16.0804 19.6073 12.6119 22.1631 10.0546C24.719 7.49729 28.1855 6.06061 31.8 6.06061C35.4145 6.06061 38.881 7.49729 41.4369 10.0546C43.9927 12.6119 45.4286 16.0804 45.4286 19.697C45.4286 23.3136 43.9927 26.782 41.4369 29.3393C38.881 31.8966 35.4145 33.3333 31.8 33.3333C28.1855 33.3333 24.719 31.8966 22.1631 29.3393C19.6073 26.782 18.1714 23.3136 18.1714 19.697ZM31.8 0C26.579 0 21.5719 2.07521 17.8801 5.76911C14.1883 9.46301 12.1143 14.473 12.1143 19.697C12.1143 24.9209 14.1883 29.9309 17.8801 33.6248C21.5719 37.3187 26.579 39.3939 31.8 39.3939C37.021 39.3939 42.0281 37.3187 45.7199 33.6248C49.4117 29.9309 51.4857 24.9209 51.4857 19.697C51.4857 14.473 49.4117 9.46301 45.7199 5.76911C42.0281 2.07521 37.021 0 31.8 0ZM0 57.5758C0 54.361 1.27632 51.2779 3.54819 49.0048C5.82006 46.7316 8.90138 45.4545 12.1143 45.4545H51.4857C53.5951 45.4528 55.6684 46.0023 57.5005 47.0485C55.8206 48.4465 54.2902 49.9919 52.9091 51.6848C52.4431 51.5721 51.9652 51.5151 51.4857 51.5152H12.1143C10.5078 51.5152 8.96717 52.1537 7.83124 53.2903C6.6953 54.4268 6.05714 55.9684 6.05714 57.5758V58.0485L6.09954 58.5515C6.42823 61.4567 7.46397 64.2369 9.116 66.6485C12.0658 70.9151 18.2502 75.7576 31.8 75.7576C37.5785 75.7576 42.0184 74.8788 45.4407 73.5333C45.4932 75.6545 45.7355 77.7151 46.1675 79.7151C42.2546 81.0303 37.524 81.8182 31.8 81.8182C16.5784 81.8182 8.37703 76.2424 4.13097 70.097C1.89527 66.8377 0.501012 63.0752 0.0726855 59.1455C0.0381301 58.7927 0.0138914 58.439 0 58.0848V57.5758ZM69.6571 24.2424C69.6571 21.8314 70.6144 19.5191 72.3183 17.8142C74.0222 16.1093 76.3332 15.1515 78.7429 15.1515C81.1525 15.1515 83.4635 16.1093 85.1674 17.8142C86.8713 19.5191 87.8286 21.8314 87.8286 24.2424C87.8286 26.6535 86.8713 28.9658 85.1674 30.6707C83.4635 32.3755 81.1525 33.3333 78.7429 33.3333C76.3332 33.3333 74.0222 32.3755 72.3183 30.6707C70.6144 28.9658 69.6571 26.6535 69.6571 24.2424ZM78.7429 9.09091C74.7267 9.09091 70.8751 10.6872 68.0352 13.5287C65.1954 16.3701 63.6 20.224 63.6 24.2424C63.6 28.2609 65.1954 32.1147 68.0352 34.9562C70.8751 37.7976 74.7267 39.3939 78.7429 39.3939C82.759 39.3939 86.6106 37.7976 89.4505 34.9562C92.2903 32.1147 93.8857 28.2609 93.8857 24.2424C93.8857 20.224 92.2903 16.3701 89.4505 13.5287C86.6106 10.6872 82.759 9.09091 78.7429 9.09091ZM106 72.7273C106 79.9604 103.128 86.8974 98.0166 92.012C92.9049 97.1266 85.9719 100 78.7429 100C71.5138 100 64.5809 97.1266 59.4691 92.012C54.3574 86.8974 51.4857 79.9604 51.4857 72.7273C51.4857 65.4941 54.3574 58.5572 59.4691 53.4425C64.5809 48.3279 71.5138 45.4545 78.7429 45.4545C85.9719 45.4545 92.9049 48.3279 98.0166 53.4425C103.128 58.5572 106 65.4941 106 72.7273ZM81.7714 60.6061C81.7714 59.8024 81.4524 59.0316 80.8844 58.4633C80.3164 57.895 79.5461 57.5758 78.7429 57.5758C77.9396 57.5758 77.1693 57.895 76.6013 58.4633C76.0334 59.0316 75.7143 59.8024 75.7143 60.6061V69.697H66.6286C65.8253 69.697 65.055 70.0162 64.487 70.5845C63.9191 71.1528 63.6 71.9236 63.6 72.7273C63.6 73.531 63.9191 74.3017 64.487 74.87C65.055 75.4383 65.8253 75.7576 66.6286 75.7576H75.7143V84.8485C75.7143 85.6522 76.0334 86.4229 76.6013 86.9912C77.1693 87.5595 77.9396 87.8788 78.7429 87.8788C79.5461 87.8788 80.3164 87.5595 80.8844 86.9912C81.4524 86.4229 81.7714 85.6522 81.7714 84.8485V75.7576H90.8571C91.6604 75.7576 92.4307 75.4383 92.9987 74.87C93.5666 74.3017 93.8857 73.531 93.8857 72.7273C93.8857 71.9236 93.5666 71.1528 92.9987 70.5845C92.4307 70.0162 91.6604 69.697 90.8571 69.697H81.7714V60.6061Z"
-                                                        fill="#3B3731" />
-                                                </svg>
-                                            </div>
-                                        </div>
-                                        <div class="step-text">
-                                            <span class="number">2</span>
-                                            <p>Your friend signs up and books</p>
-                                        </div>
-                                    </div>
-
-                                    <div class="connector curve-up">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="121" height="20" viewBox="0 0 121 20"
-                                            fill="none">
-                                            <path d="M0.574219 18.7297C19.642 5.35046 70.2721 -13.3805 120.25 18.7297" stroke="#3B3731"
-                                                stroke-width="2" stroke-dasharray="10 10" />
-                                        </svg>
-                                    </div>
-
-                                    <div class="step-item">
-                                        <div class="icon-container">
-                                            <div class="glow-bg zzzz"></div>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="344" height="346" viewBox="0 0 344 346"
-                                                fill="none">
-                                                <g filter="url(#filter0_f_55_949)">
-                                                    <path
-                                                        d="M233.723 135.946C227.632 123.702 219.682 115.365 211.93 109.243C205.84 104.791 187.21 96.3762 157.31 101.719C137.93 107.841 123.533 117.858 114.12 131.772C104.707 145.128 100 159.876 100 176.016C100 197.721 106.645 214.695 119.934 226.939C133.777 239.182 152.049 245.304 174.752 245.304C195.239 245.304 211.851 238.347 224.586 224.434C237.322 210.521 243.69 194.938 243.69 177.685C243.69 161.546 240.367 147.633 233.723 135.946Z"
-                                                        fill="red" fill-opacity="0.5" />
-                                                </g>
-                                                <defs>
-                                                    <filter id="filter0_f_55_949" x="0" y="0" width="343.689" height="345.305"
-                                                        filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                                                        <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                                                        <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix"
-                                                            result="shape" />
-                                                        <feGaussianBlur stdDeviation="50" result="effect1_foregroundBlur_55_949" />
-                                                    </filter>
-                                                </defs>
+                                        <div class="step-svg">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="109" height="100" viewBox="0 0 109 100" fill="none">
+                                                <path d="M2.86526 50.6914C1.03067 52.526 0 55.0143 0 57.6088V59.7827C0 59.7827 0 82.6088 32.6088 82.6088C65.2175 82.6088 48.5492 70.3212 55.7523 60.8694L62.3522 50.6914C60.5176 48.8568 58.0294 47.8262 55.4349 47.8262H9.78263C7.18811 47.8262 4.69986 48.8568 2.86526 50.6914Z" fill="#3B3731" />
+                                                <path d="M93.4788 23.9127C93.4788 25.9111 93.0852 27.8899 92.3204 29.7362C91.5557 31.5824 90.4348 33.26 89.0217 34.6731C87.6086 36.0861 85.9311 37.207 84.0848 37.9718C82.2386 38.7365 80.2597 39.1302 78.2614 39.1302C76.263 39.1302 74.2842 38.7365 72.4379 37.9718C70.5916 37.207 68.9141 36.0861 67.501 34.6731C66.088 33.26 64.9671 31.5824 64.2023 29.7362C63.4376 27.8899 63.0439 25.9111 63.0439 23.9127C63.0439 19.8768 64.6472 16.0062 67.501 13.1524C70.3548 10.2986 74.2255 8.69531 78.2614 8.69531C82.2973 8.69531 86.1679 10.2986 89.0217 13.1524C91.8755 16.0062 93.4788 19.8768 93.4788 23.9127Z" fill="#3B3731" />
+                                                <path d="M32.6082 39.1305C37.7973 39.1305 42.7737 37.0692 46.4429 33.4C50.1121 29.7308 52.1735 24.7543 52.1735 19.5653C52.1735 14.3762 50.1121 9.39973 46.4429 5.73053C42.7737 2.06133 37.7973 0 32.6082 0C27.4192 0 22.4427 2.06133 18.7735 5.73053C15.1043 9.39973 13.043 14.3762 13.043 19.5653C13.043 24.7543 15.1043 29.7308 18.7735 33.4C22.4427 37.0692 27.4192 39.1305 32.6082 39.1305Z" fill="#3B3731" />
+                                                <path d="M77.0779 43.6802C83.2322 42.9411 89.4587 44.2455 94.7986 47.3931C100.138 50.5408 104.296 55.3567 106.63 61.0992C108.963 66.8416 109.344 73.1922 107.714 79.1724L107.555 79.731C105.86 85.4812 102.378 90.549 97.6062 94.1949L97.1413 94.5425C92.3043 98.0836 86.4615 99.9977 80.4568 99.9996C75.6696 100.002 70.9602 98.7897 66.7703 96.4742L54.9607 99.9087C54.6333 100.004 54.2888 100.021 53.9548 99.9585L53.8132 99.9273C53.4829 99.8427 53.1773 99.6821 52.9216 99.4585L52.8152 99.3589C52.5742 99.1179 52.394 98.824 52.2878 98.5015L52.2468 98.3609C52.1502 97.9836 52.1564 97.5874 52.2654 97.2134L55.7175 85.4175C52.8111 80.1628 51.657 74.1234 52.4128 68.1763L52.4919 67.6011C53.3711 61.6612 56.1181 56.1609 60.3279 51.8931L60.74 51.4839C65.0438 47.2965 70.5657 44.5914 76.5017 43.7544L77.0779 43.6802ZM92.2595 51.7007C87.8643 49.11 82.7391 48.0357 77.6736 48.6441C72.6084 49.2525 67.8838 51.5094 64.2273 55.0669C60.5706 58.6248 58.1842 63.2866 57.4372 68.3335C56.6903 73.3804 57.6232 78.5332 60.0925 82.9976L61.1013 84.8209L58.5124 93.6675L67.3689 91.0923L69.1882 92.0982C72.6369 94.0041 76.5135 95.0019 80.4538 94.9996C85.5557 94.998 90.5172 93.3198 94.571 90.2222C98.6249 87.1246 101.547 82.7793 102.889 77.857C104.231 72.9349 103.918 67.7084 101.997 62.982C100.076 58.2555 96.6547 54.2915 92.2595 51.7007Z" fill="#3B3731" />
+                                                <path d="M67.4092 67.3927C67.4092 66.8161 67.6382 66.2632 68.0459 65.8555C68.4536 65.4478 69.0065 65.2188 69.5831 65.2188H91.3223C91.8988 65.2188 92.4518 65.4478 92.8595 65.8555C93.2671 66.2632 93.4962 66.8161 93.4962 67.3927C93.4962 67.9692 93.2671 68.5222 92.8595 68.9299C92.4518 69.3375 91.8988 69.5666 91.3223 69.5666H69.5831C69.0065 69.5666 68.4536 69.3375 68.0459 68.9299C67.6382 68.5222 67.4092 67.9692 67.4092 67.3927Z" fill="white" />
+                                                <path d="M67.4092 67.3927C67.4092 66.8161 67.6382 66.2632 68.0459 65.8555C68.4536 65.4478 69.0065 65.2188 69.5831 65.2188H91.3223C91.8988 65.2188 92.4518 65.4478 92.8595 65.8555C93.2671 66.2632 93.4962 66.8161 93.4962 67.3927C93.4962 67.9692 93.2671 68.5222 92.8595 68.9299C92.4518 69.3375 91.8988 69.5666 91.3223 69.5666H69.5831C69.0065 69.5666 68.4536 69.3375 68.0459 68.9299C67.6382 68.5222 67.4092 67.9692 67.4092 67.3927Z" fill="#3B3731" />
+                                                <path d="M69.5831 78.2619C69.0065 78.2619 68.4536 78.0329 68.0459 77.6252C67.6382 77.2175 67.4092 76.6645 67.4092 76.088C67.4092 75.5114 67.6382 74.9585 68.0459 74.5508C68.4536 74.1431 69.0065 73.9141 69.5831 73.9141H80.4527C81.0292 73.9141 81.5822 74.1431 81.9899 74.5508C82.3976 74.9585 82.6266 75.5114 82.6266 76.088C82.6266 76.6645 82.3976 77.2175 81.9899 77.6252C81.5822 78.0329 81.0292 78.2619 80.4527 78.2619H69.5831Z" fill="white" />
+                                                <path d="M69.5831 78.2619C69.0065 78.2619 68.4536 78.0329 68.0459 77.6252C67.6382 77.2175 67.4092 76.6645 67.4092 76.088C67.4092 75.5114 67.6382 74.9585 68.0459 74.5508C68.4536 74.1431 69.0065 73.9141 69.5831 73.9141H80.4527C81.0292 73.9141 81.5822 74.1431 81.9899 74.5508C82.3976 74.9585 82.6266 75.5114 82.6266 76.088C82.6266 76.6645 82.3976 77.2175 81.9899 77.6252C81.5822 78.0329 81.0292 78.2619 80.4527 78.2619H69.5831Z" fill="#3B3731" />
                                             </svg>
-                                            <div class="main-icon">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="106" height="99" viewBox="0 0 106 99"
-                                                    fill="none">
-                                                    <path
-                                                        d="M2.86526 50.6914C1.03067 52.526 0 55.0143 0 57.6088V59.7827C0 59.7827 0 82.6088 32.6088 82.6088C65.2175 82.6088 48.5492 70.3212 55.7523 60.8694L62.3522 50.6914C60.5176 48.8568 58.0294 47.8262 55.4349 47.8262H9.78263C7.18811 47.8262 4.69986 48.8568 2.86526 50.6914Z"
-                                                        fill="#3B3731" />
-                                                    <path
-                                                        d="M93.4788 23.9127C93.4788 25.9111 93.0852 27.8899 92.3204 29.7362C91.5557 31.5824 90.4348 33.26 89.0217 34.6731C87.6086 36.0861 85.9311 37.207 84.0848 37.9718C82.2386 38.7365 80.2597 39.1302 78.2614 39.1302C76.263 39.1302 74.2842 38.7365 72.4379 37.9718C70.5916 37.207 68.9141 36.0861 67.501 34.6731C66.088 33.26 64.9671 31.5824 64.2023 29.7362C63.4376 27.8899 63.0439 25.9111 63.0439 23.9127C63.0439 19.8768 64.6472 16.0062 67.501 13.1524C70.3548 10.2986 74.2255 8.69531 78.2614 8.69531C82.2973 8.69531 86.1679 10.2986 89.0217 13.1524C91.8755 16.0062 93.4788 19.8768 93.4788 23.9127Z"
-                                                        fill="#3B3731" />
-                                                    <path
-                                                        d="M32.6082 39.1305C37.7973 39.1305 42.7737 37.0692 46.4429 33.4C50.1121 29.7308 52.1735 24.7543 52.1735 19.5653C52.1735 14.3762 50.1121 9.39973 46.4429 5.73053C42.7737 2.06133 37.7973 0 32.6082 0C27.4192 0 22.4427 2.06133 18.7735 5.73053C15.1043 9.39973 13.043 14.3762 13.043 19.5653C13.043 24.7543 15.1043 29.7308 18.7735 33.4C22.4427 37.0692 27.4192 39.1305 32.6082 39.1305Z"
-                                                        fill="#3B3731" />
-                                                    <path
-                                                        d="M100.808 72C100.808 59.9559 91.044 50.1923 78.9999 50.1923C66.9559 50.1923 57.1923 59.9559 57.1923 72C57.1923 84.0441 66.9559 93.8077 78.9999 93.8077V99C64.0883 99 52 86.9117 52 72C52 57.0883 64.0883 45 78.9999 45C93.9116 45 106 57.0883 106 72C106 86.9117 93.9116 99 78.9999 99V93.8077C91.044 93.8077 100.808 84.0441 100.808 72Z"
-                                                        fill="#3B3731" />
-                                                    <path
-                                                        d="M76.6778 58.566C77.2733 56.577 79.9348 56.577 80.5302 58.566L82.4668 65.0348C82.7327 65.923 83.5121 66.5266 84.393 66.5266H90.7692C92.7137 66.5266 93.5358 69.1469 91.9769 70.3761L86.729 74.5145C86.0392 75.0584 85.7508 76.0047 86.0105 76.8722L87.9936 83.4966C88.5859 85.4749 86.4327 87.0948 84.8597 85.8544L79.8118 81.8738C79.0953 81.3088 78.1128 81.3088 77.3963 81.8738L72.3484 85.8544C70.7754 87.0948 68.6222 85.4749 69.2144 83.4966L71.1975 76.8722C71.4573 76.0047 71.1689 75.0584 70.4791 74.5145L65.2311 70.3761C63.6723 69.1469 64.4944 66.5266 66.4389 66.5266H72.8151C73.696 66.5266 74.4754 65.923 74.7413 65.0348L76.6778 58.566Z"
-                                                        fill="#3B3731" />
-                                                </svg>
-                                            </div>
                                         </div>
-                                        <div class="step-text">
-                                            <span class="number">3</span>
-                                            <p>You both earn rewards</p>
-                                        </div>
+                                    </div>
+
+
+                                    <div class="step-text">
+                                        <span class="number">1</span>
+                                        <p class="medium-font">Share your referral link</p>
                                     </div>
                                 </div>
-                            </div> -->
+                                <div class="connector curve-down">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="123" height="20" viewBox="0 0 123 20"
+                                        fill="none">
+                                        <path d="M0.568359 0.844492C19.9187 14.2238 71.2988 32.9547 122.017 0.844492"
+                                            stroke="#3B3731" stroke-width="2" stroke-dasharray="10 10" />
+                                    </svg>
+                                </div>
+                                <div class="step-item step-item-2">
+
+                                    <div class="step-circle">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="344" height="346" viewBox="0 0 344 346" fill="none">
+                                            <g filter="url(#filter0_f_55_950)">
+                                                <path d="M233.723 135.946C227.632 123.702 219.682 115.365 211.93 109.243C205.84 104.791 187.21 96.3762 157.31 101.719C137.93 107.841 123.533 117.858 114.12 131.772C104.707 145.128 100 159.876 100 176.016C100 197.721 106.645 214.695 119.934 226.939C133.777 239.182 152.049 245.304 174.752 245.304C195.239 245.304 211.851 238.347 224.586 224.434C237.322 210.521 243.69 194.938 243.69 177.685C243.69 161.546 240.367 147.633 233.723 135.946Z" fill="#CBDCE8" fill-opacity="0.5" />
+                                            </g>
+                                            <defs>
+                                                <filter id="filter0_f_55_950" x="0" y="0" width="343.689" height="345.305" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                                                    <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+                                                    <feGaussianBlur stdDeviation="50" result="effect1_foregroundBlur_55_950" />
+                                                </filter>
+                                            </defs>
+                                        </svg>
+                                        <div class="step-svg">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="106" height="100" viewBox="0 0 106 100" fill="none">
+                                                <path d="M18.1714 19.697C18.1714 16.0804 19.6073 12.6119 22.1631 10.0546C24.719 7.49729 28.1855 6.06061 31.8 6.06061C35.4145 6.06061 38.881 7.49729 41.4369 10.0546C43.9927 12.6119 45.4286 16.0804 45.4286 19.697C45.4286 23.3136 43.9927 26.782 41.4369 29.3393C38.881 31.8966 35.4145 33.3333 31.8 33.3333C28.1855 33.3333 24.719 31.8966 22.1631 29.3393C19.6073 26.782 18.1714 23.3136 18.1714 19.697ZM31.8 0C26.579 0 21.5719 2.07521 17.8801 5.76911C14.1883 9.46301 12.1143 14.473 12.1143 19.697C12.1143 24.9209 14.1883 29.9309 17.8801 33.6248C21.5719 37.3187 26.579 39.3939 31.8 39.3939C37.021 39.3939 42.0281 37.3187 45.7199 33.6248C49.4117 29.9309 51.4857 24.9209 51.4857 19.697C51.4857 14.473 49.4117 9.46301 45.7199 5.76911C42.0281 2.07521 37.021 0 31.8 0ZM0 57.5758C0 54.361 1.27632 51.2779 3.54819 49.0048C5.82006 46.7316 8.90138 45.4545 12.1143 45.4545H51.4857C53.5951 45.4528 55.6684 46.0023 57.5005 47.0485C55.8206 48.4465 54.2902 49.9919 52.9091 51.6848C52.4431 51.5721 51.9652 51.5151 51.4857 51.5152H12.1143C10.5078 51.5152 8.96717 52.1537 7.83124 53.2903C6.6953 54.4268 6.05714 55.9684 6.05714 57.5758V58.0485L6.09954 58.5515C6.42823 61.4567 7.46397 64.2369 9.116 66.6485C12.0658 70.9151 18.2502 75.7576 31.8 75.7576C37.5785 75.7576 42.0184 74.8788 45.4407 73.5333C45.4932 75.6545 45.7355 77.7151 46.1675 79.7151C42.2546 81.0303 37.524 81.8182 31.8 81.8182C16.5784 81.8182 8.37703 76.2424 4.13097 70.097C1.89527 66.8377 0.501012 63.0752 0.0726855 59.1455C0.0381301 58.7927 0.0138914 58.439 0 58.0848V57.5758ZM69.6571 24.2424C69.6571 21.8314 70.6144 19.5191 72.3183 17.8142C74.0222 16.1093 76.3332 15.1515 78.7429 15.1515C81.1525 15.1515 83.4635 16.1093 85.1674 17.8142C86.8713 19.5191 87.8286 21.8314 87.8286 24.2424C87.8286 26.6535 86.8713 28.9658 85.1674 30.6707C83.4635 32.3755 81.1525 33.3333 78.7429 33.3333C76.3332 33.3333 74.0222 32.3755 72.3183 30.6707C70.6144 28.9658 69.6571 26.6535 69.6571 24.2424ZM78.7429 9.09091C74.7267 9.09091 70.8751 10.6872 68.0352 13.5287C65.1954 16.3701 63.6 20.224 63.6 24.2424C63.6 28.2609 65.1954 32.1147 68.0352 34.9562C70.8751 37.7976 74.7267 39.3939 78.7429 39.3939C82.759 39.3939 86.6106 37.7976 89.4505 34.9562C92.2903 32.1147 93.8857 28.2609 93.8857 24.2424C93.8857 20.224 92.2903 16.3701 89.4505 13.5287C86.6106 10.6872 82.759 9.09091 78.7429 9.09091ZM106 72.7273C106 79.9604 103.128 86.8974 98.0166 92.012C92.9049 97.1266 85.9719 100 78.7429 100C71.5138 100 64.5809 97.1266 59.4691 92.012C54.3574 86.8974 51.4857 79.9604 51.4857 72.7273C51.4857 65.4941 54.3574 58.5572 59.4691 53.4425C64.5809 48.3279 71.5138 45.4545 78.7429 45.4545C85.9719 45.4545 92.9049 48.3279 98.0166 53.4425C103.128 58.5572 106 65.4941 106 72.7273ZM81.7714 60.6061C81.7714 59.8024 81.4524 59.0316 80.8844 58.4633C80.3164 57.895 79.5461 57.5758 78.7429 57.5758C77.9396 57.5758 77.1693 57.895 76.6013 58.4633C76.0334 59.0316 75.7143 59.8024 75.7143 60.6061V69.697H66.6286C65.8253 69.697 65.055 70.0162 64.487 70.5845C63.9191 71.1528 63.6 71.9236 63.6 72.7273C63.6 73.531 63.9191 74.3017 64.487 74.87C65.055 75.4383 65.8253 75.7576 66.6286 75.7576H75.7143V84.8485C75.7143 85.6522 76.0334 86.4229 76.6013 86.9912C77.1693 87.5595 77.9396 87.8788 78.7429 87.8788C79.5461 87.8788 80.3164 87.5595 80.8844 86.9912C81.4524 86.4229 81.7714 85.6522 81.7714 84.8485V75.7576H90.8571C91.6604 75.7576 92.4307 75.4383 92.9987 74.87C93.5666 74.3017 93.8857 73.531 93.8857 72.7273C93.8857 71.9236 93.5666 71.1528 92.9987 70.5845C92.4307 70.0162 91.6604 69.697 90.8571 69.697H81.7714V60.6061Z" fill="#3B3731" />
+                                            </svg>
+                                        </div>
+                                    </div>
+
+                                    <div class="step-text">
+                                        <span class="number">2</span>
+                                        <p class="medium-font">Your friend signs up and books</p>
+                                    </div>
+                                </div>
+                                <div class="connector curve-up">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="121" height="20" viewBox="0 0 121 20"
+                                        fill="none">
+                                        <path d="M0.574219 18.7297C19.642 5.35046 70.2721 -13.3805 120.25 18.7297" stroke="#3B3731"
+                                            stroke-width="2" stroke-dasharray="10 10" />
+                                    </svg>
+                                </div>
+                                <div class="step-item">
+
+                                    <div class="step-circle">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="344" height="346" viewBox="0 0 344 346" fill="none">
+                                            <g filter="url(#filter0_f_55_949)">
+                                                <path d="M233.723 135.946C227.632 123.702 219.682 115.365 211.93 109.243C205.84 104.791 187.21 96.3762 157.31 101.719C137.93 107.841 123.533 117.858 114.12 131.772C104.707 145.128 100 159.876 100 176.016C100 197.721 106.645 214.695 119.934 226.939C133.777 239.182 152.049 245.304 174.752 245.304C195.239 245.304 211.851 238.347 224.586 224.434C237.322 210.521 243.69 194.938 243.69 177.685C243.69 161.546 240.367 147.633 233.723 135.946Z" fill="#D8E8B7" fill-opacity="0.5" />
+                                            </g>
+                                            <defs>
+                                                <filter id="filter0_f_55_949" x="0" y="0" width="343.689" height="345.305" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                                                    <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+                                                    <feGaussianBlur stdDeviation="50" result="effect1_foregroundBlur_55_949" />
+                                                </filter>
+                                            </defs>
+                                        </svg>
+                                        <div class="step-svg">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="106" height="99" viewBox="0 0 106 99" fill="none">
+                                                <path d="M2.86526 50.6914C1.03067 52.526 0 55.0143 0 57.6088V59.7827C0 59.7827 0 82.6088 32.6088 82.6088C65.2175 82.6088 48.5492 70.3212 55.7523 60.8694L62.3522 50.6914C60.5176 48.8568 58.0294 47.8262 55.4349 47.8262H9.78263C7.18811 47.8262 4.69986 48.8568 2.86526 50.6914Z" fill="#3B3731"></path>
+                                                <path d="M93.4788 23.9127C93.4788 25.9111 93.0852 27.8899 92.3204 29.7362C91.5557 31.5824 90.4348 33.26 89.0217 34.6731C87.6086 36.0861 85.9311 37.207 84.0848 37.9718C82.2386 38.7365 80.2597 39.1302 78.2614 39.1302C76.263 39.1302 74.2842 38.7365 72.4379 37.9718C70.5916 37.207 68.9141 36.0861 67.501 34.6731C66.088 33.26 64.9671 31.5824 64.2023 29.7362C63.4376 27.8899 63.0439 25.9111 63.0439 23.9127C63.0439 19.8768 64.6472 16.0062 67.501 13.1524C70.3548 10.2986 74.2255 8.69531 78.2614 8.69531C82.2973 8.69531 86.1679 10.2986 89.0217 13.1524C91.8755 16.0062 93.4788 19.8768 93.4788 23.9127Z" fill="#3B3731"></path>
+                                                <path d="M32.6082 39.1305C37.7973 39.1305 42.7737 37.0692 46.4429 33.4C50.1121 29.7308 52.1735 24.7543 52.1735 19.5653C52.1735 14.3762 50.1121 9.39973 46.4429 5.73053C42.7737 2.06133 37.7973 0 32.6082 0C27.4192 0 22.4427 2.06133 18.7735 5.73053C15.1043 9.39973 13.043 14.3762 13.043 19.5653C13.043 24.7543 15.1043 29.7308 18.7735 33.4C22.4427 37.0692 27.4192 39.1305 32.6082 39.1305Z" fill="#3B3731"></path>
+                                                <path d="M100.808 72C100.808 59.9559 91.044 50.1923 78.9999 50.1923C66.9559 50.1923 57.1923 59.9559 57.1923 72C57.1923 84.0441 66.9559 93.8077 78.9999 93.8077V99C64.0883 99 52 86.9117 52 72C52 57.0883 64.0883 45 78.9999 45C93.9116 45 106 57.0883 106 72C106 86.9117 93.9116 99 78.9999 99V93.8077C91.044 93.8077 100.808 84.0441 100.808 72Z" fill="#3B3731"></path>
+                                                <path d="M76.6778 58.566C77.2733 56.577 79.9348 56.577 80.5302 58.566L82.4668 65.0348C82.7327 65.923 83.5121 66.5266 84.393 66.5266H90.7692C92.7137 66.5266 93.5358 69.1469 91.9769 70.3761L86.729 74.5145C86.0392 75.0584 85.7508 76.0047 86.0105 76.8722L87.9936 83.4966C88.5859 85.4749 86.4327 87.0948 84.8597 85.8544L79.8118 81.8738C79.0953 81.3088 78.1128 81.3088 77.3963 81.8738L72.3484 85.8544C70.7754 87.0948 68.6222 85.4749 69.2144 83.4966L71.1975 76.8722C71.4573 76.0047 71.1689 75.0584 70.4791 74.5145L65.2311 70.3761C63.6723 69.1469 64.4944 66.5266 66.4389 66.5266H72.8151C73.696 66.5266 74.4754 65.923 74.7413 65.0348L76.6778 58.566Z" fill="#3B3731"></path>
+                                            </svg>
+                                        </div>
+                                    </div>
+
+                                    <div class="step-text">
+                                        <span class="number">3</span>
+                                        <p class="medium-font">You both earn rewards</p>
+                                    </div>
+                                </div>
+                            </div>
+
                         </section>
                     </div>
 
