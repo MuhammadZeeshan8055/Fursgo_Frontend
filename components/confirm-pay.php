@@ -902,7 +902,9 @@ line-height: normal;">I agree to Fursgo's <a href="#">Terms of Service</a> and <
                         });
 
                         if (ok) {
-                            if (window.location.pathname.includes('booking-space')) {
+                            if (window.location.pathname.includes('booking-groomer-and-space')) {
+                                window.location.href = '<?= BASE_URL ?>booking-groomer-and-space/confirmation.php';
+                            } else if (window.location.pathname.includes('booking-space')) {
                                 window.location.href = '<?= BASE_URL ?>booking-space/confirmation.php';
                             }
                         }
