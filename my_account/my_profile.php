@@ -41,38 +41,34 @@
             gap: 10px;
         }
 
-        .sidebar-header .button {
-            width: 92px;
-            height: 26px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .edit-button {
-            display: none;
-            /* This removes it from the layout */
-            border: 1px solid #ddd;
-            background: #fff;
-            border-radius: 6px;
-            padding: 4px 23px;
-            font-size: 13px;
-            cursor: pointer;
-            align-items: center;
-            gap: 5px;
-        }
-
-        /* Class to show the button */
-        .edit-button.show {
-            display: flex;
-            /* Using flex to keep the text and SVG aligned */
-        }
-
         /* Optional: Make the dots look clickable */
         .dots-menu {
             cursor: pointer;
             display: flex;
             align-items: center;
+            position: relative;
+        }
+
+        button.edit-button {
+            display: none;
+            gap: 37px;
+            padding: 3px 12px;
+            border-radius: 5px;
+            border: 1px solid #D9D9D9;
+            background: #F8F8F8;
+            cursor: pointer;
+            position: absolute;
+            top: 0;
+            right: 35px;
+            color: #3B3731;
+            font-family: Lato;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        button.edit-button.show{
+                        display: flex;
+
         }
 
         .avatar-container img {
@@ -2035,9 +2031,9 @@
             cursor: pointer;
         }
 
-        .review-menu:hover .menu-dropdown {
+        /* .review-menu:hover .menu-dropdown {
             display: flex;
-        }
+        } */
 
         /* LOAD MORE */
         .load-more {
@@ -2372,19 +2368,21 @@
                     <div class="col-lg-5">
                         <aside class="profile-sidebar mt-5">
                             <div class="sidebar-header">
-                                <button class="edit-button">Edit
-                                    <svg width="12" height="11" viewBox="0 0 12 11" fill="none">
-                                        <path
-                                            d="M7.36765 1.59283L9.30882 3.44794M6.07353 10.25H11.25M0.897059 7.77652L0.25 10.25L2.83824 9.63163L10.3351 2.46721C10.5777 2.23528 10.714 1.92077 10.714 1.59283C10.714 1.26489 10.5777 0.950382 10.3351 0.71846L10.2238 0.6121C9.98108 0.380248 9.65198 0.25 9.30882 0.25C8.96567 0.25 8.63657 0.380248 8.39388 0.6121L0.897059 7.77652Z"
-                                            stroke="#3B3731" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" />
-                                    </svg>
-                                </button>
-                                <div class="dots-menu"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="5"
+                                <div class="dots-menu">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="5"
                                         viewBox="0 0 25 5" fill="none">
                                         <circle cx="2.5" cy="2.5" r="2.5" fill="#3B3731" />
                                         <circle cx="12.5" cy="2.5" r="2.5" fill="#3B3731" />
                                         <circle cx="22.5" cy="2.5" r="2.5" fill="#3B3731" />
-                                    </svg></div>
+                                    </svg>
+                                    <button class="edit-button">Edit
+                                        <svg width="12" height="11" viewBox="0 0 12 11" fill="none">
+                                            <path
+                                                d="M7.36765 1.59283L9.30882 3.44794M6.07353 10.25H11.25M0.897059 7.77652L0.25 10.25L2.83824 9.63163L10.3351 2.46721C10.5777 2.23528 10.714 1.92077 10.714 1.59283C10.714 1.26489 10.5777 0.950382 10.3351 0.71846L10.2238 0.6121C9.98108 0.380248 9.65198 0.25 9.30882 0.25C8.96567 0.25 8.63657 0.380248 8.39388 0.6121L0.897059 7.77652Z"
+                                                stroke="#3B3731" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+                                    </button>
+                                </div>
                             </div>
 
                             <div class="avatar-container d-flex justify-content-center flex-column align-items-center mt-4">

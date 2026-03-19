@@ -66,10 +66,12 @@ aside.sidebar {
     flex-direction: column;
     padding: 0 16px;
 }
-.settings-archived{
+.settings-archived,
+.dots-svg{
     position: relative;
 }
-.archived {
+.archived,
+.archived-chat {
     border-radius: 5px 0 5px 5px;
     border: 1px solid #D9D9D9;
     background: #FFF;
@@ -84,7 +86,8 @@ aside.sidebar {
     transition: opacity 0.2s ease;
 }
 
-.archived.show {
+.archived.show,
+.archived-chat.show {
     visibility: visible;
     opacity: 1;
 }
@@ -313,6 +316,8 @@ p.messages-count {
     display: flex;
     flex-direction: column;
     gap: 16px;
+    padding-bottom: 2%;
+
 }
 
 .messages::-webkit-scrollbar {
@@ -367,6 +372,7 @@ p.messages-count {
 .chat-wrapper {
     max-width: 900px;
     flex-shrink: 0;
+    margin-bottom: 8%;
 }
 
 .chat-box {
@@ -452,10 +458,6 @@ p.messages-count {
     margin-left: auto;
     font-size: 13px;
     color: var(--text-muted);
-}
-
-.footer-note {
-    margin-top: 10px;
 }
 
 .overlay-text {

@@ -650,7 +650,7 @@
 
     <div class="container mt-5" style="padding: 0 80px">
 
-        <button class="book-btn" data-modal-open="groomer_book_space">Book a Space for Your Groomer</button>
+        <!-- <button class="book-btn" data-modal-open="groomer_book_space">Book a Space for Your Groomer</button> -->
 
         <!-- Modal 1 -->
 
