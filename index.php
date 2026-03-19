@@ -79,7 +79,7 @@
             bottom: 50px;
             z-index: 1001;
             cursor: pointer;
-            left: 20%;
+            left: 23%;
         }
 
         .need-help-chat {
