@@ -67,9 +67,8 @@
 
         /* Card container */
         .conf-card {
-
             overflow: hidden;
-            margin-bottom: 30px;
+            margin-bottom: 30px !important;
             max-width: 650px;
             margin: 0 auto;
         }
@@ -352,6 +351,8 @@
 
         .conf-btn-container {
             text-align: center;
+            display: flex;
+            gap: 1rem;
         }
 
         .conf-view-btn {
@@ -370,69 +371,10 @@
             cursor: pointer;
         }
 
-        .conf-view-btn:hover {
-            color: #FFF;
-        }
-
-        /* Bottom groomer box */
-        .conf-groomer-box {
-            width: 1320px;
-            height: 245px;
-            border-radius: 10px;
-            background: rgba(255, 201, 122, 0.13);
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .conf-groomer-icon {
-            display: inline-flex;
-            justify-content: center;
-            margin-bottom: 12px;
-        }
-
-        .conf-groomer-box h3 {
-            color: #3B3731;
-            text-align: center;
-            font-family: Lato;
-            font-size: 28px;
-            font-style: normal;
-            font-weight: 600;
-            line-height: normal;
-        }
-
-        .conf-groomer-box p {
-            color: #9D9B98;
-            font-family: Lato;
-            font-size: 16px;
-            font-style: normal;
-            font-weight: 400;
-            line-height: normal;
-        }
-
-        .conf-groomer-box p>a {
-            color: #9D9B98 !important;
-            font-family: Lato;
-            font-size: 16px;
-            font-style: normal;
-            font-weight: 400;
-            line-height: normal;
-            text-decoration-line: underline;
-            text-decoration-style: solid;
-            text-decoration-skip-ink: auto;
-            text-decoration-thickness: auto;
-            text-underline-offset: auto;
-            text-underline-position: from-font;
-        }
-
-        .conf-find-btn {
+        .conf-msg-btn {
+            background: transparent;
             width: 295px;
             height: 48px;
-            border-radius: 75px;
-            border: 1px solid #3B3731;
-            background: #FFF;
             color: #3B3731;
             text-align: center;
             font-family: Lato;
@@ -440,12 +382,7 @@
             font-style: normal;
             font-weight: 400;
             line-height: normal;
-            margin-top: 20px;
-        }
-
-        .conf-find-btn:hover {
-            background: #f8f8f8;
-            color: #3B3731;
+            border-radius: 75px;
         }
     </style>
 </head>
@@ -471,13 +408,177 @@
                 </svg>
 
             </div>
-            <h1>Your space booking is <i>confirmed!</i></h1>
-            <p>Your grooming space at [Space Name] has been successfully reserved for the time below.</p>
+            <h1>Your grooming session is <i>confirmed!</i></h1>
+            <p style="margin-bottom: 0;">Your grooming session with [Groomer Name] &<br>your selected space at [Space
+                name] has been successfully confirmed.</p>
+            <p style="margin-top: 1rem;">Everything is scheduled and synced for the same time slot.</p>
         </div>
 
         <div class="conf-card">
             <div class="conf-card-header">
-                <h2>Booking Details</h2>
+                <h2>Groomer Details</h2>
+            </div>
+            <div class="conf-card-body" style="border-radius: 0 0 12px 12px; padding-bottom: 24px;">
+                <div class="conf-host-info" style="margin-bottom: 0;">
+                    <div class="conf-host-img-container"
+                        style="align-items: center; justify-content: flex-start; margin-bottom: 24px;">
+                        <div class="conf-img-icon"
+                            style="top: -25px; left: 7px; transform: none; position: relative; margin-right: -20px; z-index: 1;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="33" height="36" viewBox="0 0 33 36"
+                                fill="none">
+                                <ellipse cx="17.5579" cy="18.2806" rx="10.3587" ry="9.74934" fill="white" />
+                                <path
+                                    d="M17.0792 0.204724C16.7961 0.0705945 16.4928 0 16.176 0C15.8592 0 15.5559 0.0705945 15.2729 0.204724L2.58145 5.84523C1.09865 6.50176 -0.00670934 8.03366 3.06568e-05 9.88323C0.0337307 16.8862 2.78365 29.6991 14.3967 35.5232C15.5222 36.0879 16.8298 36.0879 17.9554 35.5232C29.5684 29.6991 32.3183 16.8862 32.352 9.88323C32.3588 8.03366 31.2534 6.50176 29.7706 5.84523L17.0792 0.204724ZM9.76629 20.2041C10.0898 20.2889 10.4335 20.3312 10.784 20.3312C13.1632 20.3312 15.0976 18.3052 15.0976 15.8132V11.2951H18.0767C18.8922 11.2951 19.6404 11.7752 20.0043 12.5446L20.4896 13.5541H24.8032C25.3963 13.5541 25.8816 14.0624 25.8816 14.6837V16.9427C25.8816 20.063 23.4687 22.5902 20.4896 22.5902H17.2544V26.1694C17.2544 26.6847 16.8568 27.1083 16.358 27.1083C16.2367 27.1083 16.1154 27.0801 16.0075 27.0306L9.35515 24.0445C8.91031 23.8468 8.62723 23.388 8.62723 22.8867C8.62723 22.6891 8.66767 22.4985 8.75529 22.322L9.76629 20.2041ZM9.70563 11.2951H12.9408V15.8132C12.9408 17.0627 11.977 18.0722 10.784 18.0722C9.59105 18.0722 8.62723 17.0627 8.62723 15.8132V12.4246C8.62723 11.8034 9.11251 11.2951 9.70563 11.2951ZM18.3328 14.6837C18.3328 14.3841 18.2192 14.0968 18.017 13.885C17.8147 13.6731 17.5404 13.5541 17.2544 13.5541C16.9684 13.5541 16.6941 13.6731 16.4919 13.885C16.2896 14.0968 16.176 14.3841 16.176 14.6837C16.176 14.9832 16.2896 15.2705 16.4919 15.4823C16.6941 15.6942 16.9684 15.8132 17.2544 15.8132C17.5404 15.8132 17.8147 15.6942 18.017 15.4823C18.2192 15.2705 18.3328 14.9832 18.3328 14.6837Z"
+                                    fill="#C9DDA0" />
+                            </svg>
+                        </div>
+                        <img src="<?= BASE_URL ?>/assets/images/profile-img-1.png"
+                            style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; z-index: 0;"
+                            alt="">
+                        <div style="margin-left: 1.5rem;">
+                            <p
+                                style="color: #3B3731; font-family: Lato; font-size: 18px; font-weight: 600; margin: 0 0 4px 0;">
+                                Sarah’s Grooming Studio</p>
+                            <p
+                                style="color: #9D9B98; font-family: Lato; font-size: 18px; font-weight: 400; margin: 0 0 8px 0;">
+                                Sarah W.</p>
+                            <div class="conf-host-tag" style="background: #FFC97A;">
+                                <span>Home Visits</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="conf-grid">
+                        <div class="conf-grid-item">
+                            <div class="conf-grid-label" style="display: flex; align-items: center; gap: 8px;">
+                                <svg width="16" height="17" viewBox="0 0 16 17" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M4.94591 11.5544C6.23114 12.8397 9.35699 11.798 11.9274 9.22713C14.4983 6.65667 15.54 3.53082 14.2548 2.24559M8.72754 1.37259L9.30927 1.95473M6.6915 3.40904L7.27322 3.99077M4.9455 5.73636L5.52722 6.31809M4.36377 8.6454L4.9455 9.22713M11.9274 0.5L12.5092 1.08173M11.3457 3.99118L12.5092 5.15463M9.30968 6.02763L10.4731 7.19109M6.98236 7.77281L8.14581 8.93627"
+                                        stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path
+                                        d="M4.94547 13.2998C5.42747 12.8178 5.42747 12.0364 4.94548 11.5544C4.46348 11.0724 3.68202 11.0724 3.20003 11.5544L0.872775 13.8816C0.390784 14.3636 0.390784 15.1451 0.872775 15.6271C1.35477 16.1091 2.13623 16.1091 2.61822 15.6271L4.94547 13.2998Z"
+                                        stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+
+                                Service
+                            </div>
+                            <div class="conf-grid-value">Full Groom</div>
+                        </div>
+                        <div class="conf-grid-item" style="padding-left: 10px;">
+                            <div class="conf-grid-label" style="display: flex; align-items: center; gap: 8px;">
+                                <svg width="19" height="17" viewBox="0 0 19 17" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M0.5 8.29456C0.5 5.20041 0.5 3.65293 1.50457 2.69211C2.50914 1.73129 4.12486 1.73047 7.35714 1.73047H10.7857C14.018 1.73047 15.6346 1.73047 16.6383 2.69211C17.642 3.65375 17.6429 5.20041 17.6429 8.29456V9.93559C17.6429 13.0297 17.6429 14.5772 16.6383 15.538C15.6337 16.4989 14.018 16.4997 10.7857 16.4997H7.35714C4.12486 16.4997 2.50829 16.4997 1.50457 15.538C0.500857 14.5764 0.5 13.0297 0.5 9.93559V8.29456Z"
+                                        stroke="#3B3731" />
+                                    <path d="M4.78585 1.73077V0.5M13.3573 1.73077V0.5M0.928711 5.83333H17.2144"
+                                        stroke="#3B3731" stroke-linecap="round" />
+                                    <path
+                                        d="M14.2139 12.3975C14.2139 12.6151 14.1236 12.8238 13.9629 12.9777C13.8021 13.1315 13.5841 13.218 13.3568 13.218C13.1295 13.218 12.9114 13.1315 12.7507 12.9777C12.59 12.8238 12.4997 12.6151 12.4997 12.3975C12.4997 12.1799 12.59 11.9712 12.7507 11.8173C12.9114 11.6634 13.1295 11.577 13.3568 11.577C13.5841 11.577 13.8021 11.6634 13.9629 11.8173C14.1236 11.9712 14.2139 12.1799 14.2139 12.3975ZM14.2139 9.11543C14.2139 9.33305 14.1236 9.54175 13.9629 9.69562C13.8021 9.8495 13.5841 9.93595 13.3568 9.93595C13.1295 9.93595 12.9114 9.8495 12.7507 9.69562C12.59 9.54175 12.4997 9.33305 12.4997 9.11543C12.4997 8.89782 12.59 8.68912 12.7507 8.53524C12.9114 8.38137 13.1295 8.29492 13.3568 8.29492C13.5841 8.29492 13.8021 8.38137 13.9629 8.53524C14.1236 8.68912 14.2139 8.89782 14.2139 9.11543ZM9.92822 12.3975C9.92822 12.6151 9.83792 12.8238 9.67717 12.9777C9.51643 13.1315 9.29841 13.218 9.07108 13.218C8.84375 13.218 8.62573 13.1315 8.46499 12.9777C8.30424 12.8238 8.21394 12.6151 8.21394 12.3975C8.21394 12.1799 8.30424 11.9712 8.46499 11.8173C8.62573 11.6634 8.84375 11.577 9.07108 11.577C9.29841 11.577 9.51643 11.6634 9.67717 11.8173C9.83792 11.9712 9.92822 12.1799 9.92822 12.3975ZM9.92822 9.11543C9.92822 9.33305 9.83792 9.54175 9.67717 9.69562C9.51643 9.8495 9.29841 9.93595 9.07108 9.93595C8.84375 9.93595 8.62573 9.8495 8.46499 9.69562C8.30424 9.54175 8.21394 9.33305 8.21394 9.11543C8.21394 8.89782 8.30424 8.68912 8.46499 8.53524C8.62573 8.38137 8.84375 8.29492 9.07108 8.29492C9.29841 8.29492 9.51643 8.38137 9.67717 8.53524C9.83792 8.68912 9.92822 8.89782 9.92822 9.11543ZM5.64251 12.3975C5.64251 12.6151 5.5522 12.8238 5.39146 12.9777C5.23071 13.1315 5.01269 13.218 4.78537 13.218C4.55804 13.218 4.34002 13.1315 4.17927 12.9777C4.01853 12.8238 3.92822 12.6151 3.92822 12.3975C3.92822 12.1799 4.01853 11.9712 4.17927 11.8173C4.34002 11.6634 4.55804 11.577 4.78537 11.577C5.01269 11.577 5.23071 11.6634 5.39146 11.8173C5.5522 11.9712 5.64251 12.1799 5.64251 12.3975ZM5.64251 9.11543C5.64251 9.33305 5.5522 9.54175 5.39146 9.69562C5.23071 9.8495 5.01269 9.93595 4.78537 9.93595C4.55804 9.93595 4.34002 9.8495 4.17927 9.69562C4.01853 9.54175 3.92822 9.33305 3.92822 9.11543C3.92822 8.89782 4.01853 8.68912 4.17927 8.53524C4.34002 8.38137 4.55804 8.29492 4.78537 8.29492C5.01269 8.29492 5.23071 8.38137 5.39146 8.53524C5.5522 8.68912 5.64251 8.89782 5.64251 9.11543Z"
+                                        fill="#3B3731" />
+                                </svg>
+
+                                Date
+                            </div>
+                            <div class="conf-grid-value">18/12/2025</div>
+                        </div>
+                        <div class="conf-grid-item" style="padding-left: 10px;">
+                            <div class="conf-grid-label" style="display: flex; align-items: center; gap: 8px;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <polyline points="12 6 12 12 16 14"></polyline>
+                                </svg>
+                                Time
+                            </div>
+                            <div class="conf-grid-value">14:30 - 15:30 (90 mins)</div>
+                        </div>
+                    </div>
+
+                    <div
+                        style="background: #F4F7FB; border-radius: 8px; padding: 24px; display: flex; gap: 20px; margin-top: 24px;">
+                        <div style="display: flex; align-items: center; gap: 15px; flex: 1;">
+                            <img src="<?= BASE_URL ?>/assets/images/dog2.png"
+                                onerror="this.src='<?= BASE_URL ?>/assets/images/dog.png';"
+                                style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover; background: #EAE8E5;"
+                                alt="">
+                            <div>
+                                <p
+                                    style="font-size: 16px; font-weight: 600; color: #3B3731; margin: 0 0 4px 0; display: flex; align-items: center; gap: 6px;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 18 17"
+                                        fill="none">
+                                        <path
+                                            d="M3.75 6.02083C4.57843 6.02083 5.25 5.34926 5.25 4.52083C5.25 3.69241 4.57843 3.02083 3.75 3.02083C2.92157 3.02083 2.25 3.69241 2.25 4.52083C2.25 5.34926 2.92157 6.02083 3.75 6.02083Z"
+                                            stroke="#3B3731" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path
+                                            d="M14.25 6.02083C15.0784 6.02083 15.75 5.34926 15.75 4.52083C15.75 3.69241 15.0784 3.02083 14.25 3.02083C13.4216 3.02083 12.75 3.69241 12.75 4.52083C12.75 5.34926 13.4216 6.02083 14.25 6.02083Z"
+                                            stroke="#3B3731" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path
+                                            d="M6 3.77083C6.82843 3.77083 7.5 3.09926 7.5 2.27083C7.5 1.44241 6.82843 0.770833 6 0.770833C5.17157 0.770833 4.5 1.44241 4.5 2.27083C4.5 3.09926 5.17157 3.77083 6 3.77083Z"
+                                            stroke="#3B3731" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path
+                                            d="M12 3.77083C12.8284 3.77083 13.5 3.09926 13.5 2.27083C13.5 1.44241 12.8284 0.770833 12 0.770833C11.1716 0.770833 10.5 1.44241 10.5 2.27083C10.5 3.09926 11.1716 3.77083 12 3.77083Z"
+                                            stroke="#3B3731" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path
+                                            d="M9.00003 16.5208C12.6395 16.5208 14.8893 12.5923 14.9961 10.43C15.011 10.1265 14.7831 9.86616 14.4828 9.83177L9.00003 9.20456L3.51731 9.83177C3.21695 9.86616 2.98906 10.1265 3.004 10.43C3.11075 12.5923 5.36053 16.5208 9.00003 16.5208Z"
+                                            stroke="#3B3731" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                    </svg>
+                                    Louis
+                                </p>
+                                <p style="font-size: 14px; color: #3B3731; margin: 0;">Dog • Labrador</p>
+                            </div>
+                        </div>
+
+                        <div style="display: flex; align-items: center; gap: 15px; flex: 1;">
+                            <img src="<?= BASE_URL ?>/assets/images/pet_details_1.png"
+                                style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover; background: #EAE8E5;"
+                                alt="">
+                            <div>
+                                <p
+                                    style="font-size: 16px; font-weight: 600; color: #3B3731; margin: 0 0 4px 0; display: flex; align-items: center; gap: 6px;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 18 17"
+                                        fill="none">
+                                        <path
+                                            d="M3.75 6.02083C4.57843 6.02083 5.25 5.34926 5.25 4.52083C5.25 3.69241 4.57843 3.02083 3.75 3.02083C2.92157 3.02083 2.25 3.69241 2.25 4.52083C2.25 5.34926 2.92157 6.02083 3.75 6.02083Z"
+                                            stroke="#3B3731" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path
+                                            d="M14.25 6.02083C15.0784 6.02083 15.75 5.34926 15.75 4.52083C15.75 3.69241 15.0784 3.02083 14.25 3.02083C13.4216 3.02083 12.75 3.69241 12.75 4.52083C12.75 5.34926 13.4216 6.02083 14.25 6.02083Z"
+                                            stroke="#3B3731" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path
+                                            d="M6 3.77083C6.82843 3.77083 7.5 3.09926 7.5 2.27083C7.5 1.44241 6.82843 0.770833 6 0.770833C5.17157 0.770833 4.5 1.44241 4.5 2.27083C4.5 3.09926 5.17157 3.77083 6 3.77083Z"
+                                            stroke="#3B3731" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path
+                                            d="M12 3.77083C12.8284 3.77083 13.5 3.09926 13.5 2.27083C13.5 1.44241 12.8284 0.770833 12 0.770833C11.1716 0.770833 10.5 1.44241 10.5 2.27083C10.5 3.09926 11.1716 3.77083 12 3.77083Z"
+                                            stroke="#3B3731" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path
+                                            d="M9.00003 16.5208C12.6395 16.5208 14.8893 12.5923 14.9961 10.43C15.011 10.1265 14.7831 9.86616 14.4828 9.83177L9.00003 9.20456L3.51731 9.83177C3.21695 9.86616 2.98906 10.1265 3.004 10.43C3.11075 12.5923 5.36053 16.5208 9.00003 16.5208Z"
+                                            stroke="#3B3731" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                    </svg>
+                                    Bella
+                                </p>
+                                <p style="font-size: 14px; color: #3B3731; margin: 0;">Rabbit • Mini Lop</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="conf-card">
+            <div class="conf-card-header">
+                <h2>Space Details</h2>
             </div>
             <div class="conf-card-body">
                 <div class="conf-host-info">
@@ -619,10 +720,13 @@
             <div class="conf-next">
                 <h3>What happens next?</h3>
                 <ul>
-                    <li>Your booking is secured for the selected time.</li>
-                    <li>You can manage or cancel your booking from your account.</li>
+                    <li>The groomer and space host have both been notified.</li>
+                    <li>You’ll receive the exact address and access instructions closer to your booking time via email
+                        and in your booking details.</li>
+                    <li>You can manage or cancel your bookings from your account.</li>
                 </ul>
                 <div class="conf-btn-container">
+                    <button class="conf-msg-btn">Message Groomer</button>
                     <button class="conf-view-btn">View Booking</button>
                 </div>
             </div>
@@ -631,24 +735,6 @@
         </div>
 
     </section>
-    <div class="conf-groomer-box">
-        <div class="conf-groomer-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="84" height="52" viewBox="0 0 84 52" fill="none">
-                <rect x="11.8813" y="2" width="50.0001" height="17.8218" rx="8.91091" fill="#FFC97A" />
-                <rect y="19.3271" width="50.0001" height="17.3268" rx="8.66339" fill="#FFC97A" />
-                <rect x="25.2476" y="34.1777" width="50.0001" height="17.8218" rx="8.91091" fill="#FFC97A" />
-                <path
-                    d="M37.5 27.5448C34.2602 27.5448 31.4854 26.3909 29.1754 24.0831C26.8654 21.7754 25.7117 19.0045 25.7143 15.7705C25.7169 12.5365 26.8706 9.76298 29.1754 7.44998C31.4801 5.13699 34.255 3.98703 37.5 4.00011C40.745 4.01319 43.5199 5.16446 45.8246 7.45391C48.1294 9.74335 49.2831 12.5169 49.2857 15.7744C49.2883 19.032 48.1346 21.8029 45.8246 24.0871C43.5146 26.3713 40.7398 27.5212 37.5 27.5448ZM10 47.9261V45.5712C10 43.9045 10.4806 42.3726 11.4418 40.9753C12.403 39.5781 13.6654 38.4883 15.2289 37.706C18.7542 36.0445 22.3815 34.7415 26.1111 33.7969C29.8406 32.8524 33.6421 32.3788 37.5157 32.3762C41.3893 32.3736 45.1856 32.8471 48.9046 33.7969C52.6237 34.7467 56.2458 36.0498 59.7711 37.706C61.3346 38.4857 62.597 39.5755 63.5582 40.9753C64.5194 42.3752 65 43.9058 65 45.5673V47.9222C65 49.0734 64.6085 50.0415 63.8254 50.8265C63.0423 51.6088 62.0732 52 60.9182 52H14.0857C12.9307 52 11.9617 51.6075 11.1786 50.8226C10.3929 50.0402 10 49.0774 10 47.9261ZM37.5 23.62C39.6607 23.62 41.5111 22.8508 43.0511 21.3123C44.5911 19.7737 45.3598 17.9265 45.3571 15.7705C45.3545 13.6145 44.5858 11.7659 43.0511 10.2248C41.5163 8.68367 39.666 7.91572 37.5 7.92095C35.334 7.92619 33.485 8.69413 31.9529 10.2248C30.4207 11.7555 29.6507 13.604 29.6429 15.7705C29.635 17.937 30.405 19.7842 31.9529 21.3123C33.5007 22.8403 35.3498 23.6096 37.5 23.62ZM50.9475 38.3654V48.0752H61.0714V45.5359C61.0714 44.5652 60.7571 43.7109 60.1286 42.973C59.5 42.2352 58.7562 41.6255 57.8971 41.1441C56.7788 40.5685 55.6369 40.0569 54.4714 39.6095C53.306 39.1621 52.1313 38.7474 50.9475 38.3654ZM27.9811 37.3645V42.1881H47.0189V37.3606C45.458 36.9995 43.8774 36.7327 42.2771 36.56C40.6795 36.3873 39.0819 36.3009 37.4843 36.3009C35.8814 36.3009 34.2877 36.3873 32.7032 36.56C31.1187 36.7327 29.5446 37.0009 27.9811 37.3645ZM13.9286 48.0752H24.0525V38.3654C22.8687 38.7448 21.694 39.1595 20.5286 39.6095C19.3631 40.0596 18.2212 40.5711 17.1029 41.1441C16.2464 41.6229 15.5039 42.2326 14.8754 42.973C14.2442 43.7109 13.9286 44.5652 13.9286 45.5359V48.0752Z"
-                    fill="#3B3731" />
-                <path
-                    d="M79.5056 12.1945L75.0523 10.0763C74.2465 9.69593 73.7499 10.8177 74.5276 11.1796L78.9809 13.2977L78.7116 13.8639L74.2583 11.7457C73.4612 11.3586 72.9642 12.4795 73.7335 12.849L78.1868 14.9672L77.9116 15.5457L73.4584 13.4276C72.6582 13.047 72.1615 14.1672 72.9336 14.5308L77.3869 16.649L77.1246 17.2003L72.6713 15.0822C71.8853 14.7148 71.3714 15.8283 72.1404 16.1985L76.5937 18.3166L76.3309 18.8692L71.8776 16.751C71.0952 16.376 70.5661 17.4801 71.3528 17.8543L75.8061 19.9724L75.5439 20.5238L71.0906 18.4056C70.3059 18.0353 69.7763 19.1406 70.5655 19.5095L75.0188 21.6277L74.7501 22.1926L70.2968 20.0745C69.5164 19.6953 68.9873 20.7994 69.7721 21.1777L74.2253 23.2959L73.9637 23.8461L69.5104 21.7279C68.7271 21.3546 68.2129 22.4687 68.9853 22.8318L73.4386 24.9499L68.3291 35.6923C67.5531 37.3304 70.2599 38.5816 71.0321 36.9779L82.9891 11.8391C83.3371 11.0877 83.1217 9.82603 82.0289 9.3026L76.6396 6.73924C75.8346 6.35709 75.338 7.47884 76.1148 7.84252L80.5616 9.97428L80.3 10.5244L75.8467 8.40629C75.045 8.02061 74.5486 9.14176 75.3216 9.51016L79.7749 11.6283L79.5056 12.1945ZM65.6875 28.9757C66.5938 27.0637 65.4263 23.9884 62.2306 24.1005L65.7067 16.7922L69.7823 3.9506C69.8993 3.61529 69.6423 3.4009 69.4481 3.30202C69.2425 3.21075 68.8 3.09238 68.6041 3.39021L61.222 14.6591L57.7459 21.9674C55.8163 19.4175 52.7569 20.4983 51.8606 22.381C51.0644 24.0566 51.8066 26.0969 53.6985 26.9917C55.6006 27.9015 57.7039 27.0108 58.4217 25.5017L62.0326 17.91L62.6732 18.2147L59.0624 25.8064C58.2587 27.4959 59.0811 29.4206 60.6181 30.2489C60.1512 31.1628 59.85 32.6401 60.217 33.4573C60.6471 34.4163 61.8817 34.0388 61.8335 33.2302C61.7762 32.4718 61.6098 31.9595 62.5007 30.7867C63.8667 30.8416 65.1109 30.1813 65.6875 28.9757ZM54.4989 25.4972C54.0669 25.2917 53.7279 24.9362 53.5566 24.5089C53.3853 24.0815 53.3957 23.6173 53.5854 23.2184C53.7751 22.8195 54.1287 22.5185 54.5683 22.3818C55.008 22.245 55.4977 22.2836 55.9297 22.4891C56.8154 22.9162 57.2188 23.9328 56.8316 24.7635C56.6414 25.1594 56.29 25.4583 55.8535 25.5957C55.4169 25.733 54.9302 25.6976 54.4989 25.4972ZM60.705 26.6059C60.8953 26.2097 61.2468 25.9105 61.6836 25.7729C62.1204 25.6353 62.6074 25.6704 63.0392 25.8706C63.4672 26.079 63.8019 26.4346 63.9707 26.8603C64.1395 27.286 64.1289 27.7476 63.9411 28.145C63.7516 28.5416 63.4003 28.8411 62.9635 28.9785C62.5266 29.1159 62.0396 29.0801 61.6084 28.8788C61.1805 28.6707 60.8458 28.3155 60.6768 27.8901C60.5077 27.4647 60.5178 27.0033 60.705 26.6059Z"
-                    fill="#3B3731" />
-            </svg>
-        </div>
-        <h3>Need a Groomer?</h3>
-        <p>You can book one separately on <a href="#" style="color:#3B3731;">FursGo</a>.</p>
-        <button class="conf-find-btn">Find a Groomer</button>
-    </div>
 
     <?php include '../components/footer.php'; ?>
 </body>

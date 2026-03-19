@@ -2,8 +2,9 @@
 
 <?php include '../function_helper.php';
 include_once __DIR__ . '/../components/birthday-calendar.php';
+include_once __DIR__ . '/../components/extras-addons.php';
 include_once __DIR__ . '/../components/confirm-pay.php';
-$imagePath = BASE_URL . '/assets/images/booking-space-card-image.svg';
+$imagePath = BASE_URL . '/assets/images/card1.png';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,20 +12,42 @@ $imagePath = BASE_URL . '/assets/images/booking-space-card-image.svg';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FursGo - Booking Space</title>
+    <title>FursGo - Booking Groomer and Space</title>
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/responsive.css">
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/bootstrap.css">
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/media_query.css">
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/common.css">
     <style>
+        /* Accordion mode constraints */
+        #acc-pet.accordion-mode .information h2,
+        #acc-pet.accordion-mode #petActionBtns,
+        #acc-pet.accordion-mode #petDisplayChangeBtn {
+            display: none !important;
+        }
+
+        #acc-extras.accordion-mode .furs-addons-root> :not(.selected-furs-addons-tags) {
+            display: none !important;
+        }
+
         body {
             background: #FDFCF8;
+        }
+
+        p,
+        span {
+            color: #3B3731;
+            font-family: Lato;
+            line-height: normal;
         }
 
         /* ── STEPPER ── */
         .step-indicator {
             width: 100%;
-            max-width: 250px;
+            /* max-width: 250px; */
+        }
+
+        .steps-and-btn {
+            width: 25rem;
         }
 
         .steps-container {
@@ -127,81 +150,6 @@ $imagePath = BASE_URL . '/assets/images/booking-space-card-image.svg';
             line-height: normal;
         }
 
-        .card {
-            margin-top: 2rem;
-            border-radius: 10px;
-            background: #F8F8F8;
-            padding: 30px;
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .card>div {
-            display: flex;
-            justify-content: space-between;
-        }
-
-
-        .card>div>.card-img {
-            display: flex;
-            align-items: end;
-            gap: 1.5rem;
-            position: relative;
-        }
-
-        .card>div>.card-img>svg>image {
-            width: 100%;
-            height: 100%;
-        }
-
-        .card>div>.card-img>.svg-icon {
-            position: absolute;
-            left: 3px;
-            top: 3px;
-        }
-
-        .card-img>:nth-child(3) p {
-            display: flex;
-            gap: 5px;
-            color: #3B3731;
-            font-family: Lato;
-            font-size: 14px;
-            font-style: normal;
-            font-weight: 600;
-            line-height: normal;
-        }
-
-        .card-img-content p>span {
-            color: #9D9B98;
-            font-family: Lato;
-            font-size: 14px;
-            font-style: normal;
-            font-weight: 400;
-            line-height: normal;
-        }
-
-        .card-img-content>div:nth-child(1) {
-            margin-bottom: 2rem;
-        }
-
-        .card-img-content>div:nth-child(2)>p {
-            color: #FFF;
-            text-align: center;
-            font-family: Lato;
-            font-size: 14px;
-            font-style: normal;
-            font-weight: 500;
-            line-height: normal;
-            width: 107px;
-            height: 24px;
-            border-radius: 100px;
-            background: #FFA899;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
         .ratings {
             display: flex;
             flex-direction: column;
@@ -220,6 +168,15 @@ $imagePath = BASE_URL . '/assets/images/booking-space-card-image.svg';
             align-items: center;
             justify-content: center;
             gap: 5px;
+        }
+
+        .ratings>div:first-child>div>p {
+            color: #FFF;
+            font-family: Lato;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
         }
 
         .ratings>div:first-child>div:nth-child(1) {
@@ -265,6 +222,235 @@ $imagePath = BASE_URL . '/assets/images/booking-space-card-image.svg';
             font-weight: 500;
             line-height: normal;
         }
+
+        .card {
+            margin-top: 2rem;
+            border-radius: 10px;
+            background: #F8F8F8;
+            padding: 30px;
+            display: flex;
+        }
+
+        .space-card {
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .space-card>div {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .space-card>div>.card-img {
+            display: flex;
+            align-items: end;
+            gap: 1.5rem;
+            position: relative;
+        }
+
+        .space-card>div>.card-img>svg>image {
+            width: 100%;
+            height: 100%;
+        }
+
+        .space-card>div>.card-img>.svg-icon {
+            position: absolute;
+            left: 3px;
+            top: 3px;
+        }
+
+        .space-card .card-img>:nth-child(3) p {
+            display: flex;
+            gap: 5px;
+            color: #3B3731;
+            font-family: Lato;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+        }
+
+        .space-card .card-img-content p>span {
+            color: #9D9B98;
+            font-family: Lato;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+        }
+
+        .space-card .card-img-content>div:nth-child(1) {
+            margin-bottom: 2rem;
+        }
+
+        .space-card .card-img-content>div:nth-child(2)>p {
+            color: #FFF;
+            text-align: center;
+            font-family: Lato;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+            width: 107px;
+            height: 24px;
+            border-radius: 100px;
+            background: #FFA899;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card>.clip-path {
+            display: flex;
+            align-items: flex-start;
+            position: relative;
+        }
+
+        .card>.clip-path>svg>image {
+            width: 100%;
+            height: 100%;
+        }
+
+        .card>.clip-path>.svg-icon {
+            position: absolute;
+            left: 3px;
+            top: 0px;
+        }
+
+        .card-body {
+            width: 100%;
+            padding-left: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: start;
+        }
+
+        .card-body>div {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+        }
+
+        .card-body>div:first-child>div:first-child>span {
+            color: #9D9B98;
+            font-family: Lato;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+        }
+
+        .card-body>div>div:first-child>div {
+            margin-top: 10px;
+            width: 93px;
+            height: 24px;
+            border-radius: 100px;
+            background: #FFC97A;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card-body>div>div:first-child>div>p {
+            color: #FFF;
+            text-align: center;
+            font-family: Lato;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+        }
+
+        .card-body>div>div:nth-child(2)>div:first-child {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .card-body>div>div:nth-child(2)>div:first-child>div:first-child {
+            width: 82px;
+            height: 24px;
+            border-radius: 100px;
+            background: #CBDCE8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .card-body>div>div:nth-child(2)>div:first-child>div:last-child {
+            width: 93px;
+            height: 24px;
+            border-radius: 100px;
+            background: #FFA899;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .card-body>div>div:nth-child(2)>div:first-child>div:first-child p {
+            color: #FFF;
+            font-family: Lato;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+        }
+
+        .card-body>div>div:nth-child(2)>div:first-child>div:last-child p {
+            color: #FFF;
+            font-family: Lato;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+        }
+
+        .card-body>div>div:nth-child(2)>div:first-child>div:first-child svg {
+            width: 10px;
+            height: 9px;
+            aspect-ratio: 10/9;
+        }
+
+        .card-body>div>div:nth-child(2)>div:last-child {
+            margin-top: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .card-body>div>div:nth-child(2)>div:last-child>div {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .card-body-info>div>span {
+            color: #9D9B98;
+            font-family: Lato;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+            display: flex;
+            gap: 5px;
+        }
+
+        .card-body-info>div>button {
+            border-radius: 100px;
+            background: #EAE8E5;
+            width: 67px;
+            height: 32px;
+            border: none;
+            cursor: pointer;
+        }
+
 
         .card-booking-info>div:first-child {
             display: flex;
@@ -369,121 +555,6 @@ $imagePath = BASE_URL . '/assets/images/booking-space-card-image.svg';
             font-weight: 600;
             line-height: normal;
             cursor: pointer;
-        }
-
-        /* ── ADD-ONS ── */
-        .add-ons {
-            margin-top: 3rem;
-            margin-bottom: 2rem;
-        }
-
-        .add-ons-title {
-            color: #3B3731;
-            font-family: "Playfair Display";
-            font-size: 28px;
-            font-style: normal;
-            font-weight: 800;
-            line-height: normal;
-            margin-bottom: 1.5rem;
-        }
-
-        .add-ons-list {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .add-on-card {
-            position: relative;
-            cursor: pointer;
-            flex: 1;
-            min-width: 200px;
-            border-radius: 8px;
-            background: #F8F8F8;
-            padding: 25px 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border: 1px solid transparent;
-            transition: all 0.3s ease;
-        }
-
-        .add-on-checkbox {
-            display: none;
-        }
-
-        .add-on-card.active {
-            background: #FFF;
-            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.03);
-            border: 1px solid #EAE8E5;
-        }
-
-        .add-on-content {
-            display: flex;
-            align-items: baseline;
-            gap: 15px;
-            width: 100%;
-            justify-content: center;
-        }
-
-        .add-on-name {
-            color: #3B3731;
-            font-family: Lato;
-            font-size: 18px;
-            font-style: normal;
-            font-weight: 500;
-            line-height: normal;
-        }
-
-        .add-on-price-container {
-            display: flex;
-            align-items: baseline;
-            gap: 4px;
-        }
-
-        .add-on-price {
-            color: #3B3731;
-            text-align: right;
-            font-family: Lato;
-            font-size: 20px;
-            font-style: normal;
-            font-weight: 600;
-            line-height: 25px;
-            /* 125% */
-            text-decoration-line: underline;
-            text-decoration-style: solid;
-            text-decoration-skip-ink: auto;
-            text-decoration-thickness: auto;
-            text-underline-offset: auto;
-            text-underline-position: from-font;
-        }
-
-        .add-on-unit {
-            color: #9D9B98;
-            font-family: Lato;
-            font-size: 14px;
-            font-style: normal;
-            font-weight: 600;
-            line-height: 25px;
-        }
-
-        .checkmark-icon {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            display: none;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .add-on-card.active .checkmark-icon {
-            display: flex;
-        }
-
-        .add-ons-actions {
-            margin-top: 2.5rem;
-            display: flex;
-            justify-content: flex-end;
         }
 
         .continue-action-btn {
@@ -1792,6 +1863,164 @@ $imagePath = BASE_URL . '/assets/images/booking-space-card-image.svg';
             text-underline-offset: auto;
             text-underline-position: from-font;
         }
+
+        /* ── Accordion Styles for Step 2 ── */
+        .step1-accordion {
+            margin-bottom: 20px;
+        }
+
+        .step1-accordion-header {
+            background: #F8F8F8;
+            border-radius: 10px;
+            padding: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            border: 1px solid transparent;
+            transition: box-shadow 0.3s ease-in-out, background 0.3s ease-in-out;
+        }
+
+        .step1-accordion.collapsed .step1-accordion-header:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+        }
+
+        .step1-accordion:not(.collapsed) .step1-accordion-header:hover {
+            box-shadow: none;
+        }
+
+        .step1-accordion-header h3 {
+            margin: 0;
+            color: #3B3731;
+            font-family: "Playfair Display";
+            font-size: 24px;
+            font-weight: 800;
+        }
+
+        .step1-accordion.collapsed .step1-accordion-body {
+            display: none !important;
+        }
+
+        .step1-accordion:not(.collapsed) .step1-accordion-header {
+            background: transparent;
+        }
+
+
+        .step1-accordion .chevron {
+            transition: transform 0.3s;
+        }
+
+        .step1-accordion.collapsed .chevron {
+            transform: rotate(180deg);
+        }
+
+        /* ── ADD-ONS ── */
+        .add-ons {
+            margin-top: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .add-ons-title {
+            color: #3B3731;
+            font-family: "Playfair Display";
+            font-size: 28px;
+            font-style: normal;
+            font-weight: 800;
+            line-height: normal;
+            margin-bottom: 1.5rem;
+        }
+
+        .add-ons-list {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .add-on-card {
+            position: relative;
+            cursor: pointer;
+            flex: 1;
+            min-width: 200px;
+            border-radius: 8px;
+            background: #F8F8F8;
+            padding: 25px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .add-on-checkbox {
+            display: none;
+        }
+
+        .add-on-card.active {
+            background: #FFF;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.03);
+            border: 1px solid #EAE8E5;
+        }
+
+        .add-on-content {
+            display: flex;
+            align-items: baseline;
+            gap: 15px;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .add-on-name {
+            color: #3B3731;
+            font-family: Lato;
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+        }
+
+        .add-on-price-container {
+            display: flex;
+            align-items: baseline;
+            gap: 4px;
+        }
+
+        .add-on-price {
+            color: #3B3731;
+            text-align: right;
+            font-family: Lato;
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 25px;
+            text-decoration-line: underline;
+            text-decoration-style: solid;
+            text-decoration-skip-ink: auto;
+            text-decoration-thickness: auto;
+            text-underline-offset: auto;
+            text-underline-position: from-font;
+        }
+
+        .add-on-unit {
+            color: #9D9B98;
+            font-family: Lato;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 25px;
+        }
+
+        .checkmark-icon {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .add-on-card.active .checkmark-icon {
+            display: flex;
+        }
     </style>
 </head>
 
@@ -1813,21 +2042,25 @@ $imagePath = BASE_URL . '/assets/images/booking-space-card-image.svg';
                     </svg>
                 </button>
             </div>
-            <div class="steps-and-btn w-15">
+            <div class="steps-and-btn">
                 <div class="active-inactive-div d-flex align-items-center justify-content-center">
                     <div class="step-indicator">
                         <div class="steps-container">
                             <div class="step-item active">
                                 <div class="step-circle">1</div>
-                                <div class="step-label">Space Details</div>
+                                <div class="step-label">Groomer Details</div>
                             </div>
                             <div class="step-item inactive">
                                 <div class="step-circle">2</div>
+                                <div class="step-label">Space Details</div>
+                            </div>
+                            <div class="step-item inactive">
+                                <div class="step-circle">3</div>
                                 <div class="step-label">Confirm & Pay</div>
                             </div>
                         </div>
                         <div class="progress-bar">
-                            <div class="progress-fill" style="width: 50%;"></div>
+                            <div class="progress-fill" style="width: 33.3%;"></div>
                         </div>
                     </div>
                 </div>
@@ -1840,10 +2073,383 @@ $imagePath = BASE_URL . '/assets/images/booking-space-card-image.svg';
         <div class="row" style="margin-top: 4rem;">
             <div class="col-lg-8">
                 <div class="step-one">
-                    <h1>
+                    <h1 id="step1BookingDetailsHeading">
                         Booking Details
                     </h1>
-                    <div class="card">
+
+                    <!-- Accordion 1: Groomer Details -->
+                    <div class="step1-accordion" id="acc-groomer">
+                        <div class="step1-accordion-header" style="display:none;"
+                            onclick="toggleAccordion('acc-groomer')">
+                            <div style="display:flex; align-items:center; gap:15px">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <circle cx="12" cy="12" r="12" fill="#D8E8B7" />
+                                    <path d="M7 12.5L10.5 16L17 9" stroke="white" stroke-width="2"
+                                        stroke-linecap="round" />
+                                </svg>
+                                <h3>Groomer Details</h3>
+                            </div>
+                            <svg class="chevron" width="16" height="10" viewBox="0 0 16 10" fill="none">
+                                <path d="M15 8.5L8 1.5L1 8.5" stroke="#3B3731" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <div class="step1-accordion-body">
+                            <div class="card" style="margin-top: 0;">
+                                <div class="clip-path">
+                                    <div class="svg-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="11" height="12"
+                                            viewBox="0 0 11 12" fill="none">
+                                            <rect x="2.71265" y="2.71231" width="6.41005" height="7.12228" rx="3"
+                                                fill="white" />
+                                            <path
+                                                d="M5.80708 0.0683425C5.71083 0.0235664 5.60771 0 5.5 0C5.39229 0 5.28917 0.0235664 5.19292 0.0683425L0.877717 1.9513C0.373551 2.17046 -0.00228124 2.68185 1.04236e-05 3.29929C0.0114687 5.63708 0.946467 9.91438 4.895 11.8586C5.27771 12.0471 5.72229 12.0471 6.105 11.8586C10.0535 9.91438 10.9885 5.63708 11 3.29929C11.0023 2.68185 10.6264 2.17046 10.1223 1.9513L5.80708 0.0683425ZM3.32063 6.7447C3.43063 6.77298 3.5475 6.78712 3.66667 6.78712C4.47563 6.78712 5.13333 6.11076 5.13333 5.27887V3.77062H6.14625C6.42354 3.77062 6.67791 3.93087 6.80166 4.18775L6.96666 4.52474H8.43333C8.63499 4.52474 8.79999 4.69442 8.79999 4.90181V5.65593C8.79999 6.69756 7.97958 7.54124 6.96666 7.54124H5.86667V8.73606C5.86667 8.90809 5.73146 9.04949 5.56187 9.04949C5.52063 9.04949 5.47937 9.04006 5.44271 9.02357L3.18084 8.02671C3.02959 7.96072 2.93334 7.80754 2.93334 7.64022C2.93334 7.57423 2.94709 7.5106 2.97688 7.45169L3.32063 6.7447ZM3.3 3.77062H4.4V5.27887C4.4 5.69599 4.07229 6.03299 3.66667 6.03299C3.26105 6.03299 2.93334 5.69599 2.93334 5.27887V4.14768C2.93334 3.9403 3.09834 3.77062 3.3 3.77062ZM6.23333 4.90181C6.23333 4.8018 6.1947 4.7059 6.12594 4.63518C6.05717 4.56447 5.96391 4.52474 5.86667 4.52474C5.76942 4.52474 5.67616 4.56447 5.60739 4.63518C5.53863 4.7059 5.5 4.8018 5.5 4.90181C5.5 5.00181 5.53863 5.09772 5.60739 5.16843C5.67616 5.23914 5.76942 5.27887 5.86667 5.27887C5.96391 5.27887 6.05717 5.23914 6.12594 5.16843C6.1947 5.09772 6.23333 5.00181 6.23333 4.90181Z"
+                                                fill="#C9DDA0" />
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink" width="93" height="136"
+                                            viewBox="0 0 93 136" fill="none">
+                                            <path
+                                                d="M87.2119 0C89.9733 0 92.2119 2.23858 92.2119 5V131C92.2119 133.761 89.9733 136 87.2119 136H5C2.23858 136 8.33008e-06 133.761 0 131V21.4844C0 18.723 2.23858 16.4844 5 16.4844H11.4844C14.2458 16.4844 16.4844 14.2458 16.4844 11.4844V5C16.4844 2.23858 18.723 0 21.4844 0H87.2119Z"
+                                                fill="url(#pattern0_50_500)" />
+                                            <defs>
+                                                <clipPath id="shape-clip">
+                                                    <path
+                                                        d="M87.2119 0C89.9733 0 92.2119 2.23858 92.2119 5V131C92.2119 133.761 89.9733 136 87.2119 136H5C2.23858 136 8.33008e-06 133.761 0 131V21.4844C0 18.723 2.23858 16.4844 5 16.4844H11.4844C14.2458 16.4844 16.4844 14.2458 16.4844 11.4844V5C16.4844 2.23858 18.723 0 21.4844 0H87.2119Z" />
+                                                </clipPath>
+                                            </defs>
+                                            <image href="<?php echo htmlspecialchars($imagePath); ?>" x="0" y="0"
+                                                width="93" height="136" preserveAspectRatio="xMidYMid slice"
+                                                clip-path="url(#shape-clip)" />
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div>
+                                        <div>
+                                            <p>Sarah’s Grooming Studio</p>
+                                            <span>Sarah W.</span>
+                                            <div>
+                                                <p>Home Visits</p>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div>
+                                                <div>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="10" height="9"
+                                                        viewBox="0 0 10 9" fill="none">
+                                                        <path
+                                                            d="M2 8.99999C1.85833 8.99999 1.73967 8.95199 1.644 8.85599C1.54833 8.75999 1.50033 8.64133 1.5 8.49999C1.49967 8.35866 1.54767 8.23999 1.644 8.14399C1.74033 8.04799 1.859 7.99999 2 7.99999H8C8.14166 7.99999 8.2605 8.04799 8.3565 8.14399C8.4525 8.23999 8.50033 8.35866 8.5 8.49999C8.49966 8.64133 8.45166 8.76016 8.356 8.85649C8.26033 8.95283 8.14166 9.00066 8 8.99999H2ZM2.35 7.24999C2.10833 7.24999 1.89383 7.17083 1.7065 7.0125C1.51917 6.85416 1.4045 6.65416 1.3625 6.4125L0.862501 3.2375C0.845834 3.2375 0.827167 3.23967 0.806501 3.244C0.785834 3.24833 0.767001 3.25033 0.750001 3.25C0.541667 3.25 0.364668 3.17717 0.219001 3.0315C0.0733344 2.88583 0.000334469 2.70867 1.13636e-06 2.5C-0.000332197 2.29133 0.0726677 2.11433 0.219001 1.969C0.365334 1.82367 0.542334 1.75067 0.750001 1.75C0.957667 1.74933 1.13483 1.82233 1.2815 1.969C1.42817 2.11567 1.501 2.29267 1.5 2.5C1.5 2.55833 1.49367 2.6125 1.481 2.6625C1.46833 2.7125 1.45383 2.75833 1.4375 2.8L3 3.5L4.5625 1.3625C4.47083 1.29583 4.39583 1.20833 4.3375 1.1C4.27917 0.991667 4.25 0.875 4.25 0.75C4.25 0.541667 4.323 0.364501 4.469 0.218501C4.615 0.0725011 4.792 -0.000332194 5 1.13895e-06C5.208 0.000334472 5.38516 0.0733344 5.5315 0.219001C5.67783 0.364667 5.75066 0.541667 5.75 0.75C5.75 0.875 5.72083 0.991667 5.6625 1.1C5.60416 1.20833 5.52916 1.29583 5.4375 1.3625L7 3.5L8.5625 2.8C8.54583 2.75833 8.53116 2.7125 8.5185 2.6625C8.50583 2.6125 8.49966 2.55833 8.5 2.5C8.5 2.29167 8.573 2.1145 8.719 1.9685C8.865 1.8225 9.042 1.74967 9.25 1.75C9.458 1.75033 9.63516 1.82333 9.7815 1.969C9.92783 2.11467 10.0007 2.29167 10 2.5C9.99933 2.70833 9.92649 2.8855 9.7815 3.0315C9.6365 3.1775 9.45933 3.25033 9.25 3.25C9.23333 3.25 9.21466 3.248 9.194 3.244C9.17333 3.24 9.1545 3.23783 9.1375 3.2375L8.6375 6.4125C8.59583 6.65416 8.48133 6.85416 8.294 7.0125C8.10666 7.17083 7.892 7.24999 7.65 7.24999H2.35ZM2.35 6.25H7.65L7.975 4.1625L7.4 4.4125C7.18333 4.50416 6.9625 4.52083 6.7375 4.4625C6.5125 4.40416 6.32916 4.27916 6.1875 4.0875L5 2.45L3.8125 4.0875C3.67083 4.27916 3.4875 4.40416 3.2625 4.4625C3.0375 4.52083 2.81667 4.50416 2.6 4.4125L2.025 4.1625L2.35 6.25Z"
+                                                            fill="white" />
+                                                    </svg>
+                                                    <p>Popular</p>
+                                                </div>
+                                                <div>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="9" height="11"
+                                                        viewBox="0 0 9 11" fill="none">
+                                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                                            d="M6.41298 7.89331C6.44191 7.34386 6.31555 6.79737 6.04836 6.31639C5.78117 5.83541 5.38396 5.43938 4.90218 5.17363C4.81663 5.12414 4.7152 5.1098 4.61928 5.13363C4.52336 5.15746 4.44044 5.2176 4.38799 5.30138L3.77528 6.28209L3.26554 5.66557C3.23754 5.63178 3.20283 5.60415 3.16362 5.58443C3.12441 5.56471 3.08154 5.55333 3.03771 5.551C2.99388 5.54867 2.95005 5.55545 2.90896 5.5709C2.86788 5.58635 2.83045 5.61015 2.79902 5.64078C2.49895 5.93115 2.26456 6.28243 2.11162 6.67097C1.95868 7.05952 1.89074 7.47631 1.91237 7.89331C1.91237 8.49004 2.14943 9.06234 2.57138 9.48429C2.99333 9.90624 3.56563 10.1433 4.16236 10.1433C4.75909 10.1433 5.33138 9.90624 5.75334 9.48429C6.17529 9.06234 6.41234 8.49004 6.41234 7.89331M3.01004 6.35519L2.97063 6.4073C2.67173 6.82484 2.52196 7.33078 2.54542 7.84374L2.54733 7.88124C2.54733 8.3094 2.71741 8.72003 3.02017 9.02279C3.32293 9.32554 3.73356 9.49563 4.16172 9.49563C4.58989 9.49563 5.00052 9.32554 5.30327 9.02279C5.60603 8.72003 5.77612 8.3094 5.77612 7.88124L5.77803 7.84437C5.78247 7.80306 5.88163 6.66662 4.8418 5.89375L4.79032 5.85625L4.12677 6.91768C4.09473 6.96887 4.05098 7.01172 3.99915 7.0427C3.94731 7.07368 3.88885 7.09191 3.82859 7.09588C3.76833 7.09985 3.70799 7.08946 3.65253 7.06555C3.59708 7.04164 3.54809 7.0049 3.50961 6.95836L3.01004 6.35519Z"
+                                                            fill="#FEFEFE" />
+                                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                                            d="M3.79701 0.30821C3.81025 0.23997 3.84191 0.176658 3.88858 0.125138C3.93524 0.0736173 3.99512 0.0358558 4.06172 0.0159479C4.12832 -0.00396001 4.1991 -0.00525449 4.26638 0.0122049C4.33367 0.0296642 4.39489 0.0652111 4.4434 0.114991C4.56671 0.240837 4.80378 0.489988 5.04467 0.777274C5.28111 1.05884 5.53916 1.39761 5.68788 1.69951C5.8328 1.99443 5.98661 2.37578 6.10801 2.69421L6.67305 1.75354C6.70456 1.701 6.74826 1.65683 6.80046 1.62476C6.85265 1.59269 6.91181 1.57367 6.97292 1.56931C7.03402 1.56494 7.09528 1.57536 7.1515 1.59969C7.20773 1.62401 7.25727 1.66152 7.29592 1.70905C8.09867 2.70057 8.49846 3.76263 8.6974 4.57365C8.79718 4.97979 8.8474 5.32491 8.87282 5.57025C8.88576 5.69278 8.89424 5.81574 8.89824 5.93889V5.97131C8.89824 8.4482 6.93364 10.4649 4.44785 10.4649C1.96206 10.4649 0 8.44756 0 5.97004C0 5.28805 0.322244 3.68192 1.27563 2.36498C1.31266 2.31422 1.36166 2.27341 1.41826 2.24615C1.47487 2.2189 1.53734 2.20605 1.60011 2.20876C1.66287 2.21146 1.724 2.22963 1.77806 2.26166C1.83211 2.29368 1.87741 2.33856 1.90994 2.39231L2.55507 3.46709C2.75083 3.16073 3.01269 2.73044 3.21163 2.3332C3.49765 1.76117 3.72455 0.682572 3.79701 0.308845M4.3201 0.912655C4.20506 1.42113 4.01501 2.14697 3.77985 2.61858C3.46714 3.24336 3.0165 3.9298 2.86142 4.16051C2.82554 4.21345 2.77693 4.25651 2.72005 4.28574C2.66317 4.31497 2.59986 4.32943 2.53593 4.32778C2.472 4.32614 2.40952 4.30844 2.35422 4.27632C2.29892 4.24421 2.25258 4.1987 2.21948 4.14399L1.57118 3.06476C0.87457 4.19166 0.635589 5.45839 0.635589 5.97131C0.635589 8.10561 2.32244 9.82806 4.44785 9.82806C6.57326 9.82806 8.26265 8.10561 8.26265 5.97131V5.95351L8.26011 5.88995C8.25568 5.80484 8.24911 5.71986 8.24041 5.63508C8.20712 5.3287 8.15362 5.02487 8.08024 4.72555C7.87826 3.89157 7.52027 3.10334 7.02516 2.40248L6.38068 3.47535C6.34338 3.53732 6.28925 3.58743 6.22459 3.61985C6.15993 3.65227 6.08739 3.66566 6.01542 3.65847C5.94344 3.65128 5.87499 3.6238 5.81802 3.57923C5.76105 3.53466 5.71791 3.47483 5.6936 3.40671C5.59064 3.11815 5.33831 2.42917 5.11713 1.98044C5.00463 1.751 4.78916 1.46117 4.55781 1.18596C4.4801 1.09353 4.40086 1.00242 4.3201 0.912655Z"
+                                                            fill="#FEFEFE" />
+                                                    </svg>
+                                                    <p>Top Rated</p>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="10" height="14"
+                                                        viewBox="0 0 10 14" fill="none">
+                                                        <path
+                                                            d="M5 6.65C4.5264 6.65 4.0722 6.46563 3.73731 6.13744C3.40242 5.80925 3.21429 5.36413 3.21429 4.9C3.21429 4.43587 3.40242 3.99075 3.73731 3.66256C4.0722 3.33437 4.5264 3.15 5 3.15C5.4736 3.15 5.9278 3.33437 6.26269 3.66256C6.59758 3.99075 6.78571 4.43587 6.78571 4.9C6.78571 5.12981 6.73953 5.35738 6.64979 5.5697C6.56004 5.78202 6.42851 5.97493 6.26269 6.13744C6.09687 6.29994 5.90002 6.42884 5.68336 6.51679C5.46671 6.60473 5.2345 6.65 5 6.65ZM5 0C3.67392 0 2.40215 0.516248 1.46447 1.43518C0.526784 2.3541 0 3.60044 0 4.9C0 8.575 5 14 5 14C5 14 10 8.575 10 4.9C10 3.60044 9.47322 2.3541 8.53553 1.43518C7.59785 0.516248 6.32608 0 5 0Z"
+                                                            fill="#FFC97A" />
+                                                    </svg>
+                                                    <p>2.5 mi</p>
+                                                </div>
+                                                <div>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
+                                                        viewBox="0 0 14 14" fill="none">
+                                                        <path
+                                                            d="M6.12956 0.660476C6.40354 -0.220161 7.59647 -0.220158 7.87045 0.660479L8.89548 3.95519C9.01801 4.34902 9.36942 4.61566 9.76593 4.61566H13.083C13.9696 4.61566 14.3383 5.80055 13.621 6.34481L10.9374 8.38106C10.6166 8.62446 10.4824 9.0559 10.6049 9.44973L11.63 12.7444C11.9039 13.6251 10.9388 14.3574 10.2215 13.8131L7.53797 11.7769C7.21719 11.5335 6.78282 11.5335 6.46204 11.7769L3.77846 13.8131C3.06117 14.3574 2.09607 13.6251 2.37005 12.7444L3.39508 9.44973C3.51761 9.0559 3.38338 8.62446 3.0626 8.38106L0.37903 6.34481C-0.338258 5.80055 0.0303816 4.61566 0.916998 4.61566H4.23408C4.63058 4.61566 4.98199 4.34902 5.10452 3.95519L6.12956 0.660476Z"
+                                                            fill="#FFC97A" />
+                                                    </svg>
+                                                    <p>4.3</p>
+                                                    <span>
+                                                        (20 reviews)
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-body-info">
+                                        <div>
+                                            <span><svg xmlns="http://www.w3.org/2000/svg" width="14" height="15"
+                                                    viewBox="0 0 14 15" fill="none">
+                                                    <path
+                                                        d="M4.38022 10.1726C5.5048 11.2972 8.23992 10.3857 10.4891 8.13624C12.7386 5.88709 13.65 3.15197 12.5255 2.02739M7.68915 1.26352L8.19816 1.77289M5.90761 3.04541L6.41662 3.55442M4.37986 5.08182L4.88887 5.59083M3.87085 7.62723L4.37986 8.13624M10.4891 0.5L10.9981 1.00901M9.98006 3.55478L10.9981 4.5728M8.19852 5.33668L9.21654 6.3547M6.16212 6.86371L7.18014 7.88173"
+                                                        stroke="#9D9B98" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path
+                                                        d="M4.37996 11.7C4.80171 11.2783 4.80171 10.5945 4.37996 10.1727C3.95822 9.75101 3.27444 9.75101 2.8527 10.1728L0.816351 12.2091C0.394609 12.6308 0.39461 13.3146 0.816351 13.7364C1.23809 14.1581 1.92187 14.1581 2.34361 13.7364L4.37996 11.7Z"
+                                                        stroke="#9D9B98" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                </svg>Service</span>
+                                            <p>Full Groom</p>
+                                        </div>
+                                        <div>
+                                            <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="15"
+                                                    viewBox="0 0 16 15" fill="none">
+                                                    <path
+                                                        d="M0.5 7.32052C0.5 4.61314 0.5 3.25909 1.379 2.41837C2.258 1.57765 3.67175 1.57693 6.5 1.57693H9.5C12.3282 1.57693 13.7427 1.57693 14.621 2.41837C15.4992 3.2598 15.5 4.61314 15.5 7.32052V8.75641C15.5 11.4638 15.5 12.8178 14.621 13.6586C13.742 14.4993 12.3282 14.5 9.5 14.5H6.5C3.67175 14.5 2.25725 14.5 1.379 13.6586C0.50075 12.8171 0.5 11.4638 0.5 8.75641V7.32052Z"
+                                                        stroke="#9D9B98" />
+                                                    <path d="M4.25 1.57692V0.5M11.75 1.57692V0.5M0.875 5.16666H15.125"
+                                                        stroke="#9D9B98" stroke-linecap="round" />
+                                                    <path
+                                                        d="M12.5 10.9103C12.5 11.1007 12.421 11.2833 12.2803 11.418C12.1397 11.5526 11.9489 11.6282 11.75 11.6282C11.5511 11.6282 11.3603 11.5526 11.2197 11.418C11.079 11.2833 11 11.1007 11 10.9103C11 10.7199 11.079 10.5373 11.2197 10.4026C11.3603 10.268 11.5511 10.1923 11.75 10.1923C11.9489 10.1923 12.1397 10.268 12.2803 10.4026C12.421 10.5373 12.5 10.7199 12.5 10.9103ZM12.5 8.0385C12.5 8.22892 12.421 8.41153 12.2803 8.54617C12.1397 8.68081 11.9489 8.75645 11.75 8.75645C11.5511 8.75645 11.3603 8.68081 11.2197 8.54617C11.079 8.41153 11 8.22892 11 8.0385C11 7.84809 11.079 7.66548 11.2197 7.53084C11.3603 7.3962 11.5511 7.32056 11.75 7.32056C11.9489 7.32056 12.1397 7.3962 12.2803 7.53084C12.421 7.66548 12.5 7.84809 12.5 8.0385ZM8.75 10.9103C8.75 11.1007 8.67098 11.2833 8.53033 11.418C8.38968 11.5526 8.19891 11.6282 8 11.6282C7.80109 11.6282 7.61032 11.5526 7.46967 11.418C7.32902 11.2833 7.25 11.1007 7.25 10.9103C7.25 10.7199 7.32902 10.5373 7.46967 10.4026C7.61032 10.268 7.80109 10.1923 8 10.1923C8.19891 10.1923 8.38968 10.268 8.53033 10.4026C8.67098 10.5373 8.75 10.7199 8.75 10.9103ZM8.75 8.0385C8.75 8.22892 8.67098 8.41153 8.53033 8.54617C8.38968 8.68081 8.19891 8.75645 8 8.75645C7.80109 8.75645 7.61032 8.68081 7.46967 8.54617C7.32902 8.41153 7.25 8.22892 7.25 8.0385C7.25 7.84809 7.32902 7.66548 7.46967 7.53084C7.61032 7.3962 7.80109 7.32056 8 7.32056C8.19891 7.32056 8.38968 7.3962 8.53033 7.53084C8.67098 7.66548 8.75 7.84809 8.75 8.0385ZM5 10.9103C5 11.1007 4.92098 11.2833 4.78033 11.418C4.63968 11.5526 4.44891 11.6282 4.25 11.6282C4.05109 11.6282 3.86032 11.5526 3.71967 11.418C3.57902 11.2833 3.5 11.1007 3.5 10.9103C3.5 10.7199 3.57902 10.5373 3.71967 10.4026C3.86032 10.268 4.05109 10.1923 4.25 10.1923C4.44891 10.1923 4.63968 10.268 4.78033 10.4026C4.92098 10.5373 5 10.7199 5 10.9103ZM5 8.0385C5 8.22892 4.92098 8.41153 4.78033 8.54617C4.63968 8.68081 4.44891 8.75645 4.25 8.75645C4.05109 8.75645 3.86032 8.68081 3.71967 8.54617C3.57902 8.41153 3.5 8.22892 3.5 8.0385C3.5 7.84809 3.57902 7.66548 3.71967 7.53084C3.86032 7.3962 4.05109 7.32056 4.25 7.32056C4.44891 7.32056 4.63968 7.3962 4.78033 7.53084C4.92098 7.66548 5 7.84809 5 8.0385Z"
+                                                        fill="#9D9B98" />
+                                                </svg>Date</span>
+                                            <p>18/12/2025</p>
+                                        </div>
+                                        <div>
+                                            <span>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    viewBox="0 0 48 48">
+                                                    <path
+                                                        d="M 24 4 C 12.972066 4 4 12.972074 4 24 C 4 35.027926 12.972066 44 24 44 C 35.027934 44 44 35.027926 44 24 C 44 12.972074 35.027934 4 24 4 z
+       M 24 7 C 33.406615 7 41 14.593391 41 24 C 41 33.406609 33.406615 41 24 41 C 14.593385 41 7 33.406609 7 24 C 7 14.593391 14.593385 7 24 7 z
+       M 22.476562 11.978516 A 1.50015 1.50015 0 0 0 21 13.5 L 21 24.5 A 1.50015 1.50015 0 0 0 21.439453 25.560547 L 26.439453 30.560547 A 1.50015 1.50015 0 1 0 28.560547 28.439453 L 24 23.878906 L 24 13.5 A 1.50015 1.50015 0 0 0 22.476562 11.978516 z"
+                                                        fill="#9D9B98" />
+                                                </svg>
+                                                Time</span>
+                                            <p>14:30 - 15:30 (90 mins)</p>
+                                        </div>
+                                        <div>
+                                            <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="15"
+                                                    viewBox="0 0 16 15" fill="none">
+                                                    <path
+                                                        d="M8 6.02632C5.73786 6.02632 3.82643 8.06405 3.20929 10.6813C2.93786 11.8323 3.34714 13.0539 4.35179 13.6279C5.14821 14.0829 6.33286 14.5 8 14.5C9.66714 14.5 10.8521 14.0829 11.6486 13.6279C12.6532 13.0539 13.0621 11.8323 12.7907 10.6813C12.1736 8.06368 10.2621 6.02632 8 6.02632ZM0.5 5.45305C0.5 6.47063 1.13929 7.5 1.92857 7.5C2.71786 7.5 3.35714 6.47063 3.35714 5.45305C3.35714 4.43547 2.71786 3.81579 1.92857 3.81579C1.13929 3.81579 0.5 4.43584 0.5 5.45305ZM15.5 5.45305C15.5 6.47063 14.8607 7.5 14.0714 7.5C13.2821 7.5 12.6429 6.47063 12.6429 5.45305C12.6429 4.43547 13.2821 3.81579 14.0714 3.81579C14.8607 3.81579 15.5 4.43584 15.5 5.45305ZM4.25 2.13726C4.25 3.15484 4.88929 4.18421 5.67857 4.18421C6.46786 4.18421 7.10714 3.15484 7.10714 2.13726C7.10714 1.11968 6.46786 0.5 5.67857 0.5C4.88929 0.5 4.25 1.12005 4.25 2.13726ZM11.75 2.13726C11.75 3.15484 11.1107 4.18421 10.3214 4.18421C9.53214 4.18421 8.89286 3.15484 8.89286 2.13726C8.89286 1.11968 9.53214 0.5 10.3214 0.5C11.1107 0.5 11.75 1.12005 11.75 2.13726Z"
+                                                        stroke="#9D9B98" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                </svg>Pet</span>
+                                            <p> Other • Medium</p>
+                                        </div>
+                                        <div>
+                                            <button>
+                                                Change
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Accordion 2: Pet Details -->
+                    <div class="step1-accordion" id="acc-pet">
+                        <div class="step1-accordion-header" style="display:none;" onclick="toggleAccordion('acc-pet')">
+                            <div style="display:flex; align-items:center; gap:15px">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <circle cx="12" cy="12" r="12" fill="#D8E8B7" />
+                                    <path d="M7 12.5L10.5 16L17 9" stroke="white" stroke-width="2"
+                                        stroke-linecap="round" />
+                                </svg>
+                                <h3>Pet Details</h3>
+                            </div>
+                            <svg class="chevron" width="16" height="10" viewBox="0 0 16 10" fill="none">
+                                <path d="M15 8.5L8 1.5L1 8.5" stroke="#3B3731" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <div class="step1-accordion-body">
+                            <div class="information" style="margin-top: 2rem;">
+                                <h2>Pet Information for Space Use</h2>
+
+                                <!-- Buttons — hidden once list is shown -->
+                                <div class="btns" id="petActionBtns">
+                                    <button id="selectPetsBtn">Select existing pet/s</button>
+                                    <button id="addNewPetBtn">+ Add new pet/s</button>
+                                </div>
+
+                                <!-- Inline pet list (shown in place of buttons) -->
+                                <div class="pet-list" id="petList"></div>
+                                <div class="pet-details-form hidden">
+                                    <div>
+                                        <h2>Pet Details</h2>
+                                    </div>
+                                    <div>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="85" height="85"
+                                            viewBox="0 0 85 85" fill="none" id="petPhotoPlaceholder">
+                                            <mask id="path-1-inside-1_85_569" fill="white">
+                                                <path
+                                                    d="M43.5 0C66.4198 0 85 18.5802 85 41.5V43.5C85 66.4198 66.4198 85 43.5 85H41.5C18.5802 85 0 66.4198 0 43.5V41.5C0 18.5802 18.5802 0 41.5 0H43.5ZM43 39.3184C39.2287 39.3184 36.4346 41.367 34.6494 43.9092C32.8863 46.4133 32 49.5227 32 52.0459C32.0002 54.9857 33.7446 57.0319 35.8848 58.2568C37.9904 59.4658 40.6304 60 43 60C45.3696 60 48.0096 59.469 50.1152 58.2568C52.2523 57.0287 53.9998 54.9857 54 52.0459C54 49.5227 53.1137 46.4133 51.3506 43.9092C49.5686 41.3638 46.7745 39.3184 43 39.3184ZM25.7139 39.3184C24.1584 39.3185 22.9388 40.2763 22.1846 41.4248C21.421 42.5829 21 44.0941 21 45.6816C21 47.2694 21.4209 48.7813 22.1846 49.9395C22.9388 51.0848 24.1584 52.0457 25.7139 52.0459C27.2696 52.0459 28.4899 51.0881 29.2441 49.9395C30.0079 48.7813 30.4287 47.2694 30.4287 45.6816C30.4287 44.0942 30.0077 42.5829 29.2441 41.4248C28.4899 40.2794 27.2696 39.3184 25.7139 39.3184ZM60.2861 39.3184C58.7304 39.3184 57.5101 40.2762 56.7559 41.4248C55.9923 42.5829 55.5713 44.0942 55.5713 45.6816C55.5713 47.2694 55.9921 48.7813 56.7559 49.9395C57.5102 51.0849 58.7304 52.0459 60.2861 52.0459C61.8416 52.0457 63.0612 51.0879 63.8154 49.9395C64.5791 48.7813 65 47.2694 65 45.6816C65 44.0941 64.579 42.5829 63.8154 41.4248C63.0612 40.2795 61.8416 39.3185 60.2861 39.3184ZM35.1426 25C33.587 25.0001 32.3675 25.9579 31.6133 27.1064C30.8497 28.2645 30.4288 29.7757 30.4287 31.3633C30.4287 32.951 30.8496 34.4629 31.6133 35.6211C32.3675 36.7665 33.587 37.7274 35.1426 37.7275C36.6982 37.7275 37.9176 36.7696 38.6719 35.6211C39.4356 34.4629 39.8574 32.951 39.8574 31.3633C39.8574 29.7757 39.4355 28.2645 38.6719 27.1064C37.9176 25.961 36.6982 25 35.1426 25ZM50.8574 25C49.3018 25 48.0824 25.9579 47.3281 27.1064C46.5645 28.2645 46.1426 29.7757 46.1426 31.3633C46.1426 32.951 46.5644 34.4629 47.3281 35.6211C48.0824 36.7664 49.3019 37.7275 50.8574 37.7275C52.413 37.7274 53.6325 36.7696 54.3867 35.6211C55.1504 34.4629 55.5713 32.951 55.5713 31.3633C55.5712 29.7757 55.1503 28.2645 54.3867 27.1064C53.6325 25.9611 52.413 25.0001 50.8574 25Z" />
+                                            </mask>
+                                            <path
+                                                d="M43.5 0C66.4198 0 85 18.5802 85 41.5V43.5C85 66.4198 66.4198 85 43.5 85H41.5C18.5802 85 0 66.4198 0 43.5V41.5C0 18.5802 18.5802 0 41.5 0H43.5ZM43 39.3184C39.2287 39.3184 36.4346 41.367 34.6494 43.9092C32.8863 46.4133 32 49.5227 32 52.0459C32.0002 54.9857 33.7446 57.0319 35.8848 58.2568C37.9904 59.4658 40.6304 60 43 60C45.3696 60 48.0096 59.469 50.1152 58.2568C52.2523 57.0287 53.9998 54.9857 54 52.0459C54 49.5227 53.1137 46.4133 51.3506 43.9092C49.5686 41.3638 46.7745 39.3184 43 39.3184ZM25.7139 39.3184C24.1584 39.3185 22.9388 40.2763 22.1846 41.4248C21.421 42.5829 21 44.0941 21 45.6816C21 47.2694 21.4209 48.7813 22.1846 49.9395C22.9388 51.0848 24.1584 52.0457 25.7139 52.0459C27.2696 52.0459 28.4899 51.0881 29.2441 49.9395C30.0079 48.7813 30.4287 47.2694 30.4287 45.6816C30.4287 44.0942 30.0077 42.5829 29.2441 41.4248C28.4899 40.2794 27.2696 39.3184 25.7139 39.3184ZM60.2861 39.3184C58.7304 39.3184 57.5101 40.2762 56.7559 41.4248C55.9923 42.5829 55.5713 44.0942 55.5713 45.6816C55.5713 47.2694 55.9921 48.7813 56.7559 49.9395C57.5102 51.0849 58.7304 52.0459 60.2861 52.0459C61.8416 52.0457 63.0612 51.0879 63.8154 49.9395C64.5791 48.7813 65 47.2694 65 45.6816C65 44.0941 64.579 42.5829 63.8154 41.4248C63.0612 40.2795 61.8416 39.3185 60.2861 39.3184ZM35.1426 25C33.587 25.0001 32.3675 25.9579 31.6133 27.1064C30.8497 28.2645 30.4288 29.7757 30.4287 31.3633C30.4287 32.951 30.8496 34.4629 31.6133 35.6211C32.3675 36.7665 33.587 37.7274 35.1426 37.7275C36.6982 37.7275 37.9176 36.7696 38.6719 35.6211C39.4356 34.4629 39.8574 32.951 39.8574 31.3633C39.8574 29.7757 39.4355 28.2645 38.6719 27.1064C37.9176 25.961 36.6982 25 35.1426 25ZM50.8574 25C49.3018 25 48.0824 25.9579 47.3281 27.1064C46.5645 28.2645 46.1426 29.7757 46.1426 31.3633C46.1426 32.951 46.5644 34.4629 47.3281 35.6211C48.0824 36.7664 49.3019 37.7275 50.8574 37.7275C52.413 37.7274 53.6325 36.7696 54.3867 35.6211C55.1504 34.4629 55.5713 32.951 55.5713 31.3633C55.5712 29.7757 55.1503 28.2645 54.3867 27.1064C53.6325 25.9611 52.413 25.0001 50.8574 25Z"
+                                                fill="#D4D4D4" />
+                                            <path
+                                                d="M43.5 0V-1V0ZM43.5 85V86V85ZM34.6494 43.9092L35.4671 44.4849L35.4678 44.4839L34.6494 43.9092ZM32 52.0459H31V52.046L32 52.0459ZM35.8848 58.2568L36.3827 57.3896L36.3815 57.3889L35.8848 58.2568ZM50.1152 58.2568L49.617 57.3898L49.6163 57.3902L50.1152 58.2568ZM54 52.0459L55 52.046V52.0459H54ZM51.3506 43.9092L50.5314 44.4827L50.5329 44.4849L51.3506 43.9092ZM25.7139 39.3184V38.3184H25.7138L25.7139 39.3184ZM22.1846 41.4248L23.0194 41.9753L23.0205 41.9737L22.1846 41.4248ZM21 45.6816L20 45.6816V45.6816H21ZM22.1846 49.9395L23.0197 49.3895L23.0194 49.389L22.1846 49.9395ZM25.7139 52.0459L25.7138 53.0459H25.7139V52.0459ZM29.2441 49.9395L28.4093 49.389L28.4083 49.3905L29.2441 49.9395ZM30.4287 45.6816H31.4287V45.6816L30.4287 45.6816ZM29.2441 41.4248L28.409 41.9748L28.4093 41.9752L29.2441 41.4248ZM60.2861 39.3184L60.2862 38.3184H60.2861V39.3184ZM56.7559 41.4248L57.5907 41.9752L57.5917 41.9737L56.7559 41.4248ZM55.5713 45.6816L54.5713 45.6816V45.6816H55.5713ZM56.7559 49.9395L57.591 49.3895L57.5907 49.389L56.7559 49.9395ZM60.2861 52.0459V53.0459H60.2862L60.2861 52.0459ZM63.8154 49.9395L62.9806 49.389L62.9796 49.3905L63.8154 49.9395ZM65 45.6816H66V45.6816L65 45.6816ZM63.8154 41.4248L62.9802 41.9748L62.9806 41.9753L63.8154 41.4248ZM35.1426 25V24H35.1425L35.1426 25ZM31.6133 27.1064L32.4481 27.6569L32.4492 27.6554L31.6133 27.1064ZM30.4287 31.3633L29.4287 31.3632V31.3633H30.4287ZM31.6133 35.6211L32.4485 35.0711L32.4481 35.0706L31.6133 35.6211ZM35.1426 37.7275L35.1425 38.7275H35.1426V37.7275ZM38.6719 35.6211L37.837 35.0706L37.836 35.0721L38.6719 35.6211ZM39.8574 31.3633H40.8574V31.3632L39.8574 31.3633ZM38.6719 27.1064L37.8367 27.6564L37.837 27.6569L38.6719 27.1064ZM50.8574 25L50.8575 24H50.8574V25ZM47.3281 27.1064L48.163 27.6569L48.164 27.6554L47.3281 27.1064ZM46.1426 31.3633L45.1426 31.3632V31.3633H46.1426ZM47.3281 35.6211L48.1633 35.0711L48.163 35.0706L47.3281 35.6211ZM50.8574 37.7275V38.7275H50.8575L50.8574 37.7275ZM54.3867 35.6211L53.5519 35.0706L53.5508 35.0722L54.3867 35.6211ZM55.5713 31.3633H56.5713V31.3632L55.5713 31.3633ZM54.3867 27.1064L53.5515 27.6564L53.5519 27.6569L54.3867 27.1064ZM43.5 0V1C65.8675 1 84 19.1325 84 41.5H85H86C86 18.0279 66.9721 -1 43.5 -1V0ZM85 41.5H84V43.5H85H86V41.5H85ZM85 43.5H84C84 65.8675 65.8675 84 43.5 84V85V86C66.9721 86 86 66.9721 86 43.5H85ZM43.5 85V84H41.5V85V86H43.5V85ZM41.5 85V84C19.1325 84 1 65.8675 1 43.5H0H-1C-1 66.9721 18.0279 86 41.5 86V85ZM0 43.5H1V41.5H0H-1V43.5H0ZM0 41.5H1C1 19.1325 19.1325 1 41.5 1V0V-1C18.0279 -1 -1 18.0279 -1 41.5H0ZM41.5 0V1H43.5V0V-1H41.5V0ZM43 39.3184V38.3184C38.8207 38.3184 35.7506 40.601 33.831 43.3345L34.6494 43.9092L35.4678 44.4839C37.1186 42.1331 39.6367 40.3184 43 40.3184V39.3184ZM34.6494 43.9092L33.8318 43.3335C31.9482 46.0085 31 49.3196 31 52.0459H32H33C33 49.7258 33.8243 46.818 35.4671 44.4849L34.6494 43.9092ZM32 52.0459L31 52.046C31.0002 55.4494 33.0401 57.7809 35.388 59.1247L35.8848 58.2568L36.3815 57.3889C34.4491 56.2829 33.0001 54.5219 33 52.0458L32 52.0459ZM35.8848 58.2568L35.3869 59.1241C37.6792 60.4402 40.5013 61 43 61V60V59C40.7595 59 38.3016 58.4914 36.3827 57.3896L35.8848 58.2568ZM43 60V61C45.4977 61 48.3206 60.4438 50.6141 59.1235L50.1152 58.2568L49.6163 57.3902C47.6986 58.4942 45.2415 59 43 59V60ZM50.1152 58.2568L50.6135 59.1239C52.9556 57.7779 54.9998 55.4505 55 52.046L54 52.0459L53 52.0458C52.9999 54.5208 51.549 56.2795 49.617 57.3898L50.1152 58.2568ZM54 52.0459H55C55 49.3196 54.0518 46.0085 52.1682 43.3335L51.3506 43.9092L50.5329 44.4849C52.1757 46.818 53 49.7258 53 52.0459H54ZM51.3506 43.9092L52.1698 43.3357C50.2525 40.5971 47.1818 38.3184 43 38.3184V39.3184V40.3184C46.3671 40.3184 48.8846 42.1305 50.5314 44.4827L51.3506 43.9092ZM25.7139 39.3184L25.7138 38.3184C23.7118 38.3186 22.2182 39.5518 21.3487 40.8759L22.1846 41.4248L23.0205 41.9737C23.6594 41.0007 24.6049 40.3185 25.714 40.3184L25.7139 39.3184ZM22.1846 41.4248L21.3497 40.8744C20.4636 42.2183 20 43.9272 20 45.6816L21 45.6816L22 45.6817C22 44.2611 22.3784 42.9475 23.0194 41.9753L22.1846 41.4248ZM21 45.6816H20C20 47.4362 20.4634 49.1458 21.3497 50.49L22.1846 49.9395L23.0194 49.389C22.3783 48.4167 22 47.1026 22 45.6816H21ZM22.1846 49.9395L21.3494 50.4894C22.2178 51.8082 23.7109 53.0457 25.7138 53.0459L25.7139 52.0459L25.714 51.0459C24.6059 51.0458 23.6598 50.3614 23.0197 49.3895L22.1846 49.9395ZM25.7139 52.0459V53.0459C27.7159 53.0459 29.2103 51.8127 30.08 50.4884L29.2441 49.9395L28.4083 49.3905C27.7694 50.3634 26.8232 51.0459 25.7139 51.0459V52.0459ZM29.2441 49.9395L30.079 50.49C30.9653 49.1458 31.4287 47.4362 31.4287 45.6816H30.4287H29.4287C29.4287 47.1026 29.0504 48.4167 28.4093 49.389L29.2441 49.9395ZM30.4287 45.6816L31.4287 45.6816C31.4287 43.9272 30.965 42.2183 30.079 40.8744L29.2441 41.4248L28.4093 41.9752C29.0503 42.9475 29.4287 44.2611 29.4287 45.6817L30.4287 45.6816ZM29.2441 41.4248L30.0793 40.8748C29.2107 39.5558 27.7169 38.3184 25.7139 38.3184V39.3184V40.3184C26.8223 40.3184 27.769 41.0029 28.409 41.9748L29.2441 41.4248ZM60.2861 39.3184V38.3184C58.2841 38.3184 56.7896 39.5515 55.92 40.8759L56.7559 41.4248L57.5917 41.9737C58.2306 41.0008 59.1768 40.3184 60.2861 40.3184V39.3184ZM56.7559 41.4248L55.921 40.8744C55.035 42.2183 54.5713 43.9272 54.5713 45.6816L55.5713 45.6816L56.5713 45.6817C56.5713 44.2611 56.9497 42.9475 57.5907 41.9752L56.7559 41.4248ZM55.5713 45.6816H54.5713C54.5713 47.4362 55.0347 49.1458 55.921 50.49L56.7559 49.9395L57.5907 49.389C56.9496 48.4167 56.5713 47.1026 56.5713 45.6816H55.5713ZM56.7559 49.9395L55.9207 50.4894C56.7893 51.8085 58.2832 53.0459 60.2861 53.0459V52.0459V51.0459C59.1777 51.0459 58.231 50.3613 57.591 49.3895L56.7559 49.9395ZM60.2861 52.0459L60.2862 53.0459C62.2881 53.0457 63.7818 51.8124 64.6513 50.4884L63.8154 49.9395L62.9796 49.3905C62.3406 50.3635 61.395 51.0458 60.286 51.0459L60.2861 52.0459ZM63.8154 49.9395L64.6503 50.49C65.5366 49.1458 66 47.4362 66 45.6816H65H64C64 47.1026 63.6217 48.4167 62.9806 49.389L63.8154 49.9395ZM65 45.6816L66 45.6816C66 43.9272 65.5364 42.2183 64.6503 40.8744L63.8154 41.4248L62.9806 41.9753C63.6216 42.9475 64 44.2611 64 45.6817L65 45.6816ZM63.8154 41.4248L64.6506 40.8748C63.7822 39.556 62.2891 38.3186 60.2862 38.3184L60.2861 39.3184L60.286 40.3184C61.3942 40.3185 62.3402 41.0029 62.9802 41.9748L63.8154 41.4248ZM35.1426 25L35.1425 24C33.1404 24.0001 31.6469 25.2335 30.7774 26.5575L31.6133 27.1064L32.4492 27.6554C33.0882 26.6823 34.0336 26.0001 35.1427 26L35.1426 25ZM31.6133 27.1064L30.7784 26.556C29.8923 27.8999 29.4288 29.6088 29.4287 31.3632L30.4287 31.3633L31.4287 31.3633C31.4288 29.9427 31.8071 28.6291 32.4481 27.6569L31.6133 27.1064ZM30.4287 31.3633H29.4287C29.4287 33.1178 29.8921 34.8275 30.7784 36.1716L31.6133 35.6211L32.4481 35.0706C31.807 34.0984 31.4287 32.7842 31.4287 31.3633H30.4287ZM31.6133 35.6211L30.7781 36.1711C31.6465 37.4898 33.1395 38.7274 35.1425 38.7275L35.1426 37.7275L35.1427 36.7275C34.0345 36.7275 33.0885 36.0431 32.4485 35.0711L31.6133 35.6211ZM35.1426 37.7275V38.7275C37.1448 38.7275 38.6383 37.4939 39.5077 36.1701L38.6719 35.6211L37.836 35.0721C37.1969 36.0453 36.2515 36.7275 35.1426 36.7275V37.7275ZM38.6719 35.6211L39.5067 36.1716C40.3928 34.8278 40.8574 33.1183 40.8574 31.3633H39.8574H38.8574C38.8574 32.7837 38.4784 34.098 37.837 35.0706L38.6719 35.6211ZM39.8574 31.3633L40.8574 31.3632C40.8574 29.6083 40.3927 27.8996 39.5067 26.5559L38.6719 27.1064L37.837 27.6569C38.4784 28.6295 38.8574 29.9431 38.8574 31.3633L39.8574 31.3633ZM38.6719 27.1064L39.507 26.5565C38.6386 25.2378 37.1458 24 35.1426 24V25V26C36.2507 26 37.1965 26.6843 37.8367 27.6564L38.6719 27.1064ZM50.8574 25V24C48.8552 24 47.3617 25.2335 46.4923 26.5575L47.3281 27.1064L48.164 27.6554C48.8031 26.6822 49.7484 26 50.8574 26V25ZM47.3281 27.1064L46.4933 26.5559C45.6073 27.8996 45.1426 29.6083 45.1426 31.3632L46.1426 31.3633L47.1426 31.3633C47.1426 29.9431 47.5217 28.6295 48.163 27.6569L47.3281 27.1064ZM46.1426 31.3633H45.1426C45.1426 33.1183 45.6072 34.8278 46.4933 36.1716L47.3281 35.6211L48.163 35.0706C47.5216 34.098 47.1426 32.7837 47.1426 31.3633H46.1426ZM47.3281 35.6211L46.493 36.1711C47.3614 37.4897 48.8543 38.7275 50.8574 38.7275V37.7275V36.7275C49.7494 36.7275 48.8035 36.0431 48.1633 35.0711L47.3281 35.6211ZM50.8574 37.7275L50.8575 38.7275C52.8595 38.7274 54.3531 37.494 55.2226 36.17L54.3867 35.6211L53.5508 35.0722C52.9118 36.0452 51.9664 36.7275 50.8573 36.7275L50.8574 37.7275ZM54.3867 35.6211L55.2216 36.1716C56.1079 34.8275 56.5713 33.1178 56.5713 31.3633H55.5713H54.5713C54.5713 32.7842 54.193 34.0984 53.5519 35.0706L54.3867 35.6211ZM55.5713 31.3633L56.5713 31.3632C56.5712 29.6088 56.1077 27.8999 55.2216 26.556L54.3867 27.1064L53.5519 27.6569C54.1929 28.6291 54.5712 29.9427 54.5713 31.3633L55.5713 31.3633ZM54.3867 27.1064L55.2219 26.5565C54.3535 25.2377 52.8605 24.0001 50.8575 24L50.8574 25L50.8573 26C51.9655 26.0001 52.9115 26.6844 53.5515 27.6564L54.3867 27.1064Z"
+                                                fill="#C9C9C9" mask="url(#path-1-inside-1_85_569)" />
+                                        </svg>
+                                        <!-- Hidden file input -->
+                                        <input type="file" id="petPhotoInput" accept="image/*" style="display: none;">
+                                        <button type="button" id="petPhotoUploadBtn">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
+                                                viewBox="0 0 14 14" fill="none">
+                                                <path
+                                                    d="M7 10.3162C6.72386 10.3162 6.5 10.0923 6.5 9.8162V1.6662L4.52903 3.63716C4.33115 3.83504 4.00998 3.83392 3.81349 3.63465C3.61896 3.43738 3.62005 3.1201 3.81593 2.92416L6.55492 0.184403C6.80072 -0.0614672 7.19931 -0.0614954 7.44514 0.184341L10.185 2.92419C10.3809 3.12014 10.3822 3.43747 10.1877 3.63493C9.99116 3.83455 9.66959 3.83579 9.47149 3.63769L7.5 1.6662V9.8162C7.5 10.0923 7.27614 10.3162 7 10.3162ZM1.616 13.7392C1.15533 13.7392 0.771 13.5852 0.463 13.2772C0.155 12.9692 0.000666667 12.5845 0 12.1232V10.2002C0 9.92405 0.223858 9.7002 0.5 9.7002C0.776142 9.7002 1 9.92406 1 10.2002V12.1232C1 12.2772 1.064 12.4185 1.192 12.5472C1.32 12.6759 1.461 12.7399 1.615 12.7392H12.385C12.5383 12.7392 12.6793 12.6752 12.808 12.5472C12.9367 12.4192 13.0007 12.2779 13 12.1232V10.2002C13 9.92405 13.2239 9.7002 13.5 9.7002C13.7761 9.7002 14 9.92406 14 10.2002V12.1232C14 12.5839 13.846 12.9682 13.538 13.2762C13.23 13.5842 12.8453 13.7385 12.384 13.7392H1.616Z"
+                                                    fill="#3B3731" />
+                                            </svg>
+                                            Upload Pet Photo
+                                        </button>
+                                    </div>
+                                    <div class="form-grid">
+                                        <div class="form-group">
+                                            <label>Name</label>
+                                            <div style="position:relative; display:block;">
+                                                <input type="text" id="petName"
+                                                    style="padding-right:40px; width:100%; display:block;">
+                                                <span class="input-check-icon" id="petNameCheck">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19"
+                                                        viewBox="0 0 19 19" fill="none">
+                                                        <path
+                                                            d="M9.5 0C4.275 0 0 4.275 0 9.5C0 14.725 4.275 19 9.5 19C14.725 19 19 14.725 19 9.5C19 4.275 14.725 0 9.5 0ZM7.6 14.25L2.85 9.5L4.1895 8.1605L7.6 11.5615L14.8105 4.351L16.15 5.7L7.6 14.25Z"
+                                                            fill="#C9DDA0" />
+                                                    </svg>
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                        <?php renderBirthdayCalendar('birthday'); ?>
+
+                                        <div class="form-group">
+                                            <label>Pet Type</label>
+                                            <div style="position:relative; display:block;">
+                                                <input type="text" id="petTypeInput"
+                                                    placeholder="e.g. Dog, Cat, Rabbit..." autocomplete="off"
+                                                    style="padding-right:40px; width:100%; display:block;">
+                                                <span class="input-check-icon" id="petTypeCheck">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19"
+                                                        viewBox="0 0 19 19" fill="none">
+                                                        <path
+                                                            d="M9.5 0C4.275 0 0 4.275 0 9.5C0 14.725 4.275 19 9.5 19C14.725 19 19 14.725 19 9.5C19 4.275 14.725 0 9.5 0ZM7.6 14.25L2.85 9.5L4.1895 8.1605L7.6 11.5615L14.8105 4.351L16.15 5.7L7.6 14.25Z"
+                                                            fill="#C9DDA0" />
+                                                    </svg>
+                                                </span>
+                                            </div>
+                                            <div id="petTypeSuggestions"
+                                                style="display: none; border: 1px solid #D4D4D4; border-top: none; border-radius: 0 0 10px 10px; background: #FFF; max-height: 200px; overflow-y: auto; position: absolute; width: calc(100% - 20px); z-index: 10;">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Breed(s)</label>
+                                            <div class="input-wrap select-wrap">
+                                                <select data-furs-dropdown data-furs-searchable id="petBreedSelect">
+                                                    <option value="">Select a Breed</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Sex</label>
+
+                                            <div class="sex-options" role="radiogroup" aria-label="Sex">
+                                                <label class="radio--small">
+                                                    <input type="radio" name="sex" value="male" id="petSexMale">
+                                                    <span class="radio--visual" aria-hidden="true"></span>
+                                                    <span class="radio--text">Male</span>
+                                                </label>
+
+                                                <label class="radio--small">
+                                                    <input type="radio" name="sex" value="female" id="petSexFemale">
+                                                    <span class="radio--visual" aria-hidden="true"></span>
+                                                    <span class="radio--text">Female</span>
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Weight <span>(kg)</span></label>
+                                            <input value="4" type="number" id="petWeight">
+                                        </div>
+
+                                        <div class="form-group full-width">
+                                            <label>Notes <span>(Optional)</span></label>
+                                            <textarea placeholder="Anything your groomer should know?
+(e.g. anxious around dryers, allergies, behaviour cues)" rows="4" cols="50" id="petNotes"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-btns" id="petFormBtns" style="display: none;">
+                                    <div>
+                                        <button type="button" id="petFormCancelBtn">Cancel</button>
+                                        <button type="button" id="petFormSaveBtn">Save</button>
+                                    </div>
+                                </div>
+
+                                <!-- Pet Details Display Section -->
+                                <div class="pet-details-display" id="petDetailsDisplay">
+                                    <div class="pet-details-display-content" id="petDetailsContent">
+                                    </div>
+                                    <div class="pet-display-action-btns">
+                                        <button type="button" id="petDisplayChangeBtn">Edit</button>
+                                    </div>
+                                </div>
+                                <div style="margin-top: 2rem;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Accordion 3: Extras -->
+                    <div class="step1-accordion" id="acc-extras">
+                        <div class="step1-accordion-header" style="display:none;"
+                            onclick="toggleAccordion('acc-extras')">
+                            <div style="display:flex; align-items:center; gap:15px">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <circle cx="12" cy="12" r="12" fill="#D8E8B7" />
+                                    <path d="M7 12.5L10.5 16L17 9" stroke="white" stroke-width="2"
+                                        stroke-linecap="round" />
+                                </svg>
+                                <h3>Extras & Add-ons</h3>
+                            </div>
+                            <svg class="chevron" width="16" height="10" viewBox="0 0 16 10" fill="none">
+                                <path d="M15 8.5L8 1.5L1 8.5" stroke="#3B3731" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <div class="step1-accordion-body">
+                            <div style="margin-top: 2rem;">
+                                <!-- Extras & Add-ons -->
+                                <?php renderExtrasAddons([], [
+                                    'instance_id' => 'groomer',
+                                    'on_change_js' => 'handleExtrasChange',
+                                    'background' => false
+                                ]); ?>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="add-ons-actions" id="step1ActionsContainer"
+                        style="margin-top: 2.5rem; display: flex; justify-content: flex-end;">
+                        <button type="button" class="continue-action-btn" id="addonsContinueBtn">
+                            Continue
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M5 12h14"></path>
+                                <path d="m12 5 7 7-7 7"></path>
+                            </svg>
+                        </button>
+                    </div>
+
+                </div>
+
+                <!-- Step 2: Space Details -->
+                <div id="step2Content" style="display:none;">
+                    <div class="card space-card">
                         <div>
                             <div class="card-img">
                                 <div class="svg-icon">
@@ -1874,21 +2480,18 @@ $imagePath = BASE_URL . '/assets/images/booking-space-card-image.svg';
                                 <div>
                                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                                         width="255" height="129" viewBox="0 0 255 129" fill="none">
-
                                         <path
                                             d="M255 124C255 126.761 252.761 129 250 129H5C2.23858 129 0 126.761 0 124V37C0 34.2386 2.23858 32 5 32H27C29.7614 32 32 29.7614 32 27V5C32 2.23858 34.2386 0 37 0H250C252.761 0 255 2.23858 255 5V124Z"
-                                            fill="url(#pattern0)" />
-
+                                            fill="url(#pattern0_space)" />
                                         <defs>
-                                            <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1"
-                                                height="1">
-                                                <use xlink:href="#image0" transform="scale(0.0039 0.0078)" />
+                                            <pattern id="pattern0_space" patternContentUnits="objectBoundingBox"
+                                                width="1" height="1">
+                                                <use xlink:href="#image0_space" transform="scale(0.0039 0.0078)" />
                                             </pattern>
-
-                                            <image id="image0" href="<?php echo htmlspecialchars($imagePath); ?>"
+                                            <image id="image0_space"
+                                                href="<?= BASE_URL ?>/assets/images/booking-space-card-image.svg"
                                                 width="255" height="129" preserveAspectRatio="xMidYMid slice" />
                                         </defs>
-
                                     </svg>
                                 </div>
                                 <div class="card-img-content">
@@ -1912,6 +2515,7 @@ $imagePath = BASE_URL . '/assets/images/booking-space-card-image.svg';
                                         </svg>
                                         <p>Popular</p>
                                     </div>
+
                                     <div>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="9" height="11" viewBox="0 0 9 11"
                                             fill="none">
@@ -1943,9 +2547,7 @@ $imagePath = BASE_URL . '/assets/images/booking-space-card-image.svg';
                                                 fill="#FFC97A" />
                                         </svg>
                                         <p>4.3</p>
-                                        <span>
-                                            (20 reviews)
-                                        </span>
+                                        <span>(20 reviews)</span>
                                     </div>
                                 </div>
                             </div>
@@ -1953,9 +2555,7 @@ $imagePath = BASE_URL . '/assets/images/booking-space-card-image.svg';
                         <div class="card-booking-info">
                             <div>
                                 <div>
-                                    <span>
-                                        Space
-                                    </span>
+                                    <span>Space</span>
                                     <p>Garden / Shed</p>
                                 </div>
                                 <div>
@@ -1980,9 +2580,7 @@ $imagePath = BASE_URL . '/assets/images/booking-space-card-image.svg';
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                             viewBox="0 0 48 48">
                                             <path
-                                                d="M 24 4 C 12.972066 4 4 12.972074 4 24 C 4 35.027926 12.972066 44 24 44 C 35.027934 44 44 35.027926 44 24 C 44 12.972074 35.027934 4 24 4 z
-       M 24 7 C 33.406615 7 41 14.593391 41 24 C 41 33.406609 33.406615 41 24 41 C 14.593385 41 7 33.406609 7 24 C 7 14.593391 14.593385 7 24 7 z
-       M 22.476562 11.978516 A 1.50015 1.50015 0 0 0 21 13.5 L 21 24.5 A 1.50015 1.50015 0 0 0 21.439453 25.560547 L 26.439453 30.560547 A 1.50015 1.50015 0 1 0 28.560547 28.439453 L 24 23.878906 L 24 13.5 A 1.50015 1.50015 0 0 0 22.476562 11.978516 z"
+                                                d="M 24 4 C 12.972066 4 4 12.972074 4 24 C 4 35.027926 12.972066 44 24 44 C 35.027934 44 44 35.027926 44 24 C 44 12.972074 35.027934 4 24 4 z M 24 7 C 33.406615 7 41 14.593391 41 24 C 41 33.406609 33.406615 41 24 41 C 14.593385 41 7 33.406609 7 24 C 7 14.593391 14.593385 7 24 7 z M 22.476562 11.978516 A 1.50015 1.50015 0 0 0 21 13.5 L 21 24.5 A 1.50015 1.50015 0 0 0 21.439453 25.560547 L 26.439453 30.560547 A 1.50015 1.50015 0 1 0 28.560547 28.439453 L 24 23.878906 L 24 13.5 A 1.50015 1.50015 0 0 0 22.476562 11.978516 z"
                                                 fill="#9D9B98" />
                                         </svg>
                                         Time
@@ -2006,141 +2604,6 @@ $imagePath = BASE_URL . '/assets/images/booking-space-card-image.svg';
                                 <button>Change</button>
                             </div>
                         </div>
-                    </div>
-                    <div class="information">
-                        <h2>Pet Information for Space Use</h2>
-
-                        <!-- Buttons — hidden once list is shown -->
-                        <div class="btns" id="petActionBtns">
-                            <button id="selectPetsBtn">Select existing pet/s</button>
-                            <button id="addNewPetBtn">+ Add new pet/s</button>
-                        </div>
-
-                        <!-- Inline pet list (shown in place of buttons) -->
-                        <div class="pet-list" id="petList"></div>
-                        <div class="pet-details-form hidden">
-                            <div>
-                                <h2>Pet Details</h2>
-                            </div>
-                            <div>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="85" height="85" viewBox="0 0 85 85"
-                                    fill="none" id="petPhotoPlaceholder">
-                                    <mask id="path-1-inside-1_85_569" fill="white">
-                                        <path
-                                            d="M43.5 0C66.4198 0 85 18.5802 85 41.5V43.5C85 66.4198 66.4198 85 43.5 85H41.5C18.5802 85 0 66.4198 0 43.5V41.5C0 18.5802 18.5802 0 41.5 0H43.5ZM43 39.3184C39.2287 39.3184 36.4346 41.367 34.6494 43.9092C32.8863 46.4133 32 49.5227 32 52.0459C32.0002 54.9857 33.7446 57.0319 35.8848 58.2568C37.9904 59.4658 40.6304 60 43 60C45.3696 60 48.0096 59.469 50.1152 58.2568C52.2523 57.0287 53.9998 54.9857 54 52.0459C54 49.5227 53.1137 46.4133 51.3506 43.9092C49.5686 41.3638 46.7745 39.3184 43 39.3184ZM25.7139 39.3184C24.1584 39.3185 22.9388 40.2763 22.1846 41.4248C21.421 42.5829 21 44.0941 21 45.6816C21 47.2694 21.4209 48.7813 22.1846 49.9395C22.9388 51.0848 24.1584 52.0457 25.7139 52.0459C27.2696 52.0459 28.4899 51.0881 29.2441 49.9395C30.0079 48.7813 30.4287 47.2694 30.4287 45.6816C30.4287 44.0942 30.0077 42.5829 29.2441 41.4248C28.4899 40.2794 27.2696 39.3184 25.7139 39.3184ZM60.2861 39.3184C58.7304 39.3184 57.5101 40.2762 56.7559 41.4248C55.9923 42.5829 55.5713 44.0942 55.5713 45.6816C55.5713 47.2694 55.9921 48.7813 56.7559 49.9395C57.5102 51.0849 58.7304 52.0459 60.2861 52.0459C61.8416 52.0457 63.0612 51.0879 63.8154 49.9395C64.5791 48.7813 65 47.2694 65 45.6816C65 44.0941 64.579 42.5829 63.8154 41.4248C63.0612 40.2795 61.8416 39.3185 60.2861 39.3184ZM35.1426 25C33.587 25.0001 32.3675 25.9579 31.6133 27.1064C30.8497 28.2645 30.4288 29.7757 30.4287 31.3633C30.4287 32.951 30.8496 34.4629 31.6133 35.6211C32.3675 36.7665 33.587 37.7274 35.1426 37.7275C36.6982 37.7275 37.9176 36.7696 38.6719 35.6211C39.4356 34.4629 39.8574 32.951 39.8574 31.3633C39.8574 29.7757 39.4355 28.2645 38.6719 27.1064C37.9176 25.961 36.6982 25 35.1426 25ZM50.8574 25C49.3018 25 48.0824 25.9579 47.3281 27.1064C46.5645 28.2645 46.1426 29.7757 46.1426 31.3633C46.1426 32.951 46.5644 34.4629 47.3281 35.6211C48.0824 36.7664 49.3019 37.7275 50.8574 37.7275C52.413 37.7274 53.6325 36.7696 54.3867 35.6211C55.1504 34.4629 55.5713 32.951 55.5713 31.3633C55.5712 29.7757 55.1503 28.2645 54.3867 27.1064C53.6325 25.9611 52.413 25.0001 50.8574 25Z" />
-                                    </mask>
-                                    <path
-                                        d="M43.5 0C66.4198 0 85 18.5802 85 41.5V43.5C85 66.4198 66.4198 85 43.5 85H41.5C18.5802 85 0 66.4198 0 43.5V41.5C0 18.5802 18.5802 0 41.5 0H43.5ZM43 39.3184C39.2287 39.3184 36.4346 41.367 34.6494 43.9092C32.8863 46.4133 32 49.5227 32 52.0459C32.0002 54.9857 33.7446 57.0319 35.8848 58.2568C37.9904 59.4658 40.6304 60 43 60C45.3696 60 48.0096 59.469 50.1152 58.2568C52.2523 57.0287 53.9998 54.9857 54 52.0459C54 49.5227 53.1137 46.4133 51.3506 43.9092C49.5686 41.3638 46.7745 39.3184 43 39.3184ZM25.7139 39.3184C24.1584 39.3185 22.9388 40.2763 22.1846 41.4248C21.421 42.5829 21 44.0941 21 45.6816C21 47.2694 21.4209 48.7813 22.1846 49.9395C22.9388 51.0848 24.1584 52.0457 25.7139 52.0459C27.2696 52.0459 28.4899 51.0881 29.2441 49.9395C30.0079 48.7813 30.4287 47.2694 30.4287 45.6816C30.4287 44.0942 30.0077 42.5829 29.2441 41.4248C28.4899 40.2794 27.2696 39.3184 25.7139 39.3184ZM60.2861 39.3184C58.7304 39.3184 57.5101 40.2762 56.7559 41.4248C55.9923 42.5829 55.5713 44.0942 55.5713 45.6816C55.5713 47.2694 55.9921 48.7813 56.7559 49.9395C57.5102 51.0849 58.7304 52.0459 60.2861 52.0459C61.8416 52.0457 63.0612 51.0879 63.8154 49.9395C64.5791 48.7813 65 47.2694 65 45.6816C65 44.0941 64.579 42.5829 63.8154 41.4248C63.0612 40.2795 61.8416 39.3185 60.2861 39.3184ZM35.1426 25C33.587 25.0001 32.3675 25.9579 31.6133 27.1064C30.8497 28.2645 30.4288 29.7757 30.4287 31.3633C30.4287 32.951 30.8496 34.4629 31.6133 35.6211C32.3675 36.7665 33.587 37.7274 35.1426 37.7275C36.6982 37.7275 37.9176 36.7696 38.6719 35.6211C39.4356 34.4629 39.8574 32.951 39.8574 31.3633C39.8574 29.7757 39.4355 28.2645 38.6719 27.1064C37.9176 25.961 36.6982 25 35.1426 25ZM50.8574 25C49.3018 25 48.0824 25.9579 47.3281 27.1064C46.5645 28.2645 46.1426 29.7757 46.1426 31.3633C46.1426 32.951 46.5644 34.4629 47.3281 35.6211C48.0824 36.7664 49.3019 37.7275 50.8574 37.7275C52.413 37.7274 53.6325 36.7696 54.3867 35.6211C55.1504 34.4629 55.5713 32.951 55.5713 31.3633C55.5712 29.7757 55.1503 28.2645 54.3867 27.1064C53.6325 25.9611 52.413 25.0001 50.8574 25Z"
-                                        fill="#D4D4D4" />
-                                    <path
-                                        d="M43.5 0V-1V0ZM43.5 85V86V85ZM34.6494 43.9092L35.4671 44.4849L35.4678 44.4839L34.6494 43.9092ZM32 52.0459H31V52.046L32 52.0459ZM35.8848 58.2568L36.3827 57.3896L36.3815 57.3889L35.8848 58.2568ZM50.1152 58.2568L49.617 57.3898L49.6163 57.3902L50.1152 58.2568ZM54 52.0459L55 52.046V52.0459H54ZM51.3506 43.9092L50.5314 44.4827L50.5329 44.4849L51.3506 43.9092ZM25.7139 39.3184V38.3184H25.7138L25.7139 39.3184ZM22.1846 41.4248L23.0194 41.9753L23.0205 41.9737L22.1846 41.4248ZM21 45.6816L20 45.6816V45.6816H21ZM22.1846 49.9395L23.0197 49.3895L23.0194 49.389L22.1846 49.9395ZM25.7139 52.0459L25.7138 53.0459H25.7139V52.0459ZM29.2441 49.9395L28.4093 49.389L28.4083 49.3905L29.2441 49.9395ZM30.4287 45.6816H31.4287V45.6816L30.4287 45.6816ZM29.2441 41.4248L28.409 41.9748L28.4093 41.9752L29.2441 41.4248ZM60.2861 39.3184L60.2862 38.3184H60.2861V39.3184ZM56.7559 41.4248L57.5907 41.9752L57.5917 41.9737L56.7559 41.4248ZM55.5713 45.6816L54.5713 45.6816V45.6816H55.5713ZM56.7559 49.9395L57.591 49.3895L57.5907 49.389L56.7559 49.9395ZM60.2861 52.0459V53.0459H60.2862L60.2861 52.0459ZM63.8154 49.9395L62.9806 49.389L62.9796 49.3905L63.8154 49.9395ZM65 45.6816H66V45.6816L65 45.6816ZM63.8154 41.4248L62.9802 41.9748L62.9806 41.9753L63.8154 41.4248ZM35.1426 25V24H35.1425L35.1426 25ZM31.6133 27.1064L32.4481 27.6569L32.4492 27.6554L31.6133 27.1064ZM30.4287 31.3633L29.4287 31.3632V31.3633H30.4287ZM31.6133 35.6211L32.4485 35.0711L32.4481 35.0706L31.6133 35.6211ZM35.1426 37.7275L35.1425 38.7275H35.1426V37.7275ZM38.6719 35.6211L37.837 35.0706L37.836 35.0721L38.6719 35.6211ZM39.8574 31.3633H40.8574V31.3632L39.8574 31.3633ZM38.6719 27.1064L37.8367 27.6564L37.837 27.6569L38.6719 27.1064ZM50.8574 25L50.8575 24H50.8574V25ZM47.3281 27.1064L48.163 27.6569L48.164 27.6554L47.3281 27.1064ZM46.1426 31.3633L45.1426 31.3632V31.3633H46.1426ZM47.3281 35.6211L48.1633 35.0711L48.163 35.0706L47.3281 35.6211ZM50.8574 37.7275V38.7275H50.8575L50.8574 37.7275ZM54.3867 35.6211L53.5519 35.0706L53.5508 35.0722L54.3867 35.6211ZM55.5713 31.3633H56.5713V31.3632L55.5713 31.3633ZM54.3867 27.1064L53.5515 27.6564L53.5519 27.6569L54.3867 27.1064ZM43.5 0V1C65.8675 1 84 19.1325 84 41.5H85H86C86 18.0279 66.9721 -1 43.5 -1V0ZM85 41.5H84V43.5H85H86V41.5H85ZM85 43.5H84C84 65.8675 65.8675 84 43.5 84V85V86C66.9721 86 86 66.9721 86 43.5H85ZM43.5 85V84H41.5V85V86H43.5V85ZM41.5 85V84C19.1325 84 1 65.8675 1 43.5H0H-1C-1 66.9721 18.0279 86 41.5 86V85ZM0 43.5H1V41.5H0H-1V43.5H0ZM0 41.5H1C1 19.1325 19.1325 1 41.5 1V0V-1C18.0279 -1 -1 18.0279 -1 41.5H0ZM41.5 0V1H43.5V0V-1H41.5V0ZM43 39.3184V38.3184C38.8207 38.3184 35.7506 40.601 33.831 43.3345L34.6494 43.9092L35.4678 44.4839C37.1186 42.1331 39.6367 40.3184 43 40.3184V39.3184ZM34.6494 43.9092L33.8318 43.3335C31.9482 46.0085 31 49.3196 31 52.0459H32H33C33 49.7258 33.8243 46.818 35.4671 44.4849L34.6494 43.9092ZM32 52.0459L31 52.046C31.0002 55.4494 33.0401 57.7809 35.388 59.1247L35.8848 58.2568L36.3815 57.3889C34.4491 56.2829 33.0001 54.5219 33 52.0458L32 52.0459ZM35.8848 58.2568L35.3869 59.1241C37.6792 60.4402 40.5013 61 43 61V60V59C40.7595 59 38.3016 58.4914 36.3827 57.3896L35.8848 58.2568ZM43 60V61C45.4977 61 48.3206 60.4438 50.6141 59.1235L50.1152 58.2568L49.6163 57.3902C47.6986 58.4942 45.2415 59 43 59V60ZM50.1152 58.2568L50.6135 59.1239C52.9556 57.7779 54.9998 55.4505 55 52.046L54 52.0459L53 52.0458C52.9999 54.5208 51.549 56.2795 49.617 57.3898L50.1152 58.2568ZM54 52.0459H55C55 49.3196 54.0518 46.0085 52.1682 43.3335L51.3506 43.9092L50.5329 44.4849C52.1757 46.818 53 49.7258 53 52.0459H54ZM51.3506 43.9092L52.1698 43.3357C50.2525 40.5971 47.1818 38.3184 43 38.3184V39.3184V40.3184C46.3671 40.3184 48.8846 42.1305 50.5314 44.4827L51.3506 43.9092ZM25.7139 39.3184L25.7138 38.3184C23.7118 38.3186 22.2182 39.5518 21.3487 40.8759L22.1846 41.4248L23.0205 41.9737C23.6594 41.0007 24.6049 40.3185 25.714 40.3184L25.7139 39.3184ZM22.1846 41.4248L21.3497 40.8744C20.4636 42.2183 20 43.9272 20 45.6816L21 45.6816L22 45.6817C22 44.2611 22.3784 42.9475 23.0194 41.9753L22.1846 41.4248ZM21 45.6816H20C20 47.4362 20.4634 49.1458 21.3497 50.49L22.1846 49.9395L23.0194 49.389C22.3783 48.4167 22 47.1026 22 45.6816H21ZM22.1846 49.9395L21.3494 50.4894C22.2178 51.8082 23.7109 53.0457 25.7138 53.0459L25.7139 52.0459L25.714 51.0459C24.6059 51.0458 23.6598 50.3614 23.0197 49.3895L22.1846 49.9395ZM25.7139 52.0459V53.0459C27.7159 53.0459 29.2103 51.8127 30.08 50.4884L29.2441 49.9395L28.4083 49.3905C27.7694 50.3634 26.8232 51.0459 25.7139 51.0459V52.0459ZM29.2441 49.9395L30.079 50.49C30.9653 49.1458 31.4287 47.4362 31.4287 45.6816H30.4287H29.4287C29.4287 47.1026 29.0504 48.4167 28.4093 49.389L29.2441 49.9395ZM30.4287 45.6816L31.4287 45.6816C31.4287 43.9272 30.965 42.2183 30.079 40.8744L29.2441 41.4248L28.4093 41.9752C29.0503 42.9475 29.4287 44.2611 29.4287 45.6817L30.4287 45.6816ZM29.2441 41.4248L30.0793 40.8748C29.2107 39.5558 27.7169 38.3184 25.7139 38.3184V39.3184V40.3184C26.8223 40.3184 27.769 41.0029 28.409 41.9748L29.2441 41.4248ZM60.2861 39.3184V38.3184C58.2841 38.3184 56.7896 39.5515 55.92 40.8759L56.7559 41.4248L57.5917 41.9737C58.2306 41.0008 59.1768 40.3184 60.2861 40.3184V39.3184ZM56.7559 41.4248L55.921 40.8744C55.035 42.2183 54.5713 43.9272 54.5713 45.6816L55.5713 45.6816L56.5713 45.6817C56.5713 44.2611 56.9497 42.9475 57.5907 41.9752L56.7559 41.4248ZM55.5713 45.6816H54.5713C54.5713 47.4362 55.0347 49.1458 55.921 50.49L56.7559 49.9395L57.5907 49.389C56.9496 48.4167 56.5713 47.1026 56.5713 45.6816H55.5713ZM56.7559 49.9395L55.9207 50.4894C56.7893 51.8085 58.2832 53.0459 60.2861 53.0459V52.0459V51.0459C59.1777 51.0459 58.231 50.3613 57.591 49.3895L56.7559 49.9395ZM60.2861 52.0459L60.2862 53.0459C62.2881 53.0457 63.7818 51.8124 64.6513 50.4884L63.8154 49.9395L62.9796 49.3905C62.3406 50.3635 61.395 51.0458 60.286 51.0459L60.2861 52.0459ZM63.8154 49.9395L64.6503 50.49C65.5366 49.1458 66 47.4362 66 45.6816H65H64C64 47.1026 63.6217 48.4167 62.9806 49.389L63.8154 49.9395ZM65 45.6816L66 45.6816C66 43.9272 65.5364 42.2183 64.6503 40.8744L63.8154 41.4248L62.9806 41.9753C63.6216 42.9475 64 44.2611 64 45.6817L65 45.6816ZM63.8154 41.4248L64.6506 40.8748C63.7822 39.556 62.2891 38.3186 60.2862 38.3184L60.2861 39.3184L60.286 40.3184C61.3942 40.3185 62.3402 41.0029 62.9802 41.9748L63.8154 41.4248ZM35.1426 25L35.1425 24C33.1404 24.0001 31.6469 25.2335 30.7774 26.5575L31.6133 27.1064L32.4492 27.6554C33.0882 26.6823 34.0336 26.0001 35.1427 26L35.1426 25ZM31.6133 27.1064L30.7784 26.556C29.8923 27.8999 29.4288 29.6088 29.4287 31.3632L30.4287 31.3633L31.4287 31.3633C31.4288 29.9427 31.8071 28.6291 32.4481 27.6569L31.6133 27.1064ZM30.4287 31.3633H29.4287C29.4287 33.1178 29.8921 34.8275 30.7784 36.1716L31.6133 35.6211L32.4481 35.0706C31.807 34.0984 31.4287 32.7842 31.4287 31.3633H30.4287ZM31.6133 35.6211L30.7781 36.1711C31.6465 37.4898 33.1395 38.7274 35.1425 38.7275L35.1426 37.7275L35.1427 36.7275C34.0345 36.7275 33.0885 36.0431 32.4485 35.0711L31.6133 35.6211ZM35.1426 37.7275V38.7275C37.1448 38.7275 38.6383 37.4939 39.5077 36.1701L38.6719 35.6211L37.836 35.0721C37.1969 36.0453 36.2515 36.7275 35.1426 36.7275V37.7275ZM38.6719 35.6211L39.5067 36.1716C40.3928 34.8278 40.8574 33.1183 40.8574 31.3633H39.8574H38.8574C38.8574 32.7837 38.4784 34.098 37.837 35.0706L38.6719 35.6211ZM39.8574 31.3633L40.8574 31.3632C40.8574 29.6083 40.3927 27.8996 39.5067 26.5559L38.6719 27.1064L37.837 27.6569C38.4784 28.6295 38.8574 29.9431 38.8574 31.3633L39.8574 31.3633ZM38.6719 27.1064L39.507 26.5565C38.6386 25.2378 37.1458 24 35.1426 24V25V26C36.2507 26 37.1965 26.6843 37.8367 27.6564L38.6719 27.1064ZM50.8574 25V24C48.8552 24 47.3617 25.2335 46.4923 26.5575L47.3281 27.1064L48.164 27.6554C48.8031 26.6822 49.7484 26 50.8574 26V25ZM47.3281 27.1064L46.4933 26.5559C45.6073 27.8996 45.1426 29.6083 45.1426 31.3632L46.1426 31.3633L47.1426 31.3633C47.1426 29.9431 47.5217 28.6295 48.163 27.6569L47.3281 27.1064ZM46.1426 31.3633H45.1426C45.1426 33.1183 45.6072 34.8278 46.4933 36.1716L47.3281 35.6211L48.163 35.0706C47.5216 34.098 47.1426 32.7837 47.1426 31.3633H46.1426ZM47.3281 35.6211L46.493 36.1711C47.3614 37.4897 48.8543 38.7275 50.8574 38.7275V37.7275V36.7275C49.7494 36.7275 48.8035 36.0431 48.1633 35.0711L47.3281 35.6211ZM50.8574 37.7275L50.8575 38.7275C52.8595 38.7274 54.3531 37.494 55.2226 36.17L54.3867 35.6211L53.5508 35.0722C52.9118 36.0452 51.9664 36.7275 50.8573 36.7275L50.8574 37.7275ZM54.3867 35.6211L55.2216 36.1716C56.1079 34.8275 56.5713 33.1178 56.5713 31.3633H55.5713H54.5713C54.5713 32.7842 54.193 34.0984 53.5519 35.0706L54.3867 35.6211ZM55.5713 31.3633L56.5713 31.3632C56.5712 29.6088 56.1077 27.8999 55.2216 26.556L54.3867 27.1064L53.5519 27.6569C54.1929 28.6291 54.5712 29.9427 54.5713 31.3633L55.5713 31.3633ZM54.3867 27.1064L55.2219 26.5565C54.3535 25.2377 52.8605 24.0001 50.8575 24L50.8574 25L50.8573 26C51.9655 26.0001 52.9115 26.6844 53.5515 27.6564L54.3867 27.1064Z"
-                                        fill="#C9C9C9" mask="url(#path-1-inside-1_85_569)" />
-                                </svg>
-                                <!-- Hidden file input -->
-                                <input type="file" id="petPhotoInput" accept="image/*" style="display: none;">
-                                <button type="button" id="petPhotoUploadBtn">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14"
-                                        fill="none">
-                                        <path
-                                            d="M7 10.3162C6.72386 10.3162 6.5 10.0923 6.5 9.8162V1.6662L4.52903 3.63716C4.33115 3.83504 4.00998 3.83392 3.81349 3.63465C3.61896 3.43738 3.62005 3.1201 3.81593 2.92416L6.55492 0.184403C6.80072 -0.0614672 7.19931 -0.0614954 7.44514 0.184341L10.185 2.92419C10.3809 3.12014 10.3822 3.43747 10.1877 3.63493C9.99116 3.83455 9.66959 3.83579 9.47149 3.63769L7.5 1.6662V9.8162C7.5 10.0923 7.27614 10.3162 7 10.3162ZM1.616 13.7392C1.15533 13.7392 0.771 13.5852 0.463 13.2772C0.155 12.9692 0.000666667 12.5845 0 12.1232V10.2002C0 9.92405 0.223858 9.7002 0.5 9.7002C0.776142 9.7002 1 9.92406 1 10.2002V12.1232C1 12.2772 1.064 12.4185 1.192 12.5472C1.32 12.6759 1.461 12.7399 1.615 12.7392H12.385C12.5383 12.7392 12.6793 12.6752 12.808 12.5472C12.9367 12.4192 13.0007 12.2779 13 12.1232V10.2002C13 9.92405 13.2239 9.7002 13.5 9.7002C13.7761 9.7002 14 9.92406 14 10.2002V12.1232C14 12.5839 13.846 12.9682 13.538 13.2762C13.23 13.5842 12.8453 13.7385 12.384 13.7392H1.616Z"
-                                            fill="#3B3731" />
-                                    </svg>
-                                    Upload Pet Photo
-                                </button>
-                            </div>
-                            <div class="form-grid">
-                                <div class="form-group">
-                                    <label>Name</label>
-                                    <div style="position:relative; display:block;">
-                                        <input type="text" id="petName"
-                                            style="padding-right:40px; width:100%; display:block;">
-                                        <span class="input-check-icon" id="petNameCheck">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19"
-                                                viewBox="0 0 19 19" fill="none">
-                                                <path
-                                                    d="M9.5 0C4.275 0 0 4.275 0 9.5C0 14.725 4.275 19 9.5 19C14.725 19 19 14.725 19 9.5C19 4.275 14.725 0 9.5 0ZM7.6 14.25L2.85 9.5L4.1895 8.1605L7.6 11.5615L14.8105 4.351L16.15 5.7L7.6 14.25Z"
-                                                    fill="#C9DDA0" />
-                                            </svg>
-                                        </span>
-                                    </div>
-                                </div>
-
-                                <?php renderBirthdayCalendar('birthday'); ?>
-
-                                <div class="form-group">
-                                    <label>Pet Type</label>
-                                    <div style="position:relative; display:block;">
-                                        <input type="text" id="petTypeInput" placeholder="e.g. Dog, Cat, Rabbit..."
-                                            autocomplete="off" style="padding-right:40px; width:100%; display:block;">
-                                        <span class="input-check-icon" id="petTypeCheck">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19"
-                                                viewBox="0 0 19 19" fill="none">
-                                                <path
-                                                    d="M9.5 0C4.275 0 0 4.275 0 9.5C0 14.725 4.275 19 9.5 19C14.725 19 19 14.725 19 9.5C19 4.275 14.725 0 9.5 0ZM7.6 14.25L2.85 9.5L4.1895 8.1605L7.6 11.5615L14.8105 4.351L16.15 5.7L7.6 14.25Z"
-                                                    fill="#C9DDA0" />
-                                            </svg>
-                                        </span>
-                                    </div>
-                                    <div id="petTypeSuggestions"
-                                        style="display: none; border: 1px solid #D4D4D4; border-top: none; border-radius: 0 0 10px 10px; background: #FFF; max-height: 200px; overflow-y: auto; position: absolute; width: calc(100% - 20px); z-index: 10;">
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label>Breed(s)</label>
-                                    <div class="input-wrap select-wrap">
-                                        <select data-furs-dropdown data-furs-searchable id="petBreedSelect">
-                                            <option value="">Select a Breed</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label>Sex</label>
-
-                                    <div class="sex-options" role="radiogroup" aria-label="Sex">
-                                        <label class="radio--small">
-                                            <input type="radio" name="sex" value="male" id="petSexMale">
-                                            <span class="radio--visual" aria-hidden="true"></span>
-                                            <span class="radio--text">Male</span>
-                                        </label>
-
-                                        <label class="radio--small">
-                                            <input type="radio" name="sex" value="female" id="petSexFemale">
-                                            <span class="radio--visual" aria-hidden="true"></span>
-                                            <span class="radio--text">Female</span>
-                                        </label>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label>Weight <span>(kg)</span></label>
-                                    <input value="4" type="number" id="petWeight">
-                                </div>
-
-                                <div class="form-group full-width">
-                                    <label>Notes <span>(Optional)</span></label>
-                                    <textarea placeholder="Anything your groomer should know?
-(e.g. anxious around dryers, allergies, behaviour cues)" rows="4" cols="50" id="petNotes"></textarea>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-btns" id="petFormBtns" style="display: none;">
-                            <div>
-                                <button type="button" id="petFormCancelBtn">Cancel</button>
-                                <button type="button" id="petFormSaveBtn">Save</button>
-                            </div>
-                        </div>
-
-                        <!-- Pet Details Display Section -->
-                        <div class="pet-details-display" id="petDetailsDisplay">
-                            <div class="pet-details-display-content" id="petDetailsContent">
-                            </div>
-                            <div class="pet-display-action-btns">
-                                <button type="button" id="petDisplayChangeBtn">Edit</button>
-                            </div>
-                        </div>
-
                     </div>
                     <div class="add-ons">
                         <h2 class="add-ons-title">Add-ons Services</h2>
@@ -2202,26 +2665,27 @@ $imagePath = BASE_URL . '/assets/images/booking-space-card-image.svg';
                                 </div>
                             </label>
                         </div>
-                        <div class="add-ons-actions">
-                            <button type="button" class="continue-action-btn" id="addonsContinueBtn">
-                                Continue
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <path d="M5 12h14"></path>
-                                    <path d="m12 5 7 7-7 7"></path>
-                                </svg>
-                            </button>
-                        </div>
                     </div>
-
-                </div>
-
-                <!-- Step 2: Confirm & Pay -->
-                <div id="step2Content" style="display:none;">
-                    <?php renderConfirmPay(); ?>
+                    <div class="add-ons-actions" id="step2ActionsContainer"
+                        style="margin-top: 2.5rem; display: flex; justify-content: flex-end;">
+                        <button type="button" class="continue-action-btn" id="spaceContinueBtn">
+                            Continue
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M5 12h14"></path>
+                                <path d="m12 5 7 7-7 7"></path>
+                            </svg>
+                        </button>
+                    </div>
                 </div>
                 <!-- End Step 2 -->
+
+                <!-- Step 3: Confirm & Pay -->
+                <div id="step3Content" style="display:none;">
+                    <?php renderConfirmPay(); ?>
+                </div>
+                <!-- End Step 3 -->
 
             </div>
             <div class="col-lg-4">
@@ -2229,50 +2693,179 @@ $imagePath = BASE_URL . '/assets/images/booking-space-card-image.svg';
                     <div>
                         <h3>Your Booking</h3>
                     </div>
-                    <div>
-                        <div>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="36" viewBox="0 0 32 36"
-                                fill="none">
-                                <ellipse cx="17.3667" cy="18.0807" rx="10.2458" ry="9.64315" fill="white" />
-                                <path
-                                    d="M16.8932 0.202494C16.6132 0.0698256 16.3132 0 15.9998 0C15.6865 0 15.3865 0.0698256 15.1065 0.202494L2.55333 5.78156C1.08668 6.43094 -0.00663626 7.94615 3.03229e-05 9.77559C0.0333633 16.7023 2.75333 29.3756 14.2399 35.1362C15.3532 35.6949 16.6465 35.6949 17.7598 35.1362C29.2463 29.3756 31.9663 16.7023 31.9996 9.77559C32.0063 7.94615 30.913 6.43094 29.4463 5.78156L16.8932 0.202494ZM9.65991 19.9841C9.97991 20.0679 10.3199 20.1098 10.6666 20.1098C13.0199 20.1098 14.9332 18.1058 14.9332 15.6409V11.1721H17.8798C18.6865 11.1721 19.4265 11.6469 19.7865 12.408L20.2665 13.4065H24.5331C25.1197 13.4065 25.5997 13.9093 25.5997 14.5237V16.7581C25.5997 19.8444 23.2131 22.3442 20.2665 22.3442H17.0665V25.8844C17.0665 26.3941 16.6732 26.813 16.1798 26.813C16.0598 26.813 15.9398 26.7851 15.8332 26.7362L9.25325 23.7826C8.81326 23.5871 8.53326 23.1332 8.53326 22.6375C8.53326 22.4419 8.57326 22.2534 8.65993 22.0789L9.65991 19.9841ZM9.59992 11.1721H12.7999V15.6409C12.7999 16.8769 11.8466 17.8754 10.6666 17.8754C9.48658 17.8754 8.53326 16.8769 8.53326 15.6409V12.2893C8.53326 11.6748 9.01326 11.1721 9.59992 11.1721ZM18.1331 14.5237C18.1331 14.2274 18.0208 13.9433 17.8207 13.7337C17.6207 13.5242 17.3494 13.4065 17.0665 13.4065C16.7836 13.4065 16.5123 13.5242 16.3123 13.7337C16.1122 13.9433 15.9998 14.2274 15.9998 14.5237C15.9998 14.82 16.1122 15.1042 16.3123 15.3137C16.5123 15.5232 16.7836 15.6409 17.0665 15.6409C17.3494 15.6409 17.6207 15.5232 17.8207 15.3137C18.0208 15.1042 18.1331 14.82 18.1331 14.5237Z"
-                                    fill="#C9DDA0" />
-                            </svg>
-                            <!-- Note: ensure service-summary-image.png matches your logic or copy booking-groomer's image href -->
-                            <img src="<?= BASE_URL ?>/assets/images/service-summary-image.png" alt="Space Placeholder"
-                                class="service-summary-img" />
-                        </div>
-                        <div>
-                            <div>
-                                <p>Furs & Co. Studio</p>
-                                <p>Hosted by <span>Dev É.</span></p>
+
+                    <!-- Groomer Section -->
+                    <div style="margin-bottom: 24px;">
+                        <div style="display:flex; align-items:flex-start; gap:16px;">
+                            <div style="position:relative;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="36" viewBox="0 0 32 36"
+                                    fill="none" style="position:absolute; top:-10px; left:-10px; z-index:2;">
+                                    <ellipse cx="17.3667" cy="18.0807" rx="10.2458" ry="9.64315" fill="white" />
+                                    <path
+                                        d="M16.8932 0.202494C16.6132 0.0698256 16.3132 0 15.9998 0C15.6865 0 15.3865 0.0698256 15.1065 0.202494L2.55333 5.78156C1.08668 6.43094 -0.00663626 7.94615 3.03229e-05 9.77559C0.0333633 16.7023 2.75333 29.3756 14.2399 35.1362C15.3532 35.6949 16.6465 35.6949 17.7598 35.1362C29.2463 29.3756 31.9663 16.7023 31.9996 9.77559C32.0063 7.94615 30.913 6.43094 29.4463 5.78156L16.8932 0.202494ZM9.65991 19.9841C9.97991 20.0679 10.3199 20.1098 10.6666 20.1098C13.0199 20.1098 14.9332 18.1058 14.9332 15.6409V11.1721H17.8798C18.6865 11.1721 19.4265 11.6469 19.7865 12.408L20.2665 13.4065H24.5331C25.1197 13.4065 25.5997 13.9093 25.5997 14.5237V16.7581C25.5997 19.8444 23.2131 22.3442 20.2665 22.3442H17.0665V25.8844C17.0665 26.3941 16.6732 26.813 16.1798 26.813C16.0598 26.813 15.9398 26.7851 15.8332 26.7362L9.25325 23.7826C8.81326 23.5871 8.53326 23.1332 8.53326 22.6375C8.53326 22.4419 8.57326 22.2534 8.65993 22.0789L9.65991 19.9841ZM9.59992 11.1721H12.7999V15.6409C12.7999 16.8769 11.8466 17.8754 10.6666 17.8754C9.48658 17.8754 8.53326 16.8769 8.53326 15.6409V12.2893C8.53326 11.6748 9.01326 11.1721 9.59992 11.1721ZM18.1331 14.5237C18.1331 14.2274 18.0208 13.9433 17.8207 13.7337C17.6207 13.5242 17.3494 13.4065 17.0665 13.4065C16.7836 13.4065 16.5123 13.5242 16.3123 13.7337C16.1122 13.9433 15.9998 14.2274 15.9998 14.5237C15.9998 14.82 16.1122 15.1042 16.3123 15.3137C16.5123 15.5232 16.7836 15.6409 17.0665 15.6409C17.3494 15.6409 17.6207 15.5232 17.8207 15.3137C18.0208 15.1042 18.1331 14.82 18.1331 14.5237Z"
+                                        fill="#C9DDA0" />
+                                </svg>
+                                <img src="<?= BASE_URL ?>/assets/images/service-summary-image.png"
+                                    alt="Groomer Placeholder"
+                                    style="width:64px; height:64px; border-radius:50%; object-fit:cover;" />
                             </div>
-                            <div>
-                                <p>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="13" height="18" viewBox="0 0 13 18"
-                                        fill="none">
-                                        <path
-                                            d="M6.5 8.55C5.88432 8.55 5.29385 8.31295 4.8585 7.89099C4.42315 7.46903 4.17857 6.89674 4.17857 6.3C4.17857 5.70326 4.42315 5.13097 4.8585 4.70901C5.29385 4.28705 5.88432 4.05 6.5 4.05C7.11568 4.05 7.70615 4.28705 8.1415 4.70901C8.57685 5.13097 8.82143 5.70326 8.82143 6.3C8.82143 6.59547 8.76138 6.88806 8.64472 7.16104C8.52806 7.43402 8.35706 7.68206 8.1415 7.89099C7.92593 8.09992 7.67002 8.26566 7.38837 8.37873C7.10672 8.4918 6.80485 8.55 6.5 8.55ZM6.5 0C4.77609 0 3.12279 0.663748 1.90381 1.84523C0.684819 3.02671 0 4.62914 0 6.3C0 11.025 6.5 18 6.5 18C6.5 18 13 11.025 13 6.3C13 4.62914 12.3152 3.02671 11.0962 1.84523C9.87721 0.663748 8.22391 0 6.5 0Z"
-                                            fill="#FFC97A" />
-                                    </svg>2.5 mi
-                                </p>
-                                <p>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"
-                                        fill="none">
-                                        <path
-                                            d="M7.88086 0.849183C8.23312 -0.283064 9.76689 -0.28306 10.1191 0.849187L11.437 5.08524C11.5946 5.5916 12.0464 5.93442 12.5562 5.93442H16.821C17.9609 5.93442 18.4349 7.45785 17.5127 8.15762L14.0624 10.7756C13.6499 11.0886 13.4774 11.6433 13.6349 12.1497L14.9528 16.3857C15.3051 17.518 14.0642 18.4595 13.142 17.7597L9.69167 15.1417C9.27924 14.8287 8.72076 14.8287 8.30833 15.1417L4.85802 17.7597C3.93579 18.4595 2.69495 17.518 3.04721 16.3857L4.36511 12.1497C4.52264 11.6433 4.35007 11.0886 3.93763 10.7756L0.487324 8.15762C-0.434903 7.45785 0.0390621 5.93442 1.179 5.93442H5.44381C5.95361 5.93442 6.40542 5.59159 6.56296 5.08524L7.88086 0.849183Z"
-                                            fill="#FFC97A" />
-                                    </svg>4.3 <span>(20 reviews)</span>
-                                </p>
+                            <div style="flex:1;">
+                                <p
+                                    style="color:#3B3731; font-family:Lato; font-size:16px; font-weight:600; margin:0 0 4px 0;">
+                                    Sarah's Grooming Studio</p>
+                                <p
+                                    style="color:#9D9B98; font-family:Lato; font-size:14px; font-weight:500; margin:0 0 8px 0;">
+                                    Sarah W.</p>
+                                <div style="display:flex; align-items:center; gap:16px;">
+                                    <p
+                                        style="color:#3B3731; font-family:Lato; font-size:13px; font-weight:500; margin:0; display:flex; align-items:center; gap:4px;">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="18"
+                                            viewBox="0 0 13 18" fill="none">
+                                            <path
+                                                d="M6.5 8.55C5.88432 8.55 5.29385 8.31295 4.8585 7.89099C4.42315 7.46903 4.17857 6.89674 4.17857 6.3C4.17857 5.70326 4.42315 5.13097 4.8585 4.70901C5.29385 4.28705 5.88432 4.05 6.5 4.05C7.11568 4.05 7.70615 4.28705 8.1415 4.70901C8.57685 5.13097 8.82143 5.70326 8.82143 6.3C8.82143 6.59547 8.76138 6.88806 8.64472 7.16104C8.52806 7.43402 8.35706 7.68206 8.1415 7.89099C7.92593 8.09992 7.67002 8.26566 7.38837 8.37873C7.10672 8.4918 6.80485 8.55 6.5 8.55ZM6.5 0C4.77609 0 3.12279 0.663748 1.90381 1.84523C0.684819 3.02671 0 4.62914 0 6.3C0 11.025 6.5 18 6.5 18C6.5 18 13 11.025 13 6.3C13 4.62914 12.3152 3.02671 11.0962 1.84523C9.87721 0.663748 8.22391 0 6.5 0Z"
+                                                fill="#FFC97A" />
+                                        </svg>
+                                        2.5 mi
+                                    </p>
+                                    <p
+                                        style="color:#3B3731; font-family:Lato; font-size:13px; font-weight:500; margin:0; display:flex; align-items:center; gap:4px;">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                                            viewBox="0 0 18 18" fill="none">
+                                            <path
+                                                d="M7.88086 0.849183C8.23312 -0.283064 9.76689 -0.28306 10.1191 0.849187L11.437 5.08524C11.5946 5.5916 12.0464 5.93442 12.5562 5.93442H16.821C17.9609 5.93442 18.4349 7.45785 17.5127 8.15762L14.0624 10.7756C13.6499 11.0886 13.4774 11.6433 13.6349 12.1497L14.9528 16.3857C15.3051 17.518 14.0642 18.4595 13.142 17.7597L9.69167 15.1417C9.27924 14.8287 8.72076 14.8287 8.30833 15.1417L4.85802 17.7597C3.93579 18.4595 2.69495 17.518 3.04721 16.3857L4.36511 12.1497C4.52264 11.6433 4.35007 11.0886 3.93763 10.7756L0.487324 8.15762C-0.434903 7.45785 0.0390621 5.93442 1.179 5.93442H5.44381C5.95361 5.93442 6.40542 5.59159 6.56296 5.08524L7.88086 0.849183Z"
+                                                fill="#FFC97A" />
+                                        </svg>
+                                        4.3 <span style="color:#9D9B98; font-weight:400;">(20 reviews)</span>
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="divider"></div>
+                    <div id="sidebarGroomerServiceContainer" style="margin-bottom: 24px;">
+                        <span
+                            style="color:#9D9B98; font-family:Lato; font-size:12px; font-weight:600; display:flex; align-items:center; gap:8px;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="15" viewBox="0 0 14 15"
+                                fill="none">
+                                <path
+                                    d="M4.38022 10.1726C5.5048 11.2972 8.23992 10.3857 10.4891 8.13624C12.7386 5.88709 13.65 3.15197 12.5255 2.02739M7.68915 1.26352L8.19816 1.77289M5.90761 3.04541L6.41662 3.55442M4.37986 5.08182L4.88887 5.59083M3.87085 7.62723L4.37986 8.13624M10.4891 0.5L10.9981 1.00901M9.98006 3.55478L10.9981 4.5728M8.19852 5.33668L9.21654 6.3547M6.16212 6.86371L7.18014 7.88173"
+                                    stroke="#9D9B98" stroke-linecap="round" stroke-linejoin="round" />
+                                <path
+                                    d="M4.37984 11.7C4.80158 11.2783 4.80158 10.5945 4.37984 10.1727C3.9581 9.75101 3.27432 9.75101 2.85258 10.1728L0.816229 12.2091C0.394487 12.6308 0.394487 13.3146 0.816229 13.7364C1.23797 14.1581 1.92175 14.1581 2.34349 13.7364L4.37984 11.7Z"
+                                    stroke="#9D9B98" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                            Service
+                        </span>
+                        <div
+                            style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
+                            <p style="color: #3B3731;
+font-family: Lato;
+font-size: 14px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;">
+                                Full Groom</p>
+                            <p style="color: #3B3731;
+font-family: Lato;
+font-size: 14px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;">
+                                £48</p>
+                        </div>
+                    </div>
 
-                    <div>
-                        <span>
-                            <img src="assets/images/icons/space-icon.svg" alt="">
+                    <div class="divider" style="margin:20px 0; border-top:1px solid #EAE8E5;"></div>
+
+                    <div id="sidebarGroomerAddonsContainer" style="margin-bottom: 24px; display: none;">
+                        <p
+                            style="color: #3B3731; font-family: Lato; font-size: 14px; font-weight: 600; margin:0 0 12px 0;">
+                            Extras & Add-ons</p>
+                        <div id="sidebarGroomerAddonsList"></div>
+                    </div>
+
+                    <div id="sidebarGroomerAddonsDivider" class="divider"
+                        style="margin:20px 0; border-top:1px solid #EAE8E5; display: none;"></div>
+
+                    <!-- Space Section -->
+                    <div style="margin-bottom: 24px;">
+                        <div style="display:flex; align-items:flex-start; gap:16px;">
+                            <div style="position:relative;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="36" viewBox="0 0 32 36"
+                                    fill="none" style="position:absolute; top:-10px; left:-10px; z-index:2;">
+                                    <ellipse cx="17.3667" cy="18.0807" rx="10.2458" ry="9.64315" fill="white" />
+                                    <path
+                                        d="M16.8932 0.202494C16.6132 0.0698256 16.3132 0 15.9998 0C15.6865 0 15.3865 0.0698256 15.1065 0.202494L2.55333 5.78156C1.08668 6.43094 -0.00663626 7.94615 3.03229e-05 9.77559C0.0333633 16.7023 2.75333 29.3756 14.2399 35.1362C15.3532 35.6949 16.6465 35.6949 17.7598 35.1362C29.2463 29.3756 31.9663 16.7023 31.9996 9.77559C32.0063 7.94615 30.913 6.43094 29.4463 5.78156L16.8932 0.202494ZM9.65991 19.9841C9.97991 20.0679 10.3199 20.1098 10.6666 20.1098C13.0199 20.1098 14.9332 18.1058 14.9332 15.6409V11.1721H17.8798C18.6865 11.1721 19.4265 11.6469 19.7865 12.408L20.2665 13.4065H24.5331C25.1197 13.4065 25.5997 13.9093 25.5997 14.5237V16.7581C25.5997 19.8444 23.2131 22.3442 20.2665 22.3442H17.0665V25.8844C17.0665 26.3941 16.6732 26.813 16.1798 26.813C16.0598 26.813 15.9398 26.7851 15.8332 26.7362L9.25325 23.7826C8.81326 23.5871 8.53326 23.1332 8.53326 22.6375C8.53326 22.4419 8.57326 22.2534 8.65993 22.0789L9.65991 19.9841ZM9.59992 11.1721H12.7999V15.6409C12.7999 16.8769 11.8466 17.8754 10.6666 17.8754C9.48658 17.8754 8.53326 16.8769 8.53326 15.6409V12.2893C8.53326 11.6748 9.01326 11.1721 9.59992 11.1721ZM18.1331 14.5237C18.1331 14.2274 18.0208 13.9433 17.8207 13.7337C17.6207 13.5242 17.3494 13.4065 17.0665 13.4065C16.7836 13.4065 16.5123 13.5242 16.3123 13.7337C16.1122 13.9433 15.9998 14.2274 15.9998 14.5237C15.9998 14.82 16.1122 15.1042 16.3123 15.3137C16.5123 15.5232 16.7836 15.6409 17.0665 15.6409C17.3494 15.6409 17.6207 15.5232 17.8207 15.3137C18.0208 15.1042 18.1331 14.82 18.1331 14.5237Z"
+                                        fill="#CBDCE8" />
+                                </svg>
+                                <img src="<?= BASE_URL ?>/assets/images/service-summary-image.png"
+                                    alt="Space Placeholder"
+                                    style="width:64px; height:64px; border-radius:50%; object-fit:cover;" />
+                            </div>
+                            <div style="flex:1;">
+                                <p style="color: #3B3731;
+font-family: Lato;
+font-size: 18px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;">
+                                    Furs & Co. Studio</p>
+                                <p style="color: #3B3731;
+font-family: Lato;
+font-size: 18px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;">
+                                    Hosted by <span style="color: #9D9B98;
+font-family: Lato;
+font-size: 18px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;">Dev É.</span></p>
+                                <div style="display:flex; align-items:center; gap:16px;margin-top:10px;">
+                                    <p style="color: #3B3731;
+font-family: Lato;
+font-size: 16px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="18"
+                                            viewBox="0 0 13 18" fill="none">
+                                            <path
+                                                d="M6.5 8.55C5.88432 8.55 5.29385 8.31295 4.8585 7.89099C4.42315 7.46903 4.17857 6.89674 4.17857 6.3C4.17857 5.70326 4.42315 5.13097 4.8585 4.70901C5.29385 4.28705 5.88432 4.05 6.5 4.05C7.11568 4.05 7.70615 4.28705 8.1415 4.70901C8.57685 5.13097 8.82143 5.70326 8.82143 6.3C8.82143 6.59547 8.76138 6.88806 8.64472 7.16104C8.52806 7.43402 8.35706 7.68206 8.1415 7.89099C7.92593 8.09992 7.67002 8.26566 7.38837 8.37873C7.10672 8.4918 6.80485 8.55 6.5 8.55ZM6.5 0C4.77609 0 3.12279 0.663748 1.90381 1.84523C0.684819 3.02671 0 4.62914 0 6.3C0 11.025 6.5 18 6.5 18C6.5 18 13 11.025 13 6.3C13 4.62914 12.3152 3.02671 11.0962 1.84523C9.87721 0.663748 8.22391 0 6.5 0Z"
+                                                fill="#FFC97A" />
+                                        </svg>
+                                        2.5 mi
+                                    </p>
+                                    <p style="color: #3B3731;
+font-family: Lato;
+font-size: 16px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                                            viewBox="0 0 18 18" fill="none">
+                                            <path
+                                                d="M7.88086 0.849183C8.23312 -0.283064 9.76689 -0.28306 10.1191 0.849187L11.437 5.08524C11.5946 5.5916 12.0464 5.93442 12.5562 5.93442H16.821C17.9609 5.93442 18.4349 7.45785 17.5127 8.15762L14.0624 10.7756C13.6499 11.0886 13.4774 11.6433 13.6349 12.1497L14.9528 16.3857C15.3051 17.518 14.0642 18.4595 13.142 17.7597L9.69167 15.1417C9.27924 14.8287 8.72076 14.8287 8.30833 15.1417L4.85802 17.7597C3.93579 18.4595 2.69495 17.518 3.04721 16.3857L4.36511 12.1497C4.52264 11.6433 4.35007 11.0886 3.93763 10.7756L0.487324 8.15762C-0.434903 7.45785 0.0390621 5.93442 1.179 5.93442H5.44381C5.95361 5.93442 6.40542 5.59159 6.56296 5.08524L7.88086 0.849183Z"
+                                                fill="#FFC97A" />
+                                        </svg>
+                                        4.3 <span style="color: #9D9B98;
+font-family: Lato;
+font-size: 16px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;">(20 reviews)</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="margin-bottom: 24px;">
+                        <span
+                            style="color:#9D9B98; font-family:Lato; font-size:12px; font-weight:600; display:flex; align-items:center; gap:8px;">
+                            <img src="<?= BASE_URL ?>/assets/images/icons/space-icon.svg" alt=""
+                                style="width:16px; height:16px;">
                             Space
                         </span>
                         <div
@@ -2285,85 +2878,173 @@ font-weight: 400;
 line-height: normal;">
                                 Garden / Shed</p>
                         </div>
-                        <div
-                            style="display: flex; justify-content: space-between; align-items: center; margin-top: 4px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
                             <p style="color: #3B3731;
 font-family: Lato;
 font-size: 14px;
 font-style: normal;
 font-weight: 400;
-line-height: normal;
-margin: 0;">
+line-height: normal;">
                                 Half-Day (14:30 - 18:30)</p>
                             <p style="color: #3B3731;
 font-family: Lato;
 font-size: 14px;
 font-style: normal;
 font-weight: 400;
-line-height: normal;
-margin: 0;">
+line-height: normal;">
                                 £80</p>
                         </div>
                     </div>
 
-                    <div class="divider"></div>
+                    <div class="divider" style="margin:20px 0; border-top:1px solid #EAE8E5;"></div>
 
-                    <div>
-                        <p class="add-ons-summary-title">Add-on Service</p>
-                        <div class="service-summary-addons-list">
-                            <!-- Populated with JS or placeholder -->
-                            <div>
-                                <p>Storage Locker</p>
-                                <p>£5</p>
-                            </div>
-                            <div>
-                                <p>Deep Clean</p>
-                                <p>£10</p>
-                            </div>
+                    <div id="sidebarSpaceAddonsContainer" style="margin-bottom: 24px;">
+                        <p
+                            style="color: #3B3731; font-family: Lato; font-size: 14px; font-weight: 600; margin:0 0 12px 0;">
+                            Add-on Service</p>
+                        <div id="sidebarSpaceAddonsList"></div>
+                    </div>
+
+                    <div id="sidebarSpaceAddonsDivider" class="divider"
+                        style="margin:20px 0; border-top:1px solid #EAE8E5;"></div>
+
+                    <div class="promocode"
+                        style="margin: 20px 0; background: #F8F8F8; border-radius: 10px; padding: 15px;">
+                        <label
+                            style="color: #3B3731; font-family: Lato; font-size: 14px; font-weight: 600; margin-bottom: 10px; display: block;">Promo
+                            code</label>
+                        <input type="text" placeholder="Enter Promo Code"
+                            style="width: 100%; border-radius: 8px; border: 1px solid #EAE8E5; padding: 10px 15px; font-family: Lato; font-size: 14px;">
+                    </div>
+
+                    <div id="sidebarSumBreakdown" class="sum"
+                        style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px;">
+                        <div style="display: flex; justify-content: space-between;">
+                            <p style="color: #9D9B98;
+font-family: Lato;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: 23px; /* 143.75% */">Service:</p><span id="sumGroomerService" style="color: #3B3731;
+text-align: right;
+font-family: Lato;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: 23px; /* 143.75% */">£48.00</span>
+                        </div>
+                        <div id="sumGroomerExtrasRow" style="display: none; justify-content: space-between;">
+                            <p style="color: #9D9B98;
+font-family: Lato;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: 23px; /* 143.75% */">Extras & Add-ons:
+                            </p><span id="sumGroomerExtras" style="color: #3B3731;
+text-align: right;
+font-family: Lato;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: 23px; /* 143.75% */">£0.00</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between;">
+                            <p style="color: #9D9B98;
+font-family: Lato;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: 23px; /* 143.75% */">Space:</p><span id="sumSpaceBase" style="color: #3B3731;
+text-align: right;
+font-family: Lato;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: 23px; /* 143.75% */">£80.00</span>
+                        </div>
+                        <div id="sumSpaceExtrasRow" style="display: flex; justify-content: space-between;">
+                            <p style="color: #9D9B98;
+font-family: Lato;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: 23px; /* 143.75% */">Add-ons Services:
+                            </p><span id="sumSpaceExtras" style="color: #3B3731;
+text-align: right;
+font-family: Lato;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: 23px; /* 143.75% */">£0.00</span>
+                        </div>
+                        <div id="sumPromoRow" style="display: flex; justify-content: space-between;">
+                            <p style="color: #9BBA5A;
+font-family: Lato;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: 23px; /* 143.75% */">Promo discount:
+                            </p><span id="sumPromo" style="color: #9BBA5A;
+text-align: right;
+font-family: Lato;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: 23px; /* 143.75% */">-
+                                £0.00</span>
                         </div>
                     </div>
 
-                    <div class="promocode">
-                        <label>Promo code</label>
-                        <input type="text" placeholder="Enter Promo Code">
+                    <div class="divider" style="margin:20px 0; border-top:1px solid #EAE8E5;"></div>
+
+                    <div class="total"
+                        style="display: flex; justify-content: space-between; margin-bottom: 24px; align-items: center;">
+                        <p style="color: #3B3731;
+font-family: Lato;
+font-size: 18px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;">
+                            Total</p>
+                        <span id="finalTotalSpan" style="color: #3B3731;
+text-align: right;
+font-family: Lato;
+font-size: 18px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+text-decoration-line: underline;
+text-decoration-style: solid;
+text-decoration-skip-ink: auto;
+text-decoration-thickness: auto;
+text-underline-offset: auto;
+text-underline-position: from-font;">£128.00</span>
                     </div>
 
-                    <div class="sum">
-                        <div>
-                            <p>Space:</p><span>£80.00</span>
-                        </div>
-                        <div>
-                            <p>Add-ons Services:</p><span>£15.00</span>
-                        </div>
-                        <div>
-                            <p>Promo discount:</p><span style="color: #9BBA5A;">- £25.00</span>
-                        </div>
-                    </div>
-
-                    <div class="divider"></div>
-
-                    <div class="total">
-                        <p>Total:</p><span>£70.00</span>
-                    </div>
-
-                    <div class="payment">
+                    <div class="payment" style="display: flex; justify-content: center; margin-bottom: 24px;">
                         <button id="confirmPayBtnSidebar" disabled
-                            style="cursor: not-allowed; transition: all 0.2s ease;">Confirm &amp; Pay</button>
+                            style="width: 100%; border-radius: 96px; background: #F8F8F8; color: #D4D4D4; font-family: Lato; font-size: 16px; font-weight: 700; padding: 14px; border: none; cursor: not-allowed; transition: all 0.2s ease;">Confirm
+                            & Pay</button>
                     </div>
 
-                    <div class="caution">
+                    <div class="caution"
+                        style="display: flex; gap: 12px; background: #F8F8F8; border-radius: 10px; padding: 15px;">
                         <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
                             <path
                                 d="M24 4.8C34.5864 4.8 43.2 13.4136 43.2 24C43.2 34.5864 34.5864 43.2 24 43.2C13.4136 43.2 4.8 34.5864 4.8 24C4.8 13.4136 13.4136 4.8 24 4.8ZM24 0C10.7448 0 0 10.7448 0 24C0 37.2552 10.7448 48 24 48C37.2552 48 48 37.2552 48 24C48 10.7448 37.2552 0 24 0ZM26.4 31.2H21.6V36H26.4V31.2ZM21.6 26.4H26.4L27.6 12H20.4L21.6 26.4Z"
                                 fill="#FFC97A" />
                         </svg>
-                        <p>
+                        <p style="color: #3B3731;
+font-family: Lato;
+font-size: 16px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;">
                             Free cancellations up to 24 hours before appointment.
-                            <br />Tools sanitised after every pet
+                            <br />Tools sanitised after every pet.
                         </p>
                     </div>
-                </div>
-                <!-- Need Help component -->
+                </div><!-- Need Help component -->
                 <div class="need-help">
                     <svg xmlns="http://www.w3.org/2000/svg" width="34" height="28" viewBox="0 0 34 28" fill="none">
                         <path
@@ -2382,14 +3063,63 @@ margin: 0;">
     <script src="<?= BASE_URL ?>/assets/js/custom-dropdown.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            // JS to handle add-on card selection styling
+            // State variables to track totals
+            let groomerExtrasTotalState = 0;
+            let groomerServiceBaseState = 48.0;
+            let spaceBaseState = 80.0;
+            let spaceExtrasTotalState = 0.0; // Space extras currently 0 until hooked up
+            let promoDiscountState = 0.0;     // Update as needed
+
+            // This is called by renderExtrasAddons component on change
+            window.handleExtrasChange = function (selectedIds, total, selectedAddons) {
+                const container = document.getElementById('sidebarGroomerAddonsContainer');
+                const list = document.getElementById('sidebarGroomerAddonsList');
+                const divider = document.getElementById('sidebarGroomerAddonsDivider');
+                const sumRow = document.getElementById('sumGroomerExtrasRow');
+                const sumSpan = document.getElementById('sumGroomerExtras');
+
+                groomerExtrasTotalState = total;
+
+                if (selectedAddons.length > 0) {
+                    list.innerHTML = selectedAddons.map(addon => {
+                        return '<div style="display: flex; justify-content: space-between; align-items: center;">' +
+                            '<p style="color: #3B3731;font-family: Lato;font-size: 14px;font-style: normal;font-weight: 400;line-height: 23px; /* 164.286% */">' + addon.name + '</p>' +
+                            '<p style="color: #3B3731;font-family: Lato;font-size: 14px;font-style: normal;font-weight: 400;line-height: 23px; /* 164.286% */">£' + addon.price.toFixed(2) + '</p>' +
+                            '</div>';
+                    }).join('');
+                    if (container) container.style.display = 'block';
+                    if (divider) divider.style.display = 'block';
+                    if (sumRow) sumRow.style.display = 'flex';
+                    if (sumSpan) sumSpan.innerText = '£' + total.toFixed(2);
+                } else {
+                    if (container) container.style.display = 'none';
+                    if (divider) divider.style.display = 'none';
+                    if (sumRow) sumRow.style.display = 'none';
+                    if (sumSpan) sumSpan.innerText = '£0.00';
+                }
+
+                updateSummaryTotal();
+            };
+
+            function updateSummaryTotal() {
+                const finalTotalSpan = document.getElementById('finalTotalSpan');
+                let finalTotal = groomerServiceBaseState + groomerExtrasTotalState + spaceBaseState + spaceExtrasTotalState - promoDiscountState;
+
+                if (finalTotalSpan) {
+                    finalTotalSpan.innerText = '£' + Math.max(0, finalTotal).toFixed(2);
+                }
+            }
+            updateSummaryTotal();
+
+            // JS to handle space add-on card selection styling
             const addonCards = document.querySelectorAll('.add-on-card');
 
-            function updateAddonsSummary() {
-                const summaryList = document.querySelector('.service-summary-addons-list');
-                // The second div inside .sum contains the Add-ons Services span
-                const addonsSubtotalEl = document.querySelector('.sum div:nth-child(2) span');
-                const totalEl = document.querySelector('.total span');
+            function updateSpaceAddonsSummary() {
+                const summaryList = document.getElementById('sidebarSpaceAddonsList');
+                const addonsSubtotalEl = document.getElementById('sumSpaceExtras');
+                const addonsDividerEl = document.getElementById('sidebarSpaceAddonsDivider');
+                const addonsContainerEl = document.getElementById('sidebarSpaceAddonsContainer');
+                const spaceExtrasRow = document.getElementById('sumSpaceExtrasRow');
 
                 let addonsTotal = 0;
                 let summaryHTML = '';
@@ -2404,22 +3134,15 @@ margin: 0;">
                         addonsTotal += priceValue;
 
                         summaryHTML += `
-                            <div>
-                                <p>${name}</p>
-                                <p>${priceText}</p>
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <p style="color: #3B3731;font-family: Lato;font-size: 14px;font-style: normal;font-weight: 400;line-height: normal;">${name}</p>
+                                <p style="color: #3B3731;font-family: Lato;font-size: 14px;font-style: normal;font-weight: 400;line-height: normal;">${priceText}</p>
                             </div>
                         `;
                     }
                 });
 
-                if (summaryHTML === '') {
-                    summaryHTML = `
-                        <div>
-                            <p style="color:#9D9B98;">None</p>
-                            <p>£0</p>
-                        </div>
-                    `;
-                }
+                spaceExtrasTotalState = addonsTotal;
 
                 if (summaryList) {
                     summaryList.innerHTML = summaryHTML;
@@ -2428,15 +3151,17 @@ margin: 0;">
                 if (addonsSubtotalEl) {
                     addonsSubtotalEl.innerText = '£' + addonsTotal.toFixed(2);
                 }
-
-                // Calculate final total
-                const spaceTotal = 80.00; // hardcoded base price for Space
-                const promoDiscount = 25.00; // hardcoded discount
-                let finalTotal = spaceTotal + addonsTotal - promoDiscount;
-
-                if (totalEl) {
-                    totalEl.innerText = '£' + Math.max(0, finalTotal).toFixed(2);
+                if (addonsDividerEl) {
+                    addonsDividerEl.style.display = addonsTotal > 0 ? 'block' : 'none';
                 }
+                if (addonsContainerEl) {
+                    addonsContainerEl.style.display = addonsTotal > 0 ? 'block' : 'none';
+                }
+                if (spaceExtrasRow) {
+                    spaceExtrasRow.style.display = addonsTotal > 0 ? 'flex' : 'none';
+                }
+
+                updateSummaryTotal();
             }
 
             addonCards.forEach(card => {
@@ -2447,25 +3172,87 @@ margin: 0;">
                     card.classList.add('active');
                 }
 
-                checkbox.addEventListener('change', function () {
-                    if (this.checked) {
-                        card.classList.add('active');
-                    } else {
-                        card.classList.remove('active');
-                    }
-                    updateAddonsSummary();
-                });
+                if (checkbox) {
+                    checkbox.addEventListener('change', function () {
+                        if (this.checked) {
+                            card.classList.add('active');
+                        } else {
+                            card.classList.remove('active');
+                        }
+                        updateSpaceAddonsSummary();
+                    });
+                }
             });
 
             // Initialization call to set summary dynamically
-            updateAddonsSummary();
+            updateSpaceAddonsSummary();
+
+            // Toggle Accordion Function
+            window.toggleAccordion = function (id) {
+                const acc = document.getElementById(id);
+                if (!acc) return;
+
+                const body = acc.querySelector('.step1-accordion-body');
+                if (!body) return;
+
+                const isCollapsed = acc.classList.contains('collapsed');
+
+                // Toggle the class immediately so chevron starts rotating
+                acc.classList.toggle('collapsed');
+
+                if (body.accordionTimeout) {
+                    clearTimeout(body.accordionTimeout);
+                }
+
+                if (isCollapsed) {
+                    // Opening
+                    body.style.setProperty('display', 'block', 'important');
+                    body.style.overflow = 'hidden';
+
+                    const height = body.scrollHeight + 'px';
+                    body.style.height = '0px';
+                    body.style.opacity = '0';
+                    body.style.transition = 'height 0.3s ease-in-out, opacity 0.3s ease-in-out';
+
+                    void body.offsetHeight; // Reflow
+
+                    body.style.height = height;
+                    body.style.opacity = '1';
+
+                    body.accordionTimeout = setTimeout(() => {
+                        body.style.height = 'auto';
+                        body.style.overflow = 'visible';
+                        body.style.transition = '';
+                        body.style.removeProperty('display');
+                    }, 300);
+                } else {
+                    // Closing
+                    body.style.setProperty('display', 'block', 'important');
+                    body.style.overflow = 'hidden';
+
+                    const height = body.scrollHeight + 'px';
+                    body.style.height = height;
+                    body.style.transition = 'height 0.3s ease-in-out, opacity 0.3s ease-in-out';
+                    body.style.opacity = '1';
+
+                    void body.offsetHeight; // Reflow
+
+                    body.style.height = '0px';
+                    body.style.opacity = '0';
+
+                    body.accordionTimeout = setTimeout(() => {
+                        body.style.removeProperty('display');
+                        body.style.height = '';
+                        body.style.transition = '';
+                        body.style.overflow = '';
+                        body.style.opacity = '';
+                    }, 300);
+                }
+            };
 
             const continueBtn = document.getElementById("addonsContinueBtn");
             if (continueBtn) {
                 continueBtn.addEventListener("click", function () {
-                    const selectedAddons = Array.from(document.querySelectorAll('.add-on-checkbox:checked'))
-                        .map(cb => cb.value);
-
                     // Update step indicators
                     const step1 = document.querySelector('.step-item:nth-child(1)');
                     const step2 = document.querySelector('.step-item:nth-child(2)');
@@ -2486,14 +3273,68 @@ margin: 0;">
 
                     // Update progress bar
                     const progressFill = document.querySelector('.progress-fill');
-                    if (progressFill) progressFill.style.width = '100%';
+                    if (progressFill) progressFill.style.width = '66.6%';
 
-                    // Show Step 2, Hide Step 1
+                    // Hide original Step 1 parts but keep Step 1 container and Accordions
+                    const h1Heading = document.getElementById('step1BookingDetailsHeading');
+                    if (h1Heading) h1Heading.style.display = 'none';
+
+                    const actionsContainer = document.getElementById('step1ActionsContainer');
+                    if (actionsContainer) actionsContainer.style.display = 'none';
+
+                    // Transform to inline accordions
+                    document.querySelectorAll('.step1-accordion').forEach(acc => {
+                        acc.classList.add('collapsed');
+                        acc.classList.add('accordion-mode');
+                    });
+                    document.querySelectorAll('.step1-accordion-header').forEach(hdr => hdr.style.display = 'flex');
+
+                    // Show Step 2
                     const stepOne = document.querySelector('.step-one');
                     const stepTwo = document.getElementById('step2Content');
                     if (stepOne && stepTwo) {
-                        stepOne.style.display = 'none';
                         stepTwo.style.display = 'block';
+                        window.scrollTo(0, 0);
+                    }
+                });
+            }
+
+            // Navigate from Step 2 to Step 3
+            const spaceContinueBtn = document.getElementById("spaceContinueBtn");
+            if (spaceContinueBtn) {
+                spaceContinueBtn.addEventListener("click", function () {
+                    // Update step indicators
+                    const step2 = document.querySelector('.step-item:nth-child(2)');
+                    const step3 = document.querySelector('.step-item:nth-child(3)');
+                    if (step2) {
+                        step2.classList.remove('active');
+                        step2.classList.add('inactive');
+                        // Fill step 2 circle green with checkmark
+                        const circle2 = step2.querySelector('.step-circle');
+                        if (circle2) {
+                            circle2.style.backgroundColor = '#C9DDA0';
+                            circle2.style.borderColor = '#C9DDA0';
+                            circle2.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="13" viewBox="0 0 16 13" fill="none"><path d="M14.6667 1.49969L5.50004 10.6664L1.33337 6.49969" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+                        }
+                        const label2 = step2.querySelector('.step-label');
+                        if (label2) label2.style.color = '#C9DDA0';
+                    }
+                    if (step3) { step3.classList.remove('inactive'); step3.classList.add('active'); }
+
+                    // Update progress bar
+                    const progressFill = document.querySelector('.progress-fill');
+                    if (progressFill) progressFill.style.width = '100%';
+
+                    // Hide Step 2, Show Step 3
+                    const stepTwoContent = document.getElementById('step2Content');
+                    const stepThreeContent = document.getElementById('step3Content');
+                    if (stepTwoContent && stepThreeContent) {
+                        stepTwoContent.style.display = 'none';
+                        stepThreeContent.style.display = 'block';
+
+                        // Hide Step 1 accordions in Step 3
+                        document.querySelectorAll('.step1-accordion').forEach(acc => acc.style.display = 'none');
+
                         window.scrollTo(0, 0);
                     }
                 });
@@ -2505,11 +3346,62 @@ margin: 0;">
                 backBtn.addEventListener('click', function (e) {
                     const stepOne = document.querySelector('.step-one');
                     const stepTwo = document.getElementById('step2Content');
+                    const stepThree = document.getElementById('step3Content');
+
+                    const isStep3Visible = stepThree && stepThree.style.display !== 'none';
                     const isStep2Visible = stepTwo && stepTwo.style.display !== 'none';
-                    if (isStep2Visible) {
+
+                    if (isStep3Visible) {
                         e.preventDefault();
+                        // Hide Step 3, show Step 2
+                        stepThree.style.display = 'none';
+                        stepTwo.style.display = 'block';
+
+                        // Restore Step 1 accordions in Step 2
+                        document.querySelectorAll('.step1-accordion').forEach(acc => acc.style.display = 'block');
+
+                        // Restore step indicators
+                        const step2Indicator = document.querySelector('.step-item:nth-child(2)');
+                        const step3Indicator = document.querySelector('.step-item:nth-child(3)');
+
+                        if (step2Indicator) {
+                            step2Indicator.classList.add('active');
+                            step2Indicator.classList.remove('inactive');
+                            // Reset inline styles
+                            const circle2 = step2Indicator.querySelector('.step-circle');
+                            if (circle2) {
+                                circle2.style.backgroundColor = '';
+                                circle2.style.borderColor = '';
+                                circle2.innerHTML = '2';
+                            }
+                            const label2 = step2Indicator.querySelector('.step-label');
+                            if (label2) label2.style.color = '';
+                        }
+                        if (step3Indicator) { step3Indicator.classList.add('inactive'); step3Indicator.classList.remove('active'); }
+
+                        // Update progress bar
+                        const progressFill = document.querySelector('.progress-fill');
+                        if (progressFill) progressFill.style.width = '66.6%';
+
+                        window.scrollTo(0, 0);
+                    } else if (isStep2Visible) {
+                        e.preventDefault();
+                        // Hide Step 2
                         stepTwo.style.display = 'none';
-                        stepOne.style.display = 'block';
+
+                        // Restore Step 1 elements
+                        const h1Heading = document.getElementById('step1BookingDetailsHeading');
+                        if (h1Heading) h1Heading.style.display = '';
+
+                        const actionsContainer = document.getElementById('step1ActionsContainer');
+                        if (actionsContainer) actionsContainer.style.display = 'flex';
+
+                        // Revert inline accordions
+                        document.querySelectorAll('.step1-accordion').forEach(acc => {
+                            acc.classList.remove('collapsed');
+                            acc.classList.remove('accordion-mode');
+                        });
+                        document.querySelectorAll('.step1-accordion-header').forEach(hdr => hdr.style.display = 'none');
 
                         // Update step indicators
                         const step1Indicator = document.querySelector('.step-item:nth-child(1)');
@@ -2531,7 +3423,7 @@ margin: 0;">
 
                         // Update progress bar
                         const progressFill = document.querySelector('.progress-fill');
-                        if (progressFill) progressFill.style.width = '50%';
+                        if (progressFill) progressFill.style.width = '33.3%';
 
                         window.scrollTo(0, 0);
                     } else {
@@ -3074,12 +3966,14 @@ margin: 0;">
                 // Add: ensure action buttons come back so user can add/select again
                 const petActionBtns = document.getElementById('petActionBtns');
                 if (petActionBtns) petActionBtns.style.display = 'flex';
+                validateStep1();
             } else {
                 petDetailsForm.classList.remove('hidden');
                 petDetailsDisplay.classList.remove('active');
                 petFormBtns.style.display = 'block';
                 // Populate form with saved data and restore photo preview
                 populateFormWithSavedData();
+                validateStep1();
             }
         }
 
@@ -3202,13 +4096,32 @@ margin: 0;">
                 petPhotoInput.value = '';
                 petPhotoPlaceholder.style.display = 'block';
             }
+            validateStep1();
         });
 
-        // Edit button click handler
         // Change button click handler
         petDisplayChangeBtn.addEventListener('click', function () {
             toggleFormDisplay(false);
         });
+
+        function validateStep1() {
+            const continueBtn = document.getElementById("addonsContinueBtn");
+            if (!continueBtn) return;
+
+            const isPetSaved = sessionStorage.getItem('petDetails') !== null;
+            const petDetailsDisplay = document.getElementById('petDetailsDisplay');
+            const isPetDisplayVisible = petDetailsDisplay && petDetailsDisplay.classList.contains('active');
+
+            if (isPetSaved && isPetDisplayVisible) {
+                continueBtn.disabled = false;
+                continueBtn.style.opacity = "1";
+                continueBtn.style.cursor = "pointer";
+            } else {
+                continueBtn.disabled = true;
+                continueBtn.style.opacity = "0.4";
+                continueBtn.style.cursor = "not-allowed";
+            }
+        }
 
         // Check if there are existing pet details in sessionStorage on page load
         function checkSavedPetDetails() {
@@ -3233,9 +4146,10 @@ margin: 0;">
 
         // Run on DOM ready
         if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', checkSavedPetDetails);
+            document.addEventListener('DOMContentLoaded', () => { checkSavedPetDetails(); validateStep1(); });
         } else {
             checkSavedPetDetails();
+            validateStep1();
         }
         // ===== End Pet Details Storage & Display =====
 
@@ -3255,6 +4169,7 @@ margin: 0;">
                         petDetailsForm.classList.remove('hidden');
                         document.getElementById('petFormBtns').style.display = 'block';
                     }
+                    validateStep1();
                 });
             }
 
@@ -3267,6 +4182,7 @@ margin: 0;">
                             document.getElementById('petFormBtns').style.display = 'none';
                             petActionBtns.style.display = 'flex';
                         }
+                        validateStep1();
                     }, 10);
                 });
             }
