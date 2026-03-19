@@ -319,7 +319,7 @@
 
         .controls input[type="range"] {
             width: 180px;
-            accent-color: #F5C168;
+            accent-color: #ffc97a;
             cursor: pointer;
         }
 
@@ -2629,7 +2629,7 @@
                                                 <path d="M 25 155 A 118 118 0 0 1 255 155" fill="none" stroke="#FAF0DC" stroke-width="20"
                                                     stroke-linecap="round" />
                                                 <!-- Progress arc -->
-                                                <path id="progress-arc" d="M 25 155 A 118 118 0 0 1 255 155" fill="none" stroke="#F5C168" stroke-width="20"
+                                                <path id="progress-arc" d="M 25 155 A 118 118 0 0 1 255 155" fill="none" stroke="#ffc97a" stroke-width="20"
                                                     stroke-linecap="round" stroke-dasharray="370" stroke-dashoffset="148" />
                                             </svg>
                                             <div class="gauge-label" id="gauge-label">60%</div>
