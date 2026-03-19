@@ -136,7 +136,7 @@
                                 <div class="card-body d-flex justify-content-between">
                                     <div class="profile-section d-flex align-items-center gap-25">
                                         <div class="avatar-wrap">
-                                            <img class="avatar" src="http://localhost:8000/assets/images/groomer-profile.png" alt="Sarah's avatar">
+                                            <img class="avatar" src="<?= BASE_URL ?>assets/images/groomer-profile.png" alt="Sarah's avatar">
                                             <div class="badge-shield" title="Verified">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="33" viewBox="0 0 30 33" fill="none">
                                                     <ellipse cx="15.873" cy="16.5256" rx="9.3645" ry="8.81365" fill="white"></ellipse>
@@ -286,7 +286,7 @@
                                                                             </defs>
 
                                                                             <!-- Image with clip path -->
-                                                                            <image href="http://localhost:8000//assets/images/card1.png" preserveAspectRatio="xMidYMid slice" width="130" height="156" clip-path="url(#cardClip)" />
+                                                                            <image href="<?= BASE_URL ?>/assets/images/card1.png" preserveAspectRatio="xMidYMid slice" width="130" height="156" clip-path="url(#cardClip)" />
                                                                         </svg>
                                                                         <div class="badge-shield" style="top: -2px;left: 0;" title="Verified">
                                                                             <svg xmlns="http://www.w3.org/2000/svg" width="19" height="20" viewBox="0 0 19 20" fill="none">
@@ -393,7 +393,7 @@
 
                                                             <div class="pet-info-card mt-4">
                                                                 <div class="pet-profile d-flex align-items-center justify-content-between w-full">
-                                                                    <img src="http://localhost:8000//assets/images/pet_details_1.png" alt="Bella">
+                                                                    <img src="<?= BASE_URL ?>/assets/images/pet_details_1.png" alt="Bella">
 
                                                                     <div class="detail-item d-flex flex-column gap-5">
                                                                         <div class="d-flex align-items-center gap-10">
@@ -507,7 +507,7 @@
                                 <div class="card-body d-flex justify-content-between">
                                     <div class="profile-section d-flex align-items-center gap-25">
                                         <div class="avatar-wrap">
-                                            <img class="avatar" src="http://localhost:8000/assets/images/space_card3.png" alt="Sarah's avatar">
+                                            <img class="avatar" src="<?= BASE_URL ?>assets/images/space_card3.png" alt="Sarah's avatar">
                                             <div class="badge-shield" title="Verified">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="29" height="30" viewBox="0 0 29 30" fill="none">
                                                     <path d="M14.9293 0.170856C14.6819 0.058916 14.4168 0 14.1399 0C13.8629 0 13.5978 0.058916 13.3504 0.170856L2.25651 4.87824C0.960357 5.42616 -0.0058648 6.70463 2.67979e-05 8.24823C0.0294848 14.0927 2.43326 24.7859 12.5845 29.6465C13.5684 30.1178 14.7113 30.1178 15.6952 29.6465C25.8465 24.7859 28.2502 14.0927 28.2797 8.24823C28.2856 6.70463 27.3194 5.42616 26.0232 4.87824L14.9293 0.170856Z" fill="#CBDCE8" />
@@ -972,7 +972,7 @@
                                 <div class="card-body d-flex justify-content-between">
                                     <div class="profile-section d-flex align-items-center gap-25">
                                         <div class="avatar-wrap">
-                                            <img class="avatar" src="http://localhost:8000/assets/images/groomer-profile.png" alt="Sarah's avatar">
+                                            <img class="avatar" src="<?= BASE_URL ?>assets/images/groomer-profile.png" alt="Sarah's avatar">
                                             <div class="badge-shield" title="Verified">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="33" viewBox="0 0 30 33" fill="none">
                                                     <ellipse cx="15.873" cy="16.5256" rx="9.3645" ry="8.81365" fill="white"></ellipse>
@@ -1092,7 +1092,7 @@
                                 <div class="card-body d-flex justify-content-between">
                                     <div class="profile-section d-flex align-items-center gap-25">
                                         <div class="avatar-wrap">
-                                            <img class="avatar" src="http://localhost:8000/assets/images/space_card3.png" alt="Sarah's avatar">
+                                            <img class="avatar" src="<?= BASE_URL ?>assets/images/space_card3.png" alt="Sarah's avatar">
                                             <div class="badge-shield" title="Verified">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="29" height="30" viewBox="0 0 29 30" fill="none">
                                                     <path d="M14.9293 0.170856C14.6819 0.058916 14.4168 0 14.1399 0C13.8629 0 13.5978 0.058916 13.3504 0.170856L2.25651 4.87824C0.960357 5.42616 -0.0058648 6.70463 2.67979e-05 8.24823C0.0294848 14.0927 2.43326 24.7859 12.5845 29.6465C13.5684 30.1178 14.7113 30.1178 15.6952 29.6465C25.8465 24.7859 28.2502 14.0927 28.2797 8.24823C28.2856 6.70463 27.3194 5.42616 26.0232 4.87824L14.9293 0.170856Z" fill="#CBDCE8" />
@@ -1198,7 +1198,7 @@
                                 <div class="card-body d-flex justify-content-between">
                                     <div class="profile-section d-flex align-items-center gap-25">
                                         <div class="avatar-wrap">
-                                            <img class="avatar" src="http://localhost:8000/assets/images/groomer-profile.png" alt="Sarah's avatar">
+                                            <img class="avatar" src="<?= BASE_URL ?>assets/images/groomer-profile.png" alt="Sarah's avatar">
                                             <div class="badge-shield" title="Verified">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="33" viewBox="0 0 30 33" fill="none">
                                                     <ellipse cx="15.873" cy="16.5256" rx="9.3645" ry="8.81365" fill="white"></ellipse>
@@ -1319,7 +1319,7 @@
                                 <div class="card-body d-flex justify-content-between">
                                     <div class="profile-section d-flex align-items-center gap-25">
                                         <div class="avatar-wrap">
-                                            <img class="avatar" src="http://localhost:8000/assets/images/space_card3.png" alt="Sarah's avatar">
+                                            <img class="avatar" src="<?= BASE_URL ?>assets/images/space_card3.png" alt="Sarah's avatar">
                                             <div class="badge-shield" title="Verified">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="29" height="30" viewBox="0 0 29 30" fill="none">
                                                     <path d="M14.9293 0.170856C14.6819 0.058916 14.4168 0 14.1399 0C13.8629 0 13.5978 0.058916 13.3504 0.170856L2.25651 4.87824C0.960357 5.42616 -0.0058648 6.70463 2.67979e-05 8.24823C0.0294848 14.0927 2.43326 24.7859 12.5845 29.6465C13.5684 30.1178 14.7113 30.1178 15.6952 29.6465C25.8465 24.7859 28.2502 14.0927 28.2797 8.24823C28.2856 6.70463 27.3194 5.42616 26.0232 4.87824L14.9293 0.170856Z" fill="#CBDCE8" />
@@ -1429,7 +1429,7 @@
                                                 <form id="reviewForm" enctype="multipart/form-data">
                                                     <div class="review-profile-section d-flex align-items-center gap-25 mt-5">
                                                         <div class="avatar-wrap">
-                                                            <img class="avatar" src="http://localhost:8000/assets/images/groomer-profile.png" alt="Sarah's avatar">
+                                                            <img class="avatar" src="<?= BASE_URL ?>assets/images/groomer-profile.png" alt="Sarah's avatar">
                                                             <div class="badge-shield" title="Verified">
                                                                 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="33" viewBox="0 0 30 33" fill="none">
                                                                     <ellipse cx="15.873" cy="16.5256" rx="9.3645" ry="8.81365" fill="white"></ellipse>

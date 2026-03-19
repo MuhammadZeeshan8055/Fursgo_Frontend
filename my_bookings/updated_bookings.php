@@ -59,7 +59,7 @@
                                     <div class="booking-card-bottom-section">
                                         <div class="d-flex align-items-center gap-20">
                                             <div class="avatar-wrap">
-                                                <img class="avatar" src="http://localhost:8000/assets/images/groomer-profile.png" alt="Sarah's avatar">
+                                                <img class="avatar" src="<?= BASE_URL ?>assets/images/groomer-profile.png" alt="Sarah's avatar">
                                                 <div class="badge-shield" title="Verified">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="33" viewBox="0 0 30 33" fill="none">
                                                         <ellipse cx="15.873" cy="16.5256" rx="9.3645" ry="8.81365" fill="white"></ellipse>
@@ -130,7 +130,7 @@
                                     <div class="booking-card-bottom-section">
                                         <div class="d-flex align-items-center gap-20">
                                             <div class="avatar-wrap">
-                                                <img class="avatar" src="http://localhost:8000/assets/images/pet_details_1.png" alt="Sarah's avatar">
+                                                <img class="avatar" src="<?= BASE_URL ?>assets/images/pet_details_1.png" alt="Sarah's avatar">
                                             </div>
                                             <div class="d-flex flex-column justify-content-center">
                                                 <p class="medium-font-bold">
