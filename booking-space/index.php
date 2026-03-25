@@ -1,7 +1,7 @@
 <!-- Booking Space -->
 
 <?php include '../function_helper.php';
-include_once __DIR__ . '/../components/birthday-calendar.php';
+include_once __DIR__ . '/../components/calendar.php';
 include_once __DIR__ . '/../components/confirm-pay.php';
 $imagePath = BASE_URL . '/assets/images/booking-space-card-image.svg';
 ?>
