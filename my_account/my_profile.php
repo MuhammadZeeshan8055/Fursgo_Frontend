@@ -1,4 +1,5 @@
 <?php include '../function_helper.php'; ?>
+<?php include_once '../components/calendar.php'; ?>
 
 
 <!DOCTYPE html>
@@ -14,7 +15,7 @@
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/common.css">
     <style>
         body {
-            background: #fdfcf8;
+            background: #fff;
         }
 
         .profile-title {
@@ -2348,6 +2349,621 @@
                 /* Mobile par lines remove kar dein */
             }
         }
+
+        .pf-form {
+            display: flex;
+            gap: 40px;
+            padding: 40px;
+        }
+
+        /* LEFT */
+
+        .pf-left {
+            text-align: center;
+        }
+
+        .pf-avatar {
+            width: 190px;
+            height: 190px;
+            margin-bottom: 1.5rem;
+        }
+
+        .pf-edit-btn {
+            border: 1px solid #333;
+            padding: 10px 18px;
+            border-radius: 20px;
+            background: white;
+            cursor: pointer;
+        }
+
+        /* RIGHT */
+
+        .pf-pet-right {
+            flex: 1;
+        }
+
+        /* rows */
+
+        .pf-form-row {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 15px;
+        }
+
+        .pf-field {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .pf-pet-field {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .pf-pet-field label {
+            color: #3b3731;
+            font-family: Lato;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+            margin-bottom: 0.8rem;
+        }
+
+        .pf-field label {
+            color: #3b3731;
+            font-family: Lato;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+            margin-bottom: 0.8rem;
+        }
+
+        .pf-field.small {
+            max-width: 100px;
+        }
+
+        /* inputs */
+
+        .pf-pet-field>input,
+        .pf-pet-field>select {
+            /* width: 295px;
+  height: 48px; */
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+        }
+
+        /* toggle buttons */
+
+        .pf-toggle-group {
+            width: 295px;
+            height: 48px;
+            display: flex;
+            border: 1px solid #d4d4d4 !important;
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .pf-toggle-group button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.6rem;
+            flex: 1;
+            padding: 10px;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+        }
+
+        .pf-toggle-group button:not(:last-child) {
+            border-right: 1px solid #d4d4d4;
+        }
+
+        .pf-toggle-group button p {
+            color: #d4d4d4;
+            text-align: center;
+            font-family: Lato;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+        }
+
+        .pf-toggle-group .active {
+            background: #ffc97a;
+            /* border: 1px solid #d4d4d4; */
+            color: #fff;
+        }
+
+        /* radio */
+
+        .radio-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+            max-width: 100px;
+        }
+
+        .radio-group label {
+            color: #9d9b98;
+            font-family: Lato;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+            display: flex;
+            gap: 12px;
+        }
+
+        .input-box {
+            position: relative;
+            width: 295px;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .input-box input {
+            width: 100%;
+            height: 48px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 0 40px 0 12px;
+        }
+
+        /* SVG positioning */
+
+        .check-icon {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .arrow-icon {
+            position: absolute;
+            right: 37%;
+            top: 50%;
+            transform: translateY(-50%);
+            pointer-events: none;
+        }
+
+        .number-icon {
+            position: absolute;
+            right: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            pointer-events: auto;
+            z-index: 2;
+        }
+
+        .pf-pet-field.small .input-box {
+            position: relative;
+            width: 85px;
+        }
+
+        .pf-pet-field option {
+            width: 295px;
+        }
+
+        .input-group {
+            margin-bottom: 25px;
+        }
+
+        .pf-section-label {
+            display: block;
+            margin-bottom: 12px;
+            color: #3b3731;
+            font-family: Lato;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+            margin-top: 1rem;
+        }
+
+        /* Radio Buttons Styling */
+        .pf-radio-group {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 1rem;
+        }
+
+        .pf-radio-item {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            color: #9d9b98;
+            font-family: Lato;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+        }
+
+        .pf-radio-item input {
+            display: none;
+        }
+
+        .pf-custom-radio {
+            width: 20px;
+            height: 20px;
+            border: 1px solid #eae8e5;
+            background: #fff;
+            border-radius: 50%;
+            margin-right: 10px;
+            display: inline-block;
+            position: relative;
+        }
+
+        .pf-radio-item input:checked+.custom-radio {
+            border-color: #ccc;
+        }
+
+        .pf-radio-item input:checked+.custom-radio::after {
+            content: "";
+            width: 12px;
+            height: 12px;
+            background: #ffc97a;
+            border-radius: 50%;
+            position: absolute;
+            top: 49%;
+            left: 49%;
+            transform: translate(-50%, -50%);
+        }
+
+        /* Textarea Styling */
+        .pf-textarea {
+            width: 100%;
+            min-height: 80px;
+            border-radius: 10px;
+            padding: 12px 15px;
+            font-size: 16px;
+            font-weight: 400;
+            outline: none;
+            line-height: 1.4;
+            resize: none;
+
+        }
+
+        .pf-textarea::placeholder {
+            white-space: pre-line;
+        }
+
+        .pf-textarea:focus {
+            border-color: #b0b0b0;
+        }
+
+        .pf-gallery-container {
+            color: #444;
+        }
+
+        .pf-gallery-container h3 {
+            margin-top: 1rem;
+            color: #3b3731;
+            font-family: Lato;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+        }
+
+        .pf-subtitle {
+            color: #9d9b98;
+            font-family: Lato;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+            margin-bottom: 25px;
+        }
+
+        /* Photo Grid */
+        .pf-photo-grid {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .pf-photo-card {
+            flex: 1;
+            background: #fafafa;
+            border-radius: 12px;
+            width: 225px;
+            height: 225px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .pf-upload-btn {
+            border-radius: 96px;
+            border: 1px solid #3b3731;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 162px;
+            height: 48px;
+            color: #3b3731;
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        /* Notes Area */
+        .pf-notes-section {
+            margin-top: 20px;
+        }
+
+        .pf-notes-section label {
+            display: block;
+            color: #3b3731;
+            font-family: Lato;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+            margin-bottom: 10px;
+        }
+
+        .pf-notes-section label span {
+            color: #9d9b98;
+            font-family: Lato;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+        }
+
+        textarea {
+            width: 100%;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 15px;
+            min-height: 100px;
+            outline: none;
+            font-size: 14px;
+        }
+
+        /* Footer Buttons */
+        .pf-action-footer {
+            display: flex;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .btn-cancel,
+        .btn-save {
+            flex: 1;
+            padding: 15px;
+            border-radius: 30px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-cancel {
+            background: white;
+            border: 1px solid #e0e0e0;
+            color: #9d9b98;
+            text-align: center;
+            font-family: Lato;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+        }
+
+        .btn-save {
+            color: #fff;
+            text-align: center;
+            font-family: Lato;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+            background-color: #ffc97a;
+        }
+
+        .select-wrapper {
+            position: relative;
+            width: 295px;
+        }
+
+        .select-wrapper select {
+            width: 100%;
+            height: 48px;
+            padding: 0 15px;
+            border: 1px solid #d4d4d4;
+            border-radius: 10px;
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-color: white;
+            font-family: "Lato", sans-serif;
+            color: #3b3731;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .select-icon {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            pointer-events: none;
+        }
+
+        .select-wrapper select:hover {
+            border-color: #ffc671;
+        }
+
+        .suggestions {
+            display: none;
+            position: absolute;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            padding: 5px;
+            z-index: 1;
+        }
+
+        .suggestion {
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .suggestion:hover {
+            background-color: #f5f5f5;
+        }
+
+        /* Keep dropdown opening downward (default component behavior) */
+        .bc-wrapper .bc-dropdown {
+            top: 100% !important;
+            bottom: auto !important;
+        }
+
+        /* Constrain the birthday picker so it cannot spill into the next column */
+        .birthday-input-box {
+            width: 250px;
+            max-width: 250px;
+        }
+
+        .birthday-input-box .bc-wrapper {
+            width: 250px;
+            max-width: 250px;
+        }
+
+        .birthday-input-box .bc-wrapper .bc-dropdown {
+            width: 250px;
+            max-width: 250px;
+            left: 0;
+            right: auto;
+        }
+
+        /* Keep birthday dropdown under the Sex field for this specific row */
+        .birthday-input-box .bc-wrapper .bc-dropdown {
+            z-index: 10 !important;
+        }
+
+        /* Make sure Sex content is above the dropdown */
+        .pf-pet-field.sex-field {
+            position: relative;
+            z-index: 2000000;
+        }
+
+        .sex-options {
+            display: flex;
+            gap: 28px;
+            height: 100%;
+            align-items: center;
+            margin-top: 1.3rem;
+        }
+
+        /* label that wraps each radio */
+        .radio--small {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            /* gap between circle and text */
+            cursor: pointer;
+            user-select: none;
+            position: relative;
+        }
+
+        /* keep native input for accessibility but hide native radio */
+        .radio--small input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            width: 1px;
+            height: 1px;
+            margin: 0;
+            pointer-events: none;
+        }
+
+        /* the visible circle */
+        .radio--visual {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            border: 2px solid #ccc;
+            box-sizing: border-box;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: #fff;
+            transition: border-color 0.15s;
+            flex: 0 0 auto;
+            position: relative;
+        }
+
+        /* inner dot for checked state */
+        .radio--visual::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 0.9rem;
+            height: 0.9rem;
+            transform: translate(-50%, -50%) scale(0);
+            border-radius: 50%;
+            background: #FFD88C;
+            transition: transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1);
+            pointer-events: none;
+        }
+
+        /* checked styles */
+        .radio--small input[type="radio"]:checked+.radio--visual {
+            border-color: #FFD88C;
+        }
+
+        .radio--small input[type="radio"]:checked+.radio--visual::after {
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        /* label text styling */
+        .radio--text {
+            color: #9D9B98;
+            font-family: Lato;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+        }
+
+
+
+        .radio--small input[type="radio"]:checked+.radio--visual::after {
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        /* focus-visible for keyboard users */
+        .radio--small input[type="radio"]:focus+.radio--visual {
+            outline: 3px solid rgba(201, 221, 160, 0.22);
+            outline-offset: 2px;
+        }
+
+
+        /* Chrome, Safari, Edge */
+        input[type="number"]::-webkit-outer-spin-button,
+        input[type="number"]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        /* Firefox */
+        input[type="number"] {
+            -moz-appearance: textfield;
+        }
     </style>
 
 
@@ -2959,7 +3575,7 @@
                                 <hr class="divider mt-4">
                             </div>
 
-                            <div class="pets-slider-container">
+                            <div id="pets-slider-container" class="pets-slider-container">
                                 <div class="pets-grid mt-5">
                                     <div class="pet-card d-flex flex-column justify-content-between orange-bg">
                                         <div class="pet-card-header">
@@ -3032,8 +3648,8 @@
                                         </div>
                                         <div class="d-flex align-items-center justify-content-center mt-4">
                                             <button class="my-pets btn-edit-outline"><svg
-                                                    xmlns="http://www.w3.org/2000/svg" width="16" height="15"
-                                                    viewBox="0 0 16 15" fill="none">
+                                                    xmlns="http://www.w3.org/2000/svg" width="16" height="15" viewBox="0
+                                                    0 16 15" fill="none">
                                                     <path
                                                         d="M10.2059 2.37997L12.8529 4.97712M8.44118 14.5H15.5M1.38235 11.0371L0.5 14.5L4.02941 13.6343L14.2524 3.60409C14.5832 3.2794 14.769 2.83908 14.769 2.37997C14.769 1.92085 14.5832 1.48054 14.2524 1.15584L14.1006 1.00694C13.7697 0.682347 13.3209 0.5 12.8529 0.5C12.385 0.5 11.9362 0.682347 11.6053 1.00694L1.38235 11.0371Z"
                                                         stroke="#3B3731" stroke-linecap="round"
@@ -3172,8 +3788,8 @@
                                         </div>
                                         <div class="d-flex align-items-center justify-content-center">
                                             <button class="my-pets btn-edit-outline"><svg
-                                                    xmlns="http://www.w3.org/2000/svg" width="16" height="15"
-                                                    viewBox="0 0 16 15" fill="none">
+                                                    xmlns="http://www.w3.org/2000/svg" width="16" height="15" viewBox="0
+                                                    0 16 15" fill="none">
                                                     <path
                                                         d="M10.2059 2.37997L12.8529 4.97712M8.44118 14.5H15.5M1.38235 11.0371L0.5 14.5L4.02941 13.6343L14.2524 3.60409C14.5832 3.2794 14.769 2.83908 14.769 2.37997C14.769 1.92085 14.5832 1.48054 14.2524 1.15584L14.1006 1.00694C13.7697 0.682347 13.3209 0.5 12.8529 0.5C12.385 0.5 11.9362 0.682347 11.6053 1.00694L1.38235 11.0371Z"
                                                         stroke="#3B3731" stroke-linecap="round"
@@ -3265,8 +3881,328 @@
 
                                 <div class="d-flex align-items-center justify-content-center mt-5">
 
-                                    <button class="btn-add-another-pet">+ Add another pet</button>
+                                    <button id="btn-add-new-pet" class="btn-add-another-pet">+ Add another pet</button>
                                 </div>
+                            </div>
+
+                            <!-- Add New Pet Form (hidden by default) -->
+                            <div class=" pf-form booking-container hidden" id="add-pet-form-container">
+
+                                <!-- LEFT IMAGE -->
+                                <div class="pf-left">
+
+                                    <div class="pf-avatar">
+                                        <span><svg xmlns="http://www.w3.org/2000/svg" width="190" height="190"
+                                                viewBox="0 0 190 190" fill="none">
+                                                <circle cx="95" cy="95" r="94.5" fill="#E3E3E3" stroke="#9D9B98" />
+                                                <path
+                                                    d="M36.7334 169.099C40.4255 97.0391 149.511 97.0391 153.203 169.1C153.203 169.1 131.903 189.366 95.1698 189.366C58.4364 189.366 36.7334 169.099 36.7334 169.099Z"
+                                                    fill="white" stroke="#9D9B98" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path
+                                                    d="M123.737 74.7178C123.737 82.4402 120.669 89.8464 115.209 95.3071C109.748 100.768 102.342 103.835 94.6194 103.835C86.897 103.835 79.4908 100.768 74.0303 95.3071C68.5697 89.8464 65.502 82.4402 65.502 74.7178C65.502 66.9953 68.5697 59.5891 74.0303 54.1285C79.4908 48.6678 86.897 45.6001 94.6194 45.6001C102.342 45.6001 109.748 48.6678 115.209 54.1285C120.669 59.5891 123.737 66.9953 123.737 74.7178Z"
+                                                    fill="white" stroke="#9D9B98" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </svg></span>
+                                    </div>
+
+                                    <button class="pf-edit-btn">
+                                        <span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="15"
+                                                viewBox="0 0 20 15" fill="none">
+                                                <path
+                                                    d="M1.25 12.5C1.25 12.8315 1.3817 13.1495 1.61612 13.3839C1.85054 13.6183 2.16848 13.75 2.5 13.75H17.5C17.8315 13.75 18.1495 13.6183 18.3839 13.3839C18.6183 13.1495 18.75 12.8315 18.75 12.5V5C18.75 4.66848 18.6183 4.35054 18.3839 4.11612C18.1495 3.8817 17.8315 3.75 17.5 3.75H16.035C15.041 3.74946 14.0878 3.35425 13.385 2.65125L12.3475 1.61625C12.1137 1.38242 11.7969 1.25073 11.4662 1.25H8.53625C8.20476 1.25007 7.88687 1.38181 7.6525 1.61625L6.6175 2.65125C6.26921 2.99964 5.85569 3.276 5.40057 3.46453C4.94544 3.65305 4.45763 3.75006 3.965 3.75H2.5C2.16848 3.75 1.85054 3.8817 1.61612 4.11612C1.3817 4.35054 1.25 4.66848 1.25 5V12.5ZM17.5 2.5C18.163 2.5 18.7989 2.76339 19.2678 3.23223C19.7366 3.70107 20 4.33696 20 5V12.5C20 13.163 19.7366 13.7989 19.2678 14.2678C18.7989 14.7366 18.163 15 17.5 15H2.5C1.83696 15 1.20107 14.7366 0.732233 14.2678C0.263393 13.7989 0 13.163 0 12.5V5C0 4.33696 0.263393 3.70107 0.732233 3.23223C1.20107 2.76339 1.83696 2.5 2.5 2.5H3.965C4.62799 2.49986 5.26377 2.23637 5.7325 1.7675L6.7675 0.7325C7.23623 0.263627 7.87201 0.000141594 8.535 0H11.465C12.128 0.000141594 12.7638 0.263627 13.2325 0.7325L14.2675 1.7675C14.7362 2.23637 15.372 2.49986 16.035 2.5H17.5Z"
+                                                    fill="#3B3731" />
+                                                <path
+                                                    d="M10 11.25C10.8288 11.25 11.6237 10.9208 12.2097 10.3347C12.7958 9.74866 13.125 8.9538 13.125 8.125C13.125 7.2962 12.7958 6.50134 12.2097 5.91529C11.6237 5.32924 10.8288 5 10 5C9.1712 5 8.37634 5.32924 7.79029 5.91529C7.20424 6.50134 6.875 7.2962 6.875 8.125C6.875 8.9538 7.20424 9.74866 7.79029 10.3347C8.37634 10.9208 9.1712 11.25 10 11.25ZM10 12.5C8.83968 12.5 7.72688 12.0391 6.90641 11.2186C6.08594 10.3981 5.625 9.28532 5.625 8.125C5.625 6.96468 6.08594 5.85188 6.90641 5.03141C7.72688 4.21094 8.83968 3.75 10 3.75C11.1603 3.75 12.2731 4.21094 13.0936 5.03141C13.9141 5.85188 14.375 6.96468 14.375 8.125C14.375 9.28532 13.9141 10.3981 13.0936 11.2186C12.2731 12.0391 11.1603 12.5 10 12.5ZM16.25 5.625C16.25 5.79076 16.3158 5.94973 16.4331 6.06694C16.5503 6.18415 16.7092 6.25 16.875 6.25C17.0408 6.25 17.1997 6.18415 17.3169 6.06694C17.4342 5.94973 17.5 5.79076 17.5 5.625C17.5 5.45924 17.4342 5.30027 17.3169 5.18306C17.1997 5.06585 17.0408 5 16.875 5C16.7092 5 16.5503 5.06585 16.4331 5.18306C16.3158 5.30027 16.25 5.45924 16.25 5.625Z"
+                                                    fill="#3B3731" />
+                                            </svg>
+                                        </span> Edit photo
+                                    </button>
+
+                                </div>
+
+                                <!-- RIGHT FORM -->
+                                <form id="add-pet-form" class="pf-pet-right">
+
+                                    <!-- Row 1 -->
+                                    <div class="pf-form-row">
+
+                                        <div class="pf-field">
+                                            <label>Select Pet Type</label>
+                                            <div class="pf-toggle-group">
+                                                <button type="button">
+                                                    <p>Cat</p> <span><svg xmlns="http://www.w3.org/2000/svg" width="10"
+                                                            height="14" viewBox="0 0 10 14" fill="none">
+                                                            <path
+                                                                d="M4.6084 2.33691C5.10435 2.27575 5.79149 2.29051 6.44824 2.5127C7.17421 2.75837 7.87556 3.26331 8.21875 4.19922L9.63379 4.87793L9.66406 4.98926C9.85166 5.66584 9.96334 6.71639 9.67285 7.67285C9.52643 8.15482 9.27602 8.61867 8.87695 8.99414C8.47673 9.37055 7.93833 9.64708 7.23535 9.77246C4.70572 10.2235 3.27073 12.3877 2.875 13.4092C2.71213 13.8744 1.74663 13.9922 1.51953 13.5547C-1.87265 7.01946 1.17825 1.85935 3.28418 0L4.6084 2.33691ZM6.17578 4.70117C5.80462 4.70117 5.41028 4.88536 5.41016 5.62207C5.41016 6.13084 6.059 5.6221 6.48145 5.62207C6.90389 5.62207 6.94043 6.13086 6.94043 5.62207C6.94028 5.11355 6.59802 4.70134 6.17578 4.70117Z"
+                                                                fill="#D4D4D4" />
+                                                        </svg></span>
+                                                </button>
+                                                <button type="button">
+                                                    <p>Dog</p><span><svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                                            height="15" viewBox="0 0 16 15" fill="none">
+                                                            <path
+                                                                d="M8.02539 0C8.64242 0.000140068 9.2247 0.285386 9.60352 0.772461L11.7188 3.49219C11.8778 3.69673 12.1107 3.83152 12.3672 3.86816L14.3516 4.15137C14.7095 4.20257 15.0127 4.44309 15.1211 4.78809C15.3559 5.53534 15.694 6.86422 15.4336 7.6582C15.1019 8.66939 14.5698 9.17547 13.6104 9.42285C11.9671 9.84647 10.6084 9.36193 9.00293 10.5859C8.55955 10.924 8.24254 11.3554 8.02148 11.8379C7.15008 13.7398 4.72988 15.7687 2.92676 14.708C1.76295 14.0232 1.19713 12.6471 1.54297 11.3418L2.01855 9.5459C2.13806 9.53792 2.25497 9.52868 2.36621 9.51465C2.66071 9.47749 2.95579 9.41275 3.1543 9.28711C3.31279 9.18664 3.47135 9.01633 3.61621 8.83105C3.76496 8.64078 3.91598 8.41357 4.05859 8.18066C4.3438 7.71485 4.60464 7.20844 4.75879 6.88281C4.81783 6.75804 4.7644 6.60888 4.63965 6.5498C4.51511 6.49106 4.36683 6.54369 4.30762 6.66797C4.15931 6.98132 3.90591 7.47232 3.63184 7.91992C3.49484 8.14364 3.35443 8.35264 3.22168 8.52246C3.08497 8.69731 2.97014 8.81137 2.88672 8.86426C2.78879 8.92628 2.5909 8.98231 2.30371 9.01855C2.02727 9.05342 1.70321 9.06707 1.38281 9.06641C1.06824 9.06575 0.762506 9.04879 0.516602 9.03125C0.12944 8.76968 -0.0877677 8.27103 0.0341797 7.80859C1.06258 3.90966 1.66993 2.10637 2.67871 1.09766C3.77026 0.00653585 5.94603 3.69908e-05 5.97168 0H8.02539ZM8.5752 3.66016C8.11076 3.66016 7.61831 3.89064 7.61816 4.8125C7.61816 5.44915 8.42941 4.8125 8.95801 4.8125C9.48646 4.81262 9.53223 5.44909 9.53223 4.8125C9.53204 4.17611 9.10359 3.66027 8.5752 3.66016Z"
+                                                                fill="#D4D4D4" />
+                                                        </svg></span>
+                                                </button>
+                                                <button type="button" class="active">
+                                                    <p style="color:#fff;">Other</p> <span><svg
+                                                            xmlns="http://www.w3.org/2000/svg" width="19" height="15"
+                                                            viewBox="0 0 19 15" fill="none">
+                                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                                d="M6.10714 0C5.43536 0 4.90879 0.410454 4.58307 0.902727C4.25329 1.39909 4.07143 2.04682 4.07143 2.72727C4.07143 3.40773 4.25329 4.05545 4.58307 4.55182C4.90879 5.04273 5.43536 5.45455 6.10714 5.45455C6.77893 5.45455 7.3055 5.04409 7.63121 4.55182C7.961 4.05545 8.14286 3.40773 8.14286 2.72727C8.14286 2.04682 7.961 1.39909 7.63121 0.902727C7.3055 0.411818 6.77893 0 6.10714 0ZM12.8929 0C12.2211 0 11.6945 0.410454 11.3688 0.902727C11.039 1.39909 10.8571 2.04682 10.8571 2.72727C10.8571 3.40773 11.039 4.05545 11.3688 4.55182C11.6945 5.04273 12.2211 5.45455 12.8929 5.45455C13.5646 5.45455 14.0912 5.04409 14.4169 4.55182C14.7467 4.05545 14.9286 3.40773 14.9286 2.72727C14.9286 2.04682 14.7467 1.39909 14.4169 0.902727C14.0912 0.411818 13.5646 0 12.8929 0ZM2.03571 6.13636C1.36393 6.13636 0.837357 6.54682 0.511643 7.03909C0.181857 7.53545 0 8.18318 0 8.86364C0 9.54409 0.181857 10.1918 0.511643 10.6882C0.837357 11.1791 1.36393 11.5909 2.03571 11.5909C2.7075 11.5909 3.23407 11.1805 3.55979 10.6882C3.88957 10.1918 4.07143 9.54409 4.07143 8.86364C4.07143 8.18318 3.88957 7.53545 3.55979 7.03909C3.23407 6.54818 2.7075 6.13636 2.03571 6.13636ZM9.5 6.13636C7.87143 6.13636 6.66493 7.01455 5.89407 8.10409C5.13271 9.17727 4.75 10.5095 4.75 11.5909C4.75 12.8509 5.50321 13.7277 6.42743 14.2527C7.33671 14.7709 8.47671 15 9.5 15C10.5233 15 11.6633 14.7723 12.5726 14.2527C13.4954 13.7264 14.25 12.8509 14.25 11.5909C14.25 10.5095 13.8673 9.17727 13.1059 8.10409C12.3364 7.01318 11.1299 6.13636 9.5 6.13636ZM16.9643 6.13636C16.2925 6.13636 15.7659 6.54682 15.4402 7.03909C15.1104 7.53545 14.9286 8.18318 14.9286 8.86364C14.9286 9.54409 15.1104 10.1918 15.4402 10.6882C15.7659 11.1791 16.2925 11.5909 16.9643 11.5909C17.6361 11.5909 18.1626 11.1805 18.4884 10.6882C18.8181 10.1918 19 9.54409 19 8.86364C19 8.18318 18.8181 7.53545 18.4884 7.03909C18.1626 6.54818 17.6361 6.13636 16.9643 6.13636Z"
+                                                                fill="white" />
+                                                        </svg></span>
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        <div class="pf-field" style="flex:2;">
+                                            <label>Select Pet Size</label>
+                                            <div class="pf-toggle-group" style="width:100%">
+                                                <button type="button">
+                                                    <p>Small 0-7 kg</p>
+                                                </button>
+                                                <button type="button">
+                                                    <p>Medium 8-18 kg</p>
+                                                </button>
+                                                <button type="button" class="active">
+                                                    <p style="color:#fff">Large 19+ kg</p>
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <!-- Row 2 -->
+                                    <div class="pf-form-row">
+
+                                        <div class="pf-pet-field">
+                                            <label>Name</label>
+                                            <div class="input-box">
+
+                                                <input type="text" value="Bella">
+
+                                                <!-- RIGHT SVG -->
+                                                <svg class="check-icon" xmlns="http://www.w3.org/2000/svg" width="19"
+                                                    height="19" viewBox="0 0 19 19" fill="none">
+                                                    <path
+                                                        d="M9.5 0C4.275 0 0 4.275 0 9.5C0 14.725 4.275 19 9.5 19C14.725 19 19 14.725 19 9.5C19 4.275 14.725 0 9.5 0ZM7.6 14.25L2.85 9.5L4.1895 8.1605L7.6 11.5615L14.8105 4.351L16.15 5.7L7.6 14.25Z"
+                                                        fill="#C9DDA0" />
+                                                </svg>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="pf-pet-field">
+                                            <div class="input-box birthday-input-box">
+                                                <?php renderBirthdayCalendar('birthday'); ?>
+                                            </div>
+                                        </div>
+
+                                        <div class="pf-pet-field sex-field"
+                                            style="position: relative; z-index: 2000000;">
+                                            <label>Sex</label>
+
+                                            <div class="sex-options" role="radiogroup" aria-label="Sex">
+                                                <label class="radio--small">
+                                                    <input type="radio" name="sex" value="male" id="petSexMale">
+                                                    <span class="radio--visual" aria-hidden="true"></span>
+                                                    <span class="radio--text">Male</span>
+                                                </label>
+
+                                                <label class="radio--small">
+                                                    <input type="radio" name="sex" value="female" id="petSexFemale">
+                                                    <span class="radio--visual" aria-hidden="true"></span>
+                                                    <span class="radio--text">Female</span>
+                                                </label>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                    <!-- Row 3 -->
+                                    <div class="pf-form-row">
+
+                                        <div class="pf-pet-field" style="position:relative;">
+                                            <label>Pet Type <span style="color: #9D9B98;
+font-family: Lato;
+font-size: 16px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;">(for ‘other’ pets)</span></label>
+                                            <div style="position:relative; display:block;width: 300px;">
+                                                <input type="text" id="pet_type" placeholder="e.g. Dog, Cat, Rabbit..."
+                                                    autocomplete="off"
+                                                    style="padding-right:40px; width:100%; display:block; height:48px; padding:8px 10px; border-radius:10px; border:1px solid #D4D4D4; background:#FFF; font-family:Lato; font-size:16px;">
+                                                <span id="petTypeCheck_profile"
+                                                    style="position:absolute;right:12px;top:50%;transform:translateY(-50%);pointer-events:none;display:none;line-height:0;z-index:5;">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19"
+                                                        viewBox="0 0 19 19" fill="none">
+                                                        <path
+                                                            d="M9.5 0C4.275 0 0 4.275 0 9.5C0 14.725 4.275 19 9.5 19C14.725 19 19 14.725 19 9.5C19 4.275 14.725 0 9.5 0ZM7.6 14.25L2.85 9.5L4.1895 8.1605L7.6 11.5615L14.8105 4.351L16.15 5.7L7.6 14.25Z"
+                                                            fill="#C9DDA0" />
+                                                    </svg>
+                                                </span>
+                                            </div>
+                                            <div id="petTypeSuggestions_profile"
+                                                style="display:none; border:1px solid #D4D4D4; border-top:none; border-radius:0 0 10px 10px; background:#FFF; max-height:200px; overflow-y:auto; position:absolute; width:100%; z-index:10; box-shadow:0 4px 8px rgba(0,0,0,0.1);">
+                                            </div>
+                                        </div>
+
+                                        <div class="pf-pet-field">
+                                            <label>Breed(s)</label>
+                                            <div class="select-wrapper" style="width:320px;">
+                                                <select id="pet-breed" data-furs-dropdown data-furs-searchable>
+                                                    <option value="" disabled selected>Select breed</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="pf-pet-field small">
+                                            <label>Weight (kg)</label>
+
+                                            <div class="input-box">
+
+                                                <input type="number" value="4" style="width: 85px;height: 48px;">
+                                                <!-- SVG -->
+                                                <svg class="number-icon" xmlns="http://www.w3.org/2000/svg" width="11"
+                                                    height="28" viewBox="0 0 11 28" fill="none">
+                                                    <path d="M10.374 21.5315L5.3952 26.5103L0.499963 21.6151"
+                                                        stroke="#3B3731" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path d="M10.374 5.47876L5.3952 0.499941L0.499963 5.39518"
+                                                        stroke="#3B3731" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                </svg>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="pf-form-container">
+                                        <div class="pf-input-group">
+                                            <label class="pf-section-label">Vaccination status</label>
+                                            <div class="sex-options" role="radiogroup" aria-label="Sex">
+                                                <label class="radio--small">
+                                                    <input type="radio" name="status" value="yes" id="petSexMale">
+                                                    <span class="radio--visual" aria-hidden="true"></span>
+                                                    <span class="radio--text">Yes</span>
+                                                </label>
+
+                                                <label class="radio--small">
+                                                    <input type="radio" name="status" value="no" id="petSexFemale">
+                                                    <span class="radio--visual" aria-hidden="true"></span>
+                                                    <span class="radio--text">No</span>
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                        <div class="pf-input-group">
+                                            <label class="pf-section-label">Medical Notes</label>
+                                            <textarea class="pf-textarea"
+                                                placeholder="Help us keep your pets healthy and safe!&#10;(e.g allergies, sensitivities, medications, or ongoing treatments)."></textarea>
+                                        </div>
+
+                                        <div class="pf-input-group">
+                                            <label class="pf-section-label">Personality & behaviour</label>
+                                            <textarea class="pf-textarea"
+                                                placeholder="Any behaviour we should know about?&#10;(e.g. Friendly with people, nervous around loud noises, doesn't like paws touched)."></textarea>
+                                        </div>
+
+                                        <div class="pf-input-group">
+                                            <label class="pf-section-label">Grooming preferences</label>
+                                            <textarea class="pf-textarea"
+                                                placeholder="Any style preferences?&#10;(e.g clip length, shampoo type, sensitive areas)."></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="pf-gallery-container">
+                                        <h3>Photo Gallery</h3>
+                                        <p class="pf-subtitle">Show off your pet by adding additional photos.</p>
+
+                                        <div class="pf-photo-grid">
+                                            <div class="pf-photo-card">
+                                                <div class="pf-paw-icon">
+                                                    <i class="fas fa-paw"><svg xmlns="http://www.w3.org/2000/svg"
+                                                            width="80" height="64" viewBox="0 0 80 64" fill="none">
+                                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                                d="M25.7143 0C22.8857 0 20.6686 1.75127 19.2971 3.85164C17.9086 5.96945 17.1429 8.73309 17.1429 11.6364C17.1429 14.5396 17.9086 17.3033 19.2971 19.4211C20.6686 21.5156 22.8857 23.2727 25.7143 23.2727C28.5429 23.2727 30.76 21.5215 32.1314 19.4211C33.52 17.3033 34.2857 14.5396 34.2857 11.6364C34.2857 8.73309 33.52 5.96945 32.1314 3.85164C30.76 1.75709 28.5429 0 25.7143 0ZM54.2857 0C51.4571 0 49.24 1.75127 47.8686 3.85164C46.48 5.96945 45.7143 8.73309 45.7143 11.6364C45.7143 14.5396 46.48 17.3033 47.8686 19.4211C49.24 21.5156 51.4571 23.2727 54.2857 23.2727C57.1143 23.2727 59.3314 21.5215 60.7029 19.4211C62.0914 17.3033 62.8571 14.5396 62.8571 11.6364C62.8571 8.73309 62.0914 5.96945 60.7029 3.85164C59.3314 1.75709 57.1143 0 54.2857 0ZM8.57143 26.1818C5.74286 26.1818 3.52571 27.9331 2.15429 30.0335C0.765714 32.1513 0 34.9149 0 37.8182C0 40.7215 0.765714 43.4851 2.15429 45.6029C3.52571 47.6975 5.74286 49.4545 8.57143 49.4545C11.4 49.4545 13.6171 47.7033 14.9886 45.6029C16.3771 43.4851 17.1429 40.7215 17.1429 37.8182C17.1429 34.9149 16.3771 32.1513 14.9886 30.0335C13.6171 27.9389 11.4 26.1818 8.57143 26.1818ZM40 26.1818C33.1429 26.1818 28.0629 29.9287 24.8171 34.5775C21.6114 39.1564 20 44.8407 20 49.4545C20 54.8305 23.1714 58.5716 27.0629 60.8116C30.8914 63.0225 35.6914 64 40 64C44.3086 64 49.1086 63.0284 52.9371 60.8116C56.8229 58.5658 60 54.8305 60 49.4545C60 44.8407 58.3886 39.1564 55.1829 34.5775C51.9429 29.9229 46.8629 26.1818 40 26.1818ZM71.4286 26.1818C68.6 26.1818 66.3829 27.9331 65.0114 30.0335C63.6229 32.1513 62.8571 34.9149 62.8571 37.8182C62.8571 40.7215 63.6229 43.4851 65.0114 45.6029C66.3829 47.6975 68.6 49.4545 71.4286 49.4545C74.2571 49.4545 76.4743 47.7033 77.8457 45.6029C79.2343 43.4851 80 40.7215 80 37.8182C80 34.9149 79.2343 32.1513 77.8457 30.0335C76.4743 27.9389 74.2571 26.1818 71.4286 26.1818Z"
+                                                                fill="#E5E5E5" />
+                                                        </svg></i>
+                                                </div>
+                                                <label class="pf-upload-btn">
+                                                    <input type="pf-file" hidden>
+                                                    <span class="pf-upload-icon"><svg xmlns="http://www.w3.org/2000/svg"
+                                                            width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                                            <path
+                                                                d="M7 10.3163C6.72386 10.3163 6.5 10.0924 6.5 9.81626V1.66626L4.52903 3.63722C4.33115 3.8351 4.00998 3.83398 3.81349 3.63471C3.61896 3.43744 3.62005 3.12016 3.81593 2.92422L6.55492 0.184464C6.80072 -0.0614062 7.19931 -0.0614344 7.44514 0.184402L10.185 2.92425C10.3809 3.1202 10.3822 3.43753 10.1877 3.63499C9.99116 3.83461 9.66959 3.83585 9.47149 3.63775L7.5 1.66626V9.81626C7.5 10.0924 7.27614 10.3163 7 10.3163ZM1.616 13.7393C1.15533 13.7393 0.771 13.5853 0.463 13.2773C0.155 12.9693 0.000666667 12.5846 0 12.1233V10.2003C0 9.92412 0.223858 9.70026 0.5 9.70026C0.776142 9.70026 1 9.92412 1 10.2003V12.1233C1 12.2773 1.064 12.4186 1.192 12.5473C1.32 12.6759 1.461 12.7399 1.615 12.7393H12.385C12.5383 12.7393 12.6793 12.6753 12.808 12.5473C12.9367 12.4193 13.0007 12.2779 13 12.1233V10.2003C13 9.92412 13.2239 9.70026 13.5 9.70026C13.7761 9.70026 14 9.92412 14 10.2003V12.1233C14 12.5839 13.846 12.9683 13.538 13.2763C13.23 13.5843 12.8453 13.7386 12.384 13.7393H1.616Z"
+                                                                fill="#3B3731" />
+                                                        </svg></span> Upload Photo
+                                                </label>
+                                            </div>
+
+                                            <div class="pf-photo-card">
+                                                <div class="pf-paw-icon">
+                                                    <i class="fas fa-paw"> <svg xmlns="http://www.w3.org/2000/svg"
+                                                            width="80" height="64" viewBox="0 0 80 64" fill="none">
+                                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                                d="M25.7143 0C22.8857 0 20.6686 1.75127 19.2971 3.85164C17.9086 5.96945 17.1429 8.73309 17.1429 11.6364C17.1429 14.5396 17.9086 17.3033 19.2971 19.4211C20.6686 21.5156 22.8857 23.2727 25.7143 23.2727C28.5429 23.2727 30.76 21.5215 32.1314 19.4211C33.52 17.3033 34.2857 14.5396 34.2857 11.6364C34.2857 8.73309 33.52 5.96945 32.1314 3.85164C30.76 1.75709 28.5429 0 25.7143 0ZM54.2857 0C51.4571 0 49.24 1.75127 47.8686 3.85164C46.48 5.96945 45.7143 8.73309 45.7143 11.6364C45.7143 14.5396 46.48 17.3033 47.8686 19.4211C49.24 21.5156 51.4571 23.2727 54.2857 23.2727C57.1143 23.2727 59.3314 21.5215 60.7029 19.4211C62.0914 17.3033 62.8571 14.5396 62.8571 11.6364C62.8571 8.73309 62.0914 5.96945 60.7029 3.85164C59.3314 1.75709 57.1143 0 54.2857 0ZM8.57143 26.1818C5.74286 26.1818 3.52571 27.9331 2.15429 30.0335C0.765714 32.1513 0 34.9149 0 37.8182C0 40.7215 0.765714 43.4851 2.15429 45.6029C3.52571 47.6975 5.74286 49.4545 8.57143 49.4545C11.4 49.4545 13.6171 47.7033 14.9886 45.6029C16.3771 43.4851 17.1429 40.7215 17.1429 37.8182C17.1429 34.9149 16.3771 32.1513 14.9886 30.0335C13.6171 27.9389 11.4 26.1818 8.57143 26.1818ZM40 26.1818C33.1429 26.1818 28.0629 29.9287 24.8171 34.5775C21.6114 39.1564 20 44.8407 20 49.4545C20 54.8305 23.1714 58.5716 27.0629 60.8116C30.8914 63.0225 35.6914 64 40 64C44.3086 64 49.1086 63.0284 52.9371 60.8116C56.8229 58.5658 60 54.8305 60 49.4545C60 44.8407 58.3886 39.1564 55.1829 34.5775C51.9429 29.9229 46.8629 26.1818 40 26.1818ZM71.4286 26.1818C68.6 26.1818 66.3829 27.9331 65.0114 30.0335C63.6229 32.1513 62.8571 34.9149 62.8571 37.8182C62.8571 40.7215 63.6229 43.4851 65.0114 45.6029C66.3829 47.6975 68.6 49.4545 71.4286 49.4545C74.2571 49.4545 76.4743 47.7033 77.8457 45.6029C79.2343 43.4851 80 40.7215 80 37.8182C80 34.9149 79.2343 32.1513 77.8457 30.0335C76.4743 27.9389 74.2571 26.1818 71.4286 26.1818Z"
+                                                                fill="#E5E5E5" />
+                                                        </svg></i>
+                                                </div>
+                                                <label class="pf-upload-btn">
+                                                    <input type="pf-file" hidden>
+                                                    <span class="pf-upload-icon"><svg xmlns="http://www.w3.org/2000/svg"
+                                                            width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                                            <path
+                                                                d="M7 10.3163C6.72386 10.3163 6.5 10.0924 6.5 9.81626V1.66626L4.52903 3.63722C4.33115 3.8351 4.00998 3.83398 3.81349 3.63471C3.61896 3.43744 3.62005 3.12016 3.81593 2.92422L6.55492 0.184464C6.80072 -0.0614062 7.19931 -0.0614344 7.44514 0.184402L10.185 2.92425C10.3809 3.1202 10.3822 3.43753 10.1877 3.63499C9.99116 3.83461 9.66959 3.83585 9.47149 3.63775L7.5 1.66626V9.81626C7.5 10.0924 7.27614 10.3163 7 10.3163ZM1.616 13.7393C1.15533 13.7393 0.771 13.5853 0.463 13.2773C0.155 12.9693 0.000666667 12.5846 0 12.1233V10.2003C0 9.92412 0.223858 9.70026 0.5 9.70026C0.776142 9.70026 1 9.92412 1 10.2003V12.1233C1 12.2773 1.064 12.4186 1.192 12.5473C1.32 12.6759 1.461 12.7399 1.615 12.7393H12.385C12.5383 12.7393 12.6793 12.6753 12.808 12.5473C12.9367 12.4193 13.0007 12.2779 13 12.1233V10.2003C13 9.92412 13.2239 9.70026 13.5 9.70026C13.7761 9.70026 14 9.92412 14 10.2003V12.1233C14 12.5839 13.846 12.9683 13.538 13.2763C13.23 13.5843 12.8453 13.7386 12.384 13.7393H1.616Z"
+                                                                fill="#3B3731" />
+                                                        </svg></span> Upload Photo
+                                                </label>
+                                            </div>
+
+                                            <div class="pf-photo-card">
+                                                <div class="pf-paw-icon">
+                                                    <i class="fas fa-paw"><svg xmlns="http://www.w3.org/2000/svg"
+                                                            width="80" height="64" viewBox="0 0 80 64" fill="none">
+                                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                                d="M25.7143 0C22.8857 0 20.6686 1.75127 19.2971 3.85164C17.9086 5.96945 17.1429 8.73309 17.1429 11.6364C17.1429 14.5396 17.9086 17.3033 19.2971 19.4211C20.6686 21.5156 22.8857 23.2727 25.7143 23.2727C28.5429 23.2727 30.76 21.5215 32.1314 19.4211C33.52 17.3033 34.2857 14.5396 34.2857 11.6364C34.2857 8.73309 33.52 5.96945 32.1314 3.85164C30.76 1.75709 28.5429 0 25.7143 0ZM54.2857 0C51.4571 0 49.24 1.75127 47.8686 3.85164C46.48 5.96945 45.7143 8.73309 45.7143 11.6364C45.7143 14.5396 46.48 17.3033 47.8686 19.4211C49.24 21.5156 51.4571 23.2727 54.2857 23.2727C57.1143 23.2727 59.3314 21.5215 60.7029 19.4211C62.0914 17.3033 62.8571 14.5396 62.8571 11.6364C62.8571 8.73309 62.0914 5.96945 60.7029 3.85164C59.3314 1.75709 57.1143 0 54.2857 0ZM8.57143 26.1818C5.74286 26.1818 3.52571 27.9331 2.15429 30.0335C0.765714 32.1513 0 34.9149 0 37.8182C0 40.7215 0.765714 43.4851 2.15429 45.6029C3.52571 47.6975 5.74286 49.4545 8.57143 49.4545C11.4 49.4545 13.6171 47.7033 14.9886 45.6029C16.3771 43.4851 17.1429 40.7215 17.1429 37.8182C17.1429 34.9149 16.3771 32.1513 14.9886 30.0335C13.6171 27.9389 11.4 26.1818 8.57143 26.1818ZM40 26.1818C33.1429 26.1818 28.0629 29.9287 24.8171 34.5775C21.6114 39.1564 20 44.8407 20 49.4545C20 54.8305 23.1714 58.5716 27.0629 60.8116C30.8914 63.0225 35.6914 64 40 64C44.3086 64 49.1086 63.0284 52.9371 60.8116C56.8229 58.5658 60 54.8305 60 49.4545C60 44.8407 58.3886 39.1564 55.1829 34.5775C51.9429 29.9229 46.8629 26.1818 40 26.1818ZM71.4286 26.1818C68.6 26.1818 66.3829 27.9331 65.0114 30.0335C63.6229 32.1513 62.8571 34.9149 62.8571 37.8182C62.8571 40.7215 63.6229 43.4851 65.0114 45.6029C66.3829 47.6975 68.6 49.4545 71.4286 49.4545C74.2571 49.4545 76.4743 47.7033 77.8457 45.6029C79.2343 43.4851 80 40.7215 80 37.8182C80 34.9149 79.2343 32.1513 77.8457 30.0335C76.4743 27.9389 74.2571 26.1818 71.4286 26.1818Z"
+                                                                fill="#E5E5E5" />
+                                                        </svg></i>
+                                                </div>
+                                                <label class="pf-upload-btn">
+                                                    <input type="pf-file" hidden>
+                                                    <span class="pf-upload-icon"><svg xmlns="http://www.w3.org/2000/svg"
+                                                            width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                                            <path
+                                                                d="M7 10.3163C6.72386 10.3163 6.5 10.0924 6.5 9.81626V1.66626L4.52903 3.63722C4.33115 3.8351 4.00998 3.83398 3.81349 3.63471C3.61896 3.43744 3.62005 3.12016 3.81593 2.92422L6.55492 0.184464C6.80072 -0.0614062 7.19931 -0.0614344 7.44514 0.184402L10.185 2.92425C10.3809 3.1202 10.3822 3.43753 10.1877 3.63499C9.99116 3.83461 9.66959 3.83585 9.47149 3.63775L7.5 1.66626V9.81626C7.5 10.0924 7.27614 10.3163 7 10.3163ZM1.616 13.7393C1.15533 13.7393 0.771 13.5853 0.463 13.2773C0.155 12.9693 0.000666667 12.5846 0 12.1233V10.2003C0 9.92412 0.223858 9.70026 0.5 9.70026C0.776142 9.70026 1 9.92412 1 10.2003V12.1233C1 12.2773 1.064 12.4186 1.192 12.5473C1.32 12.6759 1.461 12.7399 1.615 12.7393H12.385C12.5383 12.7393 12.6793 12.6753 12.808 12.5473C12.9367 12.4193 13.0007 12.2779 13 12.1233V10.2003C13 9.92412 13.2239 9.70026 13.5 9.70026C13.7761 9.70026 14 9.92412 14 10.2003V12.1233C14 12.5839 13.846 12.9683 13.538 13.2763C13.23 13.5843 12.8453 13.7386 12.384 13.7393H1.616Z"
+                                                                fill="#3B3731" />
+                                                        </svg></span> Upload Photo
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                        <div class="pf-notes-section">
+                                            <label>Notes <span>(Optional)</span></label>
+                                            <textarea class="pf-textarea"
+                                                placeholder="Anything your groomer should know?&#10;(e.g. anxious around dryers, allergies, behaviour cues)."></textarea>
+                                        </div>
+
+                                        <div class="pf-action-footer">
+                                            <button type="button" id="cancel-add-pet" class="btn-cancel">Cancel</button>
+                                            <button type="submit" class="btn-save">Save</button>
+                                        </div>
+                                    </div>
+
+
+
+                                </form>
+
                             </div>
                         </div>
 
@@ -3420,7 +4356,8 @@
 
                                             <div class="card-review mt-4">
                                                 <p class="review">
-                                                    “Hands down the best groomer we’ve tried. The studio is spotless...”
+                                                    “Hands down the best groomer we’ve tried. The studio is
+                                                    spotless...”
                                                 </p>
                                             </div>
 
@@ -3545,7 +4482,8 @@
 
                                             <div class="card-review mt-4">
                                                 <p class="review">
-                                                    “Hands down the best groomer we’ve tried. The studio is spotless...”
+                                                    “Hands down the best groomer we’ve tried. The studio is
+                                                    spotless...”
                                                 </p>
                                             </div>
 
@@ -3668,7 +4606,8 @@
 
                                             <div class="card-review mt-4">
                                                 <p class="review">
-                                                    “Hands down the best groomer we’ve tried. The studio is spotless...”
+                                                    “Hands down the best groomer we’ve tried. The studio is
+                                                    spotless...”
                                                 </p>
                                             </div>
 
@@ -4014,19 +4953,22 @@
                                                             viewBox="0 0 12 9" fill="none">
                                                             <path d="M0.75 4.75L4.25 8.25L11.25 0.75" stroke="#3B3731"
                                                                 stroke-width="1.5" stroke-linecap="round"
-                                                                stroke-linejoin="round"></path>
+                                                                stroke-linejoin="round">
+                                                            </path>
                                                         </svg> Waiting area</span>
                                                     <span><svg xmlns="http://www.w3.org/2000/svg" width="12" height="9"
                                                             viewBox="0 0 12 9" fill="none">
                                                             <path d="M0.75 4.75L4.25 8.25L11.25 0.75" stroke="#3B3731"
                                                                 stroke-width="1.5" stroke-linecap="round"
-                                                                stroke-linejoin="round"></path>
+                                                                stroke-linejoin="round">
+                                                            </path>
                                                         </svg> Towels</span>
                                                     <span><svg xmlns="http://www.w3.org/2000/svg" width="12" height="9"
                                                             viewBox="0 0 12 9" fill="none">
                                                             <path d="M0.75 4.75L4.25 8.25L11.25 0.75" stroke="#3B3731"
                                                                 stroke-width="1.5" stroke-linecap="round"
-                                                                stroke-linejoin="round"></path>
+                                                                stroke-linejoin="round">
+                                                            </path>
                                                         </svg> Wi-Fi</span>
                                                     <span class="plus">+ 5</span>
                                                 </div>
@@ -4162,25 +5104,29 @@
                                                             viewBox="0 0 12 9" fill="none">
                                                             <path d="M0.75 4.75L4.25 8.25L11.25 0.75" stroke="#3B3731"
                                                                 stroke-width="1.5" stroke-linecap="round"
-                                                                stroke-linejoin="round"></path>
+                                                                stroke-linejoin="round">
+                                                            </path>
                                                         </svg> Bath</span>
                                                     <span><svg xmlns="http://www.w3.org/2000/svg" width="12" height="9"
                                                             viewBox="0 0 12 9" fill="none">
                                                             <path d="M0.75 4.75L4.25 8.25L11.25 0.75" stroke="#3B3731"
                                                                 stroke-width="1.5" stroke-linecap="round"
-                                                                stroke-linejoin="round"></path>
+                                                                stroke-linejoin="round">
+                                                            </path>
                                                         </svg> Wi-Fi</span>
                                                     <span><svg xmlns="http://www.w3.org/2000/svg" width="12" height="9"
                                                             viewBox="0 0 12 9" fill="none">
                                                             <path d="M0.75 4.75L4.25 8.25L11.25 0.75" stroke="#3B3731"
                                                                 stroke-width="1.5" stroke-linecap="round"
-                                                                stroke-linejoin="round"></path>
+                                                                stroke-linejoin="round">
+                                                            </path>
                                                         </svg> Dryer</span>
                                                     <span><svg xmlns="http://www.w3.org/2000/svg" width="12" height="9"
                                                             viewBox="0 0 12 9" fill="none">
                                                             <path d="M0.75 4.75L4.25 8.25L11.25 0.75" stroke="#3B3731"
                                                                 stroke-width="1.5" stroke-linecap="round"
-                                                                stroke-linejoin="round"></path>
+                                                                stroke-linejoin="round">
+                                                            </path>
                                                         </svg> Parking</span>
                                                 </div>
 
@@ -4371,7 +5317,8 @@
                                             </div>
 
                                             <p class="review-text">
-                                                I booked this groomer through Fursgo for my anxious little cockapoo
+                                                I booked this groomer through Fursgo for my anxious little
+                                                cockapoo
                                                 and honestly couldn’t be happier. They took the time to let him
                                                 settle and never rushed him...
                                             </p>
@@ -4427,7 +5374,8 @@
                                                         <path d="M14.2432 8.93896V9.01472V8.93896Z" fill="#CBDCE8">
                                                         </path>
                                                         <path d="M14.2432 8.93896V9.01472" stroke="white"
-                                                            stroke-linecap="round" stroke-linejoin="round"></path>
+                                                            stroke-linecap="round" stroke-linejoin="round">
+                                                        </path>
                                                     </svg>
                                                 </div>
                                             </div>
@@ -4494,7 +5442,8 @@
 
                                             <p class="review-text">
                                                 This grooming space was perfect — bright, clean, and clearly
-                                                designed with pets in mind. Everything felt organised and hygienic.
+                                                designed with pets in mind. Everything felt organised and
+                                                hygienic.
                                             </p>
 
                                             <div class="review-tags">
@@ -4545,7 +5494,8 @@
                                                         <path d="M14.2432 8.93896V9.01472V8.93896Z" fill="#CBDCE8">
                                                         </path>
                                                         <path d="M14.2432 8.93896V9.01472" stroke="white"
-                                                            stroke-linecap="round" stroke-linejoin="round"></path>
+                                                            stroke-linecap="round" stroke-linejoin="round">
+                                                        </path>
                                                     </svg>
                                                 </div>
                                             </div>
@@ -4610,10 +5560,12 @@
                                             </div>
 
                                             <p class="review-text">
-                                                Such a nice grooming environment. The space was tidy, well ventilated,
+                                                Such a nice grooming environment. The space was tidy, well
+                                                ventilated,
                                                 and had all
                                                 the
-                                                equipment needed without feeling overwhelming. It felt very calm and
+                                                equipment needed without feeling overwhelming. It felt very
+                                                calm and
                                                 welcoming,
                                                 which
                                                 made
@@ -4724,7 +5676,8 @@
                                             </div>
 
                                             <p class="review-text">
-                                                Clear communication and Bella was well prepared for the appointment.
+                                                Clear communication and Bella was well prepared for the
+                                                appointment.
                                             </p>
 
                                             <div class="review-tags">
@@ -4844,7 +5797,9 @@
                                             </div>
 
                                             <p class="review-text">
-                                                Really pleasant booking overall. Easy access, good communication, and
+                                                Really pleasant booking overall. Easy access, good
+                                                communication,
+                                                and
                                                 the Pepper was
                                                 well prepared. Would be happy to work together again.
                                             </p>
@@ -4944,10 +5899,13 @@
                                             </div>
 
                                             <p class="review-text">
-                                                Such a nice grooming environment. The space was tidy, well ventilated,
+                                                Such a nice grooming environment. The space was tidy,
+                                                well
+                                                ventilated,
                                                 and had all
                                                 the
-                                                equipment needed without feeling overwhelming. It felt very calm and
+                                                equipment needed without feeling overwhelming. It felt
+                                                very calm and
                                                 welcoming,
                                                 which
                                                 made
@@ -5266,6 +6224,8 @@
     </div>
 
     <?php include '../components/footer.php' ?>
+    <script src=" <?= BASE_URL ?>/assets/js/custom.js"></script>
+    <script src=" <?= BASE_URL ?>/assets/js/custom-dropdown.js"></script>
     <script>
         // Handle primary profile tabs (profile, pets, favourites, reviews, rewards)
         document.addEventListener('DOMContentLoaded', () => {
@@ -5420,22 +6380,329 @@
             });
         }
 
+        // ===== Add New Pet: Toggle slider ↔ form =====
+        document.addEventListener('DOMContentLoaded', () => {
+            const addPetBtn = document.getElementById('btn-add-new-pet');
+            const cancelPetBtn = document.getElementById('cancel-add-pet');
+            const sliderContainer = document.getElementById('pets-slider-container');
+            const formContainer = document.getElementById('add-pet-form-container');
+            const petTypeSelect = document.getElementById('pet-type');
+            const petBreedSelect = document.getElementById('pet-breed');
 
-        document.getElementById('dateToggleBtn').addEventListener('click', function (e) {
-            e.stopPropagation();
-            const card = document.getElementById('calendarCard');
-            card.classList.toggle('active');
-        });
+            let petBreedsData = null;
 
-        // Kahin bhi bahar click karne se calendar band ho jaye
-        document.addEventListener('click', function (e) {
-            const card = document.getElementById('calendarCard');
-            const btn = document.getElementById('dateToggleBtn');
-            if (!btn.contains(e.target) && !card.contains(e.target)) {
-                card.classList.remove('active');
+            // Load pet breeds JSON once
+            fetch('<?= BASE_URL ?>assets/data/pet-breeds.json')
+                .then(res => res.json())
+                .then(data => {
+                    petBreedsData = data.petTypes;
+                    // Populate type dropdown if it exists
+                    if (petTypeSelect) {
+                        petBreedsData.forEach(pt => {
+                            const opt = document.createElement('option');
+                            opt.value = pt.name;
+                            opt.textContent = pt.name;
+                            petTypeSelect.appendChild(opt);
+                        });
+                    }
+                })
+                .catch(err => console.error('Failed to load pet breeds:', err));
+
+            // When pet type changes, populate breeds
+            if (petTypeSelect) {
+                petTypeSelect.addEventListener('change', () => {
+                    const selectedType = petTypeSelect.value;
+                    if (petBreedSelect) {
+                        petBreedSelect.innerHTML = '<option value="" disabled selected>Select breed</option>';
+                        petBreedSelect.disabled = true;
+                    }
+
+                    if (petBreedsData && petBreedSelect) {
+                        const match = petBreedsData.find(pt => pt.name === selectedType);
+                        if (match) {
+                            match.breeds.forEach(breed => {
+                                const opt = document.createElement('option');
+                                opt.value = breed;
+                                opt.textContent = breed;
+                                petBreedSelect.appendChild(opt);
+                            });
+                            petBreedSelect.disabled = false;
+                        }
+                    }
+                });
+            }
+
+            // Show form, hide slider
+            if (addPetBtn) {
+                addPetBtn.addEventListener('click', () => {
+                    sliderContainer.classList.add('hidden');
+                    formContainer.classList.remove('hidden');
+                    // Scroll to form
+                    formContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                });
+            }
+
+            // Cancel: show slider, hide form
+            if (cancelPetBtn) {
+                cancelPetBtn.addEventListener('click', () => {
+                    formContainer.classList.add('hidden');
+                    sliderContainer.classList.remove('hidden');
+                    // Reset the form
+                    document.getElementById('add-pet-form').reset();
+                    if (petBreedSelect) {
+                        petBreedSelect.innerHTML = '<option value="" disabled selected>Select breed</option>';
+                        petBreedSelect.disabled = true;
+                    }
+                });
+            }
+
+            // Handle form submit
+            const addPetForm = document.getElementById('add-pet-form');
+            if (addPetForm) {
+                addPetForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    addPetForm.reset();
+                    if (petBreedSelect) {
+                        petBreedSelect.innerHTML = '<option value="" disabled selected>Select breed</option>';
+                        petBreedSelect.disabled = true;
+                    }
+                    formContainer.classList.add('hidden');
+                    sliderContainer.classList.remove('hidden');
+                });
             }
         });
+
+
+        const dateToggleBtn = document.getElementById('dateToggleBtn');
+        const calendarCard = document.getElementById('calendarCard');
+
+        // Only wire this legacy toggle if the expected elements exist on the page.
+        // This prevents runtime JS errors that can break other UI scripts.
+        if (dateToggleBtn && calendarCard) {
+            dateToggleBtn.addEventListener('click', function (e) {
+                e.stopPropagation();
+                calendarCard.classList.toggle('active');
+            });
+
+            // Kahin bhi bahar click karne se calendar band ho jaye
+            document.addEventListener('click', function (e) {
+                if (!dateToggleBtn.contains(e.target) && !calendarCard.contains(e.target)) {
+                    calendarCard.classList.remove('active');
+                }
+            });
+        }
+        // ===== Profile Page: Pet Type Auto-Detection (matches booking-groomer pattern) =====
+        let profilePetBreedsData = {};
+
+        async function loadProfilePetBreedsData() {
+            try {
+                const response = await fetch('<?= BASE_URL ?>/assets/data/pet-breeds.json');
+                if (!response.ok) throw new Error('Failed to load pet breeds');
+                const data = await response.json();
+                profilePetBreedsData = data;
+                setupProfilePetTypeAutoDetection();
+            } catch (error) {
+                console.error('Error loading pet breeds data:', error);
+            }
+        }
+
+        function setupProfilePetTypeAutoDetection() {
+            const petTypeInput = document.getElementById('pet_type');
+            const suggestionBox = document.getElementById('petTypeSuggestions_profile');
+            const petBreedSelect = document.getElementById('pet-breed');
+            const checkIcon = document.getElementById('petTypeCheck_profile');
+
+            if (!petTypeInput || !profilePetBreedsData.petTypes) return;
+
+            petTypeInput.addEventListener('input', function () {
+                const inputValue = this.value.trim().toLowerCase();
+                suggestionBox.innerHTML = '';
+
+                if (inputValue.length === 0) {
+                    suggestionBox.style.display = 'none';
+                    petBreedSelect.innerHTML = '<option value="">Select a Breed</option>';
+                    if (petBreedSelect._fursDD) petBreedSelect._fursDD.refresh();
+                    if (checkIcon) checkIcon.style.display = 'none';
+                    return;
+                }
+
+                const matches = profilePetBreedsData.petTypes.filter(pt =>
+                    pt.name.toLowerCase().includes(inputValue)
+                );
+
+                if (matches.length > 0) {
+                    suggestionBox.style.display = 'block';
+                    matches.forEach(match => {
+                        const item = document.createElement('div');
+                        item.style.cssText = 'padding:10px;cursor:pointer;border-bottom:1px solid #EEE;color:#3B3731;font-family:Lato;font-size:16px;';
+                        item.textContent = match.name;
+                        item.addEventListener('mouseover', function () { this.style.backgroundColor = '#f5f5f5'; });
+                        item.addEventListener('mouseout', function () { this.style.backgroundColor = 'transparent'; });
+                        item.addEventListener('click', function () {
+                            petTypeInput.value = match.name;
+                            suggestionBox.style.display = 'none';
+                            if (checkIcon) checkIcon.style.display = 'block';
+                            profilePopulateBreeds(match);
+                        });
+                        suggestionBox.appendChild(item);
+                    });
+                } else {
+                    suggestionBox.style.display = 'none';
+                    petBreedSelect.innerHTML = '<option value="">Select a Breed</option>';
+                    if (petBreedSelect._fursDD) petBreedSelect._fursDD.refresh();
+                }
+
+                // Exact match → auto-populate breeds
+                const exactMatch = profilePetBreedsData.petTypes.find(p => p.name.toLowerCase() === inputValue);
+                if (exactMatch) {
+                    profilePopulateBreeds(exactMatch);
+                    suggestionBox.style.display = 'none';
+                    if (checkIcon) checkIcon.style.display = 'block';
+                } else {
+                    if (checkIcon) checkIcon.style.display = 'none';
+                }
+            });
+
+            // Hide suggestions when clicking outside
+            document.addEventListener('click', function (e) {
+                if (e.target !== petTypeInput && !suggestionBox.contains(e.target)) {
+                    suggestionBox.style.display = 'none';
+                }
+            });
+
+            petTypeInput.addEventListener('focus', function () {
+                if (this.value.trim().length > 0) suggestionBox.style.display = 'block';
+            });
+        }
+
+        function profilePopulateBreeds(petType) {
+            const petBreedSelect = document.getElementById('pet-breed');
+            petBreedSelect.innerHTML = '<option value="">Select a Breed</option>';
+            if (petType && petType.breeds) {
+                petType.breeds.forEach(breed => {
+                    const option = document.createElement('option');
+                    option.value = breed;
+                    option.textContent = breed;
+                    petBreedSelect.appendChild(option);
+                });
+            }
+            if (petBreedSelect._fursDD) petBreedSelect._fursDD.refresh();
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            loadProfilePetBreedsData();
+        });
+        // ===== End Profile Page Pet Type Auto-Detection =====
+
+        document.addEventListener('DOMContentLoaded', function () {
+
+            // ── Select Pet Type toggle ──────────────────────────────────────────
+            const petTypeGroup = document.querySelector('.pf-toggle-group');
+            if (petTypeGroup) {
+                const typeButtons = petTypeGroup.querySelectorAll('button[type="button"]');
+                const petTypeInput = document.getElementById('pet_type');
+                const petBreedSelect = document.getElementById('pet-breed');
+                const checkIcon = document.getElementById('petTypeCheck_profile');
+
+                typeButtons.forEach(btn => {
+                    btn.addEventListener('click', function () {
+                        // Deactivate all, activate clicked
+                        typeButtons.forEach(b => {
+                            b.classList.remove('active');
+                            b.querySelector('p') && (b.querySelector('p').style.color = '');
+                        });
+                        this.classList.add('active');
+                        if (this.querySelector('p')) this.querySelector('p').style.color = '#fff';
+
+                        const selected = this.querySelector('p')?.textContent.trim().toLowerCase();
+
+                        if (selected === 'cat' || selected === 'dog') {
+                            // Disable the free-text pet type input
+                            if (petTypeInput) {
+                                petTypeInput.value = '';
+                                petTypeInput.disabled = true;
+                                petTypeInput.style.background = '#f5f5f5';
+                                petTypeInput.style.color = '#9d9b98';
+                                petTypeInput.style.cursor = 'not-allowed';
+                            }
+                            if (checkIcon) checkIcon.style.display = 'none';
+
+                            // Populate breeds from loaded data
+                            const typeName = selected.charAt(0).toUpperCase() + selected.slice(1);
+                            if (profilePetBreedsData?.petTypes) {
+                                const match = profilePetBreedsData.petTypes.find(
+                                    pt => pt.name.toLowerCase() === selected
+                                );
+                                if (match) profilePopulateBreeds(match);
+                            }
+                        } else {
+                            // "Other" — enable the free-text input
+                            if (petTypeInput) {
+                                petTypeInput.disabled = false;
+                                petTypeInput.style.background = '';
+                                petTypeInput.style.color = '';
+                                petTypeInput.style.cursor = '';
+                            }
+                            // Clear breeds until user types
+                            if (petBreedSelect) {
+                                petBreedSelect.innerHTML = '<option value="">Select a Breed</option>';
+                                if (petBreedSelect._fursDD) petBreedSelect._fursDD.refresh();
+                            }
+                        }
+                    });
+                });
+            }
+
+            // ── Select Pet Size toggle ──────────────────────────────────────────
+            const sizeGroups = document.querySelectorAll('.pf-toggle-group');
+            // The second .pf-toggle-group is the size selector
+            if (sizeGroups.length >= 2) {
+                const sizeButtons = sizeGroups[1].querySelectorAll('button[type="button"]');
+                sizeButtons.forEach(btn => {
+                    btn.addEventListener('click', function () {
+                        sizeButtons.forEach(b => {
+                            b.classList.remove('active');
+                            if (b.querySelector('p')) b.querySelector('p').style.color = '';
+                        });
+                        this.classList.add('active');
+                        if (this.querySelector('p')) this.querySelector('p').style.color = '#fff';
+                    });
+                });
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.input-box').forEach(box => {
+                const input = box.querySelector('input[type="number"]');
+                const svg = box.querySelector('.number-icon');
+
+                if (!input || !svg) return;
+
+                svg.addEventListener('click', (e) => {
+                    const rect = svg.getBoundingClientRect();
+                    const clickY = e.clientY - rect.top;
+                    const half = rect.height / 2;
+
+                    const step = parseFloat(input.step) || 1;
+                    const min = input.min !== "" ? parseFloat(input.min) : -Infinity;
+                    const max = input.max !== "" ? parseFloat(input.max) : Infinity;
+                    let value = parseFloat(input.value) || 0;
+
+                    if (clickY < half) {
+                        value = Math.min(max, value + step);
+                    } else {
+                        value = Math.max(min, value - step);
+                    }
+
+                    input.value = value;
+                    input.dispatchEvent(new Event('input', { bubbles: true }));
+                    input.dispatchEvent(new Event('change', { bubbles: true }));
+                });
+            });
+        });
     </script>
+
+    <?php bcAssets(); ?>
 
 </body>
 
