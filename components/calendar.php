@@ -198,6 +198,7 @@ function bcAssets(): void
 
         .bc-trigger:hover {
             border-color: #FFC97A;
+            cursor: pointer;
         }
 
         .bc-trigger.bc-open {
@@ -338,8 +339,8 @@ function bcAssets(): void
         }
 
         /* .bc-dow .bc-wknd {
-                color: #FFC97A;
-            } */
+                                    color: #FFC97A;
+                                } */
 
         /* ── Day grid ────────────────────────────────────────────────────────────── */
         .bc-grid {
@@ -375,8 +376,8 @@ function bcAssets(): void
         }
 
         /* .bc-wkd:not(.bc-sel) {
-                color: #C9845A;
-            } */
+                                    color: #C9845A;
+                                } */
 
         span#bc-display-birthday_1 {
             font-size: 16px;
