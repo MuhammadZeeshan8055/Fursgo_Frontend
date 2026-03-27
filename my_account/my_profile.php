@@ -2360,6 +2360,9 @@
 
         .pf-left {
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .pf-avatar {
@@ -2369,15 +2372,34 @@
         }
 
         .pf-edit-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
             border: 1px solid #333;
             padding: 10px 18px;
             border-radius: 20px;
             background: white;
             cursor: pointer;
+            color: #3B3731;
+            font-family: Lato;
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 1;
+            white-space: nowrap;
+        }
+
+        .pf-edit-btn span {
+            display: flex;
+            align-items: center;
+            line-height: 0;
+        }
+
+        .pf-edit-btn span svg {
+            display: block;
         }
 
         /* RIGHT */
-
         .pf-pet-right {
             flex: 1;
         }
@@ -2453,26 +2475,72 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 0.6rem;
+            gap: 6px;
             flex: 1;
-            padding: 10px;
+            padding: 10px 8px;
             border: none;
             background: transparent;
             cursor: pointer;
+            line-height: 1;
+        }
+
+        /* Default SVG icon colour */
+        .pf-toggle-group button svg {
+            display: block;
+            /* removes inline baseline gap */
+            flex-shrink: 0;
+        }
+
+        .pf-toggle-group button svg path,
+        .pf-toggle-group button svg circle,
+        .pf-toggle-group button svg ellipse,
+        .pf-toggle-group button svg rect {
+            fill: #D4D4D4;
+        }
+
+        .pf-toggle-group button.active {
+            background: #FFC97A;
+            border-radius: 0;
+            color: #fff;
+        }
+
+        .pf-toggle-group button:first-child.active {
+            border-radius: 8px 0 0 8px;
+        }
+
+        .pf-toggle-group button:last-child.active {
+            border-radius: 0 8px 8px 0;
+        }
+
+        .pf-toggle-group button:only-child.active {
+            border-radius: 8px;
+        }
+
+        .pf-toggle-group button.active p {
+            color: #fff;
+        }
+
+        .pf-toggle-group button.active svg path,
+        .pf-toggle-group button.active svg circle,
+        .pf-toggle-group button.active svg ellipse,
+        .pf-toggle-group button.active svg rect {
+            fill: #fff;
         }
 
         .pf-toggle-group button:not(:last-child) {
             border-right: 1px solid #d4d4d4;
         }
 
+        /* Default text colour */
         .pf-toggle-group button p {
-            color: #d4d4d4;
+            color: #D4D4D4;
             text-align: center;
             font-family: Lato;
             font-size: 16px;
             font-style: normal;
             font-weight: 400;
-            line-height: normal;
+            line-height: 1;
+            margin: 0;
         }
 
         .pf-toggle-group .active {
@@ -2513,7 +2581,7 @@
             height: 48px;
             border: 1px solid #ddd;
             border-radius: 10px;
-            padding: 0 40px 0 12px;
+            padding: 0 40px 0 20px;
         }
 
         /* SVG positioning */
@@ -2623,7 +2691,7 @@
             width: 100%;
             min-height: 80px;
             border-radius: 10px;
-            padding: 12px 15px;
+            padding: 15px;
             font-size: 16px;
             font-weight: 400;
             outline: none;
@@ -4037,7 +4105,7 @@ line-height: normal;">(for ‘other’ pets)</span></label>
                                             <div style="position:relative; display:block;width: 300px;">
                                                 <input type="text" id="pet_type" placeholder="e.g. Dog, Cat, Rabbit..."
                                                     autocomplete="off"
-                                                    style="padding-right:40px; width:100%; display:block; height:48px; padding:8px 10px; border-radius:10px; border:1px solid #D4D4D4; background:#FFF; font-family:Lato; font-size:16px;">
+                                                    style="padding-right:40px; width:100%; display:block; height:48px; padding:8px 20px; border-radius:10px; border:1px solid #D4D4D4; background:#FFF; font-family:Lato; font-size:16px;">
                                                 <span id="petTypeCheck_profile"
                                                     style="position:absolute;right:12px;top:50%;transform:translateY(-50%);pointer-events:none;display:none;line-height:0;z-index:5;">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19"
@@ -4067,7 +4135,12 @@ line-height: normal;">(for ‘other’ pets)</span></label>
 
                                             <div class="input-box">
 
-                                                <input type="number" value="4" style="width: 85px;height: 48px;">
+                                                <input type="number" value="4" style="width: 85px;height: 48px; color: #3B3731;
+font-family: Lato;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;">
                                                 <!-- SVG -->
                                                 <svg class="number-icon" xmlns="http://www.w3.org/2000/svg" width="11"
                                                     height="28" viewBox="0 0 11 28" fill="none">
