@@ -1,6 +1,6 @@
 <?php
 include '../function_helper.php';
-include '../components/birthday-calendar.php';
+include '../components/calendar.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -577,7 +577,8 @@ include '../components/birthday-calendar.php';
                         </div>
                     </div>
 
-                    <button type="button" class="btn-custom btn-no-bg text-center" id="goBack" onclick="nextPrev(-1)">Go Back</button>
+                    <button type="button" class="btn-custom btn-no-bg text-center" id="goBack" onclick="nextPrev(-1)">Go
+                        Back</button>
 
                 </div>
 
@@ -592,10 +593,12 @@ include '../components/birthday-calendar.php';
 
                             <div class="row">
                                 <div class="col-lg-5">
-                                    <div class="upload-card d-flex flex-column align-items-center justify-content-center mt-5">
+                                    <div
+                                        class="upload-card d-flex flex-column align-items-center justify-content-center mt-5">
 
                                         <div class="user-icon-size-details d-flex flex-column align-items-center">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="85" height="85" viewBox="0 0 85 85" fill="none">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="85" height="85"
+                                                viewBox="0 0 85 85" fill="none">
                                                 <circle cx="42.5" cy="42.5" r="42" fill="#E3E3E3" stroke="#F6F6F6" />
                                                 <path
                                                     d="M16.4331 75.7448C18.0848 43.5072 66.8863 43.5073 68.538 75.7448C68.538 75.7448 59.009 84.8116 42.5757 84.8116C26.1424 84.8116 16.4331 75.7448 16.4331 75.7448Z"
@@ -621,8 +624,11 @@ include '../components/birthday-calendar.php';
 
 
                                         <label class="upload-btn">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
-                                                <path d="M7 10.3162C6.72386 10.3162 6.5 10.0923 6.5 9.8162V1.6662L4.52903 3.63716C4.33115 3.83504 4.00998 3.83392 3.81349 3.63465C3.61896 3.43738 3.62005 3.1201 3.81593 2.92416L6.55492 0.184403C6.80072 -0.0614672 7.19931 -0.0614954 7.44514 0.184341L10.185 2.92419C10.3809 3.12014 10.3822 3.43747 10.1877 3.63493C9.99116 3.83455 9.66959 3.83579 9.47149 3.63769L7.5 1.6662V9.8162C7.5 10.0923 7.27614 10.3162 7 10.3162ZM1.616 13.7392C1.15533 13.7392 0.771 13.5852 0.463 13.2772C0.155 12.9692 0.000666667 12.5845 0 12.1232V10.2002C0 9.92405 0.223858 9.7002 0.5 9.7002C0.776142 9.7002 1 9.92406 1 10.2002V12.1232C1 12.2772 1.064 12.4185 1.192 12.5472C1.32 12.6759 1.461 12.7399 1.615 12.7392H12.385C12.5383 12.7392 12.6793 12.6752 12.808 12.5472C12.9367 12.4192 13.0007 12.2779 13 12.1232V10.2002C13 9.92405 13.2239 9.7002 13.5 9.7002C13.7761 9.7002 14 9.92406 14 10.2002V12.1232C14 12.5839 13.846 12.9682 13.538 13.2762C13.23 13.5842 12.8453 13.7385 12.384 13.7392H1.616Z" fill="white" />
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
+                                                viewBox="0 0 14 14" fill="none">
+                                                <path
+                                                    d="M7 10.3162C6.72386 10.3162 6.5 10.0923 6.5 9.8162V1.6662L4.52903 3.63716C4.33115 3.83504 4.00998 3.83392 3.81349 3.63465C3.61896 3.43738 3.62005 3.1201 3.81593 2.92416L6.55492 0.184403C6.80072 -0.0614672 7.19931 -0.0614954 7.44514 0.184341L10.185 2.92419C10.3809 3.12014 10.3822 3.43747 10.1877 3.63493C9.99116 3.83455 9.66959 3.83579 9.47149 3.63769L7.5 1.6662V9.8162C7.5 10.0923 7.27614 10.3162 7 10.3162ZM1.616 13.7392C1.15533 13.7392 0.771 13.5852 0.463 13.2772C0.155 12.9692 0.000666667 12.5845 0 12.1232V10.2002C0 9.92405 0.223858 9.7002 0.5 9.7002C0.776142 9.7002 1 9.92406 1 10.2002V12.1232C1 12.2772 1.064 12.4185 1.192 12.5472C1.32 12.6759 1.461 12.7399 1.615 12.7392H12.385C12.5383 12.7392 12.6793 12.6752 12.808 12.5472C12.9367 12.4192 13.0007 12.2779 13 12.1232V10.2002C13 9.92405 13.2239 9.7002 13.5 9.7002C13.7761 9.7002 14 9.92406 14 10.2002V12.1232C14 12.5839 13.846 12.9682 13.538 13.2762C13.23 13.5842 12.8453 13.7385 12.384 13.7392H1.616Z"
+                                                    fill="white" />
                                             </svg>
                                             &nbsp;
                                             Upload Photo
@@ -645,14 +651,16 @@ include '../components/birthday-calendar.php';
                                         <div class="input-wrapper">
                                             <input type="text" id="name" value="Bella@outlook.com">
                                             <span class="icon success">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19"
+                                                    viewBox="0 0 19 19" fill="none">
                                                     <path
                                                         d="M9.5 0C4.275 0 0 4.275 0 9.5C0 14.725 4.275 19 9.5 19C14.725 19 19 14.725 19 9.5C19 4.275 14.725 0 9.5 0ZM7.6 14.25L2.85 9.5L4.1895 8.1605L7.6 11.5615L14.8105 4.351L16.15 5.7L7.6 14.25Z"
                                                         fill="#C9DDA0" />
                                                 </svg>
                                             </span>
                                             <span class="icon error">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19"
+                                                    viewBox="0 0 19 19" fill="none">
                                                     <path
                                                         d="M9.5 0C14.7467 0 19 4.25329 19 9.5C19 14.7467 14.7467 19 9.5 19C4.25329 19 0 14.7467 0 9.5C0 4.25329 4.25329 0 9.5 0ZM13.1973 6.22559C12.9044 5.9327 12.4296 5.9327 12.1367 6.22559L9.71094 8.65039L7.28613 6.22559C6.99324 5.93269 6.51848 5.93269 6.22559 6.22559C5.93294 6.5185 5.93277 6.99332 6.22559 7.28613L8.65039 9.71094L6.22559 12.1367C5.93295 12.4296 5.93278 12.9045 6.22559 13.1973C6.51841 13.4898 6.9933 13.4898 7.28613 13.1973L9.71094 10.7715L12.1367 13.1973C12.4296 13.4898 12.9044 13.4898 13.1973 13.1973C13.4901 12.9045 13.4899 12.4296 13.1973 12.1367L10.7715 9.71094L13.1973 7.28613C13.4901 6.99332 13.4899 6.5185 13.1973 6.22559Z"
                                                         fill="#FF6E6E" />
@@ -693,14 +701,16 @@ include '../components/birthday-calendar.php';
                                         <div class="input-wrapper">
                                             <input type="text" id="name" value="London">
                                             <span class="icon success">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19"
+                                                    viewBox="0 0 19 19" fill="none">
                                                     <path
                                                         d="M9.5 0C4.275 0 0 4.275 0 9.5C0 14.725 4.275 19 9.5 19C14.725 19 19 14.725 19 9.5C19 4.275 14.725 0 9.5 0ZM7.6 14.25L2.85 9.5L4.1895 8.1605L7.6 11.5615L14.8105 4.351L16.15 5.7L7.6 14.25Z"
                                                         fill="#C9DDA0" />
                                                 </svg>
                                             </span>
                                             <span class="icon error">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19"
+                                                    viewBox="0 0 19 19" fill="none">
                                                     <path
                                                         d="M9.5 0C14.7467 0 19 4.25329 19 9.5C19 14.7467 14.7467 19 9.5 19C4.25329 19 0 14.7467 0 9.5C0 4.25329 4.25329 0 9.5 0ZM13.1973 6.22559C12.9044 5.9327 12.4296 5.9327 12.1367 6.22559L9.71094 8.65039L7.28613 6.22559C6.99324 5.93269 6.51848 5.93269 6.22559 6.22559C5.93294 6.5185 5.93277 6.99332 6.22559 7.28613L8.65039 9.71094L6.22559 12.1367C5.93295 12.4296 5.93278 12.9045 6.22559 13.1973C6.51841 13.4898 6.9933 13.4898 7.28613 13.1973L9.71094 10.7715L12.1367 13.1973C12.4296 13.4898 12.9044 13.4898 13.1973 13.1973C13.4901 12.9045 13.4899 12.4296 13.1973 12.1367L10.7715 9.71094L13.1973 7.28613C13.4901 6.99332 13.4899 6.5185 13.1973 6.22559Z"
                                                         fill="#FF6E6E" />
@@ -712,7 +722,8 @@ include '../components/birthday-calendar.php';
                                     <div class="form-field mt-4">
                                         <label>Preferred City / Area</label>
                                         <div class="input-wrapper">
-                                            <input type="text" id="name" placeholder="Where do you usually book grooming?">
+                                            <input type="text" id="name"
+                                                placeholder="Where do you usually book grooming?">
                                         </div>
                                     </div>
                                 </div>
@@ -723,14 +734,16 @@ include '../components/birthday-calendar.php';
                                         <div class="input-wrapper">
                                             <input type="text" id="name" value="SW3 4JP">
                                             <span class="icon success">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19"
+                                                    viewBox="0 0 19 19" fill="none">
                                                     <path
                                                         d="M9.5 0C4.275 0 0 4.275 0 9.5C0 14.725 4.275 19 9.5 19C14.725 19 19 14.725 19 9.5C19 4.275 14.725 0 9.5 0ZM7.6 14.25L2.85 9.5L4.1895 8.1605L7.6 11.5615L14.8105 4.351L16.15 5.7L7.6 14.25Z"
                                                         fill="#C9DDA0" />
                                                 </svg>
                                             </span>
                                             <span class="icon error">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19"
+                                                    viewBox="0 0 19 19" fill="none">
                                                     <path
                                                         d="M9.5 0C14.7467 0 19 4.25329 19 9.5C19 14.7467 14.7467 19 9.5 19C4.25329 19 0 14.7467 0 9.5C0 4.25329 4.25329 0 9.5 0ZM13.1973 6.22559C12.9044 5.9327 12.4296 5.9327 12.1367 6.22559L9.71094 8.65039L7.28613 6.22559C6.99324 5.93269 6.51848 5.93269 6.22559 6.22559C5.93294 6.5185 5.93277 6.99332 6.22559 7.28613L8.65039 9.71094L6.22559 12.1367C5.93295 12.4296 5.93278 12.9045 6.22559 13.1973C6.51841 13.4898 6.9933 13.4898 7.28613 13.1973L9.71094 10.7715L12.1367 13.1973C12.4296 13.4898 12.9044 13.4898 13.1973 13.1973C13.4901 12.9045 13.4899 12.4296 13.1973 12.1367L10.7715 9.71094L13.1973 7.28613C13.4901 6.99332 13.4899 6.5185 13.1973 6.22559Z"
                                                         fill="#FF6E6E" />
@@ -743,10 +756,7 @@ include '../components/birthday-calendar.php';
                                     <div class="form-field mt-4">
                                         <label>Bio</label>
                                         <div class="input-wrapper">
-                                            <textarea
-                                                id="bio"
-                                                name="bio"
-                                                rows="3"
+                                            <textarea id="bio" name="bio" rows="3"
                                                 placeholder="Tell us a bit about you and your pets…"></textarea>
                                         </div>
                                     </div>
@@ -762,10 +772,12 @@ include '../components/birthday-calendar.php';
                         <div class="step">
                             <div class="row">
                                 <div class="col-lg-5">
-                                    <div class="upload-card pet-details d-flex flex-column align-items-center justify-content-center mt-5">
+                                    <div
+                                        class="upload-card pet-details d-flex flex-column align-items-center justify-content-center mt-5">
 
                                         <div class="user-icon-size-details d-flex flex-column align-items-center">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="85" height="85" viewBox="0 0 85 85" fill="none">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="85" height="85"
+                                                viewBox="0 0 85 85" fill="none">
                                                 <circle cx="42.5" cy="42.5" r="42" fill="#E3E3E3" stroke="#F6F6F6" />
                                                 <path
                                                     d="M16.4331 75.7448C18.0848 43.5072 66.8863 43.5073 68.538 75.7448C68.538 75.7448 59.009 84.8116 42.5757 84.8116C26.1424 84.8116 16.4331 75.7448 16.4331 75.7448Z"
@@ -791,8 +803,11 @@ include '../components/birthday-calendar.php';
 
 
                                         <label class="upload-btn">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
-                                                <path d="M7 10.3162C6.72386 10.3162 6.5 10.0923 6.5 9.8162V1.6662L4.52903 3.63716C4.33115 3.83504 4.00998 3.83392 3.81349 3.63465C3.61896 3.43738 3.62005 3.1201 3.81593 2.92416L6.55492 0.184403C6.80072 -0.0614672 7.19931 -0.0614954 7.44514 0.184341L10.185 2.92419C10.3809 3.12014 10.3822 3.43747 10.1877 3.63493C9.99116 3.83455 9.66959 3.83579 9.47149 3.63769L7.5 1.6662V9.8162C7.5 10.0923 7.27614 10.3162 7 10.3162ZM1.616 13.7392C1.15533 13.7392 0.771 13.5852 0.463 13.2772C0.155 12.9692 0.000666667 12.5845 0 12.1232V10.2002C0 9.92405 0.223858 9.7002 0.5 9.7002C0.776142 9.7002 1 9.92406 1 10.2002V12.1232C1 12.2772 1.064 12.4185 1.192 12.5472C1.32 12.6759 1.461 12.7399 1.615 12.7392H12.385C12.5383 12.7392 12.6793 12.6752 12.808 12.5472C12.9367 12.4192 13.0007 12.2779 13 12.1232V10.2002C13 9.92405 13.2239 9.7002 13.5 9.7002C13.7761 9.7002 14 9.92406 14 10.2002V12.1232C14 12.5839 13.846 12.9682 13.538 13.2762C13.23 13.5842 12.8453 13.7385 12.384 13.7392H1.616Z" fill="white" />
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
+                                                viewBox="0 0 14 14" fill="none">
+                                                <path
+                                                    d="M7 10.3162C6.72386 10.3162 6.5 10.0923 6.5 9.8162V1.6662L4.52903 3.63716C4.33115 3.83504 4.00998 3.83392 3.81349 3.63465C3.61896 3.43738 3.62005 3.1201 3.81593 2.92416L6.55492 0.184403C6.80072 -0.0614672 7.19931 -0.0614954 7.44514 0.184341L10.185 2.92419C10.3809 3.12014 10.3822 3.43747 10.1877 3.63493C9.99116 3.83455 9.66959 3.83579 9.47149 3.63769L7.5 1.6662V9.8162C7.5 10.0923 7.27614 10.3162 7 10.3162ZM1.616 13.7392C1.15533 13.7392 0.771 13.5852 0.463 13.2772C0.155 12.9692 0.000666667 12.5845 0 12.1232V10.2002C0 9.92405 0.223858 9.7002 0.5 9.7002C0.776142 9.7002 1 9.92406 1 10.2002V12.1232C1 12.2772 1.064 12.4185 1.192 12.5472C1.32 12.6759 1.461 12.7399 1.615 12.7392H12.385C12.5383 12.7392 12.6793 12.6752 12.808 12.5472C12.9367 12.4192 13.0007 12.2779 13 12.1232V10.2002C13 9.92405 13.2239 9.7002 13.5 9.7002C13.7761 9.7002 14 9.92406 14 10.2002V12.1232C14 12.5839 13.846 12.9682 13.538 13.2762C13.23 13.5842 12.8453 13.7385 12.384 13.7392H1.616Z"
+                                                    fill="white" />
                                             </svg>
                                             &nbsp;
                                             Upload Photo
@@ -842,8 +857,7 @@ include '../components/birthday-calendar.php';
                                                 <span>Small 0–7 kg</span>
                                             </button>
 
-                                            <button type="button" class="weight-option medium"
-                                                data-weight="medium">
+                                            <button type="button" class="weight-option medium" data-weight="medium">
                                                 <span>Medium 8–18 kg</span>
                                             </button>
 
@@ -859,7 +873,8 @@ include '../components/birthday-calendar.php';
                                     <div class="form-field mt-4">
                                         <label>Name</label>
                                         <div class="input-wrapper">
-                                            <input type="text" id="pet_name" value="Bella" placeholder="Enter your full name">
+                                            <input type="text" id="pet_name" value="Bella"
+                                                placeholder="Enter your full name">
                                         </div>
                                     </div>
                                 </div>
@@ -885,8 +900,7 @@ include '../components/birthday-calendar.php';
                                             <div class="select-trigger">
                                                 <span class="selected-text">Labrador</span>
                                                 <svg width="16" height="16" viewBox="0 0 24 24">
-                                                    <path d="M6 9l6 6 6-6" fill="none" stroke="#666"
-                                                        stroke-width="2" />
+                                                    <path d="M6 9l6 6 6-6" fill="none" stroke="#666" stroke-width="2" />
                                                 </svg>
                                             </div>
 
@@ -1047,17 +1061,21 @@ include '../components/birthday-calendar.php';
                                             <div class="custom-arrows">
                                                 <button type="button" onclick="changeValue(1)">
                                                     <!-- UP -->
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="11" height="14" viewBox="0 0 11 14" fill="none">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="11" height="14"
+                                                        viewBox="0 0 11 14" fill="none">
                                                         <path d="M10.374 13.4788L5.3952 8.49994L0.499963 13.3952"
-                                                            stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                                                            stroke="#3B3731" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
                                                     </svg>
                                                 </button>
 
                                                 <button type="button" onclick="changeValue(-1)">
                                                     <!-- DOWN -->
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="11" height="14" viewBox="0 0 11 14" fill="none">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="11" height="14"
+                                                        viewBox="0 0 11 14" fill="none">
                                                         <path d="M10.374 0.499941L5.3952 5.47876L0.499963 0.615181"
-                                                            stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                                                            stroke="#3B3731" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
                                                     </svg>
                                                 </button>
                                             </div>
@@ -1086,11 +1104,7 @@ include '../components/birthday-calendar.php';
                                     <div class="form-field mt-4">
                                         <label>Medical Notes</label>
                                         <div class="input-wrapper">
-                                            <textarea
-                                                id="bio"
-                                                name="bio"
-                                                rows="3"
-                                                placeholder="Help us keep your pets healthy and safe!
+                                            <textarea id="bio" name="bio" rows="3" placeholder="Help us keep your pets healthy and safe!
 (e.g allergies, sensitivities, medications, or ongoing treatments).
                                                 "></textarea>
                                         </div>
@@ -1100,11 +1114,7 @@ include '../components/birthday-calendar.php';
                                     <div class="form-field mt-4">
                                         <label>Personality & behaviour</label>
                                         <div class="input-wrapper">
-                                            <textarea
-                                                id="bio"
-                                                name="bio"
-                                                rows="3"
-                                                placeholder="Any behaviour we should know about?
+                                            <textarea id="bio" name="bio" rows="3" placeholder="Any behaviour we should know about?
 (e.g. Friendly with people, nervous around loud noises, doesn’t like paws touched).
                                                 "></textarea>
                                         </div>
@@ -1114,11 +1124,7 @@ include '../components/birthday-calendar.php';
                                     <div class="form-field mt-4">
                                         <label>Grooming preferences</label>
                                         <div class="input-wrapper">
-                                            <textarea
-                                                id="bio"
-                                                name="bio"
-                                                rows="3"
-                                                placeholder="Any style preferences? 
+                                            <textarea id="bio" name="bio" rows="3" placeholder="Any style preferences? 
 (e.g clip length, shampoo type, sensitive areas).
                                                 "></textarea>
                                         </div>
@@ -1130,20 +1136,29 @@ include '../components/birthday-calendar.php';
                                         <label>Preferred groomer service</label>
                                         <div class="input-wrapper d-flex align-items-center" style="gap:20px">
                                             <button type="button" class="btn-custom btn-no-bg groomer-service-button">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="10" viewBox="0 0 14 10" fill="none">
-                                                    <path d="M13.6793 0.289386C13.5867 0.197689 13.4765 0.124907 13.3551 0.0752394C13.2337 0.0255714 13.1035 0 12.972 0C12.8405 0 12.7103 0.0255714 12.5889 0.0752394C12.4675 0.124907 12.3574 0.197689 12.2647 0.289386L4.84329 7.58766L1.72529 4.51573C1.62913 4.42451 1.51563 4.35279 1.39125 4.30465C1.26688 4.25652 1.13406 4.23291 1.0004 4.23518C0.86673 4.23745 0.734828 4.26555 0.612221 4.31789C0.489614 4.37022 0.378704 4.44576 0.285823 4.54019C0.192942 4.63462 0.119909 4.74609 0.0708932 4.86824C0.0218778 4.99039 -0.00216024 5.12082 0.000152332 5.25209C0.0024649 5.38336 0.0310826 5.5129 0.0843711 5.63331C0.13766 5.75372 0.214575 5.86265 0.310727 5.95386L4.13601 9.71062C4.22862 9.80231 4.3388 9.87509 4.46019 9.92476C4.58158 9.97443 4.71179 10 4.84329 10C4.9748 10 5.105 9.97443 5.22639 9.92476C5.34779 9.87509 5.45796 9.80231 5.55057 9.71062L13.6793 1.72752C13.7804 1.63591 13.8611 1.52472 13.9163 1.40096C13.9715 1.2772 14 1.14356 14 1.00845C14 0.873344 13.9715 0.7397 13.9163 0.615943C13.8611 0.492186 13.7804 0.380998 13.6793 0.289386Z" fill="white" />
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="10"
+                                                    viewBox="0 0 14 10" fill="none">
+                                                    <path
+                                                        d="M13.6793 0.289386C13.5867 0.197689 13.4765 0.124907 13.3551 0.0752394C13.2337 0.0255714 13.1035 0 12.972 0C12.8405 0 12.7103 0.0255714 12.5889 0.0752394C12.4675 0.124907 12.3574 0.197689 12.2647 0.289386L4.84329 7.58766L1.72529 4.51573C1.62913 4.42451 1.51563 4.35279 1.39125 4.30465C1.26688 4.25652 1.13406 4.23291 1.0004 4.23518C0.86673 4.23745 0.734828 4.26555 0.612221 4.31789C0.489614 4.37022 0.378704 4.44576 0.285823 4.54019C0.192942 4.63462 0.119909 4.74609 0.0708932 4.86824C0.0218778 4.99039 -0.00216024 5.12082 0.000152332 5.25209C0.0024649 5.38336 0.0310826 5.5129 0.0843711 5.63331C0.13766 5.75372 0.214575 5.86265 0.310727 5.95386L4.13601 9.71062C4.22862 9.80231 4.3388 9.87509 4.46019 9.92476C4.58158 9.97443 4.71179 10 4.84329 10C4.9748 10 5.105 9.97443 5.22639 9.92476C5.34779 9.87509 5.45796 9.80231 5.55057 9.71062L13.6793 1.72752C13.7804 1.63591 13.8611 1.52472 13.9163 1.40096C13.9715 1.2772 14 1.14356 14 1.00845C14 0.873344 13.9715 0.7397 13.9163 0.615943C13.8611 0.492186 13.7804 0.380998 13.6793 0.289386Z"
+                                                        fill="white" />
                                                 </svg>
                                                 Mobile Groomer
                                             </button>
                                             <button type="button" class="btn-custom btn-no-bg groomer-service-button">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="10" viewBox="0 0 14 10" fill="none">
-                                                    <path d="M13.6793 0.289386C13.5867 0.197689 13.4765 0.124907 13.3551 0.0752394C13.2337 0.0255714 13.1035 0 12.972 0C12.8405 0 12.7103 0.0255714 12.5889 0.0752394C12.4675 0.124907 12.3574 0.197689 12.2647 0.289386L4.84329 7.58766L1.72529 4.51573C1.62913 4.42451 1.51563 4.35279 1.39125 4.30465C1.26688 4.25652 1.13406 4.23291 1.0004 4.23518C0.86673 4.23745 0.734828 4.26555 0.612221 4.31789C0.489614 4.37022 0.378704 4.44576 0.285823 4.54019C0.192942 4.63462 0.119909 4.74609 0.0708932 4.86824C0.0218778 4.99039 -0.00216024 5.12082 0.000152332 5.25209C0.0024649 5.38336 0.0310826 5.5129 0.0843711 5.63331C0.13766 5.75372 0.214575 5.86265 0.310727 5.95386L4.13601 9.71062C4.22862 9.80231 4.3388 9.87509 4.46019 9.92476C4.58158 9.97443 4.71179 10 4.84329 10C4.9748 10 5.105 9.97443 5.22639 9.92476C5.34779 9.87509 5.45796 9.80231 5.55057 9.71062L13.6793 1.72752C13.7804 1.63591 13.8611 1.52472 13.9163 1.40096C13.9715 1.2772 14 1.14356 14 1.00845C14 0.873344 13.9715 0.7397 13.9163 0.615943C13.8611 0.492186 13.7804 0.380998 13.6793 0.289386Z" fill="white" />
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="10"
+                                                    viewBox="0 0 14 10" fill="none">
+                                                    <path
+                                                        d="M13.6793 0.289386C13.5867 0.197689 13.4765 0.124907 13.3551 0.0752394C13.2337 0.0255714 13.1035 0 12.972 0C12.8405 0 12.7103 0.0255714 12.5889 0.0752394C12.4675 0.124907 12.3574 0.197689 12.2647 0.289386L4.84329 7.58766L1.72529 4.51573C1.62913 4.42451 1.51563 4.35279 1.39125 4.30465C1.26688 4.25652 1.13406 4.23291 1.0004 4.23518C0.86673 4.23745 0.734828 4.26555 0.612221 4.31789C0.489614 4.37022 0.378704 4.44576 0.285823 4.54019C0.192942 4.63462 0.119909 4.74609 0.0708932 4.86824C0.0218778 4.99039 -0.00216024 5.12082 0.000152332 5.25209C0.0024649 5.38336 0.0310826 5.5129 0.0843711 5.63331C0.13766 5.75372 0.214575 5.86265 0.310727 5.95386L4.13601 9.71062C4.22862 9.80231 4.3388 9.87509 4.46019 9.92476C4.58158 9.97443 4.71179 10 4.84329 10C4.9748 10 5.105 9.97443 5.22639 9.92476C5.34779 9.87509 5.45796 9.80231 5.55057 9.71062L13.6793 1.72752C13.7804 1.63591 13.8611 1.52472 13.9163 1.40096C13.9715 1.2772 14 1.14356 14 1.00845C14 0.873344 13.9715 0.7397 13.9163 0.615943C13.8611 0.492186 13.7804 0.380998 13.6793 0.289386Z"
+                                                        fill="white" />
                                                 </svg>
                                                 At-home Groomer
                                             </button>
                                             <button type="button" class="btn-custom btn-no-bg groomer-service-button">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="10" viewBox="0 0 14 10" fill="none">
-                                                    <path d="M13.6793 0.289386C13.5867 0.197689 13.4765 0.124907 13.3551 0.0752394C13.2337 0.0255714 13.1035 0 12.972 0C12.8405 0 12.7103 0.0255714 12.5889 0.0752394C12.4675 0.124907 12.3574 0.197689 12.2647 0.289386L4.84329 7.58766L1.72529 4.51573C1.62913 4.42451 1.51563 4.35279 1.39125 4.30465C1.26688 4.25652 1.13406 4.23291 1.0004 4.23518C0.86673 4.23745 0.734828 4.26555 0.612221 4.31789C0.489614 4.37022 0.378704 4.44576 0.285823 4.54019C0.192942 4.63462 0.119909 4.74609 0.0708932 4.86824C0.0218778 4.99039 -0.00216024 5.12082 0.000152332 5.25209C0.0024649 5.38336 0.0310826 5.5129 0.0843711 5.63331C0.13766 5.75372 0.214575 5.86265 0.310727 5.95386L4.13601 9.71062C4.22862 9.80231 4.3388 9.87509 4.46019 9.92476C4.58158 9.97443 4.71179 10 4.84329 10C4.9748 10 5.105 9.97443 5.22639 9.92476C5.34779 9.87509 5.45796 9.80231 5.55057 9.71062L13.6793 1.72752C13.7804 1.63591 13.8611 1.52472 13.9163 1.40096C13.9715 1.2772 14 1.14356 14 1.00845C14 0.873344 13.9715 0.7397 13.9163 0.615943C13.8611 0.492186 13.7804 0.380998 13.6793 0.289386Z" fill="white" />
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="10"
+                                                    viewBox="0 0 14 10" fill="none">
+                                                    <path
+                                                        d="M13.6793 0.289386C13.5867 0.197689 13.4765 0.124907 13.3551 0.0752394C13.2337 0.0255714 13.1035 0 12.972 0C12.8405 0 12.7103 0.0255714 12.5889 0.0752394C12.4675 0.124907 12.3574 0.197689 12.2647 0.289386L4.84329 7.58766L1.72529 4.51573C1.62913 4.42451 1.51563 4.35279 1.39125 4.30465C1.26688 4.25652 1.13406 4.23291 1.0004 4.23518C0.86673 4.23745 0.734828 4.26555 0.612221 4.31789C0.489614 4.37022 0.378704 4.44576 0.285823 4.54019C0.192942 4.63462 0.119909 4.74609 0.0708932 4.86824C0.0218778 4.99039 -0.00216024 5.12082 0.000152332 5.25209C0.0024649 5.38336 0.0310826 5.5129 0.0843711 5.63331C0.13766 5.75372 0.214575 5.86265 0.310727 5.95386L4.13601 9.71062C4.22862 9.80231 4.3388 9.87509 4.46019 9.92476C4.58158 9.97443 4.71179 10 4.84329 10C4.9748 10 5.105 9.97443 5.22639 9.92476C5.34779 9.87509 5.45796 9.80231 5.55057 9.71062L13.6793 1.72752C13.7804 1.63591 13.8611 1.52472 13.9163 1.40096C13.9715 1.2772 14 1.14356 14 1.00845C14 0.873344 13.9715 0.7397 13.9163 0.615943C13.8611 0.492186 13.7804 0.380998 13.6793 0.289386Z"
+                                                        fill="white" />
                                                 </svg>
                                                 Salon Groomer
                                             </button>
@@ -1162,8 +1177,10 @@ include '../components/birthday-calendar.php';
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="steps-buttons mt-5" id="buttonsContainer">
-                                <button type="button" class="btn-custom btn-no-bg text-center" id="prevBtn" onclick="nextPrev(-1)">Cancel</button>
-                                <button type="button" class="btn-custom btn-active-bg text-center" id="nextBtn" onclick="nextPrev(1)">Next</button>
+                                <button type="button" class="btn-custom btn-no-bg text-center" id="prevBtn"
+                                    onclick="nextPrev(-1)">Cancel</button>
+                                <button type="button" class="btn-custom btn-active-bg text-center" id="nextBtn"
+                                    onclick="nextPrev(1)">Next</button>
                             </div>
                         </div>
                     </div>
@@ -1174,17 +1191,22 @@ include '../components/birthday-calendar.php';
 
 
                 <div class="pet-list-section mb-5">
-                    <div class="select-default-label mt-4">Select Default Pet <small style="color:#9D9B98">(optional)</small></div>
+                    <div class="select-default-label mt-4">Select Default Pet <small
+                            style="color:#9D9B98">(optional)</small></div>
 
                     <div class="pet-list d-flex flex-column">
                         <!-- Selected card -->
                         <div class="pet-card selected d-flex align-items-center">
-                            <div class="avatar"><img src="<?= BASE_URL ?>/assets/images/pet_details_1.png" alt="pet"></div>
+                            <div class="avatar"><img src="<?= BASE_URL ?>/assets/images/pet_details_1.png" alt="pet">
+                            </div>
                             <div class="info">
                                 <div class="topline">
                                     <div class="pet-name d-flex align-items-center">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="15" viewBox="0 0 16 15" fill="none">
-                                            <path d="M8 6.02632C5.73786 6.02632 3.82643 8.06405 3.20929 10.6813C2.93786 11.8323 3.34714 13.0539 4.35179 13.6279C5.14821 14.0829 6.33286 14.5 8 14.5C9.66714 14.5 10.8521 14.0829 11.6486 13.6279C12.6532 13.0539 13.0621 11.8323 12.7907 10.6813C12.1736 8.06368 10.2621 6.02632 8 6.02632ZM0.5 5.45305C0.5 6.47063 1.13929 7.5 1.92857 7.5C2.71786 7.5 3.35714 6.47063 3.35714 5.45305C3.35714 4.43547 2.71786 3.81579 1.92857 3.81579C1.13929 3.81579 0.5 4.43584 0.5 5.45305ZM15.5 5.45305C15.5 6.47063 14.8607 7.5 14.0714 7.5C13.2821 7.5 12.6429 6.47063 12.6429 5.45305C12.6429 4.43547 13.2821 3.81579 14.0714 3.81579C14.8607 3.81579 15.5 4.43584 15.5 5.45305ZM4.25 2.13726C4.25 3.15484 4.88929 4.18421 5.67857 4.18421C6.46786 4.18421 7.10714 3.15484 7.10714 2.13726C7.10714 1.11968 6.46786 0.5 5.67857 0.5C4.88929 0.5 4.25 1.12005 4.25 2.13726ZM11.75 2.13726C11.75 3.15484 11.1107 4.18421 10.3214 4.18421C9.53214 4.18421 8.89286 3.15484 8.89286 2.13726C8.89286 1.11968 9.53214 0.5 10.3214 0.5C11.1107 0.5 11.75 1.12005 11.75 2.13726Z" stroke="#9D9B98" stroke-linecap="round" stroke-linejoin="round" />
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="15"
+                                            viewBox="0 0 16 15" fill="none">
+                                            <path
+                                                d="M8 6.02632C5.73786 6.02632 3.82643 8.06405 3.20929 10.6813C2.93786 11.8323 3.34714 13.0539 4.35179 13.6279C5.14821 14.0829 6.33286 14.5 8 14.5C9.66714 14.5 10.8521 14.0829 11.6486 13.6279C12.6532 13.0539 13.0621 11.8323 12.7907 10.6813C12.1736 8.06368 10.2621 6.02632 8 6.02632ZM0.5 5.45305C0.5 6.47063 1.13929 7.5 1.92857 7.5C2.71786 7.5 3.35714 6.47063 3.35714 5.45305C3.35714 4.43547 2.71786 3.81579 1.92857 3.81579C1.13929 3.81579 0.5 4.43584 0.5 5.45305ZM15.5 5.45305C15.5 6.47063 14.8607 7.5 14.0714 7.5C13.2821 7.5 12.6429 6.47063 12.6429 5.45305C12.6429 4.43547 13.2821 3.81579 14.0714 3.81579C14.8607 3.81579 15.5 4.43584 15.5 5.45305ZM4.25 2.13726C4.25 3.15484 4.88929 4.18421 5.67857 4.18421C6.46786 4.18421 7.10714 3.15484 7.10714 2.13726C7.10714 1.11968 6.46786 0.5 5.67857 0.5C4.88929 0.5 4.25 1.12005 4.25 2.13726ZM11.75 2.13726C11.75 3.15484 11.1107 4.18421 10.3214 4.18421C9.53214 4.18421 8.89286 3.15484 8.89286 2.13726C8.89286 1.11968 9.53214 0.5 10.3214 0.5C11.1107 0.5 11.75 1.12005 11.75 2.13726Z"
+                                                stroke="#9D9B98" stroke-linecap="round" stroke-linejoin="round" />
                                         </svg>
                                         Bella
                                     </div>
@@ -1194,20 +1216,26 @@ include '../components/birthday-calendar.php';
                                     <span class="icon-label">
                                         <svg viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg">
                                             <!-- Circle -->
-                                            <circle cx="100" cy="80" r="60" fill="none" stroke="#808080" stroke-width="12" />
+                                            <circle cx="100" cy="80" r="60" fill="none" stroke="#808080"
+                                                stroke-width="12" />
 
                                             <!-- Vertical line -->
-                                            <line x1="100" y1="140" x2="100" y2="240" stroke="#808080" stroke-width="12" />
+                                            <line x1="100" y1="140" x2="100" y2="240" stroke="#808080"
+                                                stroke-width="12" />
 
                                             <!-- Horizontal line -->
-                                            <line x1="60" y1="200" x2="140" y2="200" stroke="#808080" stroke-width="12" />
+                                            <line x1="60" y1="200" x2="140" y2="200" stroke="#808080"
+                                                stroke-width="12" />
                                         </svg>
                                         Female
                                     </span>
                                     <span class="icon-label">
-                                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#666666" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                            stroke="#666666" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round">
                                             <!-- Candle flame -->
-                                            <path d="M12 3c0 1.5-1 2-1 3.5 0 1 .5 1.5 1 1.5s1-.5 1-1.5c0-1.5-1-2-1-3.5z" />
+                                            <path
+                                                d="M12 3c0 1.5-1 2-1 3.5 0 1 .5 1.5 1 1.5s1-.5 1-1.5c0-1.5-1-2-1-3.5z" />
 
                                             <!-- Cake top layer -->
                                             <rect x="4" y="11" width="16" height="4" rx="1" />
@@ -1216,12 +1244,15 @@ include '../components/birthday-calendar.php';
                                             <path d="M4 15c0 0 1 3 3 3h10c2 0 3-3 3-3" />
 
                                             <!-- Frosting waves -->
-                                            <path d="M6 11c.5-1 1.5-1 2-1s1.5 0 2 1 1.5 1 2 1 1.5 0 2-1 1.5-1 2-1 1.5 0 2 1" />
+                                            <path
+                                                d="M6 11c.5-1 1.5-1 2-1s1.5 0 2 1 1.5 1 2 1 1.5 0 2-1 1.5-1 2-1 1.5 0 2 1" />
                                         </svg>
                                         22/08/2020
                                     </span>
                                     <span class="icon-label">
-                                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#666666" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                            stroke="#666666" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round">
                                             <!-- Bag body -->
                                             <path d="M6 6h12l1 13H5L6 6z" />
 
@@ -1233,27 +1264,22 @@ include '../components/birthday-calendar.php';
                                     <span class="icon-label">
                                         <svg viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg">
                                             <!-- Outer tilted rectangle -->
-                                            <rect x="20" y="15" width="50" height="70" rx="8"
-                                                fill="none" stroke="#808080" stroke-width="5"
-                                                transform="rotate(15 45 50)" />
+                                            <rect x="20" y="15" width="50" height="70" rx="8" fill="none"
+                                                stroke="#808080" stroke-width="5" transform="rotate(15 45 50)" />
 
                                             <!-- Inner tilted rectangle -->
-                                            <rect x="32" y="25" width="50" height="70" rx="8"
-                                                fill="none" stroke="#808080" stroke-width="5"
-                                                transform="rotate(15 57 60)" />
+                                            <rect x="32" y="25" width="50" height="70" rx="8" fill="none"
+                                                stroke="#808080" stroke-width="5" transform="rotate(15 57 60)" />
 
                                             <!-- Text lines on front document -->
-                                            <line x1="48" y1="45" x2="68" y2="50"
-                                                stroke="#808080" stroke-width="3" stroke-linecap="round"
-                                                transform="rotate(15 58 47.5)" />
+                                            <line x1="48" y1="45" x2="68" y2="50" stroke="#808080" stroke-width="3"
+                                                stroke-linecap="round" transform="rotate(15 58 47.5)" />
 
-                                            <line x1="48" y1="55" x2="68" y2="60"
-                                                stroke="#808080" stroke-width="3" stroke-linecap="round"
-                                                transform="rotate(15 58 57.5)" />
+                                            <line x1="48" y1="55" x2="68" y2="60" stroke="#808080" stroke-width="3"
+                                                stroke-linecap="round" transform="rotate(15 58 57.5)" />
 
-                                            <line x1="48" y1="65" x2="63" y2="69"
-                                                stroke="#808080" stroke-width="3" stroke-linecap="round"
-                                                transform="rotate(15 55.5 67)" />
+                                            <line x1="48" y1="65" x2="63" y2="69" stroke="#808080" stroke-width="3"
+                                                stroke-linecap="round" transform="rotate(15 55.5 67)" />
                                         </svg>
                                         <span class="note">Nervous around hair-dryers.</span>
                                     </span>
@@ -1262,32 +1288,45 @@ include '../components/birthday-calendar.php';
                             <div class="card-right">
                                 <div class="actions d-flex align-items-center">
                                     <button class="btn-edit">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="15" viewBox="0 0 16 15" fill="none">
-                                            <path d="M10.2059 2.37997L12.8529 4.97712M8.44118 14.5H15.5M1.38235 11.0371L0.5 14.5L4.02941 13.6343L14.2524 3.60409C14.5832 3.2794 14.769 2.83908 14.769 2.37997C14.769 1.92085 14.5832 1.48054 14.2524 1.15584L14.1006 1.00694C13.7697 0.682347 13.3209 0.5 12.8529 0.5C12.385 0.5 11.9362 0.682347 11.6053 1.00694L1.38235 11.0371Z" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="15"
+                                            viewBox="0 0 16 15" fill="none">
+                                            <path
+                                                d="M10.2059 2.37997L12.8529 4.97712M8.44118 14.5H15.5M1.38235 11.0371L0.5 14.5L4.02941 13.6343L14.2524 3.60409C14.5832 3.2794 14.769 2.83908 14.769 2.37997C14.769 1.92085 14.5832 1.48054 14.2524 1.15584L14.1006 1.00694C13.7697 0.682347 13.3209 0.5 12.8529 0.5C12.385 0.5 11.9362 0.682347 11.6053 1.00694L1.38235 11.0371Z"
+                                                stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
                                         </svg>
                                         Edit
                                     </button>
                                     <button class="btn-delete" aria-label="Delete">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="18" viewBox="0 0 16 18" fill="none">
-                                            <path d="M3 18C2.45 18 1.97934 17.8043 1.588 17.413C1.19667 17.0217 1.00067 16.5507 1 16V3C0.71667 3 0.479337 2.904 0.288004 2.712C0.0966702 2.52 0.000670115 2.28267 3.44827e-06 2C-0.000663218 1.71733 0.0953369 1.48 0.288004 1.288C0.48067 1.096 0.718003 1 1 1H5C5 0.716667 5.096 0.479333 5.288 0.288C5.48 0.0966668 5.71734 0.000666667 6 0H10C10.2833 0 10.521 0.0960001 10.713 0.288C10.905 0.48 11.0007 0.717333 11 1H15C15.2833 1 15.521 1.096 15.713 1.288C15.905 1.48 16.0007 1.71733 16 2C15.9993 2.28267 15.9033 2.52033 15.712 2.713C15.5207 2.90567 15.2833 3.00133 15 3V16C15 16.55 14.8043 17.021 14.413 17.413C14.0217 17.805 13.5507 18.0007 13 18H3ZM6 14C6.28334 14 6.521 13.904 6.713 13.712C6.905 13.52 7.00067 13.2827 7 13V6C7 5.71667 6.904 5.47933 6.712 5.288C6.52 5.09667 6.28267 5.00067 6 5C5.71734 4.99933 5.48 5.09533 5.288 5.288C5.096 5.48067 5 5.718 5 6V13C5 13.2833 5.096 13.521 5.288 13.713C5.48 13.905 5.71734 14.0007 6 14ZM10 14C10.2833 14 10.521 13.904 10.713 13.712C10.905 13.52 11.0007 13.2827 11 13V6C11 5.71667 10.904 5.47933 10.712 5.288C10.52 5.09667 10.2827 5.00067 10 5C9.71734 4.99933 9.48 5.09533 9.288 5.288C9.096 5.48067 9 5.718 9 6V13C9 13.2833 9.096 13.521 9.288 13.713C9.48 13.905 9.71734 14.0007 10 14Z" fill="#3B3731" />
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="18"
+                                            viewBox="0 0 16 18" fill="none">
+                                            <path
+                                                d="M3 18C2.45 18 1.97934 17.8043 1.588 17.413C1.19667 17.0217 1.00067 16.5507 1 16V3C0.71667 3 0.479337 2.904 0.288004 2.712C0.0966702 2.52 0.000670115 2.28267 3.44827e-06 2C-0.000663218 1.71733 0.0953369 1.48 0.288004 1.288C0.48067 1.096 0.718003 1 1 1H5C5 0.716667 5.096 0.479333 5.288 0.288C5.48 0.0966668 5.71734 0.000666667 6 0H10C10.2833 0 10.521 0.0960001 10.713 0.288C10.905 0.48 11.0007 0.717333 11 1H15C15.2833 1 15.521 1.096 15.713 1.288C15.905 1.48 16.0007 1.71733 16 2C15.9993 2.28267 15.9033 2.52033 15.712 2.713C15.5207 2.90567 15.2833 3.00133 15 3V16C15 16.55 14.8043 17.021 14.413 17.413C14.0217 17.805 13.5507 18.0007 13 18H3ZM6 14C6.28334 14 6.521 13.904 6.713 13.712C6.905 13.52 7.00067 13.2827 7 13V6C7 5.71667 6.904 5.47933 6.712 5.288C6.52 5.09667 6.28267 5.00067 6 5C5.71734 4.99933 5.48 5.09533 5.288 5.288C5.096 5.48067 5 5.718 5 6V13C5 13.2833 5.096 13.521 5.288 13.713C5.48 13.905 5.71734 14.0007 6 14ZM10 14C10.2833 14 10.521 13.904 10.713 13.712C10.905 13.52 11.0007 13.2827 11 13V6C11 5.71667 10.904 5.47933 10.712 5.288C10.52 5.09667 10.2827 5.00067 10 5C9.71734 4.99933 9.48 5.09533 9.288 5.288C9.096 5.48067 9 5.718 9 6V13C9 13.2833 9.096 13.521 9.288 13.713C9.48 13.905 9.71734 14.0007 10 14Z"
+                                                fill="#3B3731" />
                                         </svg>
                                     </button>
                                 </div>
                             </div>
                             <div class="check" title="Selected">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                    <path d="M12 0C5.4 0 0 5.4 0 12C0 18.6 5.4 24 12 24C18.6 24 24 18.6 24 12C24 5.4 18.6 0 12 0ZM9.6 18L3.6 12L5.292 10.308L9.6 14.604L18.708 5.496L20.4 7.2L9.6 18Z" fill="#B5CA89" />
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none">
+                                    <path
+                                        d="M12 0C5.4 0 0 5.4 0 12C0 18.6 5.4 24 12 24C18.6 24 24 18.6 24 12C24 5.4 18.6 0 12 0ZM9.6 18L3.6 12L5.292 10.308L9.6 14.604L18.708 5.496L20.4 7.2L9.6 18Z"
+                                        fill="#B5CA89" />
                                 </svg>
                             </div>
                         </div>
                         <!-- alt card -->
                         <div class="pet-card alt d-flex align-items-center">
-                            <div class="avatar"><img src="<?= BASE_URL ?>/assets/images/pet_details_2.png" alt="pet"></div>
+                            <div class="avatar"><img src="<?= BASE_URL ?>/assets/images/pet_details_2.png" alt="pet">
+                            </div>
                             <div class="info">
                                 <div class="topline">
                                     <div class="pet-name d-flex align-items-center">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="15" viewBox="0 0 16 15" fill="none">
-                                            <path d="M8 6.02632C5.73786 6.02632 3.82643 8.06405 3.20929 10.6813C2.93786 11.8323 3.34714 13.0539 4.35179 13.6279C5.14821 14.0829 6.33286 14.5 8 14.5C9.66714 14.5 10.8521 14.0829 11.6486 13.6279C12.6532 13.0539 13.0621 11.8323 12.7907 10.6813C12.1736 8.06368 10.2621 6.02632 8 6.02632ZM0.5 5.45305C0.5 6.47063 1.13929 7.5 1.92857 7.5C2.71786 7.5 3.35714 6.47063 3.35714 5.45305C3.35714 4.43547 2.71786 3.81579 1.92857 3.81579C1.13929 3.81579 0.5 4.43584 0.5 5.45305ZM15.5 5.45305C15.5 6.47063 14.8607 7.5 14.0714 7.5C13.2821 7.5 12.6429 6.47063 12.6429 5.45305C12.6429 4.43547 13.2821 3.81579 14.0714 3.81579C14.8607 3.81579 15.5 4.43584 15.5 5.45305ZM4.25 2.13726C4.25 3.15484 4.88929 4.18421 5.67857 4.18421C6.46786 4.18421 7.10714 3.15484 7.10714 2.13726C7.10714 1.11968 6.46786 0.5 5.67857 0.5C4.88929 0.5 4.25 1.12005 4.25 2.13726ZM11.75 2.13726C11.75 3.15484 11.1107 4.18421 10.3214 4.18421C9.53214 4.18421 8.89286 3.15484 8.89286 2.13726C8.89286 1.11968 9.53214 0.5 10.3214 0.5C11.1107 0.5 11.75 1.12005 11.75 2.13726Z" stroke="#9D9B98" stroke-linecap="round" stroke-linejoin="round" />
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="15"
+                                            viewBox="0 0 16 15" fill="none">
+                                            <path
+                                                d="M8 6.02632C5.73786 6.02632 3.82643 8.06405 3.20929 10.6813C2.93786 11.8323 3.34714 13.0539 4.35179 13.6279C5.14821 14.0829 6.33286 14.5 8 14.5C9.66714 14.5 10.8521 14.0829 11.6486 13.6279C12.6532 13.0539 13.0621 11.8323 12.7907 10.6813C12.1736 8.06368 10.2621 6.02632 8 6.02632ZM0.5 5.45305C0.5 6.47063 1.13929 7.5 1.92857 7.5C2.71786 7.5 3.35714 6.47063 3.35714 5.45305C3.35714 4.43547 2.71786 3.81579 1.92857 3.81579C1.13929 3.81579 0.5 4.43584 0.5 5.45305ZM15.5 5.45305C15.5 6.47063 14.8607 7.5 14.0714 7.5C13.2821 7.5 12.6429 6.47063 12.6429 5.45305C12.6429 4.43547 13.2821 3.81579 14.0714 3.81579C14.8607 3.81579 15.5 4.43584 15.5 5.45305ZM4.25 2.13726C4.25 3.15484 4.88929 4.18421 5.67857 4.18421C6.46786 4.18421 7.10714 3.15484 7.10714 2.13726C7.10714 1.11968 6.46786 0.5 5.67857 0.5C4.88929 0.5 4.25 1.12005 4.25 2.13726ZM11.75 2.13726C11.75 3.15484 11.1107 4.18421 10.3214 4.18421C9.53214 4.18421 8.89286 3.15484 8.89286 2.13726C8.89286 1.11968 9.53214 0.5 10.3214 0.5C11.1107 0.5 11.75 1.12005 11.75 2.13726Z"
+                                                stroke="#9D9B98" stroke-linecap="round" stroke-linejoin="round" />
                                         </svg>
                                         Louis
                                     </div>
@@ -1297,23 +1336,30 @@ include '../components/birthday-calendar.php';
                                     <span class="icon-label">
                                         <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
                                             <!-- Circle -->
-                                            <circle cx="80" cy="120" r="50" fill="none" stroke="#808080" stroke-width="10" />
+                                            <circle cx="80" cy="120" r="50" fill="none" stroke="#808080"
+                                                stroke-width="10" />
 
                                             <!-- Diagonal arrow line -->
-                                            <line x1="120" y1="80" x2="170" y2="30" stroke="#808080" stroke-width="10" />
+                                            <line x1="120" y1="80" x2="170" y2="30" stroke="#808080"
+                                                stroke-width="10" />
 
                                             <!-- Arrow head - horizontal part -->
-                                            <line x1="170" y1="30" x2="145" y2="30" stroke="#808080" stroke-width="10" />
+                                            <line x1="170" y1="30" x2="145" y2="30" stroke="#808080"
+                                                stroke-width="10" />
 
                                             <!-- Arrow head - vertical part -->
-                                            <line x1="170" y1="30" x2="170" y2="55" stroke="#808080" stroke-width="10" />
+                                            <line x1="170" y1="30" x2="170" y2="55" stroke="#808080"
+                                                stroke-width="10" />
                                         </svg>
                                         Male
                                     </span>
                                     <span class="icon-label">
-                                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#666666" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                            stroke="#666666" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round">
                                             <!-- Candle flame -->
-                                            <path d="M12 3c0 1.5-1 2-1 3.5 0 1 .5 1.5 1 1.5s1-.5 1-1.5c0-1.5-1-2-1-3.5z" />
+                                            <path
+                                                d="M12 3c0 1.5-1 2-1 3.5 0 1 .5 1.5 1 1.5s1-.5 1-1.5c0-1.5-1-2-1-3.5z" />
 
                                             <!-- Cake top layer -->
                                             <rect x="4" y="11" width="16" height="4" rx="1" />
@@ -1322,12 +1368,15 @@ include '../components/birthday-calendar.php';
                                             <path d="M4 15c0 0 1 3 3 3h10c2 0 3-3 3-3" />
 
                                             <!-- Frosting waves -->
-                                            <path d="M6 11c.5-1 1.5-1 2-1s1.5 0 2 1 1.5 1 2 1 1.5 0 2-1 1.5-1 2-1 1.5 0 2 1" />
+                                            <path
+                                                d="M6 11c.5-1 1.5-1 2-1s1.5 0 2 1 1.5 1 2 1 1.5 0 2-1 1.5-1 2-1 1.5 0 2 1" />
                                         </svg>
                                         22/08/2020
                                     </span>
                                     <span class="icon-label">
-                                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#666666" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                            stroke="#666666" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round">
                                             <!-- Bag body -->
                                             <path d="M6 6h12l1 13H5L6 6z" />
 
@@ -1339,27 +1388,22 @@ include '../components/birthday-calendar.php';
                                     <span class="icon-label">
                                         <svg viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg">
                                             <!-- Outer tilted rectangle -->
-                                            <rect x="20" y="15" width="50" height="70" rx="8"
-                                                fill="none" stroke="#808080" stroke-width="5"
-                                                transform="rotate(15 45 50)" />
+                                            <rect x="20" y="15" width="50" height="70" rx="8" fill="none"
+                                                stroke="#808080" stroke-width="5" transform="rotate(15 45 50)" />
 
                                             <!-- Inner tilted rectangle -->
-                                            <rect x="32" y="25" width="50" height="70" rx="8"
-                                                fill="none" stroke="#808080" stroke-width="5"
-                                                transform="rotate(15 57 60)" />
+                                            <rect x="32" y="25" width="50" height="70" rx="8" fill="none"
+                                                stroke="#808080" stroke-width="5" transform="rotate(15 57 60)" />
 
                                             <!-- Text lines on front document -->
-                                            <line x1="48" y1="45" x2="68" y2="50"
-                                                stroke="#808080" stroke-width="3" stroke-linecap="round"
-                                                transform="rotate(15 58 47.5)" />
+                                            <line x1="48" y1="45" x2="68" y2="50" stroke="#808080" stroke-width="3"
+                                                stroke-linecap="round" transform="rotate(15 58 47.5)" />
 
-                                            <line x1="48" y1="55" x2="68" y2="60"
-                                                stroke="#808080" stroke-width="3" stroke-linecap="round"
-                                                transform="rotate(15 58 57.5)" />
+                                            <line x1="48" y1="55" x2="68" y2="60" stroke="#808080" stroke-width="3"
+                                                stroke-linecap="round" transform="rotate(15 58 57.5)" />
 
-                                            <line x1="48" y1="65" x2="63" y2="69"
-                                                stroke="#808080" stroke-width="3" stroke-linecap="round"
-                                                transform="rotate(15 55.5 67)" />
+                                            <line x1="48" y1="65" x2="63" y2="69" stroke="#808080" stroke-width="3"
+                                                stroke-linecap="round" transform="rotate(15 55.5 67)" />
                                         </svg>
                                         <span class="note">Allergic to dust.</span>
                                     </span>
@@ -1368,21 +1412,30 @@ include '../components/birthday-calendar.php';
                             <div class="card-right">
                                 <div class="actions d-flex align-items-center">
                                     <button class="btn-edit">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="15" viewBox="0 0 16 15" fill="none">
-                                            <path d="M10.2059 2.37997L12.8529 4.97712M8.44118 14.5H15.5M1.38235 11.0371L0.5 14.5L4.02941 13.6343L14.2524 3.60409C14.5832 3.2794 14.769 2.83908 14.769 2.37997C14.769 1.92085 14.5832 1.48054 14.2524 1.15584L14.1006 1.00694C13.7697 0.682347 13.3209 0.5 12.8529 0.5C12.385 0.5 11.9362 0.682347 11.6053 1.00694L1.38235 11.0371Z" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="15"
+                                            viewBox="0 0 16 15" fill="none">
+                                            <path
+                                                d="M10.2059 2.37997L12.8529 4.97712M8.44118 14.5H15.5M1.38235 11.0371L0.5 14.5L4.02941 13.6343L14.2524 3.60409C14.5832 3.2794 14.769 2.83908 14.769 2.37997C14.769 1.92085 14.5832 1.48054 14.2524 1.15584L14.1006 1.00694C13.7697 0.682347 13.3209 0.5 12.8529 0.5C12.385 0.5 11.9362 0.682347 11.6053 1.00694L1.38235 11.0371Z"
+                                                stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
                                         </svg>
                                         Edit
                                     </button>
                                     <button class="btn-delete" aria-label="Delete">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="18" viewBox="0 0 16 18" fill="none">
-                                            <path d="M3 18C2.45 18 1.97934 17.8043 1.588 17.413C1.19667 17.0217 1.00067 16.5507 1 16V3C0.71667 3 0.479337 2.904 0.288004 2.712C0.0966702 2.52 0.000670115 2.28267 3.44827e-06 2C-0.000663218 1.71733 0.0953369 1.48 0.288004 1.288C0.48067 1.096 0.718003 1 1 1H5C5 0.716667 5.096 0.479333 5.288 0.288C5.48 0.0966668 5.71734 0.000666667 6 0H10C10.2833 0 10.521 0.0960001 10.713 0.288C10.905 0.48 11.0007 0.717333 11 1H15C15.2833 1 15.521 1.096 15.713 1.288C15.905 1.48 16.0007 1.71733 16 2C15.9993 2.28267 15.9033 2.52033 15.712 2.713C15.5207 2.90567 15.2833 3.00133 15 3V16C15 16.55 14.8043 17.021 14.413 17.413C14.0217 17.805 13.5507 18.0007 13 18H3ZM6 14C6.28334 14 6.521 13.904 6.713 13.712C6.905 13.52 7.00067 13.2827 7 13V6C7 5.71667 6.904 5.47933 6.712 5.288C6.52 5.09667 6.28267 5.00067 6 5C5.71734 4.99933 5.48 5.09533 5.288 5.288C5.096 5.48067 5 5.718 5 6V13C5 13.2833 5.096 13.521 5.288 13.713C5.48 13.905 5.71734 14.0007 6 14ZM10 14C10.2833 14 10.521 13.904 10.713 13.712C10.905 13.52 11.0007 13.2827 11 13V6C11 5.71667 10.904 5.47933 10.712 5.288C10.52 5.09667 10.2827 5.00067 10 5C9.71734 4.99933 9.48 5.09533 9.288 5.288C9.096 5.48067 9 5.718 9 6V13C9 13.2833 9.096 13.521 9.288 13.713C9.48 13.905 9.71734 14.0007 10 14Z" fill="#3B3731" />
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="18"
+                                            viewBox="0 0 16 18" fill="none">
+                                            <path
+                                                d="M3 18C2.45 18 1.97934 17.8043 1.588 17.413C1.19667 17.0217 1.00067 16.5507 1 16V3C0.71667 3 0.479337 2.904 0.288004 2.712C0.0966702 2.52 0.000670115 2.28267 3.44827e-06 2C-0.000663218 1.71733 0.0953369 1.48 0.288004 1.288C0.48067 1.096 0.718003 1 1 1H5C5 0.716667 5.096 0.479333 5.288 0.288C5.48 0.0966668 5.71734 0.000666667 6 0H10C10.2833 0 10.521 0.0960001 10.713 0.288C10.905 0.48 11.0007 0.717333 11 1H15C15.2833 1 15.521 1.096 15.713 1.288C15.905 1.48 16.0007 1.71733 16 2C15.9993 2.28267 15.9033 2.52033 15.712 2.713C15.5207 2.90567 15.2833 3.00133 15 3V16C15 16.55 14.8043 17.021 14.413 17.413C14.0217 17.805 13.5507 18.0007 13 18H3ZM6 14C6.28334 14 6.521 13.904 6.713 13.712C6.905 13.52 7.00067 13.2827 7 13V6C7 5.71667 6.904 5.47933 6.712 5.288C6.52 5.09667 6.28267 5.00067 6 5C5.71734 4.99933 5.48 5.09533 5.288 5.288C5.096 5.48067 5 5.718 5 6V13C5 13.2833 5.096 13.521 5.288 13.713C5.48 13.905 5.71734 14.0007 6 14ZM10 14C10.2833 14 10.521 13.904 10.713 13.712C10.905 13.52 11.0007 13.2827 11 13V6C11 5.71667 10.904 5.47933 10.712 5.288C10.52 5.09667 10.2827 5.00067 10 5C9.71734 4.99933 9.48 5.09533 9.288 5.288C9.096 5.48067 9 5.718 9 6V13C9 13.2833 9.096 13.521 9.288 13.713C9.48 13.905 9.71734 14.0007 10 14Z"
+                                                fill="#3B3731" />
                                         </svg>
                                     </button>
                                 </div>
                             </div>
                             <div class="check" title="Selected">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                    <path d="M12 0C5.4 0 0 5.4 0 12C0 18.6 5.4 24 12 24C18.6 24 24 18.6 24 12C24 5.4 18.6 0 12 0ZM9.6 18L3.6 12L5.292 10.308L9.6 14.604L18.708 5.496L20.4 7.2L9.6 18Z" fill="#B5CA89" />
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none">
+                                    <path
+                                        d="M12 0C5.4 0 0 5.4 0 12C0 18.6 5.4 24 12 24C18.6 24 24 18.6 24 12C24 5.4 18.6 0 12 0ZM9.6 18L3.6 12L5.292 10.308L9.6 14.604L18.708 5.496L20.4 7.2L9.6 18Z"
+                                        fill="#B5CA89" />
                                 </svg>
                             </div>
                         </div>

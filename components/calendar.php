@@ -50,7 +50,7 @@ function renderBirthdayCalendar(
     if ($value && ($ts = strtotime($value))) {
         $disp = date('d / m / Y', $ts);
     }
-?>
+    ?>
     <div class="form-group bc-wrapper" id="bc-wrap-<?= $uid ?>">
 
         <?php if ($label): ?>
@@ -81,8 +81,10 @@ function renderBirthdayCalendar(
                 <div class="bc-hdr">
                     <button type="button" class="bc-nav bc-prev" aria-label="Previous month">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                            <circle cx="10" cy="10" r="9.5" transform="matrix(-1 0 0 1 20 0)" stroke="#3B3731" stroke-opacity="0.25" />
-                            <path d="M11 6L6.93171 10.0683L10.9317 14.0683" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                            <circle cx="10" cy="10" r="9.5" transform="matrix(-1 0 0 1 20 0)" stroke="#3B3731"
+                                stroke-opacity="0.25" />
+                            <path d="M11 6L6.93171 10.0683L10.9317 14.0683" stroke="#3B3731" stroke-linecap="round"
+                                stroke-linejoin="round" />
                         </svg>
                     </button>
                     <div class="bc-hdr-chips">
@@ -96,7 +98,8 @@ function renderBirthdayCalendar(
                     <button type="button" class="bc-nav bc-next" aria-label="Next month">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                             <circle cx="10" cy="10" r="9.5" fill="#F5F5F5" stroke="#F5F5F5" />
-                            <path d="M9 6L13.0683 10.0683L9.06829 14.0683" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M9 6L13.0683 10.0683L9.06829 14.0683" stroke="#3B3731" stroke-linecap="round"
+                                stroke-linejoin="round" />
                         </svg>
                     </button>
                 </div>
@@ -135,7 +138,7 @@ function renderBirthdayCalendar(
                     <div class="bc-mgrid" id="bc-mgrid-<?= $uid ?>">
                         <?php
                         foreach (['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'] as $i => $m):
-                        ?>
+                            ?>
                             <div class="bc-mi" data-m="<?= $i ?>"><?= $m ?></div>
                         <?php endforeach; ?>
                     </div>
@@ -144,7 +147,7 @@ function renderBirthdayCalendar(
 
         </div><!-- /.bc-dropdown -->
     </div><!-- /.bc-wrapper -->
-<?php
+    <?php
 }
 
 
@@ -195,6 +198,7 @@ function bcAssets(): void
 
         .bc-trigger:hover {
             border-color: #FFC97A;
+            cursor: pointer;
         }
 
         .bc-trigger.bc-open {
@@ -335,8 +339,8 @@ function bcAssets(): void
         }
 
         /* .bc-dow .bc-wknd {
-            color: #FFC97A;
-        } */
+                                    color: #FFC97A;
+                                } */
 
         /* ── Day grid ────────────────────────────────────────────────────────────── */
         .bc-grid {
@@ -372,8 +376,8 @@ function bcAssets(): void
         }
 
         /* .bc-wkd:not(.bc-sel) {
-            color: #C9845A;
-        } */
+                                    color: #C9845A;
+                                } */
 
         span#bc-display-birthday_1 {
             font-size: 16px;
@@ -554,7 +558,7 @@ function bcAssets(): void
     </style>
 
     <script>
-        (function() {
+        (function () {
             var MLONG = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
             var IH = 36,
                 MIN_Y = 1924,
@@ -580,7 +584,7 @@ function bcAssets(): void
                 return y + '-' + pad(m + 1) + '-' + pad(d);
             }
 
-            document.querySelectorAll('.bc-wrapper').forEach(function(wrap) {
+            document.querySelectorAll('.bc-wrapper').forEach(function (wrap) {
                 var uid = wrap.id.replace('bc-wrap-', '');
                 var trigger = wrap.querySelector('.bc-trigger');
                 var dropdown = wrap.querySelector('.bc-dropdown');
@@ -618,11 +622,11 @@ function bcAssets(): void
                 var isWheelScrolling = false;
                 var isSelecting = false;
                 for (var y = MIN_Y; y <= MAX_Y; y++) {
-                    (function(yr) {
+                    (function (yr) {
                         var el = document.createElement('div');
                         el.className = 'bc-yi' + (yr === vy ? ' bc-ya' : '');
                         el.textContent = yr;
-                        el.addEventListener('click', function(e) {
+                        el.addEventListener('click', function (e) {
                             e.preventDefault();
                             e.stopPropagation();
                             isSelecting = true;
@@ -631,7 +635,7 @@ function bcAssets(): void
                             syncY(false);
                             syncM();
                             // Keep protection longer to prevent scroll event from interfering
-                            setTimeout(function() {
+                            setTimeout(function () {
                                 isSelecting = false;
                             }, 300);
                         });
@@ -643,7 +647,7 @@ function bcAssets(): void
                 var scrollTimeout;
 
                 function syncY(ani) {
-                    yscroll.querySelectorAll('.bc-yi').forEach(function(el, i) {
+                    yscroll.querySelectorAll('.bc-yi').forEach(function (el, i) {
                         el.classList.toggle('bc-ya', MIN_Y + i === vy);
                     });
                     yscroll.style.scrollBehavior = ani ? 'smooth' : 'auto';
@@ -652,13 +656,13 @@ function bcAssets(): void
                     // Corrected: do not subtract 2*IH — the padding/top highlight is already accounted for
                     yscroll.scrollTop = (vy - MIN_Y) * IH;
                     // Keep flag true long enough for smooth scroll animation to complete
-                    scrollTimeout = setTimeout(function() {
+                    scrollTimeout = setTimeout(function () {
                         isScrolling = false;
                     }, ani ? 500 : 50);
                 }
                 var snapT;
                 var wheelScrollTimeout;
-                yscroll.addEventListener('wheel', function(e) {
+                yscroll.addEventListener('wheel', function (e) {
                     e.preventDefault();
                     isWheelScrolling = true;
                     clearTimeout(wheelScrollTimeout);
@@ -666,14 +670,14 @@ function bcAssets(): void
                     var step = Math.sign(e.deltaY) || 0;
                     if (step !== 0) yscroll.scrollTop += step * IH;
                     // Reset flag after wheel stops
-                    wheelScrollTimeout = setTimeout(function() {
+                    wheelScrollTimeout = setTimeout(function () {
                         isWheelScrolling = false;
                     }, 200);
                 });
-                yscroll.addEventListener('scroll', function() {
+                yscroll.addEventListener('scroll', function () {
                     if (isScrolling || isSelecting) return; // Ignore programmatic scrolls and selections
                     clearTimeout(snapT);
-                    snapT = setTimeout(function() {
+                    snapT = setTimeout(function () {
                         var i = Math.round(yscroll.scrollTop / IH);
                         vy = MIN_Y + Math.max(0, Math.min(i, MAX_Y - MIN_Y));
                         syncY(true);
@@ -683,12 +687,12 @@ function bcAssets(): void
 
                 /* ── Month grid ── */
                 function syncM() {
-                    mgrid.querySelectorAll('.bc-mi').forEach(function(el) {
+                    mgrid.querySelectorAll('.bc-mi').forEach(function (el) {
                         el.classList.toggle('bc-ma', +el.dataset.m === vm);
                     });
                 }
-                mgrid.querySelectorAll('.bc-mi').forEach(function(el) {
-                    el.addEventListener('click', function() {
+                mgrid.querySelectorAll('.bc-mi').forEach(function (el) {
+                    el.addEventListener('click', function () {
                         vm = +this.dataset.m;
                         syncM();
                         showCal();
@@ -706,7 +710,7 @@ function bcAssets(): void
                     for (var i = 0; i < start; i++) cells.push(null);
                     for (var d = 1; d <= total; d++) cells.push(d);
                     while (cells.length % 7) cells.push(null);
-                    cells.forEach(function(day, idx) {
+                    cells.forEach(function (day, idx) {
                         var el = document.createElement('div');
                         var col = idx % 7;
                         var isSel = day && sel && day === sel.d && vm === sel.m && vy === sel.y;
@@ -717,7 +721,7 @@ function bcAssets(): void
                             (isTod ? ' bc-today' : '') +
                             (col >= 5 && day ? ' bc-wkd' : '');
                         el.textContent = day || '';
-                        if (day) el.addEventListener('click', function() {
+                        if (day) el.addEventListener('click', function () {
                             pick(vy, vm, day);
                         });
                         gridEl.appendChild(el);
@@ -743,14 +747,14 @@ function bcAssets(): void
                 }
 
                 /* ── Nav ── */
-                wrap.querySelector('.bc-prev').addEventListener('click', function() {
+                wrap.querySelector('.bc-prev').addEventListener('click', function () {
                     if (vm === 0) {
                         vm = 11;
                         vy--;
                     } else vm--;
                     renderGrid();
                 });
-                wrap.querySelector('.bc-next').addEventListener('click', function() {
+                wrap.querySelector('.bc-next').addEventListener('click', function () {
                     if (vm === 11) {
                         vm = 0;
                         vy++;
@@ -776,7 +780,7 @@ function bcAssets(): void
                 // if (sel) clearBtn.style.display = 'block';
 
                 /* ── Views ── */
-                wrap.querySelectorAll('.bc-open-picker').forEach(function(b) {
+                wrap.querySelectorAll('.bc-open-picker').forEach(function (b) {
                     b.addEventListener('click', showPicker);
                 });
                 wrap.querySelector('.bc-back').addEventListener('click', showCal);
@@ -791,13 +795,13 @@ function bcAssets(): void
                     calView.style.display = 'none';
                     pkrView.style.display = 'block';
                     syncM();
-                    setTimeout(function() {
+                    setTimeout(function () {
                         syncY(false);
                     }, 10);
                 }
 
                 /* ── Open / close ── */
-                trigger.addEventListener('click', function(e) {
+                trigger.addEventListener('click', function (e) {
                     if (dropdown.style.display === 'none' || !dropdown.style.display) {
                         open();
                     } else {
@@ -819,7 +823,7 @@ function bcAssets(): void
                 }
 
                 // Close when clicking outside
-                document.addEventListener('mousedown', function(e) {
+                document.addEventListener('mousedown', function (e) {
                     if (!wrap.contains(e.target)) close();
                 });
 
