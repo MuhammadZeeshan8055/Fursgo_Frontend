@@ -365,7 +365,7 @@
                 </div>
             </div>
 
-            <div class="col-lg-6 map-col">
+            <div class="col-lg-6 map-col mt-3">
                 <div class="map-wrapper">
                     <div id="map"></div>
                 </div>

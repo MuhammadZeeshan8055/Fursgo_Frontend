@@ -626,8 +626,8 @@
                 </div>
             </div>
 
-            <div class="col-lg-6 map-col">
-                <div class="map-wrapper">
+            <div class="col-lg-6 map-col mt-2">
+                <div class="map-wrapper space-map-wrapper">
                     <div id="space-map"></div>
                 </div>
             </div>
