@@ -3272,7 +3272,45 @@
             });
         });
     </script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
 
+    const promptModal = document.getElementById('groomer_prompt');
+    const bookSpaceModal = document.getElementById('groomer_book_space');
+
+    const cards = promptModal.querySelectorAll('.groomer-find-card');
+    const continueBtn = promptModal.querySelector('.modal-footer-btn.apply');
+
+    let selectedOption = null;
+
+    // Card selection
+    cards.forEach((card, index) => {
+        card.addEventListener('click', function () {
+
+            // remove active from all
+            cards.forEach(c => c.classList.remove('active'));
+
+            // add active to selected
+            this.classList.add('active');
+
+            // 0 = home, 1 = find space
+            selectedOption = index;
+        });
+    });
+
+    // Continue click
+    continueBtn.addEventListener('click', function () {
+
+        // if "Find a grooming space for me"
+        if (selectedOption === 1) {
+            promptModal.style.display = 'none';
+            bookSpaceModal.style.display = 'flex'; // or 'block' depending on CSS
+        }
+
+    });
+
+});
+</script>
 </body>
 
 </html>
