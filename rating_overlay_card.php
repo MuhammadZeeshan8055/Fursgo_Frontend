@@ -66,11 +66,9 @@
 
         .fs-rating-content {
             flex: 1;
-            /* fill available height */
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            /* vertical center */
+            justify-content: end;
         }
 
         .fs-rating-content h2 {
