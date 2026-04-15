@@ -43,6 +43,9 @@
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             border: 1px solid #ffc97a;
+
+            display: flex;
+            flex-direction: column;
         }
 
         /* header */
@@ -62,8 +65,12 @@
         }
 
         .fs-rating-content {
-            text-align: center;
-            padding: 10rem 20px;
+            flex: 1;
+            /* fill available height */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            /* vertical center */
         }
 
         .fs-rating-content h2 {
@@ -114,6 +121,7 @@
             font-style: normal;
             font-weight: 400;
             line-height: normal;
+            margin-bottom: 1.5rem !important;
         }
 
         .fs-back-arrow {
@@ -185,9 +193,9 @@
 
                 <p class="fs-ref">Your reference ID: FG-48291</p>
 
-                <p class="fs-end">End of conversation.</p>
 
             </div>
+                <p class="fs-end">End of conversation.</p>
 
         </div>
 
