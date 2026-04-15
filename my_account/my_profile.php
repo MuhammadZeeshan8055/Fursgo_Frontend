@@ -206,7 +206,6 @@
         .details-completion {
             padding: 20px;
             border-radius: 12px;
-            width: 1000px;
             font-family: lato;
         }
 
@@ -236,13 +235,13 @@
 
         .details-grid {
             display: flex;
-            gap: 20px;
+            gap: 70px;
             align-items: center;
         }
 
         /* Semi-Circle Gauge */
         .progress-container {
-            width: 199px;
+            min-width: 260px;
             height: auto;
             position: relative;
         }
@@ -375,7 +374,7 @@
             border-radius: 12px;
             text-align: center;
             flex: 1;
-            width: 296px;
+            min-width: 296px;
             height: 135px;
         }
 
@@ -2932,7 +2931,7 @@
         .sex-options {
             display: flex;
             gap: 28px;
-            height: 100%;
+            /* height: 100%; */
             align-items: center;
             margin-top: 1.3rem;
         }
@@ -3383,7 +3382,7 @@
                                 </div>
                             </div>
 
-                            <div class="details-grid d-flex align-items-center justify-content-between mt-5">
+                            <div class="details-grid mt-5">
                                 <div class="progress-container">
                                     <div class="gauge-wrapper">
                                         <div class="gauge-container">
@@ -3429,14 +3428,21 @@
                                     </script>
                                 </div>
 
-                                <div class="action-card">
-                                    <h3>Verify your email address</h3>
-                                    <button class="btn-verify">Verify Now</button>
+                                <div class="d-flex align-items-center gap-30" style="overflow: hidden;">
+                                    <div class="action-card">
+                                        <h3>Verify your email address</h3>
+                                        <button class="btn-verify">Verify Now</button>
+                                    </div>
+                                    <div class="action-card">
+                                        <h3>Upload a profile picture</h3>
+                                        <button class="btn-verify">Upload Now</button>
+                                    </div>
+                                    <div class="action-card" style="background: #FAFAFA">
+                                        <h3>Upload a profile picture</h3>
+                                        <button class="btn-verify">Upload Now</button>
+                                    </div>
                                 </div>
-                                <div class="action-card">
-                                    <h3>Upload a profile picture</h3>
-                                    <button class="btn-verify">Upload Now</button>
-                                </div>
+
                             </div>
                         </section>
                     </div>
@@ -6303,6 +6309,8 @@ line-height: normal;">
         // Handle primary profile tabs (profile, pets, favourites, reviews, rewards)
         document.addEventListener('DOMContentLoaded', () => {
             const tabs = document.querySelectorAll('.tab');
+            const detailsCompletion = document.querySelector('.details-completion');
+
 
             // map the text value to the corresponding section element
             const sections = {
@@ -6335,6 +6343,14 @@ line-height: normal;">
                     // reset all tab state
                     tabs.forEach(t => t.classList.remove('active'));
                     tab.classList.add('active');
+
+                    console.log('Clicked tab:', tab.textContent.trim());
+
+                    if (tab.textContent.trim() === 'My Profile' || tab.textContent.trim() === 'My Pets') {
+                        detailsCompletion.style.display = 'block';
+                    } else {
+                        detailsCompletion.style.display = 'none';
+                    }
 
                     // hide every section
                     Object.values(sections).forEach(sec => {
@@ -6445,7 +6461,7 @@ line-height: normal;">
             // 5. FIX: Also activate the matching button INSIDE the now-visible section
             var shownSection = document.getElementById(sectionId);
             var buttonsInSection = shownSection.querySelectorAll(".tab-link");
-            buttonsInSection.forEach(function (btn) {
+            buttonsInSection.forEach(function(btn) {
                 var onclickAttr = btn.getAttribute("onclick") || "";
                 if (onclickAttr.includes(sectionId)) {
                     btn.classList.add("active");
@@ -6511,7 +6527,10 @@ line-height: normal;">
                     sliderContainer.classList.add('hidden');
                     formContainer.classList.remove('hidden');
                     // Scroll to form
-                    formContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    formContainer.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
                 });
             }
 
@@ -6552,13 +6571,13 @@ line-height: normal;">
         // Only wire this legacy toggle if the expected elements exist on the page.
         // This prevents runtime JS errors that can break other UI scripts.
         if (dateToggleBtn && calendarCard) {
-            dateToggleBtn.addEventListener('click', function (e) {
+            dateToggleBtn.addEventListener('click', function(e) {
                 e.stopPropagation();
                 calendarCard.classList.toggle('active');
             });
 
             // Kahin bhi bahar click karne se calendar band ho jaye
-            document.addEventListener('click', function (e) {
+            document.addEventListener('click', function(e) {
                 if (!dateToggleBtn.contains(e.target) && !calendarCard.contains(e.target)) {
                     calendarCard.classList.remove('active');
                 }
@@ -6587,7 +6606,7 @@ line-height: normal;">
 
             if (!petTypeInput || !profilePetBreedsData.petTypes) return;
 
-            petTypeInput.addEventListener('input', function () {
+            petTypeInput.addEventListener('input', function() {
                 const inputValue = this.value.trim().toLowerCase();
                 suggestionBox.innerHTML = '';
 
@@ -6609,9 +6628,13 @@ line-height: normal;">
                         const item = document.createElement('div');
                         item.style.cssText = 'padding:10px;cursor:pointer;border-bottom:1px solid #EEE;color:#3B3731;font-family:Lato;font-size:16px;';
                         item.textContent = match.name;
-                        item.addEventListener('mouseover', function () { this.style.backgroundColor = '#f5f5f5'; });
-                        item.addEventListener('mouseout', function () { this.style.backgroundColor = 'transparent'; });
-                        item.addEventListener('click', function () {
+                        item.addEventListener('mouseover', function() {
+                            this.style.backgroundColor = '#f5f5f5';
+                        });
+                        item.addEventListener('mouseout', function() {
+                            this.style.backgroundColor = 'transparent';
+                        });
+                        item.addEventListener('click', function() {
                             petTypeInput.value = match.name;
                             suggestionBox.style.display = 'none';
                             if (checkIcon) checkIcon.style.display = 'block';
@@ -6637,13 +6660,13 @@ line-height: normal;">
             });
 
             // Hide suggestions when clicking outside
-            document.addEventListener('click', function (e) {
+            document.addEventListener('click', function(e) {
                 if (e.target !== petTypeInput && !suggestionBox.contains(e.target)) {
                     suggestionBox.style.display = 'none';
                 }
             });
 
-            petTypeInput.addEventListener('focus', function () {
+            petTypeInput.addEventListener('focus', function() {
                 if (this.value.trim().length > 0) suggestionBox.style.display = 'block';
             });
         }
@@ -6662,12 +6685,12 @@ line-height: normal;">
             if (petBreedSelect._fursDD) petBreedSelect._fursDD.refresh();
         }
 
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
             loadProfilePetBreedsData();
         });
         // ===== End Profile Page Pet Type Auto-Detection =====
 
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
 
             // ── Select Pet Type toggle ──────────────────────────────────────────
             const petTypeGroup = document.querySelector('.pf-toggle-group');
@@ -6678,7 +6701,7 @@ line-height: normal;">
                 const checkIcon = document.getElementById('petTypeCheck_profile');
 
                 typeButtons.forEach(btn => {
-                    btn.addEventListener('click', function () {
+                    btn.addEventListener('click', function() {
                         // Deactivate all, activate clicked
                         typeButtons.forEach(b => {
                             b.classList.remove('active');
@@ -6732,7 +6755,7 @@ line-height: normal;">
             if (sizeGroups.length >= 2) {
                 const sizeButtons = sizeGroups[1].querySelectorAll('button[type="button"]');
                 sizeButtons.forEach(btn => {
-                    btn.addEventListener('click', function () {
+                    btn.addEventListener('click', function() {
                         sizeButtons.forEach(b => {
                             b.classList.remove('active');
                             if (b.querySelector('p')) b.querySelector('p').style.color = '';
@@ -6768,8 +6791,12 @@ line-height: normal;">
                     }
 
                     input.value = value;
-                    input.dispatchEvent(new Event('input', { bubbles: true }));
-                    input.dispatchEvent(new Event('change', { bubbles: true }));
+                    input.dispatchEvent(new Event('input', {
+                        bubbles: true
+                    }));
+                    input.dispatchEvent(new Event('change', {
+                        bubbles: true
+                    }));
                 });
             });
         });

@@ -21,7 +21,6 @@
 
         .fs-card-header {
             display: flex;
-            justify-content: center;
             align-items: center;
             gap: 16px;
             padding: 20px;
@@ -170,7 +169,7 @@
             padding: 12px;
             border: none;
             border-radius: 25px;
-            background: #f4b86a;
+            background: #FFC97A;
             color: white;
             margin-bottom: 10px;
             cursor: pointer;

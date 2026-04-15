@@ -985,232 +985,168 @@ document.querySelectorAll('.service-type-select .custom-select').forEach(select 
 // draggable js 
 
 document.addEventListener('DOMContentLoaded', () => {
+
     document.querySelectorAll('.scroll-calendar').forEach(calendar => {
-        // ---------- Elements ----------
-        const weekContainer = calendar.querySelector('.week-container');
+
+        // ---------------- Elements ----------------
         const weekEl = calendar.querySelector('.week');
         const rangeEl = calendar.querySelector('.range');
         const monthEl = calendar.querySelector('.month');
+
         const prev = calendar.querySelector('.prev');
         const next = calendar.querySelector('.next');
-        const centerIndicator = calendar.querySelector('.center-indicator');
 
-        // ---------- State ----------
-        let selectedDate = new Date();
+        // ---------------- Helpers ----------------
+        const addDays = (date, n) =>
+            new Date(date.getFullYear(), date.getMonth(), date.getDate() + n);
+
+        const pad = (n) => String(n).padStart(2, '0');
+
+        const isSameDay = (a, b) =>
+            a.getFullYear() === b.getFullYear() &&
+            a.getMonth() === b.getMonth() &&
+            a.getDate() === b.getDate();
+
+        // ---------------- State ----------------
+        const today = new Date();
+        let selectedDate = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+
+        // ---------------- Drag State ----------------
         let isDragging = false;
         let startX = 0;
-        let currentTranslate = 0;
-        let previousTranslate = 0;
-        let velocityX = 0;
-        let lastMoveTime = 0;
-        let lastMoveX = 0;
-        let hasMoved = false;
+        let moved = false;
 
-        // How many tiles to render (odd number so selected is exactly centered)
-        const RENDER_COUNT = 21; // 10 days on each side; changeable
-        const CENTER_INDEX = Math.floor(RENDER_COUNT / 2);
+        const DRAG_THRESHOLD = 40; // px
 
-        // ---------- Helper Functions ----------
-        const addDays = (d, n) => new Date(d.getFullYear(), d.getMonth(), d.getDate() + n);
-        const monday = d => addDays(d, -((d.getDay() + 6) % 7));
-        const pad = n => String(n).padStart(2, '0');
-
-        function getDayWidth() {
-            const children = Array.from(weekEl.children);
-            if (children.length >= 2) {
-                const r0 = children[0].getBoundingClientRect();
-                const r1 = children[1].getBoundingClientRect();
-                return r1.left - r0.left;
-            }
-            // fallback estimate based on container
-            return (weekContainer.clientWidth / 7) || 100;
-        }
-
-        function computeCenterTranslate(dayWidth) {
-            // translate so that the center tile is positioned at container center
-            const containerWidth = weekContainer.clientWidth;
-            const centerTranslate = -dayWidth * CENTER_INDEX + (containerWidth - dayWidth) / 2;
-            return centerTranslate;
-        }
-
-        function render(skipTransition = false) {
-            if (skipTransition) weekEl.classList.add('no-transition');
-            else weekEl.classList.remove('no-transition');
+        // ---------------- Render ----------------
+        function render() {
 
             weekEl.innerHTML = '';
 
-            // centerDate is the selected date
-            const startDate = addDays(selectedDate, -CENTER_INDEX);
+            const weekStart = addDays(selectedDate, -3);
+            const weekEnd = addDays(selectedDate, 3);
 
-            // Update range: show the 7 visible days centered around selectedDate
-            // (3 days before → selected → 3 days after = 7 tiles visible)
-            const visibleStart = addDays(selectedDate, -3);
-            const visibleEnd   = addDays(selectedDate,  3);
-            const startMonth   = visibleStart.toLocaleString(undefined, { month: 'long' });
-            const endMonth     = visibleEnd.toLocaleString(undefined,   { month: 'long' });
-            const rangeMonth   = startMonth === endMonth
-                ? startMonth
-                : `${startMonth} / ${endMonth}`;
-            rangeEl.textContent = `${pad(visibleStart.getDate())} - ${pad(visibleEnd.getDate())} ${rangeMonth}`;
-            monthEl.textContent = selectedDate.toLocaleString(undefined, { month: 'long', year: 'numeric' });
+            const startMonth = weekStart.toLocaleString(undefined, { month: 'long' });
+            const endMonth = weekEnd.toLocaleString(undefined, { month: 'long' });
 
-            // Render RENDER_COUNT days centered around selectedDate
-            for (let i = 0; i < RENDER_COUNT; i++) {
-                const d = addDays(startDate, i);
-                const isActive = d.toDateString() === selectedDate.toDateString();
+            rangeEl.textContent =
+                `${pad(weekStart.getDate())} - ${pad(weekEnd.getDate())} ` +
+                (startMonth === endMonth ? startMonth : `${startMonth} / ${endMonth}`);
+
+            monthEl.textContent =
+                selectedDate.toLocaleString(undefined, { month: 'long', year: 'numeric' });
+
+            for (let i = 0; i < 7; i++) {
+
+                const d = addDays(weekStart, i);
+                const isActive = isSameDay(d, selectedDate);
+
                 const day = document.createElement('div');
                 day.className = 'week-days';
+
                 day.innerHTML = `
-                    <div class="dow${isActive ? ' active' : ''}">
+                    <div class="dow ${isActive ? 'active' : ''}">
                         ${d.toLocaleString(undefined, { weekday: 'short' })}
                     </div>
-                    <div class="date${isActive ? ' active' : ''}">
+                    <div class="date ${isActive ? 'active' : ''}">
                         ${pad(d.getDate())}
                     </div>
                 `;
-                day.onclick = (e) => {
-                    // only select if it wasn't a drag motion
-                    if (!hasMoved) {
-                        selectedDate = d;
-                        render(false);
-                    }
+
+                day.onclick = () => {
+                    if (moved) return; // prevent click after drag
+                    selectedDate = d;
+                    render();
                 };
+
                 weekEl.appendChild(day);
             }
-
-            // Force layout to measure
-            requestAnimationFrame(() => {
-                const dayWidth = getDayWidth();
-                // compute translate that centers the middle tile
-                const centerTranslate = computeCenterTranslate(dayWidth);
-
-                // set transforms
-                previousTranslate = centerTranslate;
-                currentTranslate = centerTranslate;
-                setTranslate(centerTranslate);
-
-                // remove no-transition after a short delay if skipTransition was true
-                if (skipTransition) {
-                    setTimeout(() => weekEl.classList.remove('no-transition'), 20);
-                }
-            });
         }
 
-        function setTranslate(position) {
-            weekEl.style.transform = `translateX(${position}px)`;
+        // ---------------- Navigation Buttons ----------------
+        if (prev) {
+            prev.onclick = () => {
+                selectedDate = addDays(selectedDate, -1);
+                render();
+            };
         }
 
-        // ---------- Drag handling ----------
-        function dragStart(e) {
+        if (next) {
+            next.onclick = () => {
+                selectedDate = addDays(selectedDate, 1);
+                render();
+            };
+        }
+
+        // ---------------- Drag / Swipe ----------------
+        weekEl.addEventListener('mousedown', (e) => {
             isDragging = true;
-            hasMoved = false;
-            weekContainer.classList.add('dragging');
+            startX = e.clientX;
+            moved = false;
+        });
 
-            startX = e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
-            velocityX = 0;
-            lastMoveTime = Date.now();
-            lastMoveX = startX;
-
-            weekEl.classList.add('no-transition');
-        }
-
-        function drag(e) {
+        weekEl.addEventListener('mousemove', (e) => {
             if (!isDragging) return;
-            e.preventDefault();
 
-            const currentX = e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
-            const diff = currentX - startX;
+            const diff = e.clientX - startX;
 
-            if (Math.abs(diff) > 5) hasMoved = true;
-
-            currentTranslate = previousTranslate + diff;
-
-            // velocity
-            const now = Date.now();
-            const dt = now - lastMoveTime;
-            if (dt > 0) {
-                velocityX = (currentX - lastMoveX) / dt;
-                lastMoveTime = now;
-                lastMoveX = currentX;
+            if (Math.abs(diff) > 5) {
+                moved = true;
             }
+        });
 
-            setTranslate(currentTranslate);
-        }
-
-        function dragEnd() {
+        weekEl.addEventListener('mouseup', (e) => {
             if (!isDragging) return;
             isDragging = false;
-            weekContainer.classList.remove('dragging');
-            weekEl.classList.remove('no-transition');
 
-            const dayWidth = getDayWidth();
+            const diff = e.clientX - startX;
 
-            // apply momentum (scale velocity for nicer feel)
-            const momentum = velocityX * 200; // tweak scalar if desired
-            let finalTranslate = currentTranslate + momentum;
-
-            // compute how many whole day-widths moved relative to previousTranslate
-            const movedDays = Math.round((previousTranslate - finalTranslate) / dayWidth);
-
-            if (movedDays !== 0) {
-                selectedDate = addDays(selectedDate, movedDays);
-                // render will compute new center and animate into place
-                render(false);
-            } else {
-                // snap back to center (no date change)
-                setTranslate(previousTranslate);
-            }
-
-            // reset velocities
-            velocityX = 0;
-            hasMoved = false;
-        }
-
-        // ---------- Event listeners ----------
-        // Mouse
-        weekContainer.addEventListener('mousedown', dragStart);
-        window.addEventListener('mousemove', drag);
-        window.addEventListener('mouseup', dragEnd);
-
-        // Touch
-        weekContainer.addEventListener('touchstart', dragStart, { passive: true });
-        weekContainer.addEventListener('touchmove', drag, { passive: false });
-        weekContainer.addEventListener('touchend', dragEnd);
-
-        // Buttons: move one day left/right
-        if (prev) prev.onclick = () => {
-            selectedDate = addDays(selectedDate, -1);
-            render(false);
-        };
-        if (next) next.onclick = () => {
-            selectedDate = addDays(selectedDate, 1);
-            render(false);
-        };
-
-        // keyboard navigation (container needs tabindex)
-        weekContainer.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowLeft') {
-                e.preventDefault();
-                selectedDate = addDays(selectedDate, -1);
-                render(false);
-            } else if (e.key === 'ArrowRight') {
-                e.preventDefault();
-                selectedDate = addDays(selectedDate, 1);
-                render(false);
+            if (Math.abs(diff) > DRAG_THRESHOLD) {
+                if (diff < 0) {
+                    // swipe left → next day
+                    selectedDate = addDays(selectedDate, 1);
+                } else {
+                    // swipe right → prev day
+                    selectedDate = addDays(selectedDate, -1);
+                }
+                render();
             }
         });
 
-        // handle resize so center remains accurate
-        window.addEventListener('resize', () => {
-            // recompute center translate after resize
-            requestAnimationFrame(() => {
-                const dayWidth = getDayWidth();
-                previousTranslate = computeCenterTranslate(dayWidth);
-                setTranslate(previousTranslate);
-            });
+        weekEl.addEventListener('mouseleave', () => {
+            isDragging = false;
         });
 
-        // ---------- Initialize ----------
+        // Touch support (mobile)
+        weekEl.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+            isDragging = true;
+            moved = false;
+        });
+
+        weekEl.addEventListener('touchmove', (e) => {
+            const diff = e.touches[0].clientX - startX;
+            if (Math.abs(diff) > 5) moved = true;
+        });
+
+        weekEl.addEventListener('touchend', (e) => {
+            if (!isDragging) return;
+            isDragging = false;
+
+            const endX = e.changedTouches[0].clientX;
+            const diff = endX - startX;
+
+            if (Math.abs(diff) > DRAG_THRESHOLD) {
+                if (diff < 0) {
+                    selectedDate = addDays(selectedDate, 1);
+                } else {
+                    selectedDate = addDays(selectedDate, -1);
+                }
+                render();
+            }
+        });
+
+        // ---------------- Init ----------------
         render();
     });
 });

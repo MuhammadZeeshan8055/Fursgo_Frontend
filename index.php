@@ -225,13 +225,12 @@
             box-shadow: 0 10px 20px 2px rgba(0, 0, 0, 0.03);
             margin-top: 1.5rem;
         }
-
         .fs-menu-item {
             display: flex;
             justify-content: space-between;
             padding: 18px 15px;
             /* border-radius: 10px; */
-            border: 1px solid #f0f0f0;
+            border-bottom: 1px solid #f0f0f0;
             color: #3b3731;
             text-align: center;
             font-family: Lato;
@@ -246,7 +245,16 @@
         .fs-menu-item:hover {
             background-color: #fff8e1;
         }
+        .fs-menu-item:first-child {
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
 
+        .fs-menu-item:last-child {
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            
+        }
         .fs-status-msg {
             text-align: center;
             color: #9d9b98;

@@ -1,4 +1,4 @@
-<footer class="mt-5 mb-5" style="padding: 6rem;">
+<footer class="mt-5 mb-5 footer" style="padding: 6rem;">
     <section class="section">
         <div class="container">
             <div class="row align-items-end">

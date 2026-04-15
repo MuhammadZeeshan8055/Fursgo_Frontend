@@ -162,6 +162,12 @@
   font-weight: 500;
 }
 
+.underlined-font {
+  text-decoration-line: underline;
+  text-decoration-style: solid;
+  text-underline-offset: 4px;
+}
+
 .normal-default-color-font {
   color: var(--font-color);
   font-family: Lato;

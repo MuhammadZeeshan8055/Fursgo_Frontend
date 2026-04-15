@@ -240,3 +240,110 @@ favButton.addEventListener('click', () => {
     favButton.setAttribute('aria-pressed', !pressed);
 });
 // fav button
+
+
+
+// show images js slider starts
+let images = [];
+let idx = 0;
+
+document.addEventListener('DOMContentLoaded', () => {
+    const gridImages = document.querySelectorAll('.image-grid-item img');
+
+    gridImages.forEach((img, i) => {
+        images.push({
+            src: img.src,
+            title: img.alt || `Photo ${i + 1}`,
+            desc: img.dataset.desc || '' // ✅ THIS IS THE KEY CHANGE
+        });
+
+        img.parentElement.addEventListener('click', () => openLb(i));
+    });
+
+    const showAll = document.querySelector('.show-all-pics');
+    if (showAll) {
+        showAll.addEventListener('click', (e) => {
+            e.stopPropagation();
+            openLb(0);
+        });
+    }
+});
+
+function buildThumbs() {
+    const wrap = document.getElementById('lbThumbs');
+    wrap.innerHTML = '';
+
+    images.forEach((p, i) => {
+        const d = document.createElement('div');
+        d.className = 'lb-thumb' + (i === idx ? ' active' : '');
+        d.onclick = () => goTo(i);
+
+        const img = document.createElement('img');
+        img.src = p.src;
+        img.alt = p.title;
+
+        d.appendChild(img);
+        wrap.appendChild(d);
+    });
+}
+
+function render(animate) {
+    const img = document.getElementById('lbImg');
+    const item = images[idx];
+    if (!item) return;
+
+    if (animate) {
+        img.classList.add('fading');
+        setTimeout(() => {
+            img.src = item.src;
+            img.classList.remove('fading');
+        }, 180);
+    } else {
+        img.src = item.src;
+    }
+
+    document.getElementById('lbTitle').textContent = item.title;
+    document.getElementById('lbDesc').textContent = item.desc || '';
+    document.getElementById('lbCount').textContent = `${idx + 1}/${images.length}`;
+
+    document.querySelectorAll('.lb-thumb').forEach((t, i) => {
+        t.classList.toggle('active', i === idx);
+    });
+}
+
+function goTo(i) {
+    idx = i;
+    render(true);
+}
+
+function slide(dir) {
+    idx = (idx + dir + images.length) % images.length;
+    render(true);
+}
+
+function openLb(i) {
+    idx = i;
+    buildThumbs();
+    render(false);
+    document.getElementById('lbOverlay').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeLb() {
+    document.getElementById('lbOverlay').classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+function handleBgClick(e) {
+    if (e.target.id === 'lbOverlay') closeLb();
+}
+
+document.addEventListener('keydown', (e) => {
+    const overlay = document.getElementById('lbOverlay');
+    if (!overlay.classList.contains('active')) return;
+
+    if (e.key === 'ArrowLeft') slide(-1);
+    if (e.key === 'ArrowRight') slide(1);
+    if (e.key === 'Escape') closeLb();
+});
+// show images js slider ends

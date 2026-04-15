@@ -655,7 +655,7 @@
         }
 
         .map-image {
-            height: 550px;
+            height: 555px;
             aspect-ratio: 107 / 32;
             border-radius: 10px 0 0 10px;
             object-fit: none;
@@ -676,7 +676,7 @@
         <div class="modal" id="groomer_book_space">
             <div class="modal-content">
                 <div class="d-flex align-items-center justify-content-between">
-                    <button type="button" class="btn-custom btn-no-bg text-center" id="goBack" onclick="nextPrev(-1)" fdprocessedid="y45oyo" style="display: inline;">Go Back</button>
+                    <button type="button" class="btn-custom btn-no-bg text-center" id="goBack" fdprocessedid="y45oyo" style="display: inline;">Go Back</button>
                     <div>
                         <h1 class="large-font line-default">Book a Space for Your Groomer</h1>
                         <p class="normal-light-color text-center">Please select a space.</p>
@@ -892,7 +892,12 @@
                                 </div>
                             </div>
                         </div>
-
+                        <div class="d-flex align-items-center gap-10 cursor">
+                            <p class="underlined-font normal-font-bold">Filter</p>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                <path d="M2.5 7.75C2.03587 7.75 1.59075 7.56563 1.26256 7.23744C0.934374 6.90925 0.75 6.46413 0.75 6C0.75 5.53587 0.934374 5.09075 1.26256 4.76256C1.59075 4.43437 2.03587 4.25 2.5 4.25M2.5 7.75C2.96413 7.75 3.40925 7.56563 3.73744 7.23744C4.06563 6.90925 4.25 6.46413 4.25 6C4.25 5.53587 4.06563 5.09075 3.73744 4.76256C3.40925 4.43437 2.96413 4.25 2.5 4.25M2.5 7.75V14.75M2.5 4.25V0.75M7.75 13C7.28587 13 6.84075 12.8156 6.51256 12.4874C6.18437 12.1592 6 11.7141 6 11.25C6 10.7859 6.18437 10.3408 6.51256 10.0126C6.84075 9.68437 7.28587 9.5 7.75 9.5M7.75 13C8.21413 13 8.65925 12.8156 8.98744 12.4874C9.31563 12.1592 9.5 11.7141 9.5 11.25C9.5 10.7859 9.31563 10.3408 8.98744 10.0126C8.65925 9.68437 8.21413 9.5 7.75 9.5M7.75 13V14.75M7.75 9.5V0.75M13 5.125C12.5359 5.125 12.0908 4.94063 11.7626 4.61244C11.4344 4.28425 11.25 3.83913 11.25 3.375C11.25 2.91087 11.4344 2.46575 11.7626 2.13756C12.0908 1.80937 12.5359 1.625 13 1.625M13 5.125C13.4641 5.125 13.9092 4.94063 14.2374 4.61244C14.5656 4.28425 14.75 3.83913 14.75 3.375C14.75 2.91087 14.5656 2.46575 14.2374 2.13756C13.9092 1.80937 13.4641 1.625 13 1.625M13 5.125V14.75M13 1.625V0.75" stroke="#3B3731" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </div>
                     </div>
                 </div>
 
@@ -1905,28 +1910,89 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="image-grid mt-4">
+
                     <div class="image-grid-item large-image" style="grid-area: img-1;">
-                        <img src="<?= BASE_URL ?>/assets/images/space_profile_1.png" alt="">
+                        <img src="<?= BASE_URL ?>/assets/images/space_profile_1.png"
+                            alt="Front Entrance"
+                            data-desc="Clear signage and easy access, so drop-off and pick-up are smooth and stress-free.">
                     </div>
+
                     <div class="image-grid-item large-image" style="grid-area: img-2;">
-                        <img src="<?= BASE_URL ?>/assets/images/space_profile_2.png" alt="">
+                        <img src="<?= BASE_URL ?>/assets/images/space_profile_2.png"
+                            alt="Space Image 2"
+                            data-desc="Well-organized grooming station with professional tools and a hygienic setup.">
                     </div>
+
                     <div class="image-grid-item small-image" style="grid-area: img-3;">
-                        <img src="<?= BASE_URL ?>/assets/images/space_profile_3.png" alt="">
+                        <img src="<?= BASE_URL ?>/assets/images/space_profile_3.png"
+                            alt="Space Image 3"
+                            data-desc="Comfortable grooming area designed to keep pets relaxed during sessions.">
                     </div>
+
                     <div class="image-grid-item small-image" style="grid-area: img-4;">
-                        <img src="<?= BASE_URL ?>/assets/images/space_profile_4.png" alt="">
+                        <img src="<?= BASE_URL ?>/assets/images/space_profile_4.png"
+                            alt="Space Image 4"
+                            data-desc="Professional grooming environment focused on hygiene and precision care.">
                     </div>
+
                     <div class="image-grid-item small-image last-image-text" style="grid-area: img-5;">
-                        <img src="<?= BASE_URL ?>/assets/images/space_profile_5.png" alt="">
+                        <img src="<?= BASE_URL ?>/assets/images/space_profile_5.png"
+                            alt="Space Image 5"
+                            data-desc="Final overview of a premium grooming space built for comfort and efficiency.">
+
                         <p class="show-all-pics">
                             <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 11 11" fill="none">
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M9.77778 4.88889C10.0861 4.88879 10.3831 5.00525 10.6092 5.21491C10.8353 5.42458 10.9738 5.71196 10.9969 6.01944L11 6.11111V9.77778C11.0001 10.0861 10.8836 10.3831 10.674 10.6092C10.4643 10.8353 10.1769 10.9738 9.86944 10.9969L9.77778 11H7.33333C7.02498 11.0001 6.72799 10.8836 6.50189 10.674C6.27579 10.4643 6.13729 10.1769 6.11417 9.86944L6.11111 9.77778V6.11111C6.11101 5.80276 6.22747 5.50576 6.43714 5.27966C6.6468 5.05357 6.93418 4.91507 7.24167 4.89194L7.33333 4.88889H9.77778ZM3.66667 7.33333C3.99082 7.33333 4.3017 7.4621 4.53091 7.69131C4.76012 7.92053 4.88889 8.2314 4.88889 8.55556V9.77778C4.88889 10.1019 4.76012 10.4128 4.53091 10.642C4.3017 10.8712 3.99082 11 3.66667 11H1.22222C0.898069 11 0.587192 10.8712 0.357981 10.642C0.128769 10.4128 0 10.1019 0 9.77778V8.55556C0 8.2314 0.128769 7.92053 0.357981 7.69131C0.587192 7.4621 0.898069 7.33333 1.22222 7.33333H3.66667ZM3.66667 0C3.99082 0 4.3017 0.128769 4.53091 0.357981C4.76012 0.587192 4.88889 0.898069 4.88889 1.22222V4.88889C4.88889 5.21304 4.76012 5.52392 4.53091 5.75313C4.3017 5.98234 3.99082 6.11111 3.66667 6.11111H1.22222C0.898069 6.11111 0.587192 5.98234 0.357981 5.75313C0.128769 5.52392 0 5.21304 0 4.88889V1.22222C0 0.898069 0.128769 0.587192 0.357981 0.357981C0.587192 0.128769 0.898069 0 1.22222 0H3.66667ZM9.77778 0C10.1019 0 10.4128 0.128769 10.642 0.357981C10.8712 0.587192 11 0.898069 11 1.22222V2.44444C11 2.7686 10.8712 3.07947 10.642 3.30869C10.4128 3.5379 10.1019 3.66667 9.77778 3.66667H7.33333C7.00918 3.66667 6.6983 3.5379 6.46909 3.30869C6.23988 3.07947 6.11111 2.7686 6.11111 2.44444V1.22222C6.11111 0.898069 6.23988 0.587192 6.46909 0.357981C6.6983 0.128769 7.00918 0 7.33333 0H9.77778Z" fill="white" />
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M9.77778 4.88889C10.0861 4.88879 10.3831 5.00525 10.6092 5.21491C10.8353 5.42458 10.9738 5.71196 10.9969 6.01944L11 6.11111V9.77778C11.0001 10.0861 10.8836 10.3831 10.674 10.6092C10.4643 10.8353 10.1769 10.9738 9.86944 10.9969L9.77778 11H7.33333C7.02498 11.0001 6.72799 10.8836 6.50189 10.674C6.27579 10.4643 6.13729 10.1769 6.11417 9.86944L6.11111 9.77778V6.11111C6.11101 5.80276 6.22747 5.50576 6.43714 5.27966C6.6468 5.05357 6.93418 4.91507 7.24167 4.89194L7.33333 4.88889H9.77778ZM3.66667 7.33333C3.99082 7.33333 4.3017 7.4621 4.53091 7.69131C4.76012 7.92053 4.88889 8.2314 4.88889 8.55556V9.77778C4.88889 10.1019 4.76012 10.4128 4.53091 10.642C4.3017 10.8712 3.99082 11 3.66667 11H1.22222C0.898069 11 0.587192 10.8712 0.357981 10.642C0.128769 10.4128 0 10.1019 0 9.77778V8.55556C0 8.2314 0.128769 7.92053 0.357981 7.69131C0.587192 7.4621 0.898069 7.33333 1.22222 7.33333H3.66667ZM3.66667 0C3.99082 0 4.3017 0.128769 4.53091 0.357981C4.76012 0.587192 4.88889 0.898069 4.88889 1.22222V4.88889C4.88889 5.21304 4.76012 5.52392 4.53091 5.75313C4.3017 5.98234 3.99082 6.11111 3.66667 6.11111H1.22222C0.898069 6.11111 0.587192 5.98234 0.357981 5.75313C0.128769 5.52392 0 5.21304 0 4.88889V1.22222C0 0.898069 0.128769 0.587192 0.357981 0.357981C0.587192 0.128769 0.898069 0 1.22222 0H3.66667ZM9.77778 0C10.1019 0 10.4128 0.128769 10.642 0.357981C10.8712 0.587192 11 0.898069 11 1.22222V2.44444C11 2.7686 10.8712 3.07947 10.642 3.30869C10.4128 3.5379 10.1019 3.66667 9.77778 3.66667H7.33333C7.00918 3.66667 6.6983 3.5379 6.46909 3.30869C6.23988 3.07947 6.11111 2.7686 6.11111 2.44444V1.22222C6.11111 0.898069 6.23988 0.587192 6.46909 0.357981C6.6983 0.128769 7.00918 0 7.33333 0H9.77778Z"
+                                    fill="white" />
                             </svg>
                             Show all photos
                         </p>
                     </div>
+
                 </div>
+            </div>
+        </div>
+
+        <div class="lb-overlay" id="lbOverlay" onclick="handleBgClick(event)">
+            <div class="lb-modal" id="lbModal">
+                <div class="lb-header">
+                    <div class="lb-title-block">
+                        <span class="lb-title">The Garden Grooming Spot</span>
+                        <span class="lb-subtitle">Dev Émile</span>
+                    </div>
+
+                    <div class="lb-header-right">
+
+                        <svg class="cursor" onclick="closeLb()"xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36" fill="none">
+                            <circle cx="18" cy="18" r="17" stroke="white" stroke-width="2" />
+                            <path d="M12.7998 23.9998L23.9998 12.7998M12.7998 12.7998L23.9998 23.9998" stroke="white" stroke-width="2" stroke-linecap="round" />
+                        </svg>
+                    </div>
+                </div>
+
+                <div class="lb-image-wrap">
+                    <img id="lbImg" src="" alt="">
+                </div>
+
+                <div class="lb-nav-bar">
+                    <svg class="cursor" onclick="slide(-1)" xmlns="http://www.w3.org/2000/svg" width="13" height="24" viewBox="0 0 13 24" fill="none">
+                        <path d="M11.8719 22.5615L1 11.6897L11.6894 1.00031" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+
+                    <div class="lb-caption-block">
+                        <div class="lb-cap-title" id="lbTitle"></div>
+                        <div class="lb-cap-desc" id="lbDesc"></div>
+                    </div>
+
+                    <div class="lb-count" id="lbCount"></div>
+
+                    <svg class="cursor" onclick="slide(1)" xmlns="http://www.w3.org/2000/svg" width="13" height="24" viewBox="0 0 13 24" fill="none">
+                        <path d="M1 22.5615L11.8719 11.6897L1.18251 1.00031" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </div>
+
+                <div class="lb-thumbs" id="lbThumbs"></div>
             </div>
         </div>
 
@@ -2612,6 +2678,7 @@
 
                         <!-- Modal  -->
 
+                        <!-- SPACE PROMPT MODAL -->
                         <div class="modal" id="space_prompt">
                             <div class="modal-content">
                                 <div class="groomer-cross-svg cursor d-flex justify-content-end" data-modal-close>
@@ -2637,51 +2704,43 @@
                                 </div>
 
                                 <div class="d-flex flex-column align-items-center justify-content-center">
-                                    <div class="space-find-card cursor d-flex flex-column justify-content-center mt-4">
+                                    <div class="groomer-find-card cursor d-flex flex-column justify-content-center mt-4">
                                         <p class="medium-font-m-bold">Find a groomer for me</p>
                                         <p class="normal-light-color-font">We’ll match you with a trusted professional.</p>
                                     </div>
 
-                                    <div class="form-field mt-4">
-                                        <label>Main Service Type</label>
+                                    <div class="service-type-select mt-4" id="find-groomer-for-me" style="display:none;">
+                                        <p class="label">Main Service Type</p>
                                         <div class="custom-select">
                                             <div class="select-trigger full-width">
                                                 <span class="selected-text">Full Grooming, Pet Spa ...</span>
                                                 <svg width="16" height="16" viewBox="0 0 24 24">
-                                                    <path d="M6 9l6 6 6-6" fill="none" stroke="#666"
-                                                        stroke-width="2" />
+                                                    <path d="M6 9l6 6 6-6" fill="none" stroke="#666" stroke-width="2" />
                                                 </svg>
                                             </div>
 
                                             <ul class="select-options">
                                                 <li data-value="full-groom">Full Groom</li>
-                                                <li data-value="bath-and-wash-1" class="disabled d-flex align-items-center justify-content-between">
-                                                    Bath & Brush
-                                                    <span class="normal-font-weight" style="color: rgba(59, 55, 49, 0.25);">Not available at this space</span>
-                                                </li>
-                                                <li data-value="face-trim-only">Medicated / Sensitive Skin Bath</li>
-                                                <li data-value="tail-trim-only">Ear Cleaning</li>
-                                                <li data-value="deshedding" class="disabled d-flex align-items-center justify-content-between">
-                                                    Deshedding
-                                                    <span class="normal-font-weight" style="color: rgba(59, 55, 49, 0.25);">Not available at this space</span>
-                                                </li>
+                                                <li data-value="bath-and-brush" class="disabled">Bath & Brush</li>
+                                                <li data-value="medicated-bath">Medicated / Sensitive Skin Bath</li>
+                                                <li data-value="ear-cleaning">Ear Cleaning</li>
+                                                <li data-value="deshedding" class="disabled">Deshedding</li>
                                             </ul>
 
                                             <input type="hidden" name="main_service">
                                         </div>
                                     </div>
 
-                                    <div class="space-find-card cursor d-flex flex-column justify-content-center mt-4">
+                                    <div class="space-find-card dont-need-groomer cursor d-flex flex-column justify-content-center mt-4">
                                         <p class="medium-font-m-bold">I don’t need a groomer</p>
                                         <p class="normal-light-color-font">Continue with booking this space only.</p>
                                     </div>
                                 </div>
 
                                 <div class="modal-footer d-flex align-items-center justify-content-center mt-4 gap-10">
-                                    <button class="modal-footer-btn">Go Back</button>
-                                    <button class="modal-footer-btn apply">Continue</button>
+                                    <button type="button" class="modal-footer-btn" data-modal-close>Go Back</button>
+                                    <button type="button" class="modal-footer-btn apply">Continue</button>
                                 </div>
-
                             </div>
                         </div>
 
@@ -2952,7 +3011,69 @@
 
         });
     </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const spacePromptModal = document.getElementById('space_prompt');
+            const bookSpaceModal = document.getElementById('groomer_book_space');
+
+            const groomerCard = spacePromptModal.querySelector('.groomer-find-card');
+            const dontNeedGroomer = spacePromptModal.querySelector('.dont-need-groomer');
+            const serviceBox = spacePromptModal.querySelector('#find-groomer-for-me');
+
+            const continueBtn = spacePromptModal.querySelector('.modal-footer-btn.apply');
+            const options = serviceBox.querySelectorAll('.select-options li');
+            const selectedText = serviceBox.querySelector('.selected-text');
+            const hiddenInput = serviceBox.querySelector('input[name="main_service"]');
+
+            let groomerSelected = false;
+
+            function openModal(modal) {
+                modal.style.display = 'flex';
+            }
+
+            function closeModal(modal) {
+                modal.style.display = 'none';
+            }
+
+            groomerCard.addEventListener('click', function() {
+                groomerSelected = true;
+                groomerCard.classList.add('active');
+                dontNeedGroomer.classList.remove('active');
+                serviceBox.style.display = 'block';
+            });
+
+            dontNeedGroomer.addEventListener('click', function() {
+                groomerSelected = false;
+                dontNeedGroomer.classList.add('active');
+                groomerCard.classList.remove('active');
+                serviceBox.style.display = 'none';
+            });
+
+            options.forEach(function(option) {
+                option.addEventListener('click', function() {
+                    if (this.classList.contains('disabled')) return;
+
+                    selectedText.textContent = this.textContent.trim();
+                    hiddenInput.value = this.getAttribute('data-value');
+                });
+            });
+
+            continueBtn.addEventListener('click', function() {
+                if (!groomerSelected) return;
+
+                closeModal(spacePromptModal);
+                openModal(bookSpaceModal);
+            });
+
+            document.querySelectorAll('[data-modal-close]').forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    const modal = this.closest('.modal');
+                    if (modal) closeModal(modal);
+                });
+            });
+        });
     </script>
+
 </body>
 
 </html>

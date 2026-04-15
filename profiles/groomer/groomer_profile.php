@@ -632,7 +632,7 @@
         }
 
         .map-image {
-            height: 550px;
+            height: 565px;
             aspect-ratio: 107 / 32;
             border-radius: 10px 0 0 10px;
             object-fit: none;
@@ -1271,7 +1271,7 @@
                                                 </div>
                                             </div>
 
-                                            <h2 class="name">The Garden Grooming Spot</h2>
+                                            <h2 class="name">The Garden Grooming</h2>
                                             <p class="hosted-by">Hosted by <span>Dev É.</span></p>
 
                                             <div class="studio-details mt-1 d-flex flex-column justify-content-between mt-2">
@@ -1918,7 +1918,7 @@
                                                         </div>
                                                     </div>
 
-                                                    <h2 class="name">The Garden Grooming Spot</h2>
+                                                    <h2 class="name">The Garden Grooming</h2>
                                                     <p class="hosted-by">Hosted by <span>Dev É.</span></p>
 
                                                     <div class="studio-details mt-1 d-flex flex-column justify-content-between mt-2">
@@ -2321,22 +2321,39 @@
             <div class="col-lg-12">
                 <div class="image-grid mt-4">
                     <div class="image-grid-item large-image" style="grid-area: img-1;">
-                        <img src="<?= BASE_URL ?>/assets/images/profile-img-1.png" alt="">
+                        <img src="<?= BASE_URL ?>/assets/images/profile-img-1.png"
+                            alt="Profile Image 1"
+                            data-desc="A calm, one-to-one grooming session in a clean, well-equipped space, with gentle handling to keep pets relaxed and comfortable.">
                     </div>
+
                     <div class="image-grid-item large-image" style="grid-area: img-2;">
-                        <img src="<?= BASE_URL ?>/assets/images/profile-img-2.png" alt="">
+                        <img src="<?= BASE_URL ?>/assets/images/profile-img-2.png"
+                            alt="Grooming in Progress"
+                            data-desc="A calm, one-to-one grooming session in a clean, well-equipped space, with gentle handling to keep pets relaxed and comfortable.">
                     </div>
+
                     <div class="image-grid-item small-image" style="grid-area: img-3;">
-                        <img src="<?= BASE_URL ?>/assets/images/profile-img-3.png" alt="">
+                        <img src="<?= BASE_URL ?>/assets/images/profile-img-3.png"
+                            alt="Profile Image 3"
+                            data-desc="Happy pets enjoying a stress-free grooming experience with professional care.">
                     </div>
+
                     <div class="image-grid-item small-image" style="grid-area: img-4;">
-                        <img src="<?= BASE_URL ?>/assets/images/profile-img-4.png" alt="">
+                        <img src="<?= BASE_URL ?>/assets/images/profile-img-4.png"
+                            alt="Profile Image 4"
+                            data-desc="Golden-hour styling finish with detailed coat care and professional grooming precision.">
                     </div>
+
                     <div class="image-grid-item small-image" style="grid-area: img-5;">
-                        <img src="<?= BASE_URL ?>/assets/images/profile-img-5.png" alt="">
+                        <img src="<?= BASE_URL ?>/assets/images/profile-img-5.png"
+                            alt="Profile Image 5"
+                            data-desc="Final grooming touch ensuring pets look clean, neat, and perfectly maintained.">
                     </div>
                     <div class="image-grid-item small-image last-image-text" style="grid-area: img-6;">
-                        <img src="<?= BASE_URL ?>/assets/images/profile-img-6.png" alt="">
+                        <img src="<?= BASE_URL ?>/assets/images/profile-img-6.png"
+                            alt="Profile Image 6"
+                            data-desc="Premium grooming result highlighting hygiene, comfort, and expert finishing detail.">
+
                         <p class="show-all-pics">
                             <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 11 11" fill="none">
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M9.77778 4.88889C10.0861 4.88879 10.3831 5.00525 10.6092 5.21491C10.8353 5.42458 10.9738 5.71196 10.9969 6.01944L11 6.11111V9.77778C11.0001 10.0861 10.8836 10.3831 10.674 10.6092C10.4643 10.8353 10.1769 10.9738 9.86944 10.9969L9.77778 11H7.33333C7.02498 11.0001 6.72799 10.8836 6.50189 10.674C6.27579 10.4643 6.13729 10.1769 6.11417 9.86944L6.11111 9.77778V6.11111C6.11101 5.80276 6.22747 5.50576 6.43714 5.27966C6.6468 5.05357 6.93418 4.91507 7.24167 4.89194L7.33333 4.88889H9.77778ZM3.66667 7.33333C3.99082 7.33333 4.3017 7.4621 4.53091 7.69131C4.76012 7.92053 4.88889 8.2314 4.88889 8.55556V9.77778C4.88889 10.1019 4.76012 10.4128 4.53091 10.642C4.3017 10.8712 3.99082 11 3.66667 11H1.22222C0.898069 11 0.587192 10.8712 0.357981 10.642C0.128769 10.4128 0 10.1019 0 9.77778V8.55556C0 8.2314 0.128769 7.92053 0.357981 7.69131C0.587192 7.4621 0.898069 7.33333 1.22222 7.33333H3.66667ZM3.66667 0C3.99082 0 4.3017 0.128769 4.53091 0.357981C4.76012 0.587192 4.88889 0.898069 4.88889 1.22222V4.88889C4.88889 5.21304 4.76012 5.52392 4.53091 5.75313C4.3017 5.98234 3.99082 6.11111 3.66667 6.11111H1.22222C0.898069 6.11111 0.587192 5.98234 0.357981 5.75313C0.128769 5.52392 0 5.21304 0 4.88889V1.22222C0 0.898069 0.128769 0.587192 0.357981 0.357981C0.587192 0.128769 0.898069 0 1.22222 0H3.66667ZM9.77778 0C10.1019 0 10.4128 0.128769 10.642 0.357981C10.8712 0.587192 11 0.898069 11 1.22222V2.44444C11 2.7686 10.8712 3.07947 10.642 3.30869C10.4128 3.5379 10.1019 3.66667 9.77778 3.66667H7.33333C7.00918 3.66667 6.6983 3.5379 6.46909 3.30869C6.23988 3.07947 6.11111 2.7686 6.11111 2.44444V1.22222C6.11111 0.898069 6.23988 0.587192 6.46909 0.357981C6.6983 0.128769 7.00918 0 7.33333 0H9.77778Z" fill="white" />
@@ -2348,6 +2365,48 @@
             </div>
         </div>
 
+        <div class="lb-overlay" id="lbOverlay" onclick="handleBgClick(event)">
+            <div class="lb-modal" id="lbModal">
+                <div class="lb-header">
+                    <div class="lb-title-block">
+                        <span class="lb-title">Sarah's Grooming Studio</span>
+                        <span class="lb-subtitle">Sarah W.</span>
+                    </div>
+
+                    <div class="lb-header-right">
+
+                        <svg class="cursor" onclick="closeLb()" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36" fill="none">
+                            <circle cx="18" cy="18" r="17" stroke="white" stroke-width="2" />
+                            <path d="M12.7998 23.9998L23.9998 12.7998M12.7998 12.7998L23.9998 23.9998" stroke="white" stroke-width="2" stroke-linecap="round" />
+                        </svg>
+                    </div>
+                </div>
+
+                <div class="lb-image-wrap">
+                    <img id="lbImg" src="" alt="">
+                </div>
+
+                <div class="lb-nav-bar">
+                    <svg class="cursor" onclick="slide(-1)" xmlns="http://www.w3.org/2000/svg" width="13" height="24" viewBox="0 0 13 24" fill="none">
+                        <path d="M11.8719 22.5615L1 11.6897L11.6894 1.00031" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+
+                    <div class="lb-caption-block">
+                        <div class="lb-cap-title" id="lbTitle"></div>
+                        <div class="lb-cap-desc" id="lbDesc"></div>
+                    </div>
+
+                    <div class="lb-count" id="lbCount"></div>
+
+                    <svg class="cursor" onclick="slide(1)" xmlns="http://www.w3.org/2000/svg" width="13" height="24" viewBox="0 0 13 24" fill="none">
+                        <path d="M1 22.5615L11.8719 11.6897L1.18251 1.00031" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </div>
+
+                <div class="lb-thumbs" id="lbThumbs"></div>
+            </div>
+        </div>
+        
         <div class="row">
             <div class="col-lg-4">
                 <div class="service-card mt-4 mb-5">

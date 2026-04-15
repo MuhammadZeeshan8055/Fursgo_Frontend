@@ -10,13 +10,9 @@
    BASE LAYOUT
    ===================== */
 
-body {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    margin: 0;
-}
+/* body {
+    
+} */
 
 header,
 nav,
@@ -32,6 +28,9 @@ nav,
     display: flex;
     flex-direction: column;
     border: 1px solid var(--border);
+    height: 90vh;
+    /* overflow: hidden; */
+    margin: 0;
 }
 
 /* Bootstrap chain must pass height down */
@@ -245,13 +244,17 @@ p.messages-count {
     color: #fff;
 }
 
+.filters{
+    padding: 0px 0 15px 0;
+}
+
 /* =====================
    CHAT AREA
    ===================== */
 
 .chat-area {
     background: var(--bg);
-    height: 100%;
+    height: 96%;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -346,8 +349,13 @@ p.messages-count {
 }
 
 .time {
-    font-size: 11px;
-    color: var(--muted);
+    color: #D4D4D4;
+    text-align: right;
+    font-family: Lato;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
     margin-top: 4px;
 }
 
@@ -372,7 +380,6 @@ p.messages-count {
 .chat-wrapper {
     max-width: 900px;
     flex-shrink: 0;
-    margin-bottom: 8%;
 }
 
 .chat-box {
@@ -462,4 +469,8 @@ p.messages-count {
 
 .overlay-text {
     padding: 12px 0;
+}
+
+.footer{
+    padding: 0px !important;
 }

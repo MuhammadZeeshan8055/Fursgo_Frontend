@@ -7,10 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fursgo - Cookies</title>
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/common.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/bootstrap.css">
 
     <style>
-
-        body{
+        body {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -32,7 +32,7 @@
 
         .fs-cookie-modal {
             width: 440px;
-            height: 314px;
+            height: auto;
             background: white;
             border-radius: 15px;
             overflow: hidden;
@@ -45,7 +45,6 @@
         .fs-cookie-header {
             background: #ffc97a;
             color: white;
-            padding: 12px 15px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -55,6 +54,7 @@
             font-style: normal;
             font-weight: 600;
             line-height: normal;
+            padding: 15px 40px;
         }
 
         .fs-close-btn {
@@ -64,9 +64,7 @@
         /* content */
 
         .fs-cookie-content {
-            padding: 20px;
-            /* text-align: center; */
-            width: 360px;
+            padding: 0 40px;
         }
 
         .fs-cookie-content p {
@@ -82,11 +80,8 @@
 
         .fs-cookie-buttons {
             display: flex;
+            justify-content: space-between;
             gap: 10px;
-            margin: 20px 40px;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
         }
 
         .fs-allow-btn {
@@ -114,7 +109,6 @@
             /* padding: 5px 1px; */
             padding: 0.9px;
             border-radius: 25px;
-            opacity: 0.85;
             cursor: pointer;
             color: #fff;
             text-align: center;
@@ -128,14 +122,12 @@
         /* manage button */
 
         .fs-manage-btn {
-            width: 360px;
+            width: 100%;
             height: 48px;
             border-radius: 25px;
             border: 1px solid #d4d4d4;
             background-color: #ffffff;
             cursor: pointer;
-            margin-bottom: 15px;
-            margin-left: 1rem;
         }
 
         .fs-manage-btn p {
@@ -151,8 +143,6 @@
         /* link */
 
         .fs-learn-more {
-            margin-top: 1rem;
-            margin-left: 5rem;
             text-align: center;
         }
 
@@ -205,23 +195,24 @@
 
             <div class="fs-cookie-content">
 
-                <p>
+                <p class="mt-4">
                     We use cookies to make our site work and improve your experience.
-                    You can manage your cookie preferences at any time.
+                    You can manage your cookie <br> preferences at any time.
                 </p>
 
-                <div class="fs-cookie-buttons">
+                <div class="fs-cookie-buttons mt-4">
 
                     <button class="fs-allow-btn">Allow All</button>
                     <button class="fs-decline-btn">Decline unnecessary cookies</button>
 
                 </div>
 
-                <button class="fs-manage-btn">
+                <button class="fs-manage-btn mt-4">
                     <p>Manage consent preferences</p>
                 </button>
 
-                <div class="fs-learn-more">
+
+                <div class="fs-learn-more mt-4 mb-4">
                     <a href="#">Learn More</a>
                 </div>
 
