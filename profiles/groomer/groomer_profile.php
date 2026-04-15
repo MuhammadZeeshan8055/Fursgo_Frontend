@@ -873,7 +873,12 @@
                                 </div>
                             </div>
                         </div>
-
+                        <div class="d-flex align-items-center gap-10 cursor">
+                            <p class="underlined-font normal-font-bold">Filter</p>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                <path d="M2.5 7.75C2.03587 7.75 1.59075 7.56563 1.26256 7.23744C0.934374 6.90925 0.75 6.46413 0.75 6C0.75 5.53587 0.934374 5.09075 1.26256 4.76256C1.59075 4.43437 2.03587 4.25 2.5 4.25M2.5 7.75C2.96413 7.75 3.40925 7.56563 3.73744 7.23744C4.06563 6.90925 4.25 6.46413 4.25 6C4.25 5.53587 4.06563 5.09075 3.73744 4.76256C3.40925 4.43437 2.96413 4.25 2.5 4.25M2.5 7.75V14.75M2.5 4.25V0.75M7.75 13C7.28587 13 6.84075 12.8156 6.51256 12.4874C6.18437 12.1592 6 11.7141 6 11.25C6 10.7859 6.18437 10.3408 6.51256 10.0126C6.84075 9.68437 7.28587 9.5 7.75 9.5M7.75 13C8.21413 13 8.65925 12.8156 8.98744 12.4874C9.31563 12.1592 9.5 11.7141 9.5 11.25C9.5 10.7859 9.31563 10.3408 8.98744 10.0126C8.65925 9.68437 8.21413 9.5 7.75 9.5M7.75 13V14.75M7.75 9.5V0.75M13 5.125C12.5359 5.125 12.0908 4.94063 11.7626 4.61244C11.4344 4.28425 11.25 3.83913 11.25 3.375C11.25 2.91087 11.4344 2.46575 11.7626 2.13756C12.0908 1.80937 12.5359 1.625 13 1.625M13 5.125C13.4641 5.125 13.9092 4.94063 14.2374 4.61244C14.5656 4.28425 14.75 3.83913 14.75 3.375C14.75 2.91087 14.5656 2.46575 14.2374 2.13756C13.9092 1.80937 13.4641 1.625 13 1.625M13 5.125V14.75M13 1.625V0.75" stroke="#3B3731" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                        </div>
                     </div>
                 </div>
 
@@ -2406,7 +2411,7 @@
                 <div class="lb-thumbs" id="lbThumbs"></div>
             </div>
         </div>
-        
+
         <div class="row">
             <div class="col-lg-4">
                 <div class="service-card mt-4 mb-5">
@@ -3272,45 +3277,45 @@
             });
         });
     </script>
-<script>
-document.addEventListener('DOMContentLoaded', function () {
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
 
-    const promptModal = document.getElementById('groomer_prompt');
-    const bookSpaceModal = document.getElementById('groomer_book_space');
+            const promptModal = document.getElementById('groomer_prompt');
+            const bookSpaceModal = document.getElementById('groomer_book_space');
 
-    const cards = promptModal.querySelectorAll('.groomer-find-card');
-    const continueBtn = promptModal.querySelector('.modal-footer-btn.apply');
+            const cards = promptModal.querySelectorAll('.groomer-find-card');
+            const continueBtn = promptModal.querySelector('.modal-footer-btn.apply');
 
-    let selectedOption = null;
+            let selectedOption = null;
 
-    // Card selection
-    cards.forEach((card, index) => {
-        card.addEventListener('click', function () {
+            // Card selection
+            cards.forEach((card, index) => {
+                card.addEventListener('click', function() {
 
-            // remove active from all
-            cards.forEach(c => c.classList.remove('active'));
+                    // remove active from all
+                    cards.forEach(c => c.classList.remove('active'));
 
-            // add active to selected
-            this.classList.add('active');
+                    // add active to selected
+                    this.classList.add('active');
 
-            // 0 = home, 1 = find space
-            selectedOption = index;
+                    // 0 = home, 1 = find space
+                    selectedOption = index;
+                });
+            });
+
+            // Continue click
+            continueBtn.addEventListener('click', function() {
+
+                // if "Find a grooming space for me"
+                if (selectedOption === 1) {
+                    promptModal.style.display = 'none';
+                    bookSpaceModal.style.display = 'flex'; // or 'block' depending on CSS
+                }
+
+            });
+
         });
-    });
-
-    // Continue click
-    continueBtn.addEventListener('click', function () {
-
-        // if "Find a grooming space for me"
-        if (selectedOption === 1) {
-            promptModal.style.display = 'none';
-            bookSpaceModal.style.display = 'flex'; // or 'block' depending on CSS
-        }
-
-    });
-
-});
-</script>
+    </script>
 </body>
 
 </html>
