@@ -3366,7 +3366,7 @@
     </div>
 
     <!-- Footer -->
-    <?php include '../components/Footer.php' ?>
+    <?php include '../components/footer.php' ?>
     <!-- Footer -->
 
     <script src="<?= BASE_URL ?>/assets/js/common.js"></script>
