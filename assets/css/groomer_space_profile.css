@@ -747,6 +747,10 @@ html {
     padding: 25px;
 }
 
+.service-list-right .price span {
+    text-decoration: none !important;
+}
+
 .services-list.no-bg-border {
     background: none;
     border: 1px solid #9C9790;
@@ -1641,18 +1645,19 @@ label {
 
 /* map css starts  */
 #map .leaflet-tile,
-        #modal-map .leaflet-tile {
-            filter: grayscale(100%) brightness(1.08) contrast(0.95) saturate(0%);
-        }
+#modal-map .leaflet-tile {
+    filter: grayscale(100%) brightness(1.08) contrast(0.95) saturate(0%);
+}
 
-        .leaflet-top.leaflet-left {
-            display: none;
-        }
+.leaflet-top.leaflet-left {
+    display: none;
+}
 
-        
-        #map,
-        #modal-map {
-            border-bottom-left-radius: var(--r);
-            border-bottom-right-radius: var(--r);
-        }
+
+#map,
+#modal-map {
+    border-bottom-left-radius: var(--r);
+    border-bottom-right-radius: var(--r);
+}
+
 /* map css ends  */
