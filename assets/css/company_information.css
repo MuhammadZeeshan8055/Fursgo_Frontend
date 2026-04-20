@@ -518,6 +518,7 @@ a.underline {
     width: 820px;
     height: auto;
     padding: 40px 0px;
+    margin-bottom: 5rem;
 }
 
 #request_modal .modal-cross {
