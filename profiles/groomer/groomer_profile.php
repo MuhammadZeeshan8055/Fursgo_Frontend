@@ -707,8 +707,11 @@
                             </div>
                             <div class="details">
                                 <div class="d-flex align-items-center gap-10">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
-                                        <path d="M7 0.5C10.59 0.5 13.5 3.41004 13.5 7C13.5 10.59 10.59 13.5 7 13.5C3.41004 13.5 0.5 10.59 0.5 7C0.5 3.41004 3.41004 0.5 7 0.5Z" stroke="#9D9B98" stroke-linecap="round" />
+                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                        <circle cx="8" cy="8" r="6" stroke="#9d9b98"
+                                            stroke-width="1.5" />
+                                        <path d="M8 4.5V8L10.5 10" stroke="#9d9b98" stroke-width="1.5"
+                                            stroke-linecap="round" />
                                     </svg>
                                     <p class="light-bold-color-font">Time</p>
                                 </div>
