@@ -15,33 +15,45 @@
             <div class="venue-selection">
                 Space Venue
                 &nbsp;
-                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="7" viewBox="0 0 13 7"
-                    fill="none">
-                    <path d="M11.9103 0.5L6.15684 6.25344L0.499989 0.596581" stroke="#FBAC83"
-                        stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
+                <img src="<?= BASE_URL ?>/assets/icons/filter-arrow-down.svg" class="svg" alt="">
                 <div class="venue-list">
                     <div class="venu dropdown">
                         <ul>
-                            <li class="active">
-                                <span class="option-text">Private rooms</span>
-                                <span class="radio-circle"></span>
+                            <li>
+                                <label>
+                                    <span class="option-text">Private rooms</span>
+                                    <input type="checkbox" name="space-venue[]" value="Full Groom (bath, dry, haircut)" checked>
+                                    <span class="check-circle"></span>
+
+                                </label>
                             </li>
                             <li>
-                                <span class="option-text">Salon</span>
-                                <span class="radio-circle"></span>
+                                <label>
+                                    <span class="option-text">Salon</span>
+                                    <input type="checkbox" name="space-venue[]" value="Face Trim Only">
+                                    <span class="check-circle"></span>
+                                </label>
                             </li>
                             <li>
-                                <span class="option-text">Mobile station</span>
-                                <span class="radio-circle"></span>
+                                <label>
+                                    <span class="option-text">Mobile station</span>
+                                    <input type="checkbox" name="space-venue[]" value="Tail Trim Only">
+                                    <span class="check-circle"></span>
+                                </label>
                             </li>
                             <li>
-                                <span class="option-text">Garden / Shed</span>
-                                <span class="radio-circle"></span>
+                                <label>
+                                    <span class="option-text">Garden / Shed </span>
+                                    <input type="checkbox" name="space-venue[]" value="Bath & Brush">
+                                    <span class="check-circle"></span>
+                                </label>
                             </li>
                             <li>
-                                <span class="option-text">Others</span>
-                                <span class="radio-circle"></span>
+                                <label>
+                                    <span class="option-text">Others</span>
+                                    <input type="checkbox" name="space-venue[]" value="Nail Trim">
+                                    <span class="check-circle"></span>
+                                </label>
                             </li>
                         </ul>
                     </div>
@@ -50,29 +62,36 @@
             <div class="sort-by">
                 Sort
                 &nbsp;
-                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="7" viewBox="0 0 13 7"
-                    fill="none">
-                    <path d="M11.9103 0.5L6.15684 6.25344L0.499989 0.596581" stroke="#FBAC83"
-                        stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
+                <img src="<?= BASE_URL ?>/assets/icons/filter-arrow-down.svg" class="svg" alt="">
                 <div class="sort-by-filter">
                     <div class="sort dropdown">
                         <ul>
-                            <li class="active">
-                                <span class="option-text">Recommended (default)</span>
-                                <span class="radio-circle"></span>
+                            <li>
+                                <label>
+                                    <span class="option-text">Recommended (default)</span>
+                                    <input type="checkbox" name="space-venue[]" value="default" checked> <span class="check-circle"></span>
+                                </label>
                             </li>
                             <li>
-                                <span class="option-text">Distance</span>
-                                <span class="radio-circle"></span>
+                                <label>
+                                    <span class="option-text">Distance</span>
+                                    <input type="checkbox" name="space-venue[]" value="distance">
+                                    <span class="check-circle"></span>
+                                </label>
                             </li>
                             <li>
-                                <span class="option-text">Lowest price</span>
-                                <span class="radio-circle"></span>
+                                <label>
+                                    <span class="option-text">Lowest price</span>
+                                    <input type="checkbox" name="space-venue[]" value="lowest_price">
+                                    <span class="check-circle"></span>
+                                </label>
                             </li>
                             <li>
-                                <span class="option-text">Soonest available</span>
-                                <span class="radio-circle"></span>
+                                <label>
+                                    <span class="option-text">Soonest available</span>
+                                    <input type="checkbox" name="space-venue[]" value="soonest_available">
+                                    <span class="check-circle"></span>
+                                </label>
                             </li>
                         </ul>
                     </div>

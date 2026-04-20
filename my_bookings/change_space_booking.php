@@ -92,11 +92,11 @@ include_once __DIR__ . '/../components/extras-addons.php';
 
                                     <div class="cb-detail-item">
                                         <div class="d-flex align-items-center gap-5">
-                                            <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                    viewBox="0 0 16 16" fill="none">
-                                                    <path
-                                                        d="M8 0.5C12.1423 0.5 15.5 3.85774 15.5 8C15.5 12.1423 12.1423 15.5 8 15.5C3.85774 15.5 0.5 12.1423 0.5 8C0.5 3.85774 3.85774 0.5 8 0.5Z"
-                                                        stroke="#3B3731" stroke-linecap="round" />
+                                            <span><svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                                    <circle cx="8" cy="8" r="6" stroke="#3B3731"
+                                                        stroke-width="1.5" />
+                                                    <path d="M8 4.5V8L10.5 10" stroke="#3B3731" stroke-width="1.5"
+                                                        stroke-linecap="round" />
                                                 </svg></span>
                                             <p class="cb-label"> Time</p>
                                         </div>
@@ -155,11 +155,11 @@ include_once __DIR__ . '/../components/extras-addons.php';
 
                                     <div class="cb-info-group">
                                         <div class="d-flex align-items-center gap-5">
-                                            <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                    viewBox="0 0 16 16" fill="none">
-                                                    <path
-                                                        d="M8 0.5C12.1423 0.5 15.5 3.85774 15.5 8C15.5 12.1423 12.1423 15.5 8 15.5C3.85774 15.5 0.5 12.1423 0.5 8C0.5 3.85774 3.85774 0.5 8 0.5Z"
-                                                        stroke="#3B3731" stroke-linecap="round" />
+                                            <span><svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                                    <circle cx="8" cy="8" r="6" stroke="#3B3731"
+                                                        stroke-width="1.5" />
+                                                    <path d="M8 4.5V8L10.5 10" stroke="#3B3731" stroke-width="1.5"
+                                                        stroke-linecap="round" />
                                                 </svg></span>
                                             <p class="cb-label"> Time</p>
                                         </div>

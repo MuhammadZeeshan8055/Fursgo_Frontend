@@ -35,15 +35,6 @@
             display: block;
         }
 
-        /* Apply grayscale filter only to tiles, not markers */
-        #map .leaflet-tile {
-            filter: grayscale(100%) brightness(1.08) contrast(0.95) saturate(0%);
-        }
-
-        .leaflet-top.leaflet-left {
-            display: none;
-        }
-
         .inverted-radius {
             --r: 21px;
             --s: 18px;
@@ -59,18 +50,13 @@
             mask-repeat: no-repeat;
         }
 
-
-        #map {
-            border-bottom-left-radius: var(--r);
-            border-bottom-right-radius: var(--r);
-        }
-
         /* modal css starts */
         #groomer_book_space .modal-content {
             width: 1200px;
             height: auto;
             background: #FDFCF8;
             padding: 45px;
+            margin-bottom: 5rem;
         }
 
         .modal-top-card {
@@ -772,7 +758,7 @@
 
                 <div class="d-flex align-items-center justify-content-between mt-5">
                     <div class="heading-count d-flex align-items-center gap-30">
-                        <h1 class="heading">Space Results</h1>
+                        <h1 class="heading">Groomer Results</h1>
                         <span class="count">5</span>
                     </div>
 
@@ -1788,7 +1774,7 @@
                         </div>
                         <div class="col-lg-6">
                             <div class="map-div mt-5">
-                                <img src="<?= BASE_URL ?>assets/images/profile_tab_map.png" class="map-image" alt="">
+                                <div id="modal-map" style="width:100%; height:565px; border-radius:10px;"></div>
                             </div>
                         </div>
 
@@ -1964,7 +1950,7 @@
 
                     <div class="lb-header-right">
 
-                        <svg class="cursor" onclick="closeLb()"xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36" fill="none">
+                        <svg class="cursor" onclick="closeLb()" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36" fill="none">
                             <circle cx="18" cy="18" r="17" stroke="white" stroke-width="2" />
                             <path d="M12.7998 23.9998L23.9998 12.7998M12.7998 12.7998L23.9998 23.9998" stroke="white" stroke-width="2" stroke-linecap="round" />
                         </svg>
@@ -2614,7 +2600,7 @@
                                                     </svg>
                                                 </span>
                                             </div>
-                                            <ul class="dropdown" id="startList"></ul>
+                                            <ul class="time dropdown" id="startList"></ul>
                                         </div>
                                     </div>
 
@@ -3072,6 +3058,125 @@
                 });
             });
         });
+
+        const blockSvg = document.querySelectorAll('.block-svg');
+        const blockBtnDiv = document.querySelector('.block-btn-div');
+
+        blockSvg.forEach(svg => {
+            svg.addEventListener('click', () => {
+                blockBtnDiv.style.display = blockBtnDiv.style.display === 'block' ? 'none' : 'block';
+            });
+        });
+
+
+        // loop through all venu-sorting-section blocks
+        document.querySelectorAll('.venu-sorting-section').forEach(container => {
+            const sortBy = container.querySelector('.sort-by');
+            const sortByFilter = container.querySelector('.sort-by-filter');
+
+            const venueSelection = container.querySelector('.venue-selection');
+            const venueList = container.querySelector('.venue-list');
+
+            sortBy.addEventListener('click', () => {
+                // hide venue dropdown only inside this container
+                venueList.style.display = 'none';
+
+                // toggle sort dropdown
+                sortByFilter.style.display = (sortByFilter.style.display === 'block') ? 'none' : 'block';
+            });
+
+            venueSelection.addEventListener('click', () => {
+                // hide sort dropdown only inside this container
+                sortByFilter.style.display = 'none';
+
+                // toggle venue dropdown
+                venueList.style.display = (venueList.style.display === 'block') ? 'none' : 'block';
+            });
+        });
+
+
+        // sort and venue selection ends
+
+
+        // selected filter remove js starts
+
+        document.querySelectorAll('.selected-item-section').forEach(section => {
+            section.addEventListener('click', e => {
+                if (e.target.classList.contains('cross')) {
+                    e.target.closest('.selected-item')?.remove();
+                }
+            });
+        });
+
+
+        // tab map js starts
+
+        let modalMap = null;
+
+        function initModalMap() {
+            if (modalMap) {
+                modalMap.invalidateSize(true);
+                return;
+            }
+
+            modalMap = L.map('modal-map', {
+                zoomControl: false,
+                attributionControl: false,
+                preferCanvas: true
+            }).setView([51.510131, -0.146812], 14);
+
+            L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', {
+                subdomains: 'abcd',
+                maxZoom: 20
+            }).addTo(modalMap);
+
+            L.tileLayer('https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}{r}.png', {
+                subdomains: 'abcd',
+                maxZoom: 20
+            }).addTo(modalMap);
+
+            const yellowPin = L.icon({
+                iconUrl: 'data:image/svg+xml;utf8,' + encodeURIComponent(`
+            <svg xmlns="http://www.w3.org/2000/svg" width="34" height="48" viewBox="0 0 34 48" fill="none">
+                <path d="M17 22.8C15.3898 22.8 13.8455 22.1679 12.7069 21.0426C11.5682 19.9174 10.9286 18.3913 10.9286 16.8C10.9286 15.2087 11.5682 13.6826 12.7069 12.5574C13.8455 11.4321 15.3898 10.8 17 10.8C18.6102 10.8 20.1545 11.4321 21.2931 12.5574C22.4318 13.6826 23.0714 15.2087 23.0714 16.8ZM17 0C12.4913 0 8.1673 1.76999 4.97918 4.92061C1.79107 8.07122 0 12.3444 0 16.8C0 29.4 17 48 17 48C17 48 34 29.4 34 16.8C34 12.3444 32.2089 8.07122 29.0208 4.92061C25.8327 1.76999 21.5087 0 17 0Z" fill="#FFC97A"/>
+            </svg>
+        `),
+                iconSize: [28, 28],
+                iconAnchor: [14, 28]
+            });
+
+            // 📍 Multiple locations
+            const locations = [{
+                    coords: [51.510131, -0.146812],
+                    name: "Sarah's Grooming Studio"
+                },
+                {
+                    coords: [51.515000, -0.140000],
+                    name: "London Pet Care Center"
+                },
+                {
+                    coords: [51.507500, -0.128000],
+                    name: "City Grooming Hub"
+                }
+            ];
+
+            locations.forEach(loc => {
+                L.marker(loc.coords, {
+                        icon: yellowPin
+                    })
+                    .addTo(modalMap)
+                    .bindTooltip(loc.name, {
+                        direction: 'top',
+                        offset: [0, -24],
+                        opacity: 0.95
+                    });
+            });
+
+            modalMap.invalidateSize(true);
+        }
+
+        // tab map js ends
+
     </script>
 
 </body>

@@ -141,6 +141,16 @@ tabs_go_to.forEach((tab) => {
     });
 });
 
+// map shown tab js 
+document.querySelectorAll('[data-tab]').forEach(tab => {
+    tab.addEventListener('click', function () {
+        if (this.dataset.tab === 'groomer-map-view') {
+            // small delay ensures the element is visible before Leaflet measures it
+            setTimeout(initModalMap, 100);
+        }
+    });
+});
+// map shown tab js 
 
 
 //multi select 

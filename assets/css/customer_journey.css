@@ -404,6 +404,11 @@ body:has(.find-groomer-search.active) {
     width: 148px;
 }
 
+.field.time .input-row svg {
+    width: 15px;
+    height: 15px;
+}
+
 .field.date.focused,
 .field.date.has-value,
 .field.time.focused,

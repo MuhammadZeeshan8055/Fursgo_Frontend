@@ -120,15 +120,13 @@
                                 <div class="field-group">
                                     <p class="label">Time</p>
                                     <div class="field time streched" id="timeField">
-                                        <div class="input-row streched" tabindex="0" role="button"
+                                        <div class="input-row streched time" tabindex="0" role="button"
                                             aria-haspopup="dialog" aria-expanded="false">
                                             <input class="fake-input" id="timeInput" readonly placeholder="13:00"
                                                 aria-label="Time input" />
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="8"
-                                                viewBox="0 0 15 8" fill="none">
-                                                <path d="M13.5105 0.5L6.95017 7.06033L0.499971 0.610127"
-                                                    stroke="#3B3731" stroke-linecap="round"
-                                                    stroke-linejoin="round" />
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none">
+                                                <line x1="0.5" y1="7.5" x2="14.5" y2="7.5" stroke="#3B3731" stroke-linecap="round"/>
+                                                <line x1="7.5" y1="0.5" x2="7.5" y2="14.5" stroke="#3B3731" stroke-linecap="round"/>
                                             </svg>
                                         </div>
                                     </div>

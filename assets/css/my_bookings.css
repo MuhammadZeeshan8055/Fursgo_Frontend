@@ -92,7 +92,7 @@
 
 .tabs button {
     border: none;
-    padding: 10px 20px;
+    padding: 10px 14px;
     border-radius: 20px;
     border: 1px solid #d4d4d4;
     background: #ffffff;
@@ -129,10 +129,11 @@
     transition: 0.3s;
 }
 
-.btn-outline {
+.btn-outline.sort-btn {
     background: transparent;
     border: 1px solid #FBAC83;
     color: #FBAC83;
+    padding: 8px 18px;
 }
 
 /* Filter Chips */
@@ -348,7 +349,7 @@ img.rounded-image.second-image {
 }
 
 .review-info {
-    width: 45%;
+    width: 50%;
 }
 
 .review-page-tag {
@@ -822,7 +823,7 @@ img.rounded-image.second-image {
 }
 
 .booking-card {
-    border: 1.5px solid #ffe8cc;
+    /* border: 1.5px solid #ffe8cc; */
     border-radius: 12px;
     overflow: hidden;
 }
@@ -1897,6 +1898,7 @@ img.rounded-image.second-image {
 .map-image {
     height: 224px;
     aspect-ratio: 107/32;
+    object-fit: cover;
 }
 
 /* HTML: <img class="inverted-radius" src="" alt=""> */

@@ -1006,7 +1006,7 @@ html {
 }
 
 /* Dropdown */
-.dropdown {
+.time.dropdown {
     position: absolute;
     top: 62px;
     left: 0;
@@ -1021,18 +1021,19 @@ html {
     z-index: 10;
 }
 
-.dropdown.open {
+.time.dropdown.open {
     display: block;
 }
 
-.dropdown li {
+.time.dropdown li {
     list-style: none;
-    padding: 12px 14px;
+    padding: 12px 8px;
     font-size: 14px;
     cursor: pointer;
+    color: black;
 }
 
-.dropdown li:hover {
+.time.dropdown li:hover {
     background: #eef7ed;
 }
 
@@ -1347,7 +1348,7 @@ html {
     object-fit: cover;
     display: block;
     transition: opacity 0.22s ease;
-        aspect-ratio: 360 / 150;
+    aspect-ratio: 360 / 150;
     border-radius: 10px;
 }
 
@@ -1453,3 +1454,205 @@ html {
 }
 
 /* show images slider css ends */
+
+
+
+/* sort drop down css */
+.sort-by-filter,
+.venue-list {
+    color: var(--font-color);
+    position: absolute;
+    top: 130%;
+    background: white;
+    border: 1px solid #ccc;
+    min-width: 230px;
+    right: 0;
+    border-radius: 10px 0px 10px 10px;
+    display: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 1000;
+}
+
+.venue-selection,
+.sort-by {
+    border-radius: 100px;
+    color: var(--groomer-color);
+    border: 1px solid var(--groomer-color);
+    padding: 10px 20px 10px 20px;
+    text-align: center;
+    font-family: "Lato";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    cursor: pointer;
+    height: 32px;
+}
+
+/* Dropdown container */
+
+/* Options list */
+.venu.dropdown ul,
+.sort.dropdown ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Each option */
+.venu.dropdown li,
+.sort.dropdown li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    cursor: pointer;
+    border-bottom: 1px solid #eee;
+    transition: background 0.2s;
+}
+
+.dropdown li:first-child {
+    border-radius: 10px 0 0 0;
+}
+
+.dropdown li:last-child {
+    border-radius: 0 0 10px 10px;
+}
+
+.dropdown li:hover {
+    background-color: #f5f5f5;
+}
+
+/* Hide native checkbox */
+input[type="checkbox"] {
+    display: none;
+}
+
+/* Circle (same as radio) */
+.check-circle {
+    width: 25px;
+    height: 25px;
+    border: 1px solid var(--groomer-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 5px;
+    position: relative;
+}
+
+/* Inner dot (hidden by default) */
+.check-circle::after {
+    content: "";
+    width: 15px;
+    height: 15px;
+    background-color: var(--groomer-color);
+    border-radius: 50%;
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Show dot when checked */
+input[type="checkbox"]:checked+.check-circle::after {
+    display: block;
+}
+
+/* Option text */
+.option-text {
+    color: #3B3731;
+    font-family: Lato;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+/* Cursor pointer */
+label {
+    cursor: pointer;
+    display: flex !important;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.tooltiptext {
+    visibility: hidden;
+    width: 185px;
+    height: auto;
+    border-radius: 5px;
+    background: #FFF;
+    box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.05);
+    padding: 10px;
+    position: absolute;
+    z-index: 1;
+    top: 12px;
+    left: 155%;
+    color: rgba(0, 0, 0, 0.75);
+    font-family: Lato;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-align: left;
+    border: 1px solid #E9E9E9;
+}
+
+.tooltiptext::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    margin-top: -6px;
+
+    border-width: 6px;
+    border-style: solid;
+    border-color: transparent #E9E9E9 transparent transparent;
+}
+
+.tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    margin-top: -5px;
+
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent #fff transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
+/* sort drop down css */
+
+
+
+/* map css starts  */
+#map .leaflet-tile,
+        #modal-map .leaflet-tile {
+            filter: grayscale(100%) brightness(1.08) contrast(0.95) saturate(0%);
+        }
+
+        .leaflet-top.leaflet-left {
+            display: none;
+        }
+
+        
+        #map,
+        #modal-map {
+            border-bottom-left-radius: var(--r);
+            border-bottom-right-radius: var(--r);
+        }
+/* map css ends  */

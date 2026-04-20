@@ -90,7 +90,7 @@
                                                 stroke-linecap="round" stroke-linejoin="round" />
                                         </svg></span>
                                 </button>
-                                <button class="btn btn-outline light-color-font">
+                                <button class="btn btn-outline light-color-font sort-btn">
                                     Sort <span class="btn-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="7"
                                             viewBox="0 0 13 7" fill="none">
                                             <path d="M11.9102 0.5L6.15672 6.25344L0.499867 0.596581" stroke="#FBAC83"
@@ -184,11 +184,11 @@
                                                 <hr class="vertical-line">
                                                 <div class="details-item d-flex flex-column gap-10">
                                                     <div class="d-flex gap-10">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                            viewBox="0 0 16 16" fill="none">
-                                                            <path
-                                                                d="M8 0.5C12.1423 0.5 15.5 3.85774 15.5 8C15.5 12.1423 12.1423 15.5 8 15.5C3.85774 15.5 0.5 12.1423 0.5 8C0.5 3.85774 3.85774 0.5 8 0.5Z"
-                                                                stroke="#3B3731" stroke-linecap="round" />
+                                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                                            <circle cx="8" cy="8" r="6" stroke="#3B3731"
+                                                                stroke-width="1.5" />
+                                                            <path d="M8 4.5V8L10.5 10" stroke="#3B3731" stroke-width="1.5"
+                                                                stroke-linecap="round" />
                                                         </svg>
                                                         <p class="item-label">Time</p>
                                                     </div>
@@ -217,7 +217,7 @@
                                         </div>
                                     </div>
                                     <div class="action-btns d-flex flex-column justify-content-center gap-20">
-                                        <svg  data-modal-open="view_booking_groom_modal" class="cursor" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+                                        <svg data-modal-open="view_booking_groom_modal" class="cursor" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
                                             <rect width="48" height="48" rx="24" fill="#C9DDA0" />
                                             <path d="M33.4955 23.7425C33.8911 24.1343 33.8906 24.7738 33.4942 25.1649L28.4257 30.1665C28.0359 30.5512 27.4078 30.5461 27.0242 30.1552C26.8723 30.0053 26.8115 29.8554 26.8419 29.7055C26.8799 29.5555 26.9634 29.4131 27.0926 29.2782L30.3629 26.0735C30.5452 25.8936 30.7161 25.7324 30.8756 25.59C31.0019 25.4772 30.9047 25.2517 30.7362 25.2687C30.5411 25.2885 30.3407 25.3056 30.135 25.3201C29.7172 25.3501 29.2842 25.3651 28.836 25.3651H14.9164C14.4103 25.3651 14 24.9548 14 24.4487C14 23.9426 14.4103 23.5323 14.9164 23.5323H28.836C29.2842 23.5323 29.721 23.5473 30.1464 23.5772C30.3491 23.5915 30.5466 23.6084 30.7389 23.6278C30.9098 23.645 31.0063 23.4188 30.8756 23.3074C30.7161 23.1649 30.5452 23.0038 30.3629 22.8239L27.0698 19.5967C26.933 19.4618 26.8495 19.3193 26.8191 19.1694C26.7887 19.0195 26.8457 18.8696 26.99 18.7196C27.3781 18.3243 28.0165 18.3169 28.4101 18.7067L33.4955 23.7425Z" fill="white" />
                                         </svg>
@@ -442,7 +442,7 @@
                                                                 </div>
                                                             </div>
 
-                                                            <div class="what-next d-flex justify-content-between mt-5">
+                                                            <div class="what-next d-flex justify-content-between mt-4">
                                                                 <div>
                                                                     <h3 class="normal-font-bold">What happens next?</h3>
                                                                     <ul class="normal-font-bold list-style-default mt-4">
@@ -540,11 +540,11 @@
 
                                                 <div class="details-item d-flex flex-column gap-10">
                                                     <div class="d-flex gap-10">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                            viewBox="0 0 16 16" fill="none">
-                                                            <path
-                                                                d="M8 0.5C12.1423 0.5 15.5 3.85774 15.5 8C15.5 12.1423 12.1423 15.5 8 15.5C3.85774 15.5 0.5 12.1423 0.5 8C0.5 3.85774 3.85774 0.5 8 0.5Z"
-                                                                stroke="#3B3731" stroke-linecap="round" />
+                                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                                            <circle cx="8" cy="8" r="6" stroke="#3B3731"
+                                                                stroke-width="1.5" />
+                                                            <path d="M8 4.5V8L10.5 10" stroke="#3B3731" stroke-width="1.5"
+                                                                stroke-linecap="round" />
                                                         </svg>
                                                         <p class="item-label">Time</p>
                                                     </div>
@@ -574,7 +574,7 @@
                                         </div>
                                     </div>
                                     <div class="action-btns d-flex flex-column justify-content-center gap-20">
-                                        <svg  data-modal-open="view_booking_space_modal" class="cursor" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+                                        <svg data-modal-open="view_booking_space_modal" class="cursor" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
                                             <rect width="48" height="48" rx="24" fill="#C9DDA0" />
                                             <path d="M33.4955 23.7425C33.8911 24.1343 33.8906 24.7738 33.4942 25.1649L28.4257 30.1665C28.0359 30.5512 27.4078 30.5461 27.0242 30.1552C26.8723 30.0053 26.8115 29.8554 26.8419 29.7055C26.8799 29.5555 26.9634 29.4131 27.0926 29.2782L30.3629 26.0735C30.5452 25.8936 30.7161 25.7324 30.8756 25.59C31.0019 25.4772 30.9047 25.2517 30.7362 25.2687C30.5411 25.2885 30.3407 25.3056 30.135 25.3201C29.7172 25.3501 29.2842 25.3651 28.836 25.3651H14.9164C14.4103 25.3651 14 24.9548 14 24.4487C14 23.9426 14.4103 23.5323 14.9164 23.5323H28.836C29.2842 23.5323 29.721 23.5473 30.1464 23.5772C30.3491 23.5915 30.5466 23.6084 30.7389 23.6278C30.9098 23.645 31.0063 23.4188 30.8756 23.3074C30.7161 23.1649 30.5452 23.0038 30.3629 22.8239L27.0698 19.5967C26.933 19.4618 26.8495 19.3193 26.8191 19.1694C26.7887 19.0195 26.8457 18.8696 26.99 18.7196C27.3781 18.3243 28.0165 18.3169 28.4101 18.7067L33.4955 23.7425Z" fill="white" />
                                         </svg>
@@ -751,11 +751,11 @@
                                                             <div class="modal-meta-item">
                                                                 <div class="d-flex align-items-center gap-10">
                                                                     <span>
-                                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16"
-                                                                            height="16" viewBox="0 0 16 16" fill="none">
-                                                                            <path
-                                                                                d="M8 0.5C12.1423 0.5 15.5 3.85774 15.5 8C15.5 12.1423 12.1423 15.5 8 15.5C3.85774 15.5 0.5 12.1423 0.5 8C0.5 3.85774 3.85774 0.5 8 0.5Z"
-                                                                                stroke="#9D9B98" stroke-linecap="round" />
+                                                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                                                            <circle cx="8" cy="8" r="6" stroke="#9D9B98"
+                                                                                stroke-width="1.5" />
+                                                                            <path d="M8 4.5V8L10.5 10" stroke="#9D9B98" stroke-width="1.5"
+                                                                                stroke-linecap="round" />
                                                                         </svg>
                                                                     </span>
                                                                     <p class="modal-meta-title">Time</p>
@@ -912,9 +912,9 @@
                                                         </div>
 
                                                         <div class="card-actions d-flex justify-content-center gap-20 mt-5">
-                                                                <a href="<?= BASE_URL ?>/my_bookings/change_space_booking.php" class="btn-outline medium-light-font text-center">Change Booking</a>
-                                                                <button class="btn-green medium-light-font">Message Host</button>
-                                                            </div>
+                                                            <a href="<?= BASE_URL ?>/my_bookings/change_space_booking.php" class="btn-outline medium-light-font text-center">Change Booking</a>
+                                                            <button class="btn-green medium-light-font">Message Host</button>
+                                                        </div>
 
 
                                                     </div>
@@ -1020,11 +1020,11 @@
                                                 <hr class="vertical-line">
                                                 <div class="details-item d-flex flex-column gap-10">
                                                     <div class="d-flex gap-10">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                            viewBox="0 0 16 16" fill="none">
-                                                            <path
-                                                                d="M8 0.5C12.1423 0.5 15.5 3.85774 15.5 8C15.5 12.1423 12.1423 15.5 8 15.5C3.85774 15.5 0.5 12.1423 0.5 8C0.5 3.85774 3.85774 0.5 8 0.5Z"
-                                                                stroke="#3B3731" stroke-linecap="round" />
+                                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                                            <circle cx="8" cy="8" r="6" stroke="#3B3731"
+                                                                stroke-width="1.5" />
+                                                            <path d="M8 4.5V8L10.5 10" stroke="#3B3731" stroke-width="1.5"
+                                                                stroke-linecap="round" />
                                                         </svg>
                                                         <p class="item-label">Time</p>
                                                     </div>
@@ -1125,11 +1125,11 @@
 
                                                 <div class="details-item d-flex flex-column gap-10">
                                                     <div class="d-flex gap-10">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                            viewBox="0 0 16 16" fill="none">
-                                                            <path
-                                                                d="M8 0.5C12.1423 0.5 15.5 3.85774 15.5 8C15.5 12.1423 12.1423 15.5 8 15.5C3.85774 15.5 0.5 12.1423 0.5 8C0.5 3.85774 3.85774 0.5 8 0.5Z"
-                                                                stroke="#3B3731" stroke-linecap="round" />
+                                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                                            <circle cx="8" cy="8" r="6" stroke="#3B3731"
+                                                                stroke-width="1.5" />
+                                                            <path d="M8 4.5V8L10.5 10" stroke="#3B3731" stroke-width="1.5"
+                                                                stroke-linecap="round" />
                                                         </svg>
                                                         <p class="item-label">Time</p>
                                                     </div>
@@ -1246,11 +1246,11 @@
                                                 <hr class="vertical-line">
                                                 <div class="details-item d-flex flex-column gap-10">
                                                     <div class="d-flex gap-10">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                            viewBox="0 0 16 16" fill="none">
-                                                            <path
-                                                                d="M8 0.5C12.1423 0.5 15.5 3.85774 15.5 8C15.5 12.1423 12.1423 15.5 8 15.5C3.85774 15.5 0.5 12.1423 0.5 8C0.5 3.85774 3.85774 0.5 8 0.5Z"
-                                                                stroke="#3B3731" stroke-linecap="round" />
+                                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                                            <circle cx="8" cy="8" r="6" stroke="#3B3731"
+                                                                stroke-width="1.5" />
+                                                            <path d="M8 4.5V8L10.5 10" stroke="#3B3731" stroke-width="1.5"
+                                                                stroke-linecap="round" />
                                                         </svg>
                                                         <p class="item-label">Time</p>
                                                     </div>
@@ -1352,11 +1352,11 @@
 
                                                 <div class="details-item d-flex flex-column gap-10">
                                                     <div class="d-flex gap-10">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                            viewBox="0 0 16 16" fill="none">
-                                                            <path
-                                                                d="M8 0.5C12.1423 0.5 15.5 3.85774 15.5 8C15.5 12.1423 12.1423 15.5 8 15.5C3.85774 15.5 0.5 12.1423 0.5 8C0.5 3.85774 3.85774 0.5 8 0.5Z"
-                                                                stroke="#3B3731" stroke-linecap="round" />
+                                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                                            <circle cx="8" cy="8" r="6" stroke="#3B3731"
+                                                                stroke-width="1.5" />
+                                                            <path d="M8 4.5V8L10.5 10" stroke="#3B3731" stroke-width="1.5"
+                                                                stroke-linecap="round" />
                                                         </svg>
                                                         <p class="item-label">Time</p>
                                                     </div>
@@ -1424,7 +1424,7 @@
                                                     </svg>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-12" style="padding: 25px 35px;">
+                                            <div class="col-lg-12" style="padding: 15px 35px;">
 
                                                 <form id="reviewForm" enctype="multipart/form-data">
                                                     <div class="review-profile-section d-flex align-items-center gap-25 mt-5">
@@ -1448,7 +1448,7 @@
                                                                     <h3 class="review-name normal-font-bold">Cathy P.</h3>
                                                                     <p class="review-studio-name normal-light-color ">Sarah's Grooming Studio</p>
                                                                 </div>
-                                                                <div class="review-info-row d-flex align-items-end gap-45">
+                                                                <div class="review-info-row d-flex align-items-end gap-25 justify-content-end">
                                                                     <div class="d-flex align-items-center gap-10">
                                                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="17" viewBox="0 0 16 17" fill="none">
                                                                             <path d="M4.94591 11.5544C6.23114 12.8397 9.35699 11.798 11.9274 9.22713C14.4983 6.65667 15.54 3.53082 14.2548 2.24559M8.72754 1.37259L9.30927 1.95473M6.6915 3.40904L7.27322 3.99077M4.9455 5.73636L5.52722 6.31809M4.36377 8.6454L4.9455 9.22713M11.9274 0.5L12.5092 1.08173M11.3457 3.99118L12.5092 5.15463M9.30968 6.02763L10.4731 7.19109M6.98236 7.77281L8.14581 8.93627" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round"></path>
@@ -1552,7 +1552,38 @@
                                                         </div>
                                                     </div>
 
-                                                    <div class="specific-row mt-4 d-flex align-items-center justify-content-between">
+                                                    <div class="specific-row mt-1 d-flex align-items-center justify-content-between">
+                                                        <span class="simple-font">Cleanlines</span>
+
+                                                        <div class="stars rating-stars">
+
+                                                            <input type="radio" name="cleanlines" id="cleanlines-5" value="5">
+                                                            <label for="cleanlines-5">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="34" height="33" viewBox="0 0 34 33">
+                                                                    <path d="M14.9871 1.39799C15.5755 -0.466011 18.2133 -0.466007 18.8016 1.39799L21.3879 9.59177C21.6505 10.424 22.4225 10.9898 23.2951 10.9898L31.785 10.9898C33.7084 10.9898 34.5231 13.4394 32.9828 14.5914L26.0156 19.8022C25.3349 20.3113 25.0503 21.1952 25.3062 22.0058L27.9438 30.3621C28.5286 32.2149 26.3946 33.7294 24.8387 32.5657L18.0922 27.52C17.382 26.9888 16.4067 26.9888 15.6965 27.52L8.95006 32.5657C7.39412 33.7294 5.26012 32.2149 5.84496 30.3621L8.4825 22.0058C8.73837 21.1952 8.45385 20.3113 7.77311 19.8022L0.80589 14.5914C-0.734361 13.4394 0.0803623 10.9898 2.00374 10.9898L10.4936 10.9898C11.3663 10.9898 12.1382 10.424 12.4008 9.59177L14.9871 1.39799Z" fill="currentColor" />
+                                                                </svg>
+                                                            </label>
+
+                                                            <input type="radio" name="cleanlines" id="cleanlines-4" value="4"><label for="cleanlines-4"><svg xmlns="http://www.w3.org/2000/svg" width="34" height="33" viewBox="0 0 34 33">
+                                                                    <path d="M14.9871 1.39799C15.5755 -0.466011 18.2133 -0.466007 18.8016 1.39799L21.3879 9.59177C21.6505 10.424 22.4225 10.9898 23.2951 10.9898L31.785 10.9898C33.7084 10.9898 34.5231 13.4394 32.9828 14.5914L26.0156 19.8022C25.3349 20.3113 25.0503 21.1952 25.3062 22.0058L27.9438 30.3621C28.5286 32.2149 26.3946 33.7294 24.8387 32.5657L18.0922 27.52C17.382 26.9888 16.4067 26.9888 15.6965 27.52L8.95006 32.5657C7.39412 33.7294 5.26012 32.2149 5.84496 30.3621L8.4825 22.0058C8.73837 21.1952 8.45385 20.3113 7.77311 19.8022L0.80589 14.5914C-0.734361 13.4394 0.0803623 10.9898 2.00374 10.9898L10.4936 10.9898C11.3663 10.9898 12.1382 10.424 12.4008 9.59177L14.9871 1.39799Z" fill="currentColor" />
+                                                                </svg></label>
+
+                                                            <input type="radio" name="cleanlines" id="cleanlines-3" value="3"><label for="cleanlines-3"><svg xmlns="http://www.w3.org/2000/svg" width="34" height="33" viewBox="0 0 34 33">
+                                                                    <path d="M14.9871 1.39799C15.5755 -0.466011 18.2133 -0.466007 18.8016 1.39799L21.3879 9.59177C21.6505 10.424 22.4225 10.9898 23.2951 10.9898L31.785 10.9898C33.7084 10.9898 34.5231 13.4394 32.9828 14.5914L26.0156 19.8022C25.3349 20.3113 25.0503 21.1952 25.3062 22.0058L27.9438 30.3621C28.5286 32.2149 26.3946 33.7294 24.8387 32.5657L18.0922 27.52C17.382 26.9888 16.4067 26.9888 15.6965 27.52L8.95006 32.5657C7.39412 33.7294 5.26012 32.2149 5.84496 30.3621L8.4825 22.0058C8.73837 21.1952 8.45385 20.3113 7.77311 19.8022L0.80589 14.5914C-0.734361 13.4394 0.0803623 10.9898 2.00374 10.9898L10.4936 10.9898C11.3663 10.9898 12.1382 10.424 12.4008 9.59177L14.9871 1.39799Z" fill="currentColor" />
+                                                                </svg></label>
+
+                                                            <input type="radio" name="cleanlines" id="cleanlines-2" value="2"><label for="cleanlines-2"><svg xmlns="http://www.w3.org/2000/svg" width="34" height="33" viewBox="0 0 34 33">
+                                                                    <path d="M14.9871 1.39799C15.5755 -0.466011 18.2133 -0.466007 18.8016 1.39799L21.3879 9.59177C21.6505 10.424 22.4225 10.9898 23.2951 10.9898L31.785 10.9898C33.7084 10.9898 34.5231 13.4394 32.9828 14.5914L26.0156 19.8022C25.3349 20.3113 25.0503 21.1952 25.3062 22.0058L27.9438 30.3621C28.5286 32.2149 26.3946 33.7294 24.8387 32.5657L18.0922 27.52C17.382 26.9888 16.4067 26.9888 15.6965 27.52L8.95006 32.5657C7.39412 33.7294 5.26012 32.2149 5.84496 30.3621L8.4825 22.0058C8.73837 21.1952 8.45385 20.3113 7.77311 19.8022L0.80589 14.5914C-0.734361 13.4394 0.0803623 10.9898 2.00374 10.9898L10.4936 10.9898C11.3663 10.9898 12.1382 10.424 12.4008 9.59177L14.9871 1.39799Z" fill="currentColor" />
+                                                                </svg></label>
+
+                                                            <input type="radio" name="cleanlines" id="cleanlines-1" value="1"><label for="cleanlines-1"><svg xmlns="http://www.w3.org/2000/svg" width="34" height="33" viewBox="0 0 34 33">
+                                                                    <path d="M14.9871 1.39799C15.5755 -0.466011 18.2133 -0.466007 18.8016 1.39799L21.3879 9.59177C21.6505 10.424 22.4225 10.9898 23.2951 10.9898L31.785 10.9898C33.7084 10.9898 34.5231 13.4394 32.9828 14.5914L26.0156 19.8022C25.3349 20.3113 25.0503 21.1952 25.3062 22.0058L27.9438 30.3621C28.5286 32.2149 26.3946 33.7294 24.8387 32.5657L18.0922 27.52C17.382 26.9888 16.4067 26.9888 15.6965 27.52L8.95006 32.5657C7.39412 33.7294 5.26012 32.2149 5.84496 30.3621L8.4825 22.0058C8.73837 21.1952 8.45385 20.3113 7.77311 19.8022L0.80589 14.5914C-0.734361 13.4394 0.0803623 10.9898 2.00374 10.9898L10.4936 10.9898C11.3663 10.9898 12.1382 10.424 12.4008 9.59177L14.9871 1.39799Z" fill="currentColor" />
+                                                                </svg></label>
+
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="specific-row mt-1 d-flex align-items-center justify-content-between">
                                                         <span class="simple-font">Quality</span>
 
                                                         <div class="stars rating-stars">
@@ -1583,7 +1614,7 @@
                                                         </div>
                                                     </div>
 
-                                                    <div class="specific-row mt-4 d-flex align-items-center justify-content-between">
+                                                    <div class="specific-row mt-1 d-flex align-items-center justify-content-between">
                                                         <span class="simple-font">Communication</span>
 
                                                         <div class="stars rating-stars">

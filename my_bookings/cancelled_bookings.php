@@ -83,7 +83,7 @@
                                                     </svg>
                                                     <p class="medium-font-bold">Service</p>
                                                 </div>
-                                                <p class="medium-light-font mt-2">Full Groom</p>
+                                                <p class="medium-light-font mt-2"><del>Full Groom</del></p>
                                             </div>
 
                                             <hr class="vertical-line">
@@ -97,7 +97,7 @@
                                                     </svg>
                                                     <p class="medium-font-bold">Date</p>
                                                 </div>
-                                                <p class="medium-light-font mt-2">18/12/2025</p>
+                                                <p class="medium-light-font mt-2"><del>18/12/2025</del></p>
                                             </div>
 
                                             <hr class="vertical-line">
@@ -116,7 +116,7 @@
                                                     </svg>
                                                     <p class="medium-font-bold">Time</p>
                                                 </div>
-                                                <p class="medium-light-font mt-2">14:30 - 15:30 (90 mins)</p>
+                                                <p class="medium-light-font mt-2"><del>14:30 - 15:30 (90 mins)</del></p>
                                             </div>
 
 
@@ -159,9 +159,8 @@
 
                                             <div class="d-flex flex-column">
                                                 <div class="d-flex align-items-center gap-15">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="11" height="16" viewBox="0 0 11 16" fill="none">
-                                                        <path d="M5.5 0.5C8.25285 0.5 10.4998 2.7746 10.5 5.59961C10.5 8.30137 8.44411 10.5013 5.85742 10.6875L5.5 10.7129L5.14258 10.6875C2.55591 10.5013 0.5 8.30099 0.5 5.59961C0.500207 2.7746 2.74715 0.5 5.5 0.5Z" stroke="#3B3731" />
-                                                    </svg>
+                                                              <svg fill="#3b3731" width="15" height="15" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 61.13 61.13" xml:space="preserve" stroke="#3b3731" stroke-width="0.00061132" transform="matrix(-1, 0, 0, 1, 0, 0)"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#3b3731" stroke-width="2.689808"></g><g id="SVGRepo_iconCarrier"> <path d="M27.482,34.031v12.317h-6.92c-1.703,0-3.084,1.381-3.084,3.084s1.381,3.084,3.084,3.084h6.92v5.531 c0,1.703,1.381,3.084,3.084,3.084s3.084-1.381,3.084-3.084v-5.531h6.92c1.703,0,3.084-1.381,3.084-3.084s-1.381-3.084-3.084-3.084 h-6.92V34.031c7.993-1.458,14.072-8.467,14.072-16.874C47.723,7.697,40.026,0,30.566,0c-9.46,0-17.157,7.697-17.157,17.157 C13.409,25.564,19.489,32.573,27.482,34.031z M30.566,6.169c6.059,0,10.988,4.929,10.988,10.988s-4.929,10.988-10.988,10.988 s-10.988-4.929-10.988-10.988S24.507,6.169,30.566,6.169z"></path> </g></svg>
+
                                                     <p class="medium-font-bold">Sex</p>
                                                 </div>
                                                 <p class="medium-light-font mt-2">Female</p>
