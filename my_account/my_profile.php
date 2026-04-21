@@ -1120,7 +1120,7 @@
             text-align: right;
         }
 
-        .social-icons {
+        .profile-social-icons {
             display: flex;
             justify-content: flex-end;
             gap: 15px;
@@ -6067,7 +6067,7 @@ line-height: normal;">
                                         <p>Your friend gets £5 off their first booking</p>
                                     </div>
 
-                                    <div class="social-icons">
+                                    <div class="profile-social-icons">
                                         <div class="promo-text">
                                             <p>Share to</p>
                                         </div>

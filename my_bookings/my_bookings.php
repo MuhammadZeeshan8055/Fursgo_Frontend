@@ -11,7 +11,265 @@
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/media_query.css">
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/common.css">
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/my_bookings.css">
+    <style>
+        /* .hint {
+            font-size: 13px;
+            color: #a09080;
+            margin-bottom: 16px;
+            letter-spacing: .02em;
+            min-height: 20px;
+        } */
+        .sort-by {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            border: 1px solid #FBAC83;
+            color: #FBAC83;
+            padding: 8px 16px;
+            border-radius: 100px;
+            cursor: pointer;
+            font-size: 14px;
+        }
 
+        .sort-dropdown {
+            position: absolute;
+            top: 120%;
+            right: 0;
+            background: #fff;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            min-width: 230px;
+            display: none;
+            z-index: 1000;
+        }
+
+        .sort-dropdown ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .sort-dropdown li {
+            padding: 12px 16px;
+            border-bottom: 1px solid #eee;
+            color: #3b3731;
+            font-family: Lato;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+        }
+
+        .sort-dropdown li:last-child {
+            border-bottom: none;
+        }
+
+        .sort-dropdown label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+
+        }
+
+        .sort-dropdown input {
+            display: none;
+        }
+
+        .check-circle {
+            width: 20px;
+            height: 20px;
+            border: 1px solid #FBAC83;
+            border-radius: 50%;
+            position: relative;
+        }
+
+        .check-circle::after {
+            content: "";
+            width: 12px;
+            height: 12px;
+            background: #FBAC83;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: none;
+        }
+
+        input:checked+.check-circle::after {
+            display: block;
+        }
+
+        .sort-dropdown.show {
+            display: block;
+        }
+
+        .calendar-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+
+        .card.show {
+            display: block;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 20px;
+            padding: 8px 8px 8px;
+            width: 300px;
+            user-select: none;
+            border-radius: 10px;
+            border: 1px solid #D4D4D4;
+            background: #FFF;
+            position: absolute;
+            top: 100%;
+            /* below button */
+            right: 0;
+            margin-top: 8px;
+            z-index: 999;
+            display: none;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 18px;
+        }
+
+        .pill {
+            background: #fff;
+            padding: 7px 14px;
+            color: #9D9B98;
+            text-align: center;
+            font-family: Lato;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+            border-radius: 5px;
+            border: 1px solid #F7F7F7;
+            background: #FFF;
+        }
+
+        .arrows {
+            margin-left: auto;
+            display: flex;
+            gap: 4px;
+        }
+
+        .nav {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            border: none;
+            background: #f3ede8;
+            color: #7a6e66;
+            font-size: 18px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background .15s;
+        }
+
+        .nav:hover {
+            background: #e8dfd7;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+        }
+
+        .lbl {
+            text-align: center;
+            color: #9C9790;
+            font-family: Lato;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+            padding-bottom: 10px;
+        }
+
+        .cell {
+            position: relative;
+            height: 42px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .cell.empty {
+            pointer-events: none;
+        }
+
+        /* range strip */
+        .cell::before {
+            content: '';
+            position: absolute;
+            top: 0px;
+            bottom: 0px;
+            left: 0;
+            right: 0;
+            background: transparent;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .cell.in-range::before {
+            background: rgba(255, 201, 122, 0.25);
+        }
+
+        .cell.rng-s::before {
+            background: #fdf0e4;
+            left: 50%;
+        }
+
+        .cell.rng-e::before {
+            background: #fdf0e4;
+            right: 50%;
+        }
+
+        .num {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 1;
+            pointer-events: none;
+            transition: background .1s, color .1s;
+
+            color: #3B3731;
+            font-family: Lato;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+        }
+
+        .cell:not(.empty):hover .num {
+            background: #f5e6d6;
+        }
+
+        .cell.sel-s .num,
+        .cell.sel-e .num {
+            background: #FFC97A !important;
+            color: #fff;
+        }
+
+        .cell.empty .num {
+            color: transparent;
+        }
+    </style>
 </head>
 
 <body class="status-cancel">
@@ -83,20 +341,108 @@
 
 
                             <div class="actions d-flex align-items-center gap-10">
-                                <button class="btn btn-filled light-color-font">
-                                    2 Feb - 4 March <span class="btn-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="13"
-                                            height="7" viewBox="0 0 13 7" fill="none">
-                                            <path d="M11.9102 0.5L6.15672 6.25344L0.499867 0.596581" stroke="white"
-                                                stroke-linecap="round" stroke-linejoin="round" />
-                                        </svg></span>
-                                </button>
-                                <button class="btn btn-outline light-color-font sort-btn">
-                                    Sort <span class="btn-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="7"
-                                            viewBox="0 0 13 7" fill="none">
-                                            <path d="M11.9102 0.5L6.15672 6.25344L0.499867 0.596581" stroke="#FBAC83"
-                                                stroke-linecap="round" stroke-linejoin="round" />
-                                        </svg></span>
-                                </button>
+
+                                <div class="calendar-wrapper">
+                                    <button class="btn btn-filled light-color-font" id="toggleCalendar">
+                                        <p class="hint" id="hint">Click a start date</p> <span class="btn-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="13"
+                                                height="7" viewBox="0 0 13 7" fill="none">
+                                                <path d="M11.9102 0.5L6.15672 6.25344L0.499867 0.596581" stroke="white"
+                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg></span>
+                                    </button>
+                                    <div class="card" id="calendarCard">
+                                        <div class="header">
+                                            <div class="pill" id="pLabel"></div>
+                                            <div class="pill" id="cLabel"></div>
+                                            <div class="arrows">
+                                                <svg class="cursor" id="prev" xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 34 34" fill="none">
+                                                    <g filter="url(#filter0_d_13_2914)">
+                                                        <circle cx="17" cy="13" r="13" fill="white" />
+                                                    </g>
+                                                    <path d="M18.625 17.0625L14.5347 12.9722L18.5563 8.9505" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                                                    <defs>
+                                                        <filter id="filter0_d_13_2914" x="0" y="0" width="34" height="34" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                                            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                                                            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                                                            <feOffset dy="4" />
+                                                            <feGaussianBlur stdDeviation="2" />
+                                                            <feComposite in2="hardAlpha" operator="out" />
+                                                            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.03 0" />
+                                                            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_13_2914" />
+                                                            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_13_2914" result="shape" />
+                                                        </filter>
+                                                    </defs>
+                                                </svg>
+                                                <svg class="cursor" id="next" xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 34 34" fill="none">
+                                                    <g filter="url(#filter0_d_13_2930)">
+                                                        <circle cx="13" cy="13" r="13" transform="matrix(-1 0 0 1 30 0)" fill="white" />
+                                                    </g>
+                                                    <path d="M15.375 17.0625L19.4653 12.9722L15.4437 8.9505" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                                                    <defs>
+                                                        <filter id="filter0_d_13_2930" x="0" y="0" width="34" height="34" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                                            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                                                            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                                                            <feOffset dy="4" />
+                                                            <feGaussianBlur stdDeviation="2" />
+                                                            <feComposite in2="hardAlpha" operator="out" />
+                                                            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.03 0" />
+                                                            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_13_2930" />
+                                                            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_13_2930" result="shape" />
+                                                        </filter>
+                                                    </defs>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                        <div class="grid" id="grid">
+                                            <div class="lbl">M</div>
+                                            <div class="lbl">T</div>
+                                            <div class="lbl">W</div>
+                                            <div class="lbl">T</div>
+                                            <div class="lbl">F</div>
+                                            <div class="lbl">S</div>
+                                            <div class="lbl">S</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="sort-by">
+                                    Sort
+                                    <img src="/assets/icons/filter-arrow-down.svg" class="arrow" alt="">
+
+                                    <div class="sort-dropdown">
+                                        <ul>
+                                            <li>
+                                                <label>
+                                                    <span>Recommended (default)</span>
+                                                    <input type="radio" name="sort" checked>
+                                                    <span class="check-circle"></span>
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <label>
+                                                    <span>Distance</span>
+                                                    <input type="radio" name="sort">
+                                                    <span class="check-circle"></span>
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <label>
+                                                    <span>Lowest price</span>
+                                                    <input type="radio" name="sort">
+                                                    <span class="check-circle"></span>
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <label>
+                                                    <span>Soonest available</span>
+                                                    <input type="radio" name="sort">
+                                                    <span class="check-circle"></span>
+                                                </label>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
@@ -1877,6 +2223,236 @@
             });
         })();
     </script>
+
+    <script>
+        const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+        let vy = 2025,
+            vm = 2; // view year/month
+        let start = null; // Date – lower bound
+        let end = null; // Date – upper bound
+        // phase: 'none' | 'picking' | 'done'
+        let phase = 'none';
+        let hover = null; // Date – only used in 'picking' phase
+
+        const key = d => d ? `${d.getFullYear()}-${d.getMonth()}-${d.getDate()}` : '';
+        const same = (a, b) => key(a) === key(b);
+        const fmt = d => d.toLocaleDateString('en-GB', {
+            day: 'numeric',
+            month: 'long'
+        });
+
+        function setHint() {
+            const el = document.getElementById('hint');
+            if (phase === 'none') el.textContent = 'Click a start date';
+            else if (phase === 'picking') el.textContent = 'Now click an end date';
+            else el.textContent = fmt(start) + '  -  ' + fmt(end);
+        }
+
+        function header() {
+            let pm = vm - 1,
+                py = vy;
+            if (pm < 0) {
+                pm = 11;
+                py--;
+            }
+            document.getElementById('pLabel').textContent = MONTHS[pm] + ' ' + py;
+            document.getElementById('cLabel').textContent = MONTHS[vm] + ' ' + vy;
+        }
+
+        function render() {
+            const grid = document.getElementById('grid');
+            while (grid.children.length > 7) grid.removeChild(grid.lastChild);
+
+            const off = (new Date(vy, vm, 1).getDay() + 6) % 7;
+            const days = new Date(vy, vm + 1, 0).getDate();
+
+            // effective lo/hi
+            let lo = start,
+                hi = end;
+            if (phase === 'picking' && hover) {
+                lo = start <= hover ? start : hover;
+                hi = start <= hover ? hover : start;
+            }
+
+            const loK = key(lo),
+                hiK = key(hi);
+
+            const empty = () => {
+                const c = document.createElement('div');
+                c.className = 'cell empty';
+                const n = document.createElement('div');
+                n.className = 'num';
+                c.appendChild(n);
+                return c;
+            };
+
+            for (let i = 0; i < off; i++) grid.appendChild(empty());
+
+            for (let d = 1; d <= days; d++) {
+                const date = new Date(vy, vm, d);
+                const dk = key(date);
+                const c = document.createElement('div');
+                c.className = 'cell';
+                c.dataset.d = d;
+
+                const isLo = dk === loK;
+                const isHi = dk === hiK && !same(lo, hi);
+                const solo = same(lo, hi) && isLo;
+                const mid = lo && hi && date > lo && date < hi;
+
+                if (solo) {
+                    c.classList.add('sel-s', 'sel-e');
+                } else if (isLo) {
+                    c.classList.add('rng-s', 'sel-s');
+                } else if (isHi) {
+                    c.classList.add('rng-e', 'sel-e');
+                } else if (mid) {
+                    c.classList.add('in-range');
+                }
+
+                const n = document.createElement('div');
+                n.className = 'num';
+                n.textContent = d;
+                c.appendChild(n);
+                grid.appendChild(c);
+            }
+
+            const rem = (off + days) % 7 === 0 ? 0 : 7 - (off + days) % 7;
+            for (let i = 0; i < rem; i++) grid.appendChild(empty());
+        }
+
+        // ── Click: delegate on grid ─────────────────────────────────────────────
+        document.getElementById('grid').addEventListener('click', e => {
+            const cell = e.target.closest('.cell:not(.empty)');
+            if (!cell) return;
+            const date = new Date(vy, vm, +cell.dataset.d);
+
+            if (phase === 'none') {
+                // First click — set start, begin picking
+                start = date;
+                end = null;
+                hover = null;
+                phase = 'picking';
+
+            } else if (phase === 'picking') {
+                // Second click — lock range, stop hover completely
+                if (same(date, start)) {
+                    // Same day clicked — cancel
+                    start = null;
+                    phase = 'none';
+                } else {
+                    if (date < start) {
+                        end = start;
+                        start = date;
+                    } else {
+                        end = date;
+                    }
+                    phase = 'done';
+                    hover = null; // kill hover permanently
+                }
+
+            } else {
+                // Range locked — expand by moving nearest boundary
+                if (date < start) start = date;
+                else if (date > end) end = date;
+                else {
+                    const ds = Math.abs(date - start),
+                        de = Math.abs(date - end);
+                    if (ds <= de) start = date;
+                    else end = date;
+                }
+                // stay in 'done', hover stays null
+            }
+
+            render();
+            setHint();
+        });
+
+        // ── Hover preview ONLY while picking ────────────────────────────────────
+        document.getElementById('grid').addEventListener('mousemove', e => {
+            if (phase !== 'picking') return; // hard gate
+            const cell = e.target.closest('.cell:not(.empty)');
+            const d = cell ? new Date(vy, vm, +cell.dataset.d) : null;
+            if (key(d) !== key(hover)) {
+                hover = d;
+                render();
+            }
+        });
+
+        document.getElementById('grid').addEventListener('mouseleave', () => {
+            if (phase !== 'picking') return;
+            hover = null;
+            render();
+        });
+
+        // ── Nav ─────────────────────────────────────────────────────────────────
+        document.getElementById('prev').addEventListener('click', () => {
+            vm--;
+            if (vm < 0) {
+                vm = 11;
+                vy--;
+            }
+            hover = null;
+            header();
+            render();
+        });
+        document.getElementById('next').addEventListener('click', () => {
+            vm++;
+            if (vm > 11) {
+                vm = 0;
+                vy++;
+            }
+            hover = null;
+            header();
+            render();
+        });
+
+        header();
+        render();
+        setHint();
+    </script>
+
+
 </body>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+
+        const calendarBtn = document.getElementById("toggleCalendar");
+        const calendar = document.getElementById("calendarCard");
+
+        const sortBtn = document.querySelector(".sort-by");
+        const sortDropdown = document.querySelector(".sort-dropdown");
+
+        calendarBtn.addEventListener("click", function(e) {
+            e.stopPropagation();
+
+            // close other
+            sortDropdown.classList.remove("show");
+
+            // toggle current
+            calendar.classList.toggle("show");
+        });
+
+        sortBtn.addEventListener("click", function(e) {
+            e.stopPropagation();
+
+            // close other
+            calendar.classList.remove("show");
+
+            // toggle current
+            sortDropdown.classList.toggle("show");
+        });
+
+        calendar.addEventListener("click", e => e.stopPropagation());
+        sortDropdown.addEventListener("click", e => e.stopPropagation());
+
+        document.addEventListener("click", function() {
+            calendar.classList.remove("show");
+            sortDropdown.classList.remove("show");
+        });
+
+    });
+</script>
 
 </html>
