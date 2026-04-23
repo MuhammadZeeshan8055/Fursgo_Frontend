@@ -1125,31 +1125,33 @@
                                                             <div style="display:flex;">
                                                                 <div class="panel calendar">
                                                                     <div class="month-nav">
-                                                                    <button type="button" id="prevMonth"
+                                                                        <button type="button" id="prevMonth"
                                                                             title="Previous month"
                                                                             aria-label="Previous month">
-                                                                            <svg xmlns="http://www.w3.org/2000/svg" width="6" height="10" viewBox="0 0 6 10" fill="none">
-    <path 
-        d="M4.56836 0.5L0.500066 4.56829L4.50007 8.56829"
-        stroke="#3B3731"
-        stroke-width="1.5"
-        stroke-linecap="round"
-        stroke-linejoin="round" />
-</svg>
+                                                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                                                width="6" height="10" viewBox="0 0 6 10"
+                                                                                fill="none">
+                                                                                <path
+                                                                                    d="M4.56836 0.5L0.500066 4.56829L4.50007 8.56829"
+                                                                                    stroke="#3B3731" stroke-width="1.5"
+                                                                                    stroke-linecap="round"
+                                                                                    stroke-linejoin="round" />
+                                                                            </svg>
                                                                         </button>
 
                                                                         <div id="monthLabel">November 2025</div>
 
                                                                         <button type="button" id="nextMonth"
                                                                             title="Next month" aria-label="Next month">
-                                                                            <svg xmlns="http://www.w3.org/2000/svg" width="6" height="10" viewBox="0 0 6 10" fill="none">
-    <path 
-        d="M0.5 0.5L4.56829 4.56829L0.568294 8.56829"
-        stroke="#3B3731"
-        stroke-width="1.5"
-        stroke-linecap="round"
-        stroke-linejoin="round" />
-</svg>
+                                                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                                                width="6" height="10" viewBox="0 0 6 10"
+                                                                                fill="none">
+                                                                                <path
+                                                                                    d="M0.5 0.5L4.56829 4.56829L0.568294 8.56829"
+                                                                                    stroke="#3B3731" stroke-width="1.5"
+                                                                                    stroke-linecap="round"
+                                                                                    stroke-linejoin="round" />
+                                                                            </svg>
                                                                         </button>
                                                                     </div>
                                                                     <div class="weekday-row" id="weekdayRow"></div>
