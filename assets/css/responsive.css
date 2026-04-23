@@ -155,9 +155,10 @@ a {
     cursor: pointer;
 }
 
-.find-groomer-content-area {
+.find-groomer-content-area,
+.find-space-content-area {
     position: absolute;
-    width: 1030px;
+    width: 1080px;
     height: 235px;
     border-radius: 0 0 10px 10px;
     background: #FDFCF8;
@@ -165,17 +166,9 @@ a {
 }
 
 .find-space-content-area {
-    position: absolute;
-    width: 1030px;
-    height: 235px;
-    border-radius: 0 0 10px 10px;
-    background: #FDFCF8;
-    box-shadow: 0 5px 55px 0 rgba(0, 0, 0, 0.05);
     top: 100%;
-    /* aligns below the button */
     left: 0;
     display: none;
-    /* hidden by default */
     z-index: 10;
 }
 
@@ -1540,15 +1533,6 @@ ul.fursgo-locations li {
 /* input#dateInput {
     text-align: center;
 } */
-
-
-.rotate-left {
-    transform: rotate(90deg);
-}
-
-.rotate-right {
-    transform: rotate(-90deg);
-}
 
 #prevMonth,
 #nextMonth {

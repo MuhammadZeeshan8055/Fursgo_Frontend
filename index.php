@@ -12,7 +12,9 @@
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/bootstrap.css">
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/media_query.css">
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/common.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <style>
         /* Fixed button bottom left */
@@ -901,7 +903,8 @@
             <div class="fs-consent-modal">
                 <div class="fs-card-header-overlay">
                     <svg xmlns="http://www.w3.org/2000/svg" width="9" height="16" viewBox="0 0 9 16" fill="none">
-                        <path d="M7.74365 14.3735L1.00021 7.63009L7.63045 0.999853" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M7.74365 14.3735L1.00021 7.63009L7.63045 0.999853" stroke="white" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round" />
                     </svg>
                     </span> <span class="fs-header-title"> Manage Consent Preferences</span>
                 </div>
@@ -915,9 +918,12 @@
                         </div>
                         <div class="disabled ">
                             <span>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="44" height="24" viewBox="0 0 44 24" fill="none">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="44" height="24" viewBox="0 0 44 24"
+                                    fill="none">
                                     <rect width="44" height="24" rx="12" fill="#D4D4D4" />
-                                    <path d="M18.3333 18C17.9667 18 17.6529 17.8696 17.392 17.6087C17.1311 17.3478 17.0004 17.0338 17 16.6667V10C17 9.63333 17.1307 9.31956 17.392 9.05867C17.6533 8.79778 17.9671 8.66711 18.3333 8.66667H19V7.33333C19 6.41111 19.3251 5.62511 19.9753 4.97533C20.6256 4.32556 21.4116 4.00044 22.3333 4C23.2551 3.99956 24.0413 4.32467 24.692 4.97533C25.3427 5.626 25.6676 6.412 25.6667 7.33333V8.66667H26.3333C26.7 8.66667 27.014 8.79733 27.2753 9.05867C27.5367 9.32 27.6671 9.63378 27.6667 10V16.6667C27.6667 17.0333 27.5362 17.3473 27.2753 17.6087C27.0144 17.87 26.7004 18.0004 26.3333 18H18.3333ZM22.3333 14.6667C22.7 14.6667 23.014 14.5362 23.2753 14.2753C23.5367 14.0144 23.6671 13.7004 23.6667 13.3333C23.6662 12.9662 23.5358 12.6524 23.2753 12.392C23.0149 12.1316 22.7009 12.0009 22.3333 12C21.9658 11.9991 21.652 12.1298 21.392 12.392C21.132 12.6542 21.0013 12.968 21 13.3333C20.9987 13.6987 21.1293 14.0127 21.392 14.2753C21.6547 14.538 21.9684 14.6684 22.3333 14.6667ZM20.3333 8.66667H24.3333V7.33333C24.3333 6.77778 24.1389 6.30556 23.75 5.91667C23.3611 5.52778 22.8889 5.33333 22.3333 5.33333C21.7778 5.33333 21.3056 5.52778 20.9167 5.91667C20.5278 6.30556 20.3333 6.77778 20.3333 7.33333V8.66667Z" fill="white" />
+                                    <path
+                                        d="M18.3333 18C17.9667 18 17.6529 17.8696 17.392 17.6087C17.1311 17.3478 17.0004 17.0338 17 16.6667V10C17 9.63333 17.1307 9.31956 17.392 9.05867C17.6533 8.79778 17.9671 8.66711 18.3333 8.66667H19V7.33333C19 6.41111 19.3251 5.62511 19.9753 4.97533C20.6256 4.32556 21.4116 4.00044 22.3333 4C23.2551 3.99956 24.0413 4.32467 24.692 4.97533C25.3427 5.626 25.6676 6.412 25.6667 7.33333V8.66667H26.3333C26.7 8.66667 27.014 8.79733 27.2753 9.05867C27.5367 9.32 27.6671 9.63378 27.6667 10V16.6667C27.6667 17.0333 27.5362 17.3473 27.2753 17.6087C27.0144 17.87 26.7004 18.0004 26.3333 18H18.3333ZM22.3333 14.6667C22.7 14.6667 23.014 14.5362 23.2753 14.2753C23.5367 14.0144 23.6671 13.7004 23.6667 13.3333C23.6662 12.9662 23.5358 12.6524 23.2753 12.392C23.0149 12.1316 22.7009 12.0009 22.3333 12C21.9658 11.9991 21.652 12.1298 21.392 12.392C21.132 12.6542 21.0013 12.968 21 13.3333C20.9987 13.6987 21.1293 14.0127 21.392 14.2753C21.6547 14.538 21.9684 14.6684 22.3333 14.6667ZM20.3333 8.66667H24.3333V7.33333C24.3333 6.77778 24.1389 6.30556 23.75 5.91667C23.3611 5.52778 22.8889 5.33333 22.3333 5.33333C21.7778 5.33333 21.3056 5.52778 20.9167 5.91667C20.5278 6.30556 20.3333 6.77778 20.3333 7.33333V8.66667Z"
+                                        fill="white" />
                                 </svg>
                             </span>
                         </div>
@@ -927,38 +933,52 @@
                             <h4>Performance Cookies</h4>
                             <p>Help us understand how the site is used so we can improve performance and experience.</p>
                         </div>
-                        <label class="fs-switch"> <input type="checkbox" checked> <span class="fs-slider"> <span class="fs-thumb"> <i class="fa-solid fa-check"></i> </span> </span> </label>
+                        <label class="fs-switch"> <input type="checkbox" checked> <span class="fs-slider"> <span
+                                    class="fs-thumb"> <i class="fa-solid fa-check"></i> </span> </span> </label>
                     </div>
                     <div class="fs-consent-item">
                         <div>
                             <h4>Functional Cookies</h4>
                             <p>Enable extra features and remember your preferences.</p>
                         </div>
-                        <label class="fs-switch"> <input type="checkbox"> <span class="fs-slider"> <span class="fs-thumb"> <i class="fa-solid fa-check"></i> </span> </span> </label>
+                        <label class="fs-switch"> <input type="checkbox"> <span class="fs-slider"> <span
+                                    class="fs-thumb"> <i class="fa-solid fa-check"></i> </span> </span> </label>
                     </div>
                     <div class="fs-consent-item">
                         <div>
                             <h4>Marketing Cookies</h4>
                             <p>Used to show relevant content and measure marketing effectiveness.</p>
                         </div>
-                        <label class="fs-switch"> <input type="checkbox" checked> <span class="fs-slider"> <span class="fs-thumb"> <i class="fa-solid fa-check"></i> </span> </span> </label>
+                        <label class="fs-switch"> <input type="checkbox" checked> <span class="fs-slider"> <span
+                                    class="fs-thumb"> <i class="fa-solid fa-check"></i> </span> </span> </label>
                     </div>
                 </div>
                 <!-- Buttons -->
-                <div class="fs-consent-buttons"> <button class="fs-accept-all">Accept all cookies</button> <button class="fs-save-btn">Save settings</button> </div>
+                <div class="fs-consent-buttons"> <button class="fs-accept-all">Accept all cookies</button> <button
+                        class="fs-save-btn">Save settings</button> </div>
             </div>
             <div class="manage-pref-button">
                 <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" viewBox="0 0 27 27" fill="none">
-                    <path d="M20.0211 11.1824C20.3661 11.5276 20.7758 11.8015 21.2268 11.9883C21.6777 12.1751 22.161 12.2713 22.6491 12.2713C23.1372 12.2713 23.6205 12.1751 24.0715 11.9883C24.5224 11.8015 24.9321 11.5276 25.2771 11.1824C25.4487 11.0094 25.7662 11.0797 25.8081 11.3202C26.2723 13.9386 25.8892 16.6367 24.7146 19.0224C23.54 21.4081 21.635 23.357 19.2767 24.5857C16.9184 25.8145 14.2297 26.259 11.6014 25.8547C8.97316 25.4504 6.54234 24.2183 4.66237 22.3376C2.78168 20.4577 1.54962 18.0268 1.14532 15.3986C0.741011 12.7703 1.18553 10.0816 2.41425 7.72327C3.64298 5.36497 5.59185 3.46005 7.97755 2.28543C10.3633 1.11081 13.0614 0.727724 15.6798 1.19187C15.9203 1.23375 15.9906 1.55128 15.8176 1.72422C15.2662 2.27563 14.9022 2.98655 14.7773 3.75629C14.6523 4.52604 14.7727 5.31559 15.1214 6.01311C15.4701 6.71063 16.0294 7.28077 16.7201 7.64277C17.4108 8.00477 18.1979 8.14029 18.9699 8.03012C18.8884 8.60109 18.941 9.18318 19.1235 9.73031C19.3059 10.2774 19.6132 10.7746 20.0211 11.1824Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                    <path d="M8.43359 19.5801C9.36637 19.5801 10.1225 18.8239 10.1225 17.8911C10.1225 16.9583 9.36637 16.2021 8.43359 16.2021C7.5008 16.2021 6.74463 16.9583 6.74463 17.8911C6.74463 18.8239 7.5008 19.5801 8.43359 19.5801Z" fill="white" />
-                    <path d="M7.08251 11.4726C8.0153 11.4726 8.77147 10.7165 8.77147 9.78369C8.77147 8.8509 8.0153 8.09473 7.08251 8.09473C6.14973 8.09473 5.39355 8.8509 5.39355 9.78369C5.39355 10.7165 6.14973 11.4726 7.08251 11.4726Z" fill="white" />
-                    <path d="M13.8384 15.5268C14.7712 15.5268 15.5273 14.7707 15.5273 13.8379C15.5273 12.9051 14.7712 12.1489 13.8384 12.1489C12.9056 12.1489 12.1494 12.9051 12.1494 13.8379C12.1494 14.7707 12.9056 15.5268 13.8384 15.5268Z" fill="white" />
-                    <path d="M17.8916 20.9311C18.8244 20.9311 19.5806 20.175 19.5806 19.2422C19.5806 18.3094 18.8244 17.5532 17.8916 17.5532C16.9588 17.5532 16.2026 18.3094 16.2026 19.2422C16.2026 20.175 16.9588 20.9311 17.8916 20.9311Z" fill="white" />
+                    <path
+                        d="M20.0211 11.1824C20.3661 11.5276 20.7758 11.8015 21.2268 11.9883C21.6777 12.1751 22.161 12.2713 22.6491 12.2713C23.1372 12.2713 23.6205 12.1751 24.0715 11.9883C24.5224 11.8015 24.9321 11.5276 25.2771 11.1824C25.4487 11.0094 25.7662 11.0797 25.8081 11.3202C26.2723 13.9386 25.8892 16.6367 24.7146 19.0224C23.54 21.4081 21.635 23.357 19.2767 24.5857C16.9184 25.8145 14.2297 26.259 11.6014 25.8547C8.97316 25.4504 6.54234 24.2183 4.66237 22.3376C2.78168 20.4577 1.54962 18.0268 1.14532 15.3986C0.741011 12.7703 1.18553 10.0816 2.41425 7.72327C3.64298 5.36497 5.59185 3.46005 7.97755 2.28543C10.3633 1.11081 13.0614 0.727724 15.6798 1.19187C15.9203 1.23375 15.9906 1.55128 15.8176 1.72422C15.2662 2.27563 14.9022 2.98655 14.7773 3.75629C14.6523 4.52604 14.7727 5.31559 15.1214 6.01311C15.4701 6.71063 16.0294 7.28077 16.7201 7.64277C17.4108 8.00477 18.1979 8.14029 18.9699 8.03012C18.8884 8.60109 18.941 9.18318 19.1235 9.73031C19.3059 10.2774 19.6132 10.7746 20.0211 11.1824Z"
+                        stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    <path
+                        d="M8.43359 19.5801C9.36637 19.5801 10.1225 18.8239 10.1225 17.8911C10.1225 16.9583 9.36637 16.2021 8.43359 16.2021C7.5008 16.2021 6.74463 16.9583 6.74463 17.8911C6.74463 18.8239 7.5008 19.5801 8.43359 19.5801Z"
+                        fill="white" />
+                    <path
+                        d="M7.08251 11.4726C8.0153 11.4726 8.77147 10.7165 8.77147 9.78369C8.77147 8.8509 8.0153 8.09473 7.08251 8.09473C6.14973 8.09473 5.39355 8.8509 5.39355 9.78369C5.39355 10.7165 6.14973 11.4726 7.08251 11.4726Z"
+                        fill="white" />
+                    <path
+                        d="M13.8384 15.5268C14.7712 15.5268 15.5273 14.7707 15.5273 13.8379C15.5273 12.9051 14.7712 12.1489 13.8384 12.1489C12.9056 12.1489 12.1494 12.9051 12.1494 13.8379C12.1494 14.7707 12.9056 15.5268 13.8384 15.5268Z"
+                        fill="white" />
+                    <path
+                        d="M17.8916 20.9311C18.8244 20.9311 19.5806 20.175 19.5806 19.2422C19.5806 18.3094 18.8244 17.5532 17.8916 17.5532C16.9588 17.5532 16.2026 18.3094 16.2026 19.2422C16.2026 20.175 16.9588 20.9311 17.8916 20.9311Z"
+                        fill="white" />
                 </svg>
             </div>
         </div>
     </section>
-    
+
     <!-- cookies popup  -->
 
 
@@ -1048,8 +1068,11 @@
                                                 <div class="custom-select">
                                                     <div class="select-trigger">
                                                         <span class="selected-text">Full Groom, Face Trim ...</span>
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="8" viewBox="0 0 15 8" fill="none">
-                                                            <path d="M13.5105 0.5L6.95017 7.06033L0.499971 0.610127" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="8"
+                                                            viewBox="0 0 15 8" fill="none">
+                                                            <path d="M13.5105 0.5L6.95017 7.06033L0.499971 0.610127"
+                                                                stroke="#3B3731" stroke-linecap="round"
+                                                                stroke-linejoin="round" />
                                                         </svg>
                                                     </div>
 
@@ -1090,8 +1113,11 @@
                                                                 placeholder="02 November 2025"
                                                                 aria-label="Date input" />
                                                             <!-- chevron down svg -->
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="8" viewBox="0 0 15 8" fill="none">
-                                                                <path d="M13.5105 0.5L6.95017 7.06033L0.499971 0.610127" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="15"
+                                                                height="8" viewBox="0 0 15 8" fill="none">
+                                                                <path d="M13.5105 0.5L6.95017 7.06033L0.499971 0.610127"
+                                                                    stroke="#3B3731" stroke-linecap="round"
+                                                                    stroke-linejoin="round" />
                                                             </svg>
                                                         </div>
 
@@ -1102,11 +1128,12 @@
                                                                         <button type="button" id="prevMonth"
                                                                             title="Previous month"
                                                                             aria-label="Previous month">
-                                                                            <svg class="chev rotate-left"
-                                                                                viewBox="0 0 24 24" fill="none"
-                                                                                xmlns="http://www.w3.org/2000/svg">
-                                                                                <path d="M6 9l6 6 6-6" stroke="#444"
-                                                                                    stroke-width="1.6"
+                                                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                                                width="6" height="10" viewBox="0 0 6 10"
+                                                                                fill="none">
+                                                                                <path
+                                                                                    d="M4.56836 0.5L0.500066 4.56829L4.50007 8.56829"
+                                                                                    stroke="#3B3731"
                                                                                     stroke-linecap="round"
                                                                                     stroke-linejoin="round" />
                                                                             </svg>
@@ -1116,11 +1143,12 @@
 
                                                                         <button type="button" id="nextMonth"
                                                                             title="Next month" aria-label="Next month">
-                                                                            <svg class="chev rotate-right"
-                                                                                viewBox="0 0 24 24" fill="none"
-                                                                                xmlns="http://www.w3.org/2000/svg">
-                                                                                <path d="M6 9l6 6 6-6" stroke="#444"
-                                                                                    stroke-width="1.6"
+                                                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                                                width="6" height="10" viewBox="0 0 6 10"
+                                                                                fill="none">
+                                                                                <path
+                                                                                    d="M0.5 0.5L4.56829 4.56829L0.568294 8.56829"
+                                                                                    stroke="#3B3731"
                                                                                     stroke-linecap="round"
                                                                                     stroke-linejoin="round" />
                                                                             </svg>
@@ -1150,8 +1178,11 @@
                                                             aria-haspopup="dialog" aria-expanded="false">
                                                             <input class="fake-input" id="timeInput" readonly
                                                                 placeholder="13:00" aria-label="Time input" />
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="8" viewBox="0 0 15 8" fill="none">
-                                                                <path d="M13.5105 0.5L6.95017 7.06033L0.499971 0.610127" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="15"
+                                                                height="8" viewBox="0 0 15 8" fill="none">
+                                                                <path d="M13.5105 0.5L6.95017 7.06033L0.499971 0.610127"
+                                                                    stroke="#3B3731" stroke-linecap="round"
+                                                                    stroke-linejoin="round" />
                                                             </svg>
                                                         </div>
                                                     </div>
@@ -1235,8 +1266,11 @@
                                                 <div class="custom-select">
                                                     <div class="select-trigger">
                                                         <span class="selected-text">Private Rooms, Salon...</span>
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="8" viewBox="0 0 15 8" fill="none">
-                                                            <path d="M13.5105 0.5L6.95017 7.06033L0.499971 0.610127" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="8"
+                                                            viewBox="0 0 15 8" fill="none">
+                                                            <path d="M13.5105 0.5L6.95017 7.06033L0.499971 0.610127"
+                                                                stroke="#3B3731" stroke-linecap="round"
+                                                                stroke-linejoin="round" />
                                                         </svg>
                                                     </div>
 
@@ -1277,8 +1311,11 @@
                                                                 placeholder="02 November 2025"
                                                                 aria-label="Date input" />
                                                             <!-- chevron down svg -->
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="8" viewBox="0 0 15 8" fill="none">
-                                                                <path d="M13.5105 0.5L6.95017 7.06033L0.499971 0.610127" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="15"
+                                                                height="8" viewBox="0 0 15 8" fill="none">
+                                                                <path d="M13.5105 0.5L6.95017 7.06033L0.499971 0.610127"
+                                                                    stroke="#3B3731" stroke-linecap="round"
+                                                                    stroke-linejoin="round" />
                                                             </svg>
                                                         </div>
 
@@ -1335,8 +1372,11 @@
                                                             aria-haspopup="dialog" aria-expanded="false">
                                                             <input class="fake-input" id="timeInput" readonly
                                                                 placeholder="13:00" aria-label="Time input" />
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="8" viewBox="0 0 15 8" fill="none">
-                                                                <path d="M13.5105 0.5L6.95017 7.06033L0.499971 0.610127" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="15"
+                                                                height="8" viewBox="0 0 15 8" fill="none">
+                                                                <path d="M13.5105 0.5L6.95017 7.06033L0.499971 0.610127"
+                                                                    stroke="#3B3731" stroke-linecap="round"
+                                                                    stroke-linejoin="round" />
                                                             </svg>
                                                         </div>
                                                     </div>
@@ -1526,7 +1566,8 @@
                     <div class="how-step">
                         <div class="how-it-works-image-content-area">
                             <div class="book-and-pay-content">
-                                <img src="<?= BASE_URL ?>/assets/images/book_and_pay.png" class="how-it-works-images" alt="">
+                                <img src="<?= BASE_URL ?>/assets/images/book_and_pay.png" class="how-it-works-images"
+                                    alt="">
                             </div>
                             <div class="numbering">
                                 <span>2</span>
@@ -1781,7 +1822,8 @@
                                                 </svg>
                                             </div>
                                         </div>
-                                        <div class="testimonial-photo"><img src="<?= BASE_URL ?>/assets/images/testimonial-1.png" />
+                                        <div class="testimonial-photo"><img
+                                                src="<?= BASE_URL ?>/assets/images/testimonial-1.png" />
                                         </div>
                                         <div class="avatar-meta">
                                             <div class="avatar">
@@ -1966,22 +2008,31 @@
         <button id="chat-btn" onclick="toggleChat()">
             <span id="chat-open-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="34" height="25" viewBox="0 0 34 25" fill="none">
-                    <path d="M27.6424 11.2471C30.7873 12.249 32.19 13.7434 32.19 16.0949C32.19 18.1864 30.282 19.8096 29.1457 20.5918C29.0918 20.6287 29.0478 20.6782 29.0174 20.736C28.987 20.7938 28.971 20.8581 28.971 20.9233V22.5512C28.971 23.251 28.2678 23.7266 27.6859 23.3379C27.2333 23.0356 26.8194 22.6756 26.4554 22.2657C26.4091 22.2135 26.35 22.1743 26.284 22.1519C26.218 22.1295 26.1472 22.1246 26.0788 22.1377C25.8494 22.182 25.6152 22.2447 25.3778 22.3083C24.9674 22.4186 24.5441 22.5328 24.1425 22.5328C22.076 22.5328 20.629 22.0886 19.1499 21.0014" stroke="white" stroke-width="2" stroke-linecap="round" />
-                    <path d="M13.0184 19.318C11.9642 19.318 10.7659 19.116 9.7326 18.9188C9.66412 18.9065 9.59363 18.9118 9.52775 18.9341C9.46187 18.9565 9.40276 18.9953 9.35598 19.0468C8.33359 20.1998 7.20024 21.0924 6.26259 21.7256C5.63442 22.1499 4.82848 21.6769 4.82848 20.9189V17.7045C4.82845 17.6392 4.81254 17.5749 4.78211 17.5171C4.75169 17.4594 4.70767 17.4099 4.65385 17.3729C2.53093 15.9123 0 13.4594 0 10.061C0 4.41892 5.54148 6.10352e-05 12.616 6.10352e-05C19.6463 6.10352e-05 24.9471 4.32477 24.9471 10.0594C24.9471 15.5976 20.1533 19.318 13.0184 19.318Z" fill="white" />
+                    <path
+                        d="M27.6424 11.2471C30.7873 12.249 32.19 13.7434 32.19 16.0949C32.19 18.1864 30.282 19.8096 29.1457 20.5918C29.0918 20.6287 29.0478 20.6782 29.0174 20.736C28.987 20.7938 28.971 20.8581 28.971 20.9233V22.5512C28.971 23.251 28.2678 23.7266 27.6859 23.3379C27.2333 23.0356 26.8194 22.6756 26.4554 22.2657C26.4091 22.2135 26.35 22.1743 26.284 22.1519C26.218 22.1295 26.1472 22.1246 26.0788 22.1377C25.8494 22.182 25.6152 22.2447 25.3778 22.3083C24.9674 22.4186 24.5441 22.5328 24.1425 22.5328C22.076 22.5328 20.629 22.0886 19.1499 21.0014"
+                        stroke="white" stroke-width="2" stroke-linecap="round" />
+                    <path
+                        d="M13.0184 19.318C11.9642 19.318 10.7659 19.116 9.7326 18.9188C9.66412 18.9065 9.59363 18.9118 9.52775 18.9341C9.46187 18.9565 9.40276 18.9953 9.35598 19.0468C8.33359 20.1998 7.20024 21.0924 6.26259 21.7256C5.63442 22.1499 4.82848 21.6769 4.82848 20.9189V17.7045C4.82845 17.6392 4.81254 17.5749 4.78211 17.5171C4.75169 17.4594 4.70767 17.4099 4.65385 17.3729C2.53093 15.9123 0 13.4594 0 10.061C0 4.41892 5.54148 6.10352e-05 12.616 6.10352e-05C19.6463 6.10352e-05 24.9471 4.32477 24.9471 10.0594C24.9471 15.5976 20.1533 19.318 13.0184 19.318Z"
+                        fill="white" />
                 </svg>
             </span>
 
             <span id="chat-close-icon" style="display: none;">
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
-                    <path d="M1.25 16.25L16.25 1.25M1.25 1.25L16.25 16.25" stroke="white" stroke-width="2.5" stroke-linecap="round" />
+                    <path d="M1.25 16.25L16.25 1.25M1.25 1.25L16.25 16.25" stroke="white" stroke-width="2.5"
+                        stroke-linecap="round" />
                 </svg>
             </span>
         </button>
 
         <div class="need-help-chat">
             <svg xmlns="http://www.w3.org/2000/svg" width="34" height="25" viewBox="0 0 34 25" fill="none">
-                <path d="M27.6424 11.2471C30.7873 12.249 32.19 13.7434 32.19 16.0949C32.19 18.1864 30.282 19.8096 29.1457 20.5918C29.0918 20.6287 29.0478 20.6782 29.0174 20.736C28.987 20.7938 28.971 20.8581 28.971 20.9233V22.5512C28.971 23.251 28.2678 23.7266 27.6859 23.3379C27.2333 23.0356 26.8194 22.6756 26.4554 22.2657C26.4091 22.2135 26.35 22.1743 26.284 22.1519C26.218 22.1295 26.1472 22.1246 26.0788 22.1377C25.8494 22.182 25.6152 22.2447 25.3778 22.3083C24.9674 22.4186 24.5441 22.5328 24.1425 22.5328C22.076 22.5328 20.629 22.0886 19.1499 21.0014" stroke="white" stroke-width="2" stroke-linecap="round" />
-                <path d="M13.0184 19.318C11.9642 19.318 10.7659 19.116 9.7326 18.9188C9.66412 18.9065 9.59363 18.9118 9.52775 18.9341C9.46187 18.9565 9.40276 18.9953 9.35598 19.0468C8.33359 20.1998 7.20024 21.0924 6.26259 21.7256C5.63442 22.1499 4.82848 21.6769 4.82848 20.9189V17.7045C4.82845 17.6392 4.81254 17.5749 4.78211 17.5171C4.75169 17.4594 4.70767 17.4099 4.65385 17.3729C2.53093 15.9123 0 13.4594 0 10.061C0 4.41892 5.54148 6.10352e-05 12.616 6.10352e-05C19.6463 6.10352e-05 24.9471 4.32477 24.9471 10.0594C24.9471 15.5976 20.1533 19.318 13.0184 19.318Z" fill="white" />
+                <path
+                    d="M27.6424 11.2471C30.7873 12.249 32.19 13.7434 32.19 16.0949C32.19 18.1864 30.282 19.8096 29.1457 20.5918C29.0918 20.6287 29.0478 20.6782 29.0174 20.736C28.987 20.7938 28.971 20.8581 28.971 20.9233V22.5512C28.971 23.251 28.2678 23.7266 27.6859 23.3379C27.2333 23.0356 26.8194 22.6756 26.4554 22.2657C26.4091 22.2135 26.35 22.1743 26.284 22.1519C26.218 22.1295 26.1472 22.1246 26.0788 22.1377C25.8494 22.182 25.6152 22.2447 25.3778 22.3083C24.9674 22.4186 24.5441 22.5328 24.1425 22.5328C22.076 22.5328 20.629 22.0886 19.1499 21.0014"
+                    stroke="white" stroke-width="2" stroke-linecap="round" />
+                <path
+                    d="M13.0184 19.318C11.9642 19.318 10.7659 19.116 9.7326 18.9188C9.66412 18.9065 9.59363 18.9118 9.52775 18.9341C9.46187 18.9565 9.40276 18.9953 9.35598 19.0468C8.33359 20.1998 7.20024 21.0924 6.26259 21.7256C5.63442 22.1499 4.82848 21.6769 4.82848 20.9189V17.7045C4.82845 17.6392 4.81254 17.5749 4.78211 17.5171C4.75169 17.4594 4.70767 17.4099 4.65385 17.3729C2.53093 15.9123 0 13.4594 0 10.061C0 4.41892 5.54148 6.10352e-05 12.616 6.10352e-05C19.6463 6.10352e-05 24.9471 4.32477 24.9471 10.0594C24.9471 15.5976 20.1533 19.318 13.0184 19.318Z"
+                    fill="white" />
             </svg>
             <p>Need Help? Chat with FursGo</p>
         </div>
@@ -1992,8 +2043,8 @@
 
                 <div class="fs-card fs-card-1">
                     <div class="fs-card-header">
-                        <span class="fs-icon"><svg xmlns="http://www.w3.org/2000/svg" width="34" height="25" viewBox="0 0 34 25"
-                                fill="none">
+                        <span class="fs-icon"><svg xmlns="http://www.w3.org/2000/svg" width="34" height="25"
+                                viewBox="0 0 34 25" fill="none">
                                 <path
                                     d="M27.6424 11.2471C30.7873 12.249 32.19 13.7434 32.19 16.0949C32.19 18.1864 30.282 19.8096 29.1457 20.5918C29.0918 20.6287 29.0478 20.6782 29.0174 20.736C28.987 20.7938 28.971 20.8581 28.971 20.9233V22.5512C28.971 23.251 28.2678 23.7266 27.6859 23.3379C27.2333 23.0356 26.8194 22.6756 26.4554 22.2657C26.4091 22.2135 26.35 22.1743 26.284 22.1519C26.218 22.1295 26.1472 22.1246 26.0788 22.1377C25.8494 22.182 25.6152 22.2447 25.3778 22.3083C24.9674 22.4186 24.5441 22.5328 24.1425 22.5328C22.076 22.5328 20.629 22.0886 19.1499 21.0014"
                                     stroke="#FFF8EE" stroke-width="2" stroke-linecap="round" />
@@ -2024,7 +2075,8 @@
                                                 <path
                                                     d="M0.5 9.59437C0.5 5.98454 0.5 4.17914 1.672 3.05819C2.844 1.93724 4.729 1.93628 8.5 1.93628H12.5C16.271 1.93628 18.157 1.93628 19.328 3.05819C20.499 4.1801 20.5 5.98454 20.5 9.59437V11.5089C20.5 15.1187 20.5 16.9241 19.328 18.0451C18.156 19.166 16.271 19.167 12.5 19.167H8.5C4.729 19.167 2.843 19.167 1.672 18.0451C0.501 16.9232 0.5 15.1187 0.5 11.5089V9.59437Z"
                                                     stroke="#9D9B98" />
-                                                <path d="M5.3488 1.92903V0.5M15.641 1.92903V0.5M0.717285 6.69248H20.2726"
+                                                <path
+                                                    d="M5.3488 1.92903V0.5M15.641 1.92903V0.5M0.717285 6.69248H20.2726"
                                                     stroke="#9D9B98" stroke-linecap="round" />
                                             </svg></span></div>
                                     <span>Bookings</span>
@@ -2046,9 +2098,10 @@
                                                     stroke="#9D9B98" stroke-linecap="round" stroke-linejoin="round" />
                                                 <path d="M0.5 5.11548H20.5H0.5Z" fill="#E2E2E2" />
                                                 <path d="M0.5 5.11548H20.5" stroke="#9D9B98" stroke-linejoin="round" />
-                                                <rect x="0.916504" y="5.5" width="19.1667" height="1.66667" fill="#EFEFEF" />
-                                                <rect x="3.70508" y="11.3975" width="4.80769" height="1.28205" rx="0.641026"
-                                                    fill="#E2E2E2" />
+                                                <rect x="0.916504" y="5.5" width="19.1667" height="1.66667"
+                                                    fill="#EFEFEF" />
+                                                <rect x="3.70508" y="11.3975" width="4.80769" height="1.28205"
+                                                    rx="0.641026" fill="#E2E2E2" />
                                             </svg></span></div>
                                     <span>Payments</span>
                                 </div>
@@ -2133,11 +2186,11 @@
                     <div class="fs-card-header">
                         <span class="fs-back-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="9" height="16"
                                 viewBox="0 0 9 16" fill="none">
-                                <path d="M7.74365 14.3737L1.00021 7.63022L7.63045 0.999976" stroke="white" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M7.74365 14.3737L1.00021 7.63022L7.63045 0.999976" stroke="white"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                             </svg></span>
-                        <span class="fs-icon"><svg xmlns="http://www.w3.org/2000/svg" width="34" height="25" viewBox="0 0 34 25"
-                                fill="none">
+                        <span class="fs-icon"><svg xmlns="http://www.w3.org/2000/svg" width="34" height="25"
+                                viewBox="0 0 34 25" fill="none">
                                 <path
                                     d="M27.6424 11.2471C30.7873 12.249 32.19 13.7434 32.19 16.0949C32.19 18.1864 30.282 19.8096 29.1457 20.5918C29.0918 20.6287 29.0478 20.6782 29.0174 20.736C28.987 20.7938 28.971 20.8581 28.971 20.9233V22.5512C28.971 23.251 28.2678 23.7266 27.6859 23.3379C27.2333 23.0356 26.8194 22.6756 26.4554 22.2657C26.4091 22.2135 26.35 22.1743 26.284 22.1519C26.218 22.1295 26.1472 22.1246 26.0788 22.1377C25.8494 22.182 25.6152 22.2447 25.3778 22.3083C24.9674 22.4186 24.5441 22.5328 24.1425 22.5328C22.076 22.5328 20.629 22.0886 19.1499 21.0014"
                                     stroke="#FFF8EE" stroke-width="2" stroke-linecap="round" />
@@ -2164,8 +2217,8 @@
                                     <p> Change or cancel a booking</p>
                                 </div>
 
-                                <div> <span><svg xmlns="http://www.w3.org/2000/svg" width="8" height="15" viewBox="0 0 8 15"
-                                            fill="none">
+                                <div> <span><svg xmlns="http://www.w3.org/2000/svg" width="8" height="15"
+                                            viewBox="0 0 8 15" fill="none">
                                             <path d="M0.5 0.5L7.06033 7.06033L0.610127 13.5105" stroke="#9D9B98"
                                                 stroke-linecap="round" stroke-linejoin="round" />
                                         </svg></div>
@@ -2177,8 +2230,8 @@
                                     <p>Booking is pending</p>
                                 </div>
 
-                                <div> <span><svg xmlns="http://www.w3.org/2000/svg" width="8" height="15" viewBox="0 0 8 15"
-                                            fill="none">
+                                <div> <span><svg xmlns="http://www.w3.org/2000/svg" width="8" height="15"
+                                            viewBox="0 0 8 15" fill="none">
                                             <path d="M0.5 0.5L7.06033 7.06033L0.610127 13.5105" stroke="#9D9B98"
                                                 stroke-linecap="round" stroke-linejoin="round" />
                                         </svg></div>
@@ -2189,8 +2242,8 @@
                                     <p>Something else</p>
                                 </div>
 
-                                <div> <span><svg xmlns="http://www.w3.org/2000/svg" width="8" height="15" viewBox="0 0 8 15"
-                                            fill="none">
+                                <div> <span><svg xmlns="http://www.w3.org/2000/svg" width="8" height="15"
+                                            viewBox="0 0 8 15" fill="none">
                                             <path d="M0.5 0.5L7.06033 7.06033L0.610127 13.5105" stroke="#9D9B98"
                                                 stroke-linecap="round" stroke-linejoin="round" />
                                         </svg></div>
@@ -2203,8 +2256,8 @@
                                     <input type="text" class="fs-chat-input" placeholder="Write a message...">
 
                                     <span class="fs-send-icon">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"
-                                            fill="none">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            viewBox="0 0 20 20" fill="none">
                                             <path
                                                 d="M18.2448 0.0763204C19.2868 -0.287756 20.2878 0.713198 19.9237 1.75518L13.8471 19.118C13.4522 20.2441 11.8831 20.3077 11.399 19.2175L8.46685 12.6211L12.5938 8.49316C12.7297 8.34735 12.8036 8.15449 12.8001 7.95522C12.7966 7.75595 12.7159 7.56583 12.575 7.4249C12.434 7.28398 12.2439 7.20325 12.0446 7.19974C11.8454 7.19622 11.6525 7.27019 11.5067 7.40605L7.3787 11.5329L0.782123 8.60084C-0.308075 8.11575 -0.243464 6.54765 0.881605 6.15281L18.2448 0.0763204Z"
                                                 fill="#FFC97A" />
@@ -2222,8 +2275,8 @@
                                             </svg> Attach &nbsp;</span>
                                         <hr class="vertical-line-1">
                                         <span>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"
-                                                fill="none">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"
+                                                viewBox="0 0 12 12" fill="none">
                                                 <path
                                                     d="M10.2778 0.5H1.72222C1.04721 0.5 0.5 1.04721 0.5 1.72222V10.2778C0.5 10.9528 1.04721 11.5 1.72222 11.5H10.2778C10.9528 11.5 11.5 10.9528 11.5 10.2778V1.72222C11.5 1.04721 10.9528 0.5 10.2778 0.5Z"
                                                     stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
@@ -2254,11 +2307,11 @@
                     <div class="fs-card-header">
                         <span class="fs-back-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="9" height="16"
                                 viewBox="0 0 9 16" fill="none">
-                                <path d="M7.74365 14.3737L1.00021 7.63022L7.63045 0.999976" stroke="white" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M7.74365 14.3737L1.00021 7.63022L7.63045 0.999976" stroke="white"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                             </svg></span>
-                        <span class="fs-icon"><svg xmlns="http://www.w3.org/2000/svg" width="34" height="25" viewBox="0 0 34 25"
-                                fill="none">
+                        <span class="fs-icon"><svg xmlns="http://www.w3.org/2000/svg" width="34" height="25"
+                                viewBox="0 0 34 25" fill="none">
                                 <path
                                     d="M27.6424 11.2471C30.7873 12.249 32.19 13.7434 32.19 16.0949C32.19 18.1864 30.282 19.8096 29.1457 20.5918C29.0918 20.6287 29.0478 20.6782 29.0174 20.736C28.987 20.7938 28.971 20.8581 28.971 20.9233V22.5512C28.971 23.251 28.2678 23.7266 27.6859 23.3379C27.2333 23.0356 26.8194 22.6756 26.4554 22.2657C26.4091 22.2135 26.35 22.1743 26.284 22.1519C26.218 22.1295 26.1472 22.1246 26.0788 22.1377C25.8494 22.182 25.6152 22.2447 25.3778 22.3083C24.9674 22.4186 24.5441 22.5328 24.1425 22.5328C22.076 22.5328 20.629 22.0886 19.1499 21.0014"
                                     stroke="#FFF8EE" stroke-width="2" stroke-linecap="round" />
@@ -2306,8 +2359,8 @@
                                     <input type="text" class="fs-chat-input" placeholder="Write a message...">
 
                                     <span class="fs-send-icon">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"
-                                            fill="none">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            viewBox="0 0 20 20" fill="none">
                                             <path
                                                 d="M18.2448 0.0763204C19.2868 -0.287756 20.2878 0.713198 19.9237 1.75518L13.8471 19.118C13.4522 20.2441 11.8831 20.3077 11.399 19.2175L8.46685 12.6211L12.5938 8.49316C12.7297 8.34735 12.8036 8.15449 12.8001 7.95522C12.7966 7.75595 12.7159 7.56583 12.575 7.4249C12.434 7.28398 12.2439 7.20325 12.0446 7.19974C11.8454 7.19622 11.6525 7.27019 11.5067 7.40605L7.3787 11.5329L0.782123 8.60084C-0.308075 8.11575 -0.243464 6.54765 0.881605 6.15281L18.2448 0.0763204Z"
                                                 fill="#FFC97A" />
@@ -2325,8 +2378,8 @@
                                             </svg> Attach</span>
                                         <hr class="vertical-line-1">
                                         <span>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"
-                                                fill="none">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"
+                                                viewBox="0 0 12 12" fill="none">
                                                 <path
                                                     d="M10.2778 0.5H1.72222C1.04721 0.5 0.5 1.04721 0.5 1.72222V10.2778C0.5 10.9528 1.04721 11.5 1.72222 11.5H10.2778C10.9528 11.5 11.5 10.9528 11.5 10.2778V1.72222C11.5 1.04721 10.9528 0.5 10.2778 0.5Z"
                                                     stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
@@ -2382,7 +2435,7 @@
 
 
         // Close on outside click
-        document.addEventListener('click', function(e) {
+        document.addEventListener('click', function (e) {
             const panel = document.getElementById('chat-panel');
             const btn = document.getElementById('chat-btn');
             const openIcon = document.getElementById('chat-open-icon');
@@ -2406,9 +2459,9 @@
     <script src="<?= BASE_URL ?>/assets/js/custom.js"></script>
 
     <!-- cookies popup  -->
-    
+
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded", function () {
 
             const COOKIE_KEY = "fs_cookie_consent";
 
