@@ -295,11 +295,11 @@ body:has(.find-groomer-search.active) {
     background: #FDFCF8;
     padding: 12px 45px 12px 45px;
     font-family: "Lato";
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 400;
     border-top-left-radius: 10px;
     cursor: pointer;
-    width: 200px;
+    /* width: 200px; */
     height: 48px;
     position: relative;
 }
@@ -311,6 +311,7 @@ body:has(.find-groomer-search.active) {
 .find-groomer-search.active {
     background-color: var(--groomer-color);
     color: #fff;
+    font-weight: 700;
 }
 
 .find-groomer-search-content-area {
@@ -342,7 +343,7 @@ body:has(.find-groomer-search.active) {
     outline: none;
     box-sizing: border-box;
     font-family: "Lato";
-    font-size: 16px;
+    font-size: 18px;
     font-style: normal;
     font-weight: 400;
     color: var(--font-color);
@@ -470,6 +471,7 @@ input#dateInput#streched {
 .find-space-search.active {
     background-color: var(--space-color);
     color: #fff;
+    font-weight: 700;
 }
 
 .find-space-search {
@@ -477,7 +479,7 @@ input#dateInput#streched {
     background: #ffffff;
     padding: 12px 45px 12px 45px;
     font-family: "Lato";
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 400;
     cursor: pointer;
     width: 200px;
@@ -737,9 +739,11 @@ ul.grommers-options li {
     border-radius: 8px;
     overflow: hidden;
 }
+
 .map-wrapper.space-map-wrapper {
     min-height: 1124px;
 }
+
 #map,
 #space-map {
     flex: 1;
@@ -1290,7 +1294,6 @@ button.load-more {
 .nav {
     display: flex;
     align-items: center;
-    gap: 25px;
     margin-top: 20px;
 }
 
@@ -1299,7 +1302,7 @@ button.load-more {
     border: 0;
     font-size: 16px;
     cursor: pointer;
-    color: var(--muted);
+    color: var(--font-color);
     padding: 8px;
     transition: transform 0.2s;
 }
@@ -1351,7 +1354,7 @@ button.load-more {
 .week {
     display: flex;
     justify-content: space-between;
-    gap: 10px;
+    gap: 5px;
     padding: 10px 0 20px;
     color: var(--font-color);
     text-align: center;
@@ -1359,12 +1362,7 @@ button.load-more {
     font-size: 20px;
     font-style: normal;
     font-weight: 700;
-    transition: transform 0.3s cubic-bezier(0.22, 0.9, 0.25, 1);
-    will-change: transform;
-}
-
-.week.no-transition {
-    transition: none;
+    
 }
 
 .week-days {
@@ -1375,25 +1373,61 @@ button.load-more {
 }
 
 .dow {
-    margin-bottom: 6px;
-    font-weight: normal;
+    margin-bottom: 12px;
     transition: all 0.2s;
     padding: 15px 14px;
     border-radius: 8px;
+    color: #3B3731;
+    text-align: center;
+    font-family: Lato;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    width: 100px;
+
 }
 
 .date {
     padding: 15px 14px;
     border: 1px solid transparent;
-    font-weight: 600;
     transition: all 0.2s;
     color: var(--muted);
     border-radius: 8px;
+    text-align: center;
+    font-family: Lato;
+    font-size: 20px;
+    font-weight: 400;
+    width: 100px;
+
 }
 
 .dow.active {
     background: var(--active-bg);
     color: #fff;
+}
+
+/* ── +1 / -1  (blue) ── */
+/* .week-days:has(.dow.active)+.week-days .dow,
+.week-days:has(.dow.active)+.week-days .date,
+.week-days:has(+ .week-days > .dow.active) .dow,
+.week-days:has(+ .week-days > .dow.active) .date {
+    color: blue;
+} */
+
+/* ── +2 / -2  (red) ── */
+.week-days:has(.dow.active)+.week-days+.week-days .dow,
+.week-days:has(.dow.active)+.week-days+.week-days .date,
+.week-days:has(+ .week-days + .week-days > .dow.active) .dow,
+.week-days:has(+ .week-days + .week-days > .dow.active) .date {
+    opacity: .5;
+}
+
+/* ── +3 / -3  (green) ── */
+.week-days:has(.dow.active)+.week-days+.week-days+.week-days .dow,
+.week-days:has(.dow.active)+.week-days+.week-days+.week-days .date,
+.week-days:has(+ .week-days + .week-days + .week-days > .dow.active) .dow,
+.week-days:has(+ .week-days + .week-days + .week-days > .dow.active) .date {
+    opacity: .3;
 }
 
 .date.active {

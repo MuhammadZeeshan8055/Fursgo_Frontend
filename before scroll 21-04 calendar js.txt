@@ -1,0 +1,166 @@
+document.addEventListener('DOMContentLoaded', () => {
+
+    document.querySelectorAll('.scroll-calendar').forEach(calendar => {
+
+        // ---------------- Elements ----------------
+        const weekEl = calendar.querySelector('.week');
+        const rangeEl = calendar.querySelector('.range');
+        const monthEl = calendar.querySelector('.month');
+
+        const prev = calendar.querySelector('.prev');
+        const next = calendar.querySelector('.next');
+
+        // ---------------- Helpers ----------------
+        const addDays = (date, n) =>
+            new Date(date.getFullYear(), date.getMonth(), date.getDate() + n);
+
+        const pad = (n) => String(n).padStart(2, '0');
+
+        const isSameDay = (a, b) =>
+            a.getFullYear() === b.getFullYear() &&
+            a.getMonth() === b.getMonth() &&
+            a.getDate() === b.getDate();
+
+        // ---------------- State ----------------
+        const today = new Date();
+        let selectedDate = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+
+        // ---------------- Drag State ----------------
+        let isDragging = false;
+        let startX = 0;
+        let moved = false;
+
+        const DRAG_THRESHOLD = 40; // px
+
+        // ---------------- Render ----------------
+        function render() {
+
+            weekEl.innerHTML = '';
+
+            const weekStart = addDays(selectedDate, -3);
+            const weekEnd = addDays(selectedDate, 3);
+
+            const startMonth = weekStart.toLocaleString(undefined, { month: 'long' });
+            const endMonth = weekEnd.toLocaleString(undefined, { month: 'long' });
+
+            rangeEl.textContent =
+                `${pad(weekStart.getDate())} - ${pad(weekEnd.getDate())} ` +
+                (startMonth === endMonth ? startMonth : `${startMonth} / ${endMonth}`);
+
+            monthEl.textContent =
+                selectedDate.toLocaleString(undefined, { month: 'long', year: 'numeric' });
+
+            for (let i = 0; i < 7; i++) {
+
+                const d = addDays(weekStart, i);
+                const isActive = isSameDay(d, selectedDate);
+
+                const day = document.createElement('div');
+                day.className = 'week-days';
+
+                day.innerHTML = `
+                    <div class="dow ${isActive ? 'active' : ''}">
+                        ${d.toLocaleString(undefined, { weekday: 'short' })}
+                    </div>
+                    <div class="date ${isActive ? 'active' : ''}">
+                        ${pad(d.getDate())}
+                    </div>
+                `;
+
+                day.onclick = () => {
+                    if (moved) return; // prevent click after drag
+                    selectedDate = d;
+                    render();
+                };
+
+                weekEl.appendChild(day);
+            }
+        }
+
+        // ---------------- Navigation Buttons ----------------
+        if (prev) {
+            prev.onclick = () => {
+                selectedDate = addDays(selectedDate, -1);
+                render();
+            };
+        }
+
+        if (next) {
+            next.onclick = () => {
+                selectedDate = addDays(selectedDate, 1);
+                render();
+            };
+        }
+
+        // ---------------- Drag / Swipe ----------------
+        weekEl.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            startX = e.clientX;
+            moved = false;
+        });
+
+        weekEl.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+
+            const diff = e.clientX - startX;
+
+            if (Math.abs(diff) > 5) {
+                moved = true;
+            }
+        });
+
+        weekEl.addEventListener('mouseup', (e) => {
+            if (!isDragging) return;
+            isDragging = false;
+
+            const diff = e.clientX - startX;
+
+            if (Math.abs(diff) > DRAG_THRESHOLD) {
+                if (diff < 0) {
+                    // swipe left → next day
+                    selectedDate = addDays(selectedDate, 1);
+                } else {
+                    // swipe right → prev day
+                    selectedDate = addDays(selectedDate, -1);
+                }
+                render();
+            }
+        });
+
+        weekEl.addEventListener('mouseleave', () => {
+            isDragging = false;
+        });
+
+        // Touch support (mobile)
+        weekEl.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+            isDragging = true;
+            moved = false;
+        });
+
+        weekEl.addEventListener('touchmove', (e) => {
+            const diff = e.touches[0].clientX - startX;
+            if (Math.abs(diff) > 5) moved = true;
+        });
+
+        weekEl.addEventListener('touchend', (e) => {
+            if (!isDragging) return;
+            isDragging = false;
+
+            const endX = e.changedTouches[0].clientX;
+            const diff = endX - startX;
+
+            if (Math.abs(diff) > DRAG_THRESHOLD) {
+                if (diff < 0) {
+                    selectedDate = addDays(selectedDate, 1);
+                } else {
+                    selectedDate = addDays(selectedDate, -1);
+                }
+                render();
+            }
+        });
+
+        // ---------------- Init ----------------
+        render();
+    });
+});

@@ -433,14 +433,14 @@ nav {
 nav ul {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-evenly;
   list-style: none;
 }
 
 nav ul li a {
   color: var(--font-color);
   font-family: "Lato";
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 600;
   /* normal */
   font-style: normal;
@@ -745,7 +745,7 @@ p.messages-count {
 
 .search-box input {
   width: 100%;
-  padding: 14px 44px 14px 14px;
+  padding: 14px 44px 14px 16px;
   border-radius: 10px;
   border: 1px solid var(--border);
   outline: none;

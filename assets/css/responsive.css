@@ -60,94 +60,6 @@
         "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-nav {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    padding: 49px 20px;
-}
-
-nav ul {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    list-style: none;
-}
-
-nav ul li a {
-    color: var(--font-color);
-    font-family: "Lato";
-    font-size: 16px;
-    font-weight: 600;
-    /* normal */
-    font-style: normal;
-}
-
-nav ul li a:hover {
-    color: var(--groomer-color);
-    font-weight: 600;
-}
-
-a {
-    text-decoration: none;
-    color: var(--font-color);
-}
-
-nav ul a.active {
-    color: var(--groomer-color);
-    font-weight: 600;
-    text-decoration-line: underline;
-    text-decoration-style: solid;
-    text-decoration-skip-ink: auto;
-    text-decoration-thickness: auto;
-    text-underline-offset: 4px;
-    text-underline-position: from-font;
-}
-
-.login-signup-div {
-    display: flex;
-    gap: 20px;
-}
-
-.login-btn,
-.signup-btn {
-    padding: 10px 35px 10px 35px;
-    color: var(--font-color);
-    background: none;
-    border: 1px solid var(--font-color);
-    border-radius: 5px;
-    font-family: "Lato";
-    font-size: 16px;
-    font-style: normal;
-    text-align: center;
-    border-radius: 25px;
-    cursor: pointer;
-}
-
-.login-btn:hover {
-    color: var(--font-color);
-}
-
-.signup-btn.active {
-    background-color: var(--groomer-color);
-    ;
-    color: white;
-    border: none;
-    text-decoration: none;
-}
-
 /* Hamburger icon */
 .menu-toggle {
     display: none;
@@ -220,13 +132,14 @@ a {
 
 .find-groomer.active {
     background-color: var(--groomer-color);
-    ;
-    color: #fff
+    color: #fff;
+    font-weight: 700;
 }
 
 .find-space.active {
     background-color: var(--space-color);
-    color: #fff
+    color: #fff;
+    font-weight: 700;
 }
 
 .find-groomer {
@@ -235,7 +148,7 @@ a {
     padding: 12px 45px 12px 45px;
     text-align: center;
     font-family: "Lato";
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 400;
     text-align: center;
     border-top-left-radius: 10px;
@@ -282,7 +195,7 @@ a {
 
 .label {
     font-family: "Lato";
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 600;
     margin-bottom: 10px;
     color: var(--font-color);
@@ -311,7 +224,7 @@ a {
     transition: all 0.2s ease;
 
     font-family: "Lato";
-    font-size: 16px;
+    font-size: 18px;
     font-style: normal;
     text-align: center;
 }
@@ -378,7 +291,7 @@ a {
     transition: background 0.2s ease, color 0.2s ease;
 
     font-family: "Lato";
-    font-size: 16px;
+    font-size: 18px;
     white-space: nowrap;
     /* prevent wrap */
 }
@@ -411,7 +324,7 @@ a {
     padding: 12px 45px 12px 45px;
     text-align: center;
     font-family: "Lato";
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 400;
     text-align: center;
     border-top-right-radius: 10px;
@@ -427,7 +340,7 @@ a {
     border-color: #FFC97A;
     color: var(--font-color);
     font-family: Lato;
-    font-size: 16px;
+    font-size: 18px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
@@ -517,7 +430,7 @@ a {
 
 .search-box input {
     width: 100%;
-    padding: 10px 40px 10px 15px;
+    padding: 10px 40px 10px 16px;
     height: 48px;
     /* space for icon */
     border-radius: 10px;
@@ -886,11 +799,6 @@ a {
 
 section.rating-section.section {
     padding: 300px 0 0 0px;
-}
-
-/* Consistent spacing for all main sections */
-.section {
-    padding: 70px 0;
 }
 
 /* Optional: smaller spacing variant */
@@ -1700,6 +1608,17 @@ ul.fursgo-locations li {
     margin-bottom: 20px;
 }
 
+#monthLabel,
+p.time-text {
+    color: #3B3731;
+    text-align: center;
+    font-family: Lato;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
 .month-nav button {
     border: none;
     background: transparent;
@@ -1815,7 +1734,8 @@ ul.fursgo-locations li {
 }
 
 .time-list {
-    overflow-y: auto;   /* required */
+    overflow-y: auto;
+    /* required */
 }
 
 /* scrollbar width */
@@ -1871,7 +1791,8 @@ ul.fursgo-locations li {
 
 .custom-select .select-trigger span {
     color: var(--text-muted);
-    font-size: 14px;
+    font-size: 18px;
+    font-weight: 400;
 }
 
 .custom-select .select-options {

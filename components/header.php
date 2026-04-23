@@ -1,9 +1,10 @@
- <!-- header starts -->
+<?php $currentPage = basename($_SERVER['PHP_SELF']); ?>
+<!-- header starts -->
  <header>
      <nav class="navbar">
          <div class="container">
              <div class="row align-items-center">
-                 <div class="col-lg-4 ">
+                 <div class="col-lg-2">
                      <div class="logo-toggle-button d-flex justify-content-between">
                          <a href="<?= BASE_URL ?>index.php">
                              <svg xmlns="http://www.w3.org/2000/svg" width="145" height="40" viewBox="0 0 145 40"
@@ -37,18 +38,23 @@
                          <button class="menu-toggle">&#9776;</button>
                      </div>
                  </div>
-                 <div class="col-lg-8">
-                     <ul class="menu-items">
-                         <li><a href="#" class="active">How it works</a></li>
-                         <li><a href="#">For Groomers & Hosts</a></li>
-                         <!-- <li><a href="#">For Hosts</a></li> -->
-                         <li><a href="#">Help Centre</a></li>
+                 <div class="col-lg-7">
+                    <ul class="menu-items">
+                        <li><a href="<?= BASE_URL ?>profile_pets_preferences/about_us.php" class="<?= $currentPage == 'about_us.php' ? 'active' : '' ?>">Our Mission</a></li>
+                        <li><a href="#">For Groomers & Hosts</a></li>
+                        <li><a href="#">Help Centre</a></li>
+                    </ul>
+                 </div>
+
+                 <div class="col-lg-3">
+                     <ul class="menu-items justify-content-end">
+                         
                          <li>
-                             <!-- <div class="login-signup-div">
+                             <div class="login-signup-div">
                                  <a href="<?= BASE_URL ?>login-signup/login.php" class="login-btn">Log in</a>
                                  <a href="<?= BASE_URL ?>login-signup/signup_form.php" class="signup-btn active">Sign Up</a>
-                             </div> -->
-                             <div class="session-login-signup-div d-flex align-items-center gap-40">
+                             </div>
+                             <!-- <div class="session-login-signup-div d-flex align-items-center gap-40">
                                  <div class="messages-content-tab">
                                      <a class="messages-btn cursor">
                                          <svg xmlns="http://www.w3.org/2000/svg" width="26" height="22" viewBox="0 0 26 22" fill="none">
@@ -437,7 +443,7 @@
                                      </div>
 
                                  </div>
-                             </div>
+                             </div> -->
                          </li>
                      </ul>
                  </div>
