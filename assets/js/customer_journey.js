@@ -337,8 +337,10 @@ document.addEventListener('DOMContentLoaded', function () {
             <div class="map-top-left-svg">
                 ${customTooltipSVG('#C9DDA0', 7, 8)}
             </div>
-            <div style="display:flex; gap:2px;">
-                ${svgImage}
+            <div style="display:flex; gap:6px; align-items:center;">
+                <div style="width:70px; display:flex; justify-content:center; align-items:center;">
+                    ${svgImage}
+                </div>
                 <div style="flex:1;">
                     <h2 class="name" style="margin:0 0 0px;font-size:14px;font-weight:600;color:#333;">
                         ${loc.loc_name}
@@ -383,8 +385,10 @@ document.addEventListener('DOMContentLoaded', function () {
             <div class="map-top-left-svg">
                 ${spaceCustomTooltipSVG('#CBDCE8', 7, 8)}
             </div>
-            <div style="display:flex; gap:2px;">
-                ${svgImage}
+            <div style="display:flex; gap:6px; align-items:center;">
+                <div style="width:70px; display:flex; justify-content:center; align-items:center;">
+                    ${svgImage}
+                </div>
                 <div style="flex:1;">
                     <h2 class="name" style="margin:0 0 0px;font-size:14px;font-weight:600;color:#333;">
                         ${loc.loc_name}

@@ -1951,7 +1951,7 @@
                         </ul>
                         <p class="link">More Coming soon.</p>
                         <div class="fursgo-map-image-wrapper">
-                            <img src="<?= BASE_URL ?>/assets/images/Intersect.png" alt="" style="border-bottom-right-radius: 10%;">
+                            <img src="<?= BASE_URL ?>/assets/images/Intersect.png" alt="">
                         </div>
                     </div>
                 </div>

@@ -1559,7 +1559,7 @@ ul.fursgo-locations li {
     max-width: 280px;
     width: 222px;
     height: 48px;
-    border-radius: 12px 0 0 10px !important;
+    border-radius: 12px 0 0 10px;
 }
 
 .field.time {
@@ -1613,10 +1613,11 @@ ul.fursgo-locations li {
     width: auto;
     background: transparent;
     border: none;
-    font-size: 16px;
+    font-size: 18px;
+    font-weight: 400;
     color: var(--text-muted);
     text-align: left;
-    padding: 3px 0;
+    padding: 3px 8px;
     outline: none;
     cursor: pointer;
 }
@@ -1628,9 +1629,9 @@ ul.fursgo-locations li {
     display: block;
 }
 
-input#dateInput {
+/* input#dateInput {
     text-align: center;
-}
+} */
 
 
 .rotate-left {
@@ -1644,19 +1645,20 @@ input#dateInput {
 #prevMonth,
 #nextMonth {
     width: 24px;
-    /* smaller width */
     height: 24px;
-    /* smaller height */
-    border: 1px solid #ccc;
+    aspect-ratio: 1 / 1;
+    border: 2px solid #F5F5F5;
     border-radius: 50%;
     background: transparent;
     cursor: pointer;
-
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0;
-    /* remove extra space */
+    padding: 2px;
+}
+
+#nextMonth {
+    background: #F5F5F5;
 }
 
 #prevMonth:hover,
@@ -1675,7 +1677,7 @@ input#dateInput {
     border: 1px solid var(--border);
     box-shadow: 0 8px 24px rgba(20, 20, 20, 0.08);
     display: none;
-    z-index: 10;
+    z-index: 401;
     overflow: hidden;
     border-bottom-left-radius: 12px;
     border-bottom-right-radius: 12px;
@@ -1792,9 +1794,12 @@ input#dateInput {
     cursor: pointer;
     user-select: none;
     background: transparent;
-    color: #999;
-    font-family: "Lato";
-    font-weight: 600;
+    color: #D4D4D4;
+    font-family: Lato;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
 }
 
 .time-item:hover {
@@ -1809,28 +1814,25 @@ input#dateInput {
     transform: translateX(6px);
 }
 
+.time-list {
+    overflow-y: auto;   /* required */
+}
+
 /* scrollbar width */
 .time-list::-webkit-scrollbar {
     width: 8px;
 }
 
-/* scrollbar track (background) */
-.time-list::-webkit-scrollbar-track {
-    background: #f1f1f1;
-}
-
-/* scrollbar thumb (the draggable part) */
+/* scrollbar thumb */
 .time-list::-webkit-scrollbar-thumb {
     background-color: var(--active-bg);
-    /* ← your color */
     border-radius: 6px;
 }
 
-/* thumb on hover */
+/* hover */
 .time-list::-webkit-scrollbar-thumb:hover {
     background-color: #555;
 }
-
 
 /* custom select dropdown styles  */
 .custom-select {

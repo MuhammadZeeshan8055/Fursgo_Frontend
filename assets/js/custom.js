@@ -280,6 +280,17 @@ toggleActive(".find-space-content", ".weight-option", "active");
 
   document.addEventListener("click", (e) => {
     if (!e.target.closest(".datetime-wrapper")) {
+      document.querySelectorAll(".datetime-wrapper").forEach(wrapper => {
+        const dateField = wrapper.querySelector(".field.date");
+        const timeField = wrapper.querySelector(".field.time");
+
+        dateField.classList.remove("focused");
+        timeField.classList.remove("focused");
+
+        dateField.style.borderBottomLeftRadius = "10px";
+        timeField.style.borderBottomRightRadius = "10px";
+      });
+
       document
         .querySelectorAll(".popover")
         .forEach((p) => (p.style.display = "none"));
