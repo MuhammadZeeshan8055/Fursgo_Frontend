@@ -40,7 +40,7 @@
                  </div>
                  <div class="col-lg-7">
                     <ul class="menu-items">
-                        <li><a href="<?= BASE_URL ?>profile_pets_preferences/about_us.php" class="<?= $currentPage == 'about_us.php' ? 'active' : '' ?>">Our Mission</a></li>
+                        <li><a href="#how_it_works">How it works</a></li>
                         <li><a href="<?= BASE_URL ?>for_groomers_and_hosts.php" class="<?= $currentPage == 'for_groomers_and_hosts.php' ? 'active' : '' ?>">For Groomers & Hosts</a></li>
                         <li><a href="#">Help Centre</a></li>
                     </ul>
