@@ -328,22 +328,40 @@
         .fs-option-buttons {
             margin-top: 15px;
             margin-left: 7rem;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            /* pushes buttons to the right */
+            gap: 8px;
         }
 
         .fs-opt-btn {
-            width: 250px;
-            height: 48px;
-            padding: 18px;
-            margin-bottom: 8px;
+            width: fit-content;
+            /* auto width based on content */
+            max-width: 100%;
+            min-height: 48px;
+            padding: 0 16px;
             border: 1px solid #eee;
             background: #fff;
             text-align: left;
-            display: flex;
+            display: inline-flex;
             gap: 10px;
             justify-content: space-between;
             align-items: center;
             border-radius: 10px 10px 0px 10px;
             cursor: pointer;
+            white-space: nowrap;
+            /* keeps text in one line */
+        }
+
+        .fs-opt-btn p {
+            margin: 0;
+        }
+
+        .fs-opt-btn {
+            width: fit-content;
+            max-width: 320px;
+            white-space: normal;
         }
 
         .fs-opt-btn p {
@@ -409,7 +427,7 @@
         }
 
         .fs-msg-section {
-            width: 370px;
+            width: auto;
             padding: 5px 12px;
         }
 
