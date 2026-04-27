@@ -1,21 +1,18 @@
 @font-face {
   font-family: "Playfair Display";
-  src: url("../fonts/Playfair_Display/static/PlayfairDisplay-Bold.ttf")
-    format("truetype");
+  src: url("../fonts/Playfair_Display/static/PlayfairDisplay-Bold.ttf") format("truetype");
   font-weight: 600;
 }
 
 @font-face {
   font-family: "Playfair Display";
-  src: url("../fonts/Playfair_Display/static/PlayfairDisplay-ExtraBold.ttf")
-    format("truetype");
+  src: url("../fonts/Playfair_Display/static/PlayfairDisplay-ExtraBold.ttf") format("truetype");
   font-weight: 900;
 }
 
 @font-face {
   font-family: "Playfair Display";
-  src: url("../fonts/Playfair_Display/static/PlayfairDisplay-ExtraBoldItalic.ttf")
-    format("truetype");
+  src: url("../fonts/Playfair_Display/static/PlayfairDisplay-ExtraBoldItalic.ttf") format("truetype");
   font-style: italic;
   font-weight: 900;
 }
@@ -250,6 +247,15 @@
   font-weight: 900;
 }
 
+/* ===== 25px ===== */
+.fs-25-500-italic {
+  color: #3b3731;
+  font-family: "Playfair Display";
+  font-size: 25px;
+  font-style: italic;
+  font-weight: 500;
+}
+
 /* ===== 20px ===== */
 
 .fs-20-600 {
@@ -331,6 +337,13 @@
   font-family: Lato;
   font-size: 16px;
   font-weight: 400;
+}
+
+.fs-16-700-f-color {
+  color: var(--font-color);
+  font-family: Lato;
+  font-size: 16px;
+  font-weight: 700;
 }
 
 /* ===== 14px ===== */
@@ -415,6 +428,14 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+.ul-list-style {
+  list-style: disc !important;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  padding-left: 30px;
+  /* indentation */
 }
 
 ul {

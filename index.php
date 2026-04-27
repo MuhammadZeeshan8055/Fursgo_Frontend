@@ -38,7 +38,6 @@
         #chat-panel {
             position: fixed;
             bottom: 130px;
-            border-radius: 16px;
             display: none;
             flex-direction: column;
             overflow: hidden;
@@ -111,7 +110,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: #0000009e;
+            background: #58585847;
             z-index: 12;
             backdrop-filter: blur(2px);
         }
@@ -133,15 +132,17 @@
         /* card styles */
         /* Base Card Styling */
         .fs-card {
-            width: 400px;
-            height: 550px;
+            width: 100%;
+            max-width: 400px;
+            height: auto;
             background: #fff;
-            border-radius: 12px;
+            border-radius: 10px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
             display: flex;
             flex-direction: column;
             border: 1px solid #ffc97a;
             box-shadow: 0 10px 20px 2px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
         }
 
         /* Header */
@@ -173,11 +174,28 @@
             font-size: 14px;
         }
 
+        #fs-card-body {
+            height: 330px;
+            overflow-y: auto;
+        }
+
         /* Body & Backgrounds */
         .fs-card-body {
             margin-top: -3rem;
             padding: 20px;
-            /* flex-grow: 1; */
+            overflow-y: auto;
+            overflow-x: hidden;
+
+            /* hide scrollbar (cross-browser) */
+            scrollbar-width: none;
+            /* Firefox */
+            -ms-overflow-style: none;
+            /* IE/Edge legacy */
+        }
+
+        /* Chrome, Safari, Edge */
+        .fs-card-body::-webkit-scrollbar {
+            display: none;
         }
 
         .fs-2 {
@@ -301,7 +319,7 @@
 
         .fs-bot-msg {
             width: 275px;
-            height: 67px;
+            height: auto;
             border-radius: 10px 10px 10px 0px;
             background: rgba(255, 201, 122, 0.13);
             padding-left: 1rem;
@@ -313,7 +331,7 @@
         }
 
         .fs-opt-btn {
-            width: 251px;
+            width: 250px;
             height: 48px;
             padding: 18px;
             margin-bottom: 8px;
@@ -325,6 +343,7 @@
             justify-content: space-between;
             align-items: center;
             border-radius: 10px 10px 0px 10px;
+            cursor: pointer;
         }
 
         .fs-opt-btn p {
@@ -391,6 +410,7 @@
 
         .fs-msg-section {
             width: 370px;
+            padding: 5px 12px;
         }
 
         .fs-chat-input-wrapper {
@@ -419,6 +439,33 @@
             display: flex;
             justify-content: center;
             align-items: center;
+        }
+
+        /* hovering svg active color  */
+        .fs-menu-item:hover .fs-arrow path {
+            stroke: #FFC97A;
+        }
+
+        .fs-menu-item:hover .fs-content>span {
+            color: #FFC97A;
+        }
+
+        /* Default: show original icon */
+        .fs-menu-item .icon-default {
+            display: block;
+        }
+
+        .fs-menu-item .icon-hover {
+            display: none;
+        }
+
+        /* Hover: swap to the orange version */
+        .fs-menu-item:hover .icon-default {
+            display: none;
+        }
+
+        .fs-menu-item:hover .icon-hover {
+            display: block;
         }
     </style>
 
@@ -843,6 +890,120 @@
             backdrop-filter: blur(2px);
         }
     </style>
+
+    <style>
+        .fs-rating-modal {
+            width: 400px;
+            height: 550px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* header */
+
+        .fs-rating-header {
+            background: #f4b86a;
+            color: white;
+            padding: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 500;
+        }
+
+        .fs-back {
+            cursor: pointer;
+        }
+
+        .fs-rating-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: end;
+        }
+
+        .fs-rating-content h2 {
+            color: #3b3731;
+            text-align: center;
+            font-family: Lato;
+            font-size: 25px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+        }
+
+        /* stars */
+
+        .fs-stars {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            margin: 20px 0;
+            font-size: 28px;
+            color: #f4b86a;
+        }
+
+        .fs-stars .fs-inactive {
+            color: #ddd;
+        }
+
+        /* text */
+
+        .fs-ref {
+            color: #9d9b98;
+            text-align: center;
+            font-family: Lato;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+            margin-top: 2rem;
+        }
+
+        .fs-end {
+            margin-top: 5.5rem;
+            color: #9d9b98;
+            text-align: center;
+            font-family: Lato;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+            margin-bottom: 1.5rem !important;
+        }
+
+        .fs-back-arrow {
+            position: relative;
+            right: 4.5rem;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .fs-star {
+            cursor: pointer;
+        }
+
+        /* inactive state */
+        .fs-star svg path {
+            transition: 0.2s ease;
+        }
+
+        /* active star (your yellow fill) */
+        .fs-star.active svg path {
+            fill: #FFC97A !important;
+        }
+
+        /* inactive gray */
+        .fs-star:not(.active) svg path {
+            fill: #EFEFEF !important;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -2005,7 +2166,7 @@
 
     <div class="container">
         <!-- Chat Toggle Button -->
-        <button id="chat-btn" onclick="toggleChat()">
+        <button id="chat-btn">
             <span id="chat-open-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="34" height="25" viewBox="0 0 34 25" fill="none">
                     <path
@@ -2064,7 +2225,10 @@
                         <div class="fs-menu-list">
                             <div class="fs-menu-item">
                                 <div class="fs-content">
-                                    <div><span><svg xmlns="http://www.w3.org/2000/svg" width="21" height="20"
+                                    <div>
+                                        <span>
+                                            <!-- Default icon -->
+                                            <svg class="icon-default" xmlns="http://www.w3.org/2000/svg" width="21" height="20"
                                                 viewBox="0 0 21 20" fill="none">
                                                 <path
                                                     d="M1.30105 7.45312C1.26025 8.18844 1.26025 9.06324 1.26025 10.1142V11.7765C1.26025 14.9108 1.26118 16.4775 2.34253 17.4517C3.42388 18.4258 5.1655 18.4258 8.6478 18.4258H12.3416C15.8239 18.4258 17.5646 18.4249 18.6468 17.4517C19.7291 16.4784 19.7291 14.9108 19.7291 11.7765V10.1142C19.7291 9.06315 19.729 8.18838 19.6881 7.45312H1.30105Z"
@@ -2078,7 +2242,21 @@
                                                 <path
                                                     d="M5.3488 1.92903V0.5M15.641 1.92903V0.5M0.717285 6.69248H20.2726"
                                                     stroke="#9D9B98" stroke-linecap="round" />
-                                            </svg></span></div>
+                                            </svg>
+
+                                            <!-- Hover icon -->
+                                            <svg class="icon-hover" xmlns="http://www.w3.org/2000/svg" width="21" height="20" viewBox="0 0 21 20" fill="none">
+                                                <path d="M2 12.5516V11.1348C2 9.78426 2 8.77503 2.12872 8H18.8709C18.9998 8.77498 19 9.7841 19 11.1348V12.5516C19 15.2229 19 16.559 18.0038 17.3885C17.0076 18.218 15.4054 18.2187 12.2 18.2187H8.8C5.59465 18.2187 3.99155 18.2187 2.9962 17.3885C2.00085 16.5582 2 15.2229 2 12.5516Z" fill="white" />
+                                                <path d="M17.6713 4.15569C18.1416 4.47986 18.3796 4.90153 18.5 5.5H2.5C2.62031 4.90135 2.85829 4.47962 3.32902 4.15569C4.28106 3.50056 5.81228 3.5 8.87554 3.5H12.1248C15.1881 3.5 16.7201 3.5 17.6713 4.15569Z" fill="white" />
+                                                <path d="M7.56141 13.0002L9.54623 14.985L13.38 11.1513C13.5601 10.9712 13.5606 10.6793 13.3811 10.4985C13.2007 10.3168 12.907 10.3163 12.726 10.4973L9.54623 13.6771L8.21308 12.3477C8.03293 12.168 7.74131 12.1682 7.56141 12.3481C7.38133 12.5282 7.38133 12.8202 7.56141 13.0002Z" fill="#FFC97A" />
+                                                <path d="M0.5 9.59437C0.5 5.98454 0.5 4.17914 1.672 3.05819C2.844 1.93724 4.729 1.93628 8.5 1.93628H12.5C16.271 1.93628 18.157 1.93628 19.328 3.05819C20.499 4.1801 20.5 5.98454 20.5 9.59437V11.5089C20.5 15.1187 20.5 16.9241 19.328 18.0451C18.156 19.166 16.271 19.167 12.5 19.167H8.5C4.729 19.167 2.843 19.167 1.672 18.0451C0.501 16.9232 0.5 15.1187 0.5 11.5089V9.59437Z" stroke="#FFC97A" />
+                                                <path d="M5.3488 1.92903V0.5M15.641 1.92903V0.5M0.717285 6.69248H20.2726" stroke="#FFC97A" stroke-linecap="round" />
+                                            </svg>
+                                        </span>
+                                    </div>
+                                    <style>
+
+                                    </style>
                                     <span>Bookings</span>
                                 </div>
 
@@ -2200,7 +2378,7 @@
                             </svg></span> FursGo Support
                     </div>
 
-                    <div class="fs-card-body fs-2">
+                    <div class="fs-card-body fs-2" id="fs-card-body">
                         <p class="fs-status-msg">You are speaking with FursGo.</p>
 
                         <div class="fs-chat-bubble fs-user-msg">
@@ -2250,54 +2428,53 @@
                             </button>
                         </div>
 
-                        <div class="fs-msg-section">
-                            <div class="fs-input-area">
-                                <div class="fs-chat-input-wrapper">
-                                    <input type="text" class="fs-chat-input" placeholder="Write a message...">
+                    </div>
 
-                                    <span class="fs-send-icon">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                            viewBox="0 0 20 20" fill="none">
+                    <div class="fs-msg-section">
+                        <div class="fs-input-area">
+                            <div class="fs-chat-input-wrapper">
+                                <input type="text" class="fs-chat-input" placeholder="Write a message...">
+
+                                <span class="fs-send-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                        viewBox="0 0 20 20" fill="none">
+                                        <path
+                                            d="M18.2448 0.0763204C19.2868 -0.287756 20.2878 0.713198 19.9237 1.75518L13.8471 19.118C13.4522 20.2441 11.8831 20.3077 11.399 19.2175L8.46685 12.6211L12.5938 8.49316C12.7297 8.34735 12.8036 8.15449 12.8001 7.95522C12.7966 7.75595 12.7159 7.56583 12.575 7.4249C12.434 7.28398 12.2439 7.20325 12.0446 7.19974C11.8454 7.19622 11.6525 7.27019 11.5067 7.40605L7.3787 11.5329L0.782123 8.60084C-0.308075 8.11575 -0.243464 6.54765 0.881605 6.15281L18.2448 0.0763204Z"
+                                            fill="#FFC97A" />
+                                    </svg>
+                                </span>
+                            </div>
+
+
+                            <div class="fs-input-footer">
+                                <div><span><svg xmlns="http://www.w3.org/2000/svg" width="11" height="12"
+                                            viewBox="0 0 11 12" fill="none">
                                             <path
-                                                d="M18.2448 0.0763204C19.2868 -0.287756 20.2878 0.713198 19.9237 1.75518L13.8471 19.118C13.4522 20.2441 11.8831 20.3077 11.399 19.2175L8.46685 12.6211L12.5938 8.49316C12.7297 8.34735 12.8036 8.15449 12.8001 7.95522C12.7966 7.75595 12.7159 7.56583 12.575 7.4249C12.434 7.28398 12.2439 7.20325 12.0446 7.19974C11.8454 7.19622 11.6525 7.27019 11.5067 7.40605L7.3787 11.5329L0.782123 8.60084C-0.308075 8.11575 -0.243464 6.54765 0.881605 6.15281L18.2448 0.0763204Z"
-                                                fill="#FFC97A" />
-                                        </svg>
+                                                d="M10.5 6.04469L6.17551 10.5107C5.54818 11.1481 4.70239 11.5037 3.82235 11.5C2.94232 11.4963 2.09936 11.1336 1.47707 10.4909C0.854792 9.8483 0.503611 8.97775 0.500028 8.06891C0.496444 7.16008 0.840748 6.2866 1.45794 5.63874L5.78243 1.17272C5.98895 0.95944 6.23412 0.790259 6.50395 0.674834C6.77378 0.559409 7.06298 0.5 7.35504 0.5C7.64711 0.5 7.93631 0.559409 8.20614 0.674834C8.47597 0.790259 8.72114 0.95944 8.92766 1.17272C9.13418 1.386 9.298 1.63919 9.40977 1.91785C9.52153 2.19652 9.57906 2.49518 9.57906 2.7968C9.57906 3.09842 9.52153 3.39709 9.40977 3.67575C9.298 3.95441 9.13418 4.20761 8.92766 4.42089L4.60317 8.88691C4.3946 9.10231 4.1117 9.22333 3.81673 9.22333C3.52175 9.22333 3.23886 9.10231 3.03028 8.88691C2.8217 8.6715 2.70452 8.37935 2.70452 8.07472C2.70452 7.77009 2.8217 7.47794 3.03028 7.26254L6.96168 3.20304"
+                                                stroke="#3B3731" stroke-linecap="round" />
+                                        </svg> Attach &nbsp;</span>
+                                    <hr class="vertical-line-1">
+                                    <span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"
+                                            viewBox="0 0 12 12" fill="none">
+                                            <path
+                                                d="M10.2778 0.5H1.72222C1.04721 0.5 0.5 1.04721 0.5 1.72222V10.2778C0.5 10.9528 1.04721 11.5 1.72222 11.5H10.2778C10.9528 11.5 11.5 10.9528 11.5 10.2778V1.72222C11.5 1.04721 10.9528 0.5 10.2778 0.5Z"
+                                                stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                                            <path
+                                                d="M4.16656 5.3889C4.84157 5.3889 5.38878 4.84169 5.38878 4.16668C5.38878 3.49167 4.84157 2.94446 4.16656 2.94446C3.49154 2.94446 2.94434 3.49167 2.94434 4.16668C2.94434 4.84169 3.49154 5.3889 4.16656 5.3889Z"
+                                                stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                                            <path
+                                                d="M11.5002 7.83346L9.61427 5.94757C9.38507 5.71844 9.07425 5.58972 8.75016 5.58972C8.42607 5.58972 8.11525 5.71844 7.88605 5.94757L2.3335 11.5001"
+                                                stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg> Upload
                                     </span>
-                                </div>
-
-
-                                <div class="fs-input-footer">
-                                    <div><span><svg xmlns="http://www.w3.org/2000/svg" width="11" height="12"
-                                                viewBox="0 0 11 12" fill="none">
-                                                <path
-                                                    d="M10.5 6.04469L6.17551 10.5107C5.54818 11.1481 4.70239 11.5037 3.82235 11.5C2.94232 11.4963 2.09936 11.1336 1.47707 10.4909C0.854792 9.8483 0.503611 8.97775 0.500028 8.06891C0.496444 7.16008 0.840748 6.2866 1.45794 5.63874L5.78243 1.17272C5.98895 0.95944 6.23412 0.790259 6.50395 0.674834C6.77378 0.559409 7.06298 0.5 7.35504 0.5C7.64711 0.5 7.93631 0.559409 8.20614 0.674834C8.47597 0.790259 8.72114 0.95944 8.92766 1.17272C9.13418 1.386 9.298 1.63919 9.40977 1.91785C9.52153 2.19652 9.57906 2.49518 9.57906 2.7968C9.57906 3.09842 9.52153 3.39709 9.40977 3.67575C9.298 3.95441 9.13418 4.20761 8.92766 4.42089L4.60317 8.88691C4.3946 9.10231 4.1117 9.22333 3.81673 9.22333C3.52175 9.22333 3.23886 9.10231 3.03028 8.88691C2.8217 8.6715 2.70452 8.37935 2.70452 8.07472C2.70452 7.77009 2.8217 7.47794 3.03028 7.26254L6.96168 3.20304"
-                                                    stroke="#3B3731" stroke-linecap="round" />
-                                            </svg> Attach &nbsp;</span>
-                                        <hr class="vertical-line-1">
-                                        <span>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"
-                                                viewBox="0 0 12 12" fill="none">
-                                                <path
-                                                    d="M10.2778 0.5H1.72222C1.04721 0.5 0.5 1.04721 0.5 1.72222V10.2778C0.5 10.9528 1.04721 11.5 1.72222 11.5H10.2778C10.9528 11.5 11.5 10.9528 11.5 10.2778V1.72222C11.5 1.04721 10.9528 0.5 10.2778 0.5Z"
-                                                    stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
-                                                <path
-                                                    d="M4.16656 5.3889C4.84157 5.3889 5.38878 4.84169 5.38878 4.16668C5.38878 3.49167 4.84157 2.94446 4.16656 2.94446C3.49154 2.94446 2.94434 3.49167 2.94434 4.16668C2.94434 4.84169 3.49154 5.3889 4.16656 5.3889Z"
-                                                    stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
-                                                <path
-                                                    d="M11.5002 7.83346L9.61427 5.94757C9.38507 5.71844 9.07425 5.58972 8.75016 5.58972C8.42607 5.58972 8.11525 5.71844 7.88605 5.94757L2.3335 11.5001"
-                                                    stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
-                                            </svg> Upload
-                                        </span>
-
-                                    </div>
-                                    <div> <span>0/3,000</span></div>
-
 
                                 </div>
+                                <div> <span>0/3,000</span></div>
+
+
                             </div>
                         </div>
-
-
                     </div>
 
                 </div>
@@ -2321,7 +2498,7 @@
                             </svg></span> FursGo Support
                     </div>
 
-                    <div class="fs-card-body fs-2">
+                    <div class="fs-card-body fs-2" id="fs-card-body">
 
                         <div class="fs-chat-bubble fs-user-msg" style="height: 56px;">
                             lorem ipsum dolor sit amet.
@@ -2353,62 +2530,408 @@
 
                         </div>
 
-                        <div class="fs-msg-section">
-                            <div class="fs-input-area">
-                                <div class="fs-chat-input-wrapper">
-                                    <input type="text" class="fs-chat-input" placeholder="Write a message...">
-
-                                    <span class="fs-send-icon">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                            viewBox="0 0 20 20" fill="none">
-                                            <path
-                                                d="M18.2448 0.0763204C19.2868 -0.287756 20.2878 0.713198 19.9237 1.75518L13.8471 19.118C13.4522 20.2441 11.8831 20.3077 11.399 19.2175L8.46685 12.6211L12.5938 8.49316C12.7297 8.34735 12.8036 8.15449 12.8001 7.95522C12.7966 7.75595 12.7159 7.56583 12.575 7.4249C12.434 7.28398 12.2439 7.20325 12.0446 7.19974C11.8454 7.19622 11.6525 7.27019 11.5067 7.40605L7.3787 11.5329L0.782123 8.60084C-0.308075 8.11575 -0.243464 6.54765 0.881605 6.15281L18.2448 0.0763204Z"
-                                                fill="#FFC97A" />
-                                        </svg>
-                                    </span>
+                        <div class="fs-option-buttons">
+                            <button class="fs-opt-btn fs-submit-request">
+                                <div>
+                                    <p> Yes, submit request</p>
                                 </div>
 
+                                <div> <span><svg xmlns="http://www.w3.org/2000/svg" width="8" height="15" viewBox="0 0 8 15" fill="none">
+                                            <path d="M0.5 0.5L7.06033 7.06033L0.610127 13.5105" stroke="#9D9B98" stroke-linecap="round" stroke-linejoin="round"></path>
+                                        </svg></span></div>
 
-                                <div class="fs-input-footer">
-                                    <div><span><svg xmlns="http://www.w3.org/2000/svg" width="11" height="12"
-                                                viewBox="0 0 11 12" fill="none">
-                                                <path
-                                                    d="M10.5 6.04469L6.17551 10.5107C5.54818 11.1481 4.70239 11.5037 3.82235 11.5C2.94232 11.4963 2.09936 11.1336 1.47707 10.4909C0.854792 9.8483 0.503611 8.97775 0.500028 8.06891C0.496444 7.16008 0.840748 6.2866 1.45794 5.63874L5.78243 1.17272C5.98895 0.95944 6.23412 0.790259 6.50395 0.674834C6.77378 0.559409 7.06298 0.5 7.35504 0.5C7.64711 0.5 7.93631 0.559409 8.20614 0.674834C8.47597 0.790259 8.72114 0.95944 8.92766 1.17272C9.13418 1.386 9.298 1.63919 9.40977 1.91785C9.52153 2.19652 9.57906 2.49518 9.57906 2.7968C9.57906 3.09842 9.52153 3.39709 9.40977 3.67575C9.298 3.95441 9.13418 4.20761 8.92766 4.42089L4.60317 8.88691C4.3946 9.10231 4.1117 9.22333 3.81673 9.22333C3.52175 9.22333 3.23886 9.10231 3.03028 8.88691C2.8217 8.6715 2.70452 8.37935 2.70452 8.07472C2.70452 7.77009 2.8217 7.47794 3.03028 7.26254L6.96168 3.20304"
-                                                    stroke="#3B3731" stroke-linecap="round" />
-                                            </svg> Attach</span>
-                                        <hr class="vertical-line-1">
-                                        <span>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"
-                                                viewBox="0 0 12 12" fill="none">
-                                                <path
-                                                    d="M10.2778 0.5H1.72222C1.04721 0.5 0.5 1.04721 0.5 1.72222V10.2778C0.5 10.9528 1.04721 11.5 1.72222 11.5H10.2778C10.9528 11.5 11.5 10.9528 11.5 10.2778V1.72222C11.5 1.04721 10.9528 0.5 10.2778 0.5Z"
-                                                    stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
-                                                <path
-                                                    d="M4.16656 5.3889C4.84157 5.3889 5.38878 4.84169 5.38878 4.16668C5.38878 3.49167 4.84157 2.94446 4.16656 2.94446C3.49154 2.94446 2.94434 3.49167 2.94434 4.16668C2.94434 4.84169 3.49154 5.3889 4.16656 5.3889Z"
-                                                    stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
-                                                <path
-                                                    d="M11.5002 7.83346L9.61427 5.94757C9.38507 5.71844 9.07425 5.58972 8.75016 5.58972C8.42607 5.58972 8.11525 5.71844 7.88605 5.94757L2.3335 11.5001"
-                                                    stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
-                                            </svg> Upload
-                                        </span>
+                            </button>
 
-                                    </div>
-                                    <div> <span>0/3,000</span></div>
-
-
+                            <button class="fs-opt-btn">
+                                <div>
+                                    <p>No, keep trying.</p>
                                 </div>
-                            </div>
+
+                                <div> <span><svg xmlns="http://www.w3.org/2000/svg" width="8" height="15" viewBox="0 0 8 15" fill="none">
+                                            <path d="M0.5 0.5L7.06033 7.06033L0.610127 13.5105" stroke="#9D9B98" stroke-linecap="round" stroke-linejoin="round"></path>
+                                        </svg></span></div>
+                            </button>
                         </div>
 
 
                     </div>
 
+                    <div class="fs-msg-section">
+                        <div class="fs-input-area">
+                            <div class="fs-chat-input-wrapper">
+                                <input type="text" class="fs-chat-input" placeholder="Write a message...">
+
+                                <span class="fs-send-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                        viewBox="0 0 20 20" fill="none">
+                                        <path
+                                            d="M18.2448 0.0763204C19.2868 -0.287756 20.2878 0.713198 19.9237 1.75518L13.8471 19.118C13.4522 20.2441 11.8831 20.3077 11.399 19.2175L8.46685 12.6211L12.5938 8.49316C12.7297 8.34735 12.8036 8.15449 12.8001 7.95522C12.7966 7.75595 12.7159 7.56583 12.575 7.4249C12.434 7.28398 12.2439 7.20325 12.0446 7.19974C11.8454 7.19622 11.6525 7.27019 11.5067 7.40605L7.3787 11.5329L0.782123 8.60084C-0.308075 8.11575 -0.243464 6.54765 0.881605 6.15281L18.2448 0.0763204Z"
+                                            fill="#FFC97A" />
+                                    </svg>
+                                </span>
+                            </div>
+
+
+                            <div class="fs-input-footer">
+                                <div><span><svg xmlns="http://www.w3.org/2000/svg" width="11" height="12"
+                                            viewBox="0 0 11 12" fill="none">
+                                            <path
+                                                d="M10.5 6.04469L6.17551 10.5107C5.54818 11.1481 4.70239 11.5037 3.82235 11.5C2.94232 11.4963 2.09936 11.1336 1.47707 10.4909C0.854792 9.8483 0.503611 8.97775 0.500028 8.06891C0.496444 7.16008 0.840748 6.2866 1.45794 5.63874L5.78243 1.17272C5.98895 0.95944 6.23412 0.790259 6.50395 0.674834C6.77378 0.559409 7.06298 0.5 7.35504 0.5C7.64711 0.5 7.93631 0.559409 8.20614 0.674834C8.47597 0.790259 8.72114 0.95944 8.92766 1.17272C9.13418 1.386 9.298 1.63919 9.40977 1.91785C9.52153 2.19652 9.57906 2.49518 9.57906 2.7968C9.57906 3.09842 9.52153 3.39709 9.40977 3.67575C9.298 3.95441 9.13418 4.20761 8.92766 4.42089L4.60317 8.88691C4.3946 9.10231 4.1117 9.22333 3.81673 9.22333C3.52175 9.22333 3.23886 9.10231 3.03028 8.88691C2.8217 8.6715 2.70452 8.37935 2.70452 8.07472C2.70452 7.77009 2.8217 7.47794 3.03028 7.26254L6.96168 3.20304"
+                                                stroke="#3B3731" stroke-linecap="round" />
+                                        </svg> Attach</span>
+                                    <hr class="vertical-line-1">
+                                    <span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"
+                                            viewBox="0 0 12 12" fill="none">
+                                            <path
+                                                d="M10.2778 0.5H1.72222C1.04721 0.5 0.5 1.04721 0.5 1.72222V10.2778C0.5 10.9528 1.04721 11.5 1.72222 11.5H10.2778C10.9528 11.5 11.5 10.9528 11.5 10.2778V1.72222C11.5 1.04721 10.9528 0.5 10.2778 0.5Z"
+                                                stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                                            <path
+                                                d="M4.16656 5.3889C4.84157 5.3889 5.38878 4.84169 5.38878 4.16668C5.38878 3.49167 4.84157 2.94446 4.16656 2.94446C3.49154 2.94446 2.94434 3.49167 2.94434 4.16668C2.94434 4.84169 3.49154 5.3889 4.16656 5.3889Z"
+                                                stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                                            <path
+                                                d="M11.5002 7.83346L9.61427 5.94757C9.38507 5.71844 9.07425 5.58972 8.75016 5.58972C8.42607 5.58972 8.11525 5.71844 7.88605 5.94757L2.3335 11.5001"
+                                                stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg> Upload
+                                    </span>
+
+                                </div>
+                                <div> <span>0/3,000</span></div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="fs-card fs-card-4">
+
+                    <div class="fs-card-header">
+                        <span class="fs-back-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="9" height="16"
+                                viewBox="0 0 9 16" fill="none">
+                                <path d="M7.74365 14.3737L1.00021 7.63022L7.63045 0.999976" stroke="white"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg></span>
+                        <span class="fs-icon"><svg xmlns="http://www.w3.org/2000/svg" width="34" height="25"
+                                viewBox="0 0 34 25" fill="none">
+                                <path
+                                    d="M27.6424 11.2471C30.7873 12.249 32.19 13.7434 32.19 16.0949C32.19 18.1864 30.282 19.8096 29.1457 20.5918C29.0918 20.6287 29.0478 20.6782 29.0174 20.736C28.987 20.7938 28.971 20.8581 28.971 20.9233V22.5512C28.971 23.251 28.2678 23.7266 27.6859 23.3379C27.2333 23.0356 26.8194 22.6756 26.4554 22.2657C26.4091 22.2135 26.35 22.1743 26.284 22.1519C26.218 22.1295 26.1472 22.1246 26.0788 22.1377C25.8494 22.182 25.6152 22.2447 25.3778 22.3083C24.9674 22.4186 24.5441 22.5328 24.1425 22.5328C22.076 22.5328 20.629 22.0886 19.1499 21.0014"
+                                    stroke="#FFF8EE" stroke-width="2" stroke-linecap="round" />
+                                <path
+                                    d="M13.0184 19.3179C11.9642 19.3179 10.7659 19.1159 9.7326 18.9188C9.66412 18.9064 9.59363 18.9117 9.52775 18.9341C9.46187 18.9565 9.40276 18.9952 9.35598 19.0467C8.33359 20.1998 7.20024 21.0923 6.26259 21.7256C5.63442 22.1499 4.82848 21.6768 4.82848 20.9188V17.7044C4.82845 17.6391 4.81254 17.5748 4.78211 17.5171C4.75169 17.4593 4.70767 17.4098 4.65385 17.3729C2.53093 15.9122 0 13.4594 0 10.0609C0 4.41886 5.54148 0 12.616 0C19.6463 0 24.9471 4.3247 24.9471 10.0593C24.9471 15.5976 20.1533 19.3179 13.0184 19.3179Z"
+                                    fill="#FFF8EE" />
+                            </svg></span> FursGo Support
+                    </div>
+
+                    <div class="fs-card-body fs-2" id="fs-card-body">
+
+                        <div class="fs-chat-bubble fs-bot-msg">
+                            <p>Done! Your request has been submitted (ticket #4821). </p>
+
+                            <p class="fs-16-700-f-color mt-3">Here's what to expect:</p>
+                            <ul class="ul-list-style">
+                                <li>Response time: within 24 hours on business days.</li>
+                                <li>Where to check: your email inbox, or your account under 'Support tickets'.</li>
+                                <li>Reference: ticket #4821</li>
+                            </ul>
+
+                            <p class="mt-3">Is there anything else I can help you with today?</p>
+
+                        </div>
+
+                        <div class="fs-option-buttons">
+                            <button class="fs-opt-btn iamdone-btn">
+                                <div>
+                                    <p> No, I'm done thanks!</p>
+                                </div>
+
+                                <div> <span><svg xmlns="http://www.w3.org/2000/svg" width="8" height="15" viewBox="0 0 8 15" fill="none">
+                                            <path d="M0.5 0.5L7.06033 7.06033L0.610127 13.5105" stroke="#9D9B98" stroke-linecap="round" stroke-linejoin="round"></path>
+                                        </svg></span></div>
+
+                            </button>
+
+                            <button class="fs-opt-btn">
+                                <div>
+                                    <p>Yes, I have another question.</p>
+                                </div>
+
+                                <div> <span><svg xmlns="http://www.w3.org/2000/svg" width="8" height="15" viewBox="0 0 8 15" fill="none">
+                                            <path d="M0.5 0.5L7.06033 7.06033L0.610127 13.5105" stroke="#9D9B98" stroke-linecap="round" stroke-linejoin="round"></path>
+                                        </svg></span></div>
+                            </button>
+                        </div>
+
+
+                    </div>
+
+                    <div class="fs-msg-section">
+                        <div class="fs-input-area">
+                            <div class="fs-chat-input-wrapper">
+                                <input type="text" class="fs-chat-input" placeholder="Write a message...">
+
+                                <span class="fs-send-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                        viewBox="0 0 20 20" fill="none">
+                                        <path
+                                            d="M18.2448 0.0763204C19.2868 -0.287756 20.2878 0.713198 19.9237 1.75518L13.8471 19.118C13.4522 20.2441 11.8831 20.3077 11.399 19.2175L8.46685 12.6211L12.5938 8.49316C12.7297 8.34735 12.8036 8.15449 12.8001 7.95522C12.7966 7.75595 12.7159 7.56583 12.575 7.4249C12.434 7.28398 12.2439 7.20325 12.0446 7.19974C11.8454 7.19622 11.6525 7.27019 11.5067 7.40605L7.3787 11.5329L0.782123 8.60084C-0.308075 8.11575 -0.243464 6.54765 0.881605 6.15281L18.2448 0.0763204Z"
+                                            fill="#FFC97A" />
+                                    </svg>
+                                </span>
+                            </div>
+
+
+                            <div class="fs-input-footer">
+                                <div><span><svg xmlns="http://www.w3.org/2000/svg" width="11" height="12"
+                                            viewBox="0 0 11 12" fill="none">
+                                            <path
+                                                d="M10.5 6.04469L6.17551 10.5107C5.54818 11.1481 4.70239 11.5037 3.82235 11.5C2.94232 11.4963 2.09936 11.1336 1.47707 10.4909C0.854792 9.8483 0.503611 8.97775 0.500028 8.06891C0.496444 7.16008 0.840748 6.2866 1.45794 5.63874L5.78243 1.17272C5.98895 0.95944 6.23412 0.790259 6.50395 0.674834C6.77378 0.559409 7.06298 0.5 7.35504 0.5C7.64711 0.5 7.93631 0.559409 8.20614 0.674834C8.47597 0.790259 8.72114 0.95944 8.92766 1.17272C9.13418 1.386 9.298 1.63919 9.40977 1.91785C9.52153 2.19652 9.57906 2.49518 9.57906 2.7968C9.57906 3.09842 9.52153 3.39709 9.40977 3.67575C9.298 3.95441 9.13418 4.20761 8.92766 4.42089L4.60317 8.88691C4.3946 9.10231 4.1117 9.22333 3.81673 9.22333C3.52175 9.22333 3.23886 9.10231 3.03028 8.88691C2.8217 8.6715 2.70452 8.37935 2.70452 8.07472C2.70452 7.77009 2.8217 7.47794 3.03028 7.26254L6.96168 3.20304"
+                                                stroke="#3B3731" stroke-linecap="round" />
+                                        </svg> Attach</span>
+                                    <hr class="vertical-line-1">
+                                    <span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"
+                                            viewBox="0 0 12 12" fill="none">
+                                            <path
+                                                d="M10.2778 0.5H1.72222C1.04721 0.5 0.5 1.04721 0.5 1.72222V10.2778C0.5 10.9528 1.04721 11.5 1.72222 11.5H10.2778C10.9528 11.5 11.5 10.9528 11.5 10.2778V1.72222C11.5 1.04721 10.9528 0.5 10.2778 0.5Z"
+                                                stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                                            <path
+                                                d="M4.16656 5.3889C4.84157 5.3889 5.38878 4.84169 5.38878 4.16668C5.38878 3.49167 4.84157 2.94446 4.16656 2.94446C3.49154 2.94446 2.94434 3.49167 2.94434 4.16668C2.94434 4.84169 3.49154 5.3889 4.16656 5.3889Z"
+                                                stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                                            <path
+                                                d="M11.5002 7.83346L9.61427 5.94757C9.38507 5.71844 9.07425 5.58972 8.75016 5.58972C8.42607 5.58972 8.11525 5.71844 7.88605 5.94757L2.3335 11.5001"
+                                                stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg> Upload
+                                    </span>
+
+                                </div>
+                                <div> <span>0/3,000</span></div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="fs-card fs-card-5">
+
+                    <div class="fs-rating-modal">
+
+                        <div class="fs-card-header">
+                            <span class="fs-back-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="9" height="16" viewBox="0 0 9 16"
+                                    fill="none">
+                                    <path d="M7.74365 14.3737L1.00021 7.63022L7.63045 0.999976" stroke="white" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg></span>
+                            <span class="fs-icon"><svg xmlns="http://www.w3.org/2000/svg" width="34" height="25" viewBox="0 0 34 25"
+                                    fill="none">
+                                    <path
+                                        d="M27.6424 11.2471C30.7873 12.249 32.19 13.7434 32.19 16.0949C32.19 18.1864 30.282 19.8096 29.1457 20.5918C29.0918 20.6287 29.0478 20.6782 29.0174 20.736C28.987 20.7938 28.971 20.8581 28.971 20.9233V22.5512C28.971 23.251 28.2678 23.7266 27.6859 23.3379C27.2333 23.0356 26.8194 22.6756 26.4554 22.2657C26.4091 22.2135 26.35 22.1743 26.284 22.1519C26.218 22.1295 26.1472 22.1246 26.0788 22.1377C25.8494 22.182 25.6152 22.2447 25.3778 22.3083C24.9674 22.4186 24.5441 22.5328 24.1425 22.5328C22.076 22.5328 20.629 22.0886 19.1499 21.0014"
+                                        stroke="#FFF8EE" stroke-width="2" stroke-linecap="round" />
+                                    <path
+                                        d="M13.0184 19.3179C11.9642 19.3179 10.7659 19.1159 9.7326 18.9188C9.66412 18.9064 9.59363 18.9117 9.52775 18.9341C9.46187 18.9565 9.40276 18.9952 9.35598 19.0467C8.33359 20.1998 7.20024 21.0923 6.26259 21.7256C5.63442 22.1499 4.82848 21.6768 4.82848 20.9188V17.7044C4.82845 17.6391 4.81254 17.5748 4.78211 17.5171C4.75169 17.4593 4.70767 17.4098 4.65385 17.3729C2.53093 15.9122 0 13.4594 0 10.0609C0 4.41886 5.54148 0 12.616 0C19.6463 0 24.9471 4.3247 24.9471 10.0593C24.9471 15.5976 20.1533 19.3179 13.0184 19.3179Z"
+                                        fill="#FFF8EE" />
+                                </svg></span> FursGo Support
+                        </div>
+
+                        <div class="fs-rating-content">
+                            <h1 class="fs-25-500-italic text-center">Thanks for reaching out!</h1>
+                            <h2>How helpful was<br>this conversation?</h2>
+
+                            <div class="fs-stars">
+                                <span class="fs-star" data-value="1"><svg xmlns="http://www.w3.org/2000/svg" width="34" height="33" viewBox="0 0 34 33" fill="none">
+                                        <path
+                                            d="M14.9871 1.39799C15.5755 -0.466011 18.2133 -0.466007 18.8016 1.39799L21.3879 9.59177C21.6505 10.424 22.4225 10.9898 23.2951 10.9898L31.785 10.9898C33.7084 10.9898 34.5231 13.4394 32.9828 14.5914L26.0156 19.8022C25.3349 20.3113 25.0503 21.1952 25.3062 22.0058L27.9438 30.3621C28.5286 32.2149 26.3946 33.7294 24.8387 32.5657L18.0922 27.52C17.382 26.9888 16.4067 26.9888 15.6965 27.52L8.95006 32.5657C7.39412 33.7294 5.26012 32.2149 5.84496 30.3621L8.4825 22.0058C8.73837 21.1952 8.45385 20.3113 7.77311 19.8022L0.80589 14.5914C-0.734361 13.4394 0.0803623 10.9898 2.00374 10.9898L10.4936 10.9898C11.3663 10.9898 12.1382 10.424 12.4008 9.59177L14.9871 1.39799Z"
+                                            fill="#FFC97A" />
+                                    </svg></span>
+                                <span class="fs-star" data-value="2"><svg xmlns="http://www.w3.org/2000/svg" width="34" height="33" viewBox="0 0 34 33" fill="none">
+                                        <path
+                                            d="M14.9871 1.39799C15.5755 -0.466011 18.2133 -0.466007 18.8016 1.39799L21.3879 9.59177C21.6505 10.424 22.4225 10.9898 23.2951 10.9898L31.785 10.9898C33.7084 10.9898 34.5231 13.4394 32.9828 14.5914L26.0156 19.8022C25.3349 20.3113 25.0503 21.1952 25.3062 22.0058L27.9438 30.3621C28.5286 32.2149 26.3946 33.7294 24.8387 32.5657L18.0922 27.52C17.382 26.9888 16.4067 26.9888 15.6965 27.52L8.95006 32.5657C7.39412 33.7294 5.26012 32.2149 5.84496 30.3621L8.4825 22.0058C8.73837 21.1952 8.45385 20.3113 7.77311 19.8022L0.80589 14.5914C-0.734361 13.4394 0.0803623 10.9898 2.00374 10.9898L10.4936 10.9898C11.3663 10.9898 12.1382 10.424 12.4008 9.59177L14.9871 1.39799Z"
+                                            fill="#FFC97A" />
+                                    </svg></span>
+                                <span class="fs-star" data-value="3"><svg xmlns="http://www.w3.org/2000/svg" width="34" height="33" viewBox="0 0 34 33" fill="none">
+                                        <path
+                                            d="M14.9871 1.39799C15.5755 -0.466011 18.2133 -0.466007 18.8016 1.39799L21.3879 9.59177C21.6505 10.424 22.4225 10.9898 23.2951 10.9898L31.785 10.9898C33.7084 10.9898 34.5231 13.4394 32.9828 14.5914L26.0156 19.8022C25.3349 20.3113 25.0503 21.1952 25.3062 22.0058L27.9438 30.3621C28.5286 32.2149 26.3946 33.7294 24.8387 32.5657L18.0922 27.52C17.382 26.9888 16.4067 26.9888 15.6965 27.52L8.95006 32.5657C7.39412 33.7294 5.26012 32.2149 5.84496 30.3621L8.4825 22.0058C8.73837 21.1952 8.45385 20.3113 7.77311 19.8022L0.80589 14.5914C-0.734361 13.4394 0.0803623 10.9898 2.00374 10.9898L10.4936 10.9898C11.3663 10.9898 12.1382 10.424 12.4008 9.59177L14.9871 1.39799Z"
+                                            fill="#FFC97A" />
+                                    </svg></span>
+                                <span class="fs-star" data-value="4"><svg xmlns="http://www.w3.org/2000/svg" width="34" height="33" viewBox="0 0 34 33" fill="none">
+                                        <path
+                                            d="M14.9871 1.39799C15.5755 -0.466011 18.2133 -0.466007 18.8016 1.39799L21.3879 9.59177C21.6505 10.424 22.4225 10.9898 23.2951 10.9898L31.785 10.9898C33.7084 10.9898 34.5231 13.4394 32.9828 14.5914L26.0156 19.8022C25.3349 20.3113 25.0503 21.1952 25.3062 22.0058L27.9438 30.3621C28.5286 32.2149 26.3946 33.7294 24.8387 32.5657L18.0922 27.52C17.382 26.9888 16.4067 26.9888 15.6965 27.52L8.95006 32.5657C7.39412 33.7294 5.26012 32.2149 5.84496 30.3621L8.4825 22.0058C8.73837 21.1952 8.45385 20.3113 7.77311 19.8022L0.80589 14.5914C-0.734361 13.4394 0.0803623 10.9898 2.00374 10.9898L10.4936 10.9898C11.3663 10.9898 12.1382 10.424 12.4008 9.59177L14.9871 1.39799Z"
+                                            fill="#FFC97A" />
+                                    </svg></span>
+                                <span class="fs-star" data-value="5" class="fs-inactive"><svg xmlns="http://www.w3.org/2000/svg" width="34" height="33"
+                                        viewBox="0 0 34 33" fill="none">
+                                        <path
+                                            d="M14.9871 1.39799C15.5755 -0.466011 18.2133 -0.466007 18.8016 1.39799L21.3879 9.59177C21.6505 10.424 22.4225 10.9898 23.2951 10.9898L31.785 10.9898C33.7084 10.9898 34.5231 13.4394 32.9828 14.5914L26.0156 19.8022C25.3349 20.3113 25.0503 21.1952 25.3062 22.0058L27.9438 30.3621C28.5286 32.2149 26.3946 33.7294 24.8387 32.5657L18.0922 27.52C17.382 26.9888 16.4067 26.9888 15.6965 27.52L8.95006 32.5657C7.39412 33.7294 5.26012 32.2149 5.84496 30.3621L8.4825 22.0058C8.73837 21.1952 8.45385 20.3113 7.77311 19.8022L0.80589 14.5914C-0.734361 13.4394 0.0803623 10.9898 2.00374 10.9898L10.4936 10.9898C11.3663 10.9898 12.1382 10.424 12.4008 9.59177L14.9871 1.39799Z"
+                                            fill="#EFEFEF" />
+                                    </svg></span>
+
+                                <input type="hidden" id="ratingValue" value="0">
+                            </div>
+
+                            <p class="fs-ref">Your reference ID: FG-48291</p>
+
+
+                        </div>
+                        <p class="fs-end end-conversation cursor">End of conversation.</p>
+
+                    </div>
+                </div>
+
+                <div class="fs-card fs-card-6">
+
+                    <div class="fs-rating-modal">
+
+                        <div class="fs-card-header">
+                            <span class="fs-back-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="9" height="16" viewBox="0 0 9 16"
+                                    fill="none">
+                                    <path d="M7.74365 14.3737L1.00021 7.63022L7.63045 0.999976" stroke="white" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg></span>
+                            <span class="fs-icon"><svg xmlns="http://www.w3.org/2000/svg" width="34" height="25" viewBox="0 0 34 25"
+                                    fill="none">
+                                    <path
+                                        d="M27.6424 11.2471C30.7873 12.249 32.19 13.7434 32.19 16.0949C32.19 18.1864 30.282 19.8096 29.1457 20.5918C29.0918 20.6287 29.0478 20.6782 29.0174 20.736C28.987 20.7938 28.971 20.8581 28.971 20.9233V22.5512C28.971 23.251 28.2678 23.7266 27.6859 23.3379C27.2333 23.0356 26.8194 22.6756 26.4554 22.2657C26.4091 22.2135 26.35 22.1743 26.284 22.1519C26.218 22.1295 26.1472 22.1246 26.0788 22.1377C25.8494 22.182 25.6152 22.2447 25.3778 22.3083C24.9674 22.4186 24.5441 22.5328 24.1425 22.5328C22.076 22.5328 20.629 22.0886 19.1499 21.0014"
+                                        stroke="#FFF8EE" stroke-width="2" stroke-linecap="round" />
+                                    <path
+                                        d="M13.0184 19.3179C11.9642 19.3179 10.7659 19.1159 9.7326 18.9188C9.66412 18.9064 9.59363 18.9117 9.52775 18.9341C9.46187 18.9565 9.40276 18.9952 9.35598 19.0467C8.33359 20.1998 7.20024 21.0923 6.26259 21.7256C5.63442 22.1499 4.82848 21.6768 4.82848 20.9188V17.7044C4.82845 17.6391 4.81254 17.5748 4.78211 17.5171C4.75169 17.4593 4.70767 17.4098 4.65385 17.3729C2.53093 15.9122 0 13.4594 0 10.0609C0 4.41886 5.54148 0 12.616 0C19.6463 0 24.9471 4.3247 24.9471 10.0593C24.9471 15.5976 20.1533 19.3179 13.0184 19.3179Z"
+                                        fill="#FFF8EE" />
+                                </svg></span> FursGo Support
+                        </div>
+
+                        <div class="fs-rating-content justify-content-center mt-5">
+
+                            <h2>Thank you for your feedback!</h2>
+                            <p class="fs-ref mt-1">Your reference ID: FG-48291</p>
+
+
+                        </div>
+                        <p class="fs-end">End of conversation.</p>
+
+                    </div>
                 </div>
 
             </div>
         </div>
     </div>
+    <script>
+        // rating star selection logic
 
+        document.addEventListener("DOMContentLoaded", function() {
+
+            const stars = document.querySelectorAll(".fs-star");
+            const ratingInput = document.getElementById("ratingValue");
+
+            let selectedRating = 0;
+
+            stars.forEach(star => {
+
+                // CLICK
+                star.addEventListener("click", function() {
+                    selectedRating = parseInt(this.dataset.value);
+                    ratingInput.value = selectedRating;
+                    updateStars(selectedRating);
+                });
+
+                // HOVER preview
+                star.addEventListener("mouseover", function() {
+                    const hoverValue = parseInt(this.dataset.value);
+                    updateStars(hoverValue);
+                });
+
+                // RESET on leave
+                star.addEventListener("mouseout", function() {
+                    updateStars(selectedRating);
+                });
+
+            });
+
+            function updateStars(rating) {
+                stars.forEach(star => {
+                    const value = parseInt(star.dataset.value);
+
+                    if (value <= rating) {
+                        star.classList.add("active");
+                    } else {
+                        star.classList.remove("active");
+                    }
+                });
+            }
+
+        });
+
+        // rating star selection logic ends
+
+        document.addEventListener("DOMContentLoaded", function() {
+
+            const card1 = document.querySelector(".fs-card-1");
+            const card2 = document.querySelector(".fs-card-2");
+            const card3 = document.querySelector(".fs-card-3");
+            const card4 = document.querySelector(".fs-card-4");
+            const card5 = document.querySelector(".fs-card-5");
+            const card6 = document.querySelector(".fs-card-6");
+
+            const bookingBtn = document.querySelector(".fs-card-1 .fs-menu-item:first-child");
+            const optionButtons = document.querySelectorAll(".fs-card-2 .fs-opt-btn");
+            const submitRequestBtn = document.querySelector(".fs-submit-request");
+            const doneBtn = document.querySelector(".iamdone-btn");
+            const endConversationBtn = document.querySelector(".end-conversation");
+            const backBtns = document.querySelectorAll(".fs-back-arrow");
+
+            let currentStep = 1;
+
+            function showCard(step) {
+
+                currentStep = step;
+
+                [card1, card2, card3, card4, card5, card6].forEach(c => {
+                    if (c) c.style.display = "none";
+                });
+
+                const map = {
+                    1: card1,
+                    2: card2,
+                    3: card3,
+                    4: card4,
+                    5: card5,
+                    6: card6
+                };
+
+                map[step].style.display = "block";
+
+                document.querySelectorAll('.fs-card-body').forEach(chatBody => {
+                    chatBody.scrollTop = chatBody.scrollHeight;
+                });
+            }
+
+            // initial
+            showCard(1);
+
+            bookingBtn.addEventListener("click", () => showCard(2));
+
+            optionButtons.forEach(btn => {
+                btn.addEventListener("click", () => showCard(3));
+            });
+
+            submitRequestBtn.addEventListener("click", () => showCard(4));
+
+            doneBtn.addEventListener("click", () => showCard(5));
+
+            endConversationBtn.addEventListener("click", () => showCard(6));
+
+            // ✅ BACK BUTTON (FIXED)
+            backBtns.forEach(btn => {
+                btn.addEventListener("click", function() {
+
+                    if (currentStep > 1) {
+                        showCard(currentStep - 1);
+                    }
+                });
+            });
+
+        });
+    </script>
 
 
     <script>
@@ -2435,7 +2958,7 @@
 
 
         // Close on outside click
-        document.addEventListener('click', function (e) {
+        document.addEventListener('click', function(e) {
             const panel = document.getElementById('chat-panel');
             const btn = document.getElementById('chat-btn');
             const openIcon = document.getElementById('chat-open-icon');
@@ -2461,7 +2984,7 @@
     <!-- cookies popup  -->
 
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
+        document.addEventListener("DOMContentLoaded", function() {
 
             const COOKIE_KEY = "fs_cookie_consent";
 
