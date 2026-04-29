@@ -444,11 +444,35 @@ ul {
   padding: 0;
 }
 
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: white;
+}
+
+.tab-panel {
+  scroll-margin-top: 100px;
+}
+
+#how_it_works {
+  scroll-margin-top: 100px;
+}
+
 nav {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   padding: 49px 20px;
+}
+
+header nav.navbar {
+  transition: padding 0.3s ease;
+  min-height: 80px;
+}
+
+header.scrolled nav.navbar {
+  padding: 15px 20px !important;
 }
 
 nav ul {

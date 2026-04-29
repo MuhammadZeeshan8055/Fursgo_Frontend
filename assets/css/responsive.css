@@ -606,7 +606,7 @@ a {
 .points>div {
     display: flex;
     align-items: center;
-    gap: clamp(20px, 5vw, 40px);
+    gap: clamp(20px, 5vw, 35px);
     padding: 30px 0 0 0;
 }
 
@@ -730,9 +730,6 @@ a {
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 0;
-}
-
-.book-and-pay-content::before {
     background: rgba(203, 220, 232, 0.50);
 }
 
@@ -808,11 +805,12 @@ section.rating-section.section {
     width: 200px;
     height: 200px;
     aspect-ratio: 1/1;
+    position: relative;
 }
 
 .how-it-works-grid {
     display: grid;
-    grid-template-columns: 300px 150px 300px 150px 300px;
+    grid-template-columns: 1fr 150px 1fr 150px 1fr;
     align-items: start;
     max-width: 1200px;
     margin: 0 auto;

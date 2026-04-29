@@ -1988,10 +1988,10 @@
     <section class="container">
 
         <div class="testimonial-header">
-            <header class="bgs-header">
+            <div class="bgs-header">
                 <h2 class="bgs-header-title">Testimonials & trust</h2>
                 <p class="bgs-header-subtitle">→ Hear how providers are earning more with FursGo.</p>
-            </header>
+            </div>
         </div>
 
         <div class="bgs-testimonial-section">

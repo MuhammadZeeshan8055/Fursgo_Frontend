@@ -1,4 +1,4 @@
-<footer class="mt-5 mb-5 footer" style="padding: 6rem;">
+<footer class="mb-5 footer" style="padding: 6rem;">
     <section class="section">
         <div class="container">
             <div class="row align-items-end">
@@ -59,9 +59,9 @@
 
                 <div class="about-us d-flex flex-column mt-xs-5">
                     <ul class="footer-list">
-                        <li><a href="#"><b>About Us</b></a></li>
-                        <li><a href="#">Our Mission</a></li>
-                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="<?= BASE_URL ?>profile_pets_preferences/about_us.php"><b>About Us</b></a></li>
+                        <li><a href="<?= BASE_URL ?>profile_pets_preferences/about_us.php">Our Mission</a></li>
+                        <li><a href="<?= BASE_URL ?>profile_pets_preferences/contact_us.php">Contact Us</a></li>
                     </ul>
                     <div class="social-icons d-flex">
                         <a href="#">
@@ -102,9 +102,8 @@
                 <div class="help-center d-flex flex-column">
                     <ul class="footer-list">
                         <li><a href="#"><b>Help Center</b></a></li>
-                        <li><a href="#">FAQs</a></li>
-                        <li><a href="#">Help & Support</a></li>
-                        <li><a href="#">Company Information</a></li>
+                        <li><a href="<?= BASE_URL ?>support_and_assistance/help_and_support.php">Help & Support</a></li>
+                        <li><a href="<?= BASE_URL ?>profile_pets_preferences/company_information.php">Company Information</a></li>
                     </ul>
 
                     <div class="app-coming-soon mt-xs-5">

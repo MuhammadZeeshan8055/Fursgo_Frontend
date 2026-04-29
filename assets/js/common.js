@@ -142,17 +142,17 @@ document.addEventListener('click', (e) => {
 // tab content scroll js
 document.querySelectorAll('.tab-btn').forEach(btn => {
     btn.addEventListener('click', function () {
-        // Remove active from all tabs/panels
         document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
         document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
 
-        // Activate clicked tab
         this.classList.add('active');
         const target = document.getElementById(this.dataset.tab);
         target.classList.add('active');
 
-        // Scroll to top of the tab panels container
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        // Offset scroll by header height
+        const headerHeight = document.querySelector('header').offsetHeight;
+        const top = target.getBoundingClientRect().top + window.scrollY - headerHeight - 20;
+        window.scrollTo({ top, behavior: 'smooth' });
     });
 });
 
