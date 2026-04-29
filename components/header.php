@@ -40,7 +40,7 @@
                 </div>
                 <div class="col-lg-7">
                     <ul class="menu-items">
-                        <li><a href="<?= BASE_URL ?>index.php#how_it_works">How it works</a></li>
+                        <li><a href="<?= BASE_URL ?>#how_it_works">How it works</a></li>
                         <li><a href="<?= BASE_URL ?>for_groomers_and_hosts.php" class="<?= $currentPage == 'for_groomers_and_hosts.php' ? 'active' : '' ?>">For Groomers & Hosts</a></li>
                         <li><a href="<?= BASE_URL ?>support_and_assistance/help_and_support.php" class="<?= $currentPage == 'help_and_support.php' ? 'active' : '' ?>">Help Centre</a></li>
                     </ul>
