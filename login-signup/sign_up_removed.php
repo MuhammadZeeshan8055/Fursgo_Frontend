@@ -31,7 +31,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 d-flex align-items-center">
+            <div class="col-lg-4 d-flex align-items-center">
                 <div class="login-form mt-5">
                     <h1 class="heading">Sign Up to Fursgo</h1>
 

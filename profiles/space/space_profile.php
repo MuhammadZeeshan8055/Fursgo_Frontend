@@ -891,12 +891,12 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="d-flex align-items-center gap-10 cursor">
-                            <p class="underlined-font normal-font-bold">Filter</p>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                                <path d="M2.5 7.75C2.03587 7.75 1.59075 7.56563 1.26256 7.23744C0.934374 6.90925 0.75 6.46413 0.75 6C0.75 5.53587 0.934374 5.09075 1.26256 4.76256C1.59075 4.43437 2.03587 4.25 2.5 4.25M2.5 7.75C2.96413 7.75 3.40925 7.56563 3.73744 7.23744C4.06563 6.90925 4.25 6.46413 4.25 6C4.25 5.53587 4.06563 5.09075 3.73744 4.76256C3.40925 4.43437 2.96413 4.25 2.5 4.25M2.5 7.75V14.75M2.5 4.25V0.75M7.75 13C7.28587 13 6.84075 12.8156 6.51256 12.4874C6.18437 12.1592 6 11.7141 6 11.25C6 10.7859 6.18437 10.3408 6.51256 10.0126C6.84075 9.68437 7.28587 9.5 7.75 9.5M7.75 13C8.21413 13 8.65925 12.8156 8.98744 12.4874C9.31563 12.1592 9.5 11.7141 9.5 11.25C9.5 10.7859 9.31563 10.3408 8.98744 10.0126C8.65925 9.68437 8.21413 9.5 7.75 9.5M7.75 13V14.75M7.75 9.5V0.75M13 5.125C12.5359 5.125 12.0908 4.94063 11.7626 4.61244C11.4344 4.28425 11.25 3.83913 11.25 3.375C11.25 2.91087 11.4344 2.46575 11.7626 2.13756C12.0908 1.80937 12.5359 1.625 13 1.625M13 5.125C13.4641 5.125 13.9092 4.94063 14.2374 4.61244C14.5656 4.28425 14.75 3.83913 14.75 3.375C14.75 2.91087 14.5656 2.46575 14.2374 2.13756C13.9092 1.80937 13.4641 1.625 13 1.625M13 5.125V14.75M13 1.625V0.75" stroke="#3B3731" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
-                        </div>
+                        <!-- <div class="d-flex align-items-center gap-10 cursor">
+                                <p class="underlined-font normal-font-bold">Filter</p>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <path d="M2.5 7.75C2.03587 7.75 1.59075 7.56563 1.26256 7.23744C0.934374 6.90925 0.75 6.46413 0.75 6C0.75 5.53587 0.934374 5.09075 1.26256 4.76256C1.59075 4.43437 2.03587 4.25 2.5 4.25M2.5 7.75C2.96413 7.75 3.40925 7.56563 3.73744 7.23744C4.06563 6.90925 4.25 6.46413 4.25 6C4.25 5.53587 4.06563 5.09075 3.73744 4.76256C3.40925 4.43437 2.96413 4.25 2.5 4.25M2.5 7.75V14.75M2.5 4.25V0.75M7.75 13C7.28587 13 6.84075 12.8156 6.51256 12.4874C6.18437 12.1592 6 11.7141 6 11.25C6 10.7859 6.18437 10.3408 6.51256 10.0126C6.84075 9.68437 7.28587 9.5 7.75 9.5M7.75 13C8.21413 13 8.65925 12.8156 8.98744 12.4874C9.31563 12.1592 9.5 11.7141 9.5 11.25C9.5 10.7859 9.31563 10.3408 8.98744 10.0126C8.65925 9.68437 8.21413 9.5 7.75 9.5M7.75 13V14.75M7.75 9.5V0.75M13 5.125C12.5359 5.125 12.0908 4.94063 11.7626 4.61244C11.4344 4.28425 11.25 3.83913 11.25 3.375C11.25 2.91087 11.4344 2.46575 11.7626 2.13756C12.0908 1.80937 12.5359 1.625 13 1.625M13 5.125C13.4641 5.125 13.9092 4.94063 14.2374 4.61244C14.5656 4.28425 14.75 3.83913 14.75 3.375C14.75 2.91087 14.5656 2.46575 14.2374 2.13756C13.9092 1.80937 13.4641 1.625 13 1.625M13 5.125V14.75M13 1.625V0.75" stroke="#3B3731" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </div> -->
                     </div>
                 </div>
 
@@ -2000,9 +2000,12 @@
                 <div class="service-content mt-4 mb-5">
                     <div class="service-content-header">
                         <h2 class="section-content-heading">About Me</h2>
-                        <div class="avatar-wrap d-flex align-items-center mt-3">
+                        <div class="avatar-wrap mt-3">
                             <p>A bright, clean, fully equipped grooming outdoor space ideal for professional use. Outdoor garden grooming area. Calm, spacious, and ideal for stress-free sessions in fresh air.
                             </p>
+
+                            <p class="muted-color mt-4">Fits 1–3 groomers · Up to 4 pets at a time · Approx. 400 sq. ft.</p>
+
                         </div>
                     </div>
                     <div class="tab-go-to-section less-gap d-flex align-items-center flex-wrap justify-content-between mt-5">
@@ -2496,8 +2499,7 @@
                                 </div>
                             </div>
                         </div>
-                        <p class="size mt-3">Fits 1–3 groomers · Up to 4 pets at a time · Approx. 400 sq. ft.</p>
-                        <div class="message-btn-div d-flex justify-content-center mt-4">
+                        <div class="message-btn-div d-flex justify-content-center mt-5">
                             <button class="message-btn">Message Host</button>
                         </div>
                         <p class="responding-time text-center mt-2">Typically responds within 1 hour.</p>
@@ -2737,7 +2739,7 @@
                                 </div>
 
                                 <div class="modal-footer d-flex align-items-center justify-content-center mt-4 gap-10">
-                                    <button type="button" class="modal-footer-btn" data-modal-close>Go Back</button>
+                                    <!-- <button type="button" class="modal-footer-btn" data-modal-close>Go Back</button> -->
                                     <button type="button" class="modal-footer-btn apply">Continue</button>
                                 </div>
                             </div>
@@ -2940,27 +2942,11 @@
         });
     </script>
     <script>
-        const timeElements = document.querySelectorAll('.space.times .time');
-        const timeSlotCard = document.querySelector('.timeslot-card');
-
-        timeElements.forEach(el => {
-            el.addEventListener('click', () => {
-                // Remove 'selected' class from all
-                timeElements.forEach(t => t.classList.remove('selected'));
-
-                // Add 'selected' to the clicked one
-                el.classList.add('selected');
-
-                // Show timeslot-card only if 'Half Day' is clicked
-                if (el.id === 'halfDay') {
-                    timeSlotCard.style.display = 'block';
-                } else {
-                    timeSlotCard.style.display = 'none';
-                }
-            });
-        });
-
         document.addEventListener('DOMContentLoaded', () => {
+
+            const timeElements = document.querySelectorAll('.space.times .time');
+            const timeSlotCard = document.querySelector('.timeslot-card');
+            const heading = document.querySelector('.timeslot-card h3');
 
             const times = [
                 '08:00', '09:00', '10:00', '11:00',
@@ -2973,41 +2959,85 @@
             const startText = document.getElementById('startText');
             const endText = document.getElementById('endText');
 
-            /* build start dropdown */
+            let selectedType = 'halfDay';
+            let selectedStartTime = '13:00';
+
+            // ✅ Convert 24hr to 12hr AM/PM format
+            function formatTo12Hour(hour24) {
+                const hour = parseInt(hour24, 10);
+                const suffix = hour >= 12 ? 'PM' : 'AM';
+                const hour12 = hour % 12 === 0 ? 12 : hour % 12;
+                return `${hour12}:00 ${suffix}`;
+            }
+
+            // ✅ Update end time based on start + slot type
+            function updateEndTime() {
+                const startHour = parseInt(selectedStartTime.split(':')[0], 10);
+                const endHour = selectedType === 'fullDay' ? startHour + 8 : startHour + 4;
+                endText.textContent = formatTo12Hour(endHour);
+            }
+
+            // ✅ Set start time display and recalculate end
+            function setStartTime(time24) {
+                selectedStartTime = time24;
+                startText.textContent = formatTo12Hour(parseInt(time24.split(':')[0], 10));
+                updateEndTime();
+            }
+
+            /* Top time buttons */
+            timeElements.forEach(el => {
+                el.addEventListener('click', () => {
+                    timeElements.forEach(t => t.classList.remove('selected'));
+                    el.classList.add('selected');
+
+                    if (el.id === 'halfDay' || el.id === 'fullDay') {
+                        timeSlotCard.style.display = 'block';
+                        selectedType = el.id;
+                        heading.textContent = el.id === 'halfDay' ?
+                            'Select your Half-Day timeslot' :
+                            'Select your Full-Day timeslot';
+                    } else {
+                        timeSlotCard.style.display = 'none';
+                    }
+
+                    updateEndTime();
+                });
+            });
+
+            /* Build dropdown list */
             times.forEach(time => {
                 const li = document.createElement('li');
-                li.textContent = `${time} PM`;
-                li.addEventListener('click', () => {
+                li.textContent = formatTo12Hour(parseInt(time.split(':')[0], 10)); // ✅ Show 12hr in dropdown
+
+                li.addEventListener('click', (e) => {
+                    e.stopPropagation();
                     setStartTime(time);
                     startList.classList.remove('open');
+
+                    // ✅ Keep Half-Day / Full-Day selected state
+                    timeElements.forEach(t => {
+                        if (t.id === 'halfDay' || t.id === 'fullDay') {
+                            t.classList.toggle('selected', t.id === selectedType);
+                        }
+                    });
                 });
+
                 startList.appendChild(li);
             });
 
-            /* toggle dropdown */
+            /* Toggle dropdown */
             startBtn.addEventListener('click', e => {
                 e.stopPropagation();
                 startList.classList.toggle('open');
             });
 
-            /* close on outside click */
+            /* Close on outside click */
             document.addEventListener('click', () => {
                 startList.classList.remove('open');
             });
 
-            /* HALF DAY LOGIC */
-            function setStartTime(startTime) {
-                startText.textContent = `${startTime} PM`;
-
-                const hour = parseInt(startTime.split(':')[0], 10);
-                const endHour = hour + 4;
-
-                endText.textContent = `${endHour}:00 PM`;
-            }
-
-            /* default */
-            setStartTime('13:00');
-
+            /* Defaults */
+            setStartTime('13:00'); // → shows "1:00 PM" start, "5:00 PM" end
         });
     </script>
     <script>
@@ -3023,6 +3053,7 @@
             const options = serviceBox.querySelectorAll('.select-options li');
             const selectedText = serviceBox.querySelector('.selected-text');
             const hiddenInput = serviceBox.querySelector('input[name="main_service"]');
+            const goBackBtn = document.getElementById('goBack');
 
             let groomerSelected = false;
 
@@ -3058,10 +3089,14 @@
             });
 
             continueBtn.addEventListener('click', function() {
-                if (!groomerSelected) return;
+                if (!groomerSelected) {
+                    //redirect to checkout page
+                    window.location.href = "<?= BASE_URL ?>booking-groomer/";
+                } else {
+                    closeModal(spacePromptModal);
+                    openModal(bookSpaceModal);
+                }
 
-                closeModal(spacePromptModal);
-                openModal(bookSpaceModal);
             });
 
             document.querySelectorAll('[data-modal-close]').forEach(function(btn) {
@@ -3069,6 +3104,11 @@
                     const modal = this.closest('.modal');
                     if (modal) closeModal(modal);
                 });
+            });
+
+            goBackBtn.addEventListener('click', function() {
+                openModal(spacePromptModal);
+                closeModal(bookSpaceModal);
             });
         });
 

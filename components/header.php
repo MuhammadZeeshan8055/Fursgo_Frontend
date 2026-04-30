@@ -6,7 +6,7 @@
             <div class="row align-items-center">
                 <div class="col-lg-2">
                     <div class="logo-toggle-button d-flex justify-content-between">
-                        <a href="<?= BASE_URL ?>index.php">
+                        <a href="<?= BASE_URL ?>index.php" class="d-inline-flex align-items-end gap-10">
                             <svg xmlns="http://www.w3.org/2000/svg" width="145" height="40" viewBox="0 0 145 40"
                                 fill="none">
                                 <path
@@ -34,6 +34,12 @@
                                     d="M100.537 11.2333C100.537 10.5865 100.882 10.4248 101.208 10.4248C101.579 10.4248 101.879 10.7868 101.879 11.2333C101.879 11.6799 101.847 11.2333 101.477 11.2333C101.106 11.2333 100.537 11.6799 100.537 11.2333Z"
                                     fill="#FFC97A" />
                             </svg>
+                            <?php
+                                if ($currentPage == 'business-landing-page.php') { ?>
+                                    <span class="fs-18-500">Business</span>
+                                <?php
+                                }
+                            ?>
                         </a>
                         <button class="menu-toggle">&#9776;</button>
                     </div>

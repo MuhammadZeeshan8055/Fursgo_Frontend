@@ -42,7 +42,7 @@
                 </svg>
             </div>
             <h1 class="promotion_font"> 🎉 Promotion</h1>
-            <p class="dark-color-font text-center mt-5">Don’t miss the chance and <br> get 10% off your next booking!</p>
+            <p class="dark-color-font text-center mt-5 line-height-20">Don’t miss the chance and <br> get 10% off your next booking!</p>
             <div class="form-field mt-4">
                 <div class="promotion-input input-wrapper">
                     <input type="text" class="custom-width normal-light-color" style="color: var(--font-color);" id="promo_code" value="FURSGO-9X3P">

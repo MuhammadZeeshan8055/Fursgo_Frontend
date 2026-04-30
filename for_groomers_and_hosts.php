@@ -1728,11 +1728,10 @@
                 </p>
 
                 <div class="bgs-buttons">
-                    <a href="<?= BASE_URL ?>assets/verify-qualify" wire:navigate
+                    <a href="<?= BASE_URL ?>business-landing-page.php"
                         class="bgs-btn primary"
-                        style="text-decoration: none; display: flex; justify-content: center; align-items: center;">Start
-                        your Profile</a>
-                    <button class="bgs-btn secondary">Learn more</button>
+                        style="text-decoration: none; display: flex; justify-content: center; align-items: center;">Get Started</a>
+                    <a href="<?= BASE_URL ?>profile_pets_preferences/company_information.php" class="bgs-btn secondary">Learn more</a>
                 </div>
             </div>
 

@@ -406,12 +406,6 @@ h1 {
     font-size: 18px;
 }
 
-.size {
-    color: #3B3731;
-    font-family: Lato;
-    font-size: 18px;
-    font-weight: 400;
-}
 
 .personal-info {
     gap: 12px;
@@ -669,7 +663,7 @@ h1 {
     gap: 20px;
 }
 
-.avatar-wrap.d-flex p {
+.avatar-wrap p {
     color: #3B3731;
     font-family: Lato;
     font-size: 18px;

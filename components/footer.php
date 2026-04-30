@@ -7,8 +7,8 @@
                 </div>
                 <div class="col-lg-5">
                     <div class="join-buttons">
-                        <button class="become-host-btn">Become a Host</button>
-                        <button class="become-groomer-btn">Become a Groomer</button>
+                        <a href="<?= BASE_URL ?>business-landing-page.php" class="become-host-btn">Become a Host</a>
+                        <a href="<?= BASE_URL ?>business-landing-page.php" class="become-groomer-btn">Become a Groomer</a>
                     </div>
                 </div>
             </div>
@@ -51,7 +51,7 @@
                     <p>Join FursGo to grow your business <br> with verified bookings and loyal clients.
                         <br>
                         <br>
-                        Become a Provider · <a href=""><u><b> Learn More </b></u></a>
+                        Become a Provider · <a href="<?= BASE_URL ?>for_groomers_and_hosts.php"><u><b> Learn More </b></u></a>
                     </p>
                 </div>
             </div>

@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/media_query.css">
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/login_signup.css">
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/common.css">
-    
+
 </head>
 
 <body>
@@ -22,8 +22,8 @@
     <?php include '../components/header.php' ?>
     <!-- header ends -->
 
-    <div class="container-fluid mt-5 mb-5">
-        <div class="row" style="gap: 4%;">
+    <div class="container-fluid mb-5">
+        <div class="row" style="gap: 2%;">
             <div class="col-lg-6">
                 <div class="login-image-form">
                     <div class="login-image-wrapper">
@@ -31,40 +31,45 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 d-flex align-items-center">
-                <div class="login-form mt-5">
+            <div class="col-lg-3">
+                <div class="login-form mt-3">
                     <h1 class="heading">Log in to Fursgo</h1>
-                    <form class="d-flex flex-column align-items-center justify-content-center mt-5">
-                        <div class="form-group">
-                            <label for="email">Email Address</label>
-                            <div class="input-wrapper">
-                                <input type="email" id="email" value="Bella@outlook.com">
-                                <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" width="19" height="19"
-                                    viewBox="0 0 19 19" fill="none">
-                                    <path
-                                        d="M9.5 0C4.275 0 0 4.275 0 9.5C0 14.725 4.275 19 9.5 19C14.725 19 19 14.725 19 9.5C19 4.275 14.725 0 9.5 0ZM7.6 14.25L2.85 9.5L4.1895 8.1605L7.6 11.5615L14.8105 4.351L16.15 5.7L7.6 14.25Z"
-                                        fill="#C9DDA0" />
-                                </svg>
+                    <form class="mt-5">
+                        <div class="form-inner d-flex flex-column align-items-stretch">
+                            <div class="form-group mt-5">
+                                <label for="email">Email Address</label>
+                                <div class="input-wrapper">
+                                    <input type="email" id="email" value="Bella@outlook.com">
+                                    <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" width="19" height="19"
+                                        viewBox="0 0 19 19" fill="none">
+                                        <path
+                                            d="M9.5 0C4.275 0 0 4.275 0 9.5C0 14.725 4.275 19 9.5 19C14.725 19 19 14.725 19 9.5C19 4.275 14.725 0 9.5 0ZM7.6 14.25L2.85 9.5L4.1895 8.1605L7.6 11.5615L14.8105 4.351L16.15 5.7L7.6 14.25Z"
+                                            fill="#C9DDA0" />
+                                    </svg>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <div class="input-wrapper">
+                                    <input type="password" id="password" value="••••••••••••••••••••">
+                                    <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" width="19" height="19"
+                                        viewBox="0 0 19 19" fill="none">
+                                        <path
+                                            d="M9.5 0C4.275 0 0 4.275 0 9.5C0 14.725 4.275 19 9.5 19C14.725 19 19 14.725 19 9.5C19 4.275 14.725 0 9.5 0ZM7.6 14.25L2.85 9.5L4.1895 8.1605L7.6 11.5615L14.8105 4.351L16.15 5.7L7.6 14.25Z"
+                                            fill="#C9DDA0" />
+                                    </svg>
+                                </div>
+                                <div class="forgot-password">
+                                    <a href="#">Forgot Password</a>
+                                </div>
+                            </div>
+
+                            <div class="d-flex align-items-center justify-content-center mt-4">
+                                <button type="submit" class="btn-custom btn-active-bg btn-custom-hover btn-shadow login-width text-center">Log in</button>
+
                             </div>
                         </div>
-
-                        <div class="form-group">
-                            <label for="password">Password</label>
-                            <div class="input-wrapper">
-                                <input type="password" id="password" value="••••••••••••••••••••">
-                                <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" width="19" height="19"
-                                    viewBox="0 0 19 19" fill="none">
-                                    <path
-                                        d="M9.5 0C4.275 0 0 4.275 0 9.5C0 14.725 4.275 19 9.5 19C14.725 19 19 14.725 19 9.5C19 4.275 14.725 0 9.5 0ZM7.6 14.25L2.85 9.5L4.1895 8.1605L7.6 11.5615L14.8105 4.351L16.15 5.7L7.6 14.25Z"
-                                        fill="#C9DDA0" />
-                                </svg>
-                            </div>
-                            <div class="forgot-password">
-                                <a href="#">Forgot Password</a>
-                            </div>
-                        </div>
-
-                        <button type="submit" class="btn-custom btn-active-bg btn-custom-hover btn-shadow login-width text-center">Log in</button>
                     </form>
                     <div class="divider">— Or Sign in with —</div>
 

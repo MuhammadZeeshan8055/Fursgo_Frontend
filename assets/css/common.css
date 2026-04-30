@@ -124,6 +124,10 @@
   line-height: normal !important;
 }
 
+.line-height-20 {
+  line-height: 20px;
+}
+
 .normal-font-bold {
   color: #3b3731;
   font-family: Lato;
@@ -279,6 +283,14 @@
   font-family: Lato;
   font-size: 18px;
   font-weight: 600;
+}
+
+.fs-18-500 {
+  color: #3b3731;
+  font-family: Lato;
+  font-size: 18px;
+  font-style: italic;
+  font-weight: 500;
 }
 
 .fs-18-400 {
