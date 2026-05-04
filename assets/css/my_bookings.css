@@ -103,7 +103,11 @@
 .tabs .active {
     color: #fff;
     font-weight: 600;
-    background: #ffc97a;
+    width: 59px;
+    height: 48px;
+    border-radius: 96px;
+    border: 1px solid #FFF;
+    background: #FFC97A;
 }
 
 .bookings-header {
@@ -119,7 +123,7 @@
 }
 
 .btn {
-    padding: 8px 18px;
+    padding: 10px 18px;
     border-radius: 25px;
     font-size: 14px;
     cursor: pointer;
@@ -144,9 +148,9 @@
 }
 
 .chip {
-    background-color: #fcf1e9;
-    color: #fbac83;
-    padding: 10px 20px;
+    background-color: #FCF1E9;
+    color: #FBAC83;
+    padding: 12px 15px;
     border-radius: 20px;
 }
 
@@ -289,7 +293,7 @@ img.rounded-image.second-image {
 }
 
 .bg-status-gray-header {
-    background: #D2D2D2;
+    background: #D2D2D2 !important;
 }
 
 .bg-border-gray-header {
@@ -301,7 +305,7 @@ img.rounded-image.second-image {
 }
 
 .bg-status-pink-header {
-    background: #FF6E6E;
+    background: #FF6E6E !important;
 }
 
 .bg-border-pink-header {
@@ -310,14 +314,14 @@ img.rounded-image.second-image {
 
 .write-review-btn {
     background-color: #cbdce8;
-    padding: 8px 16px;
-    border-radius: 8px 8px 0px 0;
+    padding: 14px 20px;
+    border-radius: 10px 10px 0px 0;
+    border: 1px solid #F8F8F8;
     display: flex;
     align-items: center;
     gap: 8px;
     cursor: pointer;
     font-weight: 500;
-    height: 48px;
 }
 
 .write-review-btn p {
@@ -610,7 +614,7 @@ img.rounded-image.second-image {
 .status-badge {
     background-color: #C9DDA0;
     color: #FFF;
-    padding: 2px 15px;
+    padding: 5px 15px;
     border-radius: 20px;
 }
 

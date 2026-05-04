@@ -197,7 +197,7 @@
                                     </ul>
                                 </div>
 
-                                <div class="d-flex align-items-center justify-content-between">
+                                <div class="footer-buttons d-flex align-items-center justify-content-between">
                                     <button type="button" class="btn-custom btn-no-bg text-center mt-5">Message Groomer</button>
                                     <button type="button" class="btn-custom btn-no-bg green-btn text-center mt-5">My Bookings</button>
                                 </div>

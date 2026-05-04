@@ -40,9 +40,9 @@ include_once __DIR__ . '/../components/extras-addons.php';
                     <div class="col-lg-10">
 
                         <div class="cb-nav-container mt-5">
-                            <button class="cb-back-btn">
+                            <a href="<?= BASE_URL ?>my_bookings/my_bookings.php" class="cb-back-btn">
                                 ← Back to My Bookings
-                            </button>
+                            </a>
                         </div>
 
                         <div class="cb-booking-groomer-card mt-5">
@@ -160,7 +160,7 @@ include_once __DIR__ . '/../components/extras-addons.php';
                                                 </svg></span>
                                             <p class="cb-label"> Date</p>
                                         </div>
-                                        <p class="cb-value">18/12/2025</p>
+                                        <p class="cb-value mt-2">18/12/2025</p>
                                     </div>
 
                                     <div class="cb-info-group">
@@ -173,7 +173,7 @@ include_once __DIR__ . '/../components/extras-addons.php';
                                                 </svg></span>
                                             <p class="cb-label"> Time</p>
                                         </div>
-                                        <p class="cb-value">14:30 - 15:30</p>
+                                        <p class="cb-value mt-2">14:30 - 15:30</p>
                                         <span class="cb-sub-text">(80 minutes)</span>
                                     </div>
                                 </div>

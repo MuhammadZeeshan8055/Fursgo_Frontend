@@ -59,8 +59,8 @@
                                         <path d="M16.0298 19L23.1413 24.3256C23.6749 24.7253 24.4083 24.7247 24.9413 24.3243L32.0298 19" stroke="white" />
                                     </svg>
                                     <div class="mt-4">
-                                        <p class="normal-font-bold">Office Address</p>
-                                        <span class="light-color-font">12 King’s Road, London SW3 4JP</span>
+                                        <p class="normal-font-bold">Email Address</p>
+                                        <span class="light-color-font">fursgo@gmail.com</span>
                                     </div>
                                 </div>
 

@@ -13,12 +13,17 @@
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/media_query.css">
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/common.css">
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/company_information.css">
-
+    <style>
+        #chat-btn {
+            display: none;
+        }
+    </style>
 </head>
 
 <body>
 
     <?php include '../components/header.php' ?>
+    <?php include '../components/chatbot_modal.php' ?>
 
     <div class="container mb-5 mt-5">
         <div class="row">
@@ -61,7 +66,7 @@
                     </div>
                     <div class="col-lg-1"></div>
                     <div class="col-lg-10">
-                        <div class="support-tabs d-flex align-items-center justify-content-between mt-5" data-tabs>
+                        <div class="support-tabs d-flex align-items-center justify-content-between mt-5" data-tabs data-tabs-no-scroll>
 
                             <div class="bookings-tab help-tabs tab-btn d-flex align-items-center flex-column cursor active"
                                 data-tab="tab-bookings">
@@ -355,6 +360,177 @@
                 fileItem.style.display = 'none';
             };
         </script>
+
+        <!-- chatbot modal script -->
+
+        <script>
+            // rating star selection logic
+
+            document.addEventListener("DOMContentLoaded", function() {
+
+                const stars = document.querySelectorAll(".fs-star");
+                const ratingInput = document.getElementById("ratingValue");
+
+                let selectedRating = 0;
+
+                stars.forEach(star => {
+
+                    // CLICK
+                    star.addEventListener("click", function() {
+                        selectedRating = parseInt(this.dataset.value);
+                        ratingInput.value = selectedRating;
+                        updateStars(selectedRating);
+                    });
+
+                    // HOVER preview
+                    star.addEventListener("mouseover", function() {
+                        const hoverValue = parseInt(this.dataset.value);
+                        updateStars(hoverValue);
+                    });
+
+                    // RESET on leave
+                    star.addEventListener("mouseout", function() {
+                        updateStars(selectedRating);
+                    });
+
+                });
+
+                function updateStars(rating) {
+                    stars.forEach(star => {
+                        const value = parseInt(star.dataset.value);
+
+                        if (value <= rating) {
+                            star.classList.add("active");
+                        } else {
+                            star.classList.remove("active");
+                        }
+                    });
+                }
+
+            });
+
+            // rating star selection logic ends
+
+            document.addEventListener("DOMContentLoaded", function() {
+
+                const card1 = document.querySelector(".fs-card-1");
+                const card2 = document.querySelector(".fs-card-2");
+                const card3 = document.querySelector(".fs-card-3");
+                const card4 = document.querySelector(".fs-card-4");
+                const card5 = document.querySelector(".fs-card-5");
+                const card6 = document.querySelector(".fs-card-6");
+
+                const bookingBtn = document.querySelector(".fs-card-1 .fs-menu-item:first-child");
+                const optionButtons = document.querySelectorAll(".fs-card-2 .fs-opt-btn");
+                const submitRequestBtn = document.querySelector(".fs-submit-request");
+                const doneBtn = document.querySelector(".iamdone-btn");
+                const endConversationBtn = document.querySelector(".end-conversation");
+                const backBtns = document.querySelectorAll(".fs-back-arrow");
+
+                let currentStep = 1;
+
+                function showCard(step) {
+
+                    currentStep = step;
+
+                    [card1, card2, card3, card4, card5, card6].forEach(c => {
+                        if (c) c.style.display = "none";
+                    });
+
+                    const map = {
+                        1: card1,
+                        2: card2,
+                        3: card3,
+                        4: card4,
+                        5: card5,
+                        6: card6
+                    };
+
+                    map[step].style.display = "block";
+
+                    document.querySelectorAll('.fs-card-body').forEach(chatBody => {
+                        chatBody.scrollTop = chatBody.scrollHeight;
+                    });
+                }
+
+                // initial
+                showCard(1);
+
+                bookingBtn.addEventListener("click", () => showCard(2));
+
+                optionButtons.forEach(btn => {
+                    btn.addEventListener("click", () => showCard(3));
+                });
+
+                submitRequestBtn.addEventListener("click", () => showCard(4));
+
+                doneBtn.addEventListener("click", () => showCard(5));
+
+                endConversationBtn.addEventListener("click", () => showCard(6));
+
+                // ✅ BACK BUTTON (FIXED)
+                backBtns.forEach(btn => {
+                    btn.addEventListener("click", function() {
+
+                        if (currentStep > 1) {
+                            showCard(currentStep - 1);
+                        }
+                    });
+                });
+
+            });
+        </script>
+
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+
+                const panel = document.getElementById('chat-panel');
+                const chatBtn = document.getElementById('chat-btn');
+                const openIcon = document.getElementById('chat-open-icon');
+                const closeIcon = document.getElementById('chat-close-icon');
+
+                function openChat(e) {
+                    if (e) e.stopPropagation();
+                    panel.classList.add('open');
+                    document.body.classList.add('chat-open');
+                    chatBtn.style.display = 'flex';
+                    openIcon.style.display = 'none';
+                    closeIcon.style.display = 'block';
+                }
+
+                function closeChat() {
+                    panel.classList.remove('open');
+                    document.body.classList.remove('chat-open');
+                    chatBtn.style.display = 'none';
+                    openIcon.style.display = 'block';
+                    closeIcon.style.display = 'none';
+                }
+
+                function toggleChat(e) {
+                    if (e) e.stopPropagation();
+                    panel.classList.contains('open') ? closeChat() : openChat();
+                }
+
+                // Floating chat button
+                chatBtn.addEventListener('click', toggleChat);
+
+                // Any "Start chat" button on the page
+                document.querySelectorAll('[data-open-chat]').forEach(function(btn) {
+                    btn.addEventListener('click', openChat);
+                });
+
+                // Close on outside click
+                document.addEventListener('click', function(e) {
+                    if (!panel.contains(e.target) && !chatBtn.contains(e.target)) {
+                        closeChat();
+                    }
+                });
+
+            });
+        </script>
+
+        <!-- chatbot modal script -->
 
 </body>
 

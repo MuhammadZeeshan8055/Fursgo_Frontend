@@ -89,7 +89,7 @@ body.status-cancel {
     /* optional, adjust spacing around list */
 }
 
-.btn-custom {
+.footer-buttons .btn-custom {
     width: 295px;
     height: 48px;
 }

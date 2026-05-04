@@ -43,6 +43,9 @@ document.addEventListener('click', function (e) {
         panels = document.querySelectorAll('.tab-panel');
     }
 
+    const noScroll = wrapper.hasAttribute('data-tabs-no-scroll'); // 👈
+    const scrollY = noScroll ? window.scrollY : null;             // 👈
+
     // reset
     tabs.forEach(t => t.classList.remove('active'));
     panels.forEach(p => p.classList.remove('active'));
@@ -54,6 +57,8 @@ document.addEventListener('click', function (e) {
     if (targetPanel) {
         targetPanel.classList.add('active');
     }
+
+    if (noScroll) requestAnimationFrame(() => window.scrollTo({ top: scrollY, behavior: 'instant' })); // 👈
 });
 
 // tab js starts

@@ -317,6 +317,13 @@
   font-weight: 600;
 }
 
+.fs-16-600-light {
+  color: #9D9B98;
+  font-family: Lato;
+  font-size: 16px;
+  font-weight: 600;
+}
+
 .fs-16-600-gold {
   color: #ffc97a;
   font-family: Lato;
@@ -389,6 +396,13 @@
   font-weight: 500;
 }
 
+.fs-14-500-f-color {
+  color: var(--font-color);
+  font-family: Lato;
+  font-size: 14px;
+  font-weight: 500;
+}
+
 .fs-14-400-light {
   color: #9d9b98;
   font-family: Lato;
@@ -431,7 +445,598 @@
   color: #ffc97a;
 }
 
-/* font-sizes  */
+
+/* chat modal btn left side css */
+
+
+/* Fixed button bottom left */
+#chat-btn {
+  position: fixed;
+  bottom: 44px;
+  z-index: 1001;
+  cursor: pointer;
+  border: none;
+  background: #FFC97A;
+  padding: 20px;
+  border-radius: 100px;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Chat panel */
+#chat-panel {
+  position: fixed;
+  bottom: 130px;
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+#chat-panel.open {
+  display: flex;
+}
+
+/* Header */
+.chat-header {
+  background: #F5A05A;
+  color: white;
+  padding: 14px 16px;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+/* Body - place your divs here */
+.chat-body {
+  padding: 16px;
+  background: #fafafa;
+  min-height: 200px;
+}
+
+.need-help-chat {
+  border-radius: 103px;
+  background: #FFC97A;
+  box-shadow: 0 10px 20px 2px rgba(0, 0, 0, 0.05);
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px;
+  width: 295px;
+  color: #FFF;
+  text-align: center;
+  font-family: Lato;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  position: fixed;
+  bottom: 50px;
+  z-index: 1001;
+  cursor: pointer;
+  left: calc((100vw - 1140px) / 2);
+}
+
+.need-help-chat {
+  display: flex;
+  /* always in layout */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+}
+
+/* Hover effect */
+#chat-btn:hover+.need-help-chat,
+.need-help-chat:hover {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Overlay behind chat panel */
+body.chat-open::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #58585847;
+  z-index: 1001;
+  backdrop-filter: blur(2px);
+}
+
+/* Chat panel above overlay */
+#chat-panel {
+  position: fixed;
+  z-index: 1002;
+  /* higher than overlay */
+}
+
+body.chat-open #chat-btn:hover+.need-help-chat,
+body.chat-open .need-help-chat:hover {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+}
+
+/* card styles */
+/* Base Card Styling */
+.fs-card {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ffc97a;
+  box-shadow: 0 10px 20px 2px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+/* Header */
+.fs-card-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  padding: 20px;
+  color: #fff;
+  font-family: Lato;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  text-align: center;
+  border-radius: 10px 10px 0 0;
+  border: 1px solid #ffc97a;
+  background: #ffc97a;
+  z-index: 1000;
+}
+
+.fs-back-arrow {
+  position: relative;
+  right: 4.5rem;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+#fs-card-body {
+  height: 330px;
+  overflow-y: auto;
+}
+
+/* Body & Backgrounds */
+.fs-card-body {
+  margin-top: -3rem;
+  padding: 20px;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  /* hide scrollbar (cross-browser) */
+  scrollbar-width: none;
+  /* Firefox */
+  -ms-overflow-style: none;
+  /* IE/Edge legacy */
+}
+
+/* Chrome, Safari, Edge */
+.fs-card-body::-webkit-scrollbar {
+  display: none;
+}
+
+.fs-2 {
+  padding: 12px;
+  margin-top: 0;
+  padding-left: 1.1rem;
+}
+
+.fs-gradient-bg {
+  background: linear-gradient(180deg, #ffc97a 0%, #fff 75%);
+}
+
+/* Card 1 Specifics */
+
+.fs-welcome-text {
+  margin-top: 5rem;
+}
+
+.fs-welcome-text h2 {
+  color: #fff;
+  font-family: Lato;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin: 0;
+}
+
+.fs-welcome-text p {
+  color: #fff;
+  font-family: Lato;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin: 0;
+}
+
+.fs-content {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.fs-menu-list {
+  border-radius: 10px;
+  border: 1px solid #e2e2e2;
+  background: #fff;
+  box-shadow: 0 10px 20px 2px rgba(0, 0, 0, 0.03);
+  margin-top: 1.5rem;
+}
+
+.fs-menu-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 18px 15px;
+  /* border-radius: 10px; */
+  border-bottom: 1px solid #f0f0f0;
+  color: #3b3731;
+  text-align: center;
+  font-family: Lato;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.fs-menu-item:hover {
+  background-color: #fff8e1;
+}
+
+.fs-menu-item:first-child {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.fs-menu-item:last-child {
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+
+}
+
+.fs-status-msg {
+  text-align: center;
+  color: #9d9b98;
+  text-align: center;
+  font-family: Lato;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-bottom: 10px;
+}
+
+.fs-chat-bubble {
+  padding: 10px 14px;
+  border-radius: 12px;
+  margin-bottom: 10px;
+  max-width: 80%;
+  color: #3b3731;
+  font-family: Lato;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.fs-user-msg {
+  width: 241px;
+  background: #fdfcf8;
+  margin-left: auto;
+  color: #3b3731;
+  font-family: Lato;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.fs-bot-msg {
+  width: 275px;
+  height: auto;
+  border-radius: 10px 10px 10px 0px;
+  background: rgba(255, 201, 122, 0.13);
+  padding-left: 1rem;
+}
+
+.fs-option-buttons {
+  margin-top: 15px;
+  margin-left: 7rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  /* pushes buttons to the right */
+  gap: 8px;
+}
+
+.fs-opt-btn {
+  width: fit-content;
+  /* auto width based on content */
+  max-width: 100%;
+  min-height: 48px;
+  padding: 0 16px;
+  border: 1px solid #eee;
+  background: #fff;
+  text-align: left;
+  display: inline-flex;
+  gap: 10px;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 10px 10px 0px 10px;
+  cursor: pointer;
+  white-space: nowrap;
+  /* keeps text in one line */
+}
+
+.fs-opt-btn p {
+  margin: 0;
+}
+
+.fs-opt-btn {
+  width: fit-content;
+  max-width: 320px;
+  white-space: normal;
+}
+
+.fs-opt-btn p {
+  color: #3b3731;
+  font-family: Lato;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.fs-chat-input {
+  width: 360px;
+  height: 72px;
+  padding: 10px;
+  border: 1px solid #e2e2e2;
+  border-radius: 6px;
+  color: #9d9b98;
+  font-family: Lato;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  border-radius: 10px 10px 0px 0px;
+}
+
+.fs-input-footer {
+  display: flex;
+  justify-content: space-around;
+  border: 1px solid #e2e2e2;
+  background: #f8f8f8;
+  width: 360px;
+  height: 48px;
+  border-radius: 0px 0 10px 10px;
+}
+
+.fs-input-footer span {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.fs-input-footer div:nth-of-type(1) {
+  color: #3b3731;
+  font-family: Lato;
+  font-size: 14px;
+  font-weight: 600;
+  margin-top: 14px;
+  gap: 1rem;
+  display: flex;
+  align-items: self-start;
+  margin-right: 4rem;
+}
+
+.fs-input-footer div:nth-of-type(2) {
+  color: #d4d4d4;
+  font-family: Lato;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-top: 14px;
+}
+
+.fs-msg-section {
+  width: auto;
+  padding: 20px;
+}
+
+.fs-chat-input-wrapper {
+  position: relative;
+}
+
+.fs-chat-input-wrapper input {
+  color: #3b3731;
+}
+
+.fs-chat-input-wrapper input .placeholder {
+  color: #9d9b98;
+  /* border: 1px solid #ddd; */
+}
+
+.fs-send-icon {
+  position: absolute;
+  right: 28px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.fs-rating-overlay {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* hovering svg active color  */
+.fs-menu-item:hover .fs-arrow path {
+  stroke: #FFC97A;
+}
+
+.fs-menu-item:hover .fs-content>span {
+  color: #FFC97A;
+}
+
+/* Default: show original icon */
+.fs-menu-item .icon-default {
+  display: block;
+}
+
+.fs-menu-item .icon-hover {
+  display: none;
+}
+
+/* Hover: swap to the orange version */
+.fs-menu-item:hover .icon-default {
+  display: none;
+}
+
+.fs-menu-item:hover .icon-hover {
+  display: block;
+}
+
+
+
+/* rating modal starts css */
+
+
+.fs-rating-modal {
+  width: 400px;
+  height: 550px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+/* header */
+
+.fs-rating-header {
+  background: #f4b86a;
+  color: white;
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 500;
+}
+
+.fs-back {
+  cursor: pointer;
+}
+
+.fs-rating-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.fs-rating-content h2 {
+  color: #3b3731;
+  text-align: center;
+  font-family: Lato;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+/* stars */
+
+.fs-stars {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin: 20px 0;
+  font-size: 28px;
+  color: #f4b86a;
+}
+
+.fs-stars .fs-inactive {
+  color: #ddd;
+}
+
+/* text */
+
+.fs-ref {
+  color: #9d9b98;
+  text-align: center;
+  font-family: Lato;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-top: 2rem;
+}
+
+.fs-end {
+  margin-top: 5.5rem;
+  color: #9d9b98;
+  text-align: center;
+  font-family: Lato;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-bottom: 1.5rem !important;
+}
+
+.fs-back-arrow {
+  position: relative;
+  right: 4.5rem;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.fs-star {
+  cursor: pointer;
+}
+
+/* inactive state */
+.fs-star svg path {
+  transition: 0.2s ease;
+}
+
+/* active star (your yellow fill) */
+.fs-star.active svg path {
+  fill: #FFC97A !important;
+}
+
+/* inactive gray */
+.fs-star:not(.active) svg path {
+  fill: #EFEFEF !important;
+}
+
+/* rating modal ends css */
+
+/* chat modal btn left side ends  */
 
 .section {
   padding: 70px 0;

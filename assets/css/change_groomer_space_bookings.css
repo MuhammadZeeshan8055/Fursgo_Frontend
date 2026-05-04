@@ -1,12 +1,12 @@
-:root{
+:root {
     --tag-bg-color: #FFC97A;
 }
 
-body.change-groomer{
+body.change-groomer {
     --tag-bg-color: #FFC97A;
 }
 
-body.change-space{
+body.change-space {
     --tag-bg-color: #FFA899;
 }
 
@@ -324,9 +324,10 @@ body.change-space{
 }
 
 .time {
-    padding: 8px 14px;
-    border: 1px solid #c9dda0;
-    border-radius: 20px;
+    padding: 15px 14px;
+    border-radius: 68px;
+    border: 1px solid #BACF8E;
+    background: #FFF;
     cursor: pointer;
     color: #bacf8e;
     text-align: center;
@@ -429,10 +430,7 @@ body.change-space{
 }
 
 .cb-btn-cancel {
-    border: 1px solid #d4d4d4;
-    background: #fff;
-    padding: 10px 40px;
-    border-radius: 30px;
+    padding: 10px 30px;
     color: #9d9b98;
     text-align: center;
     font-family: Lato;
@@ -440,13 +438,14 @@ body.change-space{
     font-style: normal;
     font-weight: 700;
     line-height: normal;
+    border-radius: 96px;
+    border: 1px solid #D4D4D4;
+    background: #FFF;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.05);
 }
 
 .cb-btn-save {
-    background: #ffc97a;
-    border: none;
-    padding: 10px 50px;
-    border-radius: 30px;
+    padding: 10px 35px;
     cursor: pointer;
     color: #fff;
     text-align: center;
@@ -455,6 +454,10 @@ body.change-space{
     font-style: normal;
     font-weight: 700;
     line-height: normal;
+    border: none;
+    border-radius: 96px;
+    background: #FFC97A;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.05);
 }
 
 .cb-summary-section {
@@ -554,10 +557,8 @@ body.change-space{
 }
 
 .cb-btn-filled {
-    background: #ffc97a;
     border: none;
     padding: 12px 50px;
-    border-radius: 30px;
     cursor: pointer;
     color: #fff;
     text-align: center;
@@ -566,6 +567,9 @@ body.change-space{
     font-weight: 600;
     width: 248px;
     height: 48px;
+    border-radius: 96px;
+    background: #FFC97A;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.10);
 }
 
 .cb-extras-addons {

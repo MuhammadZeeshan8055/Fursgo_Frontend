@@ -158,7 +158,7 @@
                 </svg>
                 <p class="normal-font-bold">Chat with FursGo</p>
                 <p class="simple-font text-center"> Chat live with a FursGo team member for help with bookings, payments, or account questions.</p>
-                <button class="normal-font-bold btn-custom btn-groomer-bg text-center mt-3" style="color:#fff">Start chat</button>
+                <button data-open-chat class="normal-font-bold btn-custom btn-groomer-bg text-center mt-3" style="color:#fff">Start chat</button>
                 <p class="simple-font">Responses usually within 24 hours</p>
             </div>
         </div>

@@ -31,7 +31,6 @@
             padding: 8px 16px;
             border-radius: 100px;
             cursor: pointer;
-            font-size: 14px;
         }
 
         .sort-dropdown {
@@ -314,10 +313,10 @@
                         <div class="booking-filters mt-5">
 
                             <div class="tabs">
-                                <button class="tab active">All</button>
-                                <button class="tab normal-light-color-font">Upcoming</button>
-                                <button class="tab normal-light-color-font">Past</button>
-                                <button class="tab normal-light-color-font">Cancelled</button>
+                                <button class="tab fs-16-500-light active">All</button>
+                                <button class="tab fs-16-500-light">Upcoming</button>
+                                <button class="tab fs-16-500-light">Past</button>
+                                <button class="tab fs-16-500-light">Cancelled</button>
                             </div>
 
                             <div class="search-container">
@@ -408,7 +407,7 @@
                                 </div>
 
 
-                                <div class="sort-by">
+                                <div class="fs-14-500-f-color sort-by">
                                     Sort
                                     <img src="/assets/icons/filter-arrow-down.svg" class="arrow" alt="">
 
@@ -1329,7 +1328,7 @@
                                             </div>
                                         </div>
                                         <div class="listing-section d-flex flex-column align-items-start gap-15">
-                                            <div class="service-type">Home Visits</div>
+                                            <div class="service-type bg-status-gray-header">Home Visits</div>
 
                                             <div class="listing d-flex align-items-center gap-25">
                                                 <div class="details-item d-flex flex-column gap-10">
@@ -1555,7 +1554,7 @@
                                             </div>
                                         </div>
                                         <div class="listing-section d-flex flex-column align-items-start gap-15">
-                                            <div class="service-type">Home Visits</div>
+                                            <div class="service-type bg-status-gray-header">Home Visits</div>
 
                                             <div class="listing d-flex align-items-center gap-25">
                                                 <div class="details-item d-flex flex-column gap-10">
@@ -2454,6 +2453,14 @@
             sortDropdown.classList.remove("show");
         });
 
+    });
+</script>
+<script>
+    // removing pills 
+    document.querySelector(".chips-container").addEventListener("click", function(e) {
+        if (e.target.closest(".close")) {
+            e.target.closest(".chip").remove();
+        }
     });
 </script>
 
