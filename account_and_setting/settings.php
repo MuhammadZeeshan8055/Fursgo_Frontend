@@ -1173,6 +1173,16 @@
                 document.body.classList.remove('dark');
             }
         });
+
+        const navbar = document.querySelector('header nav.navbar');
+
+        function updateNavHeight() {
+            const height = navbar.offsetHeight;
+            document.documentElement.style.setProperty('--nav-height', height + 'px');
+        }
+
+        updateNavHeight();
+        window.addEventListener('resize', updateNavHeight);
     </script>
 
 
