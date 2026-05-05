@@ -441,6 +441,10 @@
 
 /* ===== Special Case ===== */
 
+.border-radius-none {
+  border-radius: 0 !important;
+}
+
 .tags.active .fs-14-600-f-color {
   color: #ffc97a;
 }

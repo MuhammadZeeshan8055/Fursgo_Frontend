@@ -207,7 +207,7 @@ toggleActive(".find-space-content", ".weight-option", "active");
       const el = timeList.querySelector(
         `.time-item[data-time="${selectedTime}"]`,
       );
-      if (el) el.scrollIntoView({ block: "center", behavior: "smooth" });
+      // if (el) el.scrollIntoView({ block: "center", behavior: "smooth" });
     }
 
     function closeAllPopovers() {

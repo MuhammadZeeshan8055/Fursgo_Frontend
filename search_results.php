@@ -11,8 +11,8 @@
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/responsive.css">
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/bootstrap.css">
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/media_query.css">
-    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/customer_journey.css">
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/common.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/customer_journey.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 
 </head>
@@ -216,6 +216,114 @@
             spaceModal.style.display = 'none';
         });
     </script>
+
+
+    <!-- adding pills for groomer and space filters (checkboxes + radios) -->
+
+    <script>
+        const groomBox = document.querySelector('#groomerSelectedSection');
+        const spaceBox = document.querySelector('#spaceSelectedSection');
+
+        // ================================
+        // INIT ALL INPUTS
+        // ================================
+        document.querySelectorAll(
+            'input[name="groomer-venue[]"], input[name="space-venue[]"], input[name="groomer-sort"], input[name="space-sort"]'
+        ).forEach(input => {
+
+            const box = getBox(input);
+
+            // INIT checked values on load
+            if (input.checked) {
+                createPill(input, box);
+            }
+
+            input.addEventListener('change', () => {
+
+                const box = getBox(input);
+
+                // ================================
+                // RADIO LOGIC (replace only same group)
+                // ================================
+                if (input.type === 'radio') {
+
+                    box.querySelectorAll(`[data-group="${input.name}"]`)
+                        .forEach(el => el.remove());
+                }
+
+                // ================================
+                // CHECK / UNCHECK LOGIC
+                // ================================
+                if (input.checked) {
+                    createPill(input, box);
+                } else {
+                    removePill(input, box);
+                }
+            });
+        });
+
+
+        // ================================
+        // GET RIGHT CONTAINER
+        // ================================
+        function getBox(input) {
+            if (input.name === 'groomer-venue[]' || input.name === 'groomer-sort') {
+                return groomBox;
+            }
+            return spaceBox;
+        }
+
+
+        // ================================
+        // CREATE PILL
+        // ================================
+        function createPill(input, box) {
+
+            const value = input.value;
+
+            if (box.querySelector(`[data-value="${value}"]`)) return;
+
+            const text = input.closest('label')
+                .querySelector('.option-text')
+                .innerText.trim();
+
+            const div = document.createElement('div');
+            div.className = 'selected-item d-flex align-items-center gap-10';
+            div.dataset.value = value;
+            div.dataset.group = input.name;
+
+            div.innerHTML = `
+                <p>${text}</p>
+                <svg class="cross" xmlns="http://www.w3.org/2000/svg" width="9" height="9" viewBox="0 0 9 9" fill="none" style="cursor:pointer;">
+                    <path d="M0.5 7.57L7.572 0.5M0.5 0.5L7.572 7.57" stroke="#FBAC83" stroke-linecap="round"/>
+                </svg>
+            `;
+
+            // remove pill click
+            div.querySelector('.cross').addEventListener('click', () => {
+                input.checked = false;
+                div.remove();
+            });
+
+            box.appendChild(div);
+        }
+
+
+        // ================================
+        // REMOVE PILL
+        // ================================
+        function removePill(input, box) {
+
+            const el = box.querySelector(
+                `.selected-item[data-value="${input.value}"][data-group="${input.name}"]`
+            );
+
+            if (el) el.remove();
+        }
+    </script>
+
+    <!-- adding pills for groomer and space filters (checkboxes + radios) ends -->
+
 
 </body>
 

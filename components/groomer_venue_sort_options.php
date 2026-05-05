@@ -22,7 +22,7 @@
                              <li>
                                  <label>
                                      <span class="option-text">Salons</span>
-                                     <input type="checkbox" name="groomer-venue[]" value="Full Groom (bath, dry, haircut)" checked>
+                                     <input type="checkbox" name="groomer-venue[]" value="Salons">
                                      <span class="check-circle"></span>
 
                                  </label>
@@ -30,14 +30,14 @@
                              <li>
                                  <label>
                                      <span class="option-text">Groomer’s studio</span>
-                                     <input type="checkbox" name="groomer-venue[]" value="Face Trim Only">
+                                     <input type="checkbox" name="groomer-venue[]" value="Groomer’s studio">
                                      <span class="check-circle"></span>
                                  </label>
                              </li>
                              <li>
                                  <label>
                                      <span class="option-text">Homevisit</span>
-                                     <input type="checkbox" name="groomer-venue[]" value="Tail Trim Only">
+                                     <input type="checkbox" name="groomer-venue[]" value="Homevisit">
                                      <span class="check-circle"></span>
                                  </label>
                              </li>
@@ -62,14 +62,14 @@
                                              </span>
                                          </span>
                                      </span>
-                                     <input type="checkbox" name="groomer-venue[]" value="Bath & Brush">
+                                     <input type="checkbox" name="groomer-venue[]" value="Visiting Groomers">
                                      <span class="check-circle"></span>
                                  </label>
                              </li>
                              <li>
                                  <label>
                                      <span class="option-text">Mobile Station</span>
-                                     <input type="checkbox" name="groomer-venue[]" value="Nail Trim">
+                                     <input type="checkbox" name="groomer-venue[]" value="Mobile Station">
                                      <span class="check-circle"></span>
                                  </label>
                              </li>
@@ -87,27 +87,27 @@
                              <li>
                                  <label>
                                      <span class="option-text">Recommended (default)</span>
-                                     <input type="checkbox" name="space-venue[]" value="default" checked> <span class="check-circle"></span>
+                                     <input type="radio" name="groomer-sort" value="default"> <span class="check-circle"></span>
                                  </label>
                              </li>
                              <li>
                                  <label>
                                      <span class="option-text">Distance</span>
-                                     <input type="checkbox" name="space-venue[]" value="distance">
+                                     <input type="radio" name="groomer-sort" value="distance">
                                      <span class="check-circle"></span>
                                  </label>
                              </li>
                              <li>
                                  <label>
                                      <span class="option-text">Lowest price</span>
-                                     <input type="checkbox" name="space-venue[]" value="lowest_price">
+                                     <input type="radio" name="groomer-sort" value="lowest_price">
                                      <span class="check-circle"></span>
                                  </label>
                              </li>
                              <li>
                                  <label>
                                      <span class="option-text">Soonest available</span>
-                                     <input type="checkbox" name="space-venue[]" value="soonest_available">
+                                     <input type="radio" name="groomer-sort" value="soonest_available">
                                      <span class="check-circle"></span>
                                  </label>
                              </li>

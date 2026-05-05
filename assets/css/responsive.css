@@ -258,7 +258,7 @@ a {
 }
 
 .weight-toggle {
-    display: inline-flex;
+    display: flex;
     /* shrink to content */
     border: 1px solid #e5e5e5;
     border-radius: 10px;
@@ -1633,7 +1633,12 @@ p.time-text {
     justify-content: center;
     border-radius: 15px;
     cursor: pointer;
-    font-size: 13px;
+    color: #3B3731;
+    font-family: Lato;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
 }
 
 .day:hover {
@@ -1685,7 +1690,7 @@ p.time-text {
 }
 
 .time-item {
-    padding: 10px 12px;
+    padding: 10px 10px;
     border-radius: 999px;
     margin-bottom: 6px;
     margin-right: 10px;

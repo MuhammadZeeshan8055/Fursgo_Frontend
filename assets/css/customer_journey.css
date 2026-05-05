@@ -3,6 +3,11 @@
     --muted: #9D9B98;
     --accent: #f6b6ac;
     --text: #1f1f1f;
+    --mode-color: #FBAC83;
+}
+
+body:has(.top-tabs.find-space-search.active) {
+    --mode-color: #ffa899;
 }
 
 .filter-options-section ul,
@@ -45,7 +50,7 @@
 /* Modal box */
 .modal-dialog {
     width: 100%;
-    max-width: 620px;
+    max-width: 660px;
     min-width: 300px;
     padding: 38px;
     height: auto;
@@ -103,7 +108,7 @@
 }
 
 .modal-footer .modal-footer-btn {
-    padding: 10px 40px 10px 40px;
+    padding: 12px 40px 12px 40px;
     border-radius: 4px;
     color: #3B3731;
     text-align: center;
@@ -121,7 +126,9 @@
 
 .modal-footer .modal-footer-btn.apply {
     color: #FFF;
-    background: var(--active-bg);
+    border-radius: 96px;
+    background: #FFC97A;
+    box-shadow: 0 0 8.5px 0 rgba(0, 0, 0, 0.05);
     border: none;
 }
 
@@ -183,7 +190,7 @@
     position: absolute;
     top: 17px;
     left: 0;
-    height: 5px;
+    height: 2px;
     width: 100%;
     background: #D4D4D4;
     border-radius: 3px;
@@ -191,13 +198,13 @@
 
 .incl-range {
     width: 0;
-    background: #FBAC83;
+    background: var(--mode-color);
 }
 
 span.output {
     border-radius: 100px;
-    border: 1px solid #FBAC83;
-    background: linear-gradient(0deg, #FBAC83 0%, #FBAC83 100%), #D9D9D9;
+    border: 1px solid var(--mode-color);
+    background: linear-gradient(0deg, var(--mode-color) 0%, var(--mode-color) 100%), #D9D9D9;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -242,10 +249,10 @@ input[type=range]::-webkit-slider-thumb {
     height: 24px;
     aspect-ratio: 1 / 1;
     border-radius: 100px;
-    border: 4px solid #FBAC83;
+    border: 4px solid var(--mode-color);
     background: #fff;
     cursor: pointer;
-    margin-top: -7px;
+    margin-top: -9px;
 }
 
 span.max-price {
@@ -386,10 +393,7 @@ body:has(.find-groomer-search.active) {
 
 .time-col {
     width: 100%;
-}
-
-.time-col .title {
-    justify-content: center;
+    padding: 0px 18px;
 }
 
 .time-list {
@@ -425,6 +429,20 @@ body:has(.find-groomer-search.active) {
     height: 48px;
 }
 
+.search-custom-width {
+    width: 100%;
+    min-width: 116px;
+    max-width: 116px;
+    padding: 0 !important;
+}
+
+.search-custom-large-btn-width {
+    width: 100%;
+    min-width: 143px;
+    max-width: 143px;
+    padding: 0 !important;
+}
+
 .pet-weight-wrapper.wider .weight-option.active {
     height: 48px;
 }
@@ -440,7 +458,7 @@ input#dateInput#streched {
 .filter-svg {
     display: flex;
     align-items: center;
-    padding: 15px 0 0 5px;
+    padding: 10px 0 0 5px;
     cursor: pointer;
 }
 
@@ -705,7 +723,7 @@ img.svg {
     top: 130%;
     background: white;
     border: 1px solid #ccc;
-    min-width: 230px;
+    min-width: 260px;
     right: 0;
     border-radius: 10px 0px 10px 10px;
     display: none;
@@ -1362,7 +1380,7 @@ button.load-more {
     font-size: 20px;
     font-style: normal;
     font-weight: 700;
-    
+
 }
 
 .week-days {
@@ -1501,7 +1519,8 @@ button.load-more {
 }
 
 /* Hide native checkbox */
-input[type="checkbox"] {
+input[type="checkbox"],
+input[type="radio"] {
     display: none;
 }
 
@@ -1509,12 +1528,12 @@ input[type="checkbox"] {
 .check-circle {
     width: 25px;
     height: 25px;
-    border: 1px solid var(--groomer-color);
+    border: 1px solid var(--mode-color);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-right: 5px;
+    margin-right: 8px;
     position: relative;
 }
 
@@ -1523,7 +1542,7 @@ input[type="checkbox"] {
     content: "";
     width: 15px;
     height: 15px;
-    background-color: var(--groomer-color);
+    background-color: var(--mode-color);
     border-radius: 50%;
     display: none;
     position: absolute;
@@ -1533,15 +1552,16 @@ input[type="checkbox"] {
 }
 
 /* Show dot when checked */
-input[type="checkbox"]:checked+.check-circle::after {
+input[type="checkbox"]:checked+.check-circle::after,
+input[type="radio"]:checked+.check-circle::after {
     display: block;
 }
 
 /* Option text */
 .option-text {
-    color: #3B3731;
+    color: #9D9B98;
     font-family: Lato;
-    font-size: 14px;
+    font-size: 18px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;

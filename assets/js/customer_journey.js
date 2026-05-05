@@ -865,7 +865,7 @@ document.querySelectorAll('.service-type-select .custom-select').forEach(select 
 
             // Auto scroll to selected time
             const el = timeList.querySelector(`.time-item[data-time="${selectedTime}"]`);
-            if (el) el.scrollIntoView({ block: 'center', behavior: 'smooth' });
+            // if (el) el.scrollIntoView({ block: 'center', behavior: 'smooth' });
         }
 
         function closeAllPopovers() {
@@ -884,10 +884,16 @@ document.querySelectorAll('.service-type-select .custom-select').forEach(select 
         });
 
         timeField.querySelector('.input-row').addEventListener('click', () => {
-            if (datePopover.style.display !== 'block') openPopover();
-            else {
-                const el = timeList.querySelector(`.time-item[data-time="${selectedTime}"]`);
-                if (el) el.scrollIntoView({ block: 'center', behavior: 'smooth' });
+            const isOpen = datePopover.style.display === 'block' && timeList.closest('.popover')?.style.display === 'block';
+
+            const timePopover = timeList.closest('.popover');
+
+            const isTimeOpen = timePopover && timePopover.style.display === 'block';
+
+            if (isTimeOpen) {
+                closeAllPopovers();
+            } else {
+                openPopover('time');
             }
         });
 
@@ -924,7 +930,19 @@ document.querySelectorAll('.service-type-select .custom-select').forEach(select 
 
     document.addEventListener('click', (e) => {
         if (!e.target.closest('.datetime-wrapper')) {
-            document.querySelectorAll('.popover').forEach(p => p.style.display = 'none');
+            datetimeWrappers.forEach(wrapper => {
+                const dateField = wrapper.querySelector('.field.date');
+                const timeField = wrapper.querySelector('.field.time');
+                const popover = wrapper.querySelector('.popover');
+
+                popover.style.display = 'none';
+
+                dateField.classList.remove('focused');
+                timeField.classList.remove('focused');
+
+                dateField.style.borderBottomLeftRadius = '10px';
+                timeField.style.borderBottomRightRadius = '10px';
+            });
         }
     });
 
