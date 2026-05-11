@@ -2272,7 +2272,7 @@
                                 <!-- Back document -->
                                 <path d="M12.625 3.125V1.75C12.625 1.19772 12.1773 0.75 11.625 0.75H1.75C1.19772 0.75 0.75 1.19772 0.75 1.75V16.375C0.75 16.9273 1.19771 17.375 1.75 17.375H3.125" stroke="#3B3731" stroke-width="1.5" />
                             </svg>
-                            
+
                             <svg class="cursor" xmlns="http://www.w3.org/2000/svg" width="17" height="20" viewBox="34 0 17 20" fill="none">
                                 <path d="M34.9999 11.25V17.25C34.9999 17.6478 35.1435 18.0294 35.3993 18.3107C35.655 18.592 36.0019 18.75 36.3635 18.75H48.6362C48.9979 18.75 49.3447 18.592 49.6005 18.3107C49.8562 18.0294 49.9999 17.6478 49.9999 17.25V11.25M42.4999 13.5V1.125M46.5908 5.25L42.4999 0.75L38.409 5.25" stroke="#3B3731" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
@@ -2726,7 +2726,7 @@
                         <a href="#reviews">Reviews</a>
                         <a href="#location">Location</a>
                     </div>
-                    <div id="services_and_pricing" class="mt-5 section-offset">
+                    <div id="services_and_pricing" class="mt-5">
                         <h2 class="section-content-heading">Services & Pricing</h2>
                         <div class="services-list d-flex align-items-center justify-content-between mt-4">
                             <div class="service-list-left d-flex align-items-center">
@@ -2870,7 +2870,7 @@
 
                     </div>
 
-                    <div id="preference_and_restrictions" class="mt-5 section-offset">
+                    <div id="preference_and_restrictions" class="mt-5">
                         <h2 class="section-content-heading mt-5">Preferences & Restrictions</h2>
 
                         <div class="preferences-list d-flex align-items-center mt-4">
@@ -2902,7 +2902,7 @@
                         </div>
                     </div>
 
-                    <div id="reviews" class="mt-5 section-offset">
+                    <div id="reviews" class="mt-5">
                         <h2 class="section-content-heading d-flex align-items-center">
                             <svg xmlns="http://www.w3.org/2000/svg" width="26" height="25" viewBox="0 0 26 25" fill="none">
                                 <path d="M10.7229 1.39752C11.3115 -0.465884 13.9485 -0.465882 14.5371 1.39753L16.1175 6.40049C16.3803 7.23246 17.1521 7.79805 18.0246 7.79805H23.2562C25.1799 7.79805 25.9944 10.2485 24.4534 11.4001L20.125 14.6348C19.4436 15.1439 19.1589 16.0282 19.4151 16.8393L21.0454 22.0002C21.6306 23.8527 19.4973 25.3677 17.941 24.2047L13.8272 21.1304C13.1173 20.5999 12.1428 20.5999 11.4328 21.1304L7.31899 24.2047C5.76272 25.3677 3.62943 23.8527 4.21465 22.0002L5.84494 16.8393C6.10114 16.0282 5.81637 15.1439 5.13506 14.6348L0.80663 11.4001C-0.734386 10.2485 0.080081 7.79805 2.00386 7.79805H7.23538C8.10787 7.79805 8.87968 7.23246 9.14249 6.40049L10.7229 1.39752Z" fill="#3B3731" />
@@ -3066,7 +3066,7 @@
 
                     </div>
 
-                    <div id="location" class="mt-5 section-offset">
+                    <div id="location" class="mt-5">
                         <h2 class="section-content-heading">Location</h2>
 
                         <div class="map-location-section">
@@ -3444,6 +3444,36 @@
         }
 
         // tab map js ends
+    </script>
+    <script>
+        document.querySelectorAll('.tab-go-to-section a[href^="#"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                const target = document.querySelector(targetId);
+                if (!target) return;
+
+                // Measure live heights of both sticky layers at click time
+                const header = document.querySelector('header');
+                const tabs = document.querySelector('.tab-go-to-section');
+
+                const stickyOffset = (header ? header.offsetHeight : 0) +
+                    (tabs ? tabs.offsetHeight : 0) +
+                    20; // breathing room
+
+                const top = target.getBoundingClientRect().top + window.scrollY - stickyOffset;
+
+                window.scrollTo({
+                    top,
+                    behavior: 'smooth'
+                });
+
+                // Update active tab
+                document.querySelectorAll('.tab-go-to-section a').forEach(a => a.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
     </script>
 </body>
 

@@ -2015,7 +2015,7 @@
                         <a href="#reviews">Reviews</a>
                         <a href="#location">Location</a>
                     </div>
-                    <div id="services_and_pricing" class="mt-5 section-offset">
+                    <div id="services_and_pricing" class="mt-5">
                         <h2 class="section-content-heading">Services & Pricing</h2>
                         <div class="services-list d-flex align-items-center justify-content-between mt-4">
                             <div class="service-list-left d-flex align-items-center">
@@ -2175,7 +2175,7 @@
 
                     </div>
 
-                    <div id="rules_and_restrictions" class="mt-5 section-offset">
+                    <div id="rules_and_restrictions" class="mt-5">
                         <h2 class="section-content-heading mt-5">Rules & Restrictions</h2>
 
                         <div class="preferences-list d-flex align-items-center mt-4">
@@ -2234,7 +2234,7 @@
                         </div>
                     </div>
 
-                    <div id="amenities" class="mt-5 section-offset">
+                    <div id="amenities" class="mt-5">
                         <h2 class="section-content-heading">Amenities Included</h2>
                         <div class="amenities-options d-flex align-items-center mt-4 flex-wrap gap-30">
                             <div class="selected-item dark-bg">
@@ -2282,7 +2282,7 @@
                         </div>
                     </div>
 
-                    <div id="reviews" class="mt-5 section-offset">
+                    <div id="reviews" class="mt-5">
                         <h2 class="section-content-heading d-flex align-items-center">
                             <svg xmlns="http://www.w3.org/2000/svg" width="26" height="25" viewBox="0 0 26 25" fill="none">
                                 <path d="M10.7229 1.39752C11.3115 -0.465884 13.9485 -0.465882 14.5371 1.39753L16.1175 6.40049C16.3803 7.23246 17.1521 7.79805 18.0246 7.79805H23.2562C25.1799 7.79805 25.9944 10.2485 24.4534 11.4001L20.125 14.6348C19.4436 15.1439 19.1589 16.0282 19.4151 16.8393L21.0454 22.0002C21.6306 23.8527 19.4973 25.3677 17.941 24.2047L13.8272 21.1304C13.1173 20.5999 12.1428 20.5999 11.4328 21.1304L7.31899 24.2047C5.76272 25.3677 3.62943 23.8527 4.21465 22.0002L5.84494 16.8393C6.10114 16.0282 5.81637 15.1439 5.13506 14.6348L0.80663 11.4001C-0.734386 10.2485 0.080081 7.79805 2.00386 7.79805H7.23538C8.10787 7.79805 8.87968 7.23246 9.14249 6.40049L10.7229 1.39752Z" fill="#3B3731" />
@@ -2446,7 +2446,7 @@
 
                     </div>
 
-                    <div id="location" class="mt-5 section-offset">
+                    <div id="location" class="mt-5">
                         <h2 class="section-content-heading">Location</h2>
 
                         <div class="map-location-section">
@@ -3229,6 +3229,37 @@
         }
 
         // tab map js ends
+    </script>
+
+    <script>
+        document.querySelectorAll('.tab-go-to-section a[href^="#"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                const target = document.querySelector(targetId);
+                if (!target) return;
+
+                // Measure live heights of both sticky layers at click time
+                const header = document.querySelector('header');
+                const tabs = document.querySelector('.tab-go-to-section');
+
+                const stickyOffset = (header ? header.offsetHeight : 0) +
+                    (tabs ? tabs.offsetHeight : 0) +
+                    20; // breathing room
+
+                const top = target.getBoundingClientRect().top + window.scrollY - stickyOffset;
+
+                window.scrollTo({
+                    top,
+                    behavior: 'smooth'
+                });
+
+                // Update active tab
+                document.querySelectorAll('.tab-go-to-section a').forEach(a => a.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
     </script>
 
 </body>

@@ -403,6 +403,13 @@
   font-weight: 500;
 }
 
+.fs-14-500-w-color {
+  color: #fff;
+  font-family: Lato;
+  font-size: 14px;
+  font-weight: 500;
+}
+
 .fs-14-400-light {
   color: #9d9b98;
   font-family: Lato;
