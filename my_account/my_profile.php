@@ -61,7 +61,7 @@
             background: #F8F8F8;
             cursor: pointer;
             position: absolute;
-            top: 0;
+            top: -2px;
             right: 35px;
             color: #3B3731;
             font-family: Lato;
@@ -71,7 +71,10 @@
 
         button.edit-button.show {
             display: flex;
-
+            align-items: center;
+            justify-content: space-between;
+            width: 130px;
+            height: 32px;
         }
 
         .avatar-container img {
@@ -146,10 +149,23 @@
             color: white;
             padding: 5px 12px;
             border-radius: 20px;
+            color: #fff;
+            font-family: Lato;
+            font-size: 14px;
+            font-weight: 500;
         }
 
         .type {
             color: #FFC97A;
+        }
+
+        .space-color {
+            color: #FFA899 !important;
+        }
+
+
+        .space-background {
+            background-color: #FFA899 !important;
         }
 
         .status {
@@ -230,9 +246,8 @@
             color: #9d9b98;
             font-family: Lato;
             font-size: 16px;
-
             font-weight: 400;
-
+            line-height: 0 !important;
         }
 
         .details-grid {
@@ -428,7 +443,7 @@
             background: white;
             padding: 5px;
             border-radius: 30px;
-            border: 1px solid #eee;
+            border: 1px solid #D9D9D9;
             width: fit-content;
             margin: 30px auto;
             color: #9d9b98;
@@ -544,7 +559,7 @@
             color: #3b3731;
             text-align: center;
             font-family: Lato;
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 600;
 
         }
@@ -746,7 +761,6 @@
             background: #fff;
             padding: 8px 16px;
             cursor: pointer;
-            font-weight: 500;
             transition: all 0.2s;
             width: 143px;
             height: 48px;
@@ -1360,10 +1374,13 @@
 
         .labels span {
             margin: 5% 0 5% 0;
-            padding: 5px 10px;
+            padding: 10px 10px;
             border-radius: 100px;
             background: #ffa899;
-            color: white;
+            color: #fff;
+            font-family: Lato;
+            font-size: 14px;
+            font-weight: 500;
         }
 
         .plus {
@@ -3214,8 +3231,8 @@
 
                             <div class="booking-top bg-top-pink">
                                 <div class="left-top">
-                                    <span class="tag light-color-font">Garden / Shed</span>
-                                    <span class="type normal-font-bold">Space Booking</span>
+                                    <span class="tag space-background light-color-font">Garden / Shed</span>
+                                    <span class="type space-color normal-font-bold">Space Booking</span>
                                 </div>
 
                                 <div class="status normal-font-bold d-flex align-items-center gap-5">
@@ -3270,7 +3287,7 @@
                                     </div>
                                 </div>
 
-                                <button class="view-btn medium-font-bold">View</button>
+                                <button class="view-btn medium-font-bold space-background">View</button>
 
                             </div>
 
@@ -3326,7 +3343,7 @@
                             <div class="header-row">
                                 <div>
                                     <h2>Just a few more details</h2>
-                                    <p class="mt-1">Complete your profile to make booking quicker and easier.</p>
+                                    <p>Complete your profile to make booking quicker and easier.</p>
                                 </div>
                                 <div class="d-flex align-self-end gap-20">
                                     <svg class="cursor" xmlns="http://www.w3.org/2000/svg" width="40" height="40"
@@ -3476,10 +3493,10 @@
                                     <div class="details-grid">
                                         <div class="detail-item">
                                             <label>Full Name</label>
-                                            <p id="display-name">Verity Eve</p>
+                                            <p id="display-name" class="mt-2">Verity Eve</p>
                                         </div>
                                         <div class="edit-action">
-                                            <button id="edit-btn" class="btn-edit-outline">
+                                            <button id="edit-btn" class="btn-edit-outline fs-16-600">
                                                 <svg width="16" height="15" viewBox="0 0 16 15" fill="none">
                                                     <path
                                                         d="M10.2059 2.37997L12.8529 4.97712M8.44118 14.5H15.5M1.38235 11.0371L0.5 14.5L4.02941 13.6343L14.2524 3.60409C14.5832 3.2794 14.769 2.83908 14.769 2.37997C14.769 1.92085 14.5832 1.48054 14.2524 1.15584L14.1006 1.00694C13.7697 0.682347 13.3209 0.5 12.8529 0.5C12.385 0.5 11.9362 0.682347 11.6053 1.00694L1.38235 11.0371Z"
@@ -3490,25 +3507,25 @@
                                             </button>
                                         </div>
                                         <div class="detail-item"><label>Email Address</label>
-                                            <p id="display-email">veve@gmail.com</p>
+                                            <p id="display-email" class="mt-2">veve@gmail.com</p>
                                         </div>
                                         <div class="detail-item"><label>Phone Number</label>
-                                            <p id="display-phone">+44 00 0000 0000</p>
+                                            <p id="display-phone" class="mt-2">+44 00 0000 0000</p>
                                         </div>
                                         <div class="detail-item"><label>Address Line 1</label>
-                                            <p id="display-address">12 King's Road</p>
+                                            <p id="display-address" class="mt-2">12 King's Road</p>
                                         </div>
                                         <div class="detail-item"><label>City</label>
-                                            <p id="display-city">London</p>
+                                            <p id="display-city" class="mt-2">London</p>
                                         </div>
                                         <div class="detail-item"><label>Post Code</label>
-                                            <p id="display-postcode">SW3 4JP</p>
+                                            <p id="display-postcode" class="mt-2">SW3 4JP</p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="bio-section">
                                     <label>Bio</label>
-                                    <p id="display-bio">Hi! I’m Sarah, and I’m a lifelong dog lover based in South
+                                    <p id="display-bio" class="mt-2">Hi! I’m Sarah, and I’m a lifelong dog lover based in South
                                         London. I have two
                                         small dogs who are very much part of the family. We’re looking for calm, caring
                                         groomers who are
@@ -4786,11 +4803,15 @@ line-height: normal;">
                                             <div class="card-body">
                                                 <div class="card-img">
                                                     <div class="top-left-svg left-svg">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="21" height="22"
-                                                            viewBox="0 0 21 22" fill="none">
-                                                            <path
-                                                                d="M10.9482 0.125295C10.7667 0.043205 10.5723 0 10.3692 0C10.1662 0 9.97174 0.043205 9.79028 0.125295L1.65477 3.57738C0.704262 3.97918 -0.00430085 4.91673 1.96518e-05 6.0487C0.0216222 10.3346 1.78439 18.1764 9.22861 21.7408C9.95014 22.0864 10.7883 22.0864 11.5098 21.7408C18.9541 18.1764 20.7168 10.3346 20.7384 6.0487C20.7428 4.91673 20.0342 3.97918 19.0837 3.57738L10.9482 0.125295ZM6.26043 12.3653C6.46781 12.4171 6.68816 12.443 6.91282 12.443C8.43796 12.443 9.67795 11.2031 9.67795 9.67793V6.9128H11.5876C12.1104 6.9128 12.59 7.2066 12.8233 7.67753L13.1343 8.29537H15.8995C16.2797 8.29537 16.5907 8.60644 16.5907 8.98665V10.3692C16.5907 12.2789 15.044 13.8256 13.1343 13.8256H11.0605V16.0161C11.0605 16.3315 10.8056 16.5907 10.4859 16.5907C10.4081 16.5907 10.3303 16.5734 10.2612 16.5432L5.99688 14.7156C5.71172 14.5947 5.53026 14.3138 5.53026 14.0071C5.53026 13.8861 5.55619 13.7694 5.61235 13.6614L6.26043 12.3653ZM6.22154 6.9128H8.29538V9.67793C8.29538 10.4427 7.67755 11.0605 6.91282 11.0605C6.1481 11.0605 5.53026 10.4427 5.53026 9.67793V7.60408C5.53026 7.22388 5.84134 6.9128 6.22154 6.9128ZM11.7518 8.98665C11.7518 8.80331 11.679 8.62748 11.5493 8.49784C11.4197 8.3682 11.2438 8.29537 11.0605 8.29537C10.8772 8.29537 10.7013 8.3682 10.5717 8.49784C10.4421 8.62748 10.3692 8.80331 10.3692 8.98665C10.3692 9.16998 10.4421 9.34581 10.5717 9.47545C10.7013 9.60509 10.8772 9.67793 11.0605 9.67793C11.2438 9.67793 11.4197 9.60509 11.5493 9.47545C11.679 9.34581 11.7518 9.16998 11.7518 8.98665Z"
-                                                                fill="#C9DDA0"></path>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="21" height="22" viewBox="0 0 21 22" fill="none">
+                                                            <path d="M10.9482 0.125295C10.7667 0.043205 10.5723 0 10.3692 0C10.1662 0 9.97174 0.043205 9.79028 0.125295L1.65477 3.57738C0.704261 3.97918 -0.00430085 4.91673 1.96518e-05 6.0487C0.0216222 10.3346 1.78439 18.1764 9.22861 21.7408C9.95014 22.0864 10.7883 22.0864 11.5098 21.7408C18.9541 18.1764 20.7168 10.3346 20.7384 6.0487C20.7428 4.91673 20.0342 3.97918 19.0837 3.57738L10.9482 0.125295Z" fill="#CBDCE8" />
+                                                            <path d="M16 6L11.5556 10.7222L16 6ZM9.58111 10.4917C8.20333 11.0206 7.10167 10.93 6 10.4933C6.27778 14.0728 7.94667 15.4489 10.1717 16C10.1717 16 11.8478 14.8144 12.0894 12.0039C12.1156 11.6994 12.1283 11.5478 12.0656 11.3761C12.0022 11.2044 11.8778 11.0817 11.6294 10.8356C11.2206 10.4311 11.0167 10.2289 10.7739 10.1778C10.5311 10.1278 10.2144 10.2489 9.58111 10.4917Z" fill="#CBDCE8" />
+                                                            <path d="M16 6L11.5556 10.7222M9.58111 10.4917C8.20333 11.0206 7.10167 10.93 6 10.4933C6.27778 14.0728 7.94667 15.4489 10.1717 16C10.1717 16 11.8478 14.8144 12.0894 12.0039C12.1156 11.6994 12.1283 11.5478 12.0656 11.3761C12.0022 11.2044 11.8778 11.0817 11.6294 10.8356C11.2206 10.4311 11.0167 10.2289 10.7739 10.1778C10.5311 10.1278 10.2144 10.2489 9.58111 10.4917Z" stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+                                                            <path d="M6.83301 13.4703C6.83301 13.4703 8.2219 13.7392 9.61079 12.667L6.83301 13.4703Z" fill="#CBDCE8" />
+                                                            <path d="M6.83301 13.4703C6.83301 13.4703 8.2219 13.7392 9.61079 12.667" stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+                                                            <path d="M9.05588 8.36144C9.05588 8.54561 8.98272 8.72225 8.85248 8.85248C8.72225 8.98272 8.54561 9.05588 8.36144 9.05588C8.17726 9.05588 8.00062 8.98272 7.87039 8.85248C7.74016 8.72225 7.66699 8.54561 7.66699 8.36144C7.66699 8.17726 7.74016 8.00062 7.87039 7.87039C8.00062 7.74016 8.17726 7.66699 8.36144 7.66699C8.54561 7.66699 8.72225 7.74016 8.85248 7.87039C8.98272 8.00062 9.05588 8.17726 9.05588 8.36144Z" fill="#CBDCE8" stroke="white" />
+                                                            <path d="M10.4443 6.55566V6.61122V6.55566Z" fill="#CBDCE8" />
+                                                            <path d="M10.4443 6.55566V6.61122" stroke="white" stroke-linecap="round" stroke-linejoin="round" />
                                                         </svg>
                                                     </div>
                                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 255 130"
@@ -4940,11 +4961,15 @@ line-height: normal;">
                                             <div class="card-body">
                                                 <div class="card-img">
                                                     <div class="top-left-svg left-svg">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="21" height="22"
-                                                            viewBox="0 0 21 22" fill="none">
-                                                            <path
-                                                                d="M10.9482 0.125295C10.7667 0.043205 10.5723 0 10.3692 0C10.1662 0 9.97174 0.043205 9.79028 0.125295L1.65477 3.57738C0.704262 3.97918 -0.00430085 4.91673 1.96518e-05 6.0487C0.0216222 10.3346 1.78439 18.1764 9.22861 21.7408C9.95014 22.0864 10.7883 22.0864 11.5098 21.7408C18.9541 18.1764 20.7168 10.3346 20.7384 6.0487C20.7428 4.91673 20.0342 3.97918 19.0837 3.57738L10.9482 0.125295ZM6.26043 12.3653C6.46781 12.4171 6.68816 12.443 6.91282 12.443C8.43796 12.443 9.67795 11.2031 9.67795 9.67793V6.9128H11.5876C12.1104 6.9128 12.59 7.2066 12.8233 7.67753L13.1343 8.29537H15.8995C16.2797 8.29537 16.5907 8.60644 16.5907 8.98665V10.3692C16.5907 12.2789 15.044 13.8256 13.1343 13.8256H11.0605V16.0161C11.0605 16.3315 10.8056 16.5907 10.4859 16.5907C10.4081 16.5907 10.3303 16.5734 10.2612 16.5432L5.99688 14.7156C5.71172 14.5947 5.53026 14.3138 5.53026 14.0071C5.53026 13.8861 5.55619 13.7694 5.61235 13.6614L6.26043 12.3653ZM6.22154 6.9128H8.29538V9.67793C8.29538 10.4427 7.67755 11.0605 6.91282 11.0605C6.1481 11.0605 5.53026 10.4427 5.53026 9.67793V7.60408C5.53026 7.22388 5.84134 6.9128 6.22154 6.9128ZM11.7518 8.98665C11.7518 8.80331 11.679 8.62748 11.5493 8.49784C11.4197 8.3682 11.2438 8.29537 11.0605 8.29537C10.8772 8.29537 10.7013 8.3682 10.5717 8.49784C10.4421 8.62748 10.3692 8.80331 10.3692 8.98665C10.3692 9.16998 10.4421 9.34581 10.5717 9.47545C10.7013 9.60509 10.8772 9.67793 11.0605 9.67793C11.2438 9.67793 11.4197 9.60509 11.5493 9.47545C11.679 9.34581 11.7518 9.16998 11.7518 8.98665Z"
-                                                                fill="#C9DDA0"></path>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="21" height="22" viewBox="0 0 21 22" fill="none">
+                                                            <path d="M10.9482 0.125295C10.7667 0.043205 10.5723 0 10.3692 0C10.1662 0 9.97174 0.043205 9.79028 0.125295L1.65477 3.57738C0.704261 3.97918 -0.00430085 4.91673 1.96518e-05 6.0487C0.0216222 10.3346 1.78439 18.1764 9.22861 21.7408C9.95014 22.0864 10.7883 22.0864 11.5098 21.7408C18.9541 18.1764 20.7168 10.3346 20.7384 6.0487C20.7428 4.91673 20.0342 3.97918 19.0837 3.57738L10.9482 0.125295Z" fill="#CBDCE8" />
+                                                            <path d="M16 6L11.5556 10.7222L16 6ZM9.58111 10.4917C8.20333 11.0206 7.10167 10.93 6 10.4933C6.27778 14.0728 7.94667 15.4489 10.1717 16C10.1717 16 11.8478 14.8144 12.0894 12.0039C12.1156 11.6994 12.1283 11.5478 12.0656 11.3761C12.0022 11.2044 11.8778 11.0817 11.6294 10.8356C11.2206 10.4311 11.0167 10.2289 10.7739 10.1778C10.5311 10.1278 10.2144 10.2489 9.58111 10.4917Z" fill="#CBDCE8" />
+                                                            <path d="M16 6L11.5556 10.7222M9.58111 10.4917C8.20333 11.0206 7.10167 10.93 6 10.4933C6.27778 14.0728 7.94667 15.4489 10.1717 16C10.1717 16 11.8478 14.8144 12.0894 12.0039C12.1156 11.6994 12.1283 11.5478 12.0656 11.3761C12.0022 11.2044 11.8778 11.0817 11.6294 10.8356C11.2206 10.4311 11.0167 10.2289 10.7739 10.1778C10.5311 10.1278 10.2144 10.2489 9.58111 10.4917Z" stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+                                                            <path d="M6.83301 13.4703C6.83301 13.4703 8.2219 13.7392 9.61079 12.667L6.83301 13.4703Z" fill="#CBDCE8" />
+                                                            <path d="M6.83301 13.4703C6.83301 13.4703 8.2219 13.7392 9.61079 12.667" stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+                                                            <path d="M9.05588 8.36144C9.05588 8.54561 8.98272 8.72225 8.85248 8.85248C8.72225 8.98272 8.54561 9.05588 8.36144 9.05588C8.17726 9.05588 8.00062 8.98272 7.87039 8.85248C7.74016 8.72225 7.66699 8.54561 7.66699 8.36144C7.66699 8.17726 7.74016 8.00062 7.87039 7.87039C8.00062 7.74016 8.17726 7.66699 8.36144 7.66699C8.54561 7.66699 8.72225 7.74016 8.85248 7.87039C8.98272 8.00062 9.05588 8.17726 9.05588 8.36144Z" fill="#CBDCE8" stroke="white" />
+                                                            <path d="M10.4443 6.55566V6.61122V6.55566Z" fill="#CBDCE8" />
+                                                            <path d="M10.4443 6.55566V6.61122" stroke="white" stroke-linecap="round" stroke-linejoin="round" />
                                                         </svg>
                                                     </div>
                                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 255 130"
@@ -5091,11 +5116,15 @@ line-height: normal;">
                                             <div class="card-body">
                                                 <div class="card-img">
                                                     <div class="top-left-svg left-svg">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="21" height="22"
-                                                            viewBox="0 0 21 22" fill="none">
-                                                            <path
-                                                                d="M10.9482 0.125295C10.7667 0.043205 10.5723 0 10.3692 0C10.1662 0 9.97174 0.043205 9.79028 0.125295L1.65477 3.57738C0.704262 3.97918 -0.00430085 4.91673 1.96518e-05 6.0487C0.0216222 10.3346 1.78439 18.1764 9.22861 21.7408C9.95014 22.0864 10.7883 22.0864 11.5098 21.7408C18.9541 18.1764 20.7168 10.3346 20.7384 6.0487C20.7428 4.91673 20.0342 3.97918 19.0837 3.57738L10.9482 0.125295ZM6.26043 12.3653C6.46781 12.4171 6.68816 12.443 6.91282 12.443C8.43796 12.443 9.67795 11.2031 9.67795 9.67793V6.9128H11.5876C12.1104 6.9128 12.59 7.2066 12.8233 7.67753L13.1343 8.29537H15.8995C16.2797 8.29537 16.5907 8.60644 16.5907 8.98665V10.3692C16.5907 12.2789 15.044 13.8256 13.1343 13.8256H11.0605V16.0161C11.0605 16.3315 10.8056 16.5907 10.4859 16.5907C10.4081 16.5907 10.3303 16.5734 10.2612 16.5432L5.99688 14.7156C5.71172 14.5947 5.53026 14.3138 5.53026 14.0071C5.53026 13.8861 5.55619 13.7694 5.61235 13.6614L6.26043 12.3653ZM6.22154 6.9128H8.29538V9.67793C8.29538 10.4427 7.67755 11.0605 6.91282 11.0605C6.1481 11.0605 5.53026 10.4427 5.53026 9.67793V7.60408C5.53026 7.22388 5.84134 6.9128 6.22154 6.9128ZM11.7518 8.98665C11.7518 8.80331 11.679 8.62748 11.5493 8.49784C11.4197 8.3682 11.2438 8.29537 11.0605 8.29537C10.8772 8.29537 10.7013 8.3682 10.5717 8.49784C10.4421 8.62748 10.3692 8.80331 10.3692 8.98665C10.3692 9.16998 10.4421 9.34581 10.5717 9.47545C10.7013 9.60509 10.8772 9.67793 11.0605 9.67793C11.2438 9.67793 11.4197 9.60509 11.5493 9.47545C11.679 9.34581 11.7518 9.16998 11.7518 8.98665Z"
-                                                                fill="#C9DDA0"></path>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="21" height="22" viewBox="0 0 21 22" fill="none">
+                                                            <path d="M10.9482 0.125295C10.7667 0.043205 10.5723 0 10.3692 0C10.1662 0 9.97174 0.043205 9.79028 0.125295L1.65477 3.57738C0.704261 3.97918 -0.00430085 4.91673 1.96518e-05 6.0487C0.0216222 10.3346 1.78439 18.1764 9.22861 21.7408C9.95014 22.0864 10.7883 22.0864 11.5098 21.7408C18.9541 18.1764 20.7168 10.3346 20.7384 6.0487C20.7428 4.91673 20.0342 3.97918 19.0837 3.57738L10.9482 0.125295Z" fill="#CBDCE8" />
+                                                            <path d="M16 6L11.5556 10.7222L16 6ZM9.58111 10.4917C8.20333 11.0206 7.10167 10.93 6 10.4933C6.27778 14.0728 7.94667 15.4489 10.1717 16C10.1717 16 11.8478 14.8144 12.0894 12.0039C12.1156 11.6994 12.1283 11.5478 12.0656 11.3761C12.0022 11.2044 11.8778 11.0817 11.6294 10.8356C11.2206 10.4311 11.0167 10.2289 10.7739 10.1778C10.5311 10.1278 10.2144 10.2489 9.58111 10.4917Z" fill="#CBDCE8" />
+                                                            <path d="M16 6L11.5556 10.7222M9.58111 10.4917C8.20333 11.0206 7.10167 10.93 6 10.4933C6.27778 14.0728 7.94667 15.4489 10.1717 16C10.1717 16 11.8478 14.8144 12.0894 12.0039C12.1156 11.6994 12.1283 11.5478 12.0656 11.3761C12.0022 11.2044 11.8778 11.0817 11.6294 10.8356C11.2206 10.4311 11.0167 10.2289 10.7739 10.1778C10.5311 10.1278 10.2144 10.2489 9.58111 10.4917Z" stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+                                                            <path d="M6.83301 13.4703C6.83301 13.4703 8.2219 13.7392 9.61079 12.667L6.83301 13.4703Z" fill="#CBDCE8" />
+                                                            <path d="M6.83301 13.4703C6.83301 13.4703 8.2219 13.7392 9.61079 12.667" stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+                                                            <path d="M9.05588 8.36144C9.05588 8.54561 8.98272 8.72225 8.85248 8.85248C8.72225 8.98272 8.54561 9.05588 8.36144 9.05588C8.17726 9.05588 8.00062 8.98272 7.87039 8.85248C7.74016 8.72225 7.66699 8.54561 7.66699 8.36144C7.66699 8.17726 7.74016 8.00062 7.87039 7.87039C8.00062 7.74016 8.17726 7.66699 8.36144 7.66699C8.54561 7.66699 8.72225 7.74016 8.85248 7.87039C8.98272 8.00062 9.05588 8.17726 9.05588 8.36144Z" fill="#CBDCE8" stroke="white" />
+                                                            <path d="M10.4443 6.55566V6.61122V6.55566Z" fill="#CBDCE8" />
+                                                            <path d="M10.4443 6.55566V6.61122" stroke="white" stroke-linecap="round" stroke-linejoin="round" />
                                                         </svg>
                                                     </div>
                                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 255 130"
@@ -5283,7 +5312,7 @@ line-height: normal;">
 
                                 <div class="left-filters">
                                     <button class="pill active" data-review="all">All</button>
-                                    <button class="pill" data-review="written">Written Reviews</button>
+                                    <button class="pill" data-review="written">Reviews Written</button>
                                     <button class="pill" data-review="received">Reviews Received</button>
                                 </div>
 
@@ -6387,25 +6416,40 @@ line-height: normal;">
             const cancelBtn = document.getElementById('cancel-btn');
             const profileViewForm = document.getElementById('profile-view');
             const editForm = document.getElementById('edit-form-container');
+            const profileDetailsCard = document.querySelectorAll('.profile-details-card');
+            const profileForm = document.getElementById('profile-form');
+
+            function setCardBg(color) {
+                profileDetailsCard.forEach(card => {
+                    card.style.background = color;
+                });
+            }
+
+            function toggleView(isEdit) {
+                profileViewForm.classList.toggle('hidden', isEdit);
+                editForm.classList.toggle('hidden', !isEdit);
+            }
 
             if (editBtnProfile && cancelBtn && profileViewForm && editForm) {
+
                 editBtnProfile.addEventListener('click', () => {
-                    profileViewForm.classList.add('hidden');
-                    editForm.classList.remove('hidden');
+                    toggleView(true);
+                    setCardBg('#fff');
                 });
 
                 cancelBtn.addEventListener('click', () => {
-                    editForm.classList.add('hidden');
-                    profileViewForm.classList.remove('hidden');
+                    toggleView(false);
+                    setCardBg('#fafafa');
                 });
 
-                const profileForm = document.getElementById('profile-form');
                 if (profileForm) {
                     profileForm.addEventListener('submit', (e) => {
                         e.preventDefault();
+
                         alert('Profile Updated!');
-                        editForm.classList.add('hidden');
-                        profileViewForm.classList.remove('hidden');
+
+                        toggleView(false);
+                        setCardBg('#fafafa');
                     });
                 }
             }
