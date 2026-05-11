@@ -1,3 +1,6 @@
+body {
+    background: #FDFCF8;
+}
 .top-head.d-flex.align-items-center.justify-content-center {
     padding: 25px 50px;
     border-radius: 10px;
@@ -103,7 +106,7 @@
 .tabs .active {
     color: #fff;
     font-weight: 600;
-    width: 59px;
+    padding: 0 20px;
     height: 48px;
     border-radius: 96px;
     border: 1px solid #FFF;

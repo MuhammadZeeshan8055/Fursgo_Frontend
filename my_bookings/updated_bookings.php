@@ -31,7 +31,10 @@
                         </div>
                     </div>
                     <div class="col-lg-12">
-                        <button type="button" class="btn-custom btn-no-bg text-center mt-5">← Back to My Bookings</button>
+                        <a href="<?= BASE_URL ?>my_bookings/my_bookings.php"
+                            class="btn-custom btn-no-bg text-center mt-5 d-inline-block">
+                            ← Back to My Bookings
+                        </a>
                     </div>
                     <div class="col-lg-12">
                         <div class="change-booking-outer d-flex flex-column align-items-center">
@@ -76,7 +79,7 @@
                                             </div>
 
                                         </div>
-                                        <div class="booking-details-listing d-flex align-items-center justify-content-between mt-5">
+                                        <div class="booking-details-listing d-flex align-items-center justify-content-between mt-4">
                                             <div class="d-flex flex-column">
                                                 <div class="d-flex align-items-center gap-15">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="17" viewBox="0 0 16 17" fill="none">
@@ -145,7 +148,7 @@
                                             </div>
 
                                         </div>
-                                        <div class="booking-details-listing d-flex align-items-center justify-content-between mt-5">
+                                        <div class="booking-details-listing d-flex align-items-center justify-content-between mt-4">
                                             <div class="d-flex flex-column">
                                                 <div class="d-flex align-items-center gap-15">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="17" viewBox="0 0 16 17" fill="none">

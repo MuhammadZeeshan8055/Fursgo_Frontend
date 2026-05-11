@@ -2258,14 +2258,40 @@
                                     <path d="M0.75 11.25V17.25C0.75 17.6478 0.893668 18.0294 1.1494 18.3107C1.40513 18.592 1.75198 18.75 2.11364 18.75H14.3864C14.748 18.75 15.0949 18.592 15.3506 18.3107C15.6063 18.0294 15.75 17.6478 15.75 17.25V11.25M8.25 13.5V1.125M12.3409 5.25L8.25 0.75L4.15909 5.25" stroke="#3B3731" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                                 </svg>
                             </button> -->
-                            <svg xmlns="http://www.w3.org/2000/svg" width="51" height="20" viewBox="0 0 51 20" fill="none">
-                                <path d="M34.9999 11.25V17.25C34.9999 17.6478 35.1435 18.0294 35.3993 18.3107C35.655 18.592 36.0019 18.75 36.3635 18.75H48.6362C48.9979 18.75 49.3447 18.592 49.6005 18.3107C49.8562 18.0294 49.9999 17.6478 49.9999 17.25V11.25M42.4999 13.5V1.125M46.5908 5.25L42.4999 0.75L38.409 5.25" stroke="#3B3731" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                                <mask id="path-2-inside-1_1_80" fill="white">
+
+                            <span class="fs-14-600-f-color" id="copy-msg" style="display:none; margin-left:10px; color:green;">
+                                Link copied!
+                            </span>
+
+                            <svg class="cursor" id="copy-link" xmlns="http://www.w3.org/2000/svg" width="16" height="20" viewBox="0 0 16 20" fill="none">
+                                <!-- Front document -->
+                                <mask id="path-inside" fill="white">
                                     <rect x="3.12488" y="3.12497" width="11.875" height="16.625" rx="1" />
                                 </mask>
-                                <rect x="3.12488" y="3.12497" width="11.875" height="16.625" rx="1" stroke="#3B3731" stroke-width="3" mask="url(#path-2-inside-1_1_80)" />
+                                <rect x="3.12488" y="3.12497" width="11.875" height="16.625" rx="1" stroke="#3B3731" stroke-width="3" mask="url(#path-inside)" />
+                                <!-- Back document -->
                                 <path d="M12.625 3.125V1.75C12.625 1.19772 12.1773 0.75 11.625 0.75H1.75C1.19772 0.75 0.75 1.19772 0.75 1.75V16.375C0.75 16.9273 1.19771 17.375 1.75 17.375H3.125" stroke="#3B3731" stroke-width="1.5" />
                             </svg>
+                            
+                            <svg class="cursor" xmlns="http://www.w3.org/2000/svg" width="17" height="20" viewBox="34 0 17 20" fill="none">
+                                <path d="M34.9999 11.25V17.25C34.9999 17.6478 35.1435 18.0294 35.3993 18.3107C35.655 18.592 36.0019 18.75 36.3635 18.75H48.6362C48.9979 18.75 49.3447 18.592 49.6005 18.3107C49.8562 18.0294 49.9999 17.6478 49.9999 17.25V11.25M42.4999 13.5V1.125M46.5908 5.25L42.4999 0.75L38.409 5.25" stroke="#3B3731" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                            <script>
+                                const copyLink = document.getElementById('copy-link');
+                                const copyMsg = document.getElementById('copy-msg');
+
+                                copyLink.addEventListener('click', () => {
+                                    const curr_link = window.location.href;
+
+                                    navigator.clipboard.writeText(curr_link).then(() => {
+                                        copyMsg.style.display = 'inline';
+
+                                        setTimeout(() => {
+                                            copyMsg.style.display = 'none';
+                                        }, 2000);
+                                    });
+                                });
+                            </script>
                         </div>
 
                         <div class="meta-stats mt-2">
@@ -2393,17 +2419,24 @@
             <div class="col-lg-4">
                 <div class="service-card mt-4 mb-5">
                     <div class="service__header">
-                        <h2 class="section-heading">Sarah W.</h2>
-                        <span class="section-heading-span fs-16">Sarah’s Grooming Studio</span>
-                        <div class="tags-row mt-3">
-                            <span class="pill serive-card">
-                                Home Visit
-                            </span>
-                            <span class="pill serive-card">
-                                Mobile Station
-                            </span>
+                        <div class="d-flex align-items-center gap-20">
+                            <div class="avatar-wrap d-flex align-items-center">
+                                <img class="avatar" src="<?= BASE_URL ?>/assets/images/groomer-profile.png" alt="Sarah's avatar">
+                            </div>
+                            <div>
+                                <h2 class="section-heading">Sarah W.</h2>
+                                <span class="section-heading-span fs-16">Sarah’s Grooming Studio</span>
+                                <div class="tags-row mt-3">
+                                    <span class="pill serive-card">
+                                        Home Visit
+                                    </span>
+                                    <span class="pill serive-card">
+                                        Mobile Station
+                                    </span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="personal-info d-flex align-items-center flex-wrap mt-3">
+                        <div class="personal-info d-flex align-items-center flex-wrap mt-4">
                             <span class="listing-option">ID-Verified</span>
                             <span class="listing-option">5+ years of experience</span>
                             <span class="listing-option">City & Guilds Certified</span>
@@ -2684,7 +2717,6 @@
                     <div class="service-content-header">
                         <h2 class="section-content-heading">About Me</h2>
                         <div class="avatar-wrap d-flex align-items-center mt-3">
-                            <img class="avatar" src="<?= BASE_URL ?>/assets/images/groomer-profile.png" alt="Sarah's avatar">
                             <p>Hi, I’m Sarah — a professional groomer in West London, specialising in small breeds, anxious pets, & gentle handling!</p>
                         </div>
                     </div>

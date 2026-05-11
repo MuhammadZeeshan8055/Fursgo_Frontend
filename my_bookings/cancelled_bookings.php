@@ -31,7 +31,10 @@
                         </div>
                     </div>
                     <div class="col-lg-12">
-                        <button type="button" class="btn-custom btn-no-bg text-center mt-5">← Back to My Bookings</button>
+                        <a href="<?= BASE_URL ?>my_bookings/my_bookings.php"
+                            class="btn-custom btn-no-bg text-center mt-5 d-inline-block">
+                            ← Back to My Bookings
+                        </a>
                     </div>
                     <div class="col-lg-12">
                         <div class="change-booking-outer d-flex flex-column align-items-center">
@@ -76,7 +79,7 @@
                                             </div>
 
                                         </div>
-                                        <div class="booking-details-listing d-flex align-items-center justify-content-between mt-5">
+                                        <div class="booking-details-listing d-flex align-items-center justify-content-between mt-4">
                                             <div class="d-flex flex-column">
                                                 <div class="d-flex align-items-center gap-15">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="17" viewBox="0 0 16 17" fill="none">
@@ -145,7 +148,7 @@
                                             </div>
 
                                         </div>
-                                        <div class="booking-details-listing d-flex align-items-center justify-content-between mt-5">
+                                        <div class="booking-details-listing d-flex align-items-center justify-content-between mt-4">
                                             <div class="d-flex flex-column">
                                                 <div class="d-flex align-items-center gap-15">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="17" viewBox="0 0 16 17" fill="none">
@@ -161,7 +164,13 @@
 
                                             <div class="d-flex flex-column">
                                                 <div class="d-flex align-items-center gap-15">
-                                                              <svg fill="#3b3731" width="15" height="15" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 61.13 61.13" xml:space="preserve" stroke="#3b3731" stroke-width="0.00061132" transform="matrix(-1, 0, 0, 1, 0, 0)"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#3b3731" stroke-width="2.689808"></g><g id="SVGRepo_iconCarrier"> <path d="M27.482,34.031v12.317h-6.92c-1.703,0-3.084,1.381-3.084,3.084s1.381,3.084,3.084,3.084h6.92v5.531 c0,1.703,1.381,3.084,3.084,3.084s3.084-1.381,3.084-3.084v-5.531h6.92c1.703,0,3.084-1.381,3.084-3.084s-1.381-3.084-3.084-3.084 h-6.92V34.031c7.993-1.458,14.072-8.467,14.072-16.874C47.723,7.697,40.026,0,30.566,0c-9.46,0-17.157,7.697-17.157,17.157 C13.409,25.564,19.489,32.573,27.482,34.031z M30.566,6.169c6.059,0,10.988,4.929,10.988,10.988s-4.929,10.988-10.988,10.988 s-10.988-4.929-10.988-10.988S24.507,6.169,30.566,6.169z"></path> </g></svg>
+                                                    <svg fill="#3b3731" width="15" height="15" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 61.13 61.13" xml:space="preserve" stroke="#3b3731" stroke-width="0.00061132" transform="matrix(-1, 0, 0, 1, 0, 0)">
+                                                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#3b3731" stroke-width="2.689808"></g>
+                                                        <g id="SVGRepo_iconCarrier">
+                                                            <path d="M27.482,34.031v12.317h-6.92c-1.703,0-3.084,1.381-3.084,3.084s1.381,3.084,3.084,3.084h6.92v5.531 c0,1.703,1.381,3.084,3.084,3.084s3.084-1.381,3.084-3.084v-5.531h6.92c1.703,0,3.084-1.381,3.084-3.084s-1.381-3.084-3.084-3.084 h-6.92V34.031c7.993-1.458,14.072-8.467,14.072-16.874C47.723,7.697,40.026,0,30.566,0c-9.46,0-17.157,7.697-17.157,17.157 C13.409,25.564,19.489,32.573,27.482,34.031z M30.566,6.169c6.059,0,10.988,4.929,10.988,10.988s-4.929,10.988-10.988,10.988 s-10.988-4.929-10.988-10.988S24.507,6.169,30.566,6.169z"></path>
+                                                        </g>
+                                                    </svg>
 
                                                     <p class="medium-font-bold">Sex</p>
                                                 </div>
@@ -197,7 +206,7 @@
                                     </ul>
                                 </div>
 
-                                <div class="d-flex align-items-center justify-content-between">
+                                <div class="footer-buttons d-flex align-items-center justify-content-between">
                                     <button type="button" class="btn-custom btn-no-bg blue-btn text-center mt-5">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17" fill="none">
                                             <path d="M2.28125 15.5449V12.6621H5.16408" stroke="white" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" />
