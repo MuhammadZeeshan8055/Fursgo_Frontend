@@ -88,12 +88,23 @@ include '../components/calendar.php';
 
 
         .step {
-            display: none;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(6px);
+            transition: all 0.35s ease;
+            pointer-events: none;
+            position: absolute;
+            /* optional but improves layout stability */
+            width: 100%;
             padding: var(--owner-account-inside-padding);
         }
 
         .step.active {
-            display: block;
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+            pointer-events: auto;
+            position: relative;
         }
 
         .upload-card {
@@ -258,10 +269,21 @@ include '../components/calendar.php';
             transition: width 0.3s ease;
         }
 
+        .groomer-service-button {
+            padding: 14px 30px;
+        }
+
         .groomer-service-button.active {
             border: 1px solid var(--groomer-color);
             background-color: var(--groomer-color);
             color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .weight-option {
+            padding: 10px 10px;
         }
 
         /* Animation for demo purposes */
@@ -322,6 +344,25 @@ include '../components/calendar.php';
 
         .pet-list-section {
             display: none;
+            opacity: 0;
+            transform: translateY(6px);
+            transition: opacity 0.35s ease, transform 0.35s ease;
+        }
+
+
+        .pet-list-section.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .form-outer-div {
+            transition: opacity 0.35s ease, transform 0.35s ease;
+        }
+
+        .form-outer-div.hidden {
+            opacity: 0;
+            transform: translateY(6px);
+            pointer-events: none;
         }
 
         .pet-list {
@@ -1668,11 +1709,14 @@ include '../components/calendar.php';
 
             // Final step → show pet list
             if (currentStep >= steps.length) {
-                formOuterDiv.style.display = "none";
-                petListSection.style.display = "block";
-                petListSection.classList.add("active");
+                formOuterDiv.classList.add("hidden");
 
-                // Ensure pet list loads from top
+                setTimeout(() => {
+                    formOuterDiv.style.display = "none";
+                    petListSection.style.display = "block";
+                    requestAnimationFrame(() => petListSection.classList.add("active"));
+                }, 180);
+
                 window.scrollTo({
                     top: 0,
                     behavior: "smooth"
@@ -1710,15 +1754,19 @@ include '../components/calendar.php';
             // Pet list → go back to last form step
             if (petListSection.classList.contains("active")) {
                 petListSection.classList.remove("active");
-                petListSection.style.display = "none";
 
-                formOuterDiv.style.display = "block";
+                setTimeout(() => {
+                    petListSection.style.display = "none";
+                    formOuterDiv.style.display = "block";
 
-                currentStep = steps.length - 1;
-                showStep(currentStep);
+                    requestAnimationFrame(() => formOuterDiv.classList.remove("hidden")); // fade IN after one frame
+
+                    currentStep = steps.length - 1;
+                    showStep(currentStep);
+                }, 180);
+
                 return;
             }
-
             // Normal form back behavior
             if (currentStep > 0) {
                 currentStep--;
