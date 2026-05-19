@@ -441,7 +441,7 @@
             display: flex;
             gap: 10px;
             background: white;
-            padding: 5px;
+            padding: 3px;
             border-radius: 30px;
             border: 1px solid #D9D9D9;
             width: fit-content;
@@ -456,7 +456,7 @@
         }
 
         .tab {
-            padding: 10px 25px;
+            padding: 14px 25px;
             border-radius: 25px;
             border: none;
             background: none;
@@ -661,7 +661,7 @@
 
         .divider {
             border: none;
-            border-top: 1px solid #d4d4d4;
+            border-top: 2px solid #d4d4d4;
             margin: 13px 0 50px 0;
         }
 
@@ -1376,11 +1376,18 @@
             margin: 5% 0 5% 0;
             padding: 10px 10px;
             border-radius: 100px;
-            background: #ffa899;
             color: #fff;
             font-family: Lato;
             font-size: 14px;
             font-weight: 500;
+        }
+
+        .groomer-grid .labels span {
+            background-color: #FBAC83;
+        }
+
+        .spaces-grid .labels span {
+            background-color: #FFA899;
         }
 
         .plus {
@@ -1595,10 +1602,10 @@
 
         }
 
+        .favourite-groomers .tag,
         .favourite-spaces .tag {
             display: inline-block;
-            background: #fbac83;
-            padding: 6px 2px;
+            padding: 10px 14px;
             border-radius: 20px;
             color: #fff;
             text-align: center;
@@ -1607,9 +1614,16 @@
 
             font-weight: 500;
 
-            width: 127px;
-            height: 32px;
+            width: fit-content;
             margin-bottom: 2rem;
+        }
+
+        .favourite-spaces .tag {
+            background: #FFA899;
+        }
+
+        .favourite-groomers .tag {
+            background: #FFC97A;
         }
 
         /* GRID */
@@ -2083,6 +2097,12 @@
 
             font-weight: 600;
 
+        }
+
+        .tab-link.space-tab.active {
+            background-color: #FFA899;
+            border-bottom: none;
+            border: 1px solid #FFA899;
         }
 
         /* Sections ke switch hone par halka sa fade effect */
@@ -3050,6 +3070,125 @@
         input[type="number"] {
             -moz-appearance: textfield;
         }
+
+
+        /* dropdown css starts */
+        .venue-selection,
+        .sort-by {
+            border-radius: 100px;
+            color: var(--groomer-color);
+            border: 1px solid var(--groomer-color);
+            padding: 10px 20px 10px 20px;
+            text-align: center;
+            font-family: "Lato";
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+            cursor: pointer;
+            height: 32px;
+        }
+
+        .venu.dropdown ul,
+        .sort.dropdown ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .dropdown li:first-child {
+            border-radius: 10px 0 0 0;
+        }
+
+        .venu.dropdown li,
+        .sort.dropdown li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 16px;
+            cursor: pointer;
+            border-bottom: 1px solid #eee;
+            transition: background 0.2s;
+        }
+
+        label {
+            cursor: pointer;
+            display: flex !important;
+            align-items: center;
+            width: 100%;
+            justify-content: space-between;
+        }
+
+        .option-text {
+            color: #3B3731;
+            font-family: Lato;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+        }
+
+        input[type="checkbox"] {
+            display: none;
+        }
+
+        input[type="radio"] {
+            display: none;
+        }
+
+        .check-circle {
+            width: 25px;
+            height: 25px;
+            border: 1px solid var(--groomer-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 5px;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .check-circle::after {
+            content: "";
+            width: 15px;
+            height: 15px;
+            background-color: var(--groomer-color);
+            border-radius: 50%;
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        input:checked+.check-circle::after {
+            display: block;
+        }
+
+        .sort-by-filter,
+        .venue-list {
+            /* color: var(--font-color); */
+            position: absolute;
+            top: 130%;
+            background: white;
+            border: 1px solid #ccc;
+            min-width: 230px;
+            right: 0;
+            border-radius: 10px 0px 10px 10px;
+            display: none;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            z-index: 1000;
+        }
+
+        .sort-by,
+        .venue-selection {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        /* dropdown css ends */
     </style>
 
 
@@ -3131,7 +3270,7 @@
                     </div>
                     <div class="col-lg-7">
                         <h2 class="medium-font mt-5">Upcoming Bookings</h2>
-                        <hr class="mt-4" style="border-top: 1px solid #D4D4D4;">
+                        <hr class="mt-4" style="border-top: 2px solid #D4D4D4;">
                         <div class="booking-card  bg-body-yellow mt-4">
 
                             <div class="booking-top bg-top-yellow">
@@ -4305,7 +4444,7 @@ line-height: normal;">
                         </div>
 
                         <section id="favourites-section" class="hidden">
-                            <section id="groomers-sec" class="tab-content favourites mt-5">
+                            <section id="groomers-sec" class="tab-content favourite-groomers mt-5">
                                 <div class="favourite-title">
                                     <h3 class="section-title">Favourites</h3>
                                     <hr class="divider mt-4">
@@ -4317,7 +4456,7 @@ line-height: normal;">
                                     <div class="tabs">
                                         <button class="tab-link active"
                                             onclick="showSection(event, 'groomers-sec')">Groomers</button>
-                                        <button class="tab-link"
+                                        <button class="tab-link space-tab"
                                             onclick="showSection(event, 'spaces-sec')">Space</button>
                                     </div>
 
@@ -4340,22 +4479,107 @@ line-height: normal;">
                                         <h2>Favourite Groomers</h2>
                                     </div>
                                     <div class="filter-section">
-                                        <button class="filter">Groomer Venue <svg xmlns="http://www.w3.org/2000/svg"
-                                                width="13" height="7" viewBox="0 0 13 7" fill="none">
-                                                <path d="M11.9102 0.5L6.15672 6.25344L0.499867 0.596581"
-                                                    stroke="#FBAC83" stroke-linecap="round" stroke-linejoin="round" />
-                                            </svg></button>
-                                        <button class="filter">Sort <svg xmlns="http://www.w3.org/2000/svg" width="13"
-                                                height="7" viewBox="0 0 13 7" fill="none">
-                                                <path d="M11.9102 0.5L6.15672 6.25344L0.499867 0.596581"
-                                                    stroke="#FBAC83" stroke-linecap="round" stroke-linejoin="round" />
-                                            </svg></button>
+                                        <div class="venu-sorting-section d-flex gap-10">
+                                            <div class="venue-selection">
+                                                Groomer Venue
+                                                &nbsp;
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="7" viewBox="0 0 13 7" fill="none">
+                                                    <path d="M11.9103 0.5L6.15684 6.25344L0.499989 0.596581" stroke="#FBAC83" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                </svg>
+                                                <div class="venue-list" style="display: none;">
+                                                    <div class="venu dropdown">
+                                                        <ul>
+                                                            <li>
+                                                                <label>
+                                                                    <span class="option-text">Salons</span>
+                                                                    <input type="checkbox" name="groomer-venue[]" value="Salons" checked="">
+                                                                    <span class="check-circle"></span>
+
+                                                                </label>
+                                                            </li>
+                                                            <li>
+                                                                <label>
+                                                                    <span class="option-text">Groomer’s studio</span>
+                                                                    <input type="checkbox" name="groomer-venue[]" value="Groomer’s studio">
+                                                                    <span class="check-circle"></span>
+                                                                </label>
+                                                            </li>
+                                                            <li>
+                                                                <label>
+                                                                    <span class="option-text">Homevisit</span>
+                                                                    <input type="checkbox" name="groomer-venue[]" value="Homevisit">
+                                                                    <span class="check-circle"></span>
+                                                                </label>
+                                                            </li>
+                                                            <li>
+                                                                <label>
+                                                                    <span class="option-text">Visiting Groomers</span>
+                                                                    <input type="checkbox" name="groomer-venue[]" value="Visiting Groomers">
+                                                                    <span class="check-circle"></span>
+                                                                </label>
+                                                            </li>
+                                                            <li>
+                                                                <label>
+                                                                    <span class="option-text">Mobile Station</span>
+                                                                    <input type="checkbox" name="groomer-venue[]" value="Mobile Station">
+                                                                    <span class="check-circle"></span>
+                                                                </label>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="sort-by">
+                                                Sort
+                                                &nbsp;
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="7" viewBox="0 0 13 7" fill="none">
+                                                    <path d="M11.9103 0.5L6.15684 6.25344L0.499989 0.596581" stroke="#FBAC83" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                </svg>
+                                                <div class="sort-by-filter" style="display: none;">
+                                                    <div class="sort dropdown">
+                                                        <ul>
+                                                            <li>
+                                                                <label>
+                                                                    <span class="option-text">Recommended (default)</span>
+                                                                    <input type="radio" name="sort-option" value="default" checked>
+                                                                    <span class="check-circle"></span>
+                                                                </label>
+                                                            </li>
+
+                                                            <li>
+                                                                <label>
+                                                                    <span class="option-text">Distance</span>
+                                                                    <input type="radio" name="sort-option" value="distance">
+                                                                    <span class="check-circle"></span>
+                                                                </label>
+                                                            </li>
+
+                                                            <li>
+                                                                <label>
+                                                                    <span class="option-text">Lowest price</span>
+                                                                    <input type="radio" name="sort-option" value="lowest_price">
+                                                                    <span class="check-circle"></span>
+                                                                </label>
+                                                            </li>
+
+                                                            <li>
+                                                                <label>
+                                                                    <span class="option-text">Soonest available</span>
+                                                                    <input type="radio" name="sort-option" value="soonest_available">
+                                                                    <span class="check-circle"></span>
+                                                                </label>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
 
 
 
-                                <span class="tag mt-4">Full Groom <svg xmlns="http://www.w3.org/2000/svg" width="9"
+                                <span class="tag mt-4 d-flex align-items-center gap-15">Full Groom <svg xmlns="http://www.w3.org/2000/svg" width="9"
                                         height="9" viewBox="0 0 9 9" fill="none">
                                         <path d="M0.5 7.57L7.572 0.5M0.5 0.5L7.572 7.57" stroke="white"
                                             stroke-linecap="round" />
@@ -4754,7 +4978,7 @@ line-height: normal;">
                                         <div class="tabs">
                                             <button class="tab-link"
                                                 onclick="showSection(event, 'groomers-sec')">Groomers</button>
-                                            <button class="tab-link active"
+                                            <button class="tab-link space-tab active"
                                                 onclick="showSection(event, 'spaces-sec')">Space</button>
                                         </div>
 
@@ -4777,22 +5001,111 @@ line-height: normal;">
                                             <h2>Favourite Spaces</h2>
                                         </div>
                                         <div class="filter-section">
-                                            <button class="filter">Venue <svg xmlns="http://www.w3.org/2000/svg"
-                                                    width="13" height="7" viewBox="0 0 13 7" fill="none">
-                                                    <path d="M11.9102 0.5L6.15672 6.25344L0.499867 0.596581"
-                                                        stroke="#FBAC83" stroke-linecap="round"
-                                                        stroke-linejoin="round" />
-                                                </svg></button>
-                                            <button class="filter">Sort <svg xmlns="http://www.w3.org/2000/svg"
-                                                    width="13" height="7" viewBox="0 0 13 7" fill="none">
-                                                    <path d="M11.9102 0.5L6.15672 6.25344L0.499867 0.596581"
-                                                        stroke="#FBAC83" stroke-linecap="round"
-                                                        stroke-linejoin="round" />
-                                                </svg></button>
+                                            <div class="filter-section">
+                                                <div class="venu-sorting-section d-flex gap-10">
+                                                    <div class="venue-selection">
+                                                        Space Venue
+                                                        &nbsp;
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="7" viewBox="0 0 13 7" fill="none">
+                                                            <path d="M11.9103 0.5L6.15684 6.25344L0.499989 0.596581" stroke="#FBAC83" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                        </svg>
+                                                        <div class="venue-list" style="display: none;">
+                                                            <div class="venu dropdown">
+                                                                <ul>
+                                                                    <li>
+                                                                        <label>
+                                                                            <span class="option-text">Private rooms</span>
+                                                                            <input type="checkbox" name="space-venue[]" value="Private rooms" checked="">
+                                                                            <span class="check-circle"></span>
+
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label>
+                                                                            <span class="option-text">Salon</span>
+                                                                            <input type="checkbox" name="space-venue[]" value="Salon">
+                                                                            <span class="check-circle"></span>
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label>
+                                                                            <span class="option-text">Mobile Station</span>
+                                                                            <input type="checkbox" name="space-venue[]" value="Mobile Station">
+                                                                            <span class="check-circle"></span>
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label>
+                                                                            <span class="option-text">Garden/Shed</span>
+                                                                            <input type="checkbox" name="space-venue[]" value="Garden/Shed">
+                                                                            <span class="check-circle"></span>
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label>
+                                                                            <span class="option-text">Others</span>
+                                                                            <input type="checkbox" name="space-venue[]" value="Others">
+                                                                            <span class="check-circle"></span>
+                                                                        </label>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="sort-by">
+                                                        Sort
+                                                        &nbsp;
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="7" viewBox="0 0 13 7" fill="none">
+                                                            <path d="M11.9103 0.5L6.15684 6.25344L0.499989 0.596581" stroke="#FBAC83" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                        </svg>
+                                                        <div class="sort-by-filter" style="display: none;">
+                                                            <div class="sort dropdown">
+                                                                <ul>
+                                                                    <li>
+                                                                        <label>
+                                                                            <span class="option-text">Recommended (default)</span>
+                                                                            <input type="radio" name="sort-option" value="default" checked>
+                                                                            <span class="check-circle"></span>
+                                                                        </label>
+                                                                    </li>
+
+                                                                    <li>
+                                                                        <label>
+                                                                            <span class="option-text">Distance</span>
+                                                                            <input type="radio" name="sort-option" value="distance">
+                                                                            <span class="check-circle"></span>
+                                                                        </label>
+                                                                    </li>
+
+                                                                    <li>
+                                                                        <label>
+                                                                            <span class="option-text">Lowest price</span>
+                                                                            <input type="radio" name="sort-option" value="lowest_price">
+                                                                            <span class="check-circle"></span>
+                                                                        </label>
+                                                                    </li>
+
+                                                                    <li>
+                                                                        <label>
+                                                                            <span class="option-text">Soonest available</span>
+                                                                            <input type="radio" name="sort-option" value="soonest_available">
+                                                                            <span class="check-circle"></span>
+                                                                        </label>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
 
-                                    <span class="tag mt-2">Garden / Shed ✕</span>
+                                    <span class="tag mt-2 d-flex align-items-center gap-15">Garden / Shed
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="9" height="9" viewBox="0 0 9 9" fill="none">
+                                            <path d="M0.5 7.57L7.572 0.5M0.5 0.5L7.572 7.57" stroke="white" stroke-linecap="round" />
+                                        </svg>
+                                    </span>
 
                                     <!-- Cards -->
                                     <div class="spaces-grid">
@@ -6845,6 +7158,40 @@ line-height: normal;">
                     }));
                 });
             });
+        });
+    </script>
+
+    <script>
+        // loop through all venu-sorting-section blocks
+        document.querySelectorAll('.venu-sorting-section').forEach(container => {
+            const sortBy = container.querySelector('.sort-by');
+            const sortByFilter = container.querySelector('.sort-by-filter');
+
+            const venueSelection = container.querySelector('.venue-selection');
+            const venueList = container.querySelector('.venue-list');
+
+            sortBy.addEventListener('click', (e) => {
+                e.stopPropagation();
+
+                venueList.style.display = 'none';
+
+                sortByFilter.style.display =
+                    (sortByFilter.style.display === 'block') ? 'none' : 'block';
+            });
+
+            venueSelection.addEventListener('click', (e) => {
+                e.stopPropagation();
+
+                sortByFilter.style.display = 'none';
+
+                venueList.style.display =
+                    (venueList.style.display === 'block') ? 'none' : 'block';
+            });
+        });
+
+        document.addEventListener('click', () => {
+            document.querySelectorAll('.sort-by-filter, .venue-list')
+                .forEach(el => el.style.display = 'none');
         });
     </script>
 

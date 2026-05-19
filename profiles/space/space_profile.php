@@ -3123,6 +3123,7 @@
 
 
         // loop through all venu-sorting-section blocks
+        // loop through all venu-sorting-section blocks
         document.querySelectorAll('.venu-sorting-section').forEach(container => {
             const sortBy = container.querySelector('.sort-by');
             const sortByFilter = container.querySelector('.sort-by-filter');
@@ -3130,21 +3131,28 @@
             const venueSelection = container.querySelector('.venue-selection');
             const venueList = container.querySelector('.venue-list');
 
-            sortBy.addEventListener('click', () => {
-                // hide venue dropdown only inside this container
+            sortBy.addEventListener('click', (e) => {
+                e.stopPropagation();
+
                 venueList.style.display = 'none';
 
-                // toggle sort dropdown
-                sortByFilter.style.display = (sortByFilter.style.display === 'block') ? 'none' : 'block';
+                sortByFilter.style.display =
+                    (sortByFilter.style.display === 'block') ? 'none' : 'block';
             });
 
-            venueSelection.addEventListener('click', () => {
-                // hide sort dropdown only inside this container
+            venueSelection.addEventListener('click', (e) => {
+                e.stopPropagation();
+
                 sortByFilter.style.display = 'none';
 
-                // toggle venue dropdown
-                venueList.style.display = (venueList.style.display === 'block') ? 'none' : 'block';
+                venueList.style.display =
+                    (venueList.style.display === 'block') ? 'none' : 'block';
             });
+        });
+
+        document.addEventListener('click', () => {
+            document.querySelectorAll('.sort-by-filter, .venue-list')
+                .forEach(el => el.style.display = 'none');
         });
 
 
