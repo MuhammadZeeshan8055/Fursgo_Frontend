@@ -788,7 +788,7 @@ $imagePath = BASE_URL . '/assets/images/card1.png';
             display: block;
             width: 100%;
             height: 2px;
-            background-color: #FFC97A;
+            background-color: #E1E1E1;
             margin: 1.5rem auto;
         }
 
@@ -856,8 +856,8 @@ $imagePath = BASE_URL . '/assets/images/card1.png';
             width: 340px;
             height: 117px;
             border-radius: 10px;
-            background: #F8F8F8;
-            padding: 20px;
+            /* background: #F8F8F8; */
+            /* padding: 20px; */
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -877,11 +877,31 @@ $imagePath = BASE_URL . '/assets/images/card1.png';
             border-radius: 10px;
             border: 1px solid #D4D4D4;
             background: #FFF;
-            width: 296.576px;
+            width: auto;
             height: 48px;
             padding: 8px 10px;
         }
 
+        .promocode input:focus {
+            border-color: #FFC97A;
+            outline: none;
+        }
+
+        .promo-code-entered {
+            width: fit-content;
+            height: auto;
+            border-radius: 22px;
+            border: 1px solid #DDD;
+            background: #FFF;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 5px 10px;
+            color: #3B3731;
+            font-family: Lato;
+            font-size: 12px;
+            font-weight: 500;
+        }
 
         .sum div {
             display: flex;
@@ -958,7 +978,7 @@ $imagePath = BASE_URL . '/assets/images/card1.png';
 
         .caution svg {
             width: 80px;
-            height: 80px;
+            height: 50px;
         }
 
         .caution p {
@@ -1572,7 +1592,7 @@ $imagePath = BASE_URL . '/assets/images/card1.png';
     <?php include '../components/header.php'; ?>
 
     <section>
-        <div class="container">
+        <div class="container mt-5">
             <div class="d-flex align-items-end justify-content-between">
                 <!-- Back button -->
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 2rem;">
@@ -2020,6 +2040,14 @@ $imagePath = BASE_URL . '/assets/images/card1.png';
                                 <input type="text" placeholder="Enter Promo Code">
                             </div>
 
+                            <div class="promo-code-entered d-flex align-items-center gap-10 mt-3">
+                                <p>PROMO25</p>
+                                <div class="remove-promo cursor">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none">
+                                        <path d="M0.5 7.5L7.5 0.5M0.5 0.5L7.5 7.5" stroke="#3B3731" stroke-linecap="round" />
+                                    </svg>
+                                </div>
+                            </div>
                             <div class="sum">
                                 <div>
                                 </div>
@@ -2031,11 +2059,8 @@ $imagePath = BASE_URL . '/assets/images/card1.png';
                             <div class="payment"><button id="confirmPayBtnSidebar" disabled
                                     style="cursor: not-allowed; transition: all 0.2s ease;">Confirm & Pay</button></div>
                             <div class="caution">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48"
-                                    fill="none">
-                                    <path
-                                        d="M24 4.8C34.5864 4.8 43.2 13.4136 43.2 24C43.2 34.5864 34.5864 43.2 24 43.2C13.4136 43.2 4.8 34.5864 4.8 24C4.8 13.4136 13.4136 4.8 24 4.8ZM24 0C10.7448 0 0 10.7448 0 24C0 37.2552 10.7448 48 24 48C37.2552 48 48 37.2552 48 24C48 10.7448 37.2552 0 24 0ZM26.4 31.2H21.6V36H26.4V31.2ZM21.6 26.4H26.4L27.6 12H20.4L21.6 26.4Z"
-                                        fill="#FFC97A" />
+                                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+                                    <path d="M24 4.8C34.5864 4.8 43.2 13.4136 43.2 24C43.2 34.5864 34.5864 43.2 24 43.2C13.4136 43.2 4.8 34.5864 4.8 24C4.8 13.4136 13.4136 4.8 24 4.8ZM24 0C10.7448 0 0 10.7448 0 24C0 37.2552 10.7448 48 24 48C37.2552 48 48 37.2552 48 24C48 10.7448 37.2552 0 24 0ZM26.4 31.2H21.6V36H26.4V31.2ZM21.6 26.4H26.4L27.6 12H20.4L21.6 26.4Z" fill="#FFC97A" />
                                 </svg>
                                 <p>
                                     Free cancellations up to 24 hours before appointment.
@@ -2089,7 +2114,7 @@ $imagePath = BASE_URL . '/assets/images/card1.png';
             if (!petTypeInput || !petBreedsData.petTypes) return;
 
             // Listen for input changes
-            petTypeInput.addEventListener('input', function () {
+            petTypeInput.addEventListener('input', function() {
                 const inputValue = this.value.trim().toLowerCase();
                 suggestionBox.innerHTML = '';
 
@@ -2115,14 +2140,14 @@ $imagePath = BASE_URL . '/assets/images/card1.png';
                         suggestionItem.style.cssText = 'padding: 10px; cursor: pointer; border-bottom: 1px solid #EEE; color: #3B3731; font-family: Lato;';
                         suggestionItem.textContent = match.name;
 
-                        suggestionItem.addEventListener('mouseover', function () {
+                        suggestionItem.addEventListener('mouseover', function() {
                             this.style.backgroundColor = '#f5f5f5';
                         });
-                        suggestionItem.addEventListener('mouseout', function () {
+                        suggestionItem.addEventListener('mouseout', function() {
                             this.style.backgroundColor = 'transparent';
                         });
 
-                        suggestionItem.addEventListener('click', function () {
+                        suggestionItem.addEventListener('click', function() {
                             petTypeInput.value = match.name;
                             selectedPetType = match.name;
                             suggestionBox.style.display = 'none';
@@ -2147,14 +2172,14 @@ $imagePath = BASE_URL . '/assets/images/card1.png';
             });
 
             // Hide suggestions when clicking outside
-            document.addEventListener('click', function (e) {
+            document.addEventListener('click', function(e) {
                 if (e.target !== petTypeInput && e.target !== suggestionBox) {
                     suggestionBox.style.display = 'none';
                 }
             });
 
             // Show suggestions on focus if input has value
-            petTypeInput.addEventListener('focus', function () {
+            petTypeInput.addEventListener('focus', function() {
                 if (this.value.trim().length > 0) {
                     suggestionBox.style.display = 'block';
                 }
@@ -2178,12 +2203,12 @@ $imagePath = BASE_URL . '/assets/images/card1.png';
         }
 
         // Initialize on DOM ready
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
             loadPetBreedsData();
         });
         // ===== End Pet Type Auto-Detection =====
 
-        (function () {
+        (function() {
             // Create opener buttons for every .form-group that has an input[type="date"]
             document.querySelectorAll('.form-group').forEach(group => {
                 const input = group.querySelector('input[type="date"]');
@@ -2262,18 +2287,36 @@ $imagePath = BASE_URL . '/assets/images/card1.png';
 
 
 
-        window.handleExtrasChange = function (selectedIds, total, selectedAddons) {
+        window.handleExtrasChange = function(selectedIds, total, selectedAddons) {
             // Update summary
             const container = document.querySelector('.service-summary>div:nth-child(6)>div');
             if (container) {
                 container.innerHTML = '';
-                selectedAddons.forEach(a => {
-                    const div = document.createElement('div');
-                    div.style.cssText = 'display: flex; justify-content: space-between; align-items: center;';
-                    div.innerHTML = `<p style="margin: 0; color: #3B3731; font-family: Lato; font-size: 14px; font-weight: 400;">${a.name}</p>
-                                     <p style="margin: 0; color: #3B3731; font-family: Lato; font-size: 14px; font-weight: 400;">£${a.price}</p>`;
-                    container.appendChild(div);
-                });
+
+                if (selectedAddons.length > 0) {
+
+                    selectedAddons.forEach(a => {
+                        const div = document.createElement('div');
+                        div.style.cssText = 'display: flex; justify-content: space-between; align-items: center;';
+
+                        div.innerHTML = `
+                            <p style="margin: 0; color: #3B3731; font-family: Lato; font-size: 14px; font-weight: 400;">
+                                ${a.name}
+                            </p>
+                            <p style="margin: 0; color: #3B3731; font-family: Lato; font-size: 14px; font-weight: 400;">
+                                £${a.price}
+                            </p>
+                        `;
+
+                        container.appendChild(div);
+                    });
+
+                    // add divider ONLY if addons exist
+                    const divider = document.createElement('div');
+                    divider.classList.add('divider');
+                    container.appendChild(divider);
+
+                }
 
                 const section = document.querySelector('.service-summary>div:nth-child(6)');
                 const heading = section ? section.querySelector('p') : null;
@@ -2284,26 +2327,50 @@ $imagePath = BASE_URL . '/assets/images/card1.png';
             const base = 48;
             const fee = 2;
             const sumContainer = document.querySelector('.sum');
+
             if (sumContainer) {
+
+                const parent = sumContainer.parentNode;
+
+                // remove old divider if exists
+                const oldDivider = parent.querySelector('.sum-divider');
+                if (oldDivider) oldDivider.remove();
+
+                if (total > 0) {
+                    const divider = document.createElement('div');
+                    divider.classList.add('divider', 'sum-divider');
+
+                    // insert BEFORE .sum
+                    parent.insertBefore(divider, sumContainer);
+                }
+
                 const serviceDiv = sumContainer.firstElementChild;
-                if (serviceDiv) serviceDiv.innerHTML = `<p>Service:</p><span>£${base}</span>`;
+                if (serviceDiv) {
+                    serviceDiv.innerHTML = `<p>Service:</p><span>£${base}</span>`;
+                }
 
                 let addonsDiv = sumContainer.querySelector('.addons-sum-row');
+
                 if (total > 0) {
                     if (!addonsDiv) {
                         addonsDiv = document.createElement('div');
                         addonsDiv.className = 'addons-sum-row';
                         serviceDiv.parentNode.insertBefore(addonsDiv, serviceDiv.nextSibling);
                     }
+
                     addonsDiv.innerHTML = `<p>Add-ons:</p><span>£${total}</span>`;
-                } else if (addonsDiv) addonsDiv.remove();
+                } else if (addonsDiv) {
+                    addonsDiv.remove();
+                }
 
                 let feeDiv = sumContainer.querySelector('.fee-sum-row');
+
                 if (!feeDiv) {
                     feeDiv = document.createElement('div');
                     feeDiv.className = 'fee-sum-row';
                     sumContainer.appendChild(feeDiv);
                 }
+
                 feeDiv.innerHTML = `<p>Platform fee:</p><span>£${fee}</span>`;
             }
 
@@ -2327,7 +2394,9 @@ $imagePath = BASE_URL . '/assets/images/card1.png';
 
             const savedPetDetails = sessionStorage.getItem('petDetails');
             let parsedSaved = null;
-            try { parsedSaved = savedPetDetails ? JSON.parse(savedPetDetails) : null; } catch (e) { }
+            try {
+                parsedSaved = savedPetDetails ? JSON.parse(savedPetDetails) : null;
+            } catch (e) {}
 
             const petNameInput = document.getElementById('petName');
             const petTypeInput = document.getElementById('petTypeInput');
@@ -2400,13 +2469,13 @@ $imagePath = BASE_URL . '/assets/images/card1.png';
         let petPhotoBase64 = null;
 
         // Image upload button click
-        petPhotoUploadBtn.addEventListener('click', function (e) {
+        petPhotoUploadBtn.addEventListener('click', function(e) {
             e.preventDefault();
             petPhotoInput.click();
         });
 
         // Handle file selection
-        petPhotoInput.addEventListener('change', function (e) {
+        petPhotoInput.addEventListener('change', function(e) {
             const file = e.target.files[0];
             if (!file) return;
 
@@ -2425,7 +2494,7 @@ $imagePath = BASE_URL . '/assets/images/card1.png';
 
             // Read file as base64
             const reader = new FileReader();
-            reader.onload = function (event) {
+            reader.onload = function(event) {
                 petPhotoBase64 = event.target.result;
                 displayPetPhotoPreview(petPhotoBase64);
             };
@@ -2462,18 +2531,13 @@ $imagePath = BASE_URL . '/assets/images/card1.png';
             editBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
 <path d="M7.78125 2.1875L11.8125 6.21875M1.3125 12.6875H3.64583L11.8125 4.52083C12.4419 3.89148 12.4419 2.87114 11.8125 2.2418C11.1832 1.61245 10.1628 1.61245 9.53345 2.2418L1.3125 10.4627V12.6875Z" stroke="#3B3731" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
 </svg> Edit photo`;
-            editBtn.addEventListener('click', function () {
+            editBtn.addEventListener('click', function() {
                 petPhotoInput.click();
             });
 
-            const saveBtn = document.createElement('button');
-            saveBtn.type = 'button';
-            saveBtn.className = 'pet-photo-save-btn';
-            saveBtn.textContent = 'Save';
-            saveBtn.addEventListener('click', onPhotosaveConfirm);
+
 
             actionBtnsDiv.appendChild(editBtn);
-            actionBtnsDiv.appendChild(saveBtn);
 
             // Display: preview on left, buttons on right
             colWrapper.appendChild(previewDiv);
@@ -2482,10 +2546,7 @@ $imagePath = BASE_URL . '/assets/images/card1.png';
             petPhotoPlaceholder.parentElement.insertBefore(colWrapper, petPhotoPlaceholder);
         }
 
-        // Function to handle photo save confirmation
-        function onPhotosaveConfirm() {
-            console.log('Photo saved successfully');
-        }
+
 
         function removePetPhoto() {
             petPhotoBase64 = null;
@@ -2684,7 +2745,7 @@ $imagePath = BASE_URL . '/assets/images/card1.png';
             }
         }
 
-        petFormSaveBtn.addEventListener('click', function (e) {
+        petFormSaveBtn.addEventListener('click', function(e) {
             e.preventDefault();
             e.stopPropagation();
             const petDetails = collectPetDetails();
@@ -2696,12 +2757,12 @@ $imagePath = BASE_URL . '/assets/images/card1.png';
 
             sessionStorage.setItem('petDetails', JSON.stringify(petDetails));
 
-            toggleFormDisplay(true);      // show the display div FIRST
+            toggleFormDisplay(true); // show the display div FIRST
             displayPetDetails(petDetails); // THEN inject content including photo
         });
 
         // Cancel button click handler
-        petFormCancelBtn.addEventListener('click', function () {
+        petFormCancelBtn.addEventListener('click', function() {
             if (confirm('Are you sure you want to cancel? Any unsaved changes will be lost.')) {
                 // Check if there's saved pet details in sessionStorage
                 const savedPetDetails = sessionStorage.getItem('petDetails');
@@ -2747,7 +2808,7 @@ $imagePath = BASE_URL . '/assets/images/card1.png';
 
         // Edit button click handler
         // Change button click handler
-        petDisplayChangeBtn.addEventListener('click', function () {
+        petDisplayChangeBtn.addEventListener('click', function() {
             toggleFormDisplay(false);
         });
 
@@ -2783,18 +2844,24 @@ $imagePath = BASE_URL . '/assets/images/card1.png';
 
         // ===== Continue Button Activation =====
         // ===== Continue Button Click - Switch to Confirm & Pay =====
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
             const continueBtn = document.querySelector('.continue-btn');
             if (!continueBtn) return;
 
-            continueBtn.addEventListener('click', function () {
+            continueBtn.addEventListener('click', function() {
                 if (!continueBtn.classList.contains('active')) return;
 
                 // Update step indicators
                 const step1 = document.querySelector('.step-item:nth-child(1)');
                 const step2 = document.querySelector('.step-item:nth-child(2)');
-                if (step1) { step1.classList.remove('active'); step1.classList.add('inactive'); }
-                if (step2) { step2.classList.remove('inactive'); step2.classList.add('active'); }
+                if (step1) {
+                    step1.classList.remove('active');
+                    step1.classList.add('inactive');
+                }
+                if (step2) {
+                    step2.classList.remove('inactive');
+                    step2.classList.add('active');
+                }
 
                 // Update progress bar
                 const progressFill = document.querySelector('.progress-fill');
@@ -2824,11 +2891,14 @@ $imagePath = BASE_URL . '/assets/images/card1.png';
                 document.getElementById('step2Content').style.display = 'block';
 
                 // Scroll to top
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
             });
 
             // Back button
-            document.addEventListener('click', function (e) {
+            document.addEventListener('click', function(e) {
                 if (e.target && e.target.closest('#backToStep1Btn')) {
                     const step1 = document.querySelector('.step-item:nth-child(1)');
                     const step2 = document.querySelector('.step-item:nth-child(2)');
@@ -2844,7 +2914,10 @@ $imagePath = BASE_URL . '/assets/images/card1.png';
                         const label1 = step1.querySelector('.step-label');
                         if (label1) label1.style.color = '';
                     }
-                    if (step2) { step2.classList.add('inactive'); step2.classList.remove('active'); }
+                    if (step2) {
+                        step2.classList.add('inactive');
+                        step2.classList.remove('active');
+                    }
 
                     const progressFill = document.querySelector('.progress-fill');
                     if (progressFill) progressFill.style.width = '50%';
@@ -2852,12 +2925,15 @@ $imagePath = BASE_URL . '/assets/images/card1.png';
                     document.getElementById('step1Content').style.display = 'block';
                     document.getElementById('step2Content').style.display = 'none';
 
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
                 }
             });
         });
         // ===== End Continue Button Click =====
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
             const petNameInput = document.getElementById('petName');
             const petTypeInput = document.getElementById('petTypeInput');
             const petBreedSelect = document.getElementById('petBreedSelect');
@@ -2881,7 +2957,7 @@ $imagePath = BASE_URL . '/assets/images/card1.png';
             // Re-check after pet form is saved
             const petFormSaveBtnEl = document.getElementById('petFormSaveBtn');
             if (petFormSaveBtnEl) {
-                petFormSaveBtnEl.addEventListener('click', function () {
+                petFormSaveBtnEl.addEventListener('click', function() {
                     setTimeout(checkContinueBtnState, 150);
                 });
             }
@@ -2889,7 +2965,7 @@ $imagePath = BASE_URL . '/assets/images/card1.png';
             // Re-check when user clicks "Change"
             const petDisplayChangeBtnEl = document.getElementById('petDisplayChangeBtn');
             if (petDisplayChangeBtnEl) {
-                petDisplayChangeBtnEl.addEventListener('click', function () {
+                petDisplayChangeBtnEl.addEventListener('click', function() {
                     setTimeout(checkContinueBtnState, 50);
                 });
             }
@@ -2899,11 +2975,11 @@ $imagePath = BASE_URL . '/assets/images/card1.png';
         });
 
         // ===== Continue Button Click - Switch to Confirm & Pay =====
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
             const continueBtn = document.querySelector('.continue-btn');
             if (!continueBtn) return;
 
-            continueBtn.addEventListener('click', function () {
+            continueBtn.addEventListener('click', function() {
                 if (!continueBtn.classList.contains('active')) return;
 
                 // Update step indicators
@@ -2923,7 +2999,10 @@ $imagePath = BASE_URL . '/assets/images/card1.png';
                     const label1 = step1.querySelector('.step-label');
                     if (label1) label1.style.color = '#C9DDA0';
                 }
-                if (step2) { step2.classList.remove('inactive'); step2.classList.add('active'); }
+                if (step2) {
+                    step2.classList.remove('inactive');
+                    step2.classList.add('active');
+                }
 
                 // Update progress bar to 100%
                 const progressFill = document.querySelector('.progress-fill');
@@ -2941,13 +3020,13 @@ $imagePath = BASE_URL . '/assets/images/card1.png';
         const _petTypeInput = document.getElementById('petTypeInput');
 
         if (_petNameInput) {
-            _petNameInput.addEventListener('input', function () {
+            _petNameInput.addEventListener('input', function() {
                 const icon = document.getElementById('petNameCheck');
                 if (icon) icon.classList.toggle('visible', this.value.trim() !== '');
             });
         }
         if (_petTypeInput) {
-            _petTypeInput.addEventListener('input', function () {
+            _petTypeInput.addEventListener('input', function() {
                 const icon = document.getElementById('petTypeCheck');
                 if (icon) icon.classList.toggle('visible', this.value.trim() !== '');
             });
@@ -2958,14 +3037,31 @@ $imagePath = BASE_URL . '/assets/images/card1.png';
         if (savedPet) {
             try {
                 const p = JSON.parse(savedPet);
-                if (p.name) { const ic = document.getElementById('petNameCheck'); if (ic) ic.classList.add('visible'); }
-                if (p.type) { const ic = document.getElementById('petTypeCheck'); if (ic) ic.classList.add('visible'); }
-            } catch (e) { }
+                if (p.name) {
+                    const ic = document.getElementById('petNameCheck');
+                    if (ic) ic.classList.add('visible');
+                }
+                if (p.type) {
+                    const ic = document.getElementById('petTypeCheck');
+                    if (ic) ic.classList.add('visible');
+                }
+            } catch (e) {}
         }
 
 
-        // Confirm & Pay specific JS is now inside renderConfirmPay() component.
+        // Confirm & Pay specific JS is now inside renderConfirmPay() component.`
 
+
+        const navheader = document.querySelector('header');
+
+        function updateHeader() {
+            navheader.style.backgroundColor =
+                window.scrollY > 10 ? "white" : "#FDFCF8";
+        }
+
+        window.addEventListener('scroll', updateHeader);
+        updateHeader(); 
+        
     </script>
 </body>
 

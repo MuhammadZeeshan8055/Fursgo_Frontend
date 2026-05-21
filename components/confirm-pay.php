@@ -574,7 +574,7 @@ font-style: normal;
 font-weight: 400;
 line-height: normal;">Use my address as billing address</span>
                     </div>
-                    <hr style="border: 0.5px solid #CBDCE8; margin: 0 20px;">
+                    <hr style="border: 0.5px solid #CBDCE8;">
                     <div class="card-checkbox-row" onclick="toggleCardCheck('termsCheck','termsInner')">
                         <div id="termsCheck"
                             style="width:22px;height:22px;border-radius:50%;border:2px solid #FFD88C;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:#fff;">

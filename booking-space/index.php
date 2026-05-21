@@ -417,7 +417,6 @@ $imagePath = BASE_URL . '/assets/images/booking-space-card-image.svg';
         .add-on-card.active {
             background: #FFF;
             box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.03);
-            border: 1px solid #EAE8E5;
         }
 
         .add-on-content {
@@ -1551,7 +1550,7 @@ $imagePath = BASE_URL . '/assets/images/booking-space-card-image.svg';
             display: block;
             width: 100%;
             height: 2px;
-            background-color: #FFC97A;
+            background-color: #E1E1E1;
             margin: 1.5rem auto;
         }
 
@@ -1618,11 +1617,11 @@ $imagePath = BASE_URL . '/assets/images/booking-space-card-image.svg';
 
         .promocode {
             margin-top: 2rem;
-            width: 340px;
+            width: auto;
             height: 117px;
             border-radius: 10px;
-            background: #F8F8F8;
-            padding: 20px;
+            /* background: #F8F8F8; */
+            /* padding: 20px; */
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -1642,9 +1641,30 @@ $imagePath = BASE_URL . '/assets/images/booking-space-card-image.svg';
             border-radius: 10px;
             border: 1px solid #D4D4D4;
             background: #FFF;
-            width: 100%;
+            width: auto;
             height: 48px;
             padding: 8px 10px;
+        }
+
+        .promocode input:focus {
+            border-color: #FFC97A;
+            outline: none;
+        }
+
+        .promo-code-entered {
+            width: fit-content;
+            height: auto;
+            border-radius: 22px;
+            border: 1px solid #DDD;
+            background: #FFF;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 5px 10px;
+            color: #3B3731;
+            font-family: Lato;
+            font-size: 12px;
+            font-weight: 500;
         }
 
         .sum>div {
@@ -1740,7 +1760,7 @@ $imagePath = BASE_URL . '/assets/images/booking-space-card-image.svg';
             display: flex;
             align-items: center;
             width: 340px;
-            height: 88px;
+            height: auto;
             gap: 10px;
             padding: 20px;
             border-radius: 10px;
@@ -1750,7 +1770,7 @@ $imagePath = BASE_URL . '/assets/images/booking-space-card-image.svg';
 
         .caution svg {
             width: 80px;
-            height: 80px;
+            height: 50px;
             flex-shrink: 0;
         }
 
@@ -1801,7 +1821,7 @@ $imagePath = BASE_URL . '/assets/images/booking-space-card-image.svg';
     <?php include '../components/header.php'; ?>
 
     <!-- STEPPER -->
-    <section class="container">
+    <section class="container mt-5">
         <div class="d-flex align-items-end justify-content-between">
             <!-- Back button -->
             <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 2rem;">
@@ -2325,10 +2345,22 @@ margin: 0;">
                         </div>
                     </div>
 
+                    <div class="divider"></div>
+
                     <div class="promocode">
                         <label>Promo code</label>
                         <input type="text" placeholder="Enter Promo Code">
                     </div>
+                    <div class="promo-code-entered d-flex align-items-center gap-10 mt-3">
+                        <p>PROMO25</p>
+                        <div class="remove-promo cursor">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none">
+                                <path d="M0.5 7.5L7.5 0.5M0.5 0.5L7.5 7.5" stroke="#3B3731" stroke-linecap="round" />
+                            </svg>
+                        </div>
+                    </div>
+
+                    <div class="divider"></div>
 
                     <div class="sum">
                         <div>
@@ -2355,9 +2387,7 @@ margin: 0;">
 
                     <div class="caution">
                         <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
-                            <path
-                                d="M24 4.8C34.5864 4.8 43.2 13.4136 43.2 24C43.2 34.5864 34.5864 43.2 24 43.2C13.4136 43.2 4.8 34.5864 4.8 24C4.8 13.4136 13.4136 4.8 24 4.8ZM24 0C10.7448 0 0 10.7448 0 24C0 37.2552 10.7448 48 24 48C37.2552 48 48 37.2552 48 24C48 10.7448 37.2552 0 24 0ZM26.4 31.2H21.6V36H26.4V31.2ZM21.6 26.4H26.4L27.6 12H20.4L21.6 26.4Z"
-                                fill="#FFC97A" />
+                            <path d="M24 4.8C34.5864 4.8 43.2 13.4136 43.2 24C43.2 34.5864 34.5864 43.2 24 43.2C13.4136 43.2 4.8 34.5864 4.8 24C4.8 13.4136 13.4136 4.8 24 4.8ZM24 0C10.7448 0 0 10.7448 0 24C0 37.2552 10.7448 48 24 48C37.2552 48 48 37.2552 48 24C48 10.7448 37.2552 0 24 0ZM26.4 31.2H21.6V36H26.4V31.2ZM21.6 26.4H26.4L27.6 12H20.4L21.6 26.4Z" fill="#FFC97A" />
                         </svg>
                         <p>
                             Free cancellations up to 24 hours before appointment.
@@ -2383,7 +2413,7 @@ margin: 0;">
     <script src=" <?= BASE_URL ?>/assets/js/custom.js"></script>
     <script src="<?= BASE_URL ?>/assets/js/custom-dropdown.js"></script>
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
+        document.addEventListener("DOMContentLoaded", function() {
             // JS to handle add-on card selection styling
             const addonCards = document.querySelectorAll('.add-on-card');
 
@@ -2449,7 +2479,7 @@ margin: 0;">
                     card.classList.add('active');
                 }
 
-                checkbox.addEventListener('change', function () {
+                checkbox.addEventListener('change', function() {
                     if (this.checked) {
                         card.classList.add('active');
                     } else {
@@ -2464,7 +2494,7 @@ margin: 0;">
 
             const continueBtn = document.getElementById("addonsContinueBtn");
             if (continueBtn) {
-                continueBtn.addEventListener("click", function () {
+                continueBtn.addEventListener("click", function() {
                     const selectedAddons = Array.from(document.querySelectorAll('.add-on-checkbox:checked'))
                         .map(cb => cb.value);
 
@@ -2484,7 +2514,10 @@ margin: 0;">
                         const label1 = step1.querySelector('.step-label');
                         if (label1) label1.style.color = '#C9DDA0';
                     }
-                    if (step2) { step2.classList.remove('inactive'); step2.classList.add('active'); }
+                    if (step2) {
+                        step2.classList.remove('inactive');
+                        step2.classList.add('active');
+                    }
 
                     // Update progress bar
                     const progressFill = document.querySelector('.progress-fill');
@@ -2504,7 +2537,7 @@ margin: 0;">
             // Back button logic to switch back to Step 1
             const backBtn = document.getElementById('backToStep1Btn');
             if (backBtn) {
-                backBtn.addEventListener('click', function (e) {
+                backBtn.addEventListener('click', function(e) {
                     const stepOne = document.querySelector('.step-one');
                     const stepTwo = document.getElementById('step2Content');
                     const isStep2Visible = stepTwo && stepTwo.style.display !== 'none';
@@ -2529,7 +2562,10 @@ margin: 0;">
                             const label1 = step1Indicator.querySelector('.step-label');
                             if (label1) label1.style.color = '';
                         }
-                        if (step2Indicator) { step2Indicator.classList.add('inactive'); step2Indicator.classList.remove('active'); }
+                        if (step2Indicator) {
+                            step2Indicator.classList.add('inactive');
+                            step2Indicator.classList.remove('active');
+                        }
 
                         // Update progress bar
                         const progressFill = document.querySelector('.progress-fill');
@@ -2545,7 +2581,7 @@ margin: 0;">
         });
 
 
-        (function () {
+        (function() {
 
             const icons = {
                 paw: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="15" viewBox="0 0 16 15" fill="none">
@@ -2569,7 +2605,14 @@ margin: 0;">
             };
 
             function petEmoji(type) {
-                return { Dog: '🐶', Cat: '🐱', Rabbit: '🐰', Bird: '🐦', Fish: '🐟', Hamster: '🐹' }[type] || '🐾';
+                return {
+                    Dog: '🐶',
+                    Cat: '🐱',
+                    Rabbit: '🐰',
+                    Bird: '🐦',
+                    Fish: '🐟',
+                    Hamster: '🐹'
+                } [type] || '🐾';
             }
 
             let allPets = [];
@@ -2580,7 +2623,7 @@ margin: 0;">
             const selectBtn = document.getElementById('selectPetsBtn');
 
             // ── Open: hide buttons, show list ─────────────────────────────────────
-            selectBtn.addEventListener('click', async function () {
+            selectBtn.addEventListener('click', async function() {
                 actionBtns.style.display = 'none';
                 petList.classList.add('visible');
                 if (allPets.length === 0) await loadPets();
@@ -2597,7 +2640,10 @@ margin: 0;">
                     console.error('Failed to load pets from pets-data.json:', err);
                     allPets = [];
                 }
-                allPets = allPets.map((p, i) => ({ id: p.id ?? i + 1, ...p }));
+                allPets = allPets.map((p, i) => ({
+                    id: p.id ?? i + 1,
+                    ...p
+                }));
                 renderCards();
             }
 
@@ -2641,14 +2687,14 @@ margin: 0;">
         <button class="pet-edit-btn" data-pet-id="${pet.id}">Edit</button>
       `;
 
-                    card.addEventListener('click', function (e) {
+                    card.addEventListener('click', function(e) {
                         if (e.target.closest('.pet-edit-btn')) return;
                         selectedIds.has(pet.id) ? selectedIds.delete(pet.id) : selectedIds.add(pet.id);
                         card.classList.toggle('selected');
                         updateConfirmBtn();
                     });
 
-                    card.querySelector('.pet-edit-btn').addEventListener('click', function (e) {
+                    card.querySelector('.pet-edit-btn').addEventListener('click', function(e) {
                         e.stopPropagation();
                         // Wire to your edit pet flow here
                         console.log('Edit pet:', pet);
@@ -2670,14 +2716,14 @@ margin: 0;">
 
                 updateConfirmBtn();
 
-                document.getElementById('petCancelBtn').addEventListener('click', function () {
+                document.getElementById('petCancelBtn').addEventListener('click', function() {
                     selectedIds.clear();
                     petList.classList.remove('visible', 'has-selection');
                     petList.innerHTML = '';
                     actionBtns.style.display = '';
                 });
 
-                document.getElementById('petConfirmBtn').addEventListener('click', function (e) {
+                document.getElementById('petConfirmBtn').addEventListener('click', function(e) {
                     e.preventDefault();
                     e.stopPropagation();
                     const chosen = allPets.filter(p => selectedIds.has(p.id));
@@ -2753,7 +2799,7 @@ margin: 0;">
             if (!petTypeInput || !petBreedsData.petTypes) return;
 
             // Listen for input changes
-            petTypeInput.addEventListener('input', function () {
+            petTypeInput.addEventListener('input', function() {
                 const inputValue = this.value.trim().toLowerCase();
                 suggestionBox.innerHTML = '';
 
@@ -2779,14 +2825,14 @@ margin: 0;">
                         suggestionItem.style.cssText = 'padding: 10px; cursor: pointer; border-bottom: 1px solid #EEE; color: #3B3731; font-family: Lato;';
                         suggestionItem.textContent = match.name;
 
-                        suggestionItem.addEventListener('mouseover', function () {
+                        suggestionItem.addEventListener('mouseover', function() {
                             this.style.backgroundColor = '#f5f5f5';
                         });
-                        suggestionItem.addEventListener('mouseout', function () {
+                        suggestionItem.addEventListener('mouseout', function() {
                             this.style.backgroundColor = 'transparent';
                         });
 
-                        suggestionItem.addEventListener('click', function () {
+                        suggestionItem.addEventListener('click', function() {
                             petTypeInput.value = match.name;
                             selectedPetType = match.name;
                             suggestionBox.style.display = 'none';
@@ -2811,14 +2857,14 @@ margin: 0;">
             });
 
             // Hide suggestions when clicking outside
-            document.addEventListener('click', function (e) {
+            document.addEventListener('click', function(e) {
                 if (e.target !== petTypeInput && e.target !== suggestionBox) {
                     suggestionBox.style.display = 'none';
                 }
             });
 
             // Show suggestions on focus if input has value
-            petTypeInput.addEventListener('focus', function () {
+            petTypeInput.addEventListener('focus', function() {
                 if (this.value.trim().length > 0) {
                     suggestionBox.style.display = 'block';
                 }
@@ -2842,7 +2888,7 @@ margin: 0;">
         }
 
         // Initialize on DOM ready
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
             loadPetBreedsData();
         });
         // ===== End Pet Type Auto-Detection =====
@@ -2863,13 +2909,13 @@ margin: 0;">
         let petPhotoBase64 = null;
 
         // Image upload button click
-        petPhotoUploadBtn.addEventListener('click', function (e) {
+        petPhotoUploadBtn.addEventListener('click', function(e) {
             e.preventDefault();
             petPhotoInput.click();
         });
 
         // Handle file selection
-        petPhotoInput.addEventListener('change', function (e) {
+        petPhotoInput.addEventListener('change', function(e) {
             const file = e.target.files[0];
             if (!file) return;
 
@@ -2886,7 +2932,7 @@ margin: 0;">
 
             // Read file as base64
             const reader = new FileReader();
-            reader.onload = function (event) {
+            reader.onload = function(event) {
                 petPhotoBase64 = event.target.result;
                 displayPetPhotoPreview(petPhotoBase64);
             };
@@ -2923,7 +2969,7 @@ margin: 0;">
             editBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
 <path d="M7.78125 2.1875L11.8125 6.21875M1.3125 12.6875H3.64583L11.8125 4.52083C12.4419 3.89148 12.4419 2.87114 11.8125 2.2418C11.1832 1.61245 10.1628 1.61245 9.53345 2.2418L1.3125 10.4627V12.6875Z" stroke="#3B3731" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
 </svg> Edit photo`;
-            editBtn.addEventListener('click', function () {
+            editBtn.addEventListener('click', function() {
                 petPhotoInput.click();
             });
 
@@ -3067,6 +3113,7 @@ margin: 0;">
         </div>
     `;
         }
+
         function toggleFormDisplay(showDisplay = true) {
             if (showDisplay) {
                 petDetailsForm.classList.add('hidden');
@@ -3148,7 +3195,7 @@ margin: 0;">
             }
         }
 
-        petFormSaveBtn.addEventListener('click', function (e) {
+        petFormSaveBtn.addEventListener('click', function(e) {
             e.preventDefault();
             e.stopPropagation();
             const petDetails = collectPetDetails();
@@ -3159,12 +3206,12 @@ margin: 0;">
 
             sessionStorage.setItem('petDetails', JSON.stringify(petDetails));
 
-            toggleFormDisplay(true);      // show the display div FIRST
+            toggleFormDisplay(true); // show the display div FIRST
             displayPetDetails(petDetails); // THEN inject content including photo
         });
 
         // Cancel button click handler
-        petFormCancelBtn.addEventListener('click', function () {
+        petFormCancelBtn.addEventListener('click', function() {
             // Check if there's saved pet details in sessionStorage
             const savedPetDetails = sessionStorage.getItem('petDetails');
 
@@ -3208,7 +3255,7 @@ margin: 0;">
 
         // Edit button click handler
         // Change button click handler
-        petDisplayChangeBtn.addEventListener('click', function () {
+        petDisplayChangeBtn.addEventListener('click', function() {
             toggleFormDisplay(false);
         });
 
@@ -3242,7 +3289,7 @@ margin: 0;">
         // ===== End Pet Details Storage & Display =====
 
 
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
             const addNewPetBtn = document.getElementById('addNewPetBtn');
             const petActionBtns = document.getElementById('petActionBtns');
             const petDetailsForm = document.querySelector('.pet-details-form');
@@ -3250,7 +3297,7 @@ margin: 0;">
             const petFormCancelBtn = document.getElementById('petFormCancelBtn');
 
             if (addNewPetBtn) {
-                addNewPetBtn.addEventListener('click', function () {
+                addNewPetBtn.addEventListener('click', function() {
                     petActionBtns.style.display = 'none';
                     if (petList) petList.classList.remove('visible');
                     if (petDetailsForm) {
@@ -3261,7 +3308,7 @@ margin: 0;">
             }
 
             if (petFormCancelBtn) {
-                petFormCancelBtn.addEventListener('click', function () {
+                petFormCancelBtn.addEventListener('click', function() {
                     setTimeout(() => {
                         const savedPetDetails = sessionStorage.getItem('petDetails');
                         if (!savedPetDetails) {
@@ -3275,7 +3322,7 @@ margin: 0;">
 
             const petDisplayChangeBtn = document.getElementById('petDisplayChangeBtn');
             if (petDisplayChangeBtn) {
-                petDisplayChangeBtn.addEventListener('click', function () {
+                petDisplayChangeBtn.addEventListener('click', function() {
                     petActionBtns.style.display = 'none';
                 });
             }
@@ -3286,7 +3333,7 @@ margin: 0;">
             const wrap = select.closest('.input-wrap.select-wrap');
             let isOpen = false;
 
-            select.addEventListener('mousedown', function () {
+            select.addEventListener('mousedown', function() {
                 if (isOpen) {
                     wrap.classList.remove('open');
                     isOpen = false;
@@ -3296,19 +3343,29 @@ margin: 0;">
                 }
             });
 
-            select.addEventListener('blur', function () {
+            select.addEventListener('blur', function() {
                 setTimeout(() => {
                     if (wrap) wrap.classList.remove('open');
                     isOpen = false;
                 }, 100);
             });
 
-            select.addEventListener('change', function () {
+            select.addEventListener('change', function() {
                 wrap.classList.remove('open');
                 isOpen = false;
             });
         });
 
+        const navheader = document.querySelector('header');
+
+        function updateHeader() {
+            navheader.style.backgroundColor =
+                window.scrollY > 10 ? "white" : "#FDFCF8";
+        }
+
+        window.addEventListener('scroll', updateHeader);
+        updateHeader(); 
+        
     </script>
 </body>
 
