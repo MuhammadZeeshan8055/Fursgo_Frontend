@@ -1634,7 +1634,7 @@ label {
 /* map css starts  */
 #map .leaflet-tile,
 #modal-map .leaflet-tile {
-    filter: grayscale(100%) brightness(1.08) contrast(0.95) saturate(0%);
+    filter: grayscale(100%) brightness(1.1) contrast(0.85) saturate(0%);
 }
 
 .leaflet-top.leaflet-left {

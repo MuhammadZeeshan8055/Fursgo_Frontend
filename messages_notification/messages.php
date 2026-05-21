@@ -3197,7 +3197,7 @@
                                     </div>
                                     <div class="tag-and-name d-flex flex-column gap-10">
                                         <div class=" d-flex align-items-center gap-10">
-                                            <div class="tag">Home Visits</div>
+                                            <div class="tag groomer">Home Visits</div>
                                             <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10" fill="none">
                                                 <circle cx="5" cy="5" r="5" fill="#C9DDA0" />
                                             </svg>
@@ -3427,6 +3427,28 @@
 
         dotsBtn.addEventListener('click', () => {
             archivedChat.classList.toggle('show');
+        });
+
+        // color differentiation
+        document.querySelectorAll('.tablinks').forEach(tab => {
+            tab.addEventListener('click', function () {
+
+                const theme = {
+                    'groomer-messages': {
+                        active: '#FFC97A',
+                        bg: 'rgba(255, 201, 122, 0.13)'
+                    },
+                    'space-messages': {
+                        active: '#FFA899',
+                        bg: 'rgba(255, 168, 153, 0.13)'
+                    }
+                };
+
+                const selected = theme[this.dataset.tab];
+
+                document.documentElement.style.setProperty('--active-bg', selected.active);
+                document.documentElement.style.setProperty('--active-bg-light', selected.bg);
+            });
         });
     </script>
 </body>

@@ -4,6 +4,8 @@
     --muted: #999;
     --accent: #ffc97a;
     --accent-soft: rgba(255, 201, 122, 0.13);
+    --active-bg: #FFC97A;
+    --active-bg-light : rgba(255, 201, 122, 0.13);
 }
 
 /* =====================
@@ -118,13 +120,13 @@ aside.sidebar {
     width: 392px;
 }
 
+/* Chrome, Safari, Edge */
 .chat-list-wrapper::-webkit-scrollbar {
     width: 8px;
 }
 
 .chat-list-wrapper::-webkit-scrollbar-thumb {
-    background: #FFC97A;
-    /* orange like your screenshot */
+    background: var(--active-bg);
     border-radius: 6px;
 }
 
@@ -132,6 +134,12 @@ aside.sidebar {
     background: transparent;
 }
 
+/* Firefox */
+.chat-list-wrapper {
+    scrollbar-width: thin;
+    scrollbar-color: var(--active-bg) transparent;
+                     /* thumb color  ^   track color ^ */
+}
 .tabs {
     display: flex;
     background: #F8F8F8;
@@ -174,9 +182,9 @@ aside.sidebar {
 
 .filter {
     border-radius: 100px;
-    background: rgba(255, 201, 122, 0.13);
+    background: var(--active-bg-light);
     border: 1px solid rgba(246, 168, 127, 0.15);
-    color: #FFC97A;
+    color: var(--active-bg);
     padding: 6px 10px;
     text-align: center;
     font-family: "Lato";
@@ -235,7 +243,7 @@ aside.sidebar {
 p.messages-count {
     width: 22px;
     height: 22px;
-    background: #FFC97A;
+    background: var(--active-bg);
     border-radius: 50%;
     display: inline-flex;
     align-items: center;
@@ -285,7 +293,7 @@ p.messages-count {
     border-radius: 100px;
     background: rgba(255, 201, 122, 0.13);
     border: 1px solid rgba(246, 168, 127, 0.15);
-    background: var(--active-bg);
+    background: #D9D9D9;
     color: #fff;
     padding: 6px 10px;
     text-align: center;
@@ -297,6 +305,9 @@ p.messages-count {
     width: 100px;
 }
 
+.tag.groomer{
+    background: var(--active-bg);
+}
 .arrow-svg {
     width: 48px;
     height: 48px;
@@ -327,6 +338,10 @@ p.messages-count {
     display: none;
     /* Hide scrollbar for WebKit browsers */
 }
+/* Firefox */
+.messages {
+    scrollbar-width: none;
+}
 
 .messages.locked {
     opacity: 0.4;
@@ -338,12 +353,11 @@ p.messages-count {
 
 .received .bubble {
     background: var(--accent-soft);
-    border-bottom-left-radius: 4px;
+    border-radius: 12px 12px 12px 0;
 }
 
 .bubble {
     padding: 12px 14px;
-    border-radius: 10px 10px 0 10px;
     font-size: 14px;
     line-height: 1.4;
 }
@@ -366,7 +380,7 @@ p.messages-count {
 
 .sent .bubble {
     background: #fff;
-    border-bottom-right-radius: 4px;
+    border-radius: 12px 12px 0 12px;
 }
 
 .quick-replies {
@@ -473,4 +487,8 @@ p.messages-count {
 
 .footer{
     padding: 0px !important;
+}
+
+.btn-active-bg {
+    background: var(--active-bg);
 }

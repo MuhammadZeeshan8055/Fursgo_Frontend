@@ -1689,11 +1689,11 @@ $imagePath = BASE_URL . '/assets/images/card1.png';
 
         .promocode {
             margin-top: 2rem;
-            width: 340px;
+            width: auto;
             height: 117px;
             border-radius: 10px;
-            background: #F8F8F8;
-            padding: 20px;
+            /* background: #F8F8F8; */
+            /* padding: 20px; */
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -1713,9 +1713,30 @@ $imagePath = BASE_URL . '/assets/images/card1.png';
             border-radius: 10px;
             border: 1px solid #D4D4D4;
             background: #FFF;
-            width: 100%;
+            width: auto;
             height: 48px;
             padding: 8px 10px;
+        }
+
+        .promocode input:focus {
+            border-color: #FFC97A !important;
+            outline: none;
+        }
+
+        .promo-code-entered {
+            width: fit-content;
+            height: auto;
+            border-radius: 22px;
+            border: 1px solid #DDD;
+            background: #FFF;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 5px 10px;
+            color: #3B3731;
+            font-family: Lato;
+            font-size: 12px;
+            font-weight: 500;
         }
 
         .sum>div {
@@ -2030,7 +2051,7 @@ $imagePath = BASE_URL . '/assets/images/card1.png';
     <?php include '../components/header.php'; ?>
 
     <!-- STEPPER -->
-    <section class="container">
+    <section class="container mt-5">
         <div class="d-flex align-items-end justify-content-between">
             <!-- Back button -->
             <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 2rem;">
@@ -2911,13 +2932,23 @@ line-height: normal;">
                         style="margin:20px 0; border-top:1px solid #EAE8E5;"></div>
 
                     <div class="promocode"
-                        style="margin: 20px 0; background: #F8F8F8; border-radius: 10px; padding: 15px;">
+                        style="margin: 20px 0;">
                         <label
                             style="color: #3B3731; font-family: Lato; font-size: 14px; font-weight: 600; margin-bottom: 10px; display: block;">Promo
                             code</label>
                         <input type="text" placeholder="Enter Promo Code"
                             style="width: 100%; border-radius: 8px; border: 1px solid #EAE8E5; padding: 10px 15px; font-family: Lato; font-size: 14px;">
                     </div>
+                    <div class="promo-code-entered d-flex align-items-center gap-10 mt-3">
+                        <p>PROMO25</p>
+                        <div class="remove-promo cursor">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none">
+                                <path d="M0.5 7.5L7.5 0.5M0.5 0.5L7.5 7.5" stroke="#3B3731" stroke-linecap="round" />
+                            </svg>
+                        </div>
+                    </div>
+                    
+                    <div class="divider" style="margin:20px 0; border-top:1px solid #EAE8E5;"></div>
 
                     <div id="sidebarSumBreakdown" class="sum"
                         style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px;">
@@ -3064,16 +3095,16 @@ line-height: normal;">
     <script src=" <?= BASE_URL ?>/assets/js/custom.js"></script>
     <script src="<?= BASE_URL ?>/assets/js/custom-dropdown.js"></script>
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
+        document.addEventListener("DOMContentLoaded", function() {
             // State variables to track totals
             let groomerExtrasTotalState = 0;
             let groomerServiceBaseState = 48.0;
             let spaceBaseState = 80.0;
             let spaceExtrasTotalState = 0.0; // Space extras currently 0 until hooked up
-            let promoDiscountState = 0.0;     // Update as needed
+            let promoDiscountState = 0.0; // Update as needed
 
             // This is called by renderExtrasAddons component on change
-            window.handleExtrasChange = function (selectedIds, total, selectedAddons) {
+            window.handleExtrasChange = function(selectedIds, total, selectedAddons) {
                 const container = document.getElementById('sidebarGroomerAddonsContainer');
                 const list = document.getElementById('sidebarGroomerAddonsList');
                 const divider = document.getElementById('sidebarGroomerAddonsDivider');
@@ -3175,7 +3206,7 @@ line-height: normal;">
                 }
 
                 if (checkbox) {
-                    checkbox.addEventListener('change', function () {
+                    checkbox.addEventListener('change', function() {
                         if (this.checked) {
                             card.classList.add('active');
                         } else {
@@ -3190,7 +3221,7 @@ line-height: normal;">
             updateSpaceAddonsSummary();
 
             // Toggle Accordion Function
-            window.toggleAccordion = function (id) {
+            window.toggleAccordion = function(id) {
                 const acc = document.getElementById(id);
                 if (!acc) return;
 
@@ -3254,7 +3285,7 @@ line-height: normal;">
 
             const continueBtn = document.getElementById("addonsContinueBtn");
             if (continueBtn) {
-                continueBtn.addEventListener("click", function () {
+                continueBtn.addEventListener("click", function() {
                     // Update step indicators
                     const step1 = document.querySelector('.step-item:nth-child(1)');
                     const step2 = document.querySelector('.step-item:nth-child(2)');
@@ -3271,7 +3302,10 @@ line-height: normal;">
                         const label1 = step1.querySelector('.step-label');
                         if (label1) label1.style.color = '#C9DDA0';
                     }
-                    if (step2) { step2.classList.remove('inactive'); step2.classList.add('active'); }
+                    if (step2) {
+                        step2.classList.remove('inactive');
+                        step2.classList.add('active');
+                    }
 
                     // Update progress bar
                     const progressFill = document.querySelector('.progress-fill');
@@ -3304,7 +3338,7 @@ line-height: normal;">
             // Navigate from Step 2 to Step 3
             const spaceContinueBtn = document.getElementById("spaceContinueBtn");
             if (spaceContinueBtn) {
-                spaceContinueBtn.addEventListener("click", function () {
+                spaceContinueBtn.addEventListener("click", function() {
                     // Update step indicators
                     const step2 = document.querySelector('.step-item:nth-child(2)');
                     const step3 = document.querySelector('.step-item:nth-child(3)');
@@ -3321,7 +3355,10 @@ line-height: normal;">
                         const label2 = step2.querySelector('.step-label');
                         if (label2) label2.style.color = '#C9DDA0';
                     }
-                    if (step3) { step3.classList.remove('inactive'); step3.classList.add('active'); }
+                    if (step3) {
+                        step3.classList.remove('inactive');
+                        step3.classList.add('active');
+                    }
 
                     // Update progress bar
                     const progressFill = document.querySelector('.progress-fill');
@@ -3345,7 +3382,7 @@ line-height: normal;">
             // Back button logic to switch back to Step 1
             const backBtn = document.getElementById('backToStep1Btn');
             if (backBtn) {
-                backBtn.addEventListener('click', function (e) {
+                backBtn.addEventListener('click', function(e) {
                     const stepOne = document.querySelector('.step-one');
                     const stepTwo = document.getElementById('step2Content');
                     const stepThree = document.getElementById('step3Content');
@@ -3379,7 +3416,10 @@ line-height: normal;">
                             const label2 = step2Indicator.querySelector('.step-label');
                             if (label2) label2.style.color = '';
                         }
-                        if (step3Indicator) { step3Indicator.classList.add('inactive'); step3Indicator.classList.remove('active'); }
+                        if (step3Indicator) {
+                            step3Indicator.classList.add('inactive');
+                            step3Indicator.classList.remove('active');
+                        }
 
                         // Update progress bar
                         const progressFill = document.querySelector('.progress-fill');
@@ -3421,7 +3461,10 @@ line-height: normal;">
                             const label1 = step1Indicator.querySelector('.step-label');
                             if (label1) label1.style.color = '';
                         }
-                        if (step2Indicator) { step2Indicator.classList.add('inactive'); step2Indicator.classList.remove('active'); }
+                        if (step2Indicator) {
+                            step2Indicator.classList.add('inactive');
+                            step2Indicator.classList.remove('active');
+                        }
 
                         // Update progress bar
                         const progressFill = document.querySelector('.progress-fill');
@@ -3437,7 +3480,7 @@ line-height: normal;">
         });
 
 
-        (function () {
+        (function() {
 
             const icons = {
                 paw: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="15" viewBox="0 0 16 15" fill="none">
@@ -3461,7 +3504,14 @@ line-height: normal;">
             };
 
             function petEmoji(type) {
-                return { Dog: '🐶', Cat: '🐱', Rabbit: '🐰', Bird: '🐦', Fish: '🐟', Hamster: '🐹' }[type] || '🐾';
+                return {
+                    Dog: '🐶',
+                    Cat: '🐱',
+                    Rabbit: '🐰',
+                    Bird: '🐦',
+                    Fish: '🐟',
+                    Hamster: '🐹'
+                } [type] || '🐾';
             }
 
             let allPets = [];
@@ -3472,7 +3522,7 @@ line-height: normal;">
             const selectBtn = document.getElementById('selectPetsBtn');
 
             // ── Open: hide buttons, show list ─────────────────────────────────────
-            selectBtn.addEventListener('click', async function () {
+            selectBtn.addEventListener('click', async function() {
                 actionBtns.style.display = 'none';
                 petList.classList.add('visible');
                 if (allPets.length === 0) await loadPets();
@@ -3489,7 +3539,10 @@ line-height: normal;">
                     console.error('Failed to load pets from pets-data.json:', err);
                     allPets = [];
                 }
-                allPets = allPets.map((p, i) => ({ id: p.id ?? i + 1, ...p }));
+                allPets = allPets.map((p, i) => ({
+                    id: p.id ?? i + 1,
+                    ...p
+                }));
                 renderCards();
             }
 
@@ -3533,14 +3586,14 @@ line-height: normal;">
         <button class="pet-edit-btn" data-pet-id="${pet.id}">Edit</button>
       `;
 
-                    card.addEventListener('click', function (e) {
+                    card.addEventListener('click', function(e) {
                         if (e.target.closest('.pet-edit-btn')) return;
                         selectedIds.has(pet.id) ? selectedIds.delete(pet.id) : selectedIds.add(pet.id);
                         card.classList.toggle('selected');
                         updateConfirmBtn();
                     });
 
-                    card.querySelector('.pet-edit-btn').addEventListener('click', function (e) {
+                    card.querySelector('.pet-edit-btn').addEventListener('click', function(e) {
                         e.stopPropagation();
                         // Wire to your edit pet flow here
                         console.log('Edit pet:', pet);
@@ -3562,14 +3615,14 @@ line-height: normal;">
 
                 updateConfirmBtn();
 
-                document.getElementById('petCancelBtn').addEventListener('click', function () {
+                document.getElementById('petCancelBtn').addEventListener('click', function() {
                     selectedIds.clear();
                     petList.classList.remove('visible', 'has-selection');
                     petList.innerHTML = '';
                     actionBtns.style.display = '';
                 });
 
-                document.getElementById('petConfirmBtn').addEventListener('click', function (e) {
+                document.getElementById('petConfirmBtn').addEventListener('click', function(e) {
                     e.preventDefault();
                     e.stopPropagation();
                     const chosen = allPets.filter(p => selectedIds.has(p.id));
@@ -3645,7 +3698,7 @@ line-height: normal;">
             if (!petTypeInput || !petBreedsData.petTypes) return;
 
             // Listen for input changes
-            petTypeInput.addEventListener('input', function () {
+            petTypeInput.addEventListener('input', function() {
                 const inputValue = this.value.trim().toLowerCase();
                 suggestionBox.innerHTML = '';
 
@@ -3671,14 +3724,14 @@ line-height: normal;">
                         suggestionItem.style.cssText = 'padding: 10px; cursor: pointer; border-bottom: 1px solid #EEE; color: #3B3731; font-family: Lato;';
                         suggestionItem.textContent = match.name;
 
-                        suggestionItem.addEventListener('mouseover', function () {
+                        suggestionItem.addEventListener('mouseover', function() {
                             this.style.backgroundColor = '#f5f5f5';
                         });
-                        suggestionItem.addEventListener('mouseout', function () {
+                        suggestionItem.addEventListener('mouseout', function() {
                             this.style.backgroundColor = 'transparent';
                         });
 
-                        suggestionItem.addEventListener('click', function () {
+                        suggestionItem.addEventListener('click', function() {
                             petTypeInput.value = match.name;
                             selectedPetType = match.name;
                             suggestionBox.style.display = 'none';
@@ -3703,14 +3756,14 @@ line-height: normal;">
             });
 
             // Hide suggestions when clicking outside
-            document.addEventListener('click', function (e) {
+            document.addEventListener('click', function(e) {
                 if (e.target !== petTypeInput && e.target !== suggestionBox) {
                     suggestionBox.style.display = 'none';
                 }
             });
 
             // Show suggestions on focus if input has value
-            petTypeInput.addEventListener('focus', function () {
+            petTypeInput.addEventListener('focus', function() {
                 if (this.value.trim().length > 0) {
                     suggestionBox.style.display = 'block';
                 }
@@ -3734,7 +3787,7 @@ line-height: normal;">
         }
 
         // Initialize on DOM ready
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
             loadPetBreedsData();
         });
         // ===== End Pet Type Auto-Detection =====
@@ -3755,13 +3808,13 @@ line-height: normal;">
         let petPhotoBase64 = null;
 
         // Image upload button click
-        petPhotoUploadBtn.addEventListener('click', function (e) {
+        petPhotoUploadBtn.addEventListener('click', function(e) {
             e.preventDefault();
             petPhotoInput.click();
         });
 
         // Handle file selection
-        petPhotoInput.addEventListener('change', function (e) {
+        petPhotoInput.addEventListener('change', function(e) {
             const file = e.target.files[0];
             if (!file) return;
 
@@ -3778,7 +3831,7 @@ line-height: normal;">
 
             // Read file as base64
             const reader = new FileReader();
-            reader.onload = function (event) {
+            reader.onload = function(event) {
                 petPhotoBase64 = event.target.result;
                 displayPetPhotoPreview(petPhotoBase64);
             };
@@ -3815,7 +3868,7 @@ line-height: normal;">
             editBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
 <path d="M7.78125 2.1875L11.8125 6.21875M1.3125 12.6875H3.64583L11.8125 4.52083C12.4419 3.89148 12.4419 2.87114 11.8125 2.2418C11.1832 1.61245 10.1628 1.61245 9.53345 2.2418L1.3125 10.4627V12.6875Z" stroke="#3B3731" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
 </svg> Edit photo`;
-            editBtn.addEventListener('click', function () {
+            editBtn.addEventListener('click', function() {
                 petPhotoInput.click();
             });
 
@@ -3959,6 +4012,7 @@ line-height: normal;">
         </div>
     `;
         }
+
         function toggleFormDisplay(showDisplay = true) {
             if (showDisplay) {
                 petDetailsForm.classList.add('hidden');
@@ -4042,7 +4096,7 @@ line-height: normal;">
             }
         }
 
-        petFormSaveBtn.addEventListener('click', function (e) {
+        petFormSaveBtn.addEventListener('click', function(e) {
             e.preventDefault();
             e.stopPropagation();
             const petDetails = collectPetDetails();
@@ -4053,12 +4107,12 @@ line-height: normal;">
 
             sessionStorage.setItem('petDetails', JSON.stringify(petDetails));
 
-            toggleFormDisplay(true);      // show the display div FIRST
+            toggleFormDisplay(true); // show the display div FIRST
             displayPetDetails(petDetails); // THEN inject content including photo
         });
 
         // Cancel button click handler
-        petFormCancelBtn.addEventListener('click', function () {
+        petFormCancelBtn.addEventListener('click', function() {
             // Check if there's saved pet details in sessionStorage
             const savedPetDetails = sessionStorage.getItem('petDetails');
 
@@ -4102,7 +4156,7 @@ line-height: normal;">
         });
 
         // Change button click handler
-        petDisplayChangeBtn.addEventListener('click', function () {
+        petDisplayChangeBtn.addEventListener('click', function() {
             toggleFormDisplay(false);
         });
 
@@ -4148,7 +4202,10 @@ line-height: normal;">
 
         // Run on DOM ready
         if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', () => { checkSavedPetDetails(); validateStep1(); });
+            document.addEventListener('DOMContentLoaded', () => {
+                checkSavedPetDetails();
+                validateStep1();
+            });
         } else {
             checkSavedPetDetails();
             validateStep1();
@@ -4156,7 +4213,7 @@ line-height: normal;">
         // ===== End Pet Details Storage & Display =====
 
 
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
             const addNewPetBtn = document.getElementById('addNewPetBtn');
             const petActionBtns = document.getElementById('petActionBtns');
             const petDetailsForm = document.querySelector('.pet-details-form');
@@ -4164,7 +4221,7 @@ line-height: normal;">
             const petFormCancelBtn = document.getElementById('petFormCancelBtn');
 
             if (addNewPetBtn) {
-                addNewPetBtn.addEventListener('click', function () {
+                addNewPetBtn.addEventListener('click', function() {
                     petActionBtns.style.display = 'none';
                     if (petList) petList.classList.remove('visible');
                     if (petDetailsForm) {
@@ -4176,7 +4233,7 @@ line-height: normal;">
             }
 
             if (petFormCancelBtn) {
-                petFormCancelBtn.addEventListener('click', function () {
+                petFormCancelBtn.addEventListener('click', function() {
                     setTimeout(() => {
                         const savedPetDetails = sessionStorage.getItem('petDetails');
                         if (!savedPetDetails) {
@@ -4191,7 +4248,7 @@ line-height: normal;">
 
             const petDisplayChangeBtn = document.getElementById('petDisplayChangeBtn');
             if (petDisplayChangeBtn) {
-                petDisplayChangeBtn.addEventListener('click', function () {
+                petDisplayChangeBtn.addEventListener('click', function() {
                     petActionBtns.style.display = 'none';
                 });
             }
@@ -4202,7 +4259,7 @@ line-height: normal;">
             const wrap = select.closest('.input-wrap.select-wrap');
             let isOpen = false;
 
-            select.addEventListener('mousedown', function () {
+            select.addEventListener('mousedown', function() {
                 if (isOpen) {
                     wrap.classList.remove('open');
                     isOpen = false;
@@ -4212,19 +4269,28 @@ line-height: normal;">
                 }
             });
 
-            select.addEventListener('blur', function () {
+            select.addEventListener('blur', function() {
                 setTimeout(() => {
                     if (wrap) wrap.classList.remove('open');
                     isOpen = false;
                 }, 100);
             });
 
-            select.addEventListener('change', function () {
+            select.addEventListener('change', function() {
                 wrap.classList.remove('open');
                 isOpen = false;
             });
         });
 
+        const navheader = document.querySelector('header');
+
+        function updateHeader() {
+            navheader.style.backgroundColor =
+                window.scrollY > 10 ? "white" : "#FDFCF8";
+        }
+
+        window.addEventListener('scroll', updateHeader);
+        updateHeader();
     </script>
 </body>
 

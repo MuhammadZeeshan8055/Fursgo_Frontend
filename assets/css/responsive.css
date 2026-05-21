@@ -1741,6 +1741,12 @@ p.time-text {
     background-color: #555;
 }
 
+.time-list {
+    scrollbar-width: thin;
+    scrollbar-color: var(--active-bg) transparent;
+                     /* thumb color  ^   track color ^ */
+}
+
 /* custom select dropdown styles  */
 .custom-select {
     position: relative;

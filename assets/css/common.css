@@ -263,6 +263,14 @@
 
 /* ===== 20px ===== */
 
+.fs-lato-28-600 {
+  color: #3B3731;
+  text-align: center;
+  font-family: Lato;
+  font-size: 28px;
+  font-weight: 600;
+}
+
 .fs-20-600 {
   color: #3b3731;
   font-family: Lato;
