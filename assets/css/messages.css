@@ -134,12 +134,6 @@ aside.sidebar {
     background: transparent;
 }
 
-/* Firefox */
-.chat-list-wrapper {
-    scrollbar-width: thin;
-    scrollbar-color: var(--active-bg) transparent;
-                     /* thumb color  ^   track color ^ */
-}
 .tabs {
     display: flex;
     background: #F8F8F8;
