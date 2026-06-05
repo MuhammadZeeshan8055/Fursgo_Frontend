@@ -2010,8 +2010,8 @@
                     </div>
                     <div class="tab-go-to-section less-gap d-flex align-items-center flex-wrap justify-content-between mt-5">
                         <a href="#services_and_pricing" class="active">Services & Add-ons</a>
-                        <a href="#amenities">Amenities</a>
                         <a href="#rules_and_restrictions">Rules & Restrictions</a>
+                        <a href="#amenities">Amenities</a>
                         <a href="#reviews">Reviews</a>
                         <a href="#location">Location</a>
                     </div>
