@@ -715,8 +715,11 @@
                                                                             <hr class="vertical-line">
                                                                             <div class="meta-box d-flex flex-column gap-10">
                                                                                 <div class="d-flex align-items-center gap-10">
-                                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                                                                                        <path d="M8 0.5C12.1423 0.5 15.5 3.85774 15.5 8C15.5 12.1423 12.1423 15.5 8 15.5C3.85774 15.5 0.5 12.1423 0.5 8C0.5 3.85774 3.85774 0.5 8 0.5Z" stroke="#9D9B98" stroke-linecap="round" />
+                                                                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                                                                        <circle cx="8" cy="8" r="6" stroke="#9D9B98"
+                                                                                            stroke-width="1.5" />
+                                                                                        <path d="M8 4.5V8L10.5 10" stroke="#9D9B98" stroke-width="1.5"
+                                                                                            stroke-linecap="round" />
                                                                                     </svg>
                                                                                     <p class="normal-font-bold muted-color">Time</p>
                                                                                 </div>
