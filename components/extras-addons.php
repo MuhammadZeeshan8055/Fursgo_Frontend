@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Reusable Extras & Add-ons Component
  */
@@ -35,7 +36,7 @@ function renderExtrasAddons(array $addons = [], array $options = []): void
 
     $addonsJson = json_encode(array_values($addons), JSON_HEX_TAG);
     $defaultSelectedJson = json_encode($options['default_selected'] ?? []);
-    ?>
+?>
     <style>
         .furs-addons-root {
             margin-bottom: 2rem;
@@ -142,10 +143,10 @@ function renderExtrasAddons(array $addons = [], array $options = []): void
 
         /* Custom radio */
         .furs-addons-root .radio {
-            width: 22px;
-            height: 22px;
+            width: 24px;
+            height: 24px;
             border-radius: 50%;
-            border: 2px solid #ccc;
+            border: 1px solid #ccc;
             flex-shrink: 0;
             display: flex;
             align-items: center;
@@ -156,8 +157,8 @@ function renderExtrasAddons(array $addons = [], array $options = []): void
 
         .furs-addons-root .radio::after {
             content: '';
-            width: 0.9rem;
-            height: 0.9rem;
+            width: 16px;
+            height: 16px;
             border-radius: 50%;
             background: #FFD88C;
             transform: scale(0);
@@ -213,7 +214,7 @@ function renderExtrasAddons(array $addons = [], array $options = []): void
     </div>
 
     <script>
-        (function () {
+        (function() {
             const id = <?= json_encode($id) ?>;
             const addons = <?= $addonsJson ?>;
             const currency = <?= json_encode($currency) ?>;
@@ -221,13 +222,16 @@ function renderExtrasAddons(array $addons = [], array $options = []): void
             const hasBackground = <?= json_encode($hasBackground) ?>;
             const selected = new Set(<?= $defaultSelectedJson ?>);
 
-            function fmt(p) { return `${currency}${p}`; }
+            function fmt(p) {
+                return `${currency}${p}`;
+            }
 
             function renderOptions() {
                 const left = document.getElementById(`furs-col-left-${id}`);
                 const right = document.getElementById(`furs-col-right-${id}`);
                 if (!left || !right) return;
-                left.innerHTML = ''; right.innerHTML = '';
+                left.innerHTML = '';
+                right.innerHTML = '';
 
                 addons.forEach(a => {
                     const el = document.createElement('div');
@@ -280,7 +284,11 @@ function renderExtrasAddons(array $addons = [], array $options = []): void
 
                 // Fire custom event
                 document.getElementById(`furs-addons-${id}`).dispatchEvent(new CustomEvent('furs:addons:change', {
-                    detail: { selectedIds: Array.from(selected), total, selectedAddons }
+                    detail: {
+                        selectedIds: Array.from(selected),
+                        total,
+                        selectedAddons
+                    }
                 }));
             }
 
@@ -296,5 +304,5 @@ function renderExtrasAddons(array $addons = [], array $options = []): void
             renderTags();
         })();
     </script>
-    <?php
+<?php
 }

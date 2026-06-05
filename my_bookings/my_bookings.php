@@ -448,11 +448,11 @@
 
 
                         <div class="chips-container">
-                            <div class="chip light-color-font d-flex align-items-center gap-10">Most Recent <span class="close"><svg xmlns="http://www.w3.org/2000/svg" width="9"
+                            <div class="chip light-color-font d-flex align-items-center gap-10 close cursor">Most Recent <span><svg xmlns="http://www.w3.org/2000/svg" width="9"
                                         height="9" viewBox="0 0 9 9" fill="none">
                                         <path d="M0.5 7.57L7.572 0.5M0.5 0.5L7.572 7.57" stroke="#FBAC83" stroke-linecap="round" />
                                     </svg></span></div>
-                            <div class="chip light-color-font d-flex align-items-center gap-10">2 Feb - 4 Mar <span class="close"><svg xmlns="http://www.w3.org/2000/svg" width="9"
+                            <div class="chip light-color-font d-flex align-items-center gap-10 close cursor">2 Feb - 4 Mar <span><svg xmlns="http://www.w3.org/2000/svg" width="9"
                                         height="9" viewBox="0 0 9 9" fill="none">
                                         <path d="M0.5 7.57L7.572 0.5M0.5 0.5L7.572 7.57" stroke="#FBAC83" stroke-linecap="round" />
                                     </svg></span></div>

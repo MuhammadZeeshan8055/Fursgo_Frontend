@@ -20,9 +20,8 @@ body.change-space {
     background: none;
     border: 1px solid #3b3731;
     border-radius: 50px;
-    padding: 10px 15px;
+    padding: 15px 25px;
     cursor: pointer;
-    margin-bottom: 20px;
     color: #3b3731;
     text-align: center;
     font-family: Lato;
@@ -30,6 +29,11 @@ body.change-space {
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    gap: 6px;
 }
 
 /* Card Styling */
@@ -141,9 +145,11 @@ body.change-space {
 }
 
 .change-groomer-cb-pet-thumbnail {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
+    border-radius: 50px;
+  width: 56px;
+  height: 56px;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
 }
 
 .cb-update-section {
@@ -286,6 +292,7 @@ body.change-space {
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    font-family: Lato;
     font-weight: 600;
     font-size: 16px;
     color: #3b3731;

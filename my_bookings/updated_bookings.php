@@ -31,9 +31,10 @@
                         </div>
                     </div>
                     <div class="col-lg-12">
-                        <a href="<?= BASE_URL ?>my_bookings/my_bookings.php"
-                            class="btn-custom btn-no-bg text-center mt-5 d-inline-block">
-                            ← Back to My Bookings
+                        <a href="<?= BASE_URL ?>my_bookings/my_bookings.php" class="cb-back-btn mt-5">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                <path d="M13 8H3M3 8L7 4M3 8L7 12" stroke="#3B3731" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg> Back to My Bookings
                         </a>
                     </div>
                     <div class="col-lg-12">
@@ -201,8 +202,8 @@
                                 </div>
 
                                 <div class="footer-buttons d-flex align-items-center justify-content-between">
-                                    <button type="button" class="btn-custom btn-no-bg text-center mt-5">Message Groomer</button>
-                                    <button type="button" class="btn-custom btn-no-bg green-btn text-center mt-5">My Bookings</button>
+                                    <a href="<?= BASE_URL ?>messages_notification/messages.php" type="button" class="btn-custom btn-no-bg text-center mt-5">Message Groomer</a>
+                                    <a href="<?= BASE_URL ?>my_bookings/my_bookings.php" type="button" class="btn-custom btn-no-bg green-btn text-center mt-5">My Bookings</a>
                                 </div>
 
                             </div>

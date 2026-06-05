@@ -41,7 +41,9 @@ include_once __DIR__ . '/../components/extras-addons.php';
 
                         <div class="cb-nav-container mt-5">
                             <a href="<?= BASE_URL ?>my_bookings/my_bookings.php" class="cb-back-btn">
-                                ← Back to My Bookings
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <path d="M13 8H3M3 8L7 4M3 8L7 12" stroke="#3B3731" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg> Back to My Bookings
                             </a>
                         </div>
 
@@ -395,7 +397,7 @@ include_once __DIR__ . '/../components/extras-addons.php';
 
                         <div class="cb-action-footer cb-container">
                             <button class="cb-btn-outline">Cancel changes</button>
-                            <button class="cb-btn-filled">Confirm changes</button>
+                            <a href="<?= BASE_URL ?>my_bookings/updated_bookings.php" class="cb-btn-filled">Confirm changes</a>
                         </div>
 
                     </div>
