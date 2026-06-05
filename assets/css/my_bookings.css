@@ -1,6 +1,7 @@
 body {
     background: #FDFCF8;
 }
+
 .top-head.d-flex.align-items-center.justify-content-center {
     padding: 25px 50px;
     border-radius: 10px;
@@ -396,7 +397,7 @@ img.rounded-image.second-image {
 .upload-box {
     flex: 1;
     width: 190px;
-    height: auto;
+    height: 190px;
     background-color: #fcfcfc;
     border: 1px dashed #eee;
     border-radius: 12px;
@@ -404,8 +405,8 @@ img.rounded-image.second-image {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 20px;
-    padding: 40px;
+    /* gap: 20px;
+    padding: 40px; */
 }
 
 .upload-btn {
@@ -425,6 +426,42 @@ img.rounded-image.second-image {
     width: 162px;
     height: 48px;
     margin-top: 1.5rem;
+}
+
+.upload-box {
+    position: relative;
+}
+
+/* preview image fills entire square */
+.preview-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.preview-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* key for square fill */
+    border-radius: 12px;
+}
+
+/* delete button below preview */
+.delete-btn {
+    position: absolute;
+    bottom: -35px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #FF6E6E;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
 }
 
 .custom-checkbox-container {
@@ -518,29 +555,6 @@ img.rounded-image.second-image {
     height: 48px;
 }
 
-.preview {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-}
-
-.preview img {
-    height: 100px;
-    width: 100px;
-    object-fit: cover;
-    /* border-radius: 50px; */
-}
-
-.remove-btn {
-    height: 30px;
-    width: 30px;
-    border-radius: 50px;
-    border: none;
-    background: #FF6E6E;
-    color: white;
-    cursor: pointer;
-}
 
 /* CSS — replace your .rating-stars rules with this */
 .rating-stars {

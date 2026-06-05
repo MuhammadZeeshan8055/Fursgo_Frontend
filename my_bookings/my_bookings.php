@@ -2003,18 +2003,25 @@
                                                     <textarea class="simple-font mt-4" placeholder="Tell others what you liked or what could be improved."></textarea>
                                                 </div>
 
-                                                <div class="photos-section mt-5">
+                                                <div class="photos-section mt-5 mb-5">
                                                     <h4 class="photos-section-title normal-font-bold">Add Photos <span class="optional normal-light-color">(Optional)</span></h4>
                                                     <p class="sub-text simple-light-font">Photos help others understand your experience.</p>
 
                                                     <div class="upload-flex d-flex align-items-center gap-20 mt-4">
+
                                                         <div class="upload-box" data-index="1">
+
+
                                                             <svg xmlns="http://www.w3.org/2000/svg" width="60" height="48" viewBox="0 0 60 48"
                                                                 fill="none">
                                                                 <path fill-rule="evenodd" clip-rule="evenodd"
                                                                     d="M19.2857 0C17.1643 0 15.5014 1.31345 14.4729 2.88873C13.4314 4.47709 12.8571 6.54982 12.8571 8.72727C12.8571 10.9047 13.4314 12.9775 14.4729 14.5658C15.5014 16.1367 17.1643 17.4545 19.2857 17.4545C21.4071 17.4545 23.07 16.1411 24.0986 14.5658C25.14 12.9775 25.7143 10.9047 25.7143 8.72727C25.7143 6.54982 25.14 4.47709 24.0986 2.88873C23.07 1.31782 21.4071 0 19.2857 0ZM40.7143 0C38.5929 0 36.93 1.31345 35.9014 2.88873C34.86 4.47709 34.2857 6.54982 34.2857 8.72727C34.2857 10.9047 34.86 12.9775 35.9014 14.5658C36.93 16.1367 38.5929 17.4545 40.7143 17.4545C42.8357 17.4545 44.4986 16.1411 45.5271 14.5658C46.5686 12.9775 47.1429 10.9047 47.1429 8.72727C47.1429 6.54982 46.5686 4.47709 45.5271 2.88873C44.4986 1.31782 42.8357 0 40.7143 0ZM6.42857 19.6364C4.30714 19.6364 2.64429 20.9498 1.61571 22.5251C0.574286 24.1135 0 26.1862 0 28.3636C0 30.5411 0.574286 32.6138 1.61571 34.2022C2.64429 35.7731 4.30714 37.0909 6.42857 37.0909C8.55 37.0909 10.2129 35.7775 11.2414 34.2022C12.2829 32.6138 12.8571 30.5411 12.8571 28.3636C12.8571 26.1862 12.2829 24.1135 11.2414 22.5251C10.2129 20.9542 8.55 19.6364 6.42857 19.6364ZM30 19.6364C24.8571 19.6364 21.0471 22.4465 18.6129 25.9331C16.2086 29.3673 15 33.6305 15 37.0909C15 41.1229 17.3786 43.9287 20.2971 45.6087C23.1686 47.2669 26.7686 48 30 48C33.2314 48 36.8314 47.2713 39.7029 45.6087C42.6171 43.9244 45 41.1229 45 37.0909C45 33.6305 43.7914 29.3673 41.3871 25.9331C38.9571 22.4422 35.1471 19.6364 30 19.6364ZM53.5714 19.6364C51.45 19.6364 49.7871 20.9498 48.7586 22.5251C47.7171 24.1135 47.1429 26.1862 47.1429 28.3636C47.1429 30.5411 47.7171 32.6138 48.7586 34.2022C49.7871 35.7731 51.45 37.0909 53.5714 37.0909C55.6929 37.0909 57.3557 35.7775 58.3843 34.2022C59.4257 32.6138 60 30.5411 60 28.3636C60 26.1862 59.4257 24.1135 58.3843 22.5251C57.3557 20.9542 55.6929 19.6364 53.5714 19.6364Z"
                                                                     fill="#E5E5E5" />
                                                             </svg>
+
+                                                            <div class="preview-container" style="display:none;"></div>
+
+
 
                                                             <!-- hidden input + accessible label -->
                                                             <input class="file-input" type="file" name="photo1" id="file-1" accept="image/*" style="display:none" aria-label="Upload photo 1">
@@ -2025,12 +2032,20 @@
                                                                 </svg>
                                                                 Upload Photo
                                                             </button>
+                                                            <button type="button" class="delete-btn" style="display:none;">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="8" height="9" viewBox="0 0 8 9" fill="none">
+                                                                    <path d="M1.5 9C1.225 9 0.989668 8.90217 0.794001 8.7065C0.598335 8.51083 0.500335 8.27533 0.500001 8V1.5C0.358335 1.5 0.239668 1.452 0.144002 1.356C0.0483351 1.26 0.000335057 1.14133 1.72414e-06 1C-0.000331609 0.858667 0.0476684 0.74 0.144002 0.644C0.240335 0.548 0.359002 0.5 0.500001 0.5H2.5C2.5 0.358333 2.548 0.239667 2.644 0.144C2.74 0.0483334 2.85867 0.000333333 3 0H5C5.14167 0 5.2605 0.048 5.3565 0.144C5.4525 0.24 5.50033 0.358667 5.5 0.5H7.5C7.64166 0.5 7.7605 0.548 7.8565 0.644C7.9525 0.74 8.00033 0.858667 8 1C7.99966 1.14133 7.95166 1.26017 7.856 1.3565C7.76033 1.45283 7.64166 1.50067 7.5 1.5V8C7.5 8.275 7.40216 8.5105 7.2065 8.7065C7.01083 8.9025 6.77533 9.00033 6.5 9H1.5ZM3 7C3.14167 7 3.2605 6.952 3.3565 6.856C3.4525 6.76 3.50033 6.64133 3.5 6.5V3C3.5 2.85833 3.452 2.73967 3.356 2.644C3.26 2.54833 3.14133 2.50033 3 2.5C2.85867 2.49967 2.74 2.54767 2.644 2.644C2.548 2.74033 2.5 2.859 2.5 3V6.5C2.5 6.64167 2.548 6.7605 2.644 6.8565C2.74 6.9525 2.85867 7.00033 3 7ZM5 7C5.14167 7 5.2605 6.952 5.3565 6.856C5.4525 6.76 5.50033 6.64133 5.5 6.5V3C5.5 2.85833 5.452 2.73967 5.356 2.644C5.26 2.54833 5.14133 2.50033 5 2.5C4.85867 2.49967 4.74 2.54767 4.644 2.644C4.548 2.74033 4.5 2.859 4.5 3V6.5C4.5 6.64167 4.548 6.7605 4.644 6.8565C4.74 6.9525 4.85867 7.00033 5 7Z" fill="white" />
+                                                                </svg>
+                                                            </button>
 
-                                                            <div class="preview" aria-live="polite"></div>
                                                         </div>
 
                                                         <!-- Upload Box 2 -->
                                                         <div class="upload-box" data-index="2">
+
+                                                            <div class="preview-container" style="display:none;"></div>
+
+
                                                             <svg xmlns="http://www.w3.org/2000/svg" width="60" height="48" viewBox="0 0 60 48"
                                                                 fill="none">
                                                                 <path fill-rule="evenodd" clip-rule="evenodd"
@@ -2044,11 +2059,18 @@
                                                                 </svg>
                                                                 Upload Photo
                                                             </button>
-                                                            <div class="preview" aria-live="polite"></div>
+                                                            <button type="button" class="delete-btn" style="display:none;">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="8" height="9" viewBox="0 0 8 9" fill="none">
+                                                                    <path d="M1.5 9C1.225 9 0.989668 8.90217 0.794001 8.7065C0.598335 8.51083 0.500335 8.27533 0.500001 8V1.5C0.358335 1.5 0.239668 1.452 0.144002 1.356C0.0483351 1.26 0.000335057 1.14133 1.72414e-06 1C-0.000331609 0.858667 0.0476684 0.74 0.144002 0.644C0.240335 0.548 0.359002 0.5 0.500001 0.5H2.5C2.5 0.358333 2.548 0.239667 2.644 0.144C2.74 0.0483334 2.85867 0.000333333 3 0H5C5.14167 0 5.2605 0.048 5.3565 0.144C5.4525 0.24 5.50033 0.358667 5.5 0.5H7.5C7.64166 0.5 7.7605 0.548 7.8565 0.644C7.9525 0.74 8.00033 0.858667 8 1C7.99966 1.14133 7.95166 1.26017 7.856 1.3565C7.76033 1.45283 7.64166 1.50067 7.5 1.5V8C7.5 8.275 7.40216 8.5105 7.2065 8.7065C7.01083 8.9025 6.77533 9.00033 6.5 9H1.5ZM3 7C3.14167 7 3.2605 6.952 3.3565 6.856C3.4525 6.76 3.50033 6.64133 3.5 6.5V3C3.5 2.85833 3.452 2.73967 3.356 2.644C3.26 2.54833 3.14133 2.50033 3 2.5C2.85867 2.49967 2.74 2.54767 2.644 2.644C2.548 2.74033 2.5 2.859 2.5 3V6.5C2.5 6.64167 2.548 6.7605 2.644 6.8565C2.74 6.9525 2.85867 7.00033 3 7ZM5 7C5.14167 7 5.2605 6.952 5.3565 6.856C5.4525 6.76 5.50033 6.64133 5.5 6.5V3C5.5 2.85833 5.452 2.73967 5.356 2.644C5.26 2.54833 5.14133 2.50033 5 2.5C4.85867 2.49967 4.74 2.54767 4.644 2.644C4.548 2.74033 4.5 2.859 4.5 3V6.5C4.5 6.64167 4.548 6.7605 4.644 6.8565C4.74 6.9525 4.85867 7.00033 5 7Z" fill="white" />
+                                                                </svg>
+                                                            </button>
+
                                                         </div>
 
                                                         <!-- Upload Box 3 -->
                                                         <div class="upload-box" data-index="3">
+                                                            <div class="preview-container" style="display:none;"></div>
+
                                                             <svg xmlns="http://www.w3.org/2000/svg" width="60" height="48" viewBox="0 0 60 48"
                                                                 fill="none">
                                                                 <path fill-rule="evenodd" clip-rule="evenodd"
@@ -2062,7 +2084,12 @@
                                                                 </svg>
                                                                 Upload Photo
                                                             </button>
-                                                            <div class="preview" aria-live="polite"></div>
+                                                            <button type="button" class="delete-btn" style="display:none;">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="8" height="9" viewBox="0 0 8 9" fill="none">
+                                                                    <path d="M1.5 9C1.225 9 0.989668 8.90217 0.794001 8.7065C0.598335 8.51083 0.500335 8.27533 0.500001 8V1.5C0.358335 1.5 0.239668 1.452 0.144002 1.356C0.0483351 1.26 0.000335057 1.14133 1.72414e-06 1C-0.000331609 0.858667 0.0476684 0.74 0.144002 0.644C0.240335 0.548 0.359002 0.5 0.500001 0.5H2.5C2.5 0.358333 2.548 0.239667 2.644 0.144C2.74 0.0483334 2.85867 0.000333333 3 0H5C5.14167 0 5.2605 0.048 5.3565 0.144C5.4525 0.24 5.50033 0.358667 5.5 0.5H7.5C7.64166 0.5 7.7605 0.548 7.8565 0.644C7.9525 0.74 8.00033 0.858667 8 1C7.99966 1.14133 7.95166 1.26017 7.856 1.3565C7.76033 1.45283 7.64166 1.50067 7.5 1.5V8C7.5 8.275 7.40216 8.5105 7.2065 8.7065C7.01083 8.9025 6.77533 9.00033 6.5 9H1.5ZM3 7C3.14167 7 3.2605 6.952 3.3565 6.856C3.4525 6.76 3.50033 6.64133 3.5 6.5V3C3.5 2.85833 3.452 2.73967 3.356 2.644C3.26 2.54833 3.14133 2.50033 3 2.5C2.85867 2.49967 2.74 2.54767 2.644 2.644C2.548 2.74033 2.5 2.859 2.5 3V6.5C2.5 6.64167 2.548 6.7605 2.644 6.8565C2.74 6.9525 2.85867 7.00033 3 7ZM5 7C5.14167 7 5.2605 6.952 5.3565 6.856C5.4525 6.76 5.50033 6.64133 5.5 6.5V3C5.5 2.85833 5.452 2.73967 5.356 2.644C5.26 2.54833 5.14133 2.50033 5 2.5C4.85867 2.49967 4.74 2.54767 4.644 2.644C4.548 2.74033 4.5 2.859 4.5 3V6.5C4.5 6.64167 4.548 6.7605 4.644 6.8565C4.74 6.9525 4.85867 7.00033 5 7Z" fill="white" />
+                                                                </svg>
+                                                            </button>
+
                                                         </div>
                                                     </div>
                                                 </div>
@@ -2170,131 +2197,7 @@
             });
         });
     </script>
-    <script>
-        (function() {
-            const MAX_SIZE_BYTES = 5 * 1024 * 1024; // 5MB limit example
-            const boxes = document.querySelectorAll('.upload-box');
 
-            boxes.forEach(box => {
-                const input = box.querySelector('.file-input');
-                const btn = box.querySelector('.upload-btn');
-                const preview = box.querySelector('.preview');
-                let currentObjectUrl = null;
-
-                // clicking the styled button triggers the hidden input
-                btn.addEventListener('click', () => input.click());
-
-                // handle file selection
-                input.addEventListener('change', () => handleFiles(input.files, preview));
-
-                // drag & drop behavior on the box
-                ['dragenter', 'dragover'].forEach(ev => {
-                    box.addEventListener(ev, e => {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        box.classList.add('dragover');
-                    });
-                });
-                ['dragleave', 'drop', 'dragend'].forEach(ev => {
-                    box.addEventListener(ev, e => {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        box.classList.remove('dragover');
-                    });
-                });
-                box.addEventListener('drop', (e) => {
-                    const dt = e.dataTransfer;
-                    if (!dt) return;
-                    const files = dt.files;
-                    if (files && files.length) {
-                        input.files = files; // assign dropped files to input (works in modern browsers)
-                        handleFiles(files, preview);
-                    }
-                });
-
-                // render preview & meta
-                function handleFiles(files, previewEl) {
-                    clearPreview();
-                    if (!files || files.length === 0) return;
-                    const file = files[0];
-
-                    if (file.size > MAX_SIZE_BYTES) {
-                        previewEl.innerHTML = `<div class="file-meta simple-font ">File too large (${Math.round(file.size/1024/1024*10)/10} MB)</div>`;
-                        input.value = ''; // reset
-                        return;
-                    }
-
-                    const meta = document.createElement('div');
-                    meta.className = 'file-meta simple-font';
-                    meta.textContent = file.name;
-
-                    // If image -> show thumbnail
-                    if (file.type && file.type.startsWith('image/')) {
-                        const img = document.createElement('img');
-                        currentObjectUrl = URL.createObjectURL(file);
-                        img.src = currentObjectUrl;
-                        img.alt = file.name;
-                        previewEl.appendChild(img);
-
-                        // revoke object URL when image loaded to avoid leaks (but keep DOM src until removed)
-                        img.addEventListener('load', () => {
-                            URL.revokeObjectURL(currentObjectUrl);
-                        }, {
-                            once: true
-                        });
-                    } else {
-                        // non-image fallback
-                        const icon = document.createElement('div');
-                        icon.textContent = '📄';
-                        previewEl.appendChild(icon);
-                    }
-
-                    previewEl.appendChild(meta);
-
-                    // remove button
-                    const remove = document.createElement('button');
-                    remove.type = 'button';
-                    remove.className = 'remove-btn simple-font ';
-                    remove.textContent = 'X';
-                    remove.addEventListener('click', () => {
-                        input.value = ''; // clears selected file
-                        clearPreview();
-                    });
-                    previewEl.appendChild(remove);
-                }
-
-                function clearPreview() {
-                    preview.innerHTML = '';
-                    if (currentObjectUrl) {
-                        try {
-                            URL.revokeObjectURL(currentObjectUrl);
-                        } catch (e) {}
-                        currentObjectUrl = null;
-                    }
-                }
-
-                // clear when user navigates away or resets
-                box.addEventListener('reset', clearPreview);
-            });
-
-            // example form submit handler: collects files into FormData and logs names
-            document.getElementById('reviewForm').addEventListener('submit', function(e) {
-                e.preventDefault();
-                const fd = new FormData(this);
-                // debug: print file names
-                for (const [name, value] of fd.entries()) {
-                    if (value instanceof File) {
-                        console.log('field', name, 'file', value.name, value.size);
-                    } else {
-                        console.log('field', name, 'value', value);
-                    }
-                }
-                // Example: send via fetch
-                // fetch('/upload-endpoint', { method: 'POST', body: fd }).then(...)
-                alert('Form prepared. Check console for FormData debug.');
-            });
-        })();
-    </script>
 
     <script>
         const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
@@ -2461,7 +2364,7 @@
         // ── Nav ─────────────────────────────────────────────────────────────────
         document.getElementById('prev').addEventListener('click', () => {
             vm--;
-            if (vm < 0) {
+            if (vm < sc 0) {
                 vm = 11;
                 vy--;
             }
@@ -2484,7 +2387,48 @@
         render();
         setHint();
     </script>
+    <script>
+        document.querySelectorAll('.upload-box').forEach(box => {
+            const input = box.querySelector('.file-input');
+            const btn = box.querySelector('.upload-btn');
+            const placeholder = box.querySelector('svg');
+            const previewContainer = box.querySelector('.preview-container');
+            const deleteBtn = box.querySelector('.delete-btn');
 
+            // open file picker
+            btn.addEventListener('click', () => input.click());
+
+            input.addEventListener('change', (e) => {
+                const file = e.target.files[0];
+                if (!file) return;
+
+                const url = URL.createObjectURL(file);
+
+                // hide UI
+                placeholder.style.display = 'none';
+                btn.style.display = 'none';
+
+                // show preview
+                previewContainer.innerHTML = `<img src="${url}" />`;
+                previewContainer.style.display = 'block';
+
+                deleteBtn.style.display = 'block';
+            });
+
+            // delete / reset
+            deleteBtn.addEventListener('click', () => {
+                input.value = '';
+
+                previewContainer.innerHTML = '';
+                previewContainer.style.display = 'none';
+
+                placeholder.style.display = 'block';
+                btn.style.display = 'flex';
+
+                deleteBtn.style.display = 'none';
+            });
+        });
+    </script>
 
 </body>
 <script>
