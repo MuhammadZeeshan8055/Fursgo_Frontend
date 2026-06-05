@@ -21,6 +21,33 @@
                 <p class="simple-font">Responses usually within 24 hours</p>
             </div>
 
+            <div id="request-success-toast" class="request-success-toast">
+                ✓ Request submitted successfully.
+            </div>
+            <style>
+                .request-success-toast {
+                    position: fixed;
+                    top: 20px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    background: #ffc97a;
+                    color: #fff;
+                    padding: 14px 24px;
+                    border-radius: 10px;
+                    font-family: lato;
+                    font-size: 14px;
+                    font-weight: 600;
+                    z-index: 9999;
+                    opacity: 0;
+                    visibility: hidden;
+                    transition: all .3s ease;
+                }
+
+                .request-success-toast.show {
+                    opacity: 1;
+                    visibility: visible;
+                }
+            </style>
             <!-- Modal  -->
 
             <div class="modal" id="request_modal">
@@ -52,9 +79,9 @@
                                 </div>
                                 <div class="form-field mt-4">
                                     <label>Category</label>
-                                    <div class="custom-select">
+                                    <div class="custom-select fs-16-400">
                                         <div class="select-trigger full-width">
-                                            <span class="selected-text">Select Category</span>
+                                            <p class="selected-text fs-16-400-muted">Select Category</p>
                                             <svg width="16" height="16" viewBox="0 0 24 24">
                                                 <path d="M6 9l6 6 6-6" fill="none" stroke="#666"
                                                     stroke-width="2" />
@@ -135,7 +162,7 @@
                                 </div>
                                 <div class="modal-buttons d-flex justify-content-between align-items-center mt-5">
                                     <button class="normal-font-bold btn-custom btn-no-bg text-center" data-modal-close>Cancel</button>
-                                    <button class="normal-font-bold btn-custom btn-active-bg text-center" style="color:#FFF">Submit Request</button>
+                                    <button id="submitRequestBtn" class="normal-font-bold btn-custom btn-active-bg text-center" style="color:#FFF">Submit Request</button>
                                 </div>
                             </div>
                             <div class="col-lg-2"></div>
@@ -147,7 +174,49 @@
 
             <!-- Modal  -->
 
+            <script>
+                document.getElementById('submitRequestBtn').addEventListener('click', function() {
 
+                    const subject = document.querySelector('input[placeholder="A short summary of your issue."]');
+                    const bookingRef = document.querySelector('input[placeholder="Enter your booking ID"]');
+                    const description = document.querySelector('#bio');
+                    const category = document.querySelector('input[name="category"]');
+
+                    if (
+                        subject.value.trim() !== '' &&
+                        category.value.trim() !== '' &&
+                        description.value.trim() !== ''
+                    ) {
+
+                        // Show toast
+                        const toast = document.getElementById('request-success-toast');
+                        toast.classList.add('show');
+
+                        setTimeout(() => {
+                            toast.classList.remove('show');
+                        }, 4000);
+
+                        // Clear form fields
+                        subject.value = '';
+                        bookingRef.value = '';
+                        description.value = '';
+                        category.value = '';
+
+                        // Reset category dropdown text
+                        document.querySelector('.selected-text').textContent = 'Select Category';
+
+                        // Remove uploaded file (if any)
+                        document.getElementById('fileInput').value = '';
+                        document.getElementById('fileItem').style.display = 'none';
+
+                        // Close modal (optional)
+                        document.getElementById('request_modal').classList.remove('active');
+
+                    } else {
+                        alert('Please fill all required fields.');
+                    }
+                });
+            </script>
             <div class="box-wrapper d-flex flex-column align-items-center justify-content-center gap-20">
                 <svg xmlns="http://www.w3.org/2000/svg" width="55" height="41" viewBox="0 0 55 41" fill="none">
                     <path d="M46.0703 18.7454C51.3119 20.4152 53.6497 22.9059 53.6497 26.825C53.6497 30.3109 50.4696 33.0162 48.5758 34.3199C48.4861 34.3815 48.4127 34.464 48.362 34.5602C48.3113 34.6565 48.2848 34.7637 48.2847 34.8725V38.5514C48.2847 39.2511 47.5838 39.7306 46.9692 39.3961C45.8882 38.808 44.9139 38.0353 44.092 37.1097C44.0148 37.0228 43.9164 36.9574 43.8064 36.92C43.6963 36.8827 43.5784 36.8745 43.4643 36.8964C43.082 36.9702 42.6917 37.0748 42.2961 37.1807C41.612 37.3645 40.9066 37.555 40.2373 37.555C36.793 37.555 34.3814 36.8146 31.9162 35.0026" stroke="#3B3731" stroke-width="2" stroke-linecap="round" />

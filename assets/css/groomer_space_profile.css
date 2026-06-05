@@ -223,8 +223,119 @@ h1 {
 }
 
 .fav.active svg path {
-    fill: red;
-    stroke: red;
+    fill: #FFA899;
+    stroke: #FFA899;
+}
+
+.copy-wrapper {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+
+.copy-tooltip {
+    position: absolute;
+    bottom: calc(100% + 20px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: #B8CC8A;
+    color: #FFF;
+    text-align: center;
+    font-family: Lato;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 121.011%;
+    /* 14.521px */
+    padding: 10px 15px;
+    border-radius: 30px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all .25s ease;
+    z-index: 100;
+}
+
+.copy-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 12px solid #BACF8E;
+}
+
+.copy-tooltip.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+#social_media_share .modal-content {
+    width: 400px;
+    height: 288px;
+    aspect-ratio: 177 / 127;
+    background-color: #FDFCF8;
+    font-family: lato;
+}
+
+#social_media_share {
+    justify-content: center !important;
+    align-items: center !important;
+    backdrop-filter: blur(4px);
+}
+
+.copy-link-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 420px;
+    font-family: 'DM Sans', sans-serif;
+}
+
+.copy-link-box {
+    display: flex;
+    align-items: center;
+    border: 1.5px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #fff;
+}
+
+.copy-link-input-area {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    padding: 0 12px;
+    gap: 8px;
+}
+
+.copy-link-input {
+    border: none;
+    outline: none;
+    background: transparent;
+    width: 100%;
+    padding: 11px 0;
+}
+
+.copy-btn {
+    width: 72px;
+    height: 32px;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    background: #BACF8E;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.05);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin: 3px;
+}
+
+.copy-btn:hover {
+    background: #87a463;
 }
 
 .fav span {

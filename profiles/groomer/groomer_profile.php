@@ -639,6 +639,104 @@
 
     <div class="container mt-5" style="padding: 0 80px">
 
+        <!-- test -->
+        <!-- <button class="normal-font-bold btn-custom btn-no-bg text-center mt-3" data-modal-open="social_media_share" style="color:#FBAC83;border:1px solid #FBAC83">Submit request</button> -->
+
+        <!-- Modal  -->
+
+        <div class="modal" id="social_media_share">
+            <div class="modal-content">
+                <div class="modal-header d-flex align-items-center justify-content-between">
+                    <p class="fs-18-600">Share</p>
+                    <div class="groomer-cross-svg cursor" data-modal-close>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <circle cx="10" cy="10" r="9.5" transform="matrix(-1 0 0 1 20 0)" fill="#F3F3F3" stroke="#E8E8E8" />
+                            <path d="M13.1465 13.24L10.0001 10.0936L13.0937 6.99999" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M7.09375 13.24L10.2402 10.0936L7.14657 6.99999" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="section-divider mt-3" style="background-color: #DFDFDF"></div>
+                <div class="modal-main-body mt-3">
+                    <p class="fs-14-400-f-color">Share this link via</p>
+                    <div class="social-media-icons mt-3 d-flex align-items-center justify-content-between">
+                        <div class="d-flex flex-column align-items-center gap-10">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+                                <path d="M40 20C40 8.95438 31.0456 0 20 0C8.95438 0 0 8.95438 0 20C0 29.9825 7.31375 38.2567 16.875 39.757V25.7813H11.7969V20H16.875V15.5938C16.875 10.5813 19.8609 7.8125 24.4294 7.8125C26.6175 7.8125 28.9062 8.20313 28.9062 8.20313V13.125H26.3844C23.8998 13.125 23.125 14.6667 23.125 16.2484V20H28.6719L27.7852 25.7813H23.125V39.757C32.6863 38.2567 40 29.9827 40 20Z" fill="#1877F2" />
+                                <path d="M27.7852 25.7812L28.6719 20H23.125V16.2484C23.125 14.6666 23.8998 13.125 26.3844 13.125H28.9062V8.20312C28.9062 8.20312 26.6175 7.8125 24.4292 7.8125C19.8609 7.8125 16.875 10.5813 16.875 15.5938V20H11.7969V25.7812H16.875V39.757C17.9088 39.919 18.9536 40.0003 20 40C21.0464 40.0003 22.0912 39.919 23.125 39.757V25.7812H27.7852Z" fill="white" />
+                            </svg>
+                            <p class="fs-12-400-f-color">Facebook</p>
+                        </div>
+                        <div class="d-flex flex-column align-items-center gap-10">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+                                <circle cx="20" cy="20" r="20" fill="url(#insta_grad)" />
+                                <rect x="11" y="11" width="18" height="18" rx="5" ry="5" stroke="white" stroke-width="1.5" fill="none" />
+                                <circle cx="20" cy="20" r="4" stroke="white" stroke-width="1.5" fill="none" />
+                                <circle cx="25.5" cy="14.5" r="1" fill="white" />
+                                <defs>
+                                    <linearGradient id="insta_grad" x1="0" y1="40" x2="40" y2="0" gradientUnits="userSpaceOnUse">
+                                        <stop offset="0.0885197" stop-color="#FFD453" />
+                                        <stop offset="0.310382" stop-color="#FA5148" />
+                                        <stop offset="0.658561" stop-color="#C938A9" />
+                                        <stop offset="1" stop-color="#4A61CA" />
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                            <p class="fs-12-400-f-color">Instagram</p>
+                        </div>
+                        <div class="d-flex flex-column align-items-center gap-10">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+                                <circle cx="20" cy="20" r="20" fill="#3B3731" />
+                                <path d="M28.6006 10.5L21.9512 18.1426L21.6855 18.4482L21.9297 18.7715L29.998 29.5H24.459L19.2881 22.7061L18.916 22.2178L18.5137 22.6807L12.5811 29.5H10.5293L17.6914 21.2646L17.959 20.957L17.7129 20.6338L10.0088 10.502H15.7119L20.3643 16.6904L20.7354 17.1846L21.1406 16.7188L26.5527 10.5H28.6006ZM12.5371 12.2275L24.7402 28.2725L24.8906 28.4697H28.0107L27.4082 27.6689L15.3398 11.624L15.1895 11.4248H11.9268L12.5371 12.2275Z" fill="#F5F5F4" stroke="#F5F5F4" />
+                            </svg>
+                            <p class="fs-12-400-f-color">X</p>
+                        </div>
+                        <div class="d-flex flex-column align-items-center gap-10">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+                                <circle cx="20" cy="20" r="20" fill="#3B3731" />
+                                <g transform="translate(11, 10)">
+                                    <g clip-path="url(#clip_tiktok)">
+                                        <path d="M13.3397 7.20142C14.653 8.12177 16.2619 8.66328 17.9995 8.66328V5.38535C17.6706 5.38548 17.3426 5.35182 17.0209 5.28494V7.86515C15.2834 7.86515 13.6747 7.3237 12.3611 6.40342V13.0928C12.3611 16.4392 9.59391 19.1518 6.18066 19.1518C4.90709 19.1518 3.72331 18.7743 2.73999 18.1269C3.86232 19.252 5.42747 19.9498 7.15899 19.9498C10.5725 19.9498 13.3398 17.2373 13.3398 13.8907V7.20142H13.3397ZM14.5469 3.89439C13.8757 3.17556 13.435 2.24659 13.3397 1.21956V0.797974H12.4123C12.6458 2.10328 13.442 3.21846 14.5469 3.89439ZM4.89886 15.5591C4.52384 15.0771 4.32114 14.4874 4.32209 13.8811C4.32209 12.3507 5.58779 11.1097 7.14936 11.1097C7.44033 11.1095 7.72958 11.1533 8.00696 11.2396V7.88832C7.68282 7.8448 7.35572 7.82625 7.02877 7.83308V10.4415C6.75126 10.3553 6.46186 10.3115 6.17075 10.3117C4.60925 10.3117 3.34362 11.5525 3.34362 13.0832C3.34362 14.1656 3.97622 15.1026 4.89886 15.5591Z" fill="#FF004F" />
+                                        <path d="M12.3611 6.40335C13.6748 7.32363 15.2833 7.86508 17.0209 7.86508V5.28487C16.051 5.08232 15.1924 4.58549 14.5469 3.89439C13.4419 3.21839 12.6458 2.10322 12.4123 0.797974H9.97648V13.8906C9.97092 15.4169 8.70741 16.6528 7.14921 16.6528C6.23107 16.6528 5.4153 16.2238 4.89872 15.559C3.97622 15.1026 3.34355 14.1655 3.34355 13.0833C3.34355 11.5527 4.60917 10.3118 6.17067 10.3118C6.46985 10.3118 6.7582 10.3574 7.0287 10.4416V7.83315C3.67535 7.90108 0.978516 10.5871 0.978516 13.8907C0.978516 15.5398 1.65007 17.0347 2.74005 18.1271C3.72338 18.7743 4.90709 19.1519 6.18073 19.1519C9.59405 19.1519 12.3612 16.4391 12.3612 13.0928L12.3611 6.40335Z" fill="white" />
+                                        <path d="M17.0209 5.28483V4.58731C16.1463 4.58855 15.289 4.34844 14.5469 3.89441C15.2037 4.59939 16.0687 5.08554 17.0209 5.28497M12.4123 0.797931C12.39 0.673212 12.373 0.547661 12.3611 0.421586V0H8.99775V13.0928C8.99241 14.619 7.72889 15.8548 6.17063 15.8548C5.72887 15.8555 5.29315 15.7542 4.89867 15.5592C5.41526 16.2238 6.23102 16.6528 7.14916 16.6528C8.70729 16.6528 9.97094 15.417 9.97643 13.8907V0.798L12.4123 0.797931ZM7.02886 7.8331V7.09041C6.74781 7.05278 6.46448 7.03393 6.18082 7.034C2.76715 7.034 0 9.74669 0 13.0928C0 15.1906 1.08752 17.0394 2.74015 18.127C1.65016 17.0347 0.978609 15.5397 0.978609 13.8906C0.978609 10.5872 3.67538 7.90103 7.02886 7.8331Z" fill="#00F2EA" />
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip_tiktok">
+                                            <rect width="18" height="20" fill="white" />
+                                        </clipPath>
+                                    </defs>
+                                </g>
+                            </svg>
+                            <p class="fs-12-400-f-color">Tiktok</p>
+                        </div>
+                        <div class="d-flex flex-column align-items-center gap-10">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+                                <circle cx="20" cy="20" r="20" fill="#48C857" />
+                                <path d="M20.0402 10.0001C14.5528 10.0001 10.0804 14.45 10.0804 19.91C10.0804 21.66 10.5427 23.36 11.407 24.86L10 30L15.2764 28.62C16.7337 29.41 18.3719 29.83 20.0402 29.83C25.5276 29.83 30 25.38 30 19.92C30 17.27 28.9648 14.78 27.0854 12.91C26.1639 11.9842 25.0664 11.25 23.8568 10.7504C22.6472 10.2508 21.3498 9.99574 20.0402 10.0001ZM20.0503 11.67C22.2613 11.67 24.3317 12.53 25.8995 14.09C26.6687 14.8556 27.2786 15.7646 27.6943 16.765C28.1099 17.7654 28.3231 18.8375 28.3216 19.92C28.3216 24.46 24.603 28.15 20.0402 28.15C18.5528 28.15 17.0955 27.76 15.8291 27L15.5276 26.83L12.392 27.65L13.2261 24.61L13.0251 24.29C12.1955 22.9784 11.7565 21.4598 11.7588 19.91C11.7688 15.37 15.4774 11.67 20.0503 11.67ZM16.5126 15.33C16.3518 15.33 16.0804 15.39 15.8492 15.64C15.6281 15.89 14.9749 16.5 14.9749 17.71C14.9749 18.93 15.8693 20.1 15.9799 20.27C16.1206 20.44 17.7487 22.94 20.2513 24C20.8442 24.27 21.3065 24.42 21.6683 24.53C22.2613 24.72 22.804 24.69 23.2362 24.63C23.7186 24.56 24.7035 24.03 24.9146 23.45C25.1256 22.87 25.1256 22.38 25.0653 22.27C24.995 22.17 24.8342 22.11 24.5829 22C24.3317 21.86 23.1055 21.26 22.8844 21.18C22.6533 21.1 22.5126 21.06 22.3216 21.3C22.1608 21.55 21.6784 22.11 21.5377 22.27C21.3869 22.44 21.2462 22.46 21.005 22.34C20.7437 22.21 19.9397 21.95 18.995 21.11C18.2513 20.45 17.7588 19.64 17.608 19.39C17.4874 19.15 17.598 19 17.7186 18.89C17.8291 18.78 17.9899 18.6 18.0905 18.45C18.2211 18.31 18.2613 18.2 18.3417 18.04C18.4221 17.87 18.3819 17.73 18.3216 17.61C18.2613 17.5 17.7588 16.26 17.5477 15.77C17.3467 15.29 17.1457 15.35 16.9849 15.34C16.8442 15.34 16.6834 15.33 16.5126 15.33Z" fill="white" />
+                            </svg>
+                            <p class="fs-12-400-f-color">Whatsapp</p>
+                        </div>
+                    </div>
+                    <div class="copy-link-wrapper mt-4">
+                        <span class="fs-14-400-f-color">Or copy link</span>
+                        <div class="copy-link-box">
+                            <div class="copy-link-input-area">
+                                <!-- link icon SVG here -->
+                                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17" fill="none">
+                                    <path d="M9.41429 3.01429L11.2429 1.18571C12.1571 0.271429 13.9857 0.271429 14.9 1.18571L15.8143 2.1C16.7286 3.01429 16.7286 4.84286 15.8143 5.75714L11.2429 10.3286C10.3286 11.2429 8.5 11.2429 7.58571 10.3286M7.58571 13.9857L5.75714 15.8143C4.84286 16.7286 3.01429 16.7286 2.1 15.8143L1.18571 14.9C0.271429 13.9857 0.271429 12.1571 1.18571 11.2429L5.75714 6.67143C6.67143 5.75714 8.5 5.75714 9.41429 6.67143" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                                <input class="copy-link-input fs-14-400-f-color" type="text" value="groomerpage/share-link-fursgo.com" readonly />
+                            </div>
+                            <button class="copy-btn" onclick="copyLink()">Copy</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Modal  -->
+
         <!-- <button class="book-btn" data-modal-open="groomer_book_space">Book a Space for Your Groomer</button> -->
 
         <!-- Modal 1 -->
@@ -2259,39 +2357,30 @@
                                 </svg>
                             </button> -->
 
-                            <span class="fs-14-600-f-color" id="copy-msg" style="display:none; margin-left:10px; color:green;">
+                            <!-- <span class="fs-14-600-f-color" id="copy-msg" style="display:none; margin-left:10px; color:green;">
                                 Link copied!
-                            </span>
+                            </span> -->
 
-                            <svg class="cursor" id="copy-link" xmlns="http://www.w3.org/2000/svg" width="16" height="20" viewBox="0 0 16 20" fill="none">
-                                <!-- Front document -->
-                                <mask id="path-inside" fill="white">
-                                    <rect x="3.12488" y="3.12497" width="11.875" height="16.625" rx="1" />
-                                </mask>
-                                <rect x="3.12488" y="3.12497" width="11.875" height="16.625" rx="1" stroke="#3B3731" stroke-width="3" mask="url(#path-inside)" />
-                                <!-- Back document -->
-                                <path d="M12.625 3.125V1.75C12.625 1.19772 12.1773 0.75 11.625 0.75H1.75C1.19772 0.75 0.75 1.19772 0.75 1.75V16.375C0.75 16.9273 1.19771 17.375 1.75 17.375H3.125" stroke="#3B3731" stroke-width="1.5" />
-                            </svg>
+                            <div class="copy-wrapper">
+                                <div id="copy-msg" class="copy-tooltip">
+                                    Link copied!
+                                </div>
 
-                            <svg class="cursor" xmlns="http://www.w3.org/2000/svg" width="17" height="20" viewBox="34 0 17 20" fill="none">
+                                <svg class="cursor" id="copy-link" xmlns="http://www.w3.org/2000/svg" width="16" height="20" viewBox="0 0 16 20" fill="none">
+                                    <!-- Front document -->
+                                    <mask id="path-inside" fill="white">
+                                        <rect x="3.12488" y="3.12497" width="11.875" height="16.625" rx="1" />
+                                    </mask>
+                                    <rect x="3.12488" y="3.12497" width="11.875" height="16.625" rx="1" stroke="#3B3731" stroke-width="3" mask="url(#path-inside)" />
+                                    <!-- Back document -->
+                                    <path d="M12.625 3.125V1.75C12.625 1.19772 12.1773 0.75 11.625 0.75H1.75C1.19772 0.75 0.75 1.19772 0.75 1.75V16.375C0.75 16.9273 1.19771 17.375 1.75 17.375H3.125" stroke="#3B3731" stroke-width="1.5" />
+                                </svg>
+                            </div>
+
+                            <svg class="cursor" data-modal-open="social_media_share" xmlns="http://www.w3.org/2000/svg" width="17" height="20" viewBox="34 0 17 20" fill="none">
                                 <path d="M34.9999 11.25V17.25C34.9999 17.6478 35.1435 18.0294 35.3993 18.3107C35.655 18.592 36.0019 18.75 36.3635 18.75H48.6362C48.9979 18.75 49.3447 18.592 49.6005 18.3107C49.8562 18.0294 49.9999 17.6478 49.9999 17.25V11.25M42.4999 13.5V1.125M46.5908 5.25L42.4999 0.75L38.409 5.25" stroke="#3B3731" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
-                            <script>
-                                const copyLink = document.getElementById('copy-link');
-                                const copyMsg = document.getElementById('copy-msg');
 
-                                copyLink.addEventListener('click', () => {
-                                    const curr_link = window.location.href;
-
-                                    navigator.clipboard.writeText(curr_link).then(() => {
-                                        copyMsg.style.display = 'inline';
-
-                                        setTimeout(() => {
-                                            copyMsg.style.display = 'none';
-                                        }, 2000);
-                                    });
-                                });
-                            </script>
                         </div>
 
                         <div class="meta-stats mt-2">

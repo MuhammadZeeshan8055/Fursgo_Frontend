@@ -357,3 +357,29 @@ document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') closeLb();
 });
 // show images js slider ends
+
+
+// link copy button  
+document.getElementById('copy-link').addEventListener('click', function () {
+
+    // Your copy logic here
+
+    const tooltip = document.getElementById('copy-msg');
+
+    tooltip.classList.add('show');
+
+    setTimeout(() => {
+        tooltip.classList.remove('show');
+    }, 2000);
+});
+
+function copyLink() {
+    const copyBtn = document.querySelector('.copy-btn');
+
+    navigator.clipboard.writeText('groomerpage/share-link-fursgo.com').catch(() => { });
+
+    copyBtn.textContent = 'Copied!';
+    setTimeout(() => {
+        copyBtn.textContent = 'Copy';
+    }, 2000);
+}
