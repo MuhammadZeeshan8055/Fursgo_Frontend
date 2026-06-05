@@ -83,7 +83,10 @@
             height: 20px;
             border: 1px solid #FBAC83;
             border-radius: 50%;
-            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-sizing: border-box;
         }
 
         .check-circle::after {
@@ -92,10 +95,6 @@
             height: 12px;
             background: #FBAC83;
             border-radius: 50%;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
             display: none;
         }
 
@@ -469,7 +468,7 @@
                         <div class="upcoming-section">
                             <h2 class="medium-font mt-5" id="section-title">Upcoming Bookings</h2>
 
-                            <hr class="mt-4" id="section-divider" style="border-top: 1px solid #D4D4D4;">
+                            <div class="section-divider mt-4"></div>
 
                             <div class="bookings-cards cursor bg-border-green-header mt-5">
                                 <div class="cards-header bg-green-header">
@@ -1297,7 +1296,7 @@
 
                             <h2 class="medium-font mt-5" id="section-title">Past & Cancelled Bookings</h2>
 
-                            <hr class="mt-4" id="section-divider" style="border-top: 1px solid #D4D4D4;">
+                            <div class="section-divider mt-4"></div>
 
                             <div class="d-flex align-items-center justify-content-end mt-5">
                                 <div class="write-review-btn" data-modal-open="review-modal">
