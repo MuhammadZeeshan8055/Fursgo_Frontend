@@ -34,7 +34,7 @@
                         <div class="contact-left-section mt-5 d-flex justify-content-between flex-column">
                             <div>
                                 <h1 class="medium-font">We’re Here to Help</h1>
-                                <hr class="mt-4" style="border-top: 1px solid #D4D4D4; width: 70%;">
+                                <div class="section-divider mt-4" style="width: 70%;"></div>
                                 <p class="normal-font-weight mt-4">Get in touch, we’d love to hear from you.</p>
                             </div>
                             <div>
@@ -50,7 +50,7 @@
                                     </div>
                                 </div>
 
-                                <hr class="mt-4" style="border-top: 1px solid #D4D4D4; width: 70%;">
+                                <div class="section-divider mt-4" style="width: 70%;"></div>
 
                                 <div class="svg-email-address d-flex align-items-center gap-20">
                                     <svg class="mt-4" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">

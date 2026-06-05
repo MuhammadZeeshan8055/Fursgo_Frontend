@@ -1835,7 +1835,7 @@
                                                     </div>
                                                 </div>
 
-                                                <hr class="mt-5" style="border-top: 1px solid #D4D4D4;">
+                                                <div class="section-divider mt-2 mb-2"></div>
 
                                                 <div class="rating-group mt-5">
                                                     <h4 class="rating-section-title normal-font-bold">Overall Rating</h4>

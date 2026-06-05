@@ -314,7 +314,7 @@
                             </div>
                         </div>
                     </div>
-                    <hr class="mt-2 mb-2" style="border-top: 1px solid rgba(59, 55, 49, 0.13);">
+                    <div class="section-divider mt-2 mb-2" style="background-color: rgba(59, 55, 49, 0.13)"></div>
                     <div class="notification-list-item noshadow mt-4">
                         <div class="notification-list-item-inner d-flex align-items-center justify-content-between cursor">
                             <div class="notification-list-item-inner-left d-flex align-items-center gap-20">
@@ -352,7 +352,7 @@
                             </div>
                         </div>
                     </div>
-                    <hr class="mt-2 mb-2" style="border-top: 1px solid rgba(59, 55, 49, 0.13);">
+                    <div class="section-divider mt-2 mb-2" style="background-color: rgba(59, 55, 49, 0.13)"></div>
                     <div class="notification-list-item noshadow mt-4">
                         <div class="notification-list-item-inner d-flex align-items-center justify-content-between cursor">
                             <div class="notification-list-item-inner-left d-flex align-items-center gap-20">
@@ -388,7 +388,7 @@
                             </div>
                         </div>
                     </div>
-                    <hr class="mt-2 mb-2" style="border-top: 1px solid rgba(59, 55, 49, 0.13);">
+                    <div class="section-divider mt-2 mb-2" style="background-color: rgba(59, 55, 49, 0.13)"></div>
                     <div class="notification-list-item noshadow mt-4">
                         <div class="notification-list-item-inner d-flex align-items-center justify-content-between cursor">
                             <div class="notification-list-item-inner-left d-flex align-items-center gap-20">
@@ -424,7 +424,7 @@
                             </div>
                         </div>
                     </div>
-                    <hr class="mt-2 mb-2" style="border-top: 1px solid rgba(59, 55, 49, 0.13);">
+                    <div class="section-divider mt-2 mb-2" style="background-color: rgba(59, 55, 49, 0.13)"></div>
                     <div class="notification-list-item noshadow mt-4">
                         <div class="notification-list-item-inner d-flex align-items-center justify-content-between cursor">
                             <div class="notification-list-item-inner-left d-flex align-items-center gap-20">
@@ -460,7 +460,7 @@
                             </div>
                         </div>
                     </div>
-                    <hr class="mt-2 mb-2" style="border-top: 1px solid rgba(59, 55, 49, 0.13);">
+                    <div class="section-divider mt-2 mb-2" style="background-color: rgba(59, 55, 49, 0.13)"></div>
                     <div class="notification-list-item noshadow mt-4">
                         <div class="notification-list-item-inner d-flex align-items-center justify-content-between cursor">
                             <div class="notification-list-item-inner-left d-flex align-items-center gap-20">
@@ -496,7 +496,7 @@
                             </div>
                         </div>
                     </div>
-                    <hr class="mt-2 mb-2" style="border-top: 1px solid rgba(59, 55, 49, 0.13);">
+                    <div class="section-divider mt-2 mb-2" style="background-color: rgba(59, 55, 49, 0.13)"></div>
                     <div class="notification-list-item noshadow mt-4">
                         <div class="notification-list-item-inner d-flex align-items-center justify-content-between cursor">
                             <div class="notification-list-item-inner-left d-flex align-items-center gap-20">
@@ -532,7 +532,7 @@
                             </div>
                         </div>
                     </div>
-                    <hr class="mt-2 mb-2" style="border-top: 1px solid rgba(59, 55, 49, 0.13);">
+                    <div class="section-divider mt-2 mb-2" style="background-color: rgba(59, 55, 49, 0.13)"></div>
                     <div class="notification-list-item noshadow mt-4">
                         <div class="notification-list-item-inner d-flex align-items-center justify-content-between cursor">
                             <div class="notification-list-item-inner-left d-flex align-items-center gap-20">
@@ -568,7 +568,7 @@
                             </div>
                         </div>
                     </div>
-                    <hr class="mt-2 mb-2" style="border-top: 1px solid rgba(59, 55, 49, 0.13);">
+                    <div class="section-divider mt-2 mb-2" style="background-color: rgba(59, 55, 49, 0.13)"></div>
                     <div class="notification-list-item noshadow mt-4">
                         <div class="notification-list-item-inner d-flex align-items-center justify-content-between cursor">
                             <div class="notification-list-item-inner-left d-flex align-items-center gap-20">
@@ -604,7 +604,7 @@
                             </div>
                         </div>
                     </div>
-                    <hr class="mt-2 mb-2" style="border-top: 1px solid rgba(59, 55, 49, 0.13);">
+                    <div class="section-divider mt-2 mb-2" style="background-color: rgba(59, 55, 49, 0.13)"></div>
                     <div class="notification-list-item noshadow mt-4">
                         <div class="notification-list-item-inner d-flex align-items-center justify-content-between cursor">
                             <div class="notification-list-item-inner-left d-flex align-items-center gap-20">
@@ -640,7 +640,7 @@
                             </div>
                         </div>
                     </div>
-                    <hr class="mt-2 mb-2" style="border-top: 1px solid rgba(59, 55, 49, 0.13);">
+                    <div class="section-divider mt-2 mb-2" style="background-color: rgba(59, 55, 49, 0.13)"></div>
 
 
                     <div class="d-flex justify-content-center mt-5">

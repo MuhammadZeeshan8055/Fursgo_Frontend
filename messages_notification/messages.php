@@ -176,7 +176,7 @@
                                                 </div>
 
                                             </div>
-                                            <hr class="mt-2 mb-2" style="border-top: 1px solid #D4D4D4;">
+                                            <div class="section-divider mt-2 mb-2"></div>
                                             <div class="chat-card cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
@@ -205,7 +205,7 @@
                                                 </div>
 
                                             </div>
-                                            <hr class="mt-2 mb-2" style="border-top: 1px solid #D4D4D4;">
+                                            <div class="section-divider mt-2 mb-2"></div>
                                             <div class="chat-card locked cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
@@ -240,7 +240,7 @@
                                                 </div>
 
                                             </div>
-                                            <hr class="mt-2 mb-2" style="border-top: 1px solid #D4D4D4;">
+                                            <div class="section-divider mt-2 mb-2"></div>
                                             <div class="chat-card locked cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
@@ -269,7 +269,7 @@
                                                 </div>
 
                                             </div>
-                                            <hr class="mt-2 mb-2" style="border-top: 1px solid #D4D4D4;">
+                                            <div class="section-divider mt-2 mb-2"></div>
                                             <div class="chat-card locked cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
@@ -304,7 +304,7 @@
                                                 </div>
 
                                             </div>
-                                            <hr class="mt-2 mb-2" style="border-top: 1px solid #D4D4D4;">
+                                            <div class="section-divider mt-2 mb-2"></div>
                                             <div class="chat-card locked cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
@@ -333,7 +333,7 @@
                                                 </div>
 
                                             </div>
-                                            <hr class="mt-2 mb-2" style="border-top: 1px solid #D4D4D4;">
+                                            <div class="section-divider mt-2 mb-2"></div>
                                             <div class="chat-card locked cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
@@ -368,7 +368,7 @@
                                                 </div>
 
                                             </div>
-                                            <hr class="mt-2 mb-2" style="border-top: 1px solid #D4D4D4;">
+                                            <div class="section-divider mt-2 mb-2"></div>
                                             <div class="chat-card locked cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
@@ -397,7 +397,7 @@
                                                 </div>
 
                                             </div>
-                                            <hr class="mt-2 mb-2" style="border-top: 1px solid #D4D4D4;">
+                                            <div class="section-divider mt-2 mb-2"></div>
                                             <div class="chat-card locked cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
@@ -432,7 +432,7 @@
                                                 </div>
 
                                             </div>
-                                            <hr class="mt-2 mb-2" style="border-top: 1px solid #D4D4D4;">
+                                            <div class="section-divider mt-2 mb-2"></div>
                                             <div class="chat-card locked cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
@@ -461,7 +461,7 @@
                                                 </div>
 
                                             </div>
-                                            <hr class="mt-2 mb-2" style="border-top: 1px solid #D4D4D4;">
+                                            <div class="section-divider mt-2 mb-2"></div>
                                             <div class="chat-card locked cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
@@ -496,7 +496,7 @@
                                                 </div>
 
                                             </div>
-                                            <hr class="mt-2 mb-2" style="border-top: 1px solid #D4D4D4;">
+                                            <div class="section-divider mt-2 mb-2"></div>
                                             <div class="chat-card locked cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
@@ -525,7 +525,7 @@
                                                 </div>
 
                                             </div>
-                                            <hr class="mt-2 mb-2" style="border-top: 1px solid #D4D4D4;">
+                                            <div class="section-divider mt-2 mb-2"></div>
                                             <div class="chat-card locked cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
@@ -560,7 +560,7 @@
                                                 </div>
 
                                             </div>
-                                            <hr class="mt-2 mb-2" style="border-top: 1px solid #D4D4D4;">
+                                            <div class="section-divider mt-2 mb-2"></div>
                                             <div class="chat-card locked cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
@@ -589,7 +589,7 @@
                                                 </div>
 
                                             </div>
-                                            <hr class="mt-2 mb-2" style="border-top: 1px solid #D4D4D4;">
+                                            <div class="section-divider mt-2 mb-2"></div>
                                             <div class="chat-card locked cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
@@ -624,7 +624,7 @@
                                                 </div>
 
                                             </div>
-                                            <hr class="mt-2 mb-2" style="border-top: 1px solid #D4D4D4;">
+                                            <div class="section-divider mt-2 mb-2"></div>
                                             <div class="chat-card locked cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
@@ -653,7 +653,7 @@
                                                 </div>
 
                                             </div>
-                                            <hr class="mt-2 mb-2" style="border-top: 1px solid #D4D4D4;">
+                                            <div class="section-divider mt-2 mb-2"></div>
                                             <div class="chat-card locked cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
@@ -688,7 +688,7 @@
                                                 </div>
 
                                             </div>
-                                            <hr class="mt-2 mb-2" style="border-top: 1px solid #D4D4D4;">
+                                            <div class="section-divider mt-2 mb-2"></div>
                                             <div class="chat-card locked cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
@@ -717,7 +717,7 @@
                                                 </div>
 
                                             </div>
-                                            <hr class="mt-2 mb-2" style="border-top: 1px solid #D4D4D4;">
+                                            <div class="section-divider mt-2 mb-2"></div>
                                             <div class="chat-card locked cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
@@ -752,7 +752,7 @@
                                                 </div>
 
                                             </div>
-                                            <hr class="mt-2 mb-2" style="border-top: 1px solid #D4D4D4;">
+                                            <div class="section-divider mt-2 mb-2"></div>
                                             <div class="chat-card locked cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
@@ -781,7 +781,7 @@
                                                 </div>
 
                                             </div>
-                                            <hr class="mt-2 mb-2" style="border-top: 1px solid #D4D4D4;">
+                                            <div class="section-divider mt-2 mb-2"></div>
                                             <div class="chat-card locked cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
@@ -816,7 +816,7 @@
                                                 </div>
 
                                             </div>
-                                            <hr class="mt-2 mb-2" style="border-top: 1px solid #D4D4D4;">
+                                            <div class="section-divider mt-2 mb-2"></div>
                                             <div class="chat-card locked cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
@@ -845,7 +845,7 @@
                                                 </div>
 
                                             </div>
-                                            <hr class="mt-2 mb-2" style="border-top: 1px solid #D4D4D4;">
+                                            <div class="section-divider mt-2 mb-2"></div>
                                             <div class="chat-card locked cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
@@ -880,7 +880,7 @@
                                                 </div>
 
                                             </div>
-                                            <hr class="mt-2 mb-2" style="border-top: 1px solid #D4D4D4;">
+                                            <div class="section-divider mt-2 mb-2"></div>
                                             <div class="chat-card locked cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
@@ -909,7 +909,7 @@
                                                 </div>
 
                                             </div>
-                                            <hr class="mt-2 mb-2" style="border-top: 1px solid #D4D4D4;">
+                                            <div class="section-divider mt-2 mb-2"></div>
                                             <div class="chat-card locked cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
@@ -944,7 +944,7 @@
                                                 </div>
 
                                             </div>
-                                            <hr class="mt-2 mb-2" style="border-top: 1px solid #D4D4D4;">
+                                            <div class="section-divider mt-2 mb-2"></div>
                                             <div class="chat-card locked cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
@@ -973,7 +973,7 @@
                                                 </div>
 
                                             </div>
-                                            <hr class="mt-2 mb-2" style="border-top: 1px solid #D4D4D4;">
+                                            <div class="section-divider mt-2 mb-2"></div>
                                             <div class="chat-card locked cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
@@ -1008,7 +1008,7 @@
                                                 </div>
 
                                             </div>
-                                            <hr class="mt-2 mb-2" style="border-top: 1px solid #D4D4D4;">
+                                            <div class="section-divider mt-2 mb-2"></div>
                                             <div class="chat-card locked cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
@@ -1037,7 +1037,7 @@
                                                 </div>
 
                                             </div>
-                                            <hr class="mt-2 mb-2" style="border-top: 1px solid #D4D4D4;">
+                                            <div class="section-divider mt-2 mb-2"></div>
                                             <div class="chat-card locked cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
@@ -1072,7 +1072,7 @@
                                                 </div>
 
                                             </div>
-                                            <hr class="mt-2 mb-2" style="border-top: 1px solid #D4D4D4;">
+                                            <div class="section-divider mt-2 mb-2"></div>
                                             <div class="chat-card locked cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
@@ -1101,7 +1101,7 @@
                                                 </div>
 
                                             </div>
-                                            <hr class="mt-2 mb-2" style="border-top: 1px solid #D4D4D4;">
+                                            <div class="section-divider mt-2 mb-2"></div>
                                             <div class="chat-card locked cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
@@ -1136,7 +1136,7 @@
                                                 </div>
 
                                             </div>
-                                            <hr class="mt-2 mb-2" style="border-top: 1px solid #D4D4D4;">
+                                            <div class="section-divider mt-2 mb-2"></div>
                                             <div class="chat-card locked cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
@@ -1165,7 +1165,7 @@
                                                 </div>
 
                                             </div>
-                                            <hr class="mt-2 mb-2" style="border-top: 1px solid #D4D4D4;">
+                                            <div class="section-divider mt-2 mb-2"></div>
                                             <div class="chat-card locked cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
@@ -1200,7 +1200,7 @@
                                                 </div>
 
                                             </div>
-                                            <hr class="mt-2 mb-2" style="border-top: 1px solid #D4D4D4;">
+                                            <div class="section-divider mt-2 mb-2"></div>
                                             <div class="chat-card locked cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
@@ -1229,7 +1229,7 @@
                                                 </div>
 
                                             </div>
-                                            <hr class="mt-2 mb-2" style="border-top: 1px solid #D4D4D4;">
+                                            <div class="section-divider mt-2 mb-2"></div>
                                             <div class="chat-card locked cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
@@ -1264,7 +1264,7 @@
                                                 </div>
 
                                             </div>
-                                            <hr class="mt-2 mb-2" style="border-top: 1px solid #D4D4D4;">
+                                            <div class="section-divider mt-2 mb-2"></div>
                                             <div class="chat-card locked cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
@@ -1293,7 +1293,7 @@
                                                 </div>
 
                                             </div>
-                                            <hr class="mt-2 mb-2" style="border-top: 1px solid #D4D4D4;">
+                                            <div class="section-divider mt-2 mb-2"></div>
                                             <div class="chat-card locked cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
@@ -1328,7 +1328,7 @@
                                                 </div>
 
                                             </div>
-                                            <hr class="mt-2 mb-2" style="border-top: 1px solid #D4D4D4;">
+                                            <div class="section-divider mt-2 mb-2"></div>
                                             <div class="chat-card locked cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
@@ -1357,7 +1357,7 @@
                                                 </div>
 
                                             </div>
-                                            <hr class="mt-2 mb-2" style="border-top: 1px solid #D4D4D4;">
+                                            <div class="section-divider mt-2 mb-2"></div>
                                             <div class="chat-card locked cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
@@ -1392,7 +1392,7 @@
                                                 </div>
 
                                             </div>
-                                            <hr class="mt-2 mb-2" style="border-top: 1px solid #D4D4D4;">
+                                            <div class="section-divider mt-2 mb-2"></div>
                                             <div class="chat-card locked cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
@@ -1421,7 +1421,7 @@
                                                 </div>
 
                                             </div>
-                                            <hr class="mt-2 mb-2" style="border-top: 1px solid #D4D4D4;">
+                                            <div class="section-divider mt-2 mb-2"></div>
                                             <div class="chat-card locked cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
@@ -1456,7 +1456,7 @@
                                                 </div>
 
                                             </div>
-                                            <hr class="mt-2 mb-2" style="border-top: 1px solid #D4D4D4;">
+                                            <div class="section-divider mt-2 mb-2"></div>
                                             <div class="chat-card locked cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
@@ -1485,7 +1485,7 @@
                                                 </div>
 
                                             </div>
-                                            <hr class="mt-2 mb-2" style="border-top: 1px solid #D4D4D4;">
+                                            <div class="section-divider mt-2 mb-2"></div>
                                             <div class="chat-card locked cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
@@ -1520,7 +1520,7 @@
                                                 </div>
 
                                             </div>
-                                            <hr class="mt-2 mb-2" style="border-top: 1px solid #D4D4D4;">
+                                            <div class="section-divider mt-2 mb-2"></div>
                                             <div class="chat-card locked cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
@@ -1549,7 +1549,7 @@
                                                 </div>
 
                                             </div>
-                                            <hr class="mt-2 mb-2" style="border-top: 1px solid #D4D4D4;">
+                                            <div class="section-divider mt-2 mb-2"></div>
                                             <div class="chat-card locked cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
@@ -1584,7 +1584,7 @@
                                                 </div>
 
                                             </div>
-                                            <hr class="mt-2 mb-2" style="border-top: 1px solid #D4D4D4;">
+                                            <div class="section-divider mt-2 mb-2"></div>
                                             <div class="chat-card locked cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
@@ -1734,7 +1734,7 @@
                                                 </div>
 
                                             </div>
-                                            <hr class="mt-2 mb-2" style="border-top: 1px solid #D4D4D4;">
+                                            <div class="section-divider mt-2 mb-2"></div>
                                             <div class="chat-card cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
@@ -1763,7 +1763,7 @@
                                                 </div>
 
                                             </div>
-                                            <hr class="mt-2 mb-2" style="border-top: 1px solid #D4D4D4;">
+                                            <div class="section-divider mt-2 mb-2"></div>
                                             <div class="chat-card locked cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
@@ -1798,7 +1798,7 @@
                                                 </div>
 
                                             </div>
-                                            <hr class="mt-2 mb-2" style="border-top: 1px solid #D4D4D4;">
+                                            <div class="section-divider mt-2 mb-2"></div>
                                             <div class="chat-card locked cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
@@ -1827,7 +1827,7 @@
                                                 </div>
 
                                             </div>
-                                            <hr class="mt-2 mb-2" style="border-top: 1px solid #D4D4D4;">
+                                            <div class="section-divider mt-2 mb-2"></div>
                                             <div class="chat-card locked cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
@@ -1862,7 +1862,7 @@
                                                 </div>
 
                                             </div>
-                                            <hr class="mt-2 mb-2" style="border-top: 1px solid #D4D4D4;">
+                                            <div class="section-divider mt-2 mb-2"></div>
                                             <div class="chat-card locked cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
@@ -1891,7 +1891,7 @@
                                                 </div>
 
                                             </div>
-                                            <hr class="mt-2 mb-2" style="border-top: 1px solid #D4D4D4;">
+                                            <div class="section-divider mt-2 mb-2"></div>
                                             <div class="chat-card locked cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
@@ -1926,7 +1926,7 @@
                                                 </div>
 
                                             </div>
-                                            <hr class="mt-2 mb-2" style="border-top: 1px solid #D4D4D4;">
+                                            <div class="section-divider mt-2 mb-2"></div>
                                             <div class="chat-card locked cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
@@ -1955,7 +1955,7 @@
                                                 </div>
 
                                             </div>
-                                            <hr class="mt-2 mb-2" style="border-top: 1px solid #D4D4D4;">
+                                            <div class="section-divider mt-2 mb-2"></div>
                                             <div class="chat-card locked cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
@@ -1990,7 +1990,7 @@
                                                 </div>
 
                                             </div>
-                                            <hr class="mt-2 mb-2" style="border-top: 1px solid #D4D4D4;">
+                                            <div class="section-divider mt-2 mb-2"></div>
                                             <div class="chat-card locked cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
@@ -2019,7 +2019,7 @@
                                                 </div>
 
                                             </div>
-                                            <hr class="mt-2 mb-2" style="border-top: 1px solid #D4D4D4;">
+                                            <div class="section-divider mt-2 mb-2"></div>
                                             <div class="chat-card locked cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
@@ -2054,7 +2054,7 @@
                                                 </div>
 
                                             </div>
-                                            <hr class="mt-2 mb-2" style="border-top: 1px solid #D4D4D4;">
+                                            <div class="section-divider mt-2 mb-2"></div>
                                             <div class="chat-card locked cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
@@ -2083,7 +2083,7 @@
                                                 </div>
 
                                             </div>
-                                            <hr class="mt-2 mb-2" style="border-top: 1px solid #D4D4D4;">
+                                            <div class="section-divider mt-2 mb-2"></div>
                                             <div class="chat-card locked cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
@@ -2118,7 +2118,7 @@
                                                 </div>
 
                                             </div>
-                                            <hr class="mt-2 mb-2" style="border-top: 1px solid #D4D4D4;">
+                                            <div class="section-divider mt-2 mb-2"></div>
                                             <div class="chat-card locked cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
@@ -2147,7 +2147,7 @@
                                                 </div>
 
                                             </div>
-                                            <hr class="mt-2 mb-2" style="border-top: 1px solid #D4D4D4;">
+                                            <div class="section-divider mt-2 mb-2"></div>
                                             <div class="chat-card locked cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
@@ -2182,7 +2182,7 @@
                                                 </div>
 
                                             </div>
-                                            <hr class="mt-2 mb-2" style="border-top: 1px solid #D4D4D4;">
+                                            <div class="section-divider mt-2 mb-2"></div>
                                             <div class="chat-card locked cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
@@ -2211,7 +2211,7 @@
                                                 </div>
 
                                             </div>
-                                            <hr class="mt-2 mb-2" style="border-top: 1px solid #D4D4D4;">
+                                            <div class="section-divider mt-2 mb-2"></div>
                                             <div class="chat-card locked cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
@@ -2246,7 +2246,7 @@
                                                 </div>
 
                                             </div>
-                                            <hr class="mt-2 mb-2" style="border-top: 1px solid #D4D4D4;">
+                                            <div class="section-divider mt-2 mb-2"></div>
                                             <div class="chat-card locked cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
@@ -2275,7 +2275,7 @@
                                                 </div>
 
                                             </div>
-                                            <hr class="mt-2 mb-2" style="border-top: 1px solid #D4D4D4;">
+                                            <div class="section-divider mt-2 mb-2"></div>
                                             <div class="chat-card locked cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
@@ -2310,7 +2310,7 @@
                                                 </div>
 
                                             </div>
-                                            <hr class="mt-2 mb-2" style="border-top: 1px solid #D4D4D4;">
+                                            <div class="section-divider mt-2 mb-2"></div>
                                             <div class="chat-card locked cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
@@ -2339,7 +2339,7 @@
                                                 </div>
 
                                             </div>
-                                            <hr class="mt-2 mb-2" style="border-top: 1px solid #D4D4D4;">
+                                            <div class="section-divider mt-2 mb-2"></div>
                                             <div class="chat-card locked cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
@@ -2374,7 +2374,7 @@
                                                 </div>
 
                                             </div>
-                                            <hr class="mt-2 mb-2" style="border-top: 1px solid #D4D4D4;">
+                                            <div class="section-divider mt-2 mb-2"></div>
                                             <div class="chat-card locked cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
@@ -2403,7 +2403,7 @@
                                                 </div>
 
                                             </div>
-                                            <hr class="mt-2 mb-2" style="border-top: 1px solid #D4D4D4;">
+                                            <div class="section-divider mt-2 mb-2"></div>
                                             <div class="chat-card locked cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
@@ -2438,7 +2438,7 @@
                                                 </div>
 
                                             </div>
-                                            <hr class="mt-2 mb-2" style="border-top: 1px solid #D4D4D4;">
+                                            <div class="section-divider mt-2 mb-2"></div>
                                             <div class="chat-card locked cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
@@ -2467,7 +2467,7 @@
                                                 </div>
 
                                             </div>
-                                            <hr class="mt-2 mb-2" style="border-top: 1px solid #D4D4D4;">
+                                            <div class="section-divider mt-2 mb-2"></div>
                                             <div class="chat-card locked cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
@@ -2502,7 +2502,7 @@
                                                 </div>
 
                                             </div>
-                                            <hr class="mt-2 mb-2" style="border-top: 1px solid #D4D4D4;">
+                                            <div class="section-divider mt-2 mb-2"></div>
                                             <div class="chat-card locked cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
@@ -2531,7 +2531,7 @@
                                                 </div>
 
                                             </div>
-                                            <hr class="mt-2 mb-2" style="border-top: 1px solid #D4D4D4;">
+                                            <div class="section-divider mt-2 mb-2"></div>
                                             <div class="chat-card locked cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
@@ -2566,7 +2566,7 @@
                                                 </div>
 
                                             </div>
-                                            <hr class="mt-2 mb-2" style="border-top: 1px solid #D4D4D4;">
+                                            <div class="section-divider mt-2 mb-2"></div>
                                             <div class="chat-card locked cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
@@ -2595,7 +2595,7 @@
                                                 </div>
 
                                             </div>
-                                            <hr class="mt-2 mb-2" style="border-top: 1px solid #D4D4D4;">
+                                            <div class="section-divider mt-2 mb-2"></div>
                                             <div class="chat-card locked cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
@@ -2630,7 +2630,7 @@
                                                 </div>
 
                                             </div>
-                                            <hr class="mt-2 mb-2" style="border-top: 1px solid #D4D4D4;">
+                                            <div class="section-divider mt-2 mb-2"></div>
                                             <div class="chat-card locked cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
@@ -2659,7 +2659,7 @@
                                                 </div>
 
                                             </div>
-                                            <hr class="mt-2 mb-2" style="border-top: 1px solid #D4D4D4;">
+                                            <div class="section-divider mt-2 mb-2"></div>
                                             <div class="chat-card locked cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
@@ -2694,7 +2694,7 @@
                                                 </div>
 
                                             </div>
-                                            <hr class="mt-2 mb-2" style="border-top: 1px solid #D4D4D4;">
+                                            <div class="section-divider mt-2 mb-2"></div>
                                             <div class="chat-card locked cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
@@ -2723,7 +2723,7 @@
                                                 </div>
 
                                             </div>
-                                            <hr class="mt-2 mb-2" style="border-top: 1px solid #D4D4D4;">
+                                            <div class="section-divider mt-2 mb-2"></div>
                                             <div class="chat-card locked cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
@@ -2758,7 +2758,7 @@
                                                 </div>
 
                                             </div>
-                                            <hr class="mt-2 mb-2" style="border-top: 1px solid #D4D4D4;">
+                                            <div class="section-divider mt-2 mb-2"></div>
                                             <div class="chat-card locked cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
@@ -2787,7 +2787,7 @@
                                                 </div>
 
                                             </div>
-                                            <hr class="mt-2 mb-2" style="border-top: 1px solid #D4D4D4;">
+                                            <div class="section-divider mt-2 mb-2"></div>
                                             <div class="chat-card locked cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
@@ -2822,7 +2822,7 @@
                                                 </div>
 
                                             </div>
-                                            <hr class="mt-2 mb-2" style="border-top: 1px solid #D4D4D4;">
+                                            <div class="section-divider mt-2 mb-2"></div>
                                             <div class="chat-card locked cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
@@ -2851,7 +2851,7 @@
                                                 </div>
 
                                             </div>
-                                            <hr class="mt-2 mb-2" style="border-top: 1px solid #D4D4D4;">
+                                            <div class="section-divider mt-2 mb-2"></div>
                                             <div class="chat-card locked cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
@@ -2886,7 +2886,7 @@
                                                 </div>
 
                                             </div>
-                                            <hr class="mt-2 mb-2" style="border-top: 1px solid #D4D4D4;">
+                                            <div class="section-divider mt-2 mb-2"></div>
                                             <div class="chat-card locked cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
@@ -2915,7 +2915,7 @@
                                                 </div>
 
                                             </div>
-                                            <hr class="mt-2 mb-2" style="border-top: 1px solid #D4D4D4;">
+                                            <div class="section-divider mt-2 mb-2"></div>
                                             <div class="chat-card locked cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
@@ -2950,7 +2950,7 @@
                                                 </div>
 
                                             </div>
-                                            <hr class="mt-2 mb-2" style="border-top: 1px solid #D4D4D4;">
+                                            <div class="section-divider mt-2 mb-2"></div>
                                             <div class="chat-card locked cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
@@ -2979,7 +2979,7 @@
                                                 </div>
 
                                             </div>
-                                            <hr class="mt-2 mb-2" style="border-top: 1px solid #D4D4D4;">
+                                            <div class="section-divider mt-2 mb-2"></div>
                                             <div class="chat-card locked cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
@@ -3014,7 +3014,7 @@
                                                 </div>
 
                                             </div>
-                                            <hr class="mt-2 mb-2" style="border-top: 1px solid #D4D4D4;">
+                                            <div class="section-divider mt-2 mb-2"></div>
                                             <div class="chat-card locked cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
@@ -3043,7 +3043,7 @@
                                                 </div>
 
                                             </div>
-                                            <hr class="mt-2 mb-2" style="border-top: 1px solid #D4D4D4;">
+                                            <div class="section-divider mt-2 mb-2"></div>
                                             <div class="chat-card locked cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
@@ -3078,7 +3078,7 @@
                                                 </div>
 
                                             </div>
-                                            <hr class="mt-2 mb-2" style="border-top: 1px solid #D4D4D4;">
+                                            <div class="section-divider mt-2 mb-2"></div>
                                             <div class="chat-card locked cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
@@ -3107,7 +3107,7 @@
                                                 </div>
 
                                             </div>
-                                            <hr class="mt-2 mb-2" style="border-top: 1px solid #D4D4D4;">
+                                            <div class="section-divider mt-2 mb-2"></div>
                                             <div class="chat-card locked cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
@@ -3142,7 +3142,7 @@
                                                 </div>
 
                                             </div>
-                                            <hr class="mt-2 mb-2" style="border-top: 1px solid #D4D4D4;">
+                                            <div class="section-divider mt-2 mb-2"></div>
                                             <div class="chat-card locked cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">

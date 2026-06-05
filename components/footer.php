@@ -14,7 +14,7 @@
             </div>
             <br>
             <br>
-            <hr>
+            <div class="section-divider" style="background-color: #3B3731"></div>
 
         </div>
     </section>

@@ -286,7 +286,7 @@
                                             </div>
                                             <a href="" class="link-tag">Sign out</a>
                                         </div>
-                                        <hr style="border-top: 1px solid #E2E2E2;">
+                                        <div class="section-divider" style="background-color: #E2E2E2"></div>
                                         <div class="logged-devices d-flex align-items-center justify-content-between mt-3">
                                             <div class="d-flex align-items-center gap-20">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="21" height="17" viewBox="0 0 21 17" fill="none">
@@ -297,7 +297,7 @@
                                             </div>
                                             <a href="" class="link-tag">Sign out</a>
                                         </div>
-                                        <hr style="border-top: 1px solid #E2E2E2;">
+                                        <div class="section-divider" style="background-color: #E2E2E2"></div>
                                         <div class="logged-devices d-flex align-items-center justify-content-between mt-3">
                                             <div class="d-flex align-items-center gap-20">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="23" height="26" viewBox="0 0 23 26" fill="none">
@@ -308,7 +308,7 @@
                                             </div>
                                             <a href="" class="link-tag">Sign out</a>
                                         </div>
-                                        <hr style="border-top: 1px solid #E2E2E2;">
+                                        <div class="section-divider" style="background-color: #E2E2E2"></div>
                                     </div>
                                 </div>
 
@@ -624,7 +624,7 @@
                                                 </div>
                                             </div>
 
-                                            <hr class="mt-3" style="border-top: 1px solid #E2E2E2;">
+                                            <div class="section-divider mt-3" style="background-color: #E2E2E2"></div>
 
                                             <div class="name-svg d-flex align-items-center gap-20 mt-3">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="36" viewBox="0 0 32 36" fill="none">
@@ -652,7 +652,7 @@
                                                 </div>
                                             </div>
 
-                                            <hr class="mt-3" style="border-top: 1px solid #E2E2E2;">
+                                            <div class="section-divider mt-3" style="background-color: #E2E2E2"></div>
 
                                             <div class="section-title mt-3">
                                                 <p class="medium-font-bold">Extras & Add-ons</p>
@@ -673,7 +673,7 @@
                                                 </div>
                                             </div>
 
-                                            <hr class="mt-3" style="border-top: 1px solid #E2E2E2;">
+                                            <div class="section-divider mt-3" style="background-color: #E2E2E2"></div>
 
                                             <div class="name-svg d-flex align-items-center gap-20 mt-3">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="36" viewBox="0 0 32 36" fill="none">
@@ -703,7 +703,7 @@
                                                 </div>
                                             </div>
 
-                                            <hr class="mt-3" style="border-top: 1px solid #E2E2E2;">
+                                            <div class="section-divider mt-3" style="background-color: #E2E2E2"></div>
 
                                             <div class="section-title mt-3">
                                                 <p class="medium-font-bold">Add-on Service</p>
@@ -720,7 +720,7 @@
                                                 </div>
                                             </div>
 
-                                            <hr class="mt-3" style="border-top: 1px solid #E2E2E2;">
+                                            <div class="section-divider mt-3" style="background-color: #E2E2E2"></div>
 
                                             <div class="d-flex align-items-center justify-content-between mt-3">
                                                 <p style="color: #9D9B98;">Service:</p>
@@ -747,7 +747,7 @@
                                                 <p>- £25.00</p>
                                             </div>
 
-                                            <hr class="mt-3" style="border-top: 1px solid #E2E2E2;">
+                                            <div class="section-divider mt-3" style="background-color: #E2E2E2"></div>
 
                                             <div class="d-flex align-items-center justify-content-between mt-3">
                                                 <p class="medium-font-bold">Total:</p>
@@ -889,7 +889,7 @@
                                     </div>
                                 </div>
 
-                                <hr class="mt-5" style="border-top: 1px solid #E2E2E2;">
+                                <div class="section-divider mt-5" style="background-color: #E2E2E2"></div>
 
                                 <div class="toggle-button-content d-flex align-items-center justify-content-between mt-5 mb-5">
                                     <div class="d-flex flex-column gap-25">
@@ -1059,7 +1059,7 @@
                                     </div>
                                 </div>
 
-                                <hr class="mt-4" style="border-top: 1px solid #E2E2E2;">
+                                <div class="section-divider mt-4" style="background-color: #E2E2E2"></div>
 
                                 <div class="account-linking-card d-flex align-items-center justify-content-between mt-4">
                                     <div class="image-text d-flex align-items-center gap-10">
@@ -1075,7 +1075,7 @@
                                     </div>
                                 </div>
 
-                                <hr class="mt-4" style="border-top: 1px solid #E2E2E2;">
+                                <div class="section-divider mt-4" style="background-color: #E2E2E2"></div>
 
                                 <div class="account-linking-card d-flex align-items-center justify-content-between mt-4">
                                     <div class="image-text d-flex align-items-center gap-10">
@@ -1091,7 +1091,7 @@
                                     </div>
                                 </div>
 
-                                <hr class="mt-4" style="border-top: 1px solid #E2E2E2;">
+                                <div class="section-divider mt-4" style="background-color: #E2E2E2"></div>
 
                                 <div class="account-linking-card d-flex align-items-center justify-content-between mt-4">
                                     <div class="image-text d-flex align-items-center gap-10">
@@ -1107,7 +1107,7 @@
                                     </div>
                                 </div>
 
-                                <hr class="mt-4" style="border-top: 1px solid #E2E2E2;">
+                                <div class="section-divider mt-4" style="background-color: #E2E2E2"></div>
 
                             </div>
 

@@ -56,9 +56,7 @@
                     <div data-tab-content="groomer-calendar-view" class="tabcontent">
                         <?php include('../components/calendar_view.php'); ?>
                         
-                        <div class="container">
-                            <hr style="border-top: 1px solid #DFDFDF;">
-                        </div>
+                        <div class="section-divider" style="background-color: #DFDFDF"></div>
 
                         <?php include('../components/groomer_tab_card_view.php'); ?>
                     </div>
@@ -251,9 +249,7 @@
                                 </div>
                             </div>
                         </section>
-                        <div class="container">
-                            <hr style="border-top: 1px solid #DFDFDF;">
-                        </div>
+                        <div class="section-divider" style="background-color: #DFDFDF"></div>
                         <h1 class="section-title mt-5">Other groomer’s availability at selected time</h1>
                         <?php include('../components/groomer_tab_list_view.php'); ?>
                     </div>
@@ -288,9 +284,7 @@
                     <div data-tab-content="space-calendar-view" class="tabcontent">
                         <?php include('../components/calendar_view.php'); ?>
 
-                        <div class="container">
-                            <hr style="border-top: 1px solid #DFDFDF;">
-                        </div>
+                        <div class="section-divider" style="background-color: #DFDFDF"></div>
 
                         <?php include('../components/space_tab_card_view.php'); ?>
                     </div>

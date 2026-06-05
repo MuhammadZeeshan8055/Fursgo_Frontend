@@ -28,7 +28,7 @@
     <!-- filter modal  -->
 
     <!-- filters section -->
-    <?php include '../components/filters_section.php' ?>   
+    <?php include '../components/filters_section.php' ?>
     <!-- filters section -->
 
     <div class="groomer-tab-content main-tab-content" id="groomer">
@@ -54,7 +54,7 @@
                     <?php include('../components/groomer_venue_sort_options.php'); ?>
 
 
-                     <!-- not found groomers -->
+                    <!-- not found groomers -->
                     <div class="col-lg-12 d-flex align-items-center justify-content-center section-gap">
                         <p class="not-found-message">Sorry, <span class="not-found-message">your preferred location isn't available today, <br>
                                 please see below for groomers in the nearest proximity!</span></p>
@@ -62,10 +62,10 @@
 
                     <div data-tab-content="groomer-calendar-view" class="tabcontent">
                         <?php include('../components/calendar_view.php'); ?>
-                        
-                        <div class="container">
-                            <hr style="border-top: 1px solid #DFDFDF;">
-                        </div>
+
+
+                        <div class="section-divider" style="background-color: #DFDFDF"></div>
+
 
                         <?php include('../components/groomer_tab_card_view.php'); ?>
                     </div>
@@ -107,9 +107,7 @@
                     <div data-tab-content="space-calendar-view" class="tabcontent">
                         <?php include('../components/calendar_view.php'); ?>
 
-                        <div class="container">
-                            <hr style="border-top: 1px solid #DFDFDF;">
-                        </div>
+                        <div class="section-divider" style="background-color: #DFDFDF"></div>
 
                         <?php include('../components/space_tab_card_view.php'); ?>
                     </div>

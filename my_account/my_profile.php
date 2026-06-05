@@ -3270,7 +3270,7 @@
                     </div>
                     <div class="col-lg-7">
                         <h2 class="medium-font mt-5">Upcoming Bookings</h2>
-                        <hr class="mt-4" style="border-top: 2px solid #D4D4D4;">
+                        <div class="section-divider mt-4"></div>
                         <div class="booking-card  bg-body-yellow mt-4">
 
                             <div class="booking-top bg-top-yellow">
@@ -3616,8 +3616,7 @@
 
                         <section id="profile-section" class="profile-header mt-5">
                             <h3 class="section-title">My Profile</h3>
-                            <hr class="divider mt-4">
-
+                            <div class="section-divider mt-4 mb-5"></div>
                             <div id="profile-view" class="profile-details-card">
                                 <div class="profile-details-header">
                                     <div class="avatar-placeholder">
@@ -3804,7 +3803,7 @@
                         <div id="pets-view" class="tap-details-card mt-5 hidden">
                             <div class="pets-header">
                                 <h3 class="section-title">My Pets</h3>
-                                <hr class="divider mt-4">
+                                <div class="section-divider mt-4 mb-5"></div>
                             </div>
 
                             <div id="pets-slider-container" class="pets-slider-container">
@@ -4261,11 +4260,11 @@
 
                                         <div class="pf-pet-field" style="position:relative;">
                                             <label>Pet Type <span style="color: #9D9B98;
-font-family: Lato;
-font-size: 16px;
-font-style: normal;
-font-weight: 600;
-line-height: normal;">(for ‘other’ pets)</span></label>
+                                    font-family: Lato;
+                                    font-size: 16px;
+                                    font-style: normal;
+                                    font-weight: 600;
+                                    line-height: normal;">(for ‘other’ pets)</span></label>
                                             <div style="position:relative; display:block;width: 300px;">
                                                 <input type="text" id="pet_type" placeholder="e.g. Dog, Cat, Rabbit..."
                                                     autocomplete="off"
@@ -4300,11 +4299,11 @@ line-height: normal;">(for ‘other’ pets)</span></label>
                                             <div class="input-box">
 
                                                 <input type="number" value="4" style="width: 85px;height: 48px; color: #3B3731;
-font-family: Lato;
-font-size: 16px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;">
+                            font-family: Lato;
+                            font-size: 16px;
+                            font-style: normal;
+                            font-weight: 400;
+                            line-height: normal;">
                                                 <!-- SVG -->
                                                 <svg class="number-icon" xmlns="http://www.w3.org/2000/svg" width="11"
                                                     height="28" viewBox="0 0 11 28" fill="none">
@@ -4447,7 +4446,7 @@ line-height: normal;">
                             <section id="groomers-sec" class="tab-content favourite-groomers mt-5">
                                 <div class="favourite-title">
                                     <h3 class="section-title">Favourites</h3>
-                                    <hr class="divider mt-4">
+                                    <div class="section-divider mt-4 mb-5"></div>
 
                                 </div>
 
@@ -4969,7 +4968,7 @@ line-height: normal;">
                                 <section class="favourite-spaces">
                                     <div class="favourite-title">
                                         <h3 class="section-title">Favourites</h3>
-                                        <hr class="divider mt-4">
+                                        <div class="section-divider mt-4 mb-5"></div>
 
                                     </div>
 
@@ -5586,10 +5585,10 @@ line-height: normal;">
                             </section>
                         </section>
 
-                        <section id="reviews-section" class="reviews-section hidden mt-5">
+                        <section id="reviews-section" class="tab-content reviews-section hidden mt-5">
 
                             <h3 class="section-title">Reviews</h3 class="section-title">
-                            <hr>
+                            <div class="section-divider mt-4 mb-5"></div>
 
                             <!-- STATS -->
                             <div class="review-stats">
@@ -6363,10 +6362,10 @@ line-height: normal;">
 
                         </section>
 
-                        <section id="rewards-section" class="rewards-container hidden mt-5">
+                        <section id="rewards-section" class="tab-content rewards-container hidden mt-5">
                             <div class="reward-heading">
                                 <h3 class="section-title">Rewards</h3>
-                                <hr class="divider mt-4">
+                                <div class="section-divider mt-4 mb-5"></div>
                             </div>
                             <div class="sub-title">
                                 <h2>Rewards & Referrals</h2>
