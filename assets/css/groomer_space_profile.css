@@ -1631,10 +1631,14 @@ input[type="checkbox"] {
     display: none;
 }
 
+input[type="radio"] {
+    display: none;
+}
+
 .check-circle {
     width: 25px;
     height: 25px;
-    border: 1px solid var(--groomer-color);
+    border: 1px solid #FBAC83;
     border-radius: 50%;
     display: block;
     position: relative;
@@ -1647,7 +1651,7 @@ input[type="checkbox"] {
     content: "";
     width: 15px;
     height: 15px;
-    background-color: var(--groomer-color);
+    background-color: #FBAC83;
     border-radius: 50%;
     position: absolute;
     inset: 0;

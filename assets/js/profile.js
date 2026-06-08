@@ -383,3 +383,125 @@ function copyLink() {
         copyBtn.textContent = 'Copy';
     }, 2000);
 }
+
+
+const selectedSection = document.getElementById('groomerSelectedSection');
+
+
+/* -------------------------
+   CREATE PILL
+--------------------------*/
+function addPill(label, value, group, type) {
+
+    // prevent duplicates (checkbox only)
+    if (type === 'checkbox' &&
+        selectedSection.querySelector(`[data-value="${value}"]`)
+    ) return;
+
+    const pill = document.createElement('div');
+    pill.className = 'selected-item d-flex align-items-center gap-10 cursor';
+
+    pill.dataset.value = value;
+    pill.dataset.group = group;
+    pill.dataset.type = type;
+
+    pill.innerHTML = `
+        <p>${label}</p>
+        <svg class="cross cursor" width="9" height="9" viewBox="0 0 9 9">
+            <path d="M0.5 7.57L7.57 0.5M0.5 0.5L7.57 7.57" stroke="#FBAC83"/>
+        </svg>
+    `;
+
+    selectedSection.appendChild(pill);
+}
+
+
+/* -------------------------
+   REMOVE PILL + INPUT RESET
+--------------------------*/
+function removePill(value) {
+
+    // remove pill
+    const pill = selectedSection.querySelector(`[data-value="${value}"]`);
+    if (pill) pill.remove();
+
+    // uncheck input
+    document.querySelectorAll(`input[value="${value}"]`)
+        .forEach(i => i.checked = false);
+}
+
+
+/* -------------------------
+   CLOSE DROPDOWN
+--------------------------*/
+function closeDropdown(input) {
+    const wrapper = input.closest('.sort-by, .venu-sorting-section');
+    if (!wrapper) return;
+
+    const dropdown = wrapper.querySelector('.sort-by-filter, .venue-list');
+    if (dropdown) dropdown.style.display = 'none';
+
+    wrapper.classList.remove('open');
+}
+
+
+/* -------------------------
+   CHANGE HANDLER
+--------------------------*/
+document.addEventListener('change', (e) => {
+    const input = e.target;
+
+    const label =
+        input.closest('label')?.querySelector('.option-text')?.innerText
+        || input.value;
+
+    const group = input.name;
+
+
+    // CHECKBOX
+    if (input.type === 'checkbox') {
+
+        if (input.checked) {
+            addPill(label, input.value, group, 'checkbox');
+        } else {
+            removePill(input.value);
+        }
+    }
+
+
+    // RADIO
+    if (input.type === 'radio') {
+
+        // remove old radio pill(s)
+        selectedSection
+            .querySelectorAll('[data-type="radio"]')
+            .forEach(el => el.remove());
+
+        addPill(label, input.value, group, 'radio');
+        closeDropdown(input);
+    }
+});
+
+
+/* -------------------------
+   PILL CLICK REMOVE
+--------------------------*/
+document.addEventListener('click', (e) => {
+    const pill = e.target.closest('.selected-item');
+    if (!pill) return;
+
+    const value = pill.dataset.value;
+
+    pill.remove();
+    removePill(value);
+});
+
+/* -------------------------
+   INIT PRE-CHECKED INPUTS
+--------------------------*/
+document.querySelectorAll('input[type="checkbox"]:checked').forEach(input => {
+    const label =
+        input.closest('label')?.querySelector('.option-text')?.innerText
+        || input.value;
+    addPill(label, input.value, input.name, 'checkbox');
+});
