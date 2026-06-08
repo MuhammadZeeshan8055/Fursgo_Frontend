@@ -3141,12 +3141,11 @@
             height: 25px;
             border: 1px solid var(--groomer-color);
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 5px;
+            display: block;
             position: relative;
+            margin-right: 5px;
             cursor: pointer;
+            box-sizing: border-box;
         }
 
         .check-circle::after {
@@ -3155,17 +3154,17 @@
             height: 15px;
             background-color: var(--groomer-color);
             border-radius: 50%;
-            display: none;
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            inset: 0;
+            margin: auto;
+            opacity: 0;
+            transition: opacity 0.15s ease;
+            box-sizing: border-box;
         }
 
-        input:checked+.check-circle::after {
-            display: block;
+        input:checked + .check-circle::after {
+            opacity: 1;
         }
-
         .sort-by-filter,
         .venue-list {
             /* color: var(--font-color); */

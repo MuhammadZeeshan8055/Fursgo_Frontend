@@ -520,18 +520,6 @@ document.querySelectorAll('.venu-sorting-section').forEach(container => {
 // sort and venue selection ends
 
 
-// selected filter remove js starts
-
-document.querySelectorAll('.selected-item-section').forEach(section => {
-    section.addEventListener('click', e => {
-        if (e.target.classList.contains('cross')) {
-            e.target.closest('.selected-item')?.remove();
-        }
-    });
-});
-
-// selected filter remove js ends
-
 
 // main tabs content view starts
 

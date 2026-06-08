@@ -1631,36 +1631,34 @@ input[type="checkbox"] {
     display: none;
 }
 
-/* Circle (same as radio) */
 .check-circle {
     width: 25px;
     height: 25px;
     border: 1px solid var(--groomer-color);
     border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 5px;
+    display: block;
     position: relative;
+    margin-right: 5px;
+    cursor: pointer;
+    box-sizing: border-box;
 }
 
-/* Inner dot (hidden by default) */
 .check-circle::after {
     content: "";
     width: 15px;
     height: 15px;
     background-color: var(--groomer-color);
     border-radius: 50%;
-    display: none;
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    inset: 0;
+    margin: auto;
+    opacity: 0;
+    transition: opacity 0.15s ease;
+    box-sizing: border-box;
 }
 
-/* Show dot when checked */
-input[type="checkbox"]:checked+.check-circle::after {
-    display: block;
+input:checked+.check-circle::after {
+    opacity: 1;
 }
 
 /* Option text */

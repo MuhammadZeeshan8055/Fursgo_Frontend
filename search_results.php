@@ -120,97 +120,98 @@
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="<?= BASE_URL ?>/assets/js/customer_journey.js"></script>
     <script>
-        // Groomer Module
+        // Groomer Module and Space Module
         const groomModal = document.querySelector('#groomModal');
+        const spaceModal = document.querySelector('#spaceModal');
+
         const groomApplyBtn = document.querySelector('#groomModal .modal-footer-btn.apply');
+        const spaceApplyBtn = document.querySelector('#spaceModal .modal-footer-btn.apply');
+
         const groomSelectedSection = document.querySelector('#groomerSelectedSection');
+        const spaceSelectedSection = document.querySelector('#spaceSelectedSection');
 
+
+        // ================================
+        // GLOBAL CLICK: REMOVE ANY PILL
+        // ================================
+        document.addEventListener('click', (e) => {
+
+            const pill = e.target.closest('.selected-item');
+            if (!pill) return;
+
+            const value = pill.dataset.value;
+
+            pill.remove();
+
+            document
+                .querySelectorAll(`input[type="checkbox"][value="${value}"]`)
+                .forEach(input => input.checked = false);
+        });
+
+
+        // ================================
+        // APPLY GROOM FILTERS
+        // ================================
         groomApplyBtn.addEventListener('click', () => {
-            const checkedItems = document.querySelectorAll('#groomModal .filter-options-section input[type="checkbox"]:checked');
-            const uncheckedItems = document.querySelectorAll('#groomModal .filter-options-section input[type="checkbox"]:not(:checked)');
 
-            // Remove unchecked items from the list
-            uncheckedItems.forEach(item => {
-                const value = item.value;
-                const existingItem = [...groomSelectedSection.querySelectorAll('.selected-item')]
-                    .find(div => div.querySelector('p').textContent === value);
-                if (existingItem) {
-                    existingItem.remove();
-                }
-            });
+            syncModalToPills('#groomModal', groomSelectedSection);
 
-            // Add checked items to the list
-            checkedItems.forEach(item => {
-                const value = item.value;
-
-                const alreadyAdded = [...groomSelectedSection.querySelectorAll('.selected-item p')]
-                    .some(p => p.textContent === value);
-                if (alreadyAdded) return;
-
-                const div = document.createElement('div');
-                div.className = 'selected-item d-flex align-items-center';
-                div.innerHTML = `
-                <p>${value}</p>
-                <img src="<?= BASE_URL ?>/assets/icons/cross.svg" class="cross svg" alt="remove">
-            `;
-
-                div.querySelector('.cross').addEventListener('click', () => {
-                    div.remove();
-                    item.checked = false;
-                });
-
-                groomSelectedSection.appendChild(div);
-            });
-
-            // Close modal after applying filters
             groomModal.style.display = 'none';
         });
 
-        // Space Module
-        const spaceModal = document.querySelector('#spaceModal');
-        const spaceApplyBtn = document.querySelector('#spaceModal .modal-footer-btn.apply');
-        const spaceSelectedSection = document.querySelector('#spaceSelectedSection');
 
+        // ================================
+        // APPLY SPACE FILTERS (NOW ADDED)
+        // ================================
         spaceApplyBtn.addEventListener('click', () => {
-            const checkedItems = document.querySelectorAll('#spaceModal .filter-options-section input[type="checkbox"]:checked');
-            const uncheckedItems = document.querySelectorAll('#spaceModal .filter-options-section input[type="checkbox"]:not(:checked)');
 
-            // Remove unchecked items from the list
-            uncheckedItems.forEach(item => {
-                const value = item.value;
-                const existingItem = [...spaceSelectedSection.querySelectorAll('.selected-item')]
-                    .find(div => div.querySelector('p').textContent === value);
-                if (existingItem) {
-                    existingItem.remove();
-                }
-            });
+            syncModalToPills('#spaceModal', spaceSelectedSection);
 
-            // Add checked items to the list
-            checkedItems.forEach(item => {
-                const value = item.value;
-
-                const alreadyAdded = [...spaceSelectedSection.querySelectorAll('.selected-item p')]
-                    .some(p => p.textContent === value);
-                if (alreadyAdded) return;
-
-                const div = document.createElement('div');
-                div.className = 'selected-item d-flex align-items-center';
-                div.innerHTML = `
-                <p>${value}</p>
-                <img src="<?= BASE_URL ?>/assets/icons/cross.svg" class="cross svg" alt="remove">
-            `;
-
-                div.querySelector('.cross').addEventListener('click', () => {
-                    div.remove();
-                    item.checked = false;
-                });
-
-                spaceSelectedSection.appendChild(div);
-            });
-
-            // Close modal after applying filters
             spaceModal.style.display = 'none';
         });
+
+
+        // ================================
+        // CORE SYNC FUNCTION (SINGLE VERSION)
+        // ================================
+        function syncModalToPills(modalSelector, targetBox) {
+
+            const checkedItems = document.querySelectorAll(
+                `${modalSelector} .filter-options-section input[type="checkbox"]:checked`
+            );
+
+            // remove ONLY dynamic pills
+            targetBox.querySelectorAll('.selected-item[data-dynamic="true"]').forEach(el => el.remove());
+
+            checkedItems.forEach(input => {
+                createPill(input, targetBox);
+            });
+        }
+
+
+        // ================================
+        // CREATE PILL
+        // ================================
+        function createPill(input, box) {
+
+            const value = input.value;
+
+            if (box.querySelector(`[data-value="${value}"]`)) return;
+
+            const div = document.createElement('div');
+
+            div.className = 'selected-item cursor d-flex align-items-center gap-10';
+
+            div.dataset.value = value;
+            div.dataset.dynamic = "true";
+
+            div.innerHTML = `
+        <p>${value}</p>
+        <img src="<?= BASE_URL ?>/assets/icons/cross.svg" class="cross svg" alt="remove">
+    `;
+
+            box.appendChild(div);
+        }
     </script>
 
 
@@ -221,7 +222,7 @@
         const spaceBox = document.querySelector('#spaceSelectedSection');
 
         // ================================
-        // INIT ALL INPUTS
+        // INIT INPUTS → CREATE PILLS
         // ================================
         document.querySelectorAll(
             'input[name="groomer-venue[]"], input[name="space-venue[]"], input[name="groomer-sort"], input[name="space-sort"]'
@@ -229,7 +230,7 @@
 
             const box = getBox(input);
 
-            // INIT checked values on load
+            // initial state
             if (input.checked) {
                 createPill(input, box);
             }
@@ -238,18 +239,12 @@
 
                 const box = getBox(input);
 
-                // ================================
-                // RADIO LOGIC (replace only same group)
-                // ================================
+                // RADIO: clear same group pills
                 if (input.type === 'radio') {
-
                     box.querySelectorAll(`[data-group="${input.name}"]`)
                         .forEach(el => el.remove());
                 }
 
-                // ================================
-                // CHECK / UNCHECK LOGIC
-                // ================================
                 if (input.checked) {
                     createPill(input, box);
                 } else {
@@ -260,7 +255,32 @@
 
 
         // ================================
-        // GET RIGHT CONTAINER
+        // GLOBAL CLICK (STATIC + DYNAMIC)
+        // ================================
+        document.addEventListener('click', (e) => {
+
+            const pill = e.target.closest('.selected-item');
+            if (!pill) return;
+
+            const value = pill.dataset.value;
+            const group = pill.dataset.group;
+
+            // remove UI
+            pill.remove();
+
+            // sync input if exists
+            if (value && group) {
+                const input = document.querySelector(
+                    `[name="${group}"][value="${value}"]`
+                );
+
+                if (input) input.checked = false;
+            }
+        });
+
+
+        // ================================
+        // GET CONTAINER
         // ================================
         function getBox(input) {
             if (input.name === 'groomer-venue[]' || input.name === 'groomer-sort') {
@@ -284,29 +304,22 @@
                 .innerText.trim();
 
             const div = document.createElement('div');
-            div.className = 'selected-item d-flex align-items-center gap-10';
+            div.className = 'selected-item cursor d-flex align-items-center gap-10';
+
             div.dataset.value = value;
             div.dataset.group = input.name;
 
             div.innerHTML = `
-                <p>${text}</p>
-                <svg class="cross" xmlns="http://www.w3.org/2000/svg" width="9" height="9" viewBox="0 0 9 9" fill="none" style="cursor:pointer;">
-                    <path d="M0.5 7.57L7.572 0.5M0.5 0.5L7.572 7.57" stroke="#FBAC83" stroke-linecap="round"/>
-                </svg>
-            `;
-
-            // remove pill click
-            div.querySelector('.cross').addEventListener('click', () => {
-                input.checked = false;
-                div.remove();
-            });
+        <p>${text}</p>
+        <img src="/assets/icons/cross.svg" class="cross svg" alt="">
+    `;
 
             box.appendChild(div);
         }
 
 
         // ================================
-        // REMOVE PILL
+        // REMOVE PILL (when input unchecked)
         // ================================
         function removePill(input, box) {
 
