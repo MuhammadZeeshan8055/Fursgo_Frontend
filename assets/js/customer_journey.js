@@ -1252,3 +1252,16 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // range js ends  
+
+
+// search bar widget sticky
+window.addEventListener('scroll', function () {
+    const stickyBar = document.querySelector('.sticky-search');
+
+    if (window.scrollY > 10) {
+
+        stickyBar.classList.add('scrolled');
+    } else {
+        stickyBar.classList.remove('scrolled');
+    }
+});  
