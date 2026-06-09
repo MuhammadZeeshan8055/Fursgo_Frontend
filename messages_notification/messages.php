@@ -3212,7 +3212,7 @@
 
                         <div class="chat-width">
                             <div class="chat-header d-flex align-items-center justify-content-between gap-10 mb-4 mt-4">
-                                <div class="d-flex align-items-center gap-10">
+                                <div class="d-flex align-items-center gap-20">
                                     <div class="profile-image-wrapper">
                                         <img src="<?= BASE_URL ?>/assets/images/groomer-profile.png" class="rounded-image large-size" alt="">
                                         <div class="top-left-svg">
