@@ -34,6 +34,15 @@
   font-weight: 600;
 }
 
+
+/* Medium weight */
+@font-face {
+  font-family: "Lato";
+  src: url("../fonts/Lato/Lato-Bold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 500;
+}
+
 /* Bold weight */
 @font-face {
   font-family: "Lato";
@@ -451,6 +460,13 @@
   font-family: Lato;
   font-size: 12px;
   font-weight: 400;
+}
+
+.fs-12-500-f-color {
+  color: var(--font-color);
+  font-family: Lato;
+  font-size: 12px;
+  font-weight: 500;
 }
 
 /* ===== Utility Classes ===== */

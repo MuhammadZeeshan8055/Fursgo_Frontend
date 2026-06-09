@@ -880,6 +880,7 @@ $imagePath = BASE_URL . '/assets/images/card1.png';
             width: auto;
             height: 48px;
             padding: 8px 10px;
+            width: 100%;
         }
 
         .promocode input:focus {
@@ -1585,6 +1586,26 @@ $imagePath = BASE_URL . '/assets/images/card1.png';
             font-weight: 600;
             line-height: normal;
         }
+
+        .input-apply-promo {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        button.promocode-apply {
+            position: absolute;
+            right: 0px;
+            margin: 0 5px 0px 0;
+            width: 77px;
+            height: 35px;
+            border-radius: 5px;
+            background: #BACF8E;
+            box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.05);
+            border: none;
+            cursor: pointer;
+            color: #FFF;
+        }
     </style>
 </head>
 
@@ -1989,19 +2010,19 @@ $imagePath = BASE_URL . '/assets/images/card1.png';
                                             Sarah W.
                                         </span>
                                     </div>
-                                    <div>
-                                        <p><svg xmlns="http://www.w3.org/2000/svg" width="13" height="18"
+                                    <div class="mt-3">
+                                        <p class="d-flex align-items-center"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="18"
                                                 viewBox="0 0 13 18" fill="none">
                                                 <path
                                                     d="M6.5 8.55C5.88432 8.55 5.29385 8.31295 4.8585 7.89099C4.42315 7.46903 4.17857 6.89674 4.17857 6.3C4.17857 5.70326 4.42315 5.13097 4.8585 4.70901C5.29385 4.28705 5.88432 4.05 6.5 4.05C7.11568 4.05 7.70615 4.28705 8.1415 4.70901C8.57685 5.13097 8.82143 5.70326 8.82143 6.3C8.82143 6.59547 8.76138 6.88806 8.64472 7.16104C8.52806 7.43402 8.35706 7.68206 8.1415 7.89099C7.92593 8.09992 7.67002 8.26566 7.38837 8.37873C7.10672 8.4918 6.80485 8.55 6.5 8.55ZM6.5 0C4.77609 0 3.12279 0.663748 1.90381 1.84523C0.684819 3.02671 0 4.62914 0 6.3C0 11.025 6.5 18 6.5 18C6.5 18 13 11.025 13 6.3C13 4.62914 12.3152 3.02671 11.0962 1.84523C9.87721 0.663748 8.22391 0 6.5 0Z"
                                                     fill="#FFC97A" />
-                                            </svg>2.5 mi</p>
-                                        <p><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                                            </svg>&nbsp;&nbsp; 2.5 mi</p>
+                                        <p class="d-flex align-items-center"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
                                                 viewBox="0 0 18 18" fill="none">
                                                 <path
                                                     d="M7.88086 0.849183C8.23312 -0.283064 9.76689 -0.28306 10.1191 0.849187L11.437 5.08524C11.5946 5.5916 12.0464 5.93442 12.5562 5.93442H16.821C17.9609 5.93442 18.4349 7.45785 17.5127 8.15762L14.0624 10.7756C13.6499 11.0886 13.4774 11.6433 13.6349 12.1497L14.9528 16.3857C15.3051 17.518 14.0642 18.4595 13.142 17.7597L9.69167 15.1417C9.27924 14.8287 8.72076 14.8287 8.30833 15.1417L4.85802 17.7597C3.93579 18.4595 2.69495 17.518 3.04721 16.3857L4.36511 12.1497C4.52264 11.6433 4.35007 11.0886 3.93763 10.7756L0.487324 8.15762C-0.434903 7.45785 0.0390621 5.93442 1.179 5.93442H5.44381C5.95361 5.93442 6.40542 5.59159 6.56296 5.08524L7.88086 0.849183Z"
                                                     fill="#FFC97A" />
-                                            </svg>4.3 <span>(20 reviews)</span></p>
+                                            </svg>&nbsp;&nbsp; 4.3 <span>&nbsp;(20 reviews)</span></p>
                                     </div>
                                 </div>
                             </div>
@@ -2037,12 +2058,15 @@ $imagePath = BASE_URL . '/assets/images/card1.png';
 
                             <div class="promocode">
                                 <label for="">Promo code</label>
-                                <input type="text" placeholder="Enter Promo Code">
+                                <div class="input-apply-promo">
+                                    <input type="text" placeholder="Enter Promo Code">
+                                    <button class="promocode-apply fs-14-500-f-color">Apply</button>
+                                </div>
                             </div>
 
-                            <div class="promo-code-entered d-flex align-items-center gap-10 mt-3">
-                                <p>PROMO25</p>
-                                <div class="remove-promo cursor">
+                            <div class="promo-code-entered cursor d-flex align-items-center gap-10 mt-3">
+                                <p class="fs-12-500-f-color">PROMO25</p>
+                                <div class="remove-promo">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none">
                                         <path d="M0.5 7.5L7.5 0.5M0.5 0.5L7.5 7.5" stroke="#3B3731" stroke-linecap="round" />
                                     </svg>
@@ -3060,8 +3084,14 @@ $imagePath = BASE_URL . '/assets/images/card1.png';
         }
 
         window.addEventListener('scroll', updateHeader);
-        updateHeader(); 
-        
+        updateHeader();
+
+        document.addEventListener("click", function(e) {
+            const pill = e.target.closest(".promo-code-entered");
+            if (pill) {
+                pill.remove();
+            }
+        });
     </script>
 </body>
 
