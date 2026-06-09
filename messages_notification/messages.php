@@ -12,7 +12,30 @@
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/bootstrap.css">
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/media_query.css">
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/messages.css">
+    <style>
+        .messages-outer-div {
+            position: relative;
+            /* min-height: 100vh; */
+        }
 
+        /* this is the trick */
+        .right-bg {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            /* matches col-lg-8 */
+            height: 100%;
+            background: var(--bg);
+            z-index: 0;
+        }
+
+        /* keep content above background */
+        .container {
+            position: relative;
+            z-index: 1;
+        }
+    </style>
 </head>
 
 <body>
@@ -23,6 +46,10 @@
 
 
     <div class="messages-outer-div">
+
+        <!-- FULL WIDTH BACKGROUND LAYER -->
+        <div class="right-bg"></div>
+
         <div class="container">
             <div class="row gx-0 ">
                 <div class="col-lg-4">
@@ -3302,7 +3329,7 @@
 
 
                             </div>
-                            <div class="chat-wrapper">
+                            <div class="chat-wrapper mb-5">
                                 <div class="chat-box">
 
                                     <div class="message-row">
@@ -3354,7 +3381,7 @@
                                     </div>
                                 </div>
 
-                                <div class="footer-note simple-light-font mt-4">
+                                <div class="footer-note simple-light-font mt-4 mb-4">
                                     Chats remain open for 3 days after a booking ends.
                                 </div>
                             </div>
@@ -3431,7 +3458,7 @@
 
         // color differentiation
         document.querySelectorAll('.tablinks').forEach(tab => {
-            tab.addEventListener('click', function () {
+            tab.addEventListener('click', function() {
 
                 const theme = {
                     'groomer-messages': {

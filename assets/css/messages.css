@@ -5,7 +5,7 @@
     --accent: #ffc97a;
     --accent-soft: rgba(255, 201, 122, 0.13);
     --active-bg: #FFC97A;
-    --active-bg-light : rgba(255, 201, 122, 0.13);
+    --active-bg-light: rgba(255, 201, 122, 0.13);
 }
 
 /* =====================
@@ -30,6 +30,7 @@ nav,
     display: flex;
     flex-direction: column;
     border: 1px solid var(--border);
+    border-right: none;
     height: 90vh;
     /* overflow: hidden; */
     margin: 0;
@@ -67,10 +68,12 @@ aside.sidebar {
     flex-direction: column;
     padding: 0 16px;
 }
+
 .settings-archived,
-.dots-svg{
+.dots-svg {
     position: relative;
 }
+
 .archived,
 .archived-chat {
     border-radius: 5px 0 5px 5px;
@@ -246,7 +249,7 @@ p.messages-count {
     color: #fff;
 }
 
-.filters{
+.filters {
     padding: 0px 0 15px 0;
 }
 
@@ -256,7 +259,7 @@ p.messages-count {
 
 .chat-area {
     background: var(--bg);
-    height: 96%;
+    height: 100%;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -299,9 +302,10 @@ p.messages-count {
     width: 100px;
 }
 
-.tag.groomer{
+.tag.groomer {
     background: var(--active-bg);
 }
+
 .arrow-svg {
     width: 48px;
     height: 48px;
@@ -332,6 +336,7 @@ p.messages-count {
     display: none;
     /* Hide scrollbar for WebKit browsers */
 }
+
 /* Firefox */
 .messages {
     scrollbar-width: none;
@@ -479,7 +484,7 @@ p.messages-count {
     padding: 12px 0;
 }
 
-.footer{
+.footer {
     padding: 0px !important;
 }
 
