@@ -12,7 +12,80 @@
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/notification.css">
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/bootstrap.css">
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/media_query.css">
+    <style>
+        .sort-by {
+            border-radius: 100px;
+            color: var(--groomer-color);
+            border: 1px solid var(--groomer-color);
+            padding: 10px 20px 10px 20px;
+            text-align: center;
+            font-family: "Lato";
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+            cursor: pointer;
+            height: 32px;
+        }
 
+        /* Hide native checkbox */
+        input[type="checkbox"] {
+            display: none;
+        }
+
+        input[type="radio"] {
+            display: none;
+        }
+
+        .check-circle {
+            width: 25px;
+            height: 25px;
+            border: 1px solid #FBAC83;
+            border-radius: 50%;
+            display: block;
+            position: relative;
+            margin-right: 5px;
+            cursor: pointer;
+            box-sizing: border-box;
+        }
+
+        .check-circle::after {
+            content: "";
+            width: 15px;
+            height: 15px;
+            background-color: #FBAC83;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            transition: opacity 0.15s ease;
+        }
+
+        input:checked+.check-circle::after {
+            opacity: 1;
+        }
+
+        /* Option text */
+        .option-text {
+            color: #3B3731;
+            font-family: Lato;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+        }
+
+        /* Cursor pointer */
+        label {
+            cursor: pointer;
+            display: flex !important;
+            align-items: center;
+            width: 100%;
+            justify-content: space-between;
+        }
+    </style>
 </head>
 
 <body>
@@ -70,7 +143,7 @@
             <div class="col-lg-2"></div>
             <div class="col-lg-8">
                 <div class="notification-heading-searchbox d-flex align-items-center justify-content-between mt-5">
-                    <h1 class="large-font">All Notifications</h1>
+                    <h1 class="large-font" id="notifications-heading">All Notifications</h1>
                     <div class="search-box mt-4">
                         <input type="text" id="search-groomer"
                             placeholder="Search address, postcode, name ...">
@@ -82,58 +155,72 @@
                 </div>
                 <div class="filters-sort-options d-flex align-items-center justify-content-between mt-5">
 
-                    <div class="filter d-flex align-items-center gap-10">
-                        Unread first
-                        <svg class="cursor" xmlns="http://www.w3.org/2000/svg" width="9" height="9" viewBox="0 0 9 9" fill="none">
-                            <path d="M0.5 7.57L7.572 0.5M0.5 0.5L7.572 7.57" stroke="white" stroke-linecap="round" />
-                        </svg>
+                    <div class="filters d-flex align-items-center gap-20">
+
                     </div>
-                    <div class="sort-options d-flex align-items-center gap-10">
-                        <div class="sort-by">
-                            Sort
-                            &nbsp;
-                            <img src="<?= BASE_URL ?>/assets/icons/filter-arrow-down.svg" class="svg" alt="">
-                            <div class="sort-by-filter">
-                                <div class="sort dropdown">
-                                    <ul>
-                                        <li class="active">
+                    <div class="sort-by">
+                        Sort
+                        &nbsp;
+                        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="7" viewBox="0 0 13 7" fill="none">
+                            <path d="M11.9104 0.5L6.15697 6.25344L0.500111 0.596581" stroke="#FBAC83" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        <div class="sort-by-filter">
+                            <div class="sort dropdown">
+                                <ul>
+                                    <li>
+                                        <label>
                                             <span class="option-text">Recommended (default)</span>
-                                            <span class="radio-circle"></span>
-                                        </li>
-                                        <li>
+                                            <input type="radio" name="groomer-sort" value="default"> <span class="check-circle"></span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <span class="option-text">Unread first</span>
+                                            <input type="radio" name="groomer-sort" value="unread-first" checked> <span class="check-circle"></span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
                                             <span class="option-text">Distance</span>
-                                            <span class="radio-circle"></span>
-                                        </li>
-                                        <li>
+                                            <input type="radio" name="groomer-sort" value="distance">
+                                            <span class="check-circle"></span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
                                             <span class="option-text">Lowest price</span>
-                                            <span class="radio-circle"></span>
-                                        </li>
-                                        <li>
+                                            <input type="radio" name="groomer-sort" value="lowest_price">
+                                            <span class="check-circle"></span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
                                             <span class="option-text">Soonest available</span>
-                                            <span class="radio-circle"></span>
-                                        </li>
-                                    </ul>
-                                </div>
+                                            <input type="radio" name="groomer-sort" value="soonest_available">
+                                            <span class="check-circle"></span>
+                                        </label>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="d-flex align-items-center justify-content-between mt-5">
                     <div class="d-flex align-items-center gap-25">
-                        <div class="tags active">
-                            <p class="normal-font-weight-active-color cursor">All <span class="count active">13</span></p>
+                        <div class="tags cursor active" data-tab="all">
+                            <p class="normal-font-weight-active-color">All <span class="count active">13</span></p>
                         </div>
-                        <div class="tags">
-                            <p class="normal-font-weight muted-color cursor">Bookings <span class="count">5</span></p>
+                        <div class="tags cursor" data-tab="bookings">
+                            <p class="normal-font-weight muted-color">Bookings <span class="count">5</span></p>
                         </div>
-                        <div class="tags">
-                            <p class="normal-font-weight muted-color cursor">Payments <span class="count">3</span></p>
+                        <div class="tags cursor" data-tab="payments">
+                            <p class="normal-font-weight muted-color">Payments <span class="count">3</span></p>
                         </div>
-                        <div class="tags">
-                            <p class="normal-font-weight muted-color cursor">Reviews <span class="count">2</span></p>
+                        <div class="tags cursor" data-tab="reviews">
+                            <p class="normal-font-weight muted-color">Reviews <span class="count">2</span></p>
                         </div>
-                        <div class="tags">
-                            <p class="normal-font-weight muted-color cursor">Updates <span class="count">3</span></p>
+                        <div class="tags cursor" data-tab="updates">
+                            <p class="normal-font-weight muted-color">Updates <span class="count">3</span></p>
                         </div>
                     </div>
                     <div class="mark-notification-dots-svg cursor">
@@ -166,7 +253,7 @@
                 </div>
 
                 <div class="notification-list mt-5">
-                    <div class="notification-list-item booking-confirmed mt-4">
+                    <div class="notification-list-item booking-confirmed mt-4" data-category="bookings">
                         <div class="notification-list-item-inner d-flex align-items-center justify-content-between cursor">
                             <div class="notification-list-item-inner-left d-flex align-items-center gap-20">
                                 <div class="notification-list-item-inner-left-icon">
@@ -203,7 +290,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="notification-list-item booking-updated mt-4">
+                    <div class="notification-list-item booking-updated mt-4" data-category="bookings">
                         <div class="notification-list-item-inner d-flex align-items-center justify-content-between cursor">
                             <div class="notification-list-item-inner-left d-flex align-items-center gap-20">
                                 <div class="notification-list-item-inner-left-icon">
@@ -240,7 +327,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="notification-list-item booking-reminder mt-4">
+                    <div class="notification-list-item booking-reminder mt-4" data-category="bookings">
                         <div class="notification-list-item-inner d-flex align-items-center justify-content-between cursor">
                             <div class="notification-list-item-inner-left d-flex align-items-center gap-20">
                                 <div class="notification-list-item-inner-left-icon">
@@ -277,7 +364,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="notification-list-item noshadow mt-4">
+                    <div class="notification-list-item noshadow mt-4" data-category="bookings">
                         <div class="notification-list-item-inner d-flex align-items-center justify-content-between cursor">
                             <div class="notification-list-item-inner-left d-flex align-items-center gap-20">
                                 <div class="notification-list-item-inner-left-icon">
@@ -314,8 +401,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="section-divider mt-2 mb-2" style="background-color: rgba(59, 55, 49, 0.13)"></div>
-                    <div class="notification-list-item noshadow mt-4">
+                    <div class="section-divider mt-2 mb-2" style="background-color: rgba(59, 55, 49, 0.13)" data-category="bookings"></div>
+                    <div class="notification-list-item noshadow mt-4" data-category="bookings">
                         <div class="notification-list-item-inner d-flex align-items-center justify-content-between cursor">
                             <div class="notification-list-item-inner-left d-flex align-items-center gap-20">
                                 <div class="notification-list-item-inner-left-icon">
@@ -352,8 +439,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="section-divider mt-2 mb-2" style="background-color: rgba(59, 55, 49, 0.13)"></div>
-                    <div class="notification-list-item noshadow mt-4">
+                    <div class="section-divider mt-2 mb-2" style="background-color: rgba(59, 55, 49, 0.13)" data-category="payments"></div>
+                    <div class="notification-list-item noshadow mt-4" data-category="payments">
                         <div class="notification-list-item-inner d-flex align-items-center justify-content-between cursor">
                             <div class="notification-list-item-inner-left d-flex align-items-center gap-20">
                                 <div class="notification-list-item-inner-left-icon">
@@ -388,8 +475,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="section-divider mt-2 mb-2" style="background-color: rgba(59, 55, 49, 0.13)"></div>
-                    <div class="notification-list-item noshadow mt-4">
+                    <div class="section-divider mt-2 mb-2" style="background-color: rgba(59, 55, 49, 0.13)" data-category="payments"></div>
+                    <div class="notification-list-item noshadow mt-4" data-category="payments">
                         <div class="notification-list-item-inner d-flex align-items-center justify-content-between cursor">
                             <div class="notification-list-item-inner-left d-flex align-items-center gap-20">
                                 <div class="notification-list-item-inner-left-icon">
@@ -424,8 +511,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="section-divider mt-2 mb-2" style="background-color: rgba(59, 55, 49, 0.13)"></div>
-                    <div class="notification-list-item noshadow mt-4">
+                    <div class="section-divider mt-2 mb-2" style="background-color: rgba(59, 55, 49, 0.13)" data-category="payments"></div>
+                    <div class="notification-list-item noshadow mt-4" data-category="payments">
                         <div class="notification-list-item-inner d-flex align-items-center justify-content-between cursor">
                             <div class="notification-list-item-inner-left d-flex align-items-center gap-20">
                                 <div class="notification-list-item-inner-left-icon">
@@ -460,8 +547,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="section-divider mt-2 mb-2" style="background-color: rgba(59, 55, 49, 0.13)"></div>
-                    <div class="notification-list-item noshadow mt-4">
+                    <div class="section-divider mt-2 mb-2" style="background-color: rgba(59, 55, 49, 0.13)" data-category="reviews"></div>
+                    <div class="notification-list-item noshadow mt-4" data-category="reviews">
                         <div class="notification-list-item-inner d-flex align-items-center justify-content-between cursor">
                             <div class="notification-list-item-inner-left d-flex align-items-center gap-20">
                                 <div class="notification-list-item-inner-left-icon">
@@ -496,8 +583,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="section-divider mt-2 mb-2" style="background-color: rgba(59, 55, 49, 0.13)"></div>
-                    <div class="notification-list-item noshadow mt-4">
+                    <div class="section-divider mt-2 mb-2" style="background-color: rgba(59, 55, 49, 0.13)" data-category="reviews"></div>
+                    <div class="notification-list-item noshadow mt-4" data-category="reviews">
                         <div class="notification-list-item-inner d-flex align-items-center justify-content-between cursor">
                             <div class="notification-list-item-inner-left d-flex align-items-center gap-20">
                                 <div class="notification-list-item-inner-left-icon">
@@ -532,8 +619,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="section-divider mt-2 mb-2" style="background-color: rgba(59, 55, 49, 0.13)"></div>
-                    <div class="notification-list-item noshadow mt-4">
+                    <div class="section-divider mt-2 mb-2" style="background-color: rgba(59, 55, 49, 0.13)" data-category="updates"></div>
+                    <div class="notification-list-item noshadow mt-4" data-category="updates">
                         <div class="notification-list-item-inner d-flex align-items-center justify-content-between cursor">
                             <div class="notification-list-item-inner-left d-flex align-items-center gap-20">
                                 <div class="notification-list-item-inner-left-icon">
@@ -568,8 +655,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="section-divider mt-2 mb-2" style="background-color: rgba(59, 55, 49, 0.13)"></div>
-                    <div class="notification-list-item noshadow mt-4">
+                    <div class="section-divider mt-2 mb-2" style="background-color: rgba(59, 55, 49, 0.13)" data-category="updates"></div>
+                    <div class="notification-list-item noshadow mt-4" data-category="updates">
                         <div class="notification-list-item-inner d-flex align-items-center justify-content-between cursor">
                             <div class="notification-list-item-inner-left d-flex align-items-center gap-20">
                                 <div class="notification-list-item-inner-left-icon">
@@ -604,8 +691,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="section-divider mt-2 mb-2" style="background-color: rgba(59, 55, 49, 0.13)"></div>
-                    <div class="notification-list-item noshadow mt-4">
+                    <div class="section-divider mt-2 mb-2" style="background-color: rgba(59, 55, 49, 0.13)" data-category="updates"></div>
+                    <div class="notification-list-item noshadow mt-4" data-category="updates">
                         <div class="notification-list-item-inner d-flex align-items-center justify-content-between cursor">
                             <div class="notification-list-item-inner-left d-flex align-items-center gap-20">
                                 <div class="notification-list-item-inner-left-icon">
@@ -689,6 +776,129 @@
                         console.error('Failed to copy: ', err);
                     });
             });
+        });
+
+
+        // tab buttons functionality
+        document.addEventListener('DOMContentLoaded', function() {
+
+            const tabs = document.querySelectorAll('.tags[data-tab]');
+            const headings = document.querySelector('#notifications-heading');
+
+            // Add transition style to all items once on load
+            document.querySelectorAll('[data-category]').forEach(function(item) {
+                item.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+            });
+
+            tabs.forEach(function(tab) {
+                tab.addEventListener('click', function() {
+
+                    // Update active tab styling
+                    tabs.forEach(function(t) {
+                        t.classList.remove('active');
+                        t.querySelector('p').classList.remove('normal-font-weight-active-color');
+                        t.querySelector('p').classList.add('normal-font-weight', 'muted-color');
+                        const count = t.querySelector('.count');
+                        if (count) count.classList.remove('active');
+                    });
+
+                    tab.classList.add('active');
+                    tab.querySelector('p').classList.add('normal-font-weight-active-color');
+                    tab.querySelector('p').classList.remove('normal-font-weight', 'muted-color');
+                    const activeCount = tab.querySelector('.count');
+                    if (activeCount) activeCount.classList.add('active');
+
+                    // Fade out all first
+                    const selected = tab.getAttribute('data-tab');
+                    const items = document.querySelectorAll('[data-category]');
+
+                    headings.innerText = selected.charAt(0).toUpperCase() + selected.slice(1) + ' Notifications';
+
+                    items.forEach(function(item) {
+                        item.style.opacity = '0';
+                        item.style.transform = 'translateY(6px)';
+                    });
+
+                    // Then after fade out, show/hide and fade back in
+                    setTimeout(function() {
+                        items.forEach(function(item) {
+                            if (selected === 'all' || item.getAttribute('data-category') === selected) {
+                                item.style.display = '';
+                                // Small delay so display change registers before transition
+                                requestAnimationFrame(function() {
+                                    requestAnimationFrame(function() {
+                                        item.style.opacity = '1';
+                                        item.style.transform = 'translateY(0)';
+                                    });
+                                });
+                            } else {
+                                item.style.display = 'none';
+                                item.style.opacity = '0';
+                                item.style.transform = 'translateY(6px)';
+                            }
+                        });
+                    }, 250);
+
+                });
+            });
+
+        });
+
+
+        document.addEventListener('DOMContentLoaded', function() {
+
+            const sortBy = document.querySelector('.sort-by');
+            const dropdown = document.querySelector('.sort-by-filter');
+            const radios = document.querySelectorAll('input[name="groomer-sort"]');
+            const filtersContainer = document.querySelector('.filters');
+
+            function createPill(value, label) {
+                const existingPill = filtersContainer.querySelector('.filter[data-sort]');
+                if (existingPill) existingPill.remove();
+
+                const pill = document.createElement('div');
+                pill.className = 'filter cursor d-flex align-items-center gap-10';
+                pill.setAttribute('data-sort', value);
+                pill.innerHTML = `${label} <svg xmlns="http://www.w3.org/2000/svg" width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M0.5 7.57L7.572 0.5M0.5 0.5L7.572 7.57" stroke="white" stroke-linecap="round" /></svg>`;
+
+                pill.addEventListener('click', function() {
+                    document.querySelector(`input[name="groomer-sort"][value="${value}"]`).checked = false;
+                    pill.remove();
+                });
+
+                filtersContainer.appendChild(pill);
+            }
+
+            // Default checked pill on load
+            radios.forEach(function(radio) {
+                if (radio.checked) {
+                    createPill(radio.value, radio.closest('label').querySelector('.option-text').textContent.trim());
+                }
+            });
+
+            // Toggle open/close
+            sortBy.addEventListener('click', function(e) {
+                if (dropdown.contains(e.target)) return;
+                dropdown.classList.toggle('open');
+            });
+
+            // Close on outside click
+            document.addEventListener('click', function(e) {
+                if (!sortBy.contains(e.target)) dropdown.classList.remove('open');
+            });
+
+            // On selection
+            radios.forEach(function(radio) {
+                radio.addEventListener('change', function() {
+                    createPill(this.value, this.closest('label').querySelector('.option-text').textContent.trim());
+                    setTimeout(() => dropdown.classList.remove('open'), 10);
+                });
+
+                radio.closest('label').addEventListener('click', function(e) {
+                    e.stopPropagation();
+                });
+            });
+
         });
     </script>
 </body>

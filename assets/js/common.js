@@ -204,10 +204,18 @@ function toggleDisplay(triggerSelector, targetSelector) {
     const trigger = document.querySelector(triggerSelector);
     const target = document.querySelector(targetSelector);
 
-    if (!trigger || !target) return; // safety check
+    if (!trigger || !target) return;
 
-    trigger.addEventListener('click', () => {
+    trigger.addEventListener('click', (e) => {
+        if (target.contains(e.target)) return; // don't toggle if clicking inside
         target.style.display = (target.style.display === 'block') ? 'none' : 'block';
+    });
+
+    // Close when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!trigger.contains(e.target)) {
+            target.style.display = 'none';
+        }
     });
 }
 
