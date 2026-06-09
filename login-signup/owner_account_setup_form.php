@@ -376,7 +376,7 @@ include '../components/calendar.php';
 
         .pet-card {
             gap: 50px;
-            padding: 30px 100px;
+            padding: 30px 60px;
             border-radius: 12px;
             background: #fff;
             box-shadow: var(--soft-shadow);
@@ -471,13 +471,7 @@ include '../components/calendar.php';
             background: #fff;
             cursor: pointer;
             box-shadow: var(--soft-shadow);
-            color: #3B3731;
-            text-align: center;
-            font-family: Lato;
-            font-size: 16px;
-            font-style: normal;
-            font-weight: 500;
-            line-height: normal;
+            height: 48px;
         }
 
         .btn-edit svg {
@@ -636,46 +630,40 @@ include '../components/calendar.php';
 
                             <div class="row">
                                 <div class="col-lg-5">
-                                    <div
-                                        class="upload-card d-flex flex-column align-items-center justify-content-center mt-5">
-
+                                    <div class="upload-card d-flex flex-column align-items-center justify-content-center mt-5">
                                         <div class="user-icon-size-details d-flex flex-column align-items-center">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="85" height="85"
-                                                viewBox="0 0 85 85" fill="none">
+
+                                            <svg id="avatarPlaceholder1" xmlns="http://www.w3.org/2000/svg" width="85" height="85" viewBox="0 0 85 85" fill="none">
                                                 <circle cx="42.5" cy="42.5" r="42" fill="#E3E3E3" stroke="#F6F6F6" />
-                                                <path
-                                                    d="M16.4331 75.7448C18.0848 43.5072 66.8863 43.5073 68.538 75.7448C68.538 75.7448 59.009 84.8116 42.5757 84.8116C26.1424 84.8116 16.4331 75.7448 16.4331 75.7448Z"
-                                                    fill="white" />
-                                                <path
-                                                    d="M55.5193 33.4264C55.5193 36.8812 54.1468 40.1945 51.704 42.6374C49.2611 45.0803 45.9478 46.4527 42.493 46.4527C39.0383 46.4527 35.725 45.0803 33.2821 42.6374C30.8392 40.1945 29.4668 36.8812 29.4668 33.4264C29.4668 29.9716 30.8392 26.6583 33.2821 24.2154C35.725 21.7725 39.0383 20.4001 42.493 20.4001C45.9478 20.4001 49.2611 21.7725 51.704 24.2154C54.1468 26.6583 55.5193 29.9716 55.5193 33.4264Z"
-                                                    fill="white" />
-                                                <path
-                                                    d="M73.993 20.1799C68.9349 20.1799 64.8203 16.0653 64.8203 11.0072C64.8203 5.94913 68.9349 1.83453 73.993 1.83453C79.051 1.83453 83.1656 5.94913 83.1656 11.0072C83.1656 16.0653 79.051 20.1799 73.993 20.1799Z"
-                                                    fill="#9D9B98" />
-                                                <path
-                                                    d="M73.9931 15.5935C73.6262 15.5935 73.3379 15.3052 73.3379 14.9383V7.07603C73.3379 6.70912 73.6262 6.42084 73.9931 6.42084C74.36 6.42084 74.6483 6.70912 74.6483 7.07603V14.9383C74.6483 15.3052 74.36 15.5935 73.9931 15.5935Z"
-                                                    fill="white" />
-                                                <path
-                                                    d="M77.9237 11.6624H70.0614C69.6945 11.6624 69.4062 11.3741 69.4062 11.0072C69.4062 10.6403 69.6945 10.352 70.0614 10.352H77.9237C78.2906 10.352 78.5789 10.6403 78.5789 11.0072C78.5789 11.3741 78.2906 11.6624 77.9237 11.6624Z"
-                                                    fill="white" />
+                                                <path d="M16.4331 75.7448C18.0848 43.5072 66.8863 43.5073 68.538 75.7448C68.538 75.7448 59.009 84.8116 42.5757 84.8116C26.1424 84.8116 16.4331 75.7448 16.4331 75.7448Z" fill="white" />
+                                                <path d="M55.5193 33.4264C55.5193 36.8812 54.1468 40.1945 51.704 42.6374C49.2611 45.0803 45.9478 46.4527 42.493 46.4527C39.0383 46.4527 35.725 45.0803 33.2821 42.6374C30.8392 40.1945 29.4668 36.8812 29.4668 33.4264C29.4668 29.9716 30.8392 26.6583 33.2821 24.2154C35.725 21.7725 39.0383 20.4001 42.493 20.4001C45.9478 20.4001 49.2611 21.7725 51.704 24.2154C54.1468 26.6583 55.5193 29.9716 55.5193 33.4264Z" fill="white" />
+                                                <path d="M73.993 20.1799C68.9349 20.1799 64.8203 16.0653 64.8203 11.0072C64.8203 5.94913 68.9349 1.83453 73.993 1.83453C79.051 1.83453 83.1656 5.94913 83.1656 11.0072C83.1656 16.0653 79.051 20.1799 73.993 20.1799Z" fill="#9D9B98" />
+                                                <path d="M73.9931 15.5935C73.6262 15.5935 73.3379 15.3052 73.3379 14.9383V7.07603C73.3379 6.70912 73.6262 6.42084 73.9931 6.42084C74.36 6.42084 74.6483 6.70912 74.6483 7.07603V14.9383C74.6483 15.3052 74.36 15.5935 73.9931 15.5935Z" fill="white" />
+                                                <path d="M77.9237 11.6624H70.0614C69.6945 11.6624 69.4062 11.3741 69.4062 11.0072C69.4062 10.6403 69.6945 10.352 70.0614 10.352H77.9237C78.2906 10.352 78.5789 10.6403 78.5789 11.0072C78.5789 11.3741 78.2906 11.6624 77.9237 11.6624Z" fill="white" />
                                             </svg>
-                                            <div class="title mt-3">
-                                                Upload Image
+
+                                            <img id="avatarPreview1" src="" alt="Profile"
+                                                style="display:none; width:200px; height:200px; aspect-ratio:1/1; border-radius:50%; object-fit:cover;">
+
+                                            <div id="uploadLabel1">
+                                                <div class="title mt-3">Upload Image</div>
+                                                <div class="subtitle">Max file size: 1 MB</div>
                                             </div>
-                                            <div class="subtitle">Max file size: 1 MB</div>
+
+                                            <div id="editPhotoLabel1" class="fs-16-600" style="display:none; margin-top:8px; cursor:pointer; border:1px solid #3B3731; border-radius:96px; padding:10px 22px;">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="15" viewBox="0 0 20 15" fill="none">
+                                                    <path d="M1.25 12.5C1.25 12.8315 1.3817 13.1495 1.61612 13.3839C1.85054 13.6183 2.16848 13.75 2.5 13.75H17.5C17.8315 13.75 18.1495 13.6183 18.3839 13.3839C18.6183 13.1495 18.75 12.8315 18.75 12.5V5C18.75 4.66848 18.6183 4.35054 18.3839 4.11612C18.1495 3.8817 17.8315 3.75 17.5 3.75H16.035C15.041 3.74946 14.0878 3.35425 13.385 2.65125L12.3475 1.61625C12.1137 1.38242 11.7969 1.25073 11.4662 1.25H8.53625C8.20476 1.25007 7.88687 1.38181 7.6525 1.61625L6.6175 2.65125C6.26921 2.99964 5.85569 3.276 5.40057 3.46453C4.94544 3.65305 4.45763 3.75006 3.965 3.75H2.5C2.16848 3.75 1.85054 3.8817 1.61612 4.11612C1.3817 4.35054 1.25 4.66848 1.25 5V12.5ZM17.5 2.5C18.163 2.5 18.7989 2.76339 19.2678 3.23223C19.7366 3.70107 20 4.33696 20 5V12.5C20 13.163 19.7366 13.7989 19.2678 14.2678C18.7989 14.7366 18.163 15 17.5 15H2.5C1.83696 15 1.20107 14.7366 0.732233 14.2678C0.263393 13.7989 0 13.163 0 12.5V5C0 4.33696 0.263393 3.70107 0.732233 3.23223C1.20107 2.76339 1.83696 2.5 2.5 2.5H3.965C4.62799 2.49986 5.26377 2.23637 5.7325 1.7675L6.7675 0.7325C7.23623 0.263627 7.87201 0.000141594 8.535 0H11.465C12.128 0.000141594 12.7638 0.263627 13.2325 0.7325L14.2675 1.7675C14.7362 2.23637 15.372 2.49986 16.035 2.5H17.5Z" fill="#3B3731" />
+                                                    <path d="M10 11.25C10.8288 11.25 11.6237 10.9208 12.2097 10.3347C12.7958 9.74866 13.125 8.9538 13.125 8.125C13.125 7.2962 12.7958 6.50134 12.2097 5.91529C11.6237 5.32924 10.8288 5 10 5C9.1712 5 8.37634 5.32924 7.79029 5.91529C7.20424 6.50134 6.875 7.2962 6.875 8.125C6.875 8.9538 7.20424 9.74866 7.79029 10.3347C8.37634 10.9208 9.1712 11.25 10 11.25ZM10 12.5C8.83968 12.5 7.72688 12.0391 6.90641 11.2186C6.08594 10.3981 5.625 9.28532 5.625 8.125C5.625 6.96468 6.08594 5.85188 6.90641 5.03141C7.72688 4.21094 8.83968 3.75 10 3.75C11.1603 3.75 12.2731 4.21094 13.0936 5.03141C13.9141 5.85188 14.375 6.96468 14.375 8.125C14.375 9.28532 13.9141 10.3981 13.0936 11.2186C12.2731 12.0391 11.1603 12.5 10 12.5ZM16.25 5.625C16.25 5.79076 16.3158 5.94973 16.4331 6.06694C16.5503 6.18415 16.7092 6.25 16.875 6.25C17.0408 6.25 17.1997 6.18415 17.3169 6.06694C17.4342 5.94973 17.5 5.79076 17.5 5.625C17.5 5.45924 17.4342 5.30027 17.3169 5.18306C17.1997 5.06585 17.0408 5 16.875 5C16.7092 5 16.5503 5.06585 16.4331 5.18306C16.3158 5.30027 16.25 5.45924 16.25 5.625Z" fill="#3B3731" />
+                                                </svg>&nbsp; Edit photo
+                                            </div>
                                         </div>
 
-
-                                        <label class="upload-btn">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
-                                                viewBox="0 0 14 14" fill="none">
-                                                <path
-                                                    d="M7 10.3162C6.72386 10.3162 6.5 10.0923 6.5 9.8162V1.6662L4.52903 3.63716C4.33115 3.83504 4.00998 3.83392 3.81349 3.63465C3.61896 3.43738 3.62005 3.1201 3.81593 2.92416L6.55492 0.184403C6.80072 -0.0614672 7.19931 -0.0614954 7.44514 0.184341L10.185 2.92419C10.3809 3.12014 10.3822 3.43747 10.1877 3.63493C9.99116 3.83455 9.66959 3.83579 9.47149 3.63769L7.5 1.6662V9.8162C7.5 10.0923 7.27614 10.3162 7 10.3162ZM1.616 13.7392C1.15533 13.7392 0.771 13.5852 0.463 13.2772C0.155 12.9692 0.000666667 12.5845 0 12.1232V10.2002C0 9.92405 0.223858 9.7002 0.5 9.7002C0.776142 9.7002 1 9.92406 1 10.2002V12.1232C1 12.2772 1.064 12.4185 1.192 12.5472C1.32 12.6759 1.461 12.7399 1.615 12.7392H12.385C12.5383 12.7392 12.6793 12.6752 12.808 12.5472C12.9367 12.4192 13.0007 12.2779 13 12.1232V10.2002C13 9.92405 13.2239 9.7002 13.5 9.7002C13.7761 9.7002 14 9.92406 14 10.2002V12.1232C14 12.5839 13.846 12.9682 13.538 13.2762C13.23 13.5842 12.8453 13.7385 12.384 13.7392H1.616Z"
-                                                    fill="white" />
+                                        <label class="upload-btn" id="uploadBtn1">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                                <path d="M7 10.3162C6.72386 10.3162 6.5 10.0923 6.5 9.8162V1.6662L4.52903 3.63716C4.33115 3.83504 4.00998 3.83392 3.81349 3.63465C3.61896 3.43738 3.62005 3.1201 3.81593 2.92416L6.55492 0.184403C6.80072 -0.0614672 7.19931 -0.0614954 7.44514 0.184341L10.185 2.92419C10.3809 3.12014 10.3822 3.43747 10.1877 3.63493C9.99116 3.83455 9.66959 3.83579 9.47149 3.63769L7.5 1.6662V9.8162C7.5 10.0923 7.27614 10.3162 7 10.3162ZM1.616 13.7392C1.15533 13.7392 0.771 13.5852 0.463 13.2772C0.155 12.9692 0.000666667 12.5845 0 12.1232V10.2002C0 9.92405 0.223858 9.7002 0.5 9.7002C0.776142 9.7002 1 9.92406 1 10.2002V12.1232C1 12.2772 1.064 12.4185 1.192 12.5472C1.32 12.6759 1.461 12.7399 1.615 12.7392H12.385C12.5383 12.7392 12.6793 12.6752 12.808 12.5472C12.9367 12.4192 13.0007 12.2779 13 12.1232V10.2002C13 9.92405 13.2239 9.7002 13.5 9.7002C13.7761 9.7002 14 9.92406 14 10.2002V12.1232C14 12.5839 13.846 12.9682 13.538 13.2762C13.23 13.5842 12.8453 13.7385 12.384 13.7392H1.616Z" fill="white" />
                                             </svg>
-                                            &nbsp;
-                                            Upload Photo
-                                            <input type="file" name="owner_profile_image" accept="image/*">
+                                            &nbsp; Upload Photo
+                                            <input type="file" id="ownerProfileImage" name="owner_profile_image" accept="image/*" style="display:none;">
                                         </label>
                                     </div>
                                 </div>
@@ -814,47 +802,42 @@ include '../components/calendar.php';
                         <!-- Step 2 -->
                         <div class="step">
                             <div class="row">
+                                <!-- ===== UPLOAD CARD 2 (pet) ===== -->
                                 <div class="col-lg-5">
-                                    <div
-                                        class="upload-card pet-details d-flex flex-column align-items-center justify-content-center mt-5">
-
+                                    <div class="upload-card pet-details d-flex flex-column align-items-center justify-content-center mt-5">
                                         <div class="user-icon-size-details d-flex flex-column align-items-center">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="85" height="85"
-                                                viewBox="0 0 85 85" fill="none">
+
+                                            <svg id="avatarPlaceholder2" xmlns="http://www.w3.org/2000/svg" width="85" height="85" viewBox="0 0 85 85" fill="none">
                                                 <circle cx="42.5" cy="42.5" r="42" fill="#E3E3E3" stroke="#F6F6F6" />
-                                                <path
-                                                    d="M16.4331 75.7448C18.0848 43.5072 66.8863 43.5073 68.538 75.7448C68.538 75.7448 59.009 84.8116 42.5757 84.8116C26.1424 84.8116 16.4331 75.7448 16.4331 75.7448Z"
-                                                    fill="white" />
-                                                <path
-                                                    d="M55.5193 33.4264C55.5193 36.8812 54.1468 40.1945 51.704 42.6374C49.2611 45.0803 45.9478 46.4527 42.493 46.4527C39.0383 46.4527 35.725 45.0803 33.2821 42.6374C30.8392 40.1945 29.4668 36.8812 29.4668 33.4264C29.4668 29.9716 30.8392 26.6583 33.2821 24.2154C35.725 21.7725 39.0383 20.4001 42.493 20.4001C45.9478 20.4001 49.2611 21.7725 51.704 24.2154C54.1468 26.6583 55.5193 29.9716 55.5193 33.4264Z"
-                                                    fill="white" />
-                                                <path
-                                                    d="M73.993 20.1799C68.9349 20.1799 64.8203 16.0653 64.8203 11.0072C64.8203 5.94913 68.9349 1.83453 73.993 1.83453C79.051 1.83453 83.1656 5.94913 83.1656 11.0072C83.1656 16.0653 79.051 20.1799 73.993 20.1799Z"
-                                                    fill="#9D9B98" />
-                                                <path
-                                                    d="M73.9931 15.5935C73.6262 15.5935 73.3379 15.3052 73.3379 14.9383V7.07603C73.3379 6.70912 73.6262 6.42084 73.9931 6.42084C74.36 6.42084 74.6483 6.70912 74.6483 7.07603V14.9383C74.6483 15.3052 74.36 15.5935 73.9931 15.5935Z"
-                                                    fill="white" />
-                                                <path
-                                                    d="M77.9237 11.6624H70.0614C69.6945 11.6624 69.4062 11.3741 69.4062 11.0072C69.4062 10.6403 69.6945 10.352 70.0614 10.352H77.9237C78.2906 10.352 78.5789 10.6403 78.5789 11.0072C78.5789 11.3741 78.2906 11.6624 77.9237 11.6624Z"
-                                                    fill="white" />
+                                                <path d="M16.4331 75.7448C18.0848 43.5072 66.8863 43.5073 68.538 75.7448C68.538 75.7448 59.009 84.8116 42.5757 84.8116C26.1424 84.8116 16.4331 75.7448 16.4331 75.7448Z" fill="white" />
+                                                <path d="M55.5193 33.4264C55.5193 36.8812 54.1468 40.1945 51.704 42.6374C49.2611 45.0803 45.9478 46.4527 42.493 46.4527C39.0383 46.4527 35.725 45.0803 33.2821 42.6374C30.8392 40.1945 29.4668 36.8812 29.4668 33.4264C29.4668 29.9716 30.8392 26.6583 33.2821 24.2154C35.725 21.7725 39.0383 20.4001 42.493 20.4001C45.9478 20.4001 49.2611 21.7725 51.704 24.2154C54.1468 26.6583 55.5193 29.9716 55.5193 33.4264Z" fill="white" />
+                                                <path d="M73.993 20.1799C68.9349 20.1799 64.8203 16.0653 64.8203 11.0072C64.8203 5.94913 68.9349 1.83453 73.993 1.83453C79.051 1.83453 83.1656 5.94913 83.1656 11.0072C83.1656 16.0653 79.051 20.1799 73.993 20.1799Z" fill="#9D9B98" />
+                                                <path d="M73.9931 15.5935C73.6262 15.5935 73.3379 15.3052 73.3379 14.9383V7.07603C73.3379 6.70912 73.6262 6.42084 73.9931 6.42084C74.36 6.42084 74.6483 6.70912 74.6483 7.07603V14.9383C74.6483 15.3052 74.36 15.5935 73.9931 15.5935Z" fill="white" />
+                                                <path d="M77.9237 11.6624H70.0614C69.6945 11.6624 69.4062 11.3741 69.4062 11.0072C69.4062 10.6403 69.6945 10.352 70.0614 10.352H77.9237C78.2906 10.352 78.5789 10.6403 78.5789 11.0072C78.5789 11.3741 78.2906 11.6624 77.9237 11.6624Z" fill="white" />
                                             </svg>
-                                            <div class="title mt-3">
-                                                Upload Image
+
+                                            <img id="avatarPreview2" src="" alt="Profile"
+                                                style="display:none; width:200px; height:200px; aspect-ratio:1/1; border-radius:50%; object-fit:cover;">
+
+                                            <div id="uploadLabel2">
+                                                <div class="title mt-3">Upload Image</div>
+                                                <div class="subtitle">Max file size: 1 MB</div>
                                             </div>
-                                            <div class="subtitle">Max file size: 1 MB</div>
+
+                                            <div id="editPhotoLabel2" class="fs-16-600" style="display:none; margin-top:8px; cursor:pointer; border:1px solid #3B3731; border-radius:96px; padding:10px 22px;">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="15" viewBox="0 0 20 15" fill="none">
+                                                    <path d="M1.25 12.5C1.25 12.8315 1.3817 13.1495 1.61612 13.3839C1.85054 13.6183 2.16848 13.75 2.5 13.75H17.5C17.8315 13.75 18.1495 13.6183 18.3839 13.3839C18.6183 13.1495 18.75 12.8315 18.75 12.5V5C18.75 4.66848 18.6183 4.35054 18.3839 4.11612C18.1495 3.8817 17.8315 3.75 17.5 3.75H16.035C15.041 3.74946 14.0878 3.35425 13.385 2.65125L12.3475 1.61625C12.1137 1.38242 11.7969 1.25073 11.4662 1.25H8.53625C8.20476 1.25007 7.88687 1.38181 7.6525 1.61625L6.6175 2.65125C6.26921 2.99964 5.85569 3.276 5.40057 3.46453C4.94544 3.65305 4.45763 3.75006 3.965 3.75H2.5C2.16848 3.75 1.85054 3.8817 1.61612 4.11612C1.3817 4.35054 1.25 4.66848 1.25 5V12.5ZM17.5 2.5C18.163 2.5 18.7989 2.76339 19.2678 3.23223C19.7366 3.70107 20 4.33696 20 5V12.5C20 13.163 19.7366 13.7989 19.2678 14.2678C18.7989 14.7366 18.163 15 17.5 15H2.5C1.83696 15 1.20107 14.7366 0.732233 14.2678C0.263393 13.7989 0 13.163 0 12.5V5C0 4.33696 0.263393 3.70107 0.732233 3.23223C1.20107 2.76339 1.83696 2.5 2.5 2.5H3.965C4.62799 2.49986 5.26377 2.23637 5.7325 1.7675L6.7675 0.7325C7.23623 0.263627 7.87201 0.000141594 8.535 0H11.465C12.128 0.000141594 12.7638 0.263627 13.2325 0.7325L14.2675 1.7675C14.7362 2.23637 15.372 2.49986 16.035 2.5H17.5Z" fill="#3B3731" />
+                                                    <path d="M10 11.25C10.8288 11.25 11.6237 10.9208 12.2097 10.3347C12.7958 9.74866 13.125 8.9538 13.125 8.125C13.125 7.2962 12.7958 6.50134 12.2097 5.91529C11.6237 5.32924 10.8288 5 10 5C9.1712 5 8.37634 5.32924 7.79029 5.91529C7.20424 6.50134 6.875 7.2962 6.875 8.125C6.875 8.9538 7.20424 9.74866 7.79029 10.3347C8.37634 10.9208 9.1712 11.25 10 11.25ZM10 12.5C8.83968 12.5 7.72688 12.0391 6.90641 11.2186C6.08594 10.3981 5.625 9.28532 5.625 8.125C5.625 6.96468 6.08594 5.85188 6.90641 5.03141C7.72688 4.21094 8.83968 3.75 10 3.75C11.1603 3.75 12.2731 4.21094 13.0936 5.03141C13.9141 5.85188 14.375 6.96468 14.375 8.125C14.375 9.28532 13.9141 10.3981 13.0936 11.2186C12.2731 12.0391 11.1603 12.5 10 12.5ZM16.25 5.625C16.25 5.79076 16.3158 5.94973 16.4331 6.06694C16.5503 6.18415 16.7092 6.25 16.875 6.25C17.0408 6.25 17.1997 6.18415 17.3169 6.06694C17.4342 5.94973 17.5 5.79076 17.5 5.625C17.5 5.45924 17.4342 5.30027 17.3169 5.18306C17.1997 5.06585 17.0408 5 16.875 5C16.7092 5 16.5503 5.06585 16.4331 5.18306C16.3158 5.30027 16.25 5.45924 16.25 5.625Z" fill="#3B3731" />
+                                                </svg> Edit photo
+                                            </div>
                                         </div>
 
-
-                                        <label class="upload-btn">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
-                                                viewBox="0 0 14 14" fill="none">
-                                                <path
-                                                    d="M7 10.3162C6.72386 10.3162 6.5 10.0923 6.5 9.8162V1.6662L4.52903 3.63716C4.33115 3.83504 4.00998 3.83392 3.81349 3.63465C3.61896 3.43738 3.62005 3.1201 3.81593 2.92416L6.55492 0.184403C6.80072 -0.0614672 7.19931 -0.0614954 7.44514 0.184341L10.185 2.92419C10.3809 3.12014 10.3822 3.43747 10.1877 3.63493C9.99116 3.83455 9.66959 3.83579 9.47149 3.63769L7.5 1.6662V9.8162C7.5 10.0923 7.27614 10.3162 7 10.3162ZM1.616 13.7392C1.15533 13.7392 0.771 13.5852 0.463 13.2772C0.155 12.9692 0.000666667 12.5845 0 12.1232V10.2002C0 9.92405 0.223858 9.7002 0.5 9.7002C0.776142 9.7002 1 9.92406 1 10.2002V12.1232C1 12.2772 1.064 12.4185 1.192 12.5472C1.32 12.6759 1.461 12.7399 1.615 12.7392H12.385C12.5383 12.7392 12.6793 12.6752 12.808 12.5472C12.9367 12.4192 13.0007 12.2779 13 12.1232V10.2002C13 9.92405 13.2239 9.7002 13.5 9.7002C13.7761 9.7002 14 9.92406 14 10.2002V12.1232C14 12.5839 13.846 12.9682 13.538 13.2762C13.23 13.5842 12.8453 13.7385 12.384 13.7392H1.616Z"
-                                                    fill="white" />
+                                        <label class="upload-btn" id="uploadBtn2">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                                <path d="M7 10.3162C6.72386 10.3162 6.5 10.0923 6.5 9.8162V1.6662L4.52903 3.63716C4.33115 3.83504 4.00998 3.83392 3.81349 3.63465C3.61896 3.43738 3.62005 3.1201 3.81593 2.92416L6.55492 0.184403C6.80072 -0.0614672 7.19931 -0.0614954 7.44514 0.184341L10.185 2.92419C10.3809 3.12014 10.3822 3.43747 10.1877 3.63493C9.99116 3.83455 9.66959 3.83579 9.47149 3.63769L7.5 1.6662V9.8162C7.5 10.0923 7.27614 10.3162 7 10.3162ZM1.616 13.7392C1.15533 13.7392 0.771 13.5852 0.463 13.2772C0.155 12.9692 0.000666667 12.5845 0 12.1232V10.2002C0 9.92405 0.223858 9.7002 0.5 9.7002C0.776142 9.7002 1 9.92406 1 10.2002V12.1232C1 12.2772 1.064 12.4185 1.192 12.5472C1.32 12.6759 1.461 12.7399 1.615 12.7392H12.385C12.5383 12.7392 12.6793 12.6752 12.808 12.5472C12.9367 12.4192 13.0007 12.2779 13 12.1232V10.2002C13 9.92405 13.2239 9.7002 13.5 9.7002C13.7761 9.7002 14 9.92406 14 10.2002V12.1232C14 12.5839 13.846 12.9682 13.538 13.2762C13.23 13.5842 12.8453 13.7385 12.384 13.7392H1.616Z" fill="white" />
                                             </svg>
-                                            &nbsp;
-                                            Upload Photo
-                                            <input type="file" name="pet_profile_image" accept="image/*">
+                                            &nbsp; Upload Photo
+                                            <input type="file" id="petProfileImage" name="pet_profile_image" accept="image/*" style="display:none;">
                                         </label>
                                     </div>
                                 </div>
@@ -1330,7 +1313,7 @@ include '../components/calendar.php';
                             </div>
                             <div class="card-right">
                                 <div class="actions d-flex align-items-center">
-                                    <button class="btn-edit">
+                                    <button class="btn-edit fs-16-500 edit-pet">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="15"
                                             viewBox="0 0 16 15" fill="none">
                                             <path
@@ -1454,7 +1437,7 @@ include '../components/calendar.php';
                             </div>
                             <div class="card-right">
                                 <div class="actions d-flex align-items-center">
-                                    <button class="btn-edit">
+                                    <button class="btn-edit fs-16-500 edit-pet">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="15"
                                             viewBox="0 0 16 15" fill="none">
                                             <path
@@ -1778,6 +1761,12 @@ include '../components/calendar.php';
         goBackBtn.addEventListener("click", handleBackNavigation);
         addPetBtn.addEventListener("click", handleBackNavigation);
 
+        const editPetBtns = document.querySelectorAll(".edit-pet");
+
+        editPetBtns.forEach(btn => {
+            btn.addEventListener("click", handleBackNavigation);
+        });
+
 
         // Radio item click to select
         document.querySelectorAll('.radio-item').forEach(item => {
@@ -1790,7 +1779,13 @@ include '../components/calendar.php';
         const petCards = document.querySelectorAll('.pet-card');
 
         petCards.forEach(card => {
-            card.addEventListener('click', () => {
+            card.addEventListener('click', (e) => {
+
+                // Ignore clicks on Edit/Delete buttons
+                if (e.target.closest('.actions')) {
+                    return;
+                }
+
                 petCards.forEach(c => {
                     c.classList.remove('selected');
                     c.classList.add('alt');
@@ -1801,9 +1796,195 @@ include '../components/calendar.php';
             });
         });
     </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
 
+            function initUpload(inputId, previewId, placeholderId, uploadLabelId, uploadBtnId, editLabelId) {
+                var input = document.getElementById(inputId);
+                var preview = document.getElementById(previewId);
+                var placeholder = document.getElementById(placeholderId);
+                var uploadLabel = document.getElementById(uploadLabelId);
+                var uploadBtn = document.getElementById(uploadBtnId);
+                var editLabel = document.getElementById(editLabelId);
 
+                editLabel.addEventListener('click', function() {
+                    input.click();
+                });
 
+                input.addEventListener('change', function() {
+                    var file = input.files[0];
+                    // if (!file) return;
+
+                    // if (file.size > 1 * 1024 * 1024) {
+                    //     alert('File size exceeds 1 MB. Please choose a smaller image.');
+                    //     input.value = '';
+                    //     return;
+                    // }
+
+                    var reader = new FileReader();
+                    reader.onload = function(e) {
+                        preview.src = e.target.result;
+                        preview.style.display = 'block';
+                        placeholder.style.display = 'none';
+                        uploadLabel.style.display = 'none';
+                        uploadBtn.style.display = 'none';
+                        editLabel.style.display = 'block';
+                    };
+                    reader.readAsDataURL(file);
+                });
+            }
+
+            // Init card 1 (owner)
+            initUpload('ownerProfileImage', 'avatarPreview1', 'avatarPlaceholder1', 'uploadLabel1', 'uploadBtn1', 'editPhotoLabel1');
+
+            // Init card 2 (pet)
+            initUpload('petProfileImage', 'avatarPreview2', 'avatarPlaceholder2', 'uploadLabel2', 'uploadBtn2', 'editPhotoLabel2');
+
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+
+            document.querySelectorAll('.btn-delete').forEach(function(btn) {
+
+                btn.addEventListener('click', function() {
+
+                    btn.style.display = 'none';
+
+                    var card = btn.closest('.pet-card');
+                    var petName = card.querySelector('.pet-name').textContent.trim();
+
+                    // Remove any existing confirmation bars first and restore their delete buttons
+                    document.querySelectorAll('.delete-confirm-bar').forEach(function(existingBar) {
+                        var prevCard = existingBar.previousElementSibling;
+                        if (prevCard && prevCard.classList.contains('pet-card')) {
+                            var prevBtn = prevCard.querySelector('.btn-delete');
+                            if (prevBtn) prevBtn.style.display = 'block';
+                        }
+                        existingBar.remove();
+                    });
+
+                    // Create confirmation bar
+                    var bar = document.createElement('div');
+                    bar.className = 'delete-confirm-bar';
+                    bar.innerHTML = `
+                        <div class="delete-confirm-inner d-flex align-items-center justify-content-between">
+                            <div class="delete-confirm-msg d-flex align-items-center gap-15">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22" viewBox="0 0 24 22" fill="none">
+                                    <path d="M20.5981 21H2.6817C2.3907 20.9999 2.1047 20.9244 1.85164 20.7807C1.59858 20.6371 1.38712 20.4302 1.23792 20.1804C1.08872 19.9306 1.00688 19.6463 1.00042 19.3554C0.993947 19.0645 1.06306 18.7768 1.20101 18.5206L10.1587 1.88463C10.7942 0.705125 12.4856 0.705125 13.1211 1.88463L22.0788 18.5206C22.2168 18.7768 22.2859 19.0645 22.2794 19.3554C22.2729 19.6463 22.1911 19.9306 22.0419 20.1804C21.8927 20.4302 21.6812 20.6371 21.4282 20.7807C21.1751 20.9244 20.8891 20.9999 20.5981 21Z" stroke="#FF6E6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M11.6393 14.2268L11.3376 7.81423C11.3361 7.77395 11.3427 7.73379 11.357 7.69611C11.3713 7.65843 11.393 7.62399 11.4209 7.59484C11.4487 7.56569 11.4821 7.54241 11.5191 7.52637C11.556 7.51034 11.5959 7.50187 11.6362 7.50148C11.6772 7.50108 11.7178 7.50905 11.7557 7.5249C11.7935 7.54075 11.8277 7.56415 11.8562 7.59367C11.8847 7.62318 11.9069 7.6582 11.9213 7.69657C11.9358 7.73495 11.9424 7.77588 11.9405 7.81685L11.6393 14.2268Z" stroke="#FF6E6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M11.6396 18.4248C11.4317 18.4248 11.2285 18.3631 11.0556 18.2476C10.8827 18.1321 10.748 17.9679 10.6684 17.7758C10.5888 17.5837 10.568 17.3723 10.6086 17.1684C10.6491 16.9645 10.7493 16.7772 10.8963 16.6302C11.0433 16.4831 11.2306 16.383 11.4345 16.3425C11.6385 16.3019 11.8498 16.3227 12.0419 16.4023C12.234 16.4819 12.3982 16.6166 12.5137 16.7895C12.6292 16.9623 12.6909 17.1656 12.6909 17.3735C12.6909 17.6523 12.5801 17.9197 12.383 18.1169C12.1858 18.314 11.9184 18.4248 11.6396 18.4248Z" fill="#FF6E6E"/>
+                                </svg>
+                                <p class="fs-16-600" style="color: #FF6E6E;">Are you sure you want to delete <strong>&nbsp;${petName}'s&nbsp;</strong> profile? This action is permanent.</p>
+                            </div>
+                            <div class="delete-confirm-actions d-flex align-items-center gap-15">
+                                <button class="btn-cancel-delete cursor fs-16-500">Cancel</button>
+                                <button class="btn-confirm-delete fs-16-500">Yes, delete</button>
+                            </div>
+                        </div>
+                    `;
+
+                    // Insert after the card
+                    card.insertAdjacentElement('afterend', bar);
+
+                    // Animate in
+                    requestAnimationFrame(function() {
+                        bar.classList.add('show');
+
+                    });
+
+                    // Cancel
+                    bar.querySelector('.btn-cancel-delete').addEventListener('click', function() {
+                        bar.classList.remove('show');
+                        btn.style.display = 'block';
+
+                        setTimeout(function() {
+                            bar.remove();
+                        }, 300);
+                    });
+
+                    // Confirm delete
+                    bar.querySelector('.btn-confirm-delete').addEventListener('click', function() {
+                        bar.classList.remove('show');
+                        card.classList.add('removing');
+
+                        setTimeout(function() {
+                            card.remove();
+                            bar.remove();
+                        }, 300);
+                    });
+                });
+            });
+
+        });
+    </script>
+
+    <style>
+        .delete-confirm-bar {
+            overflow: hidden;
+            max-height: 0;
+            opacity: 0;
+            transition: max-height 0.3s ease, opacity 0.3s ease, margin 0.3s ease;
+            margin: 0;
+        }
+
+        .delete-confirm-bar.show {
+            max-height: 100px;
+            opacity: 1;
+            margin: 6px 0;
+        }
+
+        .delete-confirm-inner {
+            background: rgba(255, 110, 110, 0.10);
+            border: 1px solid #FF6E6E;
+            border-radius: 12px;
+            padding: 25px 60px;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .delete-confirm-msg {
+            color: #3B3731;
+            font-size: 14px;
+            flex: 1;
+        }
+
+        .btn-cancel-delete {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            border-radius: 96px;
+            padding: 10px 18px;
+            height: 48px;
+            transition: background 0.2s;
+        }
+
+        .btn-cancel-delete:hover {
+            background: #f5f5f5;
+        }
+
+        .btn-confirm-delete {
+            background: #FF6E6E;
+            border: none;
+            padding: 8px 20px;
+            cursor: pointer;
+            color: #fff;
+            transition: background 0.2s;
+            height: 48px;
+            border-radius: 96px;
+        }
+
+        .btn-confirm-delete:hover {
+            background: #c94444;
+        }
+
+        .pet-card.removing {
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+    </style>
 </body>
 
 </html>
