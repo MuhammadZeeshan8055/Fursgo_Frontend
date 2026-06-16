@@ -521,7 +521,7 @@ $imagePath = BASE_URL . '/assets/images/card1.png';
         .information>.btns {
             display: flex;
             gap: 1rem;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
             margin-top: 1rem;
         }
@@ -846,7 +846,8 @@ $imagePath = BASE_URL . '/assets/images/card1.png';
         .pet-details-display.active {
             display: flex;
             align-items: center;
-            justify-content: space-between
+            justify-content: space-between;
+            gap: 25px;
         }
 
         .pet-details-display h2 {
@@ -859,9 +860,9 @@ $imagePath = BASE_URL . '/assets/images/card1.png';
 
         .pet-details-display-content {
             display: flex;
-            gap: 4.5rem;
+            justify-content: space-between;
+            width: stretch;
         }
-
         .pet-detail-item {
             display: flex;
             flex-direction: column;
@@ -1716,6 +1717,7 @@ $imagePath = BASE_URL . '/assets/images/card1.png';
             width: auto;
             height: 48px;
             padding: 8px 10px;
+            width: 100%;
         }
 
         .promocode input:focus {
@@ -1912,7 +1914,8 @@ $imagePath = BASE_URL . '/assets/images/card1.png';
             box-shadow: none;
         }
 
-        .step1-accordion-header h3 {
+        .step1-accordion-header h3,
+        #step2Content h3 {
             margin: 0;
             color: #3B3731;
             font-family: "Playfair Display";
@@ -2044,6 +2047,26 @@ $imagePath = BASE_URL . '/assets/images/card1.png';
         .add-on-card.active .checkmark-icon {
             display: flex;
         }
+
+        .input-apply-promo {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        button.promocode-apply {
+            position: absolute;
+            right: 0px;
+            margin: 0 5px 0px 0;
+            width: 77px;
+            height: 35px;
+            border-radius: 5px;
+            background: #BACF8E;
+            box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.05);
+            border: none;
+            cursor: pointer;
+            color: #FFF;
+        }
     </style>
 </head>
 
@@ -2097,11 +2120,11 @@ $imagePath = BASE_URL . '/assets/images/card1.png';
             <div class="col-lg-8">
                 <div class="step-one">
                     <h1 id="step1BookingDetailsHeading">
-                        Booking Details
+                        Groomer Details
                     </h1>
 
                     <!-- Accordion 1: Groomer Details -->
-                    <div class="step1-accordion" id="acc-groomer">
+                    <div class="step1-accordion mt-4" id="acc-groomer">
                         <div class="step1-accordion-header" style="display:none;"
                             onclick="toggleAccordion('acc-groomer')">
                             <div style="display:flex; align-items:center; gap:15px">
@@ -2288,10 +2311,10 @@ $imagePath = BASE_URL . '/assets/images/card1.png';
                         </div>
                         <div class="step1-accordion-body">
                             <div class="information" style="margin-top: 2rem;">
-                                <h2>Pet Information for Space Use</h2>
+                                <h2>Pet Details</h2>
 
                                 <!-- Buttons — hidden once list is shown -->
-                                <div class="btns" id="petActionBtns">
+                                <div class="btns mt-4" id="petActionBtns">
                                     <button id="selectPetsBtn">Select existing pet/s</button>
                                     <button id="addNewPetBtn">+ Add new pet/s</button>
                                 </div>
@@ -2300,7 +2323,7 @@ $imagePath = BASE_URL . '/assets/images/card1.png';
                                 <div class="pet-list" id="petList"></div>
                                 <div class="pet-details-form hidden">
                                     <div>
-                                        <h2>Pet Details</h2>
+                                        <!-- <h2>Pet Details</h2> -->
                                     </div>
                                     <div>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="85" height="85"
@@ -2472,6 +2495,7 @@ $imagePath = BASE_URL . '/assets/images/card1.png';
 
                 <!-- Step 2: Space Details -->
                 <div id="step2Content" style="display:none;">
+                    <h3>Space Details</h3>
                     <div class="card space-card">
                         <div>
                             <div class="card-img">
@@ -2931,17 +2955,16 @@ line-height: normal;">
                     <div id="sidebarSpaceAddonsDivider" class="divider"
                         style="margin:20px 0; border-top:1px solid #EAE8E5;"></div>
 
-                    <div class="promocode"
-                        style="margin: 20px 0;">
-                        <label
-                            style="color: #3B3731; font-family: Lato; font-size: 14px; font-weight: 600; margin-bottom: 10px; display: block;">Promo
-                            code</label>
-                        <input type="text" placeholder="Enter Promo Code"
-                            style="width: 100%; border-radius: 8px; border: 1px solid #EAE8E5; padding: 10px 15px; font-family: Lato; font-size: 14px;">
+                   <div class="promocode">
+                        <label>Promo code</label>
+                        <div class="input-apply-promo">
+                            <input type="text" placeholder="Enter Promo Code">
+                            <button class="promocode-apply fs-14-500-f-color">Apply</button>
+                        </div>
                     </div>
-                    <div class="promo-code-entered d-flex align-items-center gap-10 mt-3">
-                        <p>PROMO25</p>
-                        <div class="remove-promo cursor">
+                    <div class="promo-code-entered cursor d-flex align-items-center gap-10 mt-3">
+                        <p class="fs-12-500-f-color">PROMO25</p>
+                        <div class="remove-promo">
                             <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none">
                                 <path d="M0.5 7.5L7.5 0.5M0.5 0.5L7.5 7.5" stroke="#3B3731" stroke-linecap="round" />
                             </svg>
@@ -3873,10 +3896,10 @@ line-height: normal;">
             });
 
             const saveBtn = document.createElement('button');
-            saveBtn.type = 'button';
-            saveBtn.className = 'pet-photo-save-btn';
-            saveBtn.textContent = 'Save';
-            saveBtn.addEventListener('click', onPhotosaveConfirm);
+            // saveBtn.type = 'button';
+            // saveBtn.className = 'pet-photo-save-btn';
+            // saveBtn.textContent = 'Save';
+            // saveBtn.addEventListener('click', onPhotosaveConfirm);
 
             actionBtnsDiv.appendChild(editBtn);
             actionBtnsDiv.appendChild(saveBtn);
@@ -3962,6 +3985,9 @@ line-height: normal;">
                 }
             }
 
+            const petActionBtns = document.getElementById('petActionBtns');
+            petActionBtns.style.display = 'none';
+
             // Handle photo separately — inject ABOVE the grid, not inside it
             const existingPhoto = document.getElementById('petDisplayPhoto');
             if (existingPhoto) existingPhoto.remove();
@@ -4020,8 +4046,8 @@ line-height: normal;">
                 petFormBtns.style.display = 'none';
 
                 // Add: ensure action buttons come back so user can add/select again
-                const petActionBtns = document.getElementById('petActionBtns');
-                if (petActionBtns) petActionBtns.style.display = 'flex';
+                // const petActionBtns = document.getElementById('petActionBtns');
+                // if (petActionBtns) petActionBtns.style.display = 'flex';
                 validateStep1();
             } else {
                 petDetailsForm.classList.remove('hidden');
@@ -4291,6 +4317,14 @@ line-height: normal;">
 
         window.addEventListener('scroll', updateHeader);
         updateHeader();
+
+
+        document.addEventListener("click", function(e) {
+            const pill = e.target.closest(".promo-code-entered");
+            if (pill) {
+                pill.remove();
+            }
+        });
     </script>
 </body>
 

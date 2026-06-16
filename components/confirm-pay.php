@@ -1,7 +1,7 @@
 <?php
 function renderConfirmPay()
 {
-    ?>
+?>
     <style>
         .confirm-pay h1 {
             color: #3B3731;
@@ -225,6 +225,15 @@ function renderConfirmPay()
         .pay-btn img,
         .pay-btn svg {
             max-width: 100px;
+            width: 54px;
+            height: 50px;
+            aspect-ratio: 9/4;
+        }
+
+        .pay-btn.paypal img {
+            width: 79px;
+            height: 84px;
+            aspect-ratio: 79/24;
         }
 
         .card-payment-section {
@@ -475,7 +484,7 @@ function renderConfirmPay()
                                 fill="black" />
                         </svg>
                     </div>
-                    <div class="pay-btn" style="background:#FFD88C;">
+                    <div class="pay-btn paypal" style="background:#FFD88C;">
                         <img src="<?= BASE_URL ?>/assets/images/icons/paypal-icon.png" alt="Paypal" />
                     </div>
                     <div class="pay-btn">
@@ -685,11 +694,11 @@ line-height: normal;">I agree to Fursgo's <a href="#">Terms of Service</a> and <
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
             const form = document.getElementById('demoForm');
             if (!form) return;
 
-            window.togglePolicy = function (header) {
+            window.togglePolicy = function(header) {
                 const body = header.nextElementSibling;
                 const chevron = header.querySelector('svg');
                 const isOpen = body.style.display !== 'none';
@@ -734,7 +743,10 @@ line-height: normal;">I agree to Fursgo's <a href="#">Terms of Service</a> and <
                 let allOk = true;
                 Object.keys(rules).forEach(name => {
                     const el = form.elements[name];
-                    if (!el) { allOk = false; return; }
+                    if (!el) {
+                        allOk = false;
+                        return;
+                    }
                     const val = el.value || '';
                     const fn = rules[name];
                     if (fn && !fn(val)) allOk = false;
@@ -782,7 +794,7 @@ line-height: normal;">I agree to Fursgo's <a href="#">Terms of Service</a> and <
                 }
             });
 
-            form.addEventListener('submit', function (e) {
+            form.addEventListener('submit', function(e) {
                 e.preventDefault();
                 let ok = true;
                 Object.keys(rules).forEach(name => {
@@ -815,19 +827,22 @@ line-height: normal;">I agree to Fursgo's <a href="#">Terms of Service</a> and <
                     document.getElementById('confirmPayDisplay').style.display = 'flex';
                 } else {
                     const firstErr = document.querySelector('.cp-input-wrap.error');
-                    if (firstErr) firstErr.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    if (firstErr) firstErr.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'center'
+                    });
                 }
             });
 
             const changeBtn = document.getElementById('confirmPayChangeBtn');
             if (changeBtn) {
-                changeBtn.addEventListener('click', function () {
+                changeBtn.addEventListener('click', function() {
                     document.getElementById('confirmPayDisplay').style.display = 'none';
                     form.style.display = 'block';
                 });
             }
 
-            window.resetStates = function () {
+            window.resetStates = function() {
                 document.querySelectorAll('.cp-input-wrap').forEach(w => {
                     w.classList.remove('valid', 'error');
                     const x = w.querySelector('.x-icon');
@@ -837,7 +852,7 @@ line-height: normal;">I agree to Fursgo's <a href="#">Terms of Service</a> and <
                 if (phoneErr) phoneErr.style.display = 'none';
             };
 
-            window.toggleCardCheck = function (boxId, innerId) {
+            window.toggleCardCheck = function(boxId, innerId) {
                 const inner = document.getElementById(innerId);
                 const box = document.getElementById(boxId);
                 if (!inner || !box) return;
@@ -848,7 +863,7 @@ line-height: normal;">I agree to Fursgo's <a href="#">Terms of Service</a> and <
 
             const cn = document.getElementById('cardNumber');
             if (cn) {
-                cn.addEventListener('input', function () {
+                cn.addEventListener('input', function() {
                     let v = this.value.replace(/\D/g, '').substring(0, 16);
                     this.value = v.replace(/(.{4})/g, '$1 ').trim();
                 });
@@ -861,7 +876,7 @@ line-height: normal;">I agree to Fursgo's <a href="#">Terms of Service</a> and <
 
                 let isOpen = false;
 
-                select.addEventListener('mousedown', function () {
+                select.addEventListener('mousedown', function() {
                     if (isOpen) {
                         wrap.classList.remove('open');
                         isOpen = false;
@@ -871,14 +886,14 @@ line-height: normal;">I agree to Fursgo's <a href="#">Terms of Service</a> and <
                     }
                 });
 
-                select.addEventListener('blur', function () {
+                select.addEventListener('blur', function() {
                     setTimeout(() => {
                         wrap.classList.remove('open');
                         isOpen = false;
                     }, 100);
                 });
 
-                select.addEventListener('change', function () {
+                select.addEventListener('change', function() {
                     wrap.classList.remove('open');
                     isOpen = false;
                 });
@@ -886,16 +901,22 @@ line-height: normal;">I agree to Fursgo's <a href="#">Terms of Service</a> and <
 
             const sidebarBtn = document.getElementById('confirmPayBtnSidebar');
             if (sidebarBtn) {
-                sidebarBtn.addEventListener('click', function (e) {
+                sidebarBtn.addEventListener('click', function(e) {
                     if (!sidebarBtn.disabled) {
                         e.preventDefault();
-                        form.dispatchEvent(new Event('submit', { cancelable: true, bubbles: true }));
-                        
+                        form.dispatchEvent(new Event('submit', {
+                            cancelable: true,
+                            bubbles: true
+                        }));
+
                         // Check if the form was actually successfully validated
                         let ok = true;
                         Object.keys(rules).forEach(name => {
                             const el = form.elements[name];
-                            if (!el) { ok = false; return; }
+                            if (!el) {
+                                ok = false;
+                                return;
+                            }
                             const val = el.value || '';
                             const fn = rules[name];
                             if (fn && !fn(val)) ok = false;
@@ -913,6 +934,6 @@ line-height: normal;">I agree to Fursgo's <a href="#">Terms of Service</a> and <
             }
         });
     </script>
-    <?php
+<?php
 }
 ?>

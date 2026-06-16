@@ -335,7 +335,7 @@ $imagePath = BASE_URL . '/assets/images/booking-space-card-image.svg';
         .information>.btns {
             display: flex;
             gap: 1rem;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
             margin-top: 1rem;
         }
@@ -774,7 +774,8 @@ $imagePath = BASE_URL . '/assets/images/booking-space-card-image.svg';
         .pet-details-display.active {
             display: flex;
             align-items: center;
-            justify-content: space-between
+            justify-content: space-between;
+            gap: 25px;
         }
 
         .pet-details-display h2 {
@@ -787,7 +788,8 @@ $imagePath = BASE_URL . '/assets/images/booking-space-card-image.svg';
 
         .pet-details-display-content {
             display: flex;
-            gap: 4.5rem;
+            justify-content: space-between;
+            width: stretch;
         }
 
         .pet-detail-item {
@@ -836,7 +838,7 @@ $imagePath = BASE_URL . '/assets/images/booking-space-card-image.svg';
             font-family: Lato;
             font-size: 14px;
             font-style: normal;
-            font-weight: 500;
+            font-weight: 600;
             line-height: normal;
         }
 
@@ -1644,6 +1646,7 @@ $imagePath = BASE_URL . '/assets/images/booking-space-card-image.svg';
             width: auto;
             height: 48px;
             padding: 8px 10px;
+            width: 100%;
         }
 
         .promocode input:focus {
@@ -1813,6 +1816,32 @@ $imagePath = BASE_URL . '/assets/images/booking-space-card-image.svg';
             text-decoration-thickness: auto;
             text-underline-offset: auto;
             text-underline-position: from-font;
+        }
+
+        .petDetailsAddNewPetBtn{
+            display: flex;
+            justify-content: end;
+            align-items: center;
+        }
+
+        .input-apply-promo {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        button.promocode-apply {
+            position: absolute;
+            right: 0px;
+            margin: 0 5px 0px 0;
+            width: 77px;
+            height: 35px;
+            border-radius: 5px;
+            background: #BACF8E;
+            box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.05);
+            border: none;
+            cursor: pointer;
+            color: #FFF;
         }
     </style>
 </head>
@@ -2033,7 +2062,7 @@ $imagePath = BASE_URL . '/assets/images/booking-space-card-image.svg';
                         <h2>Pet Information for Space Use</h2>
 
                         <!-- Buttons — hidden once list is shown -->
-                        <div class="btns" id="petActionBtns">
+                        <div class="btns mt-4" id="petActionBtns">
                             <button id="selectPetsBtn">Select existing pet/s</button>
                             <button id="addNewPetBtn">+ Add new pet/s</button>
                         </div>
@@ -2042,7 +2071,7 @@ $imagePath = BASE_URL . '/assets/images/booking-space-card-image.svg';
                         <div class="pet-list" id="petList"></div>
                         <div class="pet-details-form hidden">
                             <div>
-                                <h2>Pet Details</h2>
+                                <!-- <h2>Pet Details</h2> -->
                             </div>
                             <div>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="85" height="85" viewBox="0 0 85 85"
@@ -2163,10 +2192,31 @@ $imagePath = BASE_URL . '/assets/images/booking-space-card-image.svg';
                             </div>
                         </div>
 
+                        <div class="petDetailsAddNewPetBtn mt-4" style="display: none;">
+                            <button id="petAddNewPetBtn" fdprocessedid="skk6yv" style="
+                                border-radius: 75px;
+                                border: 1px solid #3B3731;
+                                background: #FFF;
+                                width: 400px;
+                                height: 48px;
+                                color: #3B3731;
+                                text-align: center;
+                                font-family: Lato;
+                                font-size: 18px;
+                                font-style: normal;
+                                font-weight: 600;
+                                line-height: normal;
+                                cursor: pointer;
+                            ">+ Add new pet</button>
+                        </div>
+
+                            
+
+
                     </div>
                     <div class="add-ons">
                         <h2 class="add-ons-title">Add-ons Services</h2>
-                        <div class="add-ons-list">
+                        <div class="add-ons-list mt-4">
                             <label class="add-on-card">
                                 <input type="checkbox" name="addons[]" value="storage_locker" class="add-on-checkbox"
                                     checked>
@@ -2349,11 +2399,14 @@ margin: 0;">
 
                     <div class="promocode">
                         <label>Promo code</label>
-                        <input type="text" placeholder="Enter Promo Code">
+                        <div class="input-apply-promo">
+                            <input type="text" placeholder="Enter Promo Code">
+                            <button class="promocode-apply fs-14-500-f-color">Apply</button>
+                        </div>
                     </div>
-                    <div class="promo-code-entered d-flex align-items-center gap-10 mt-3">
-                        <p>PROMO25</p>
-                        <div class="remove-promo cursor">
+                    <div class="promo-code-entered cursor d-flex align-items-center gap-10 mt-3">
+                        <p class="fs-12-500-f-color">PROMO25</p>
+                        <div class="remove-promo">
                             <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none">
                                 <path d="M0.5 7.5L7.5 0.5M0.5 0.5L7.5 7.5" stroke="#3B3731" stroke-linecap="round" />
                             </svg>
@@ -2659,7 +2712,7 @@ margin: 0;">
                     card.innerHTML = `
         <div class="pet-radio"><div class="pet-radio-inner"></div></div>
         <div class="pet-avatar">
-          <img src="${pet.image}" alt="${pet.name}"
+          <img src="<?= BASE_URL ?>${pet.image}" alt="${pet.name}"
                onerror="this.parentElement.innerHTML='${petEmoji(pet.type)}'">
         </div>
         <div class="pet-info-grid">
@@ -2974,10 +3027,10 @@ margin: 0;">
             });
 
             const saveBtn = document.createElement('button');
-            saveBtn.type = 'button';
-            saveBtn.className = 'pet-photo-save-btn';
-            saveBtn.textContent = 'Save';
-            saveBtn.addEventListener('click', onPhotosaveConfirm);
+            // saveBtn.type = 'button';
+            // saveBtn.className = 'pet-photo-save-btn';
+            // saveBtn.textContent = 'Save';
+            // saveBtn.addEventListener('click', onPhotosaveConfirm);
 
             actionBtnsDiv.appendChild(editBtn);
             actionBtnsDiv.appendChild(saveBtn);
@@ -3063,6 +3116,9 @@ margin: 0;">
                 }
             }
 
+            const petActionBtns = document.getElementById('petActionBtns');
+            petActionBtns.style.display = 'none';
+
             // Handle photo separately — inject ABOVE the grid, not inside it
             const existingPhoto = document.getElementById('petDisplayPhoto');
             if (existingPhoto) existingPhoto.remove();
@@ -3070,7 +3126,7 @@ margin: 0;">
             if (details.photo) {
                 const photoEl = document.createElement('div');
                 photoEl.id = 'petDisplayPhoto';
-                photoEl.innerHTML = `<img src="${details.photo}" alt="Pet photo" style="width: 85px;height: 85px;aspect-ratio: 1/1; border-radius: 50%; object-fit: cover;">`;
+                photoEl.innerHTML = `<img src="<?= BASE_URL ?>${details.photo}" alt="Pet photo" style="width: 85px;height: 85px;aspect-ratio: 1/1; border-radius: 50%; object-fit: cover;">`;
                 petDetailsDisplay.insertBefore(photoEl, petDetailsContent);
             }
 
@@ -3111,7 +3167,12 @@ margin: 0;">
             Notes</label>
             <span>${details.notes || 'No notes added'}</span>
         </div>
+        
     `;
+
+            const petDetailsAddNewPetBtn = document.querySelector('.petDetailsAddNewPetBtn');
+            petDetailsAddNewPetBtn.style.display = 'flex';
+
         }
 
         function toggleFormDisplay(showDisplay = true) {
@@ -3121,8 +3182,8 @@ margin: 0;">
                 petFormBtns.style.display = 'none';
 
                 // Add: ensure action buttons come back so user can add/select again
-                const petActionBtns = document.getElementById('petActionBtns');
-                if (petActionBtns) petActionBtns.style.display = 'flex';
+                // const petActionBtns = document.getElementById('petActionBtns');
+                // if (petActionBtns) petActionBtns.style.display = 'flex';
             } else {
                 petDetailsForm.classList.remove('hidden');
                 petDetailsDisplay.classList.remove('active');
@@ -3130,6 +3191,9 @@ margin: 0;">
                 // Populate form with saved data and restore photo preview
                 populateFormWithSavedData();
             }
+
+            const petDetailsAddNewPetBtn = document.querySelector('.petDetailsAddNewPetBtn');
+            petDetailsAddNewPetBtn.style.display = 'none';
         }
 
         // Populate form fields with saved pet details
@@ -3291,13 +3355,27 @@ margin: 0;">
 
         document.addEventListener('DOMContentLoaded', function() {
             const addNewPetBtn = document.getElementById('addNewPetBtn');
+            const petAddNewPetBtn = document.getElementById('petAddNewPetBtn');
             const petActionBtns = document.getElementById('petActionBtns');
             const petDetailsForm = document.querySelector('.pet-details-form');
             const petList = document.getElementById('petList');
             const petFormCancelBtn = document.getElementById('petFormCancelBtn');
 
+            const petDetailsAddNewPetBtn = document.querySelector('.petDetailsAddNewPetBtn');
+            // petDetailsAddNewPetBtn.style.display = 'flex';
+
             if (addNewPetBtn) {
                 addNewPetBtn.addEventListener('click', function() {
+                    petActionBtns.style.display = 'none';
+                    if (petList) petList.classList.remove('visible');
+                    if (petDetailsForm) {
+                        petDetailsForm.classList.remove('hidden');
+                        document.getElementById('petFormBtns').style.display = 'block';
+                    }
+                });
+            }
+            if (petAddNewPetBtn) {
+                petAddNewPetBtn.addEventListener('click', function() {
                     petActionBtns.style.display = 'none';
                     if (petList) petList.classList.remove('visible');
                     if (petDetailsForm) {
@@ -3317,6 +3395,8 @@ margin: 0;">
                             petActionBtns.style.display = 'flex';
                         }
                     }, 10);
+                    petDetailsAddNewPetBtn.style.display = 'flex';
+
                 });
             }
 
@@ -3364,8 +3444,14 @@ margin: 0;">
         }
 
         window.addEventListener('scroll', updateHeader);
-        updateHeader(); 
-        
+        updateHeader();
+
+        document.addEventListener("click", function(e) {
+            const pill = e.target.closest(".promo-code-entered");
+            if (pill) {
+                pill.remove();
+            }
+        });
     </script>
 </body>
 

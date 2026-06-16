@@ -392,7 +392,7 @@
 <body>
     <?php include '../components/header.php'; ?>
 
-    <section class="conf-wrapper">
+    <section class="conf-wrapper mt-5">
         <div class="conf-header">
             <div class="conf-main-icon">
                 <svg width="102" height="96" viewBox="0 0 102 96" fill="none" xmlns="http://www.w3.org/2000/svg">

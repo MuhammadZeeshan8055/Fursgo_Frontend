@@ -1205,7 +1205,8 @@ $imagePath = BASE_URL . '/assets/images/card1.png';
         .pet-details-display.active {
             display: flex;
             align-items: center;
-            justify-content: space-between
+            justify-content: space-between;
+            gap: 25px;
         }
 
         .pet-details-display h2 {
@@ -1218,7 +1219,8 @@ $imagePath = BASE_URL . '/assets/images/card1.png';
 
         .pet-details-display-content {
             display: flex;
-            gap: 4rem;
+            justify-content: space-between;
+            width: stretch;
         }
 
         .pet-detail-item {
