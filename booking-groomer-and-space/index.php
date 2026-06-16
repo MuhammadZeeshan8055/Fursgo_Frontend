@@ -3581,7 +3581,7 @@ line-height: normal;">
                     card.innerHTML = `
         <div class="pet-radio"><div class="pet-radio-inner"></div></div>
         <div class="pet-avatar">
-          <img src="${pet.image}" alt="${pet.name}"
+          <img src="<?= BASE_URL ?>${pet.image}" alt="${pet.name}"
                onerror="this.parentElement.innerHTML='${petEmoji(pet.type)}'">
         </div>
         <div class="pet-info-grid">
@@ -3995,7 +3995,7 @@ line-height: normal;">
             if (details.photo) {
                 const photoEl = document.createElement('div');
                 photoEl.id = 'petDisplayPhoto';
-                photoEl.innerHTML = `<img src="${details.photo}" alt="Pet photo" style="width: 85px;height: 85px;aspect-ratio: 1/1; border-radius: 50%; object-fit: cover;">`;
+                photoEl.innerHTML = `<img src="<?= BASE_URL ?>${details.photo}" alt="Pet photo" style="width: 85px;height: 85px;aspect-ratio: 1/1; border-radius: 50%; object-fit: cover;">`;
                 petDetailsDisplay.insertBefore(photoEl, petDetailsContent);
             }
 
