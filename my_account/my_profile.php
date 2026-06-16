@@ -20,6 +20,11 @@
             background: #fff;
         }
 
+        .profile-tabs {
+            scroll-margin-top: 120px;
+            /* your sticky header height */
+        }
+
         .profile-title {
             color: #3B3731;
             font-family: "Playfair Display";
@@ -450,9 +455,10 @@
             text-align: center;
             font-family: Lato;
             font-size: 18px;
-
             font-weight: 400;
-
+            position: sticky;
+            top: 85px;
+            z-index: 1001;
         }
 
         .tab {
@@ -2045,15 +2051,32 @@
         }
 
         /* DROPDOWN */
-        .menu-dropdown {
+        .review-menu-dropdown {
             position: absolute;
-            right: 0;
-            top: 25px;
+            right: -145px;
+            top: 8px;
             background: #fff;
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             display: none;
             flex-direction: column;
+            width: 130px;
+        }
+
+        .editReview-btn-bg,
+        .removeReview-btn-bg {
+            padding: 5px 10px 5px 10px;
+        }
+
+        .editReview-btn-bg {
+            background: #F8F8F8;
+            border-radius: 5px 5px 0 0;
+            border: 1px solid #D9D9D9;
+        }
+
+        .removeReview-btn-bg {
+            background: #fff;
+            border-radius: 0px 0px 5px 5px;
         }
 
         .menu-dropdown button {
@@ -2984,6 +3007,7 @@
             cursor: pointer;
             user-select: none;
             position: relative;
+            width: auto;
         }
 
         /* keep native input for accessibility but hide native radio */
@@ -3162,9 +3186,10 @@
             box-sizing: border-box;
         }
 
-        input:checked + .check-circle::after {
+        input:checked+.check-circle::after {
             opacity: 1;
         }
+
         .sort-by-filter,
         .venue-list {
             /* color: var(--font-color); */
@@ -3605,6 +3630,7 @@
                     </div>
 
                     <div class="col-lg-12">
+                        <div id="tabs-anchor"></div>
                         <nav class="profile-tabs mt-5">
                             <button class="tab active">My Profile</button>
                             <button class="tab">My Pets</button>
@@ -3613,7 +3639,7 @@
                             <button class="tab">Rewards</button>
                         </nav>
 
-                        <section id="profile-section" class="profile-header mt-5">
+                        <section id="profile-section" class="tab-content profile-header mt-5">
                             <h3 class="section-title">My Profile</h3>
                             <div class="section-divider mt-4 mb-5"></div>
                             <div id="profile-view" class="profile-details-card">
@@ -3692,7 +3718,7 @@
                                                 <path
                                                     d="M10 11.25C10.8288 11.25 11.6237 10.9208 12.2097 10.3347C12.7958 9.74866 13.125 8.9538 13.125 8.125C13.125 7.2962 12.7958 6.50134 12.2097 5.91529C11.6237 5.32924 10.8288 5 10 5C9.1712 5 8.37634 5.32924 7.79029 5.91529C7.20424 6.50134 6.875 7.2962 6.875 8.125C6.875 8.9538 7.20424 9.74866 7.79029 10.3347C8.37634 10.9208 9.1712 11.25 10 11.25ZM10 12.5C8.83968 12.5 7.72688 12.0391 6.90641 11.2186C6.08594 10.3981 5.625 9.28532 5.625 8.125C5.625 6.96468 6.08594 5.85188 6.90641 5.03141C7.72688 4.21094 8.83968 3.75 10 3.75C11.1603 3.75 12.2731 4.21094 13.0936 5.03141C13.9141 5.85188 14.375 6.96468 14.375 8.125C14.375 9.28532 13.9141 10.3981 13.0936 11.2186C12.2731 12.0391 11.1603 12.5 10 12.5ZM16.25 5.625C16.25 5.79076 16.3158 5.94973 16.4331 6.06694C16.5503 6.18415 16.7092 6.25 16.875 6.25C17.0408 6.25 17.1997 6.18415 17.3169 6.06694C17.4342 5.94973 17.5 5.79076 17.5 5.625C17.5 5.45924 17.4342 5.30027 17.3169 5.18306C17.1997 5.06585 17.0408 5 16.875 5C16.7092 5 16.5503 5.06585 16.4331 5.18306C16.3158 5.30027 16.25 5.45924 16.25 5.625Z"
                                                     fill="#3B3731" />
-                                            </svg> Edit photo</button>
+                                            </svg> Upload Photo</button>
                                     </div>
 
                                     <form id="profile-form" class="form-grid">
@@ -3799,7 +3825,7 @@
                             </div>
                         </section>
 
-                        <div id="pets-view" class="tap-details-card mt-5 hidden">
+                        <div id="pets-view" class="tab-content tap-details-card mt-5 hidden">
                             <div class="pets-header">
                                 <h3 class="section-title">My Pets</h3>
                                 <div class="section-divider mt-4 mb-5"></div>
@@ -4147,7 +4173,7 @@
                                                     d="M10 11.25C10.8288 11.25 11.6237 10.9208 12.2097 10.3347C12.7958 9.74866 13.125 8.9538 13.125 8.125C13.125 7.2962 12.7958 6.50134 12.2097 5.91529C11.6237 5.32924 10.8288 5 10 5C9.1712 5 8.37634 5.32924 7.79029 5.91529C7.20424 6.50134 6.875 7.2962 6.875 8.125C6.875 8.9538 7.20424 9.74866 7.79029 10.3347C8.37634 10.9208 9.1712 11.25 10 11.25ZM10 12.5C8.83968 12.5 7.72688 12.0391 6.90641 11.2186C6.08594 10.3981 5.625 9.28532 5.625 8.125C5.625 6.96468 6.08594 5.85188 6.90641 5.03141C7.72688 4.21094 8.83968 3.75 10 3.75C11.1603 3.75 12.2731 4.21094 13.0936 5.03141C13.9141 5.85188 14.375 6.96468 14.375 8.125C14.375 9.28532 13.9141 10.3981 13.0936 11.2186C12.2731 12.0391 11.1603 12.5 10 12.5ZM16.25 5.625C16.25 5.79076 16.3158 5.94973 16.4331 6.06694C16.5503 6.18415 16.7092 6.25 16.875 6.25C17.0408 6.25 17.1997 6.18415 17.3169 6.06694C17.4342 5.94973 17.5 5.79076 17.5 5.625C17.5 5.45924 17.4342 5.30027 17.3169 5.18306C17.1997 5.06585 17.0408 5 16.875 5C16.7092 5 16.5503 5.06585 16.4331 5.18306C16.3158 5.30027 16.25 5.45924 16.25 5.625Z"
                                                     fill="#3B3731" />
                                             </svg>
-                                        </span> Edit photo
+                                        </span> Upload Photo
                                     </button>
 
                                 </div>
@@ -4259,11 +4285,11 @@
 
                                         <div class="pf-pet-field" style="position:relative;">
                                             <label>Pet Type <span style="color: #9D9B98;
-                                    font-family: Lato;
-                                    font-size: 16px;
-                                    font-style: normal;
-                                    font-weight: 600;
-                                    line-height: normal;">(for ‘other’ pets)</span></label>
+                                            font-family: Lato;
+                                            font-size: 16px;
+                                            font-style: normal;
+                                            font-weight: 600;
+                                            line-height: normal;">(for ‘other’ pets)</span></label>
                                             <div style="position:relative; display:block;width: 300px;">
                                                 <input type="text" id="pet_type" placeholder="e.g. Dog, Cat, Rabbit..."
                                                     autocomplete="off"
@@ -4298,11 +4324,11 @@
                                             <div class="input-box">
 
                                                 <input type="number" value="4" style="width: 85px;height: 48px; color: #3B3731;
-                            font-family: Lato;
-                            font-size: 16px;
-                            font-style: normal;
-                            font-weight: 400;
-                            line-height: normal;">
+                                                    font-family: Lato;
+                                                    font-size: 16px;
+                                                    font-style: normal;
+                                                    font-weight: 400;
+                                                    line-height: normal;">
                                                 <!-- SVG -->
                                                 <svg class="number-icon" xmlns="http://www.w3.org/2000/svg" width="11"
                                                     height="28" viewBox="0 0 11 28" fill="none">
@@ -5633,23 +5659,152 @@
 
                             </div>
                             <div class="all-reviews">
-                                <h3>All Reviews</h3>
+                                <h3 class="reviews-section-title">All Reviews</h3>
                                 <div class="reviews-filter-btn d-flex align-items-center gap-10">
-                                    <button class="filter-btn">Groomer Venue <svg xmlns="http://www.w3.org/2000/svg"
-                                            width="13" height="7" viewBox="0 0 13 7" fill="none">
-                                            <path d="M11.9102 0.5L6.15672 6.25344L0.499867 0.596581" stroke="#FBAC83"
-                                                stroke-linecap="round" stroke-linejoin="round" />
-                                        </svg></button>
-                                    <button class="filter-btn">Space Venue <svg xmlns="http://www.w3.org/2000/svg"
-                                            width="13" height="7" viewBox="0 0 13 7" fill="none">
-                                            <path d="M11.9102 0.5L6.15672 6.25344L0.499867 0.596581" stroke="#FBAC83"
-                                                stroke-linecap="round" stroke-linejoin="round" />
-                                        </svg></button>
-                                    <button class="filter-btn">Sort <svg xmlns="http://www.w3.org/2000/svg" width="13"
-                                            height="7" viewBox="0 0 13 7" fill="none">
-                                            <path d="M11.9102 0.5L6.15672 6.25344L0.499867 0.596581" stroke="#FBAC83"
-                                                stroke-linecap="round" stroke-linejoin="round" />
-                                        </svg></button>
+                                    <div class="venu-sorting-section d-flex gap-10">
+                                        <div class="venue-selection">
+                                            Groomer Venue
+                                            &nbsp;
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="7" viewBox="0 0 13 7" fill="none">
+                                                <path d="M11.9103 0.5L6.15684 6.25344L0.499989 0.596581" stroke="#FBAC83" stroke-linecap="round" stroke-linejoin="round"></path>
+                                            </svg>
+                                            <div class="venue-list" style="display: none;">
+                                                <div class="venu dropdown">
+                                                    <ul>
+                                                        <li>
+                                                            <label>
+                                                                <span class="option-text">Salons</span>
+                                                                <input type="checkbox" name="groomer-venue[]" value="Salons" checked="">
+                                                                <span class="check-circle"></span>
+
+                                                            </label>
+                                                        </li>
+                                                        <li>
+                                                            <label>
+                                                                <span class="option-text">Groomer’s studio</span>
+                                                                <input type="checkbox" name="groomer-venue[]" value="Groomer’s studio">
+                                                                <span class="check-circle"></span>
+                                                            </label>
+                                                        </li>
+                                                        <li>
+                                                            <label>
+                                                                <span class="option-text">Homevisit</span>
+                                                                <input type="checkbox" name="groomer-venue[]" value="Homevisit">
+                                                                <span class="check-circle"></span>
+                                                            </label>
+                                                        </li>
+                                                        <li>
+                                                            <label>
+                                                                <span class="option-text">Visiting Groomers</span>
+                                                                <input type="checkbox" name="groomer-venue[]" value="Visiting Groomers">
+                                                                <span class="check-circle"></span>
+                                                            </label>
+                                                        </li>
+                                                        <li>
+                                                            <label>
+                                                                <span class="option-text">Mobile Station</span>
+                                                                <input type="checkbox" name="groomer-venue[]" value="Mobile Station">
+                                                                <span class="check-circle"></span>
+                                                            </label>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="venue-selection">
+                                            Space Venue
+                                            &nbsp;
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="7" viewBox="0 0 13 7" fill="none">
+                                                <path d="M11.9103 0.5L6.15684 6.25344L0.499989 0.596581" stroke="#FBAC83" stroke-linecap="round" stroke-linejoin="round"></path>
+                                            </svg>
+                                            <div class="venue-list" style="display: none;">
+                                                <div class="venu dropdown">
+                                                    <ul>
+                                                        <li>
+                                                            <label>
+                                                                <span class="option-text">Private rooms</span>
+                                                                <input type="checkbox" name="space-venue[]" value="Private rooms" checked="">
+                                                                <span class="check-circle"></span>
+
+                                                            </label>
+                                                        </li>
+                                                        <li>
+                                                            <label>
+                                                                <span class="option-text">Salon</span>
+                                                                <input type="checkbox" name="space-venue[]" value="Salon">
+                                                                <span class="check-circle"></span>
+                                                            </label>
+                                                        </li>
+                                                        <li>
+                                                            <label>
+                                                                <span class="option-text">Mobile Station</span>
+                                                                <input type="checkbox" name="space-venue[]" value="Mobile Station">
+                                                                <span class="check-circle"></span>
+                                                            </label>
+                                                        </li>
+                                                        <li>
+                                                            <label>
+                                                                <span class="option-text">Garden/Shed</span>
+                                                                <input type="checkbox" name="space-venue[]" value="Garden/Shed">
+                                                                <span class="check-circle"></span>
+                                                            </label>
+                                                        </li>
+                                                        <li>
+                                                            <label>
+                                                                <span class="option-text">Others</span>
+                                                                <input type="checkbox" name="space-venue[]" value="Others">
+                                                                <span class="check-circle"></span>
+                                                            </label>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="sort-by">
+                                            Sort
+                                            &nbsp;
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="7" viewBox="0 0 13 7" fill="none">
+                                                <path d="M11.9103 0.5L6.15684 6.25344L0.499989 0.596581" stroke="#FBAC83" stroke-linecap="round" stroke-linejoin="round"></path>
+                                            </svg>
+                                            <div class="sort-by-filter" style="display: none;">
+                                                <div class="sort dropdown">
+                                                    <ul>
+                                                        <li>
+                                                            <label>
+                                                                <span class="option-text">Recommended (default)</span>
+                                                                <input type="radio" name="sort-option" value="default" checked>
+                                                                <span class="check-circle"></span>
+                                                            </label>
+                                                        </li>
+
+                                                        <li>
+                                                            <label>
+                                                                <span class="option-text">Distance</span>
+                                                                <input type="radio" name="sort-option" value="distance">
+                                                                <span class="check-circle"></span>
+                                                            </label>
+                                                        </li>
+
+                                                        <li>
+                                                            <label>
+                                                                <span class="option-text">Lowest price</span>
+                                                                <input type="radio" name="sort-option" value="lowest_price">
+                                                                <span class="check-circle"></span>
+                                                            </label>
+                                                        </li>
+
+                                                        <li>
+                                                            <label>
+                                                                <span class="option-text">Soonest available</span>
+                                                                <input type="radio" name="sort-option" value="soonest_available">
+                                                                <span class="check-circle"></span>
+                                                            </label>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
@@ -5752,10 +5907,24 @@
                                         </div>
 
                                         <div class="review-menu">
-                                            ⋯
-                                            <div class="menu-dropdown">
-                                                <button>Edit ✏</button>
-                                                <button>Remove 🗑</button>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="5" viewBox="0 0 25 5" fill="none">
+                                                <circle cx="2.5" cy="2.5" r="2.5" fill="#3B3731" />
+                                                <circle cx="12.5" cy="2.5" r="2.5" fill="#3B3731" />
+                                                <circle cx="22.5" cy="2.5" r="2.5" fill="#3B3731" />
+                                            </svg>
+                                            <div class="review-menu-dropdown">
+                                                <div class="d-flex align-items-center justify-content-between editReview-btn-bg">
+                                                    <p class="fs-14-400-f-color cursor">Edit</p>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="11" viewBox="0 0 12 11" fill="none">
+                                                        <path d="M7.36765 1.59283L9.30882 3.44794M6.07353 10.25H11.25M0.897059 7.77652L0.25 10.25L2.83824 9.63163L10.3351 2.46721C10.5777 2.23528 10.714 1.92077 10.714 1.59283C10.714 1.26489 10.5777 0.950382 10.3351 0.71846L10.2238 0.6121C9.98108 0.380248 9.65198 0.25 9.30882 0.25C8.96567 0.25 8.63657 0.380248 8.39388 0.6121L0.897059 7.77652Z" stroke="#3B3731" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" />
+                                                    </svg>
+                                                </div>
+                                                <div class="d-flex align-items-center justify-content-between removeReview-btn-bg">
+                                                    <p class="fs-14-400-f-color cursor">Remove</p>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="9" height="10" viewBox="0 0 9 10" fill="none">
+                                                        <path d="M1.68172 10C1.39586 10 1.15136 9.8996 0.948218 9.6988C0.745075 9.49799 0.64329 9.25724 0.642861 8.97654V1.12238H0.321433C0.230147 1.12238 0.153861 1.09195 0.0925758 1.03107C0.0312901 0.970196 0.000432974 0.894737 4.40312e-06 0.804692C-0.000424168 0.714648 0.030433 0.6394 0.0925758 0.578947C0.154719 0.518495 0.231004 0.488269 0.321433 0.488269H2.57143C2.57143 0.357218 2.62072 0.243078 2.71929 0.145847C2.81786 0.0486155 2.93357 0 3.06643 0H5.93357C6.06643 0 6.18214 0.0486155 6.28071 0.145847C6.37928 0.243078 6.42857 0.357218 6.42857 0.488269H8.67857C8.76985 0.488269 8.84614 0.518706 8.90742 0.579581C8.96871 0.640457 8.99957 0.715916 9 0.805961C9.00042 0.896005 8.96957 0.971253 8.90742 1.03171C8.84528 1.09216 8.769 1.12238 8.67857 1.12238H8.35714V8.9759C8.35714 9.25745 8.25535 9.49841 8.05178 9.6988C7.84821 9.89918 7.60393 9.99958 7.31893 10H1.68172ZM7.71428 1.12238H1.28572V8.9759C1.28572 9.08962 1.32279 9.18305 1.39693 9.25618C1.47107 9.32932 1.566 9.36588 1.68172 9.36588H7.31893C7.43421 9.36588 7.52893 9.32932 7.60307 9.25618C7.67721 9.18305 7.71428 9.08962 7.71428 8.9759V1.12238ZM3.41229 8.09765C3.50357 8.09765 3.58007 8.06722 3.64179 8.00634C3.7035 7.94547 3.73414 7.87022 3.73371 7.7806V2.70767C3.73371 2.61763 3.70286 2.54238 3.64114 2.48193C3.57943 2.42148 3.50293 2.39104 3.41164 2.39061C3.32036 2.39019 3.24407 2.42063 3.18279 2.48193C3.1215 2.54323 3.09086 2.61847 3.09086 2.70767V7.7806C3.09086 7.87064 3.12172 7.94589 3.18343 8.00634C3.24514 8.06722 3.32143 8.09765 3.41229 8.09765ZM5.58836 8.09765C5.67964 8.09765 5.75593 8.06722 5.81721 8.00634C5.8785 7.94547 5.90914 7.87022 5.90914 7.7806V2.70767C5.90914 2.61763 5.87828 2.54238 5.81657 2.48193C5.75486 2.42105 5.67857 2.39061 5.58771 2.39061C5.49643 2.39061 5.41993 2.42105 5.35821 2.48193C5.2965 2.5428 5.26586 2.61805 5.26629 2.70767V7.7806C5.26629 7.87064 5.29714 7.94589 5.35886 8.00634C5.42057 8.06679 5.49707 8.09723 5.58836 8.09765Z" fill="#3B3731" />
+                                                    </svg>
+                                                </div>
                                             </div>
                                         </div>
 
@@ -5874,10 +6043,24 @@
                                         </div>
 
                                         <div class="review-menu">
-                                            ⋯
-                                            <div class="menu-dropdown">
-                                                <button>Edit ✏</button>
-                                                <button>Remove 🗑</button>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="5" viewBox="0 0 25 5" fill="none">
+                                                <circle cx="2.5" cy="2.5" r="2.5" fill="#3B3731" />
+                                                <circle cx="12.5" cy="2.5" r="2.5" fill="#3B3731" />
+                                                <circle cx="22.5" cy="2.5" r="2.5" fill="#3B3731" />
+                                            </svg>
+                                            <div class="review-menu-dropdown">
+                                                <div class="d-flex align-items-center justify-content-between editReview-btn-bg">
+                                                    <p class="fs-14-400-f-color cursor">Edit</p>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="11" viewBox="0 0 12 11" fill="none">
+                                                        <path d="M7.36765 1.59283L9.30882 3.44794M6.07353 10.25H11.25M0.897059 7.77652L0.25 10.25L2.83824 9.63163L10.3351 2.46721C10.5777 2.23528 10.714 1.92077 10.714 1.59283C10.714 1.26489 10.5777 0.950382 10.3351 0.71846L10.2238 0.6121C9.98108 0.380248 9.65198 0.25 9.30882 0.25C8.96567 0.25 8.63657 0.380248 8.39388 0.6121L0.897059 7.77652Z" stroke="#3B3731" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" />
+                                                    </svg>
+                                                </div>
+                                                <div class="d-flex align-items-center justify-content-between removeReview-btn-bg">
+                                                    <p class="fs-14-400-f-color cursor">Remove</p>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="9" height="10" viewBox="0 0 9 10" fill="none">
+                                                        <path d="M1.68172 10C1.39586 10 1.15136 9.8996 0.948218 9.6988C0.745075 9.49799 0.64329 9.25724 0.642861 8.97654V1.12238H0.321433C0.230147 1.12238 0.153861 1.09195 0.0925758 1.03107C0.0312901 0.970196 0.000432974 0.894737 4.40312e-06 0.804692C-0.000424168 0.714648 0.030433 0.6394 0.0925758 0.578947C0.154719 0.518495 0.231004 0.488269 0.321433 0.488269H2.57143C2.57143 0.357218 2.62072 0.243078 2.71929 0.145847C2.81786 0.0486155 2.93357 0 3.06643 0H5.93357C6.06643 0 6.18214 0.0486155 6.28071 0.145847C6.37928 0.243078 6.42857 0.357218 6.42857 0.488269H8.67857C8.76985 0.488269 8.84614 0.518706 8.90742 0.579581C8.96871 0.640457 8.99957 0.715916 9 0.805961C9.00042 0.896005 8.96957 0.971253 8.90742 1.03171C8.84528 1.09216 8.769 1.12238 8.67857 1.12238H8.35714V8.9759C8.35714 9.25745 8.25535 9.49841 8.05178 9.6988C7.84821 9.89918 7.60393 9.99958 7.31893 10H1.68172ZM7.71428 1.12238H1.28572V8.9759C1.28572 9.08962 1.32279 9.18305 1.39693 9.25618C1.47107 9.32932 1.566 9.36588 1.68172 9.36588H7.31893C7.43421 9.36588 7.52893 9.32932 7.60307 9.25618C7.67721 9.18305 7.71428 9.08962 7.71428 8.9759V1.12238ZM3.41229 8.09765C3.50357 8.09765 3.58007 8.06722 3.64179 8.00634C3.7035 7.94547 3.73414 7.87022 3.73371 7.7806V2.70767C3.73371 2.61763 3.70286 2.54238 3.64114 2.48193C3.57943 2.42148 3.50293 2.39104 3.41164 2.39061C3.32036 2.39019 3.24407 2.42063 3.18279 2.48193C3.1215 2.54323 3.09086 2.61847 3.09086 2.70767V7.7806C3.09086 7.87064 3.12172 7.94589 3.18343 8.00634C3.24514 8.06722 3.32143 8.09765 3.41229 8.09765ZM5.58836 8.09765C5.67964 8.09765 5.75593 8.06722 5.81721 8.00634C5.8785 7.94547 5.90914 7.87022 5.90914 7.7806V2.70767C5.90914 2.61763 5.87828 2.54238 5.81657 2.48193C5.75486 2.42105 5.67857 2.39061 5.58771 2.39061C5.49643 2.39061 5.41993 2.42105 5.35821 2.48193C5.2965 2.5428 5.26586 2.61805 5.26629 2.70767V7.7806C5.26629 7.87064 5.29714 7.94589 5.35886 8.00634C5.42057 8.06679 5.49707 8.09723 5.58836 8.09765Z" fill="#3B3731" />
+                                                    </svg>
+                                                </div>
                                             </div>
                                         </div>
 
@@ -6001,10 +6184,24 @@
 
 
                                         <div class="review-menu">
-                                            ⋯
-                                            <div class="menu-dropdown">
-                                                <button>Edit ✏</button>
-                                                <button>Remove 🗑</button>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="5" viewBox="0 0 25 5" fill="none">
+                                                <circle cx="2.5" cy="2.5" r="2.5" fill="#3B3731" />
+                                                <circle cx="12.5" cy="2.5" r="2.5" fill="#3B3731" />
+                                                <circle cx="22.5" cy="2.5" r="2.5" fill="#3B3731" />
+                                            </svg>
+                                            <div class="review-menu-dropdown">
+                                                <div class="d-flex align-items-center justify-content-between editReview-btn-bg">
+                                                    <p class="fs-14-400-f-color cursor">Edit</p>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="11" viewBox="0 0 12 11" fill="none">
+                                                        <path d="M7.36765 1.59283L9.30882 3.44794M6.07353 10.25H11.25M0.897059 7.77652L0.25 10.25L2.83824 9.63163L10.3351 2.46721C10.5777 2.23528 10.714 1.92077 10.714 1.59283C10.714 1.26489 10.5777 0.950382 10.3351 0.71846L10.2238 0.6121C9.98108 0.380248 9.65198 0.25 9.30882 0.25C8.96567 0.25 8.63657 0.380248 8.39388 0.6121L0.897059 7.77652Z" stroke="#3B3731" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" />
+                                                    </svg>
+                                                </div>
+                                                <div class="d-flex align-items-center justify-content-between removeReview-btn-bg">
+                                                    <p class="fs-14-400-f-color cursor">Remove</p>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="9" height="10" viewBox="0 0 9 10" fill="none">
+                                                        <path d="M1.68172 10C1.39586 10 1.15136 9.8996 0.948218 9.6988C0.745075 9.49799 0.64329 9.25724 0.642861 8.97654V1.12238H0.321433C0.230147 1.12238 0.153861 1.09195 0.0925758 1.03107C0.0312901 0.970196 0.000432974 0.894737 4.40312e-06 0.804692C-0.000424168 0.714648 0.030433 0.6394 0.0925758 0.578947C0.154719 0.518495 0.231004 0.488269 0.321433 0.488269H2.57143C2.57143 0.357218 2.62072 0.243078 2.71929 0.145847C2.81786 0.0486155 2.93357 0 3.06643 0H5.93357C6.06643 0 6.18214 0.0486155 6.28071 0.145847C6.37928 0.243078 6.42857 0.357218 6.42857 0.488269H8.67857C8.76985 0.488269 8.84614 0.518706 8.90742 0.579581C8.96871 0.640457 8.99957 0.715916 9 0.805961C9.00042 0.896005 8.96957 0.971253 8.90742 1.03171C8.84528 1.09216 8.769 1.12238 8.67857 1.12238H8.35714V8.9759C8.35714 9.25745 8.25535 9.49841 8.05178 9.6988C7.84821 9.89918 7.60393 9.99958 7.31893 10H1.68172ZM7.71428 1.12238H1.28572V8.9759C1.28572 9.08962 1.32279 9.18305 1.39693 9.25618C1.47107 9.32932 1.566 9.36588 1.68172 9.36588H7.31893C7.43421 9.36588 7.52893 9.32932 7.60307 9.25618C7.67721 9.18305 7.71428 9.08962 7.71428 8.9759V1.12238ZM3.41229 8.09765C3.50357 8.09765 3.58007 8.06722 3.64179 8.00634C3.7035 7.94547 3.73414 7.87022 3.73371 7.7806V2.70767C3.73371 2.61763 3.70286 2.54238 3.64114 2.48193C3.57943 2.42148 3.50293 2.39104 3.41164 2.39061C3.32036 2.39019 3.24407 2.42063 3.18279 2.48193C3.1215 2.54323 3.09086 2.61847 3.09086 2.70767V7.7806C3.09086 7.87064 3.12172 7.94589 3.18343 8.00634C3.24514 8.06722 3.32143 8.09765 3.41229 8.09765ZM5.58836 8.09765C5.67964 8.09765 5.75593 8.06722 5.81721 8.00634C5.8785 7.94547 5.90914 7.87022 5.90914 7.7806V2.70767C5.90914 2.61763 5.87828 2.54238 5.81657 2.48193C5.75486 2.42105 5.67857 2.39061 5.58771 2.39061C5.49643 2.39061 5.41993 2.42105 5.35821 2.48193C5.2965 2.5428 5.26586 2.61805 5.26629 2.70767V7.7806C5.26629 7.87064 5.29714 7.94589 5.35886 8.00634C5.42057 8.06679 5.49707 8.09723 5.58836 8.09765Z" fill="#3B3731" />
+                                                    </svg>
+                                                </div>
                                             </div>
                                         </div>
 
@@ -6109,10 +6306,24 @@
                                         </div>
 
                                         <div class="review-menu">
-                                            ⋯
-                                            <div class="menu-dropdown">
-                                                <button>Edit ✏</button>
-                                                <button>Remove 🗑</button>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="5" viewBox="0 0 25 5" fill="none">
+                                                <circle cx="2.5" cy="2.5" r="2.5" fill="#3B3731" />
+                                                <circle cx="12.5" cy="2.5" r="2.5" fill="#3B3731" />
+                                                <circle cx="22.5" cy="2.5" r="2.5" fill="#3B3731" />
+                                            </svg>
+                                            <div class="review-menu-dropdown">
+                                                <div class="d-flex align-items-center justify-content-between editReview-btn-bg">
+                                                    <p class="fs-14-400-f-color cursor">Edit</p>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="11" viewBox="0 0 12 11" fill="none">
+                                                        <path d="M7.36765 1.59283L9.30882 3.44794M6.07353 10.25H11.25M0.897059 7.77652L0.25 10.25L2.83824 9.63163L10.3351 2.46721C10.5777 2.23528 10.714 1.92077 10.714 1.59283C10.714 1.26489 10.5777 0.950382 10.3351 0.71846L10.2238 0.6121C9.98108 0.380248 9.65198 0.25 9.30882 0.25C8.96567 0.25 8.63657 0.380248 8.39388 0.6121L0.897059 7.77652Z" stroke="#3B3731" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" />
+                                                    </svg>
+                                                </div>
+                                                <div class="d-flex align-items-center justify-content-between removeReview-btn-bg">
+                                                    <p class="fs-14-400-f-color cursor">Remove</p>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="9" height="10" viewBox="0 0 9 10" fill="none">
+                                                        <path d="M1.68172 10C1.39586 10 1.15136 9.8996 0.948218 9.6988C0.745075 9.49799 0.64329 9.25724 0.642861 8.97654V1.12238H0.321433C0.230147 1.12238 0.153861 1.09195 0.0925758 1.03107C0.0312901 0.970196 0.000432974 0.894737 4.40312e-06 0.804692C-0.000424168 0.714648 0.030433 0.6394 0.0925758 0.578947C0.154719 0.518495 0.231004 0.488269 0.321433 0.488269H2.57143C2.57143 0.357218 2.62072 0.243078 2.71929 0.145847C2.81786 0.0486155 2.93357 0 3.06643 0H5.93357C6.06643 0 6.18214 0.0486155 6.28071 0.145847C6.37928 0.243078 6.42857 0.357218 6.42857 0.488269H8.67857C8.76985 0.488269 8.84614 0.518706 8.90742 0.579581C8.96871 0.640457 8.99957 0.715916 9 0.805961C9.00042 0.896005 8.96957 0.971253 8.90742 1.03171C8.84528 1.09216 8.769 1.12238 8.67857 1.12238H8.35714V8.9759C8.35714 9.25745 8.25535 9.49841 8.05178 9.6988C7.84821 9.89918 7.60393 9.99958 7.31893 10H1.68172ZM7.71428 1.12238H1.28572V8.9759C1.28572 9.08962 1.32279 9.18305 1.39693 9.25618C1.47107 9.32932 1.566 9.36588 1.68172 9.36588H7.31893C7.43421 9.36588 7.52893 9.32932 7.60307 9.25618C7.67721 9.18305 7.71428 9.08962 7.71428 8.9759V1.12238ZM3.41229 8.09765C3.50357 8.09765 3.58007 8.06722 3.64179 8.00634C3.7035 7.94547 3.73414 7.87022 3.73371 7.7806V2.70767C3.73371 2.61763 3.70286 2.54238 3.64114 2.48193C3.57943 2.42148 3.50293 2.39104 3.41164 2.39061C3.32036 2.39019 3.24407 2.42063 3.18279 2.48193C3.1215 2.54323 3.09086 2.61847 3.09086 2.70767V7.7806C3.09086 7.87064 3.12172 7.94589 3.18343 8.00634C3.24514 8.06722 3.32143 8.09765 3.41229 8.09765ZM5.58836 8.09765C5.67964 8.09765 5.75593 8.06722 5.81721 8.00634C5.8785 7.94547 5.90914 7.87022 5.90914 7.7806V2.70767C5.90914 2.61763 5.87828 2.54238 5.81657 2.48193C5.75486 2.42105 5.67857 2.39061 5.58771 2.39061C5.49643 2.39061 5.41993 2.42105 5.35821 2.48193C5.2965 2.5428 5.26586 2.61805 5.26629 2.70767V7.7806C5.26629 7.87064 5.29714 7.94589 5.35886 8.00634C5.42057 8.06679 5.49707 8.09723 5.58836 8.09765Z" fill="#3B3731" />
+                                                    </svg>
+                                                </div>
                                             </div>
                                         </div>
 
@@ -6232,10 +6443,24 @@
                                         </div>
 
                                         <div class="review-menu">
-                                            ⋯
-                                            <div class="menu-dropdown">
-                                                <button>Edit ✏</button>
-                                                <button>Remove 🗑</button>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="5" viewBox="0 0 25 5" fill="none">
+                                                <circle cx="2.5" cy="2.5" r="2.5" fill="#3B3731" />
+                                                <circle cx="12.5" cy="2.5" r="2.5" fill="#3B3731" />
+                                                <circle cx="22.5" cy="2.5" r="2.5" fill="#3B3731" />
+                                            </svg>
+                                            <div class="review-menu-dropdown">
+                                                <div class="d-flex align-items-center justify-content-between editReview-btn-bg">
+                                                    <p class="fs-14-400-f-color cursor">Edit</p>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="11" viewBox="0 0 12 11" fill="none">
+                                                        <path d="M7.36765 1.59283L9.30882 3.44794M6.07353 10.25H11.25M0.897059 7.77652L0.25 10.25L2.83824 9.63163L10.3351 2.46721C10.5777 2.23528 10.714 1.92077 10.714 1.59283C10.714 1.26489 10.5777 0.950382 10.3351 0.71846L10.2238 0.6121C9.98108 0.380248 9.65198 0.25 9.30882 0.25C8.96567 0.25 8.63657 0.380248 8.39388 0.6121L0.897059 7.77652Z" stroke="#3B3731" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" />
+                                                    </svg>
+                                                </div>
+                                                <div class="d-flex align-items-center justify-content-between removeReview-btn-bg">
+                                                    <p class="fs-14-400-f-color cursor">Remove</p>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="9" height="10" viewBox="0 0 9 10" fill="none">
+                                                        <path d="M1.68172 10C1.39586 10 1.15136 9.8996 0.948218 9.6988C0.745075 9.49799 0.64329 9.25724 0.642861 8.97654V1.12238H0.321433C0.230147 1.12238 0.153861 1.09195 0.0925758 1.03107C0.0312901 0.970196 0.000432974 0.894737 4.40312e-06 0.804692C-0.000424168 0.714648 0.030433 0.6394 0.0925758 0.578947C0.154719 0.518495 0.231004 0.488269 0.321433 0.488269H2.57143C2.57143 0.357218 2.62072 0.243078 2.71929 0.145847C2.81786 0.0486155 2.93357 0 3.06643 0H5.93357C6.06643 0 6.18214 0.0486155 6.28071 0.145847C6.37928 0.243078 6.42857 0.357218 6.42857 0.488269H8.67857C8.76985 0.488269 8.84614 0.518706 8.90742 0.579581C8.96871 0.640457 8.99957 0.715916 9 0.805961C9.00042 0.896005 8.96957 0.971253 8.90742 1.03171C8.84528 1.09216 8.769 1.12238 8.67857 1.12238H8.35714V8.9759C8.35714 9.25745 8.25535 9.49841 8.05178 9.6988C7.84821 9.89918 7.60393 9.99958 7.31893 10H1.68172ZM7.71428 1.12238H1.28572V8.9759C1.28572 9.08962 1.32279 9.18305 1.39693 9.25618C1.47107 9.32932 1.566 9.36588 1.68172 9.36588H7.31893C7.43421 9.36588 7.52893 9.32932 7.60307 9.25618C7.67721 9.18305 7.71428 9.08962 7.71428 8.9759V1.12238ZM3.41229 8.09765C3.50357 8.09765 3.58007 8.06722 3.64179 8.00634C3.7035 7.94547 3.73414 7.87022 3.73371 7.7806V2.70767C3.73371 2.61763 3.70286 2.54238 3.64114 2.48193C3.57943 2.42148 3.50293 2.39104 3.41164 2.39061C3.32036 2.39019 3.24407 2.42063 3.18279 2.48193C3.1215 2.54323 3.09086 2.61847 3.09086 2.70767V7.7806C3.09086 7.87064 3.12172 7.94589 3.18343 8.00634C3.24514 8.06722 3.32143 8.09765 3.41229 8.09765ZM5.58836 8.09765C5.67964 8.09765 5.75593 8.06722 5.81721 8.00634C5.8785 7.94547 5.90914 7.87022 5.90914 7.7806V2.70767C5.90914 2.61763 5.87828 2.54238 5.81657 2.48193C5.75486 2.42105 5.67857 2.39061 5.58771 2.39061C5.49643 2.39061 5.41993 2.42105 5.35821 2.48193C5.2965 2.5428 5.26586 2.61805 5.26629 2.70767V7.7806C5.26629 7.87064 5.29714 7.94589 5.35886 8.00634C5.42057 8.06679 5.49707 8.09723 5.58836 8.09765Z" fill="#3B3731" />
+                                                    </svg>
+                                                </div>
                                             </div>
                                         </div>
 
@@ -6341,10 +6566,24 @@
 
 
                                         <div class="review-menu">
-                                            ⋯
-                                            <div class="menu-dropdown">
-                                                <button>Edit ✏</button>
-                                                <button>Remove 🗑</button>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="5" viewBox="0 0 25 5" fill="none">
+                                                <circle cx="2.5" cy="2.5" r="2.5" fill="#3B3731" />
+                                                <circle cx="12.5" cy="2.5" r="2.5" fill="#3B3731" />
+                                                <circle cx="22.5" cy="2.5" r="2.5" fill="#3B3731" />
+                                            </svg>
+                                            <div class="review-menu-dropdown">
+                                                <div class="d-flex align-items-center justify-content-between editReview-btn-bg">
+                                                    <p class="fs-14-400-f-color cursor">Edit</p>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="11" viewBox="0 0 12 11" fill="none">
+                                                        <path d="M7.36765 1.59283L9.30882 3.44794M6.07353 10.25H11.25M0.897059 7.77652L0.25 10.25L2.83824 9.63163L10.3351 2.46721C10.5777 2.23528 10.714 1.92077 10.714 1.59283C10.714 1.26489 10.5777 0.950382 10.3351 0.71846L10.2238 0.6121C9.98108 0.380248 9.65198 0.25 9.30882 0.25C8.96567 0.25 8.63657 0.380248 8.39388 0.6121L0.897059 7.77652Z" stroke="#3B3731" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" />
+                                                    </svg>
+                                                </div>
+                                                <div class="d-flex align-items-center justify-content-between removeReview-btn-bg">
+                                                    <p class="fs-14-400-f-color cursor">Remove</p>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="9" height="10" viewBox="0 0 9 10" fill="none">
+                                                        <path d="M1.68172 10C1.39586 10 1.15136 9.8996 0.948218 9.6988C0.745075 9.49799 0.64329 9.25724 0.642861 8.97654V1.12238H0.321433C0.230147 1.12238 0.153861 1.09195 0.0925758 1.03107C0.0312901 0.970196 0.000432974 0.894737 4.40312e-06 0.804692C-0.000424168 0.714648 0.030433 0.6394 0.0925758 0.578947C0.154719 0.518495 0.231004 0.488269 0.321433 0.488269H2.57143C2.57143 0.357218 2.62072 0.243078 2.71929 0.145847C2.81786 0.0486155 2.93357 0 3.06643 0H5.93357C6.06643 0 6.18214 0.0486155 6.28071 0.145847C6.37928 0.243078 6.42857 0.357218 6.42857 0.488269H8.67857C8.76985 0.488269 8.84614 0.518706 8.90742 0.579581C8.96871 0.640457 8.99957 0.715916 9 0.805961C9.00042 0.896005 8.96957 0.971253 8.90742 1.03171C8.84528 1.09216 8.769 1.12238 8.67857 1.12238H8.35714V8.9759C8.35714 9.25745 8.25535 9.49841 8.05178 9.6988C7.84821 9.89918 7.60393 9.99958 7.31893 10H1.68172ZM7.71428 1.12238H1.28572V8.9759C1.28572 9.08962 1.32279 9.18305 1.39693 9.25618C1.47107 9.32932 1.566 9.36588 1.68172 9.36588H7.31893C7.43421 9.36588 7.52893 9.32932 7.60307 9.25618C7.67721 9.18305 7.71428 9.08962 7.71428 8.9759V1.12238ZM3.41229 8.09765C3.50357 8.09765 3.58007 8.06722 3.64179 8.00634C3.7035 7.94547 3.73414 7.87022 3.73371 7.7806V2.70767C3.73371 2.61763 3.70286 2.54238 3.64114 2.48193C3.57943 2.42148 3.50293 2.39104 3.41164 2.39061C3.32036 2.39019 3.24407 2.42063 3.18279 2.48193C3.1215 2.54323 3.09086 2.61847 3.09086 2.70767V7.7806C3.09086 7.87064 3.12172 7.94589 3.18343 8.00634C3.24514 8.06722 3.32143 8.09765 3.41229 8.09765ZM5.58836 8.09765C5.67964 8.09765 5.75593 8.06722 5.81721 8.00634C5.8785 7.94547 5.90914 7.87022 5.90914 7.7806V2.70767C5.90914 2.61763 5.87828 2.54238 5.81657 2.48193C5.75486 2.42105 5.67857 2.39061 5.58771 2.39061C5.49643 2.39061 5.41993 2.42105 5.35821 2.48193C5.2965 2.5428 5.26586 2.61805 5.26629 2.70767V7.7806C5.26629 7.87064 5.29714 7.94589 5.35886 8.00634C5.42057 8.06679 5.49707 8.09723 5.58836 8.09765Z" fill="#3B3731" />
+                                                    </svg>
+                                                </div>
                                             </div>
                                         </div>
 
@@ -6686,13 +6925,11 @@
                     tabs.forEach(t => t.classList.remove('active'));
                     tab.classList.add('active');
 
-                    console.log('Clicked tab:', tab.textContent.trim());
-
-                    if (tab.textContent.trim() === 'My Profile' || tab.textContent.trim() === 'My Pets') {
-                        detailsCompletion.style.display = 'block';
-                    } else {
-                        detailsCompletion.style.display = 'none';
-                    }
+                    // if (tab.textContent.trim() === 'My Profile' || tab.textContent.trim() === 'My Pets') {
+                    //     detailsCompletion.style.display = 'block';
+                    // } else {
+                    //     detailsCompletion.style.display = 'none';
+                    // }
 
                     // hide every section
                     Object.values(sections).forEach(sec => {
@@ -6708,6 +6945,8 @@
                         target.classList.remove('hidden');
                         target.style.display = 'block';
                     }
+
+                    scrollToTabs();
                 });
             });
         });
@@ -6757,8 +6996,6 @@
                     profileForm.addEventListener('submit', (e) => {
                         e.preventDefault();
 
-                        alert('Profile Updated!');
-
                         toggleView(false);
                         setCardBg('#fafafa');
                     });
@@ -6770,6 +7007,7 @@
         const reviewButtons = document.querySelectorAll(".pill");
         const writtenReviews = document.getElementById("written-reviews");
         const receivedReviews = document.getElementById("received-reviews");
+        const reviewsSubHeading = document.querySelector('.reviews-section-title')
 
         reviewButtons.forEach(button => {
             button.addEventListener("click", () => {
@@ -6782,14 +7020,16 @@
                 writtenReviews.classList.remove("active");
                 receivedReviews.classList.remove("active");
 
-
                 if (type === "written") {
                     writtenReviews.classList.add("active");
+                    reviewsSubHeading.textContent = "Reviews Written";
                 } else if (type === "received") {
                     receivedReviews.classList.add("active");
+                    reviewsSubHeading.textContent = "Reviews Received";
                 } else if (type === "all") {
                     writtenReviews.classList.add("active");
                     receivedReviews.classList.add("active");
+                    reviewsSubHeading.textContent = "All Reviews";
                 }
             });
         });
@@ -7165,31 +7405,112 @@
             const sortBy = container.querySelector('.sort-by');
             const sortByFilter = container.querySelector('.sort-by-filter');
 
-            const venueSelection = container.querySelector('.venue-selection');
-            const venueList = container.querySelector('.venue-list');
+            const venueSelections = container.querySelectorAll('.venue-selection');
 
             sortBy.addEventListener('click', (e) => {
                 e.stopPropagation();
 
-                venueList.style.display = 'none';
+                document.querySelectorAll('.venue-list').forEach(list => {
+                    list.style.display = 'none';
+                });
 
                 sortByFilter.style.display =
                     (sortByFilter.style.display === 'block') ? 'none' : 'block';
             });
 
-            venueSelection.addEventListener('click', (e) => {
-                e.stopPropagation();
+            venueSelections.forEach(venueSelection => {
+                const venueList = venueSelection.querySelector('.venue-list');
 
-                sortByFilter.style.display = 'none';
+                venueSelection.addEventListener('click', (e) => {
+                    e.stopPropagation();
 
-                venueList.style.display =
-                    (venueList.style.display === 'block') ? 'none' : 'block';
+                    sortByFilter.style.display = 'none';
+
+                    document.querySelectorAll('.venue-list').forEach(list => {
+                        if (list !== venueList) {
+                            list.style.display = 'none';
+                        }
+                    });
+
+                    venueList.style.display =
+                        (venueList.style.display === 'block') ? 'none' : 'block';
+                });
             });
         });
 
         document.addEventListener('click', () => {
             document.querySelectorAll('.sort-by-filter, .venue-list')
                 .forEach(el => el.style.display = 'none');
+        });
+    </script>
+    <script>
+        // Scroll to tabs
+        function scrollToTabs() {
+            document.getElementById('tabs-anchor')
+                ?.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const cancelBtn = document.getElementById('cancel-btn');
+            const profileForm = document.getElementById('profile-form');
+            const cancelPetBtn = document.getElementById('cancel-add-pet');
+            const addPetForm = document.getElementById('add-pet-form');
+            const sliderContainer = document.getElementById('pets-slider-container');
+            const formContainer = document.getElementById('add-pet-form-container');
+            const petBreedSelect = document.getElementById('pet-breed');
+
+            if (cancelBtn) {
+                cancelBtn.addEventListener('click', () => {
+                    scrollToTabs();
+                });
+            }
+
+            if (profileForm) {
+                profileForm.addEventListener('submit', (e) => {
+                    scrollToTabs();
+                });
+            }
+
+            if (cancelPetBtn) {
+                cancelPetBtn.addEventListener('click', () => {
+                    scrollToTabs();
+                });
+            }
+
+            if (addPetForm) {
+                addPetForm.addEventListener('submit', (e) => {
+                    scrollToTabs();
+                });
+            }
+        });
+
+        document.querySelectorAll('.review-menu').forEach(menu => {
+            menu.addEventListener('click', function(e) {
+                e.stopPropagation();
+
+                const dropdown = this.querySelector('.review-menu-dropdown');
+
+                // Hide all other dropdowns
+                document.querySelectorAll('.review-menu-dropdown').forEach(item => {
+                    if (item !== dropdown) {
+                        item.style.display = 'none';
+                    }
+                });
+
+                // Toggle current dropdown
+                dropdown.style.display =
+                    dropdown.style.display === 'flex' ? 'none' : 'flex';
+            });
+        });
+
+        // Close dropdown when clicking anywhere outside
+        document.addEventListener('click', function() {
+            document.querySelectorAll('.review-menu-dropdown').forEach(item => {
+                item.style.display = 'none';
+            });
         });
     </script>
 
