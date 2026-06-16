@@ -35,10 +35,10 @@
                                     fill="#FFC97A" />
                             </svg>
                             <?php
-                                if ($currentPage == 'business-landing-page.php') { ?>
-                                    <span class="fs-18-500">Business</span>
-                                <?php
-                                }
+                            if ($currentPage == 'business-landing-page.php') { ?>
+                                <span class="fs-18-500">Business</span>
+                            <?php
+                            }
                             ?>
                         </a>
                         <button class="menu-toggle">&#9776;</button>
@@ -465,33 +465,40 @@
     const notificationBtn = document.querySelector('.notification-btn');
     const messagesBtn = document.querySelector('.messages-btn');
     const userBtn = document.querySelector('.user-btn');
+
     const headerNotifications = document.querySelector('.header-notifications');
     const messagesNotifications = document.querySelector('.messages-notifications');
     const userProfileOptions = document.querySelector('.user-profile-options');
 
-    notificationBtn.addEventListener('click', () => {
-        // Toggle header notifications
-        headerNotifications.style.display = (headerNotifications.style.display === 'block') ? 'none' : 'block';
-        // Close messages notifications
-        messagesNotifications.style.display = 'none';
-        userProfileOptions.style.display = 'none';
-    });
+    if (notificationBtn && headerNotifications) {
+        notificationBtn.addEventListener('click', () => {
+            headerNotifications.style.display =
+                headerNotifications.style.display === 'block' ? 'none' : 'block';
 
-    messagesBtn.addEventListener('click', () => {
-        // Toggle messages notifications
-        messagesNotifications.style.display = (messagesNotifications.style.display === 'block') ? 'none' : 'block';
-        // Close header notifications
-        headerNotifications.style.display = 'none';
-        userProfileOptions.style.display = 'none';
-    });
+            if (messagesNotifications) messagesNotifications.style.display = 'none';
+            if (userProfileOptions) userProfileOptions.style.display = 'none';
+        });
+    }
 
-    userBtn.addEventListener('click', () => {
-        // Toggle messages notifications
-        userProfileOptions.style.display = (userProfileOptions.style.display === 'block') ? 'none' : 'block';
-        // Close header notifications
-        headerNotifications.style.display = 'none';
-        messagesNotifications.style.display = 'none';
-    });
+    if (messagesBtn && messagesNotifications) {
+        messagesBtn.addEventListener('click', () => {
+            messagesNotifications.style.display =
+                messagesNotifications.style.display === 'block' ? 'none' : 'block';
+
+            if (headerNotifications) headerNotifications.style.display = 'none';
+            if (userProfileOptions) userProfileOptions.style.display = 'none';
+        });
+    }
+
+    if (userBtn && userProfileOptions) {
+        userBtn.addEventListener('click', () => {
+            userProfileOptions.style.display =
+                userProfileOptions.style.display === 'block' ? 'none' : 'block';
+
+            if (headerNotifications) headerNotifications.style.display = 'none';
+            if (messagesNotifications) messagesNotifications.style.display = 'none';
+        });
+    }
 </script>
 
 <script>
