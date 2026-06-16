@@ -3391,6 +3391,7 @@ margin: 0;">
                         const savedPetDetails = sessionStorage.getItem('petDetails');
                         if (!savedPetDetails) {
                             petDetailsForm.classList.add('hidden');
+                            petAddNewPetBtn.style.display = 'none';
                             document.getElementById('petFormBtns').style.display = 'none';
                             petActionBtns.style.display = 'flex';
                         }
