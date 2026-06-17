@@ -1442,7 +1442,7 @@ html {
 .lb-image-wrap {
     position: relative;
     width: 100%;
-    background: #ffffff8a;
+    /* background: #ffffff8a; */
     line-height: 0;
     border-radius: 10px;
 }

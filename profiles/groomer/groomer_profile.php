@@ -2540,20 +2540,15 @@
                             </svg>
                             Availability updated yesterday.
                         </span>
-
                         <div class="service-type-select mt-4">
                             <p class="label">Service Type</p>
                             <div class="custom-select" data-multiselect data-color="#FBAC83">
                                 <div class="select-trigger w-auto">
-                                    <span class="selected-text">Full groom</span>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="8"
-                                        viewBox="0 0 15 8" fill="none">
-                                        <path d="M13.8737 0.5L7.13022 7.24344L0.499976 0.613201"
-                                            stroke="#3B3731" stroke-linecap="round"
-                                            stroke-linejoin="round" />
+                                    <span class="selected-text">Select services</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="8" viewBox="0 0 15 8" fill="none">
+                                        <path d="M13.8737 0.5L7.13022 7.24344L0.499976 0.613201" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
                                     </svg>
                                 </div>
-
                                 <ul class="select-options">
                                     <li data-value="full-groom">Full groom</li>
                                     <li data-value="face-trim">Face Trim Only</li>
@@ -2561,71 +2556,30 @@
                                     <li data-value="bath-brush">Bath & Brush</li>
                                     <li data-value="nail-trim">Nail Trim</li>
                                 </ul>
-
                                 <input type="hidden" name="serviceType">
                             </div>
-                            <div class="service-selected-options d-flex align-items-center flex-wrap gap-10 mt-4">
-                                <div class="selected-item d-flex align-items-center gap-10" data-value="full-groom" style="background: none;color: #FBAC83; border:1px solid #FBAC83">
-                                    <p>Full groom</p>
-                                    <svg style="cursor: pointer" xmlns="http://www.w3.org/2000/svg" width="9" height="9" viewBox="0 0 9 9" fill="none">
-                                        <path d="M0.5 7.57L7.572 0.5M0.5 0.5L7.572 7.57" stroke="#FBAC83" stroke-linecap="round" />
-                                    </svg>
-                                </div>
-                                <div class="selected-item d-flex align-items-center gap-10" data-value="face-trim" style="background: none;color: #FBAC83; border:1px solid #FBAC83">
-                                    <p>Face Trim Only</p>
-                                    &nbsp;
-                                    <svg style="cursor: pointer" xmlns="http://www.w3.org/2000/svg" width="9" height="9" viewBox="0 0 9 9" fill="none">
-                                        <path d="M0.5 7.57L7.572 0.5M0.5 0.5L7.572 7.57" stroke="#FBAC83" stroke-linecap="round" />
-                                    </svg>
-                                </div>
-                                <div class="selected-item d-flex align-items-center gap-10" data-value="bath-brush" style="background: none;color: #FBAC83; border:1px solid #FBAC83">
-                                    <p>Bath & Brush</p>
-                                    <svg style="cursor: pointer" xmlns="http://www.w3.org/2000/svg" width="9" height="9" viewBox="0 0 9 9" fill="none">
-                                        <path d="M0.5 7.57L7.572 0.5M0.5 0.5L7.572 7.57" stroke="#FBAC83" stroke-linecap="round" />
-                                    </svg>
-                                </div>
-                            </div>
+                            <div class="service-selected-options d-flex align-items-center flex-wrap gap-10 mt-4"></div>
                         </div>
-
-
 
                         <div class="service-type-select mt-4">
-                            <p class="label">Extra’s & Add-ons</p>
+                            <p class="label">Extra's & Add-ons</p>
                             <div class="custom-select" data-multiselect data-color="#FFC97A">
                                 <div class="select-trigger w-auto">
-                                    <span class="selected-text">Hypoallergenic Shampoo Upgrade</span>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="8"
-                                        viewBox="0 0 15 8" fill="none">
-                                        <path d="M13.8737 0.5L7.13022 7.24344L0.499976 0.613201"
-                                            stroke="#3B3731" stroke-linecap="round"
-                                            stroke-linejoin="round" />
+                                    <span class="selected-text">Select add-ons</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="8" viewBox="0 0 15 8" fill="none">
+                                        <path d="M13.8737 0.5L7.13022 7.24344L0.499976 0.613201" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
                                     </svg>
                                 </div>
-
                                 <ul class="select-options">
                                     <li data-value="hypoallergenic-shampoo-upgrade">Hypoallergenic Shampoo Upgrade</li>
-                                    <li data-value="flea-&-tick-treatment">Flea & Tick Treatment</li>
+                                    <li data-value="flea-tick-treatment">Flea & Tick Treatment</li>
                                     <li data-value="hypoallergenic-shampoo">Hypoallergenic Shampoo</li>
                                 </ul>
-
-                                <input type="hidden" name="extras-addons">
+                                <input type="hidden" name="extrasAddons">
                             </div>
-                            <div class="service-selected-options d-flex align-items-center flex-wrap gap-10 mt-4">
-                                <div class="selected-item d-flex align-items-center gap-10" data-value="flea-&-tick-treatment" style="background: none;color: #FFC97A;border:1px solid #FFC97A">
-                                    <p>Flea & Tick Treatment</p>
-                                    <svg style="cursor: pointer" xmlns="http://www.w3.org/2000/svg" width="9" height="9" viewBox="0 0 9 9" fill="none">
-                                        <path d="M0.5 7.57L7.572 0.5M0.5 0.5L7.572 7.57" stroke="#FFC97A" stroke-linecap="round" />
-                                    </svg>
-                                </div>
-                                <div class="selected-item d-flex align-items-center gap-10" data-value="hypoallergenic-shampoo" style="background: none;color: #FFC97A;border:1px solid #FFC97A">
-                                    <p>Hypoallergenic Shampoo</p>
-                                    &nbsp;
-                                    <svg style="cursor: pointer" xmlns="http://www.w3.org/2000/svg" width="9" height="9" viewBox="0 0 9 9" fill="none">
-                                        <path d="M0.5 7.57L7.572 0.5M0.5 0.5L7.572 7.57" stroke="#FFC97A" stroke-linecap="round" />
-                                    </svg>
-                                </div>
-                            </div>
+                            <div class="service-selected-options d-flex align-items-center flex-wrap gap-10 mt-4"></div>
                         </div>
+
 
                         <div class="calendar mt-4">
                             <div class="calendar-header">
@@ -3179,7 +3133,7 @@
     <?php include '../../components/footer.php' ?>
 
     <script src="<?= BASE_URL ?>/assets/js/profile.js"></script>
-    <script src="<?= BASE_URL ?>/assets/js/common.js"></script>
+    <!-- <script src="<?= BASE_URL ?>/assets/js/common.js"></script> -->
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script>
@@ -3308,64 +3262,6 @@
                         behavior: 'smooth'
                     });
                 });
-            });
-        });
-    </script>
-    <script>
-        document.querySelectorAll('.custom-select').forEach(select => {
-            const trigger = select.querySelector('.select-trigger');
-            const options = select.querySelectorAll('.select-options li');
-            const datePopovers = document.querySelectorAll('.popover');
-            const text = select.querySelector('.selected-text');
-            const hiddenInput = select.querySelector('input[type="hidden"]');
-
-            trigger.addEventListener('click', e => {
-                e.stopPropagation();
-
-                datePopovers.forEach(popover => {
-                    popover.style.display = 'none';
-                });
-
-                document.querySelectorAll('.custom-select').forEach(s => {
-                    if (s !== select) {
-                        s.classList.remove('open');
-                        const t = s.querySelector('.select-trigger');
-                        t.style.cssText = `
-                    border-bottom-left-radius: 12px;
-                    border-bottom-right-radius: 12px;
-                `;
-                    }
-                });
-
-                const isOpen = select.classList.toggle('open');
-
-                trigger.style.cssText = isOpen ?
-                    `border-bottom-left-radius: 0; border-bottom-right-radius: 0;` :
-                    `border-bottom-left-radius: 12px; border-bottom-right-radius: 12px;`;
-            });
-
-            options.forEach(option => {
-                option.addEventListener('click', () => {
-                    text.textContent = option.textContent;
-                    hiddenInput.value = option.dataset.value;
-
-                    select.classList.remove('open');
-                    select.classList.add('has-value'); // add class to highlight border
-
-                    trigger.style.cssText = `
-                border-bottom-left-radius: 12px;
-                border-bottom-right-radius: 12px;
-            `;
-                });
-            });
-        });
-
-        // Remove 'has-value' if clicked outside and no value
-        document.addEventListener('click', (e) => {
-            document.querySelectorAll('.custom-select').forEach(select => {
-                if (!select.contains(e.target) && !select.querySelector('input[type="hidden"]').value) {
-                    select.classList.remove('has-value');
-                }
             });
         });
     </script>

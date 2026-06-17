@@ -1,54 +1,3 @@
-// custom select dropdown js  
-
-document.querySelectorAll('.service-type-select .custom-select').forEach(select => {
-    const trigger = select.querySelector('.service-type-select .custom-select .select-trigger');
-    const options = select.querySelectorAll('.service-type-select .custom-select .select-options li');
-    const datePopovers = document.querySelectorAll('.popover');
-    const text = select.querySelector('.selected-text');
-    const hiddenInput = select.querySelector('input[type="hidden"]');
-
-    trigger.addEventListener('click', e => {
-        e.stopPropagation();
-
-        datePopovers.forEach(popover => {
-            popover.style.display = 'none';
-        });
-
-        document.querySelectorAll('.custom-select').forEach(s => {
-            if (s !== select) {
-                s.classList.remove('open');
-                const t = s.querySelector('.select-trigger');
-                t.style.cssText = `
-                    border-bottom-left-radius: 12px;
-                    border-bottom-right-radius: 12px;
-                `;
-            }
-        });
-
-        const isOpen = select.classList.toggle('open');
-
-        trigger.style.cssText = isOpen ?
-            `border-bottom-left-radius: 0; border-bottom-right-radius: 0;` :
-            `border-bottom-left-radius: 12px; border-bottom-right-radius: 12px;`;
-    });
-
-    options.forEach(option => {
-        option.addEventListener('click', () => {
-            text.textContent = option.textContent;
-            hiddenInput.value = option.dataset.value;
-
-            select.classList.remove('open');
-            select.classList.add('has-value'); // add class to highlight border
-
-            trigger.style.cssText = `
-                border-bottom-left-radius: 12px;
-                border-bottom-right-radius: 12px;
-            `;
-        });
-    });
-});
-
-
 // calendar
 const monthNames = [
     "January", "February", "March", "April", "May", "June",
@@ -152,93 +101,6 @@ document.querySelectorAll('[data-tab]').forEach(tab => {
 });
 // map shown tab js 
 
-
-//multi select 
-
-document.querySelectorAll('[data-multiselect]').forEach(select => {
-    const trigger = select.querySelector('.select-trigger');
-    const options = select.querySelector('.select-options');
-    const items = options.querySelectorAll('li');
-    const hiddenInput = select.querySelector('input[type="hidden"]');
-    const selectedBox = select.closest('.service-type-select')
-        .querySelector('.service-selected-options');
-
-    // ✅ Use data-color or default
-    const tagColor = select.dataset.color || '#FBAC83';
-
-    // Initialize selectedValues from pre-existing tags
-    let selectedValues = [];
-    selectedBox.querySelectorAll('.selected-item').forEach(tag => {
-        const value = tag.dataset.value;
-        if (value) selectedValues.push(value);
-
-        const removeBtn = tag.querySelector('svg');
-        if (removeBtn) {
-            removeBtn.addEventListener('click', () => {
-                selectedValues = selectedValues.filter(v => v !== value);
-                tag.remove();
-                updateHiddenInput();
-            });
-        }
-    });
-
-    updateHiddenInput(); // sync hidden input with pre-selected values
-
-    // Toggle dropdown
-    trigger.addEventListener('click', () => {
-        options.classList.toggle('open');
-    });
-
-    // Select option
-    items.forEach(item => {
-        item.addEventListener('click', () => {
-            const value = item.dataset.value;
-            const text = item.textContent.trim();
-
-            if (selectedValues.includes(value)) return; // already selected
-
-            selectedValues.push(value);
-            updateHiddenInput();
-            renderTag(value, text);
-        });
-    });
-
-    function renderTag(value, text) {
-        const tag = document.createElement('div');
-        tag.className = 'selected-item d-flex align-items-center gap-10';
-        tag.dataset.value = value;
-        tag.style.background = 'none';
-        tag.style.color = tagColor;
-        tag.style.border = `1px solid ${tagColor}`;
-
-        tag.innerHTML = `
-            <p>${text}</p>
-            <svg style="cursor: pointer" data-remove xmlns="http://www.w3.org/2000/svg" width="9" height="9"
-                viewBox="0 0 9 9" fill="none">
-                <path d="M0.5 7.57L7.572 0.5M0.5 0.5L7.572 7.57"
-                    stroke="${tagColor}" stroke-linecap="round" />
-            </svg>
-        `;
-
-        tag.querySelector('[data-remove]').addEventListener('click', () => {
-            selectedValues = selectedValues.filter(v => v !== value);
-            tag.remove();
-            updateHiddenInput();
-        });
-
-        selectedBox.appendChild(tag);
-    }
-
-    function updateHiddenInput() {
-        hiddenInput.value = selectedValues.join(',');
-    }
-
-    document.addEventListener('click', e => {
-        if (!select.contains(e.target)) {
-            options.classList.remove('open');
-        }
-    });
-});
 
 // fav button
 const favButton = document.querySelector('.fav');
@@ -484,19 +346,6 @@ document.addEventListener('change', (e) => {
 
 
 /* -------------------------
-   PILL CLICK REMOVE
---------------------------*/
-document.addEventListener('click', (e) => {
-    const pill = e.target.closest('.selected-item');
-    if (!pill) return;
-
-    const value = pill.dataset.value;
-
-    pill.remove();
-    removePill(value);
-});
-
-/* -------------------------
    INIT PRE-CHECKED INPUTS
 --------------------------*/
 document.querySelectorAll('input[type="checkbox"]:checked').forEach(input => {
@@ -504,4 +353,145 @@ document.querySelectorAll('input[type="checkbox"]:checked').forEach(input => {
         input.closest('label')?.querySelector('.option-text')?.innerText
         || input.value;
     addPill(label, input.value, input.name, 'checkbox');
+});
+
+
+// custom select multiselect dropdown  
+
+document.querySelectorAll('.custom-select[data-multiselect]').forEach(select => {
+
+    const trigger = select.querySelector('.select-trigger');
+    const optionItems = select.querySelectorAll('.select-options li');
+    const hiddenInput = select.querySelector('input[type="hidden"]');
+    const pillContainer = select.closest('.service-type-select')
+        .querySelector('.service-selected-options');
+
+    const selectedText = select.querySelector('.selected-text');
+    const color = select.dataset.color || '#FBAC83';
+
+    const selected = new Set();
+
+    // ✅ update selected text
+    function updateSelectedText() {
+        if (selected.size === 0) {
+            selectedText.textContent = select.dataset.placeholder || 'Select add-ons';
+            return;
+        }
+
+        const last = [...selected].pop();
+
+        const label = select.querySelector(
+            `li[data-value="${CSS.escape(last)}"]`
+        )?.textContent.trim();
+
+        selectedText.textContent = label || 'Select add-ons';
+    }
+
+    // Open / close
+    trigger.addEventListener('click', e => {
+        e.stopPropagation();
+        closeOthers(select);
+
+        select.classList.toggle('open');
+
+        const isOpen = select.classList.contains('open');
+        trigger.style.cssText = isOpen
+            ? 'border-bottom-left-radius:0;border-bottom-right-radius:0;'
+            : 'border-bottom-left-radius:12px;border-bottom-right-radius:12px;';
+    });
+
+    // Option click
+    optionItems.forEach(option => {
+        option.addEventListener('click', e => {
+            e.stopPropagation();
+
+            const val = option.dataset.value;
+            const label = option.textContent.trim();
+
+            if (selected.has(val)) {
+                selected.delete(val);
+                option.classList.remove('selected');
+                removePill(val);
+            } else {
+                selected.add(val);
+                option.classList.add('selected');
+                createPill(val, label);
+            }
+
+            select.classList.remove('open');
+
+            trigger.style.cssText =
+                'border-bottom-left-radius:12px;border-bottom-right-radius:12px;';
+
+            select.classList.toggle('has-value', selected.size > 0);
+
+            hiddenInput.value = [...selected].join(',');
+
+            updateSelectedText(); // ✅ ADDED
+        });
+    });
+
+    function createPill(val, label) {
+        const pill = document.createElement('div');
+        pill.className = 'selected-item d-flex align-items-center gap-10';
+        pill.dataset.value = val;
+
+        pill.style.cssText = `
+            background:none;
+            color:${color};
+            border:1px solid ${color};
+        `;
+
+        pill.innerHTML = `
+            <p>${label}</p>
+            <svg style="cursor:pointer;flex-shrink:0"
+                xmlns="http://www.w3.org/2000/svg"
+                width="9" height="9" viewBox="0 0 9 9" fill="none">
+                <path d="M0.5 7.57L7.572 0.5M0.5 0.5L7.572 7.57"
+                    stroke="${color}" stroke-linecap="round"/>
+            </svg>
+        `;
+
+        pill.querySelector('svg').addEventListener('click', ev => {
+            ev.stopPropagation();
+
+            selected.delete(val);
+            pill.remove();
+
+            select.querySelector(`li[data-value="${CSS.escape(val)}"]`)
+                ?.classList.remove('selected');
+
+            select.classList.toggle('has-value', selected.size > 0);
+            hiddenInput.value = [...selected].join(',');
+
+            updateSelectedText(); // ✅ ADDED
+        });
+
+        pillContainer.appendChild(pill);
+    }
+
+    function removePill(val) {
+        pillContainer
+            .querySelector(`.selected-item[data-value="${CSS.escape(val)}"]`)
+            ?.remove();
+
+        updateSelectedText(); // optional safety sync
+    }
+});
+
+function closeOthers(current) {
+    document.querySelectorAll('.custom-select').forEach(s => {
+        if (s === current) return;
+        s.classList.remove('open');
+    });
+}
+
+document.addEventListener('click', () => {
+    document.querySelectorAll('.custom-select').forEach(s => {
+        if (!s.classList.contains('open')) return;
+
+        s.classList.remove('open');
+        s.querySelector('.select-trigger').style.cssText =
+            'border-bottom-left-radius:12px;border-bottom-right-radius:12px;';
+    });
 });
