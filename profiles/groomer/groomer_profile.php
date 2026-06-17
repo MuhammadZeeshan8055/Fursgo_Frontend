@@ -3349,19 +3349,6 @@
 
         // sort and venue selection ends
 
-
-        // selected filter remove js starts
-
-        document.addEventListener('click', e => {
-            const item = e.target.closest('.selected-item');
-            if (!item) return;
-
-            item.remove();
-        });
-
-
-
-
         // tab map js starts
 
         let modalMap = null;
