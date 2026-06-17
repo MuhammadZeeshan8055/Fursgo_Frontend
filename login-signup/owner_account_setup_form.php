@@ -579,6 +579,72 @@ include '../components/calendar.php';
             border-color: var(--border) !important;
         }
     </style>
+
+    <style>
+        .delete-confirm-bar {
+            overflow: hidden;
+            max-height: 0;
+            opacity: 0;
+            transition: max-height 0.3s ease, opacity 0.3s ease, margin 0.3s ease;
+            margin: 0;
+        }
+
+        .delete-confirm-bar.show {
+            max-height: 100px;
+            opacity: 1;
+            margin: 6px 0;
+        }
+
+        .delete-confirm-inner {
+            background: rgba(255, 110, 110, 0.10);
+            border: 1px solid #FF6E6E;
+            border-radius: 12px;
+            padding: 25px 60px;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .delete-confirm-msg {
+            color: #3B3731;
+            font-size: 14px;
+            flex: 1;
+        }
+
+        .btn-cancel-delete {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            border-radius: 96px;
+            padding: 10px 18px;
+            height: 48px;
+            transition: background 0.2s;
+        }
+
+        .btn-cancel-delete:hover {
+            background: #f5f5f5;
+        }
+
+        .btn-confirm-delete {
+            background: #FF6E6E;
+            border: none;
+            padding: 8px 20px;
+            cursor: pointer;
+            color: #fff;
+            transition: background 0.2s;
+            height: 48px;
+            border-radius: 96px;
+        }
+
+        .btn-confirm-delete:hover {
+            background: #c94444;
+        }
+
+        .pet-card.removing {
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+    </style>
 </head>
 
 <body>
@@ -1608,6 +1674,7 @@ include '../components/calendar.php';
 
 
         let currentStep = 0;
+        let editMode = false;
         const steps = document.querySelectorAll(".step");
         const stepItems = document.querySelectorAll(".step-item");
         const progressFill = document.querySelector(".progress-fill");
@@ -1678,28 +1745,41 @@ include '../components/calendar.php';
         const formOuterDiv = document.querySelector(".form-outer-div");
 
         function nextPrev(n) {
-            // Guard: step might not exist
             if (!steps[currentStep]) return;
 
-            // Optional validation (current step)
             const input = steps[currentStep].querySelector("input, textarea");
             if (n === 1 && input && !input.checkValidity()) {
                 input.reportValidity();
                 return;
             }
 
-            currentStep += n;
-
-            // Final step → show pet list
-            if (currentStep >= steps.length) {
+            // ── ADD THIS BLOCK ──────────────────────────────────────────
+            if (n === -1 && editMode) {
+                editMode = false;
                 formOuterDiv.classList.add("hidden");
-
                 setTimeout(() => {
                     formOuterDiv.style.display = "none";
                     petListSection.style.display = "block";
                     requestAnimationFrame(() => petListSection.classList.add("active"));
                 }, 180);
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+                });
+                return;
+            }
+            // ────────────────────────────────────────────────────────────
 
+            currentStep += n;
+
+            if (currentStep >= steps.length) {
+                editMode = false; // ← reset on Save too
+                formOuterDiv.classList.add("hidden");
+                setTimeout(() => {
+                    formOuterDiv.style.display = "none";
+                    petListSection.style.display = "block";
+                    requestAnimationFrame(() => petListSection.classList.add("active"));
+                }, 180);
                 window.scrollTo({
                     top: 0,
                     behavior: "smooth"
@@ -1707,10 +1787,7 @@ include '../components/calendar.php';
                 return;
             }
 
-            // Show next/previous step
             showStep(currentStep);
-
-            // Scroll page to top on step change
             window.scrollTo({
                 top: 0,
                 behavior: "smooth"
@@ -1761,10 +1838,22 @@ include '../components/calendar.php';
         goBackBtn.addEventListener("click", handleBackNavigation);
         addPetBtn.addEventListener("click", handleBackNavigation);
 
+        // REPLACE with this:
         const editPetBtns = document.querySelectorAll(".edit-pet");
-
         editPetBtns.forEach(btn => {
-            btn.addEventListener("click", handleBackNavigation);
+            btn.addEventListener("click", function() {
+                editMode = true; // ← flag: we're editing
+
+                petListSection.classList.remove("active");
+                setTimeout(() => {
+                    petListSection.style.display = "none";
+                    formOuterDiv.style.display = "block";
+                    requestAnimationFrame(() => formOuterDiv.classList.remove("hidden"));
+
+                    currentStep = 1; // go straight to pet details step
+                    showStep(currentStep);
+                }, 180);
+            });
         });
 
 
@@ -1920,71 +2009,6 @@ include '../components/calendar.php';
         });
     </script>
 
-    <style>
-        .delete-confirm-bar {
-            overflow: hidden;
-            max-height: 0;
-            opacity: 0;
-            transition: max-height 0.3s ease, opacity 0.3s ease, margin 0.3s ease;
-            margin: 0;
-        }
-
-        .delete-confirm-bar.show {
-            max-height: 100px;
-            opacity: 1;
-            margin: 6px 0;
-        }
-
-        .delete-confirm-inner {
-            background: rgba(255, 110, 110, 0.10);
-            border: 1px solid #FF6E6E;
-            border-radius: 12px;
-            padding: 25px 60px;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-
-        .delete-confirm-msg {
-            color: #3B3731;
-            font-size: 14px;
-            flex: 1;
-        }
-
-        .btn-cancel-delete {
-            background: #fff;
-            border: 1px solid #ddd;
-            border-radius: 20px;
-            border-radius: 96px;
-            padding: 10px 18px;
-            height: 48px;
-            transition: background 0.2s;
-        }
-
-        .btn-cancel-delete:hover {
-            background: #f5f5f5;
-        }
-
-        .btn-confirm-delete {
-            background: #FF6E6E;
-            border: none;
-            padding: 8px 20px;
-            cursor: pointer;
-            color: #fff;
-            transition: background 0.2s;
-            height: 48px;
-            border-radius: 96px;
-        }
-
-        .btn-confirm-delete:hover {
-            background: #c94444;
-        }
-
-        .pet-card.removing {
-            opacity: 0;
-            transform: translateX(-10px);
-            transition: opacity 0.3s ease, transform 0.3s ease;
-        }
-    </style>
 </body>
 
 </html>
