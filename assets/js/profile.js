@@ -437,22 +437,23 @@ document.querySelectorAll('.custom-select[data-multiselect]').forEach(select => 
         pill.dataset.value = val;
 
         pill.style.cssText = `
-            background:none;
-            color:${color};
-            border:1px solid ${color};
-        `;
+        background:none;
+        color:${color};
+        border:1px solid ${color};
+        cursor:pointer;
+    `;
 
         pill.innerHTML = `
-            <p>${label}</p>
-            <svg style="cursor:pointer;flex-shrink:0"
-                xmlns="http://www.w3.org/2000/svg"
-                width="9" height="9" viewBox="0 0 9 9" fill="none">
-                <path d="M0.5 7.57L7.572 0.5M0.5 0.5L7.572 7.57"
-                    stroke="${color}" stroke-linecap="round"/>
-            </svg>
-        `;
+        <p>${label}</p>
+        <svg style="flex-shrink:0;pointer-events:none;"
+            xmlns="http://www.w3.org/2000/svg"
+            width="9" height="9" viewBox="0 0 9 9" fill="none">
+            <path d="M0.5 7.57L7.572 0.5M0.5 0.5L7.572 7.57"
+                stroke="${color}" stroke-linecap="round"/>
+        </svg>
+    `;
 
-        pill.querySelector('svg').addEventListener('click', ev => {
+        pill.addEventListener('click', ev => {
             ev.stopPropagation();
 
             selected.delete(val);
@@ -464,7 +465,7 @@ document.querySelectorAll('.custom-select[data-multiselect]').forEach(select => 
             select.classList.toggle('has-value', selected.size > 0);
             hiddenInput.value = [...selected].join(',');
 
-            updateSelectedText(); // ✅ ADDED
+            updateSelectedText();
         });
 
         pillContainer.appendChild(pill);
