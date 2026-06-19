@@ -42,11 +42,12 @@
             height: 25px;
             border: 1px solid #FBAC83;
             border-radius: 50%;
-            display: block;
-            position: relative;
+            display: grid;
+            place-items: center;
             margin-right: 5px;
             cursor: pointer;
             box-sizing: border-box;
+            flex-shrink: 0;
         }
 
         .check-circle::after {
@@ -55,10 +56,6 @@
             height: 15px;
             background-color: #FBAC83;
             border-radius: 50%;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
             opacity: 0;
             transition: opacity 0.15s ease;
         }
@@ -67,7 +64,6 @@
             opacity: 1;
         }
 
-        /* Option text */
         .option-text {
             color: #3B3731;
             font-family: Lato;
@@ -77,7 +73,6 @@
             line-height: normal;
         }
 
-        /* Cursor pointer */
         label {
             cursor: pointer;
             display: flex !important;
