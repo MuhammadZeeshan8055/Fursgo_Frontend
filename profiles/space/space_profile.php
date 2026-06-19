@@ -2869,6 +2869,8 @@
                 preferCanvas: true
             }).setView([51.510131, -0.146812], 15);
 
+            enableCtrlScrollZoom(map);
+
             L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', {
                 subdomains: 'abcd',
                 maxZoom: 20
@@ -2908,6 +2910,23 @@
                 });
 
         });
+
+        function enableCtrlScrollZoom(map) {
+            map.scrollWheelZoom.disable();
+
+            map.getContainer().addEventListener('wheel', function (e) {
+                if (e.ctrlKey) {
+                    map.scrollWheelZoom.enable();
+
+                    clearTimeout(map._ctrlZoomTimeout);
+                    map._ctrlZoomTimeout = setTimeout(() => {
+                        map.scrollWheelZoom.disable();
+                    }, 1000);
+                } else {
+                    map.scrollWheelZoom.disable();
+                }
+            });
+        }
     </script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {

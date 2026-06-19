@@ -94,8 +94,8 @@
 function groomerTooltipCardSVG(imageUrl, clipId) {
     return `
     <svg xmlns="http://www.w3.org/2000/svg"
-         width="60"
-         height="60"
+         width="65"
+         height="65"
          viewBox="0 0 170 246"
          style="display:block;">
         <defs>
@@ -205,6 +205,8 @@ document.addEventListener('DOMContentLoaded', function () {
         preferCanvas: true
     });
 
+    enableCtrlScrollZoom(window.map);
+
     // Grey base map
     L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', {
         subdomains: 'abcd', maxZoom: 20
@@ -221,6 +223,8 @@ document.addEventListener('DOMContentLoaded', function () {
         attributionControl: false,
         preferCanvas: true
     });
+
+    enableCtrlScrollZoom(window.spaceMap);
 
     // Grey base map for space map
     L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', {
@@ -335,10 +339,10 @@ document.addEventListener('DOMContentLoaded', function () {
         const tooltipContent = `
         <div style="min-width:215px;position:relative;">
             <div class="map-top-left-svg">
-                ${customTooltipSVG('#C9DDA0', 7, 8)}
+                ${customTooltipSVG('#C9DDA0', 7, 7)}
             </div>
             <div style="display:flex; gap:6px; align-items:center;">
-                <div style="width:70px; display:flex; justify-content:center; align-items:center;">
+                <div style="display:flex; justify-content:center; align-items:center;">
                     ${svgImage}
                 </div>
                 <div style="flex:1;">
@@ -366,7 +370,7 @@ document.addEventListener('DOMContentLoaded', function () {
             .on('mouseover', function (e) {
                 this.openPopup();
             })
-            .on('mouseout', function (e) {
+            .on('mouseclick', function (e) {
                 this.closePopup();
             });
     });
@@ -383,10 +387,10 @@ document.addEventListener('DOMContentLoaded', function () {
         const tooltipContent = `
         <div style="min-width:215px;position:relative;">
             <div class="map-top-left-svg">
-                ${spaceCustomTooltipSVG('#CBDCE8', 7, 8)}
+                ${spaceCustomTooltipSVG('#CBDCE8', 7, 7)}
             </div>
             <div style="display:flex; gap:6px; align-items:center;">
-                <div style="width:70px; display:flex; justify-content:center; align-items:center;">
+                <div style="display:flex; justify-content:center; align-items:center;">
                     ${svgImage}
                 </div>
                 <div style="flex:1;">
@@ -414,10 +418,27 @@ document.addEventListener('DOMContentLoaded', function () {
             .on('mouseover', function (e) {
                 this.openPopup();
             })
-            .on('mouseout', function (e) {
+            .on('mouseclick', function (e) {
                 this.closePopup();
             });
     });
+
+    function enableCtrlScrollZoom(map) {
+    map.scrollWheelZoom.disable();
+
+    map.getContainer().addEventListener('wheel', function (e) {
+        if (e.ctrlKey) {
+            map.scrollWheelZoom.enable();
+
+            clearTimeout(map._ctrlZoomTimeout);
+            map._ctrlZoomTimeout = setTimeout(() => {
+                map.scrollWheelZoom.disable();
+            }, 1000);
+        } else {
+            map.scrollWheelZoom.disable();
+        }
+    });
+}
 
 
     // ---- Custom Tabs ----

@@ -311,7 +311,7 @@
 
             div.innerHTML = `
         <p>${text}</p>
-        <img src="/assets/icons/cross.svg" class="cross svg" alt="">
+        <img src="<?= BASE_URL ?>/assets/icons/cross.svg" class="cross svg" alt="">
     `;
 
             box.appendChild(div);
