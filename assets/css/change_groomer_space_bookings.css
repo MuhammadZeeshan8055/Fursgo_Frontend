@@ -40,7 +40,7 @@ body.change-space {
 .cb-booking-groomer-card {
     background: #f8f8f8;
     border-radius: 15px;
-    padding: 50px 65px;
+    padding: 20px 35px;
     display: flex;
     gap: 20px;
     align-items: center;
@@ -93,7 +93,9 @@ body.change-space {
     font-weight: 500;
     line-height: normal;
 }
-
+.cb-category-tag.space {
+    background: #FFA899;
+}
 .cb-booking-ref {
     color: #3b3731;
     text-align: center;
@@ -146,10 +148,10 @@ body.change-space {
 
 .change-groomer-cb-pet-thumbnail {
     border-radius: 50px;
-  width: 56px;
-  height: 56px;
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
+    width: 27px;
+    height: 27px;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
 }
 
 .cb-update-section {
@@ -430,9 +432,8 @@ body.change-space {
 /* Footer Buttons */
 .cb-modal-footer {
     display: flex;
-    justify-content: space-between;
+    justify-content: end;
     margin-top: 22px;
-    border-top: 1px solid #eae8e5;
     padding-top: 25px;
 }
 
@@ -468,13 +469,13 @@ body.change-space {
 }
 
 .cb-summary-section {
-    background-color: #f8f8f8;
     border-radius: 12px;
     padding: 20px;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 20px;
+    justify-content: end;
+    align-items: end;
+    flex-direction: column;
+    gap: 25px;
 }
 
 /* Refund Alert Styling */
@@ -482,7 +483,7 @@ body.change-space {
     background-color: rgba(201, 221, 160, 0.2);
     color: #bcd093;
     padding: 12px 20px;
-    border-radius: 10px;
+    border-radius: 35px;
     color: #BCD093;
     font-family: Lato;
     font-size: 18px;
@@ -491,6 +492,7 @@ body.change-space {
     line-height: normal;
     flex: 1;
     margin-right: 40px;
+    text-align: center;
 }
 
 /* Price Table Styling */
@@ -499,9 +501,10 @@ body.change-space {
 }
 
 .cb-price-row {
+    gap: 25%;
     display: flex;
-    justify-content: space-between;
-    margin-bottom: 8px;
+    width: 100%;
+    justify-content: end;
 }
 
 .cb-price-label {
@@ -521,12 +524,6 @@ body.change-space {
     font-style: normal;
     font-weight: 600;
     line-height: normal;
-    text-decoration-line: underline;
-    text-decoration-style: solid;
-    text-decoration-skip-ink: auto;
-    text-decoration-thickness: auto;
-    text-underline-offset: auto;
-    text-underline-position: from-font;
 }
 
 .cb-price-row .bold {
@@ -544,7 +541,6 @@ body.change-space {
     display: flex;
     justify-content: space-between;
     padding: 30px 0;
-    border-top: 1px solid #eee;
     margin-top: 20px;
 }
 
@@ -642,9 +638,9 @@ body.change-space {
 .addon-name {
     color: #3b3731;
     font-family: Lato;
-    font-size: 18px;
+    font-size: 16px;
     font-style: normal;
-    font-weight: 500;
+    font-weight: 600;
     line-height: normal;
 }
 
@@ -652,17 +648,10 @@ body.change-space {
     color: #3b3731;
     text-align: right;
     font-family: Lato;
-    font-size: 20px;
+    font-size: 16px;
     font-style: normal;
-    font-weight: 600;
+    font-weight: 700;
     line-height: 25px;
-    /* 125% */
-    text-decoration-line: underline;
-    text-decoration-style: solid;
-    text-decoration-skip-ink: auto;
-    text-decoration-thickness: auto;
-    text-underline-offset: 4px;
-    text-underline-position: from-font;
 }
 
 .unit {
@@ -716,27 +705,26 @@ body.change-space {
 /* Bottom Charge Summary */
 .charge-summary {
     border-radius: 12px;
-    background-color: #f8f8f8;
     padding: 20px;
     display: flex;
-    justify-content: space-between;
+    justify-content: end;
     align-items: center;
     margin-top: 1.5rem;
     margin-bottom: 1rem;
 }
 
 .charge-alert {
-    width: 350px;
     height: 48px;
     background-color: rgba(255, 110, 110, 0.1);
     padding: 12px 20px;
-    border-radius: 10px;
+    border-radius: 35px;
     color: #ff6e6e;
     font-family: Lato;
     font-size: 18px;
     font-style: normal;
     font-weight: 600;
     line-height: normal;
+    text-align: center;
 }
 
 .price-row {
@@ -789,7 +777,45 @@ body.change-space {
     position: relative;
 }
 
+img.rounded-image.first-image,
+img.rounded-image.second-image {
+    width: 27px;
+    height: 27px;
+}
+
 img.rounded-image.second-image {
     position: absolute;
-    left: 30px;
+    left: 15px;
+}
+
+.date-time-container,
+.extras-container {
+    display: flex;
+    gap: 25px;
+    padding: 20px 28px;
+}
+
+.extras-container {
+    width: 80%;
+    flex-wrap: wrap;
+}
+
+.space-service-button.active {
+    border: 1px solid var(--groomer-color);
+    background-color: var(--groomer-color);
+    color: #fff !important;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.space-service-button.active span {
+    color: #fff !important;
+}
+.space-service-button {
+    padding: 14px 15px;
+    border-radius: 96px;
+    background: none;
+    border-radius: 96px;
+    border: 1px solid #EDEDED;
 }

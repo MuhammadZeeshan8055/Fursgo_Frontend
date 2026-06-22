@@ -14,11 +14,16 @@ body.status-cancel {
     --bg-color: #FFEDED;
 }
 
-.bg-color{
+body.cancelled-booking {
+    --border-color: #BABABA;
+    --bg-color: #FAFAFA;
+}
+
+.bg-color {
     background-color: var(--bg-color) !important;
 }
 
-.color{
+.color {
     color: var(--border-color) !important;
 }
 
@@ -124,4 +129,26 @@ body.status-cancel {
     justify-content: center;
     width: fit-content;
     gap: 6px;
+}
+
+.cancel-policy.mt-5 {
+    border-radius: 10px;
+    border: 1px solid #FF6E6E;
+    background: #FFEDED;
+    padding: 25px;
+}
+
+.cancel-policy h3,
+.cancel-policy ul {
+    color: #FF6E6E;
+}
+
+.keep-my-booking-btn {
+    width: 212px !important;
+}
+
+.cancel-my-booking-btn {
+    width: auto !important;
+    border-radius: 75px;
+    background: #FF6E6E;
 }

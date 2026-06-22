@@ -337,6 +337,12 @@ img.rounded-image.second-image {
     border-top-right-radius: 0;
 }
 
+#review-submitted-modal .modal-content.size {
+    margin-bottom: 10rem;
+    width: 700px;
+    height: auto;
+    margin-top: 4%;
+}
 
 /* review modal css */
 
@@ -352,8 +358,10 @@ img.rounded-image.second-image {
     width: 100%;
 }
 
-.review-info {
-    width: 50%;
+.review-profile-section {
+    border-radius: 10px;
+    background: rgba(255, 201, 122, 0.10);
+    padding: 25px;
 }
 
 .review-page-tag {
@@ -371,7 +379,7 @@ img.rounded-image.second-image {
 }
 
 .specific-row {
-    width: 48%;
+    width: 100%;
 }
 
 .review-text-section textarea {
@@ -389,37 +397,33 @@ img.rounded-image.second-image {
 }
 
 .upload-box {
-    flex: 1;
-    width: 190px;
-    height: 190px;
-    background-color: #fcfcfc;
-    border: 1px dashed #eee;
+    width: 150px;
+    height: 150px;
+    background-color: #FAFAFA;
     border-radius: 12px;
+    border: none;
+
+    background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='12' ry='12' stroke='%23D0D0D0' stroke-width='1.5' stroke-dasharray='10%2c 8' stroke-dashoffset='0' stroke-linecap='round'/%3e%3c/svg%3e");
+
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* gap: 20px;
-    padding: 40px; */
 }
 
 .upload-btn {
     background: white;
-    border: 1px solid #3b3731;
-    padding: 10px 15px;
-    border-radius: 25px;
+    border: none;
     cursor: pointer;
-    color: #3b3731;
+    background: none;
+    margin-top: 1.5rem;
+    color: #9D9B98;
     text-align: center;
     font-family: Lato;
-    font-size: 16px;
+    font-size: 14px;
+    font-style: normal;
     font-weight: 600;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    width: 162px;
-    height: 48px;
-    margin-top: 1.5rem;
+    line-height: normal;
 }
 
 .upload-box {
@@ -454,8 +458,8 @@ img.rounded-image.second-image {
     border: none;
     border-radius: 20px;
     cursor: pointer;
-    width: 24px;
-    height: 24px;
+    width: 30px;
+    height: 30px;
 }
 
 .custom-checkbox-container {
@@ -523,14 +527,11 @@ img.rounded-image.second-image {
     display: flex;
     justify-content: space-between;
     margin-top: 40px;
-    gap: 20px;
+    align-items: center;
 }
 
 .footer-btn-cancel {
-    flex: 1;
-    padding: 15px;
-    border-radius: 30px;
-    border: 1px solid #333;
+    border: none;
     background: white;
     cursor: pointer;
     width: 212px;
@@ -538,14 +539,13 @@ img.rounded-image.second-image {
 }
 
 .footer-btn-submit {
-    flex: 1;
     padding: 15px;
     border-radius: 30px;
     border: none;
     cursor: pointer;
-    background-color: #cbdce8;
+    background-color: #FFC97A;
     color: #fff;
-    width: 212px;
+    width: 159px;
     height: 48px;
 }
 

@@ -16,7 +16,7 @@
 
 </head>
 
-<body class="cancelled-booking">
+<body class="status-cancel">
 
     <?php include '../components/header.php' ?>
 
@@ -38,16 +38,27 @@
                     </div>
                     <div class="col-lg-12">
                         <div class="change-booking-outer d-flex flex-column align-items-center">
-                            <div class="d-flex align-items-center gap-10 mt-5">
-                                <h1 class="large-font d-flex">Cancel this booking?</h1>
+                            <div class="svg-div">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="102" height="96" viewBox="0 0 102 96" fill="none">
+                                    <path d="M5.00624 36C4.80225 39.6766 4.80225 44.0506 4.80225 49.3053V57.6169C4.80225 73.2884 4.80686 81.1221 10.2136 85.9926C15.6204 90.8632 24.3285 90.8632 41.74 90.8632H60.2088C77.6204 90.8632 86.3238 90.8591 91.7352 85.9926C97.1466 81.1262 97.1466 73.2884 97.1466 57.6169V49.3053C97.1466 44.0501 97.146 39.6763 96.9415 36H5.00624Z" fill="#FFEDED" />
+                                    <path d="M1 46.4721C1 28.4229 0.999999 19.396 6.86 13.7912C12.72 8.18643 22.145 8.18164 41 8.18164H61C79.855 8.18164 89.285 8.18164 95.14 13.7912C100.995 19.4007 101 28.4229 101 46.4721V56.0447C101 74.0938 101 83.1208 95.14 88.7256C89.28 94.3303 79.855 94.3351 61 94.3351H41C22.145 94.3351 12.715 94.3351 6.86 88.7256C1.005 83.116 1 74.0938 1 56.0447V46.4721Z" stroke="#3B3731" stroke-width="2" />
+                                    <path d="M25.244 8.14517V1M76.7052 8.14517V1M2.08643 31.9624H99.8628" stroke="#3B3731" stroke-width="2" stroke-linecap="round" />
+                                    <circle cx="51.5" cy="63.5" r="11.25" stroke="#FF6E6E" stroke-width="2.5" />
+                                    <path d="M47.8887 67.6664L55.6664 59.8887M47.8887 59.8887L55.6664 67.6664" stroke="#FF6E6E" stroke-width="2.5" stroke-linecap="round" />
+                                </svg>
                             </div>
-                            <p class="medium-light-font font-color text-center">This will cancel your appointment with Sarah's Grooming Studio. </p>
-                            <p class="medium-light-font font-color text-center">Please review the details below before proceeding. </p>
+
+                            <div class="d-flex align-items-center gap-10 mt-5">
+                                <h1 class="large-font d-flex">Your booking has been </h1>
+                                <h1 class="large-font-bold">cancelled!</h1>
+                            </div>
+                            <p class="medium-light-font font-color">Your grooming appointment with Sarah has been cancelled.</p>
+
 
                             <div class="content-wrap">
                                 <div class="booking-cards mt-5">
                                     <div class="booking-card-top bg-color d-flex align-items-center justify-content-between">
-                                        <h2 class="medium-font">Appointment Details</h2>
+                                        <h2 class="medium-font color">Appointment Details</h2>
                                         <p class="simple-font color">Booking reference: FG-10294</p>
                                     </div>
                                     <div class="booking-card-bottom-section">
@@ -77,7 +88,7 @@
                                                     </svg>
                                                     <p class="medium-font-bold">Service</p>
                                                 </div>
-                                                <p class="medium-light-font mt-2">Full Groom</p>
+                                                <p class="medium-light-font mt-2"><del>Full Groom</del></p>
                                             </div>
 
                                             <hr class="vertical-line">
@@ -91,7 +102,7 @@
                                                     </svg>
                                                     <p class="medium-font-bold">Date</p>
                                                 </div>
-                                                <p class="medium-light-font mt-2">18/12/2025</p>
+                                                <p class="medium-light-font mt-2"><del>18/12/2025</del></p>
                                             </div>
 
                                             <hr class="vertical-line">
@@ -110,7 +121,7 @@
                                                     </svg>
                                                     <p class="medium-font-bold">Time</p>
                                                 </div>
-                                                <p class="medium-light-font mt-2">14:30 - 15:30 (90 mins)</p>
+                                                <p class="medium-light-font mt-2"><del>14:30 - 15:30 (90 mins)</del></p>
                                             </div>
 
 
@@ -186,27 +197,25 @@
                                     </div>
                                 </div>
 
-                                <div class="cancel-policy mt-5">
-                                    <h3 class="fs-16-600">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
-                                            <circle cx="6" cy="6" r="5.5" stroke="#FF6E6E" />
-                                            <path d="M4.2666 7.99993L7.99993 4.2666M4.2666 4.2666L7.99993 7.99993" stroke="#FF6E6E" stroke-linecap="round" />
-                                        </svg>
-                                        &nbsp;
-                                        Cancellation policy
-                                    </h3>
-                                    <ul class="fs-16-400 list-style-default mt-4">
-                                        <li>Free cancellation if cancelled more than 24 hours before the appointment.</li>
-                                        <li>Cancellations within 24 hour incur a fee of up to 50% of the booking cost.</li>
-                                        <li>You can reschedule instead — your groomer will be notified.</li>
+                                <div class="what-next mt-5">
+                                    <h3 class="medium-font">What happens next?</h3>
+                                    <ul class="medium-muted-font list-style-default mt-4">
+                                        <li>Your groomer will review your booking and prepare for your appointment.</li>
+                                        <li>You’ll receive a reminder before the session.</li>
+                                        <li>You can message your groomer anytime via FursGo.</li>
                                     </ul>
                                 </div>
 
                                 <div class="footer-buttons d-flex align-items-center justify-content-between">
-                                    <a href="http://localhost:8000/my_bookings/my_bookings.php" class="keep-my-booking-btn btn-custom btn-no-bg text-center mt-5">
-                                        ← Keep my booking
-                                    </a>
-                                    <button type="button" class="cancel-my-booking-btn btn-custom btn-no-bg green-btn text-center mt-5">Yes, cancel this booking</button>
+                                    <button type="button" class="btn-custom btn-no-bg blue-btn text-center mt-5">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17" fill="none">
+                                            <path d="M2.28125 15.5449V12.6621H5.16408" stroke="white" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" />
+                                            <path d="M15.4154 6.67233C15.7213 8.30432 15.4767 9.99169 14.72 11.4697C13.9633 12.9476 12.7373 14.1326 11.2344 14.8385C9.73156 15.5444 8.03684 15.7315 6.4162 15.3702C4.79556 15.009 3.34071 14.1199 2.27994 12.8425M0.678108 9.42728C0.372236 7.79528 0.616841 6.10792 1.37354 4.62995C2.13024 3.15198 3.35621 1.96706 4.85908 1.26111C6.36195 0.555159 8.05666 0.368136 9.6773 0.729384C11.2979 1.09063 12.7528 1.97971 13.8136 3.25711" stroke="white" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" />
+                                            <path d="M13.8118 0.554688V3.43751H10.9289M4.66343 8.43829C4.25542 8.36738 4.25542 7.78152 4.66343 7.71061C5.38562 7.58429 6.05393 7.24607 6.5834 6.73895C7.11287 6.23183 7.47959 5.57872 7.63693 4.86265L7.66134 4.7499C7.74968 4.34653 8.32392 4.34421 8.41576 4.74641L8.44598 4.87776C8.60835 5.59106 8.97807 6.2404 9.50862 6.74406C10.0392 7.24772 10.7068 7.5832 11.4276 7.70828C11.8379 7.77919 11.8379 8.36854 11.4276 8.44061C10.707 8.56561 10.0394 8.90092 9.50889 9.40436C8.97836 9.9078 8.60855 10.5569 8.44598 11.27L8.41576 11.4002C8.32392 11.8024 7.74968 11.8 7.66134 11.3967L7.63809 11.2851C7.48059 10.5687 7.11353 9.91536 6.58361 9.40821C6.0537 8.90106 5.38488 8.56303 4.66227 8.43713" stroke="white" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+                                        Book again
+                                    </button>
+                                    <button type="button" class="btn-custom btn-no-bg green-btn text-center mt-5">My Bookings</button>
                                 </div>
 
                             </div>

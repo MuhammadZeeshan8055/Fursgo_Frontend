@@ -34,6 +34,12 @@
   font-weight: 600;
 }
 
+/* @font-face {
+  font-family: "Lato";
+  src: url("../fonts/Lato/Lato-Bold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+} */
 
 /* Medium weight */
 /* @font-face {
