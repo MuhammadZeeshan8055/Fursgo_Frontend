@@ -481,14 +481,14 @@ document.querySelectorAll('.custom-select[data-multiselect]').forEach(select => 
 });
 
 function closeOthers(current) {
-    document.querySelectorAll('.custom-select').forEach(s => {
+    document.querySelectorAll('.custom-select:not([data-multiselect])').forEach(s => {
         if (s === current) return;
         s.classList.remove('open');
     });
 }
 
 document.addEventListener('click', () => {
-    document.querySelectorAll('.custom-select').forEach(s => {
+    document.querySelectorAll('.custom-select:not([data-multiselect]').forEach(s => {
         if (!s.classList.contains('open')) return;
 
         s.classList.remove('open');

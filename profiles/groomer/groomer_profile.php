@@ -3133,7 +3133,7 @@
     <?php include '../../components/footer.php' ?>
 
     <script src="<?= BASE_URL ?>/assets/js/profile.js"></script>
-    <!-- <script src="<?= BASE_URL ?>/assets/js/common.js"></script> -->
+    <script src="<?= BASE_URL ?>/assets/js/common.js"></script>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script>
