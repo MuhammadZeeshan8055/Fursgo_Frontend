@@ -1640,11 +1640,12 @@ input[type="radio"] {
     height: 25px;
     border: 1px solid #FBAC83;
     border-radius: 50%;
-    display: block;
-    position: relative;
+    display: grid;
+    place-items: center;
     margin-right: 5px;
     cursor: pointer;
     box-sizing: border-box;
+    flex-shrink: 0;
 }
 
 .check-circle::after {
@@ -1653,12 +1654,8 @@ input[type="radio"] {
     height: 15px;
     background-color: #FBAC83;
     border-radius: 50%;
-    position: absolute;
-    inset: 0;
-    margin: auto;
     opacity: 0;
     transition: opacity 0.15s ease;
-    box-sizing: border-box;
 }
 
 input:checked+.check-circle::after {

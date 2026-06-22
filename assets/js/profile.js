@@ -249,6 +249,12 @@ function copyLink() {
 
 const selectedSection = document.getElementById('groomerSelectedSection');
 
+selectedSection.addEventListener('click', e => {
+    const pill = e.target.closest('.selected-item');
+    if (!pill) return;
+
+    removePill(pill.dataset.value);
+});
 
 /* -------------------------
    CREATE PILL
