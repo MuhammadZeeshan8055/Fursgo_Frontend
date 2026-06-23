@@ -14,6 +14,11 @@ document.addEventListener('click', (e) => {
         if (modal) modal.style.display = 'none';
     }
 
+    if (e.target.closest('[data-modal-submit-close]')) {
+        const modal = e.target.closest('.modal');
+        if (modal) modal.style.display = 'none';
+    }
+    
     // Close modal (overlay)
     if (e.target.classList.contains('modal')) {
         e.target.style.display = 'none';

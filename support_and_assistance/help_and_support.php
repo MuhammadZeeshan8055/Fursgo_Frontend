@@ -17,6 +17,10 @@
         #chat-btn {
             display: none;
         }
+
+        #request-submitted-modal .modal-content.size{
+            width: 645px;
+        }
     </style>
 </head>
 

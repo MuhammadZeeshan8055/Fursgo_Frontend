@@ -21,33 +21,6 @@
                 <p class="simple-font">Responses usually within 24 hours</p>
             </div>
 
-            <div id="request-success-toast" class="request-success-toast">
-                ✓ Request submitted successfully.
-            </div>
-            <style>
-                .request-success-toast {
-                    position: fixed;
-                    top: 20px;
-                    left: 50%;
-                    transform: translateX(-50%);
-                    background: #ffc97a;
-                    color: #fff;
-                    padding: 14px 24px;
-                    border-radius: 10px;
-                    font-family: lato;
-                    font-size: 14px;
-                    font-weight: 600;
-                    z-index: 9999;
-                    opacity: 0;
-                    visibility: hidden;
-                    transition: all .3s ease;
-                }
-
-                .request-success-toast.show {
-                    opacity: 1;
-                    visibility: visible;
-                }
-            </style>
             <!-- Modal  -->
 
             <div class="modal" id="request_modal">
@@ -188,13 +161,14 @@
                         description.value.trim() !== ''
                     ) {
 
-                        // Show toast
-                        const toast = document.getElementById('request-success-toast');
-                        toast.classList.add('show');
+                        // open success modal
+                        document.querySelector('[data-modal-open="request-submitted-modal"]').click();
 
-                        setTimeout(() => {
-                            toast.classList.remove('show');
-                        }, 4000);
+                        // open success modal
+                        document.getElementById('request-submitted-modal').style.display = 'flex';
+
+                        // hide request modal
+                        document.getElementById('request_modal').style.display = 'none';
 
                         // Clear form fields
                         subject.value = '';
@@ -217,6 +191,179 @@
                     }
                 });
             </script>
+
+            <button data-modal-open="request-submitted-modal" style="display:none">Request Submitted</button>
+
+            <!-- Review submitted Modal  -->
+
+            <div class="modal" id="request-submitted-modal">
+                <div class="modal-content size mt-5">
+                    <div class="container">
+                        <div class="row mt-4">
+                            <!-- <div class="col-lg-1"></div> -->
+                            <div class="col-lg-12">
+                                <div class="d-flex justify-content-center">
+                                    <style>
+                                        .message-svg {
+                                            position: relative;
+                                            width: 75px;
+                                            height: 75px;
+                                        }
+
+                                        .message-svg svg:first-child {
+                                            position: absolute;
+                                            top: 0;
+                                            left: 0;
+                                        }
+
+                                        .message-icon {
+                                            position: absolute;
+                                            top: 50%;
+                                            left: 50%;
+                                            transform: translate(-50%, -50%);
+                                        }
+                                    </style>
+                                    <div class="message-svg">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="75" height="75" viewBox="0 0 75 75" fill="none">
+                                            <circle cx="37.5" cy="37.5" r="36.5" fill="#D8E8B7" stroke="#B5CA89" stroke-width="2" />
+                                        </svg>
+
+                                        <svg class="message-icon" xmlns="http://www.w3.org/2000/svg" width="30" height="22" viewBox="0 0 30 22" fill="none">
+                                            <path d="M15.8413 18.143H13.1429H2C1.44771 18.143 1 17.6953 1 17.143V2C1 1.44771 1.44772 1 2 1H24.2858C24.838 1 25.2858 1.44772 25.2858 2V12.4287" stroke="#B5CA89" stroke-width="2" stroke-linecap="round" />
+                                            <path d="M1.25 1.25L12.6178 8.24828C12.9397 8.44644 13.3459 8.44617 13.6675 8.24758L25 1.25" stroke="#B5CA89" stroke-width="2" />
+                                            <path d="M19.5715 17.1426C19.0192 17.1426 18.5715 17.5903 18.5715 18.1426C18.5715 18.6949 19.0192 19.1426 19.5715 19.1426V18.1426V17.1426ZM19.5715 18.1426V19.1426L28.143 19.1426V18.1426V17.1426L19.5715 17.1426V18.1426Z" fill="#B5CA89" />
+                                            <path d="M25.2856 15.2852L28.1428 18.1423L25.2856 20.9995" stroke="#B5CA89" stroke-width="2" stroke-linecap="round" />
+                                        </svg>
+                                    </div>
+
+                                    <div data-modal-submit-close class="position-absolute top-0 end-0">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36" fill="none">
+                                            <circle cx="18" cy="18" r="17.5" stroke="#3B3731" />
+                                            <path d="M12.8 24.0008L24 12.8008M12.8 12.8008L24 24.0008" stroke="#3B3731" stroke-width="1.5" stroke-linecap="round" />
+                                        </svg>
+                                    </div>
+                                    <style>
+                                        [data-modal-submit-close] {
+                                            position: absolute;
+                                            /* top: 10px; */
+                                            right: 50px;
+                                            cursor: pointer;
+                                        }
+                                    </style>
+                                </div>
+                            </div>
+                            <div class="col-lg-12" style="padding: 15px 35px;">
+
+                                <div class="modal-head d-flex flex-column align-items-center justify-content-center">
+                                    <h1 class="large-font-lato line-default mt-3">Request submitted!</h1>
+                                    <h3 class="normal-light-color mt-2 text-center">Your support request has been received. Our team will review it and get <br> back to you as soon as possible — usually within 24 hours.</h3>
+                                </div>
+
+                                <style>
+                                    .request-ref {
+                                        padding: 8px 16px;
+                                        color: #FFC97A;
+                                        text-align: center;
+                                        font-family: Lato;
+                                        font-size: 16px;
+                                        font-style: normal;
+                                        font-weight: 600;
+                                        line-height: normal;
+                                        border-radius: 96px;
+                                        background: rgba(255, 201, 122, 0.10);
+                                        margin-bottom: 16px;
+                                        width: 205px;
+                                        height: 48px;
+                                        display: flex;
+                                        align-items: center;
+                                        justify-content: center;
+                                    }
+
+                                    .card {
+                                        width: 100%;
+                                        max-width: 520px;
+                                        border: 1px solid #e6e6e6;
+                                        border-radius: 10px;
+                                        background: #fff;
+                                        overflow: hidden;
+                                        font-family: Arial, sans-serif;
+                                    }
+
+                                    .card-header {
+                                        padding: 14px 16px;
+                                        border-bottom: 1px solid #eee;
+                                    }
+
+                                    .card-body {
+                                        padding: 20px;
+                                    }
+
+                                    .border-bottom {
+                                        border-bottom: 1px solid #D4D4D4;
+                                        padding: 5px 0;
+                                    }
+
+                                    .border-bottom:last-child {
+                                        border-bottom: none;
+                                    }
+                                </style>
+
+                                <div class="d-flex flex-column align-items-center justify-content-center">
+                                    <div class="request-ref mt-5">Request ref: SR-48291</div>
+
+                                    <div class="card mt-4">
+
+                                        <div class="card-header fs-16-600">Request summary</div>
+
+                                        <div class="card-body">
+                                            <div class="d-flex align-items-center justify-content-between border-bottom">
+                                                <div class="summary-labe fs-14-400-f-color">Subject</div>
+                                                <div class="value fs-14-600-f-color">Change my booking</div>
+                                            </div>
+                                            <div class="d-flex align-items-center justify-content-between border-bottom">
+                                                <div class="summary-label fs-14-400-f-color">Category</div>
+                                                <div class="value fs-14-600-f-color">CBookings</div>
+                                            </div>
+                                            <div class="d-flex align-items-center justify-content-between border-bottom">
+                                                <div class="summary-label fs-14-400-f-color">Booking ref</div>
+                                                <div class="value fs-14-600-f-color">FG-10294</div>
+                                            </div>
+                                            <div class="d-flex align-items-center justify-content-between border-bottom">
+                                                <div class="summary-label fs-14-400-f-color">Submitted</div>
+                                                <div class="value fs-14-600-f-color">18 Dec 2025 · 10:42</div>
+                                            </div>
+                                            <div class="d-flex align-items-center justify-content-between border-bottom">
+                                                <div class="summary-label fs-14-400-f-color">Attachment</div>
+                                                <div class="value fs-14-600-f-color">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="10" height="11" viewBox="0 0 10 11" fill="none">
+                                                        <path d="M2.26689 10.375H6.81608C7.31784 10.375 7.79905 10.1757 8.15385 9.82088C8.50865 9.46608 8.70797 8.98487 8.70797 8.48311V5.49392C8.70815 4.99222 8.50905 4.511 8.15446 4.15608L4.92797 0.929054C4.75228 0.75338 4.54371 0.614032 4.31416 0.518967C4.08461 0.423902 3.83859 0.374982 3.59014 0.375H2.26689C1.76513 0.375 1.28392 0.574324 0.929122 0.929122C0.574324 1.28392 0.375 1.76513 0.375 2.26689V8.48311C0.375 8.98487 0.574324 9.46608 0.929122 9.82088C1.28392 10.1757 1.76513 10.375 2.26689 10.375Z" stroke="#9D9B98" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round" />
+                                                        <path d="M4.3728 0.570312V3.62977C4.3728 3.91649 4.4867 4.19147 4.68944 4.39421C4.89219 4.59695 5.16716 4.71085 5.45388 4.71085H8.51442" stroke="#9D9B98" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round" />
+                                                        <path d="M1.97388 7.80717V7.26663M1.97388 7.26663V6.18555H2.51442C2.65778 6.18555 2.79527 6.2425 2.89664 6.34387C2.99801 6.44524 3.05496 6.58273 3.05496 6.72609C3.05496 6.86945 2.99801 7.00694 2.89664 7.10831C2.79527 7.20968 2.65778 7.26663 2.51442 7.26663H1.97388ZM6.2982 7.80717V7.13149M6.2982 7.13149V6.18555H7.10901M6.2982 7.13149H7.10901M4.13604 7.80717V6.18555H4.40631C4.62135 6.18555 4.82758 6.27097 4.97964 6.42303C5.1317 6.57508 5.21712 6.78132 5.21712 6.99636C5.21712 7.2114 5.1317 7.41763 4.97964 7.56969C4.82758 7.72174 4.62135 7.80717 4.40631 7.80717H4.13604Z" stroke="#9D9B98" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round" />
+                                                    </svg>
+                                                    &nbsp;
+                                                    fursgo-invoice.pdf
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="footer-text mt-4 fs-14-400-f-color">
+                                        Need urgent help?
+                                        <a href="#" class="fs-14-600-f-color" style="color:#FFC97A">Chat with our support team</a>
+                                        or visit the <a href="#" class="fs-14-600-f-color" style="color:#FFC97A">Help Centre</a>.
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Review submitted Modal  -->
+
+
             <div class="box-wrapper d-flex flex-column align-items-center justify-content-center gap-20">
                 <svg xmlns="http://www.w3.org/2000/svg" width="55" height="41" viewBox="0 0 55 41" fill="none">
                     <path d="M46.0703 18.7454C51.3119 20.4152 53.6497 22.9059 53.6497 26.825C53.6497 30.3109 50.4696 33.0162 48.5758 34.3199C48.4861 34.3815 48.4127 34.464 48.362 34.5602C48.3113 34.6565 48.2848 34.7637 48.2847 34.8725V38.5514C48.2847 39.2511 47.5838 39.7306 46.9692 39.3961C45.8882 38.808 44.9139 38.0353 44.092 37.1097C44.0148 37.0228 43.9164 36.9574 43.8064 36.92C43.6963 36.8827 43.5784 36.8745 43.4643 36.8964C43.082 36.9702 42.6917 37.0748 42.2961 37.1807C41.612 37.3645 40.9066 37.555 40.2373 37.555C36.793 37.555 34.3814 36.8146 31.9162 35.0026" stroke="#3B3731" stroke-width="2" stroke-linecap="round" />

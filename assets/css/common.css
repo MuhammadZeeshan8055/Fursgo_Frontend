@@ -85,6 +85,14 @@
   line-height: 60px;
 }
 
+.large-font-lato {
+  color: #3b3731;
+  font-family: "Lato";
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 60px;
+}
+
 .large-font-bold {
   color: #3b3731;
   font-family: "Playfair Display";
