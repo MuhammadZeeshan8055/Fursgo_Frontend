@@ -14,6 +14,21 @@
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/common.css">
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/company_information.css">
 
+    <style>
+        .modal {
+            backdrop-filter: blur(1px);
+            align-items: center;
+
+        }
+
+        .modal-content.size {
+            width: 450px;
+            border-radius: 10px;
+            background: #FDFCF8;
+            top: 0;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -249,9 +264,163 @@
 
                                     <div class="d-flex align-items-center justify-content-between gap-25">
                                         <p style="color: #9D9B98">Last updated 2 days ago.</p>
-                                        <a href="" class="link-tag">Update Password</a>
+                                        <a class="link-tag cursor" data-modal-open="update_password_modal">Update Password</a>
                                     </div>
                                 </div>
+
+
+                                <!-- Modal  -->
+
+                                <div class="modal" id="update_password_modal">
+                                    <div class="modal-content size">
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="d-flex align-items-center justify-content-between mt-2">
+                                                    <h1 class="fs-18-400">Update password</h1>
+                                                    <svg class="cursor" data-modal-close xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                                        <circle cx="10" cy="10" r="9.5" transform="matrix(-1 0 0 1 20 0)" fill="#F3F3F3" stroke="#E8E8E8" />
+                                                        <path d="M13.1465 13.24L10.0001 10.0936L13.0937 6.99999" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                                                        <path d="M7.09375 13.24L10.2402 10.0936L7.14657 6.99999" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                                                    </svg>
+                                                </div>
+                                                <span class="fs-12-400-f-color text-light mt-1 mb-1">Choose a new password to keep your account secure.</span>
+                                                <!-- <div class="col-lg-3">
+                                                    <div class="d-flex align-items-center justify-content-end cursor modal-cross mt-3">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36" fill="none">
+                                                            <circle cx="18" cy="18" r="17.5" stroke="#3B3731" />
+                                                            <path d="M12.8 24.0008L24 12.8008M12.8 12.8008L24 24.0008" stroke="#3B3731" stroke-width="1.5" stroke-linecap="round" />
+                                                        </svg>
+                                                    </div>
+                                                </div> -->
+                                                <div class="col-lg-12">
+                                                    <form id="updatePasswordForm">
+                                                        <div class="form-field mt-5">
+                                                            <label class="fs-12-600-f-color">Current password</label>
+                                                            <div class="input-wrapper">
+                                                                <input type="password" id="current_password" value="12345678">
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-field mt-4">
+                                                            <label class="fs-12-600-f-color">New password</label>
+                                                            <div class="input-wrapper">
+                                                                <input type="password" id="new_password" value="12345678">
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="password-requirements mt-4">
+                                                            <h4 class="fs-12-600-f-color">Password requirements</h4>
+                                                            <ul>
+                                                                <li>At least 8 characters</li>
+                                                                <li>Includes a capital letter</li>
+                                                                <li>Includes a number or symbol</li>
+                                                            </ul>
+                                                        </div>
+                                                        <style>
+                                                            #current_password {
+                                                                color: #9D9B98;
+                                                            }
+
+                                                            .password-requirements ul {
+                                                                margin: 0;
+                                                                padding-left: 18px;
+                                                                list-style: disc;
+                                                            }
+
+                                                            .password-requirements li {
+                                                                color: #9D9B98;
+                                                                font-family: Lato;
+                                                                font-size: 12px;
+                                                                font-style: normal;
+                                                                font-weight: 400;
+                                                                line-height: normal;
+                                                            }
+
+                                                            .close-btn {
+                                                                width: 170px;
+                                                                height: 36px;
+                                                                border-radius: 96px;
+                                                                border: 1px solid #E2E2E2;
+                                                                background: #FFF;
+                                                            }
+
+                                                            .form-field input {
+                                                                padding: 10px 44px 10px 14px;
+                                                            }
+
+                                                            .form-field .input-wrapper {
+                                                                width: 360px;
+                                                                height: 36px;
+                                                            }
+
+                                                            .form-field label {
+                                                                font-size: 12px;
+                                                            }
+
+                                                            .update-btn {
+                                                                color: #FFF;
+                                                                width: 170px;
+                                                                height: 36px;
+                                                                border-radius: 75px;
+                                                                background: #FFC97A;
+                                                                border: none;
+                                                            }
+                                                        </style>
+                                                        <div class="form-field mt-4">
+                                                            <label class="fs-12-600-f-color">Confirm password</label>
+                                                            <div class="input-wrapper">
+                                                                <input type="password" id="owner_name" value="12345678">
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-buttons d-flex justify-content-between align-items-center mt-5">
+                                                            <button type="button" class="close-btn fs-16-400 text-light cursor" data-modal-close>Cancel</button>
+                                                            <button id="submitRequestBtn" class="update-btn fs-16-600 btn-active-bg text-center cursor">Update Password</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <div class="col-lg-2"></div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Modal  -->
+
+                                <button data-modal-open="password_updated_modal" style="display:none">Request Submitted</button>
+
+                                <!-- Password Updated Modal  -->
+
+                                <div class="modal" id="password_updated_modal">
+                                    <div class="modal-content size">
+                                        <div class="container">
+                                            <div class="row mt-4">
+                                                <!-- <div class="col-lg-1"></div> -->
+                                                <div class="col-lg-12">
+                                                    <div class="d-flex justify-content-center">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+                                                            <path d="M20 0C9 0 0 9 0 20C0 31 9 40 20 40C31 40 40 31 40 20C40 9 31 0 20 0ZM16 30L6 20L8.82 17.18L16 24.34L31.18 9.16L34 12L16 30Z" fill="#C9DDA0" />
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12" style="padding: 15px 35px;">
+
+                                                    <div class="d-flex flex-column align-items-center gap-5 justify-content-center">
+                                                        <h2 class="fs-18-400">Password updated</h2>
+                                                        <p class="fs-12-400-f-color text-light">You'll stay signed in on this device.</p>
+
+                                                        <button class="update-btn fs-16-600 btn-active-bg text-center cursor mt-4" data-modal-close>Done</button>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Password Updated Modal  -->
+
+
 
                                 <div class="toggle-button-content d-flex align-items-center justify-content-between mt-5">
                                     <div class="d-flex flex-column gap-25">
@@ -284,7 +453,12 @@
 
                                                 <p>Logged in on iPhone - <span style="color:#9D9B98">28/08/2025, 18:52 GMT</span></p>
                                             </div>
-                                            <a href="" class="link-tag">Sign out</a>
+                                            <a
+                                                class="link-tag cursor signout-trigger"
+                                                data-device="iPhone"
+                                                data-last-active="28/08/2025, 18:52 GMT"
+                                                data-modal-open="device_sign_out_modal">Sign out</a>
+
                                         </div>
                                         <div class="section-divider" style="background-color: #E2E2E2"></div>
                                         <div class="logged-devices d-flex align-items-center justify-content-between mt-3">
@@ -295,7 +469,10 @@
 
                                                 <p>Logged in on Web - <span style="color:#9D9B98">28/08/2025, 18:52 GMT</span></p>
                                             </div>
-                                            <a href="" class="link-tag">Sign out</a>
+                                            <a class="link-tag cursor signout-trigger"
+                                                data-device="Web"
+                                                data-last-active="28/08/2025, 18:52 GMT"
+                                                data-modal-open="device_sign_out_modal">Sign out</a>
                                         </div>
                                         <div class="section-divider" style="background-color: #E2E2E2"></div>
                                         <div class="logged-devices d-flex align-items-center justify-content-between mt-3">
@@ -306,20 +483,216 @@
 
                                                 <p>Logged in on Android - <span style="color:#9D9B98">28/08/2025, 18:52 GMT</span></p>
                                             </div>
-                                            <a href="" class="link-tag">Sign out</a>
+                                            <a class="link-tag cursor signout-trigger"
+                                                data-device="Android"
+                                                data-last-active="28/08/2025, 18:52 GMT"
+                                                data-modal-open="device_sign_out_modal">Sign out</a>
                                         </div>
                                         <div class="section-divider" style="background-color: #E2E2E2"></div>
                                     </div>
                                 </div>
+
+
+                                <!-- Device sign out Modal  -->
+
+                                <div class="modal" id="device_sign_out_modal">
+                                    <div class="modal-content size">
+                                        <div class="container">
+                                            <div class="row mt-2">
+                                                <!-- <div class="col-lg-1"></div> -->
+                                                <div class="col-lg-12">
+                                                    <div class="d-flex align-items-center justify-content-between">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="20" viewBox="0 0 16 20" fill="none">
+                                                            <path d="M0 10C0 10.1326 0.0526785 10.2598 0.146447 10.3536C0.240215 10.4473 0.367392 10.5 0.5 10.5H9.293L6.646 13.146C6.59951 13.1924 6.56262 13.2475 6.53744 13.3082C6.51225 13.3689 6.49927 13.4339 6.49922 13.4996C6.49913 13.6323 6.55175 13.7596 6.6455 13.8535C6.73925 13.9474 6.86646 14.0002 6.99915 14.0003C7.13183 14.0004 7.25911 13.9478 7.353 13.854L10.853 10.354C10.9467 10.2602 10.9994 10.1331 10.9994 10.0005C10.9994 9.86792 10.9467 9.74076 10.853 9.647L7.353 6.147C7.2587 6.05592 7.1324 6.00552 7.0013 6.00666C6.8702 6.0078 6.74479 6.06039 6.65209 6.15309C6.55939 6.24579 6.5068 6.3712 6.50566 6.5023C6.50452 6.6334 6.55492 6.7597 6.646 6.854L9.293 9.5H0.5C0.367392 9.5 0.240215 9.55268 0.146447 9.64645C0.0526785 9.74021 0 9.86739 0 10ZM13.5 0H2.5C1.83696 0 1.20107 0.263392 0.732233 0.732233C0.263392 1.20107 0 1.83696 0 2.5V6.5C0 6.63261 0.0526785 6.75979 0.146447 6.85355C0.240215 6.94732 0.367392 7 0.5 7C0.632608 7 0.759785 6.94732 0.853553 6.85355C0.947321 6.75979 1 6.63261 1 6.5V2.5C1 2.10218 1.15804 1.72064 1.43934 1.43934C1.72064 1.15804 2.10218 1 2.5 1H13.5C13.8978 1 14.2794 1.15804 14.5607 1.43934C14.842 1.72064 15 2.10218 15 2.5V17.5C15 17.8978 14.842 18.2794 14.5607 18.5607C14.2794 18.842 13.8978 19 13.5 19H2.5C2.10218 19 1.72064 18.842 1.43934 18.5607C1.15804 18.2794 1 17.8978 1 17.5V13.5C1 13.3674 0.947321 13.2402 0.853553 13.1464C0.759785 13.0527 0.632608 13 0.5 13C0.367392 13 0.240215 13.0527 0.146447 13.1464C0.0526785 13.2402 0 13.3674 0 13.5V17.5C0 18.163 0.263392 18.7989 0.732233 19.2678C1.20107 19.7366 1.83696 20 2.5 20H13.5C14.163 20 14.7989 19.7366 15.2678 19.2678C15.7366 18.7989 16 18.163 16 17.5V2.5C16 1.83696 15.7366 1.20107 15.2678 0.732233C14.7989 0.263392 14.163 0 13.5 0Z" fill="black" />
+                                                        </svg>
+                                                        <svg class="cursor" data-modal-close xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                                            <circle cx="10" cy="10" r="9.5" transform="matrix(-1 0 0 1 20 0)" fill="#F3F3F3" stroke="#E8E8E8" />
+                                                            <path d="M13.1465 13.24L10.0001 10.0936L13.0937 6.99999" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                                                            <path d="M7.09375 13.24L10.2402 10.0936L7.14657 6.99999" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <h3 id="signout-title" class="fs-18-400 mt-4">Sign out of iPhone?</h3>
+                                                    <span id="signout-description" class="fs-12-400-f-color text-light">This ends your session on iPhone. Last active 28/08/2025, 18:52 GMT — you'll need to sign in again on that device.</span>
+                                                </div>
+                                                <div class="modal-buttons d-flex justify-content-between align-items-center mt-4">
+                                                    <button type="button" class="close-btn fs-16-400 text-light cursor" data-modal-close>Cancel</button>
+                                                    <button class="update-btn fs-16-600 btn-active-bg text-center cursor" data-modal-close>Sign Out</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <script>
+                                    document.querySelectorAll('.signout-trigger').forEach(trigger => {
+
+                                        trigger.addEventListener('click', function() {
+
+                                            const device = this.dataset.device;
+                                            const lastActive = this.dataset.lastActive;
+
+                                            document.getElementById('signout-title').textContent =
+                                                `Sign out of ${device}?`;
+
+                                            document.getElementById('signout-description').textContent =
+                                                `This ends your session on ${device}. Last active ${lastActive} — you'll need to sign in again on that device.`;
+                                        });
+
+                                    });
+                                </script>
+                                <!-- Device sign out Modal  -->
 
                                 <div class="toggle-button-content d-flex flex-column justify-content-between mt-5 gap-25">
                                     <p class="bold-font mt-3">Deactivate your account</p>
 
                                     <div class="d-flex align-items-center justify-content-between gap-25">
                                         <p style="color: #9D9B98">This action will permanently delete your account.</p>
-                                        <a href="" class="small-link-tag">Deactivate Account</a>
+                                        <a data-modal-open="deactivate_account_modal" class="small-link-tag cursor">Deactivate Account</a>
                                     </div>
                                 </div>
+
+                                <!-- Deactivate Modal  -->
+
+                                <div class="modal" id="deactivate_account_modal">
+                                    <div class="modal-content size">
+                                        <div class="container">
+                                            <div class="row mt-2">
+                                                <!-- <div class="col-lg-1"></div> -->
+                                                <div class="col-lg-12">
+                                                    <div class="d-flex align-items-center justify-content-between">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="21" viewBox="0 0 23 21" fill="none">
+                                                            <path d="M11.1835 12.2434V6.73901M2.33789 20.5H20.029C21.4198 20.5 22.3042 19.0138 21.6427 17.7909L12.7972 1.46121C12.1027 0.179598 10.2642 0.179598 9.56976 1.46121L0.725106 17.7909C0.061826 19.0138 0.947116 20.5 2.33789 20.5Z" stroke="#FF6E6E" stroke-linecap="round" />
+                                                            <circle cx="11.1835" cy="15.5" r="0.75" fill="#FF6E6E" />
+                                                        </svg>
+                                                        <svg class="cursor" data-modal-close xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                                            <circle cx="10" cy="10" r="9.5" transform="matrix(-1 0 0 1 20 0)" fill="#F3F3F3" stroke="#E8E8E8" />
+                                                            <path d="M13.1465 13.24L10.0001 10.0936L13.0937 6.99999" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                                                            <path d="M7.09375 13.24L10.2402 10.0936L7.14657 6.99999" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <h3 class="fs-18-400 mt-4">Deactivate your account?</h3>
+                                                    <span class="fs-12-400-f-color text-light">This removes your profile, booking history, saved pets and payment details. This can't be undone.</span>
+                                                </div>
+                                                <div class="modal-buttons d-flex justify-content-between align-items-center mt-4">
+                                                    <button type="button" class="close-btn fs-16-400 text-light cursor" data-modal-close>Cancel</button>
+                                                    <button class="update-btn fs-16-600 btn-active-bg text-center cursor" id="continueDeactivateBtn" style="background-color:#FF6E6E">Continue</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Deactivate Modal  -->
+
+
+                                <!-- <button data-modal-open="confirm_deactive_account_modal">Confirm Deactive</button> -->
+
+                                <!-- Confirm Deactive Modal  -->
+
+                                <div class="modal" id="confirm_deactive_account_modal">
+                                    <div class="modal-content size">
+                                        <div class="container">
+                                            <div class="row mt-2">
+                                                <!-- <div class="col-lg-1"></div> -->
+                                                <div class="col-lg-12">
+                                                    <div class="d-flex align-items-center justify-content-between">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="21" viewBox="0 0 23 21" fill="none">
+                                                            <path d="M11.1835 12.2434V6.73901M2.33789 20.5H20.029C21.4198 20.5 22.3042 19.0138 21.6427 17.7909L12.7972 1.46121C12.1027 0.179598 10.2642 0.179598 9.56976 1.46121L0.725106 17.7909C0.061826 19.0138 0.947116 20.5 2.33789 20.5Z" stroke="#FF6E6E" stroke-linecap="round" />
+                                                            <circle cx="11.1835" cy="15.5" r="0.75" fill="#FF6E6E" />
+                                                        </svg>
+                                                        <svg class="cursor" data-modal-close xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                                            <circle cx="10" cy="10" r="9.5" transform="matrix(-1 0 0 1 20 0)" fill="#F3F3F3" stroke="#E8E8E8" />
+                                                            <path d="M13.1465 13.24L10.0001 10.0936L13.0937 6.99999" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                                                            <path d="M7.09375 13.24L10.2402 10.0936L7.14657 6.99999" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <h3 class="fs-18-400 mt-4">Confirm deactivation</h3>
+                                                    <span class="fs-12-400-f-color text-light">Type DEACTIVATE to confirm.</span>
+
+                                                    <div class="form-field mt-3">
+                                                        <label class="fs-12-600-f-color">Confirmation</label>
+                                                        <div class="input-wrapper">
+                                                            <input type="text" id="confirm_deactive_account" placeholder="Type DEACTIVATE">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-buttons d-flex justify-content-between align-items-center mt-4">
+                                                    <button type="button" class="close-btn fs-16-400 text-light cursor" data-modal-close>Cancel</button>
+                                                    <button class="update-btn fs-16-600 btn-active-bg text-center cursor" id="deactivateAccountBtn" style="background-color:#FF6E6E">Deactivate</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Confirm Deactive Modal  -->
+
+                                <!-- Modal  -->
+
+                                <!-- <button data-modal-open="account_deactivated_modal">account_deactivated_modal</button> -->
+
+                                <!-- Account Deactivated Modal  -->
+
+                                <div class="modal" id="account_deactivated_modal">
+                                    <div class="modal-content size">
+                                        <div class="container">
+                                            <div class="row mt-4">
+                                                <!-- <div class="col-lg-1"></div> -->
+                                                <div class="col-lg-12">
+                                                    <div class="d-flex justify-content-center">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+                                                            <path d="M20 0C9 0 0 9 0 20C0 31 9 40 20 40C31 40 40 31 40 20C40 9 31 0 20 0ZM16 30L6 20L8.82 17.18L16 24.34L31.18 9.16L34 12L16 30Z" fill="#FF6E6E" />
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12" style="padding: 15px 35px;">
+
+                                                    <div class="d-flex flex-column align-items-center gap-5 justify-content-center">
+                                                        <h2 class="fs-18-400">Account deactivated</h2>
+                                                        <p class="fs-12-400-f-color text-light text-center">We're sorry to see you go. You've been signed out of every device.</p>
+
+                                                        <button class="update-btn fs-16-600 btn-active-bg text-center cursor mt-4" style="background-color:#3B3731" data-modal-close>Return to homepage</button>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Account Deactivated Modal  -->
+
+                                <script>
+                                    // Deactivate Account -> Confirm Deactivation
+                                    document.getElementById('continueDeactivateBtn').addEventListener('click', function() {
+
+                                        document.getElementById('deactivate_account_modal').style.display = 'none';
+
+                                        document.getElementById('confirm_deactive_account_modal').style.display = 'flex';
+                                    });
+
+
+                                    // Confirm Deactivation -> Success
+                                    document.getElementById('deactivateAccountBtn').addEventListener('click', function() {
+
+                                        const confirmationInput = document.getElementById('confirm_deactive_account');
+
+                                        if (confirmationInput.value.trim() !== 'DEACTIVATE') {
+                                            alert('Please type DEACTIVATE to continue.');
+                                            return;
+                                        }
+
+                                        document.getElementById('confirm_deactive_account_modal').style.display = 'none';
+
+                                        document.getElementById('account_deactivated_modal').style.display = 'flex';
+                                    });
+                                </script>
 
                             </div>
 
@@ -347,7 +720,12 @@
                                         </div>
                                         <button class="dark-color-font default-selection">Default</button>
                                     </div>
-                                    <a href="" class="small-link-tag">Edit</a>
+                                    <a class="small-link-tag"
+                                        data-modal-open="payment_modal"
+                                        data-mode="edit"
+                                        data-card="visa"
+                                        data-last4="7890"
+                                        data-exp="06/27">Edit</a>
                                 </div>
                                 <div class="card-edit-details cursor d-flex align-items-center justify-content-between mt-4">
                                     <div class="card-details d-flex align-items-center justify-content-between gap-20">
@@ -362,11 +740,424 @@
                                             <p class="dark-color-font">Mastercard ending in 4589 | <span class="simple-light-font"> Exp. date 07/30</span></p>
                                         </div>
                                     </div>
-                                    <a href="" class="small-link-tag">Edit</a>
+                                    <a class="small-link-tag"
+                                        data-modal-open="payment_modal"
+                                        data-mode="edit"
+                                        data-card="mastercard"
+                                        data-last4="4589"
+                                        data-exp="07/30">Edit</a>
                                 </div>
 
-                                <button class="btn-custom btn-active-bg mt-4">+ Add payment method</button>
+                                <button class="btn-custom btn-active-bg mt-4" data-modal-open="payment_modal">+ Add payment method</button>
 
+                                <!-- Add Payment Method Modal  -->
+
+                                <div class="modal" id="payment_modal">
+                                    <div class="modal-content size">
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="d-flex align-items-center justify-content-between mt-2">
+                                                    <h1 class="fs-18-400 modal-title">Add payment method</h1>
+                                                    <svg class="cursor" data-modal-close xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                                        <circle cx="10" cy="10" r="9.5" transform="matrix(-1 0 0 1 20 0)" fill="#F3F3F3" stroke="#E8E8E8" />
+                                                        <path d="M13.1465 13.24L10.0001 10.0936L13.0937 6.99999" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                                                        <path d="M7.09375 13.24L10.2402 10.0936L7.14657 6.99999" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                                                    </svg>
+                                                </div>
+                                                <span id="subtitle" class="fs-12-400-f-color text-light mt-1 mb-1">Card details are stored securely and never shown in full.</span>
+                                                <div id="edit_card" class="mt-3" style="display:none; margin-left: 10px; width: auto;align-items:center; gap:14px; background:#fff; border:1px solid #e5e7eb; border-radius:10px; padding:12px 18px;">
+                                                    <div id="edit_card_icon">
+
+
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="62" height="20" viewBox="0 0 62 20" fill="none">
+                                                            <path d="M32.0649 6.39377C32.0295 9.17985 34.5505 10.7345 36.4495 11.6589C38.4005 12.6073 39.0559 13.2155 39.0481 14.0637C39.0336 15.3617 37.4918 15.9346 36.0491 15.9568C33.5321 15.9958 32.0685 15.278 30.9051 14.7351L29.9983 18.9735C31.1657 19.5108 33.3272 19.9794 35.5686 20C40.8301 20 44.2724 17.4055 44.291 13.3829C44.3116 8.27769 37.222 7.99511 37.2705 5.71321C37.2872 5.02129 37.9481 4.28292 39.3964 4.09518C40.1133 4.00034 42.0922 3.92776 44.3358 4.95984L45.2164 0.859098C44.0098 0.420235 42.4591 0 40.5284 0C35.5761 0 32.093 2.6298 32.0649 6.39377ZM53.678 0.35322C52.7172 0.35322 51.9076 0.91305 51.5462 1.77215L44.0304 19.6988H49.2881L50.3343 16.8104H56.7591L57.366 19.6988H62L57.9562 0.35322H53.678ZM54.4135 5.57918L55.9308 12.8437H51.7753L54.4135 5.57918ZM25.6903 0.353462L21.546 19.6986H26.5561L30.6985 0.352978L25.6903 0.353462ZM18.2786 0.353462L13.0638 13.5206L10.9544 2.32472C10.7069 1.0749 9.7294 0.35322 8.64391 0.35322H0.119398L0 0.914984C1.75005 1.29433 3.73841 1.90618 4.94305 2.56084C5.68027 2.96076 5.89048 3.31035 6.13267 4.26066L10.128 19.6988H15.4225L23.5397 0.35322L18.2786 0.353462Z" fill="url(#paint0_linear_5_657)"></path>
+                                                            <defs>
+                                                                <linearGradient id="paint0_linear_5_657" x1="2850.39" y1="60.12" x2="2908.22" y2="-1993.91" gradientUnits="userSpaceOnUse">
+                                                                    <stop stop-color="#222357"></stop>
+                                                                    <stop offset="1" stop-color="#254AA5"></stop>
+                                                                </linearGradient>
+                                                            </defs>
+                                                        </svg>
+                                                    </div>
+
+
+                                                    <span id="edit_card_text" class="fs-14-600-f-color">Visa ending in 7890</span>
+                                                    <span style="color:#3b3731; font-size:14px;">|</span>
+                                                    <span id="edit_card_exp" class="fs-14-400-f-color text-light">Exp. date 06/27</span>
+                                                </div>
+                                                <!-- <div class="col-lg-3">
+                                                    <div class="d-flex align-items-center justify-content-end cursor modal-cross mt-3">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36" fill="none">
+                                                            <circle cx="18" cy="18" r="17.5" stroke="#3B3731" />
+                                                            <path d="M12.8 24.0008L24 12.8008M12.8 12.8008L24 24.0008" stroke="#3B3731" stroke-width="1.5" stroke-linecap="round" />
+                                                        </svg>
+                                                    </div>
+                                                </div> -->
+                                                <div class="col-lg-12">
+                                                    <form id="add_payment_form">
+                                                        <div class="row">
+                                                            <div class="col-lg-12">
+                                                                <div class="form-field mt-4">
+                                                                    <label class="fs-12-600-f-color">Card number</label>
+                                                                    <div class="input-wrapper">
+                                                                        <input type="text" id="card_number" placeholder="0000 0000 0000 0000" maxlength="19" inputmode="numeric">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-lg-6">
+                                                                <div class="form-field mt-4">
+                                                                    <label class="fs-12-600-f-color">Expiry</label>
+                                                                    <div class="input-wrapper w-auto">
+                                                                        <input type="text" id="expiry" placeholder="MM/YY" maxlength="5" inputmode="numeric">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-6">
+                                                                <div class="form-field mt-4">
+                                                                    <label class="fs-12-600-f-color">CVC</label>
+                                                                    <div class="input-wrapper w-auto">
+                                                                        <input type="password" id="cvc" placeholder="123" maxlength="4" inputmode="numeric">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-field mt-4">
+                                                            <label class="fs-12-600-f-color">Name on card</label>
+                                                            <div class="input-wrapper">
+                                                                <input type="text" id="card_name" value="John Doe">
+                                                            </div>
+                                                        </div>
+
+                                                        <style>
+                                                            .custom-radio-label {
+                                                                display: inline-flex;
+                                                                align-items: center;
+                                                                gap: 10px;
+                                                                cursor: pointer;
+                                                                user-select: none;
+                                                            }
+
+                                                            .custom-radio-label input[type="checkbox"] {
+                                                                display: none;
+                                                            }
+
+                                                            .custom-radio-circle {
+                                                                width: 22px;
+                                                                height: 22px;
+                                                                border-radius: 50%;
+                                                                border: 1px solid #FFD88C;
+                                                                flex-shrink: 0;
+                                                                transition: border-color 0.15s;
+                                                                position: relative;
+                                                            }
+
+                                                            .custom-radio-circle::after {
+                                                                content: '';
+                                                                width: 13px;
+                                                                height: 13px;
+                                                                border-radius: 50%;
+                                                                background: #FFD88C;
+                                                                opacity: 0;
+                                                                transition: opacity 0.15s;
+                                                                position: absolute;
+                                                                top: 50%;
+                                                                left: 50%;
+                                                                transform: translate(-50%, -50%);
+                                                            }
+
+                                                            .custom-radio-label input[type="checkbox"]:checked+.custom-radio-circle {
+                                                                border-color: #FFD88C;
+                                                                background: #FFF;
+                                                            }
+
+                                                            .custom-radio-label input[type="checkbox"]:checked+.custom-radio-circle::after {
+                                                                opacity: 1;
+                                                            }
+
+                                                            #remove_card {
+                                                                color: #FF6E6E;
+                                                                font-family: Lato;
+                                                                font-size: 14px;
+                                                                font-style: normal;
+                                                                font-weight: 400;
+                                                                line-height: normal;
+                                                                text-decoration-line: underline;
+                                                                text-decoration-style: solid;
+                                                                text-decoration-skip-ink: auto;
+                                                                text-decoration-thickness: auto;
+                                                                text-underline-offset: 4px;
+                                                                text-underline-position: from-font;
+                                                                display: block;
+                                                            }
+                                                        </style>
+
+                                                        <label class="custom-radio-label fs-14-400-f-color mt-5">
+                                                            <input type="checkbox" name="payment_default">
+                                                            <span class="custom-radio-circle"></span>
+                                                            Set as default payment method
+                                                        </label>
+
+                                                        <span id="remove_card" class="mt-3 mb-3 cursor">Remove card</span>
+
+                                                        <div class="modal-buttons d-flex justify-content-between align-items-center mt-3">
+                                                            <button type="button" class="close-btn fs-16-400 text-light cursor" data-modal-close>Cancel</button>
+                                                            <button id="add_payment_btn" class="update-btn fs-16-600 btn-active-bg text-center cursor" style="background-color: #C9DDA0">+ Add payment</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+
+                                                <script>
+                                                    document.querySelectorAll('[data-modal-open="payment_modal"]').forEach(btn => {
+                                                        btn.addEventListener('click', function() {
+
+                                                            const modal = document.getElementById('payment_modal');
+
+                                                            const mode = this.dataset.mode;
+
+                                                            const title = modal.querySelector('.modal-title');
+                                                            const submitBtn = modal.querySelector('#add_payment_btn');
+                                                            const subtitle = modal.querySelector('#subtitle');
+                                                            const edit_card = modal.querySelector('#edit_card');
+                                                            const remove_card = modal.querySelector('#remove_card');
+
+                                                            const visaSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="62" height="20" viewBox="0 0 62 20" fill="none">
+                                                        <path d="M32.0649 6.39377C32.0295 9.17985 34.5505 10.7345 36.4495 11.6589C38.4005 12.6073 39.0559 13.2155 39.0481 14.0637C39.0336 15.3617 37.4918 15.9346 36.0491 15.9568C33.5321 15.9958 32.0685 15.278 30.9051 14.7351L29.9983 18.9735C31.1657 19.5108 33.3272 19.9794 35.5686 20C40.8301 20 44.2724 17.4055 44.291 13.3829C44.3116 8.27769 37.222 7.99511 37.2705 5.71321C37.2872 5.02129 37.9481 4.28292 39.3964 4.09518C40.1133 4.00034 42.0922 3.92776 44.3358 4.95984L45.2164 0.859098C44.0098 0.420235 42.4591 0 40.5284 0C35.5761 0 32.093 2.6298 32.0649 6.39377ZM53.678 0.35322C52.7172 0.35322 51.9076 0.91305 51.5462 1.77215L44.0304 19.6988H49.2881L50.3343 16.8104H56.7591L57.366 19.6988H62L57.9562 0.35322H53.678ZM54.4135 5.57918L55.9308 12.8437H51.7753L54.4135 5.57918ZM25.6903 0.353462L21.546 19.6986H26.5561L30.6985 0.352978L25.6903 0.353462ZM18.2786 0.353462L13.0638 13.5206L10.9544 2.32472C10.7069 1.0749 9.7294 0.35322 8.64391 0.35322H0.119398L0 0.914984C1.75005 1.29433 3.73841 1.90618 4.94305 2.56084C5.68027 2.96076 5.89048 3.31035 6.13267 4.26066L10.128 19.6988H15.4225L23.5397 0.35322L18.2786 0.353462Z" fill="url(#paint0_linear_5_657)"></path>
+                                                        <defs>
+                                                            <linearGradient id="paint0_linear_5_657" x1="2850.39" y1="60.12" x2="2908.22" y2="-1993.91" gradientUnits="userSpaceOnUse">
+                                                                <stop stop-color="#222357"></stop>
+                                                                <stop offset="1" stop-color="#254AA5"></stop>
+                                                            </linearGradient>
+                                                        </defs>
+                                                    </svg>`;
+                                                            const mastercardSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="33" height="20" viewBox="0 0 33 20" fill="none">
+                                                    <path d="M11.7742 2.13867H20.501V17.8609H11.7742V2.13867Z" fill="#FF5F00"></path>
+                                                    <path d="M12.3284 10C12.3284 6.8056 13.8243 3.97221 16.1237 2.13884C14.4339 0.805527 12.3007 0 9.97359 0C4.46029 0 0 4.47216 0 10C0 15.5278 4.46029 20 9.97347 20C12.3006 20 14.4338 19.1945 16.1237 17.861C13.8243 16.0555 12.3284 13.1944 12.3284 10Z" fill="#EB001B"></path>
+                                                    <path d="M32.2751 10C32.2751 15.5277 27.8148 20 22.3017 20C19.9745 20 17.8414 19.1945 16.1514 17.861C18.4786 16.0278 19.9469 13.1944 19.9469 10C19.9469 6.8056 18.4508 3.97221 16.1514 2.13884C17.8412 0.805527 19.9745 0 22.3017 0C27.8148 0 32.2751 4.49999 32.2751 10Z" fill="#F79E1B"></path>
+                                                </svg>`;
+
+                                                            if (mode === 'edit') {
+
+                                                                title.textContent = 'Edit payment method';
+                                                                submitBtn.textContent = 'Save changes';
+
+                                                                document.getElementById('card_name').value = 'John Doe';
+                                                                document.getElementById('expiry').value = this.dataset.exp;
+                                                                subtitle.style.display = 'none';
+                                                                remove_card.style.display = 'block';
+                                                                edit_card.style.display = 'inline-flex';
+
+                                                                document.getElementById('edit_card_text').textContent =
+                                                                    `${this.dataset.card.charAt(0).toUpperCase() + this.dataset.card.slice(1)} ending in ${this.dataset.last4}`;
+
+                                                                document.getElementById('edit_card_exp').textContent =
+                                                                    `Exp. date ${this.dataset.exp}`;
+
+                                                                document.getElementById('edit_card_icon').innerHTML =
+                                                                    this.dataset.card === 'mastercard' ?
+                                                                    mastercardSvg :
+                                                                    visaSvg;
+                                                            } else {
+                                                                title.textContent = 'Add payment method';
+                                                                submitBtn.textContent = '+ Add payment';
+
+                                                                document.getElementById('add_payment_form').reset();
+                                                                edit_card.style.display = 'none';
+                                                                subtitle.style.display = 'block';
+                                                                remove_card.style.display = 'none';
+
+                                                            }
+                                                        });
+                                                    });
+
+                                                    // Card number: groups of 4 digits separated by spaces
+                                                    document.getElementById('card_number').addEventListener('input', function(e) {
+                                                        let value = this.value.replace(/\D/g, '').slice(0, 16);
+                                                        this.value = value.match(/.{1,4}/g)?.join(' ') || value;
+                                                    });
+
+                                                    // Expiry: auto-insert slash after MM
+                                                    document.getElementById('expiry').addEventListener('input', function(e) {
+                                                        let value = this.value.replace(/\D/g, '').slice(0, 4);
+                                                        if (value.length >= 3) {
+                                                            this.value = value.slice(0, 2) + '/' + value.slice(2);
+                                                        } else {
+                                                            this.value = value;
+                                                        }
+                                                    });
+
+                                                    // CVC: numbers only, max 3
+                                                    document.getElementById('cvc').addEventListener('input', function(e) {
+                                                        this.value = this.value.replace(/\D/g, '').slice(0, 3);
+                                                    });
+                                                </script>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Add Payment Method Modal  -->
+
+
+                                <!-- Remove this card Modal  -->
+
+                                <div class="modal" id="remove_card_alert_modal">
+                                    <div class="modal-content size">
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="d-flex align-items-center justify-content-between mt-2">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="20" viewBox="0 0 18 20" fill="none">
+                                                        <path d="M3.36343 20C2.78743 20 2.29714 19.8005 1.89257 19.4014C1.488 19.0023 1.28571 18.5191 1.28571 17.9518V2.24477H0V0.976538H5.14286V0H12.8571V0.976538H18V2.24477H16.7143V17.9518C16.7143 18.5352 16.5163 19.0226 16.1203 19.4141C15.7243 19.8055 15.2297 20.0008 14.6366 20H3.36343ZM15.4286 2.24477H2.57143V17.9518C2.57143 18.1792 2.64557 18.3661 2.79386 18.5124C2.94214 18.6586 3.132 18.7318 3.36343 18.7318H14.6379C14.835 18.7318 15.0163 18.6506 15.1817 18.4883C15.3471 18.3259 15.4294 18.1467 15.4286 17.9505V2.24477ZM6.18171 16.1953H7.46743V4.78123H6.18171V16.1953ZM10.5326 16.1953H11.8183V4.78123H10.5326V16.1953Z" fill="#FF6E6E" />
+                                                    </svg>
+                                                    <svg class="cursor" data-modal-close xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                                        <circle cx="10" cy="10" r="9.5" transform="matrix(-1 0 0 1 20 0)" fill="#F3F3F3" stroke="#E8E8E8" />
+                                                        <path d="M13.1465 13.24L10.0001 10.0936L13.0937 6.99999" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                                                        <path d="M7.09375 13.24L10.2402 10.0936L7.14657 6.99999" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                                                    </svg>
+                                                </div>
+                                                <h1 class="fs-18-400 mt-4">Remove this card?</h1>
+                                                <span class="fs-12-400-f-color text-light mt-2 mb-1">You'll need another payment method before your next booking.</span>
+                                                <div id="edit_card" class="mt-3" style="margin-left: 10px; width: 360px;align-items:center; gap:14px; background:#fff; border:1px solid #e5e7eb; border-radius:10px; padding:12px 18px;">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="62" height="20" viewBox="0 0 62 20" fill="none">
+                                                        <path d="M32.0649 6.39377C32.0295 9.17985 34.5505 10.7345 36.4495 11.6589C38.4005 12.6073 39.0559 13.2155 39.0481 14.0637C39.0336 15.3617 37.4918 15.9346 36.0491 15.9568C33.5321 15.9958 32.0685 15.278 30.9051 14.7351L29.9983 18.9735C31.1657 19.5108 33.3272 19.9794 35.5686 20C40.8301 20 44.2724 17.4055 44.291 13.3829C44.3116 8.27769 37.222 7.99511 37.2705 5.71321C37.2872 5.02129 37.9481 4.28292 39.3964 4.09518C40.1133 4.00034 42.0922 3.92776 44.3358 4.95984L45.2164 0.859098C44.0098 0.420235 42.4591 0 40.5284 0C35.5761 0 32.093 2.6298 32.0649 6.39377ZM53.678 0.35322C52.7172 0.35322 51.9076 0.91305 51.5462 1.77215L44.0304 19.6988H49.2881L50.3343 16.8104H56.7591L57.366 19.6988H62L57.9562 0.35322H53.678ZM54.4135 5.57918L55.9308 12.8437H51.7753L54.4135 5.57918ZM25.6903 0.353462L21.546 19.6986H26.5561L30.6985 0.352978L25.6903 0.353462ZM18.2786 0.353462L13.0638 13.5206L10.9544 2.32472C10.7069 1.0749 9.7294 0.35322 8.64391 0.35322H0.119398L0 0.914984C1.75005 1.29433 3.73841 1.90618 4.94305 2.56084C5.68027 2.96076 5.89048 3.31035 6.13267 4.26066L10.128 19.6988H15.4225L23.5397 0.35322L18.2786 0.353462Z" fill="url(#paint0_linear_5_657)"></path>
+                                                        <defs>
+                                                            <linearGradient id="paint0_linear_5_657" x1="2850.39" y1="60.12" x2="2908.22" y2="-1993.91" gradientUnits="userSpaceOnUse">
+                                                                <stop stop-color="#222357"></stop>
+                                                                <stop offset="1" stop-color="#254AA5"></stop>
+                                                            </linearGradient>
+                                                        </defs>
+                                                    </svg>
+                                                    <del><span class="fs-14-600-f-color">Visa ending in 7890</span></del>
+                                                    <span style="color:#3b3731; font-size:14px;">|</span>
+                                                    <span class="fs-14-400-f-color text-light"><del>Exp. date 06/27</del></span>
+                                                </div>
+
+                                                <div class="modal-buttons d-flex justify-content-between align-items-center mt-4">
+                                                    <button type="button" class="close-btn fs-16-400 text-light cursor" data-modal-close>Cancel</button>
+                                                    <button class="update-btn fs-16-600 btn-active-bg text-center cursor" id="confirm_remove_card" style="background-color:#FF6E6E">Remove card</button>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Remove this card Modal  -->
+
+
+                                <!-- Card removed Modal  -->
+
+                                <div class="modal" id="card_removed_modal">
+                                    <div class="modal-content size">
+                                        <div class="container">
+                                            <div class="row mt-4">
+                                                <!-- <div class="col-lg-1"></div> -->
+                                                <div class="col-lg-12">
+                                                    <div class="d-flex justify-content-center">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+                                                            <path d="M20 0C9 0 0 9 0 20C0 31 9 40 20 40C31 40 40 31 40 20C40 9 31 0 20 0ZM16 30L6 20L8.82 17.18L16 24.34L31.18 9.16L34 12L16 30Z" fill="#FF6E6E" />
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12" style="padding: 15px 35px;">
+
+                                                    <div class="d-flex flex-column align-items-center gap-5 justify-content-center">
+                                                        <h2 class="fs-18-400">Card removed</h2>
+                                                        <span class="fs-12-400-f-color text-light text-center">Visa ending in 7890 is no longer saved <br> to your account.</span>
+
+                                                        <button class="update-btn fs-16-600 btn-active-bg text-center cursor mt-4" style="background: #3B3731;" data-modal-close>Return to homepage</button>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Card removed Modal  -->
+
+                                <!-- Payment method added Modal  -->
+
+                                <div class="modal" id="payment_method_added_modal">
+                                    <div class="modal-content size">
+                                        <div class="container">
+                                            <div class="row mt-4">
+                                                <!-- <div class="col-lg-1"></div> -->
+                                                <div class="col-lg-12">
+                                                    <div class="d-flex justify-content-center">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+                                                            <path d="M20 0C9 0 0 9 0 20C0 31 9 40 20 40C31 40 40 31 40 20C40 9 31 0 20 0ZM16 30L6 20L8.82 17.18L16 24.34L31.18 9.16L34 12L16 30Z" fill="#C9DDA0" />
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12" style="padding: 15px 35px;">
+
+                                                    <div class="d-flex flex-column align-items-center gap-5 justify-content-center">
+                                                        <h2 class="fs-18-400">Payment method added</h2>
+                                                        <span class="fs-12-400-f-color text-light text-center">Visa ending in 4242 is now saved to your account.</span>
+
+                                                        <button class="update-btn fs-16-600 btn-active-bg text-center cursor mt-4" data-modal-close>Done</button>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Payment method added Modal  -->
+
+                                <!-- Changes saved Modal  -->
+
+                                <div class="modal" id="changes_saved_modal">
+                                    <div class="modal-content size">
+                                        <div class="container">
+                                            <div class="row mt-4">
+                                                <!-- <div class="col-lg-1"></div> -->
+                                                <div class="col-lg-12">
+                                                    <div class="d-flex justify-content-center">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+                                                            <path d="M20 0C9 0 0 9 0 20C0 31 9 40 20 40C31 40 40 31 40 20C40 9 31 0 20 0ZM16 30L6 20L8.82 17.18L16 24.34L31.18 9.16L34 12L16 30Z" fill="#C9DDA0" />
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12" style="padding: 15px 35px;">
+
+                                                    <div class="d-flex flex-column align-items-center gap-5 justify-content-center">
+                                                        <h2 class="fs-18-400">Changes saved</h2>
+                                                        <span class="fs-12-400-f-color text-light text-center">Your Visa ending in 7890 has been updated.</span>
+
+                                                        <button class="update-btn fs-16-600 btn-active-bg text-center cursor mt-4" data-modal-close>Done</button>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Changes saved Modal  -->
+
+                                <script>
+                                    document.getElementById('add_payment_form').addEventListener('submit', function(e) {
+                                        e.preventDefault();
+
+                                        const modal = document.getElementById('payment_modal');
+                                        const isEdit = modal.querySelector('.modal-title').textContent === 'Edit payment method';
+
+                                        // close payment modal
+                                        modal.style.display = 'none';
+
+                                        // open correct modal based on mode
+                                        if (isEdit) {
+                                            document.getElementById('changes_saved_modal').style.display = 'flex';
+                                        } else {
+                                            document.getElementById('payment_method_added_modal').style.display = 'flex';
+                                        }
+                                    });
+                                </script>
 
                                 <p class="bold-font mt-5">Payment History</p>
 
@@ -907,7 +1698,11 @@
                                         </div>
                                     </div>
                                     <div>
-                                        <a href="" class="small-link-tag">Unblock</a>
+                                        <a class="small-link-tag cursor unblock-trigger"
+                                            data-modal-open="unblock_users_account_modal"
+                                            data-name="The Garden Grooming Spot"
+                                            data-subname="Chloe D."
+                                            data-image="<?= BASE_URL ?>/assets/images/block_user_1.png">Unblock</a>
                                     </div>
                                 </div>
 
@@ -920,7 +1715,11 @@
                                         </div>
                                     </div>
                                     <div>
-                                        <a href="" class="small-link-tag">Unblock</a>
+                                        <a class="small-link-tag cursor unblock-trigger"
+                                            data-modal-open="unblock_users_account_modal"
+                                            data-name="Sarah W."
+                                            data-subname="Sarah’s Grooming Studio"
+                                            data-image="<?= BASE_URL ?>/assets/images/block_user_2.png">Unblock</a>
                                     </div>
                                 </div>
 
@@ -933,7 +1732,11 @@
                                         </div>
                                     </div>
                                     <div>
-                                        <a href="" class="small-link-tag">Unblock</a>
+                                        <a class="small-link-tag cursor unblock-trigger"
+                                            data-modal-open="unblock_users_account_modal"
+                                            data-name="Furs & Co. Studio."
+                                            data-subname="Hosted by Dev É."
+                                            data-image="<?= BASE_URL ?>/assets/images/block_user_3.png">Unblock</a>
                                     </div>
                                 </div>
 
@@ -946,7 +1749,11 @@
                                         </div>
                                     </div>
                                     <div>
-                                        <a href="" class="small-link-tag">Unblock</a>
+                                        <a class="small-link-tag cursor unblock-trigger"
+                                            data-modal-open="unblock_users_account_modal"
+                                            data-name="Katie Z."
+                                            data-subname="Includes other accounts they may have or create."
+                                            data-image="<?= BASE_URL ?>/assets/images/block_user_4.png">Unblock</a>
                                     </div>
                                 </div>
 
@@ -959,11 +1766,87 @@
                                         </div>
                                     </div>
                                     <div>
-                                        <a href="" class="small-link-tag">Unblock</a>
+                                        <a class="small-link-tag cursor unblock-trigger"
+                                            data-modal-open="unblock_users_account_modal"
+                                            data-name="Lorem Ipsum."
+                                            data-subname="Includes other accounts they may have or create."
+                                            data-image="<?= BASE_URL ?>/assets/images/block_user_5.png">Unblock</a>
                                     </div>
                                 </div>
 
                             </div>
+
+                            <!-- UnBlocked Users Modal  -->
+
+                            <div class="modal" id="unblock_users_account_modal">
+                                <div class="modal-content size">
+                                    <div class="container">
+                                        <div class="row mt-2">
+                                            <!-- <div class="col-lg-1"></div> -->
+                                            <div class="col-lg-12">
+                                                <div class="d-flex align-items-center justify-content-between">
+                                                    <h4 class="fs-18-400">Unblock <span id="unblock_name">Provider</span></h4>
+                                                    <svg class="cursor" data-modal-close xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                                        <circle cx="10" cy="10" r="9.5" transform="matrix(-1 0 0 1 20 0)" fill="#F3F3F3" stroke="#E8E8E8" />
+                                                        <path d="M13.1465 13.24L10.0001 10.0936L13.0937 6.99999" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                                                        <path d="M7.09375 13.24L10.2402 10.0936L7.14657 6.99999" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <div class="mt-3" style="display:inline-flex; align-items:center; gap:12px; border:1px solid #E2E2E2; border-radius:10px; padding:12px 16px; min-width:100%;">
+
+                                                    <div style="width:44px; height:44px; border-radius:50%; overflow:hidden; flex-shrink:0;">
+                                                        <img id="unblock_image" src="" style="width:100%; height:100%; object-fit:cover;">
+                                                    </div>
+
+                                                    <div>
+                                                        <p class="fs-14-600-f-color" id="unblock_name_main"></p>
+                                                        <p class="fs-14-400-f-color text-light mt-1" id="unblock_subname"></p>
+                                                    </div>
+
+                                                </div>
+                                                <br>
+                                                <p class="fs-12-400-f-color text-light mt-3" id="unblock_description"></p>
+
+                                            </div>
+                                            <div class="modal-buttons d-flex justify-content-between align-items-center mt-4">
+                                                <button type="button" class="close-btn fs-16-400 text-light cursor" data-modal-close>Cancel</button>
+                                                <button class="update-btn fs-16-600 btn-active-bg text-center cursor" id="unblockConfirmBtn" style="background-color:#3B3731">Unblock</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <script>
+                                document.querySelectorAll('.unblock-trigger').forEach(btn => {
+
+                                    btn.addEventListener('click', function() {
+
+                                        const name = this.dataset.name;
+                                        const subname = this.dataset.subname;
+                                        const image = this.dataset.image;
+
+                                        // Title
+                                        document.getElementById('unblock_name').textContent = name;
+
+                                        // Card content
+                                        document.getElementById('unblock_name_main').textContent = name;
+                                        document.getElementById('unblock_subname').textContent = subname;
+                                        document.getElementById('unblock_image').src = image;
+
+                                        // Description
+                                        document.getElementById('unblock_description').textContent =
+                                            `${name} will be able to message you and book your services again.`;
+
+                                    });
+
+                                });
+                            </script>
+
+                            <!-- UnBlocked Users Modal  -->
+
 
                             <div class="tab-panel" id="app_and_system">
 
@@ -1129,11 +2012,137 @@
 
                                     <div class="d-flex align-items-center justify-content-between gap-25">
                                         <p style="color: #9D9B98">Remove all stored personal data.</p>
-                                        <a href="" class="small-link-tag">Delete Personal Data</a>
+                                        <a class="small-link-tag cursor" data-modal-open="delete_data_modal" id="deleteDataTrigger">
+                                            Delete Personal Data
+                                        </a>
                                     </div>
                                 </div>
 
                             </div>
+
+                            <div class="modal" id="delete_data_modal">
+                                <div class="modal-content size">
+
+                                    <div class="container">
+                                        <div class="row mt-2">
+                                            <div class="col-lg-12">
+                                                <div class="d-flex align-items-center justify-content-between">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="23" height="21" viewBox="0 0 23 21" fill="none">
+                                                        <path d="M11.1835 12.2434V6.73901M2.33789 20.5H20.029C21.4198 20.5 22.3042 19.0138 21.6427 17.7909L12.7972 1.46121C12.1027 0.179598 10.2642 0.179598 9.56976 1.46121L0.725106 17.7909C0.061826 19.0138 0.947116 20.5 2.33789 20.5Z" stroke="#FF6E6E" stroke-linecap="round" />
+                                                        <circle cx="11.1835" cy="15.5" r="0.75" fill="#FF6E6E" />
+                                                    </svg>
+                                                    <svg class="cursor" data-modal-close xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                                        <circle cx="10" cy="10" r="9.5" transform="matrix(-1 0 0 1 20 0)" fill="#F3F3F3" stroke="#E8E8E8" />
+                                                        <path d="M13.1465 13.24L10.0001 10.0936L13.0937 6.99999" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                                                        <path d="M7.09375 13.24L10.2402 10.0936L7.14657 6.99999" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <h3 class="fs-18-400 mt-4">Delete your personal data?</h3>
+                                                <span class="fs-12-400-f-color text-light">This permanently deletes your profile, saved pets, messages and preferences. Booking and payment records are kept for legal and tax purposes.</span>
+                                            </div>
+                                            <div class="modal-buttons d-flex justify-content-between align-items-center mt-4">
+                                                <button type="button" class="close-btn fs-16-400 text-light cursor" data-modal-close>Cancel</button>
+                                                <button class="update-btn fs-16-600 btn-active-bg text-center cursor" id="continueDeleteDataBtn" style="background-color:#FF6E6E">Continue</button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+                            <div class="modal" id="confirm_delete_data_modal">
+                                <div class="modal-content size">
+
+                                    <div class="container">
+                                        <div class="row mt-2">
+                                            <!-- <div class="col-lg-1"></div> -->
+                                            <div class="col-lg-12">
+                                                <div class="d-flex align-items-center justify-content-between">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="23" height="21" viewBox="0 0 23 21" fill="none">
+                                                        <path d="M11.1835 12.2434V6.73901M2.33789 20.5H20.029C21.4198 20.5 22.3042 19.0138 21.6427 17.7909L12.7972 1.46121C12.1027 0.179598 10.2642 0.179598 9.56976 1.46121L0.725106 17.7909C0.061826 19.0138 0.947116 20.5 2.33789 20.5Z" stroke="#FF6E6E" stroke-linecap="round" />
+                                                        <circle cx="11.1835" cy="15.5" r="0.75" fill="#FF6E6E" />
+                                                    </svg>
+                                                    <svg class="cursor" data-modal-close xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                                        <circle cx="10" cy="10" r="9.5" transform="matrix(-1 0 0 1 20 0)" fill="#F3F3F3" stroke="#E8E8E8" />
+                                                        <path d="M13.1465 13.24L10.0001 10.0936L13.0937 6.99999" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                                                        <path d="M7.09375 13.24L10.2402 10.0936L7.14657 6.99999" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <h3 class="fs-18-400 mt-4">Confirm deactivation</h3>
+                                                <span class="fs-12-400-f-color text-light">Type DELETE to confirm.</span>
+
+                                                <div class="form-field mt-3">
+                                                    <label class="fs-12-600-f-color">Confirmation</label>
+                                                    <div class="input-wrapper">
+                                                        <input type="text" id="confirm_delete_input" placeholder="Type DELETE">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-buttons d-flex justify-content-between align-items-center mt-4">
+                                                <button type="button" class="close-btn fs-16-400 text-light cursor" data-modal-close>Cancel</button>
+                                                <button class="update-btn fs-16-600 btn-active-bg text-center cursor" id="deleteDataBtn" style="background-color:#FF6E6E">Delete</button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="modal" id="data_deleted_modal">
+                                <div class="modal-content size">
+
+                                    <div class="container">
+                                        <div class="row mt-4">
+                                            <div class="col-lg-12">
+                                                <div class="d-flex justify-content-center">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+                                                        <path d="M20 0C9 0 0 9 0 20C0 31 9 40 20 40C31 40 40 31 40 20C40 9 31 0 20 0ZM16 30L6 20L8.82 17.18L16 24.34L31.18 9.16L34 12L16 30Z" fill="#FF6E6E" />
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12" style="padding: 15px 35px;">
+
+                                                <div class="d-flex flex-column align-items-center gap-5 justify-content-center">
+                                                    <h2 class="fs-18-400">Personal data deleted</h2>
+                                                    <p class="fs-12-400-f-color text-light text-center">Your profile and saved info have been removed. This can take a few minutes to fully process.</p>
+
+                                                    <button class="update-btn fs-16-600 btn-active-bg text-center cursor mt-4" style="background-color:#3B3731" data-modal-close>Done</button>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <script>
+                                // Step 1 → Step 2
+                                document.getElementById('continueDeleteDataBtn').addEventListener('click', function() {
+                                    document.getElementById('delete_data_modal').style.display = 'none';
+                                    document.getElementById('confirm_delete_data_modal').style.display = 'flex';
+                                });
+
+
+                                // Step 2 → Step 3 (validation)
+                                document.getElementById('deleteDataBtn').addEventListener('click', function() {
+
+                                    const input = document.getElementById('confirm_delete_input');
+
+                                    if (input.value.trim() !== 'DELETE') {
+                                        alert('Please type DELETE to continue.');
+                                        return;
+                                    }
+
+                                    document.getElementById('confirm_delete_data_modal').style.display = 'none';
+                                    document.getElementById('data_deleted_modal').style.display = 'flex';
+                                });
+                            </script>
 
                         </div>
                     </div>
@@ -1153,6 +2162,32 @@
         // toggle.addEventListener('click', () => {
         //     toggle.classList.toggle('on');
         // });
+
+        document.getElementById("updatePasswordForm").addEventListener("submit", function(e) {
+            e.preventDefault();
+
+            // close current modal
+            const updateModal = document.getElementById("update_password_modal");
+            if (updateModal) {
+                updateModal.style.display = "none";
+            }
+
+            // open success modal
+            const successTrigger = document.querySelector('[data-modal-open="password_updated_modal"]');
+            if (successTrigger) {
+                successTrigger.click();
+            }
+        });
+
+        document.getElementById('remove_card').addEventListener('click', function() {
+            document.getElementById('payment_modal').style.display = 'none';
+            document.getElementById('remove_card_alert_modal').style.display = 'flex';
+        });
+
+        document.getElementById('confirm_remove_card').addEventListener('click', function() {
+            document.getElementById('remove_card_alert_modal').style.display = 'none';
+            document.getElementById('card_removed_modal').style.display = 'flex';
+        });
 
         document.addEventListener('click', function(e) {
             const circle = e.target.closest('.toggle-circle');

@@ -483,6 +483,15 @@
   font-weight: 500;
 }
 
+
+.fs-12-600-f-color {
+  color: var(--font-color);
+  font-family: Lato;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+
 /* ===== Utility Classes ===== */
 
 .section-divider {
