@@ -3329,9 +3329,62 @@
 
 
                             </div>
-                            <div class="chat-wrapper mb-5">
-                                <div class="chat-box">
+                            <style>
+                                .preview-row {
+                                    display: flex;
+                                    flex-wrap: wrap;
+                                    gap: 20px;
+                                    padding: 10px 10px 0;
+                                }
 
+                                .preview-row:empty {
+                                    display: none;
+                                }
+
+                                .preview-item {
+                                    position: relative;
+                                    width: 60px;
+                                    height: 60px;
+                                    border-radius: 8px;
+                                    overflow: visible;
+                                }
+
+                                .preview-item img {
+                                    width: 100%;
+                                    height: 100%;
+                                    object-fit: cover;
+                                    border-radius: 10px;
+                                    display: block;
+                                }
+
+                                .preview-item .remove-btn {
+                                    position: absolute;
+                                    top: -6px;
+                                    right: -6px;
+                                    width: 18px;
+                                    height: 18px;
+                                    border-radius: 50%;
+                                    background: #fff;
+                                    border: 1.5px solid #ccc;
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                    cursor: pointer;
+                                    font-size: 10px;
+                                    color: #555;
+                                    line-height: 1;
+                                    z-index: 1;
+                                }
+
+                                .preview-item .remove-btn:hover {
+                                    background: var(--active-bg);;
+                                    color: #fff;
+                                    border-color: var(--active-bg);;
+                                }
+                            </style>
+                            <div class="chat-wrapper mb-4">
+                                <div class="chat-box">
+                                    <div class="preview-row" id="previewRow"></div>
                                     <div class="message-row">
                                         <div class="message-input">
                                             <textarea id="message" placeholder="Write a message ..." maxlength="3000"></textarea>
@@ -3375,7 +3428,7 @@
                                             <input type="file" accept="image/*" />
                                         </label>
 
-                                        <div class="counter">
+                                        <div class="counter fs-14-400-f-color">
                                             <span id="count">0</span>/3,000
                                         </div>
                                     </div>
@@ -3475,6 +3528,47 @@
 
                 document.documentElement.style.setProperty('--active-bg', selected.active);
                 document.documentElement.style.setProperty('--active-bg-light', selected.bg);
+            });
+        });
+
+        // preview image attachment 
+        const previewRow = document.getElementById('previewRow');
+
+        function handleFiles(files) {
+            Array.from(files).forEach(file => {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const item = document.createElement('div');
+                    item.className = 'preview-item';
+
+                    let preview;
+                    if (file.type.startsWith('image/')) {
+                        preview = document.createElement('img');
+                        preview.src = e.target.result;
+                    } else {
+                        // Non-image file: show icon + filename
+                        preview = document.createElement('div');
+                        preview.style.cssText = 'width:60px;height:60px;border-radius:8px;background:#f0f0f0;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:9px;color:#555;padding:4px;text-align:center;word-break:break-all;box-sizing:border-box;';
+                        preview.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-3-3v6M4 4h16v16H4z"/></svg>${file.name.slice(0, 12)}`;
+                    }
+
+                    const btn = document.createElement('span');
+                    btn.className = 'remove-btn';
+                    btn.innerHTML = '&#x2715;';
+                    btn.addEventListener('click', () => item.remove());
+
+                    item.appendChild(preview);
+                    item.appendChild(btn);
+                    previewRow.appendChild(item);
+                };
+                reader.readAsDataURL(file);
+            });
+        }
+
+        document.querySelectorAll('.actions-row input[type="file"]').forEach(input => {
+            input.addEventListener('change', function() {
+                handleFiles(this.files);
+                this.value = '';
             });
         });
     </script>

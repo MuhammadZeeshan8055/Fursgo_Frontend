@@ -598,7 +598,7 @@
                                 </div>
 
                             </div>
-                            <div class="chat-wrapper mt-4">
+                            <div class="chat-wrapper mb-5">
                                 <div class="chat-box">
 
                                     <div class="message-row">
@@ -646,7 +646,7 @@
                                             <input type="file" accept="image/*" />
                                         </label>
 
-                                        <div class="counter">
+                                        <div class="counter fs-14-400-f-color muted-color">
                                             <span id="count">0</span>/3,000
                                         </div>
                                     </div>
