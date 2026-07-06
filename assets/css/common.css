@@ -17,6 +17,15 @@
   font-weight: 900;
 }
 
+/* Bold weight */
+@font-face {
+  font-family: "Lato";
+  src: url("../fonts/Lato/Lato-Bold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  /* exact normal */
+}
+
 /* Normal weight */
 @font-face {
   font-family: "Lato";
@@ -1766,4 +1775,10 @@ input::placeholder {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 0 !important;
+  }
 }
