@@ -49,7 +49,7 @@
             gap: 10px;
         }
 
-        
+
 
         .avatar-container img {
             width: 200px;
@@ -58,6 +58,7 @@
             border-radius: 144px;
             border: 5px solid #FFC97A;
             background: url(<path-to-image>) lightgray 50% / cover no-repeat;
+            object-fit: cover;
         }
 
         .profile-name {
@@ -543,10 +544,11 @@
             border: 1px solid #333;
             background: white;
             /* padding: 8px 20px; */
-            border-radius: 20px;
+            border-radius: 100px;
             cursor: pointer;
             height: auto;
             width: fit-content;
+            height: 48px;
         }
 
         .btn-add-another-pet {
@@ -585,30 +587,11 @@
             display: none;
         }
 
-        .profile-details-header {
-            display: flex;
-            gap: 40px;
-            margin-bottom: 25px;
-        }
-
-        .avatar-placeholder {
-            width: 150px;
-            height: 150px;
-            flex-shrink: 0;
-        }
-
-        .details-completion.details-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            grid-gap: 20px;
-            flex-grow: 1;
-        }
-
         .profile-details-card {
             border-radius: 10px;
             background: #fafafa;
             height: auto;
-            margin: 0 0;
+            margin: 0;
             font-family: "Lato", sans-serif;
             color: #333;
             padding: 42px;
@@ -620,111 +603,115 @@
             color: #333;
         }
 
-        /* .profile-header {
-            max-width: 1000px;
-            margin: 0 auto;
-        } */
-
         h3.section-title {
             color: #3b3731;
             font-family: Lato;
             font-size: 20px;
-
             font-weight: 600;
-
         }
 
-        .divider {
-            border: none;
-            border-top: 2px solid #d4d4d4;
-            margin: 13px 0 50px 0;
-        }
-
-        /* Header layout (Avatar + Grid) */
         .profile-details-header {
             display: flex;
             gap: 40px;
             align-items: flex-start;
-            margin-bottom: 30px;
         }
 
-        /* Avatar Circle */
         .avatar-placeholder {
-            width: 150px;
-            height: 150px;
+            width: 215px;
+            height: 215px;
             flex-shrink: 0;
         }
 
-        /* The Details Grid */
-        /* Ensure the grid has 3 columns to match the design */
-        .profile-details-header .details-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 50px;
-            flex-grow: 1;
+        .avatar-placeholder img,
+        #profile-avatar-preview {
+            width: 215px;
+            height: 215px;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+            border: 1px solid #E3E3E3;
         }
 
-        /* Force Address Line 1 to take up the full width of the row */
-        .detail-item:nth-child(4) {
-            grid-column: 0 / span 3;
+        .profile-info {
+            flex: 1;
+            min-width: 0;
         }
 
-        /* City and Postcode will naturally fall into the next row */
-        .detail-item:nth-child(5) {
-            grid-column: 1;
+        .profile-info-section {
+            margin-bottom: 28px;
         }
 
-        .detail-item:nth-child(6) {
-            grid-column: 2;
+        .profile-info-section:last-child {
+            margin-bottom: 0;
         }
 
-        /* Styling Labels and Text */
-        .detail-item label {
-            color: #3b3731;
-            font-family: Lato;
-            font-size: 16px;
-
-            font-weight: 600;
-
+        .profile-name-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 20px;
+            margin-bottom: 0;
         }
 
-        .detail-item p {
-            color: #3b3731;
-            font-family: Lato;
-            font-size: 16px;
-
-            font-weight: 400;
-
-        }
-
-        .bio-section label {
+        .profile-info-label {
             display: block;
             color: #3B3731;
-            font-family: Lato;
+            font-family: Lato, sans-serif;
             font-size: 16px;
             font-weight: 600;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
         }
 
-        .bio-section p {
+        .profile-display-name {
             color: #3B3731;
-            font-family: Lato;
+            font-family: "Playfair Display", serif;
+            font-size: 28px;
+            font-weight: 700;
+            margin: 0;
+            line-height: 1.2;
+        }
+
+        .profile-info-divider {
+            border-top: 1px solid #D4D4D4;
+            margin: 20px 0 28px;
+        }
+
+        .profile-contact-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .profile-contact-item,
+        .profile-address-row {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: #3B3731;
+            font-family: Lato, sans-serif;
             font-size: 16px;
             font-weight: 400;
+        }
+
+        .profile-contact-item svg,
+        .profile-address-row svg {
+            flex-shrink: 0;
+        }
+
+        .profile-about-text {
+            color: #3B3731;
+            font-family: Lato, sans-serif;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 1.5;
+            margin: 0;
         }
 
         textarea[name="bio"] {
             height: 80px;
-            /* fixed height */
             resize: none;
             overflow: auto;
-        }
-
-        /* Edit Button Styling */
-        .edit-action {
-            grid-column: 3;
-            /* Places button in the far right column */
-            text-align: right;
         }
 
         .btn-edit-outline {
@@ -737,64 +724,18 @@
             padding: 8px 16px;
             cursor: pointer;
             transition: all 0.2s;
-            width: 143px;
+            min-width: 143px;
             height: 48px;
+            font-size: 16px;
+            justify-content: center;
+            color: #3B3731;
+            font-family: Lato, sans-serif;
+            font-weight: 600;
+            flex-shrink: 0;
         }
 
         .btn-edit-outline:hover {
             background: #f0f0f0;
-        }
-
-        /* Bio Section at the bottom */
-        .bio-section {
-            margin-top: 20px;
-            border-top: 1px solid transparent;
-            /* Keeps spacing consistent */
-        }
-
-        .bio-section p {
-            color: #3b3731;
-            font-family: Lato;
-            font-size: 16px;
-
-            font-weight: 400;
-
-            letter-spacing: 0.5;
-        }
-
-        .details-grid .edit-action {
-            grid-column: 3;
-            /* Places button in the far right column */
-            text-align: left;
-        }
-
-        .btn-edit-outline {
-            border: 1px solid #333;
-            background: white;
-            padding: 8px 20px;
-            border-radius: 100px;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 14px;
-        }
-
-        .bio-section {
-            margin-top: 20px;
-            border-top: 1px solid transparent;
-            /* Keeps spacing consistent */
-            padding-left: 12rem;
-        }
-
-        .profile-view .bio-section p {
-            color: #3b3731;
-            font-family: Lato;
-            font-size: 16px;
-
-            font-weight: 400;
-
-            width: 611px;
         }
 
         .hidden {
@@ -836,18 +777,15 @@
             font-family: "Lato", sans-serif;
         }
 
-        /* Container for the input and icon */
         .input-wrapper {
             position: relative;
             display: flex;
             align-items: center;
         }
 
-        /* Style the inputs to match your image */
         .input-wrapper input {
             width: 100%;
             padding: 12px 45px 12px 15px;
-            /* Extra padding on the right for the icon */
             border: 1px solid #dcdcdc;
             border-radius: 8px;
             font-size: 15px;
@@ -861,7 +799,6 @@
             border-color: #c9dda0;
         }
 
-        /* Position the checkmark */
         .input-icon {
             position: absolute;
             right: 15px;
@@ -869,7 +806,6 @@
             display: block;
         }
 
-        /* HIDE icon if the input is empty (optional but professional) */
         .input-wrapper input:placeholder-shown+.input-icon {
             display: none;
         }
@@ -882,39 +818,33 @@
             margin-top: 20px;
         }
 
-        .btn-save {
-            width: 325px;
-            height: 48px;
-            background: #ffcc80;
-            border: none;
-            border-radius: 25px;
-            color: white;
-            font-weight: bold;
-            cursor: pointer;
-            color: #fff;
-            text-align: center;
-            font-family: Lato;
-            font-size: 16px;
+        @media (max-width: 768px) {
+            .profile-details-header {
+                flex-direction: column;
+                align-items: center;
+            }
 
-            font-weight: 700;
+            .profile-name-row {
+                flex-direction: column;
+                align-items: flex-start;
+            }
 
+            .profile-display-name {
+                font-size: 28px;
+            }
+
+            .profile-contact-row {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+
+            .edit-layout {
+                flex-direction: column;
+            }
         }
 
-        .btn-cancel {
-            width: 295px;
-            height: 48px;
-            background: white;
-            border: 1px solid #ddd;
-            border-radius: 25px;
-            cursor: pointer;
-            color: #9d9b98;
-            text-align: center;
-            font-family: Lato;
-            font-size: 16px;
 
-            font-weight: 500;
-
-        }
 
         .site-footer {
             padding: 100px 10%;
@@ -1033,29 +963,36 @@
         /* Action Buttons */
         .form-actions {
             display: flex;
-            justify-content: space-between;
+            justify-content: end;
             margin-top: 30px;
             gap: 15px;
         }
 
         .btn-cancel {
-            flex: 1;
             padding: 15px;
-            border-radius: 30px;
-            border: 1px solid #ddd;
             background: white;
             cursor: pointer;
+            width: 88px;
+            height: 48px;
+            color: #9D9B98;
+            border-radius: 96px;
+            border: 1px solid #D4D4D4;
+            box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.05);
         }
 
         .btn-save {
-            flex: 1;
             padding: 15px;
-            border-radius: 30px;
             border: none;
-            background: #ffc97a;
             color: white;
             font-weight: bold;
             cursor: pointer;
+            width: 143px;
+            height: 48px;
+            border-radius: 96px;
+            background: #FFC97A;
+            box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.05);
+            font-size: 16px;
+            font-weight: 700;
         }
 
         /* Main Footer Area */
@@ -1255,10 +1192,107 @@
         /* GRID */
         .groomer-grid {
             margin-top: 25px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(295px, 1fr));
-            gap: 3rem;
+            display: flex;
+            flex-wrap: nowrap;
+            gap: 56px;
+            align-items: flex-start;
+            overflow: hidden;
+        }
+
+        .favourite-groomers {
+            overflow: hidden;
+        }
+
+        .groomer-grid .card {
+            width: 295px;
+            flex: 0 0 295px;
+        }
+
+        .favourite-delete-confirm {
+            width: 274px;
+            flex: 0 0 274px;
+            min-height: 248px;
+            padding: 24px 20px;
+            border: 1px solid #FF8E8E;
+            border-radius: 10px;
+            background: #FFF7F7;
+            text-align: center;
+            display: none;
+        }
+
+        .favourite-delete-confirm.active {
+            display: block;
+        }
+
+        .favourite-delete-confirm svg {
+            display: block;
+            margin: 0 auto 18px;
+        }
+
+        .favourite-delete-confirm h4 {
+            color: #3B3731;
+            text-align: center;
+            font-family: "Playfair Display";
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 14px;
+        }
+
+        .favourite-delete-confirm p {
+            color: #FF8E8E;
+            text-align: center;
+            font-family: Lato;
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 1.35;
+            margin-bottom: 18px;
+        }
+
+        .favourite-delete-actions {
+            display: flex;
+            align-items: center;
             justify-content: center;
+            gap: 12px;
+        }
+
+        .favourite-delete-btn {
+            border: none;
+            border-radius: 999px;
+            padding: 12px 20px;
+            font-family: Lato;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .favourite-delete-btn.cancel {
+            background: #FFF;
+            color: #3B3731;
+        }
+
+        .favourite-delete-btn.confirm {
+            background: #FF6F6F;
+            color: #FFF;
+        }
+
+        @media (max-width: 991px) {
+            .groomer-grid {
+                flex-wrap: wrap;
+                gap: 3rem;
+                overflow: visible;
+            }
+
+            .spaces-grid {
+                flex-wrap: wrap;
+                gap: 3rem;
+                overflow: visible;
+            }
+
+            .favourite-delete-confirm {
+                width: 295px;
+                flex-basis: 295px;
+                min-height: auto;
+            }
         }
 
         /* CARD */
@@ -1269,6 +1303,8 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
+            align-items: center;
+            text-align: center;
         }
 
         .card-body {
@@ -1601,17 +1637,59 @@
             background: #FFC97A;
         }
 
+        .venue-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .venue-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: none;
+            border-radius: 100px;
+            padding: 8px 12px;
+            color: #fff;
+            font-family: Lato;
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 1;
+            cursor: pointer;
+        }
+
+        .favourite-groomers .venue-tag {
+            background: #FFC97A;
+        }
+
+        .favourite-spaces .venue-tag {
+            background: #FFA899;
+        }
+
+        .reviews-section .venue-tag {
+            background: #FBAC83;
+        }
+
+        .venue-tag svg {
+            flex-shrink: 0;
+        }
+
+
         /* GRID */
         .spaces-grid {
             margin-top: 25px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(295px, 1fr));
-            gap: 3rem;
+            display: flex;
+            flex-wrap: nowrap;
+            gap: 56px;
+            align-items: flex-start;
+            overflow: hidden;
         }
 
         /* CARD */
         .space-card {
             border-radius: 16px;
+            width: 295px;
+            flex: 0 0 295px;
         }
 
         /* LABEL */
@@ -2060,6 +2138,7 @@
             display: flex;
         } */
 
+
         /* LOAD MORE */
         .load-more {
             display: block;
@@ -2148,7 +2227,10 @@
         }
 
         .current {
-            background-color: #f5f9ed;
+            border-radius: 10px;
+            border: 1px solid #B5CA89;
+            background: #F5F9ED;
+            box-shadow: 0 4px 14.5px 0 rgba(59, 55, 49, 0.16);
         }
 
         .redeemed {
@@ -2167,16 +2249,13 @@
         }
 
         .card-label {
-            display: inline-block;
-            padding: 5px 12px;
+            display: block;
             border-radius: 14px;
             color: #3b3731;
             text-align: center;
             font-family: Lato;
             font-size: 16px;
-
             font-weight: 400;
-
             margin: 10px 0;
         }
 
@@ -2199,37 +2278,45 @@
 
         .referral-grid .copy-box {
             display: flex;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            overflow: hidden;
+            align-items: center;
+            border: 1px solid #D9D9D9;
+            border-radius: 14px;
+            padding: 2px;
+            background: #FFF;
         }
 
         .referral-grid .copy-box input {
             border: none;
-            padding: 12px;
+            padding: 0 20px;
             flex-grow: 1;
-            background: #fafafa;
             width: 609px;
-            height: 48px;
+            height: 46px;
             color: #3B3731;
             font-family: Lato;
             font-size: 16px;
             font-weight: 400;
+            background: transparent;
+        }
+
+        .referral-grid .copy-box input:focus {
+            outline: none;
+            box-shadow: none;
         }
 
         .copy-box button {
-            background: #d4e3b5;
+            background: #C9DDA0;
             border: none;
-            padding: 0 20px;
+            min-width: 103px;
+            height: 42px;
+            padding: 0 24px;
+            border-radius: 10px;
             cursor: pointer;
-            font-weight: bold;
             color: #FFF;
             text-align: center;
             font-family: Lato;
             font-size: 18px;
-
             font-weight: 600;
-
+            flex-shrink: 0;
         }
 
         .promo {
@@ -2811,6 +2898,7 @@
             font-weight: 600;
             line-height: normal;
             margin-bottom: 10px;
+            width: fit-content;
         }
 
         .pf-notes-section label span {
@@ -2837,39 +2925,9 @@
             display: flex;
             gap: 20px;
             margin-top: 30px;
+            justify-content: end;
         }
 
-        .btn-cancel,
-        .btn-save {
-            flex: 1;
-            padding: 15px;
-            border-radius: 30px;
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn-cancel {
-            background: white;
-            border: 1px solid #e0e0e0;
-            color: #9d9b98;
-            text-align: center;
-            font-family: Lato;
-            font-size: 16px;
-            font-style: normal;
-            font-weight: 500;
-            line-height: normal;
-        }
-
-        .btn-save {
-            color: #fff;
-            text-align: center;
-            font-family: Lato;
-            font-size: 16px;
-            font-style: normal;
-            font-weight: 700;
-            line-height: normal;
-            background-color: #ffc97a;
-        }
 
         .select-wrapper {
             position: relative;
@@ -3181,6 +3239,10 @@
             align-items: center;
         }
 
+        .section-divider {
+            margin-top: 6%;
+        }
+
         /* dropdown css ends */
     </style>
 
@@ -3203,7 +3265,7 @@
                         <aside class="profile-sidebar mt-5">
                             <div
                                 class="avatar-container d-flex justify-content-center flex-column align-items-center mt-4">
-                                <img src="<?= BASE_URL ?>assets/images/block_user_5.png" alt="Profile"
+                                <img id="sidebar-profile-avatar" src="<?= BASE_URL ?>assets/images/block_user_5.png" alt="Profile"
                                     class="avatar-img">
                                 <h2 class="profile-name mt-3">Verity E. <span class="check-badge"><svg
                                             xmlns="http://www.w3.org/2000/svg" width="15" height="15"
@@ -3237,7 +3299,7 @@
                                     </div>
 
                                 </div>
-                                <p class="simple-font align-self-center">Joined Fursgo August 2025</p>
+                                <p class="simple-font align-self-center muted-color">Joined Fursgo August 2025</p>
                             </div>
 
                         </aside>
@@ -3253,7 +3315,7 @@
                                     <span class="type normal-font-bold">Groomer Booking</span>
                                 </div>
 
-                                <div class="status normal-font-bold d-flex align-items-center gap-5">
+                                <div class="status normal-font-bold d-flex align-items-center gap-10">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"
                                         fill="none">
                                         <path
@@ -3348,7 +3410,7 @@
                                     <span class="type space-color normal-font-bold">Space Booking</span>
                                 </div>
 
-                                <div class="status normal-font-bold d-flex align-items-center gap-5">
+                                <div class="status normal-font-bold d-flex align-items-center gap-10">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"
                                         fill="none">
                                         <path
@@ -3594,22 +3656,17 @@
                             <div class="section-divider mt-4 mb-5"></div>
                             <div id="profile-view" class="profile-details-card">
                                 <div class="profile-details-header">
-                                    <div class="avatar-placeholder">
-                                        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <circle cx="50" cy="50" r="50" fill="#E6E6E6" />
-                                            <circle cx="50" cy="40" r="15" fill="white" />
-                                            <path d="M20 85C20 70 35 60 50 60C65 60 80 70 80 85" stroke="white"
-                                                stroke-width="2" />
-                                        </svg>
+                                    <div class="avatar-placeholder" id="profile-view-avatar">
+                                        <img id="profile-view-avatar-img" src="<?= BASE_URL ?>assets/images/block_user_5.png" alt="Profile">
                                     </div>
 
-                                    <div class="details-grid">
-                                        <div class="detail-item">
-                                            <label>Full Name</label>
-                                            <p id="display-name" class="mt-2">Verity Eve</p>
-                                        </div>
-                                        <div class="edit-action">
-                                            <button id="edit-btn" class="btn-edit-outline fs-16-600">
+                                    <div class="profile-info">
+                                        <div class="profile-info-section profile-name-row">
+                                            <div>
+                                                <span class="profile-info-label">Profile</span>
+                                                <h4 id="display-name" class="profile-display-name">Verity Eve</h4>
+                                            </div>
+                                            <button id="edit-btn" class="btn-edit-outline">
                                                 <svg width="16" height="15" viewBox="0 0 16 15" fill="none">
                                                     <path
                                                         d="M10.2059 2.37997L12.8529 4.97712M8.44118 14.5H15.5M1.38235 11.0371L0.5 14.5L4.02941 13.6343L14.2524 3.60409C14.5832 3.2794 14.769 2.83908 14.769 2.37997C14.769 1.92085 14.5832 1.48054 14.2524 1.15584L14.1006 1.00694C13.7697 0.682347 13.3209 0.5 12.8529 0.5C12.385 0.5 11.9362 0.682347 11.6053 1.00694L1.38235 11.0371Z"
@@ -3619,30 +3676,42 @@
                                                 Edit details
                                             </button>
                                         </div>
-                                        <div class="detail-item"><label>Email Address</label>
-                                            <p id="display-email" class="mt-2">veve@gmail.com</p>
+
+                                        <div class="profile-info-divider"></div>
+
+                                        <div class="profile-info-section">
+                                            <span class="profile-info-label">Contact</span>
+                                            <div class="profile-contact-row">
+                                                <span class="profile-contact-item">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="14" viewBox="0 0 18 14" fill="none">
+                                                        <path d="M16 0H2C0.9 0 0.01 0.9 0.01 2L0 12C0 13.1 0.9 14 2 14H16C17.1 14 18 13.1 18 12V2C18 0.9 17.1 0 16 0ZM16 4L9 8.5L2 4V2L9 6.5L16 2V4Z" fill="#3B3731" />
+                                                    </svg>
+                                                    <span id="display-email">veve@gmail.com</span>
+                                                </span>
+                                                <span class="profile-contact-item">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                                        <path d="M3.654 1.328a1.25 1.25 0 0 1 1.28-.047l2.75 1.375a1.25 1.25 0 0 1 .676 1.102v2.32a1.25 1.25 0 0 1-.757 1.148l-1.2.48a9.04 9.04 0 0 0 4.164 4.164l.48-1.2a1.25 1.25 0 0 1 1.148-.757h2.32a1.25 1.25 0 0 1 1.102.676l1.375 2.75a1.25 1.25 0 0 1-.047 1.28l-.75 1.125a1.25 1.25 0 0 1-1.18.547C6.86 14.07 1.93 9.14 1.777 4.258a1.25 1.25 0 0 1 .547-1.18l.75-1.125Z" fill="#3B3731" />
+                                                    </svg>
+                                                    <span id="display-phone">+44 00 0000 0000</span>
+                                                </span>
+                                            </div>
                                         </div>
-                                        <div class="detail-item"><label>Phone Number</label>
-                                            <p id="display-phone" class="mt-2">+44 00 0000 0000</p>
+
+                                        <div class="profile-info-section">
+                                            <span class="profile-info-label">Address</span>
+                                            <div class="profile-address-row">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="11" height="16" viewBox="0 0 11 16" fill="none">
+                                                    <path d="M5.5 7.6C4.97904 7.6 4.47942 7.38929 4.11104 7.01421C3.74267 6.63914 3.53571 6.13043 3.53571 5.6C3.53571 5.06957 3.74267 4.56086 4.11104 4.18579C4.47942 3.81071 4.97904 3.6 5.5 3.6C6.02096 3.6 6.52058 3.81071 6.88896 4.18579C7.25734 4.56086 7.46429 5.06957 7.46429 5.6C7.46429 5.86264 7.41348 6.12272 7.31476 6.36537C7.21605 6.60802 7.07136 6.8285 6.88896 7.01421C6.70656 7.19993 6.49002 7.34725 6.2517 7.44776C6.01338 7.54827 5.75795 7.6 5.5 7.6ZM5.5 0C4.04131 0 2.64236 0.589998 1.61091 1.6402C0.579463 2.69041 0 4.11479 0 5.6C0 8.84674 3.28668 13.2886 4.77863 15.1377C5.15511 15.6043 5.84489 15.6043 6.22138 15.1377C7.71332 13.2886 11 8.84674 11 5.6C11 4.11479 10.4205 2.69041 9.38909 1.6402C8.35764 0.589998 6.95869 0 5.5 0Z" fill="#3B3731" />
+                                                </svg>
+                                                <span id="display-full-address">12 King's Road, London, SW3 4JP</span>
+                                            </div>
                                         </div>
-                                        <div class="detail-item"><label>Address Line 1</label>
-                                            <p id="display-address" class="mt-2">12 King's Road</p>
-                                        </div>
-                                        <div class="detail-item"><label>City</label>
-                                            <p id="display-city" class="mt-2">London</p>
-                                        </div>
-                                        <div class="detail-item"><label>Post Code</label>
-                                            <p id="display-postcode" class="mt-2">SW3 4JP</p>
+
+                                        <div class="profile-info-section">
+                                            <span class="profile-info-label">About</span>
+                                            <p id="display-bio" class="profile-about-text">Hi! I'm Sarah, and I'm a lifelong dog lover based in South London. I have two small dogs who are very much part of the family. We're looking for calm, caring groomers who are gentle and patient, especially with nervous pups.</p>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="bio-section">
-                                    <label>Bio</label>
-                                    <p id="display-bio" class="mt-2">Hi! I’m Sarah, and I’m a lifelong dog lover based in South
-                                        London. I have two
-                                        small dogs who are very much part of the family. We’re looking for calm, caring
-                                        groomers who are
-                                        gentle and patient, especially with nervous pups.</p>
                                 </div>
                             </div>
 
@@ -3650,16 +3719,18 @@
 
                             <div id="edit-form-container" class="profile-details-card hidden">
                                 <div class="edit-layout">
-                                    <div class="avatar-edit">
+                                    <div class="avatar-edit d-flex flex-column align-items-center">
                                         <div class="avatar-placeholder">
-                                            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <svg id="profile-edit-avatar-placeholder" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <circle cx="50" cy="50" r="50" fill="#E6E6E6" />
                                                 <circle cx="50" cy="40" r="15" fill="white" />
                                                 <path d="M20 85C20 70 35 60 50 60C65 60 80 70 80 85" stroke="white"
                                                     stroke-width="2" />
                                             </svg>
+                                            <img id="profile-avatar-preview" src="" alt="Profile preview" class="hidden">
                                         </div>
-                                        <button class="btn-edit-outline" style="margin-top: 10px;"><svg
+                                        <input type="file" id="profile-photo-input" name="profile_photo" accept="image/*" hidden>
+                                        <button type="button" id="profile-upload-btn" class="btn-edit-outline" style="margin-top: 10px;"><svg
                                                 xmlns="http://www.w3.org/2000/svg" width="20" height="15"
                                                 viewBox="0 0 20 15" fill="none">
                                                 <path
@@ -3700,7 +3771,7 @@
                                         <div class="form-group">
                                             <label>Phone Number</label>
                                             <div class="input-wrapper">
-                                                <input type="text" name="phone" value="+440 0000 0000">
+                                                <input type="text" name="phone" value="+44 00 0000 0000">
                                                 <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" width="19"
                                                     height="19" viewBox="0 0 19 19" fill="none">
                                                     <path
@@ -3763,8 +3834,10 @@
                                         </div>
                                         <div class="form-group full-width">
                                             <label>Bio</label>
-                                            <textarea name="bio" rows="4"></textarea>
+                                            <textarea name="bio" rows="4">Hi! I'm Sarah, and I'm a lifelong dog lover based in South London. I have two small dogs who are very much part of the family. We're looking for calm, caring groomers who are gentle and patient, especially with nervous pups.</textarea>
+                                            <div class="section-divider"></div>
                                         </div>
+
 
                                         <div class="form-actions">
                                             <button type="button" id="cancel-btn" class="btn-cancel">Cancel</button>
@@ -3779,6 +3852,14 @@
                             <div class="pets-header">
                                 <h3 class="section-title">My Pets</h3>
                                 <div class="section-divider mt-4 mb-5"></div>
+                            </div>
+
+                            <div class="d-flex align-items-center justify-content-end mt-5">
+
+                                <button id="btn-add-new-pet" class="btn-edit-outline" fdprocessedid="hkpgf">
+                                    + Add another pet
+                                </button>
+                                <!-- <button id="btn-add-new-pet" class="btn-add-another-pet">+ Add another pet</button> -->
                             </div>
 
                             <div id="pets-slider-container" class="pets-slider-container">
@@ -3853,7 +3934,7 @@
                                             </div>
                                         </div>
                                         <div class="d-flex align-items-center justify-content-center mt-4">
-                                            <button class="my-pets btn-edit-outline"><svg
+                                            <button type="button" class="my-pets btn-edit-outline btn-edit-pet"><svg
                                                     xmlns="http://www.w3.org/2000/svg" width="16" height="15" viewBox="0
                                                     0 16 15" fill="none">
                                                     <path
@@ -3923,7 +4004,7 @@
                                                 </svg> Allergic to dust.</p>
                                         </div>
                                         <div class="d-flex align-items-center justify-content-center">
-                                            <button class="my-pets btn-edit-outline"><svg
+                                            <button type="button" class="my-pets btn-edit-outline btn-edit-pet"><svg
                                                     xmlns="http://www.w3.org/2000/svg" width="16" height="15"
                                                     viewBox="0 0 16 15" fill="none">
                                                     <path
@@ -3993,7 +4074,7 @@
                                                 Loves the water.</p>
                                         </div>
                                         <div class="d-flex align-items-center justify-content-center">
-                                            <button class="my-pets btn-edit-outline"><svg
+                                            <button type="button" class="my-pets btn-edit-outline btn-edit-pet"><svg
                                                     xmlns="http://www.w3.org/2000/svg" width="16" height="15" viewBox="0
                                                     0 16 15" fill="none">
                                                     <path
@@ -4064,7 +4145,7 @@
                                                 Loves the water.</p>
                                         </div>
                                         <div class="d-flex align-items-center justify-content-center">
-                                            <button class="my-pets btn-edit-outline"><svg
+                                            <button type="button" class="my-pets btn-edit-outline btn-edit-pet"><svg
                                                     xmlns="http://www.w3.org/2000/svg" width="16" height="15"
                                                     viewBox="0 0 16 15" fill="none">
                                                     <path
@@ -4084,11 +4165,6 @@
                                             </svg></span>
                                     </div>
                                 </div>
-
-                                <div class="d-flex align-items-center justify-content-center mt-5">
-
-                                    <button id="btn-add-new-pet" class="btn-add-another-pet">+ Add another pet</button>
-                                </div>
                             </div>
 
                             <!-- Add New Pet Form (hidden by default) -->
@@ -4097,8 +4173,8 @@
                                 <!-- LEFT IMAGE -->
                                 <div class="pf-left">
 
-                                    <div class="pf-avatar">
-                                        <span><svg xmlns="http://www.w3.org/2000/svg" width="190" height="190"
+                                    <div class="pf-avatar" id="pet-form-avatar">
+                                        <span id="pet-form-avatar-placeholder"><svg xmlns="http://www.w3.org/2000/svg" width="190" height="190"
                                                 viewBox="0 0 190 190" fill="none">
                                                 <circle cx="95" cy="95" r="94.5" fill="#E3E3E3" stroke="#9D9B98" />
                                                 <path
@@ -4110,6 +4186,7 @@
                                                     fill="white" stroke="#9D9B98" stroke-linecap="round"
                                                     stroke-linejoin="round" />
                                             </svg></span>
+                                        <img id="pet-form-avatar-img" src="" alt="Pet" class="hidden" style="width:190px;height:190px;border-radius:50%;object-fit:cover;">
                                     </div>
 
                                     <button class="pf-edit-btn">
@@ -4189,7 +4266,7 @@
                                             <label>Name</label>
                                             <div class="input-box">
 
-                                                <input type="text" value="Bella">
+                                                <input type="text" id="pet-name" name="pet_name" value="Bella">
 
                                                 <!-- RIGHT SVG -->
                                                 <svg class="check-icon" xmlns="http://www.w3.org/2000/svg" width="19"
@@ -4273,7 +4350,7 @@
 
                                             <div class="input-box">
 
-                                                <input type="number" value="4" style="width: 85px;height: 48px; color: #3B3731;
+                                                <input type="number" id="pet-weight" name="pet_weight" value="4" style="width: 85px;height: 48px; color: #3B3731;
                                                     font-family: Lato;
                                                     font-size: 16px;
                                                     font-style: normal;
@@ -4315,19 +4392,19 @@
 
                                         <div class="pf-input-group">
                                             <label class="pf-section-label">Medical Notes</label>
-                                            <textarea class="pf-textarea"
+                                            <textarea id="pet-medical-notes" name="medical_notes" class="pf-textarea"
                                                 placeholder="Help us keep your pets healthy and safe!&#10;(e.g allergies, sensitivities, medications, or ongoing treatments)."></textarea>
                                         </div>
 
                                         <div class="pf-input-group">
                                             <label class="pf-section-label">Personality & behaviour</label>
-                                            <textarea class="pf-textarea"
+                                            <textarea id="pet-personality-notes" name="personality_notes" class="pf-textarea"
                                                 placeholder="Any behaviour we should know about?&#10;(e.g. Friendly with people, nervous around loud noises, doesn't like paws touched)."></textarea>
                                         </div>
 
                                         <div class="pf-input-group">
                                             <label class="pf-section-label">Grooming preferences</label>
-                                            <textarea class="pf-textarea"
+                                            <textarea id="pet-grooming-notes" name="grooming_notes" class="pf-textarea"
                                                 placeholder="Any style preferences?&#10;(e.g clip length, shampoo type, sensitive areas)."></textarea>
                                         </div>
                                     </div>
@@ -4400,9 +4477,11 @@
 
                                         <div class="pf-notes-section">
                                             <label>Notes <span>(Optional)</span></label>
-                                            <textarea class="pf-textarea"
+                                            <textarea id="pet-extra-notes" name="extra_notes" class="pf-textarea"
                                                 placeholder="Anything your groomer should know?&#10;(e.g. anxious around dryers, allergies, behaviour cues)."></textarea>
                                         </div>
+
+                                        <div class="section-divider"></div>
 
                                         <div class="pf-action-footer">
                                             <button type="button" id="cancel-add-pet" class="btn-cancel">Cancel</button>
@@ -4553,11 +4632,8 @@
 
 
 
-                                <span class="tag mt-4 d-flex align-items-center gap-15">Full Groom <svg xmlns="http://www.w3.org/2000/svg" width="9"
-                                        height="9" viewBox="0 0 9 9" fill="none">
-                                        <path d="M0.5 7.57L7.572 0.5M0.5 0.5L7.572 7.57" stroke="white"
-                                            stroke-linecap="round" />
-                                    </svg></span>
+                                <div id="groomer-venue-tags" class="venue-tags mt-4"></div>
+                                <div id="groomer-sort-tags" class="venue-tags mt-2"></div>
 
                                 <!-- Cards -->
                                 <div class="groomer-grid mt-5">
@@ -5075,11 +5151,8 @@
                                         </div>
                                     </div>
 
-                                    <span class="tag mt-2 d-flex align-items-center gap-15">Garden / Shed
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="9" height="9" viewBox="0 0 9 9" fill="none">
-                                            <path d="M0.5 7.57L7.572 0.5M0.5 0.5L7.572 7.57" stroke="white" stroke-linecap="round" />
-                                        </svg>
-                                    </span>
+                                    <div id="space-venue-tags" class="venue-tags mt-2"></div>
+                                    <div id="space-sort-tags" class="venue-tags mt-2"></div>
 
                                     <!-- Cards -->
                                     <div class="spaces-grid">
@@ -5758,9 +5831,9 @@
                                 </div>
                             </div>
 
-                            <div class="reviews-tag">
-                                <span>Garden / Shed ✕</span>
-                            </div>
+                            <div id="review-groomer-venue-tags" class="venue-tags mt-4"></div>
+                            <div id="review-space-venue-tags" class="venue-tags mt-2"></div>
+                            <div id="review-sort-tags" class="venue-tags mt-2"></div>
 
                             <div id="written-reviews" class="review-group active">
                                 <div class="reviews-list">
@@ -6132,29 +6205,6 @@
 
                                         </div>
 
-
-                                        <div class="review-menu">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="5" viewBox="0 0 25 5" fill="none">
-                                                <circle cx="2.5" cy="2.5" r="2.5" fill="#3B3731" />
-                                                <circle cx="12.5" cy="2.5" r="2.5" fill="#3B3731" />
-                                                <circle cx="22.5" cy="2.5" r="2.5" fill="#3B3731" />
-                                            </svg>
-                                            <div class="review-menu-dropdown">
-                                                <div class="d-flex align-items-center justify-content-between editReview-btn-bg">
-                                                    <p class="fs-14-400-f-color cursor">Edit</p>
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="11" viewBox="0 0 12 11" fill="none">
-                                                        <path d="M7.36765 1.59283L9.30882 3.44794M6.07353 10.25H11.25M0.897059 7.77652L0.25 10.25L2.83824 9.63163L10.3351 2.46721C10.5777 2.23528 10.714 1.92077 10.714 1.59283C10.714 1.26489 10.5777 0.950382 10.3351 0.71846L10.2238 0.6121C9.98108 0.380248 9.65198 0.25 9.30882 0.25C8.96567 0.25 8.63657 0.380248 8.39388 0.6121L0.897059 7.77652Z" stroke="#3B3731" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" />
-                                                    </svg>
-                                                </div>
-                                                <div class="d-flex align-items-center justify-content-between removeReview-btn-bg">
-                                                    <p class="fs-14-400-f-color cursor">Remove</p>
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="9" height="10" viewBox="0 0 9 10" fill="none">
-                                                        <path d="M1.68172 10C1.39586 10 1.15136 9.8996 0.948218 9.6988C0.745075 9.49799 0.64329 9.25724 0.642861 8.97654V1.12238H0.321433C0.230147 1.12238 0.153861 1.09195 0.0925758 1.03107C0.0312901 0.970196 0.000432974 0.894737 4.40312e-06 0.804692C-0.000424168 0.714648 0.030433 0.6394 0.0925758 0.578947C0.154719 0.518495 0.231004 0.488269 0.321433 0.488269H2.57143C2.57143 0.357218 2.62072 0.243078 2.71929 0.145847C2.81786 0.0486155 2.93357 0 3.06643 0H5.93357C6.06643 0 6.18214 0.0486155 6.28071 0.145847C6.37928 0.243078 6.42857 0.357218 6.42857 0.488269H8.67857C8.76985 0.488269 8.84614 0.518706 8.90742 0.579581C8.96871 0.640457 8.99957 0.715916 9 0.805961C9.00042 0.896005 8.96957 0.971253 8.90742 1.03171C8.84528 1.09216 8.769 1.12238 8.67857 1.12238H8.35714V8.9759C8.35714 9.25745 8.25535 9.49841 8.05178 9.6988C7.84821 9.89918 7.60393 9.99958 7.31893 10H1.68172ZM7.71428 1.12238H1.28572V8.9759C1.28572 9.08962 1.32279 9.18305 1.39693 9.25618C1.47107 9.32932 1.566 9.36588 1.68172 9.36588H7.31893C7.43421 9.36588 7.52893 9.32932 7.60307 9.25618C7.67721 9.18305 7.71428 9.08962 7.71428 8.9759V1.12238ZM3.41229 8.09765C3.50357 8.09765 3.58007 8.06722 3.64179 8.00634C3.7035 7.94547 3.73414 7.87022 3.73371 7.7806V2.70767C3.73371 2.61763 3.70286 2.54238 3.64114 2.48193C3.57943 2.42148 3.50293 2.39104 3.41164 2.39061C3.32036 2.39019 3.24407 2.42063 3.18279 2.48193C3.1215 2.54323 3.09086 2.61847 3.09086 2.70767V7.7806C3.09086 7.87064 3.12172 7.94589 3.18343 8.00634C3.24514 8.06722 3.32143 8.09765 3.41229 8.09765ZM5.58836 8.09765C5.67964 8.09765 5.75593 8.06722 5.81721 8.00634C5.8785 7.94547 5.90914 7.87022 5.90914 7.7806V2.70767C5.90914 2.61763 5.87828 2.54238 5.81657 2.48193C5.75486 2.42105 5.67857 2.39061 5.58771 2.39061C5.49643 2.39061 5.41993 2.42105 5.35821 2.48193C5.2965 2.5428 5.26586 2.61805 5.26629 2.70767V7.7806C5.26629 7.87064 5.29714 7.94589 5.35886 8.00634C5.42057 8.06679 5.49707 8.09723 5.58836 8.09765Z" fill="#3B3731" />
-                                                    </svg>
-                                                </div>
-                                            </div>
-                                        </div>
-
                                     </div>
 
                                 </div>
@@ -6253,28 +6303,6 @@
                                                 <span>Mobile Station</span>
                                             </div>
 
-                                        </div>
-
-                                        <div class="review-menu">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="5" viewBox="0 0 25 5" fill="none">
-                                                <circle cx="2.5" cy="2.5" r="2.5" fill="#3B3731" />
-                                                <circle cx="12.5" cy="2.5" r="2.5" fill="#3B3731" />
-                                                <circle cx="22.5" cy="2.5" r="2.5" fill="#3B3731" />
-                                            </svg>
-                                            <div class="review-menu-dropdown">
-                                                <div class="d-flex align-items-center justify-content-between editReview-btn-bg">
-                                                    <p class="fs-14-400-f-color cursor">Edit</p>
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="11" viewBox="0 0 12 11" fill="none">
-                                                        <path d="M7.36765 1.59283L9.30882 3.44794M6.07353 10.25H11.25M0.897059 7.77652L0.25 10.25L2.83824 9.63163L10.3351 2.46721C10.5777 2.23528 10.714 1.92077 10.714 1.59283C10.714 1.26489 10.5777 0.950382 10.3351 0.71846L10.2238 0.6121C9.98108 0.380248 9.65198 0.25 9.30882 0.25C8.96567 0.25 8.63657 0.380248 8.39388 0.6121L0.897059 7.77652Z" stroke="#3B3731" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" />
-                                                    </svg>
-                                                </div>
-                                                <div class="d-flex align-items-center justify-content-between removeReview-btn-bg">
-                                                    <p class="fs-14-400-f-color cursor">Remove</p>
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="9" height="10" viewBox="0 0 9 10" fill="none">
-                                                        <path d="M1.68172 10C1.39586 10 1.15136 9.8996 0.948218 9.6988C0.745075 9.49799 0.64329 9.25724 0.642861 8.97654V1.12238H0.321433C0.230147 1.12238 0.153861 1.09195 0.0925758 1.03107C0.0312901 0.970196 0.000432974 0.894737 4.40312e-06 0.804692C-0.000424168 0.714648 0.030433 0.6394 0.0925758 0.578947C0.154719 0.518495 0.231004 0.488269 0.321433 0.488269H2.57143C2.57143 0.357218 2.62072 0.243078 2.71929 0.145847C2.81786 0.0486155 2.93357 0 3.06643 0H5.93357C6.06643 0 6.18214 0.0486155 6.28071 0.145847C6.37928 0.243078 6.42857 0.357218 6.42857 0.488269H8.67857C8.76985 0.488269 8.84614 0.518706 8.90742 0.579581C8.96871 0.640457 8.99957 0.715916 9 0.805961C9.00042 0.896005 8.96957 0.971253 8.90742 1.03171C8.84528 1.09216 8.769 1.12238 8.67857 1.12238H8.35714V8.9759C8.35714 9.25745 8.25535 9.49841 8.05178 9.6988C7.84821 9.89918 7.60393 9.99958 7.31893 10H1.68172ZM7.71428 1.12238H1.28572V8.9759C1.28572 9.08962 1.32279 9.18305 1.39693 9.25618C1.47107 9.32932 1.566 9.36588 1.68172 9.36588H7.31893C7.43421 9.36588 7.52893 9.32932 7.60307 9.25618C7.67721 9.18305 7.71428 9.08962 7.71428 8.9759V1.12238ZM3.41229 8.09765C3.50357 8.09765 3.58007 8.06722 3.64179 8.00634C3.7035 7.94547 3.73414 7.87022 3.73371 7.7806V2.70767C3.73371 2.61763 3.70286 2.54238 3.64114 2.48193C3.57943 2.42148 3.50293 2.39104 3.41164 2.39061C3.32036 2.39019 3.24407 2.42063 3.18279 2.48193C3.1215 2.54323 3.09086 2.61847 3.09086 2.70767V7.7806C3.09086 7.87064 3.12172 7.94589 3.18343 8.00634C3.24514 8.06722 3.32143 8.09765 3.41229 8.09765ZM5.58836 8.09765C5.67964 8.09765 5.75593 8.06722 5.81721 8.00634C5.8785 7.94547 5.90914 7.87022 5.90914 7.7806V2.70767C5.90914 2.61763 5.87828 2.54238 5.81657 2.48193C5.75486 2.42105 5.67857 2.39061 5.58771 2.39061C5.49643 2.39061 5.41993 2.42105 5.35821 2.48193C5.2965 2.5428 5.26586 2.61805 5.26629 2.70767V7.7806C5.26629 7.87064 5.29714 7.94589 5.35886 8.00634C5.42057 8.06679 5.49707 8.09723 5.58836 8.09765Z" fill="#3B3731" />
-                                                    </svg>
-                                                </div>
-                                            </div>
                                         </div>
 
                                     </div>
@@ -6392,28 +6420,6 @@
 
                                         </div>
 
-                                        <div class="review-menu">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="5" viewBox="0 0 25 5" fill="none">
-                                                <circle cx="2.5" cy="2.5" r="2.5" fill="#3B3731" />
-                                                <circle cx="12.5" cy="2.5" r="2.5" fill="#3B3731" />
-                                                <circle cx="22.5" cy="2.5" r="2.5" fill="#3B3731" />
-                                            </svg>
-                                            <div class="review-menu-dropdown">
-                                                <div class="d-flex align-items-center justify-content-between editReview-btn-bg">
-                                                    <p class="fs-14-400-f-color cursor">Edit</p>
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="11" viewBox="0 0 12 11" fill="none">
-                                                        <path d="M7.36765 1.59283L9.30882 3.44794M6.07353 10.25H11.25M0.897059 7.77652L0.25 10.25L2.83824 9.63163L10.3351 2.46721C10.5777 2.23528 10.714 1.92077 10.714 1.59283C10.714 1.26489 10.5777 0.950382 10.3351 0.71846L10.2238 0.6121C9.98108 0.380248 9.65198 0.25 9.30882 0.25C8.96567 0.25 8.63657 0.380248 8.39388 0.6121L0.897059 7.77652Z" stroke="#3B3731" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" />
-                                                    </svg>
-                                                </div>
-                                                <div class="d-flex align-items-center justify-content-between removeReview-btn-bg">
-                                                    <p class="fs-14-400-f-color cursor">Remove</p>
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="9" height="10" viewBox="0 0 9 10" fill="none">
-                                                        <path d="M1.68172 10C1.39586 10 1.15136 9.8996 0.948218 9.6988C0.745075 9.49799 0.64329 9.25724 0.642861 8.97654V1.12238H0.321433C0.230147 1.12238 0.153861 1.09195 0.0925758 1.03107C0.0312901 0.970196 0.000432974 0.894737 4.40312e-06 0.804692C-0.000424168 0.714648 0.030433 0.6394 0.0925758 0.578947C0.154719 0.518495 0.231004 0.488269 0.321433 0.488269H2.57143C2.57143 0.357218 2.62072 0.243078 2.71929 0.145847C2.81786 0.0486155 2.93357 0 3.06643 0H5.93357C6.06643 0 6.18214 0.0486155 6.28071 0.145847C6.37928 0.243078 6.42857 0.357218 6.42857 0.488269H8.67857C8.76985 0.488269 8.84614 0.518706 8.90742 0.579581C8.96871 0.640457 8.99957 0.715916 9 0.805961C9.00042 0.896005 8.96957 0.971253 8.90742 1.03171C8.84528 1.09216 8.769 1.12238 8.67857 1.12238H8.35714V8.9759C8.35714 9.25745 8.25535 9.49841 8.05178 9.6988C7.84821 9.89918 7.60393 9.99958 7.31893 10H1.68172ZM7.71428 1.12238H1.28572V8.9759C1.28572 9.08962 1.32279 9.18305 1.39693 9.25618C1.47107 9.32932 1.566 9.36588 1.68172 9.36588H7.31893C7.43421 9.36588 7.52893 9.32932 7.60307 9.25618C7.67721 9.18305 7.71428 9.08962 7.71428 8.9759V1.12238ZM3.41229 8.09765C3.50357 8.09765 3.58007 8.06722 3.64179 8.00634C3.7035 7.94547 3.73414 7.87022 3.73371 7.7806V2.70767C3.73371 2.61763 3.70286 2.54238 3.64114 2.48193C3.57943 2.42148 3.50293 2.39104 3.41164 2.39061C3.32036 2.39019 3.24407 2.42063 3.18279 2.48193C3.1215 2.54323 3.09086 2.61847 3.09086 2.70767V7.7806C3.09086 7.87064 3.12172 7.94589 3.18343 8.00634C3.24514 8.06722 3.32143 8.09765 3.41229 8.09765ZM5.58836 8.09765C5.67964 8.09765 5.75593 8.06722 5.81721 8.00634C5.8785 7.94547 5.90914 7.87022 5.90914 7.7806V2.70767C5.90914 2.61763 5.87828 2.54238 5.81657 2.48193C5.75486 2.42105 5.67857 2.39061 5.58771 2.39061C5.49643 2.39061 5.41993 2.42105 5.35821 2.48193C5.2965 2.5428 5.26586 2.61805 5.26629 2.70767V7.7806C5.26629 7.87064 5.29714 7.94589 5.35886 8.00634C5.42057 8.06679 5.49707 8.09723 5.58836 8.09765Z" fill="#3B3731" />
-                                                    </svg>
-                                                </div>
-                                            </div>
-                                        </div>
-
                                     </div>
 
                                     <div class="review-item">
@@ -6514,29 +6520,6 @@
 
                                         </div>
 
-
-                                        <div class="review-menu">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="5" viewBox="0 0 25 5" fill="none">
-                                                <circle cx="2.5" cy="2.5" r="2.5" fill="#3B3731" />
-                                                <circle cx="12.5" cy="2.5" r="2.5" fill="#3B3731" />
-                                                <circle cx="22.5" cy="2.5" r="2.5" fill="#3B3731" />
-                                            </svg>
-                                            <div class="review-menu-dropdown">
-                                                <div class="d-flex align-items-center justify-content-between editReview-btn-bg">
-                                                    <p class="fs-14-400-f-color cursor">Edit</p>
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="11" viewBox="0 0 12 11" fill="none">
-                                                        <path d="M7.36765 1.59283L9.30882 3.44794M6.07353 10.25H11.25M0.897059 7.77652L0.25 10.25L2.83824 9.63163L10.3351 2.46721C10.5777 2.23528 10.714 1.92077 10.714 1.59283C10.714 1.26489 10.5777 0.950382 10.3351 0.71846L10.2238 0.6121C9.98108 0.380248 9.65198 0.25 9.30882 0.25C8.96567 0.25 8.63657 0.380248 8.39388 0.6121L0.897059 7.77652Z" stroke="#3B3731" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" />
-                                                    </svg>
-                                                </div>
-                                                <div class="d-flex align-items-center justify-content-between removeReview-btn-bg">
-                                                    <p class="fs-14-400-f-color cursor">Remove</p>
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="9" height="10" viewBox="0 0 9 10" fill="none">
-                                                        <path d="M1.68172 10C1.39586 10 1.15136 9.8996 0.948218 9.6988C0.745075 9.49799 0.64329 9.25724 0.642861 8.97654V1.12238H0.321433C0.230147 1.12238 0.153861 1.09195 0.0925758 1.03107C0.0312901 0.970196 0.000432974 0.894737 4.40312e-06 0.804692C-0.000424168 0.714648 0.030433 0.6394 0.0925758 0.578947C0.154719 0.518495 0.231004 0.488269 0.321433 0.488269H2.57143C2.57143 0.357218 2.62072 0.243078 2.71929 0.145847C2.81786 0.0486155 2.93357 0 3.06643 0H5.93357C6.06643 0 6.18214 0.0486155 6.28071 0.145847C6.37928 0.243078 6.42857 0.357218 6.42857 0.488269H8.67857C8.76985 0.488269 8.84614 0.518706 8.90742 0.579581C8.96871 0.640457 8.99957 0.715916 9 0.805961C9.00042 0.896005 8.96957 0.971253 8.90742 1.03171C8.84528 1.09216 8.769 1.12238 8.67857 1.12238H8.35714V8.9759C8.35714 9.25745 8.25535 9.49841 8.05178 9.6988C7.84821 9.89918 7.60393 9.99958 7.31893 10H1.68172ZM7.71428 1.12238H1.28572V8.9759C1.28572 9.08962 1.32279 9.18305 1.39693 9.25618C1.47107 9.32932 1.566 9.36588 1.68172 9.36588H7.31893C7.43421 9.36588 7.52893 9.32932 7.60307 9.25618C7.67721 9.18305 7.71428 9.08962 7.71428 8.9759V1.12238ZM3.41229 8.09765C3.50357 8.09765 3.58007 8.06722 3.64179 8.00634C3.7035 7.94547 3.73414 7.87022 3.73371 7.7806V2.70767C3.73371 2.61763 3.70286 2.54238 3.64114 2.48193C3.57943 2.42148 3.50293 2.39104 3.41164 2.39061C3.32036 2.39019 3.24407 2.42063 3.18279 2.48193C3.1215 2.54323 3.09086 2.61847 3.09086 2.70767V7.7806C3.09086 7.87064 3.12172 7.94589 3.18343 8.00634C3.24514 8.06722 3.32143 8.09765 3.41229 8.09765ZM5.58836 8.09765C5.67964 8.09765 5.75593 8.06722 5.81721 8.00634C5.8785 7.94547 5.90914 7.87022 5.90914 7.7806V2.70767C5.90914 2.61763 5.87828 2.54238 5.81657 2.48193C5.75486 2.42105 5.67857 2.39061 5.58771 2.39061C5.49643 2.39061 5.41993 2.42105 5.35821 2.48193C5.2965 2.5428 5.26586 2.61805 5.26629 2.70767V7.7806C5.26629 7.87064 5.29714 7.94589 5.35886 8.00634C5.42057 8.06679 5.49707 8.09723 5.58836 8.09765Z" fill="#3B3731" />
-                                                    </svg>
-                                                </div>
-                                            </div>
-                                        </div>
-
                                     </div>
 
                                 </div>
@@ -6580,14 +6563,14 @@
                                         <label>Your referral code</label>
                                         <div class="copy-box">
                                             <input type="text" value="FURSGO-9X3P" readonly>
-                                            <button>Copy</button>
+                                            <button type="button">Copy</button>
                                         </div>
                                     </div>
                                     <div>
                                         <label>Share your referral link</label>
                                         <div class="copy-box">
                                             <input type="text" value="fursgo.com/ref/FURSGO-9X3P" readonly>
-                                            <button>Copy</button>
+                                            <button type="button">Copy</button>
                                         </div>
                                     </div>
                                 </div>
@@ -6895,15 +6878,13 @@
                         target.classList.remove('hidden');
                         target.style.display = 'block';
                     }
-
-                    scrollToTabs();
                 });
             });
         });
 
         // Handle profile edit/cancel
         document.addEventListener('DOMContentLoaded', () => {
-            
+
             const editBtnProfile = document.getElementById('edit-btn');
             const cancelBtn = document.getElementById('cancel-btn');
             const profileViewForm = document.getElementById('profile-view');
@@ -6922,14 +6903,136 @@
                 editForm.classList.toggle('hidden', !isEdit);
             }
 
+            function formatFullAddress(address, address2, city, postcode) {
+                return [address, address2, city, postcode].filter(part => part && part.trim()).join(', ');
+            }
+
+            function syncProfileViewFromForm() {
+                if (!profileForm) return;
+
+                const fullName = profileForm.querySelector('[name="fullName"]')?.value.trim() || '';
+                const email = profileForm.querySelector('[name="email"]')?.value.trim() || '';
+                const phone = profileForm.querySelector('[name="phone"]')?.value.trim() || '';
+                const address = profileForm.querySelector('[name="address"]')?.value.trim() || '';
+                const address2 = profileForm.querySelector('[name="address2"]')?.value.trim() || '';
+                const city = profileForm.querySelector('[name="city"]')?.value.trim() || '';
+                const postcode = profileForm.querySelector('[name="postcode"]')?.value.trim() || '';
+                const bio = profileForm.querySelector('[name="bio"]')?.value.trim() || '';
+
+                const displayName = document.getElementById('display-name');
+                const displayEmail = document.getElementById('display-email');
+                const displayPhone = document.getElementById('display-phone');
+                const displayFullAddress = document.getElementById('display-full-address');
+                const displayBio = document.getElementById('display-bio');
+
+                if (displayName) displayName.textContent = fullName;
+                if (displayEmail) displayEmail.textContent = email;
+                if (displayPhone) displayPhone.textContent = phone;
+                if (displayFullAddress) displayFullAddress.textContent = formatFullAddress(address, address2, city, postcode);
+                if (displayBio) displayBio.textContent = bio;
+            }
+
+            function populateFormFromView() {
+                if (!profileForm) return;
+
+                const displayName = document.getElementById('display-name');
+                const displayEmail = document.getElementById('display-email');
+                const displayPhone = document.getElementById('display-phone');
+                const displayFullAddress = document.getElementById('display-full-address');
+                const displayBio = document.getElementById('display-bio');
+
+                profileForm.querySelector('[name="fullName"]').value = displayName?.textContent.trim() || '';
+                profileForm.querySelector('[name="email"]').value = displayEmail?.textContent.trim() || '';
+                profileForm.querySelector('[name="phone"]').value = displayPhone?.textContent.trim() || '';
+                profileForm.querySelector('[name="bio"]').value = displayBio?.textContent.trim() || '';
+
+                const fullAddress = displayFullAddress?.textContent.trim() || '';
+                const addressParts = fullAddress.split(',').map(part => part.trim());
+                profileForm.querySelector('[name="address"]').value = addressParts[0] || '';
+                profileForm.querySelector('[name="city"]').value = addressParts.length > 2 ? addressParts[addressParts.length - 2] : (addressParts[1] || '');
+                profileForm.querySelector('[name="postcode"]').value = addressParts[addressParts.length - 1] || '';
+                profileForm.querySelector('[name="address2"]').value = addressParts.length > 3 ? addressParts.slice(1, -2).join(', ') : '';
+            }
+
+            const profilePhotoInput = document.getElementById('profile-photo-input');
+            const profileUploadBtn = document.getElementById('profile-upload-btn');
+            const profileAvatarPreview = document.getElementById('profile-avatar-preview');
+            const profileEditAvatarPlaceholder = document.getElementById('profile-edit-avatar-placeholder');
+            const profileViewAvatarImg = document.getElementById('profile-view-avatar-img');
+            const sidebarProfileAvatar = document.getElementById('sidebar-profile-avatar');
+            const defaultProfilePhotoSrc = '<?= BASE_URL ?>assets/images/block_user_5.png';
+
+            let savedProfilePhotoSrc = defaultProfilePhotoSrc;
+            let pendingProfilePhotoSrc = null;
+
+            function getProfilePhoto() {
+                return savedProfilePhotoSrc || defaultProfilePhotoSrc;
+            }
+
+            function syncProfilePhotoDisplay(src) {
+                if (src) savedProfilePhotoSrc = src;
+                const photo = getProfilePhoto();
+                if (profileViewAvatarImg) profileViewAvatarImg.src = photo;
+                if (sidebarProfileAvatar) sidebarProfileAvatar.src = photo;
+            }
+
+            function setEditProfilePhotoPreview(src) {
+                if (!profileAvatarPreview || !profileEditAvatarPlaceholder) return;
+                const photo = src || getProfilePhoto();
+                profileAvatarPreview.src = photo;
+                profileAvatarPreview.classList.remove('hidden');
+                profileEditAvatarPlaceholder.classList.add('hidden');
+            }
+
+            function resetEditProfilePhotoState() {
+                if (profilePhotoInput) profilePhotoInput.value = '';
+                pendingProfilePhotoSrc = null;
+                setEditProfilePhotoPreview(getProfilePhoto());
+            }
+
+            if (profileUploadBtn && profilePhotoInput) {
+                profileUploadBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    profilePhotoInput.click();
+                });
+
+                profilePhotoInput.addEventListener('change', () => {
+                    const file = profilePhotoInput.files[0];
+                    if (!file) return;
+
+                    if (!file.type.startsWith('image/')) {
+                        alert('Please select an image file.');
+                        profilePhotoInput.value = '';
+                        return;
+                    }
+
+                    const maxSize = 5 * 1024 * 1024;
+                    if (file.size > maxSize) {
+                        alert('Image size must be less than 5MB.');
+                        profilePhotoInput.value = '';
+                        return;
+                    }
+
+                    const reader = new FileReader();
+                    reader.onload = (event) => {
+                        pendingProfilePhotoSrc = event.target.result;
+                        setEditProfilePhotoPreview(pendingProfilePhotoSrc);
+                    };
+                    reader.readAsDataURL(file);
+                });
+            }
+
             if (editBtnProfile && cancelBtn && profileViewForm && editForm) {
 
                 editBtnProfile.addEventListener('click', () => {
+                    populateFormFromView();
                     toggleView(true);
                     setCardBg('#fff');
+                    resetEditProfilePhotoState();
                 });
 
                 cancelBtn.addEventListener('click', () => {
+                    resetEditProfilePhotoState();
                     toggleView(false);
                     setCardBg('#fafafa');
                 });
@@ -6938,6 +7041,12 @@
                     profileForm.addEventListener('submit', (e) => {
                         e.preventDefault();
 
+                        if (pendingProfilePhotoSrc) {
+                            syncProfilePhotoDisplay(pendingProfilePhotoSrc);
+                            pendingProfilePhotoSrc = null;
+                        }
+
+                        syncProfileViewFromForm();
                         toggleView(false);
                         setCardBg('#fafafa');
                     });
@@ -6945,6 +7054,176 @@
             }
         });
 
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const groomerGrid = document.querySelector('#groomers-sec .groomer-grid');
+            if (!groomerGrid) return;
+
+            groomerGrid.insertAdjacentHTML('beforeend', `
+                <div class="favourite-delete-confirm" id="favourite-delete-confirm" aria-hidden="true">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M12 8V13" stroke="#FF8E8E" stroke-width="1.8" stroke-linecap="round"></path>
+                        <path d="M12 16.5H12.01" stroke="#FF8E8E" stroke-width="1.8" stroke-linecap="round"></path>
+                        <path d="M10.29 3.86L1.82 18C1.64 18.3098 1.54478 18.6604 1.54395 19.0174C1.54311 19.3743 1.63668 19.7254 1.81395 20.0361C1.99122 20.3467 2.24599 20.6063 2.55326 20.7892C2.86053 20.9722 3.20957 21.0721 3.56695 21.0791H20.433C20.7904 21.0721 21.1395 20.9722 21.4467 20.7892C21.754 20.6063 22.0088 20.3467 22.186 20.0361C22.3633 19.7254 22.4569 19.3743 22.456 19.0174C22.4552 18.6604 22.36 18.3098 22.183 18L13.71 3.86C13.5262 3.5591 13.2681 3.31049 12.9605 3.13814C12.6528 2.96579 12.3061 2.87549 11.9535 2.87598C11.6008 2.87647 11.2544 2.96774 10.9473 3.14094C10.6401 3.31414 10.3827 3.56347 10.2 3.864L10.29 3.86Z" stroke="#FF8E8E" stroke-width="1.5" stroke-linejoin="round"></path>
+                    </svg>
+                    <h4>Remove this groomer?</h4>
+                    <p>Are you sure you want to delete this groomer from your favourites?</p>
+                    <div class="favourite-delete-actions">
+                        <button type="button" class="favourite-delete-btn cancel">Cancel</button>
+                        <button type="button" class="favourite-delete-btn confirm">Yes, delete</button>
+                    </div>
+                </div>
+            `);
+
+            const confirmBox = document.getElementById('favourite-delete-confirm');
+            const cancelDeleteBtn = confirmBox?.querySelector('.favourite-delete-btn.cancel');
+            const confirmDeleteBtn = confirmBox?.querySelector('.favourite-delete-btn.confirm');
+            let activeCard = null;
+
+            function hideConfirmBox() {
+                if (!confirmBox) return;
+                confirmBox.classList.remove('active');
+                confirmBox.setAttribute('aria-hidden', 'true');
+                groomerGrid.appendChild(confirmBox);
+                activeCard = null;
+            }
+
+            function placeConfirmBox(card) {
+                if (!confirmBox || !card) return;
+
+                if (window.innerWidth <= 991) {
+                    card.insertAdjacentElement('afterend', confirmBox);
+                    return;
+                }
+
+                card.insertAdjacentElement('afterend', confirmBox);
+            }
+
+            groomerGrid.querySelectorAll('.card .delete').forEach((deleteTrigger) => {
+                deleteTrigger.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    event.stopPropagation();
+
+                    const card = deleteTrigger.closest('.card');
+                    if (!card || !confirmBox) return;
+
+                    if (activeCard === card && confirmBox.classList.contains('active')) {
+                        hideConfirmBox();
+                        return;
+                    }
+
+                    activeCard = card;
+                    placeConfirmBox(card);
+                    confirmBox.classList.add('active');
+                    confirmBox.setAttribute('aria-hidden', 'false');
+                });
+            });
+
+            cancelDeleteBtn?.addEventListener('click', hideConfirmBox);
+
+            confirmDeleteBtn?.addEventListener('click', () => {
+                if (activeCard) activeCard.remove();
+                hideConfirmBox();
+            });
+
+            window.addEventListener('resize', () => {
+                if (activeCard && confirmBox?.classList.contains('active')) {
+                    placeConfirmBox(activeCard);
+                }
+            });
+
+            document.addEventListener('click', (event) => {
+                if (!confirmBox?.classList.contains('active')) return;
+                if (confirmBox.contains(event.target)) return;
+                if (activeCard?.contains(event.target)) return;
+                hideConfirmBox();
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const spacesGrid = document.querySelector('#spaces-sec .spaces-grid');
+            if (!spacesGrid) return;
+
+            spacesGrid.insertAdjacentHTML('beforeend', `
+                <div class="favourite-delete-confirm" id="favourite-space-delete-confirm" aria-hidden="true">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M12 8V13" stroke="#FF8E8E" stroke-width="1.8" stroke-linecap="round"></path>
+                        <path d="M12 16.5H12.01" stroke="#FF8E8E" stroke-width="1.8" stroke-linecap="round"></path>
+                        <path d="M10.29 3.86L1.82 18C1.64 18.3098 1.54478 18.6604 1.54395 19.0174C1.54311 19.3743 1.63668 19.7254 1.81395 20.0361C1.99122 20.3467 2.24599 20.6063 2.55326 20.7892C2.86053 20.9722 3.20957 21.0721 3.56695 21.0791H20.433C20.7904 21.0721 21.1395 20.9722 21.4467 20.7892C21.754 20.6063 22.0088 20.3467 22.186 20.0361C22.3633 19.7254 22.4569 19.3743 22.456 19.0174C22.4552 18.6604 22.36 18.3098 22.183 18L13.71 3.86C13.5262 3.5591 13.2681 3.31049 12.9605 3.13814C12.6528 2.96579 12.3061 2.87549 11.9535 2.87598C11.6008 2.87647 11.2544 2.96774 10.9473 3.14094C10.6401 3.31414 10.3827 3.56347 10.2 3.864L10.29 3.86Z" stroke="#FF8E8E" stroke-width="1.5" stroke-linejoin="round"></path>
+                    </svg>
+                    <h4>Remove this space?</h4>
+                    <p>Are you sure you want to delete this space from your favourites?</p>
+                    <div class="favourite-delete-actions">
+                        <button type="button" class="favourite-delete-btn cancel">Cancel</button>
+                        <button type="button" class="favourite-delete-btn confirm">Yes, delete</button>
+                    </div>
+                </div>
+            `);
+
+            const confirmBox = document.getElementById('favourite-space-delete-confirm');
+            const cancelDeleteBtn = confirmBox?.querySelector('.favourite-delete-btn.cancel');
+            const confirmDeleteBtn = confirmBox?.querySelector('.favourite-delete-btn.confirm');
+            let activeCard = null;
+
+            function hideConfirmBox() {
+                if (!confirmBox) return;
+                confirmBox.classList.remove('active');
+                confirmBox.setAttribute('aria-hidden', 'true');
+                spacesGrid.appendChild(confirmBox);
+                activeCard = null;
+            }
+
+            function placeConfirmBox(card) {
+                if (!confirmBox || !card) return;
+
+                if (window.innerWidth <= 991) {
+                    card.insertAdjacentElement('afterend', confirmBox);
+                    return;
+                }
+
+                card.insertAdjacentElement('afterend', confirmBox);
+            }
+
+            spacesGrid.querySelectorAll('.space-card .delete').forEach((deleteTrigger) => {
+                deleteTrigger.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    event.stopPropagation();
+
+                    const card = deleteTrigger.closest('.space-card');
+                    if (!card || !confirmBox) return;
+
+                    if (activeCard === card && confirmBox.classList.contains('active')) {
+                        hideConfirmBox();
+                        return;
+                    }
+
+                    activeCard = card;
+                    placeConfirmBox(card);
+                    confirmBox.classList.add('active');
+                    confirmBox.setAttribute('aria-hidden', 'false');
+                });
+            });
+
+            cancelDeleteBtn?.addEventListener('click', hideConfirmBox);
+
+            confirmDeleteBtn?.addEventListener('click', () => {
+                if (activeCard) activeCard.remove();
+                hideConfirmBox();
+            });
+
+            window.addEventListener('resize', () => {
+                if (activeCard && confirmBox?.classList.contains('active')) {
+                    placeConfirmBox(activeCard);
+                }
+            });
+
+            document.addEventListener('click', (event) => {
+                if (!confirmBox?.classList.contains('active')) return;
+                if (confirmBox.contains(event.target)) return;
+                if (activeCard?.contains(event.target)) return;
+                hideConfirmBox();
+            });
+        });
 
         const reviewButtons = document.querySelectorAll(".pill");
         const writtenReviews = document.getElementById("written-reviews");
@@ -7014,17 +7293,202 @@
             const cancelPetBtn = document.getElementById('cancel-add-pet');
             const sliderContainer = document.getElementById('pets-slider-container');
             const formContainer = document.getElementById('add-pet-form-container');
+            const addPetForm = document.getElementById('add-pet-form');
             const petTypeSelect = document.getElementById('pet-type');
             const petBreedSelect = document.getElementById('pet-breed');
+            const petNameInput = document.getElementById('pet-name');
+            const petWeightInput = document.getElementById('pet-weight');
+            const petTypeInput = document.getElementById('pet_type');
+            const petFormAvatarImg = document.getElementById('pet-form-avatar-img');
+            const petFormAvatarPlaceholder = document.getElementById('pet-form-avatar-placeholder');
+            const petSaveBtn = addPetForm?.querySelector('.btn-save');
 
             let petBreedsData = null;
+            let editingPetCard = null;
+
+            function extractPetDataFromCard(card) {
+                const name = card.querySelector('.pet-name-type h4')?.textContent.trim() || '';
+                const typeBreedText = card.querySelector('.pet-name-type p')?.textContent.trim() || '';
+                const [type = '', breed = ''] = typeBreedText.split('•').map(part => part.trim());
+
+                let sex = '';
+                let birthday = '';
+                let weight = '';
+                let notes = '';
+
+                card.querySelectorAll('.pet-info p').forEach(item => {
+                    const text = item.textContent.trim();
+                    if (/^(male|female)$/i.test(text)) {
+                        sex = text.toLowerCase();
+                    } else if (/\d{2}\/\d{2}\/\d{4}/.test(text)) {
+                        birthday = text.match(/\d{2}\/\d{2}\/\d{4}/)[0];
+                    } else if (/\d+\s*kg/i.test(text)) {
+                        weight = text.match(/(\d+)/)[1];
+                    } else if (text) {
+                        notes = text;
+                    }
+                });
+
+                return {
+                    name,
+                    type,
+                    breed,
+                    sex,
+                    birthday,
+                    weight,
+                    notes,
+                    image: card.querySelector('.pet-avatar')?.getAttribute('src') || ''
+                };
+            }
+
+            function parseBirthdayToISO(value) {
+                const match = value.match(/(\d{2})\/(\d{2})\/(\d{4})/);
+                if (!match) return '';
+                return `${match[3]}-${match[2]}-${match[1]}`;
+            }
+
+            function setBirthdayField(isoDate) {
+                const hidden = addPetForm?.querySelector('[name="birthday"]');
+                if (!hidden) return;
+
+                const uid = hidden.id.replace('bc-input-', '');
+                const display = document.getElementById(`bc-display-${uid}`);
+                const trigger = document.getElementById(`bc-trigger-${uid}`);
+
+                if (isoDate) {
+                    hidden.value = isoDate;
+                    const [year, month, day] = isoDate.split('-');
+                    if (display) display.textContent = `${day} / ${month} / ${year}`;
+                    trigger?.classList.remove('bc-empty');
+                } else {
+                    hidden.value = '';
+                    if (display) display.textContent = trigger?.dataset.placeholder || 'dd / mm / yyyy';
+                    trigger?.classList.add('bc-empty');
+                }
+            }
+
+            function clickToggleButton(group, matcher) {
+                if (!group) return;
+                group.querySelectorAll('button[type="button"]').forEach(button => {
+                    const label = button.querySelector('p')?.textContent.trim().toLowerCase() || '';
+                    if (matcher(label, button)) button.click();
+                });
+            }
+
+            function setPetFormAvatar(src) {
+                if (!petFormAvatarImg || !petFormAvatarPlaceholder) return;
+                if (src) {
+                    petFormAvatarImg.src = src;
+                    petFormAvatarImg.classList.remove('hidden');
+                    petFormAvatarPlaceholder.classList.add('hidden');
+                } else {
+                    petFormAvatarImg.src = '';
+                    petFormAvatarImg.classList.add('hidden');
+                    petFormAvatarPlaceholder.classList.remove('hidden');
+                }
+            }
+
+            function resetPetForm() {
+                if (!addPetForm) return;
+                addPetForm.reset();
+                editingPetCard = null;
+                setBirthdayField('');
+                setPetFormAvatar('');
+
+                if (petBreedSelect) {
+                    petBreedSelect.innerHTML = '<option value="" disabled selected>Select breed</option>';
+                    petBreedSelect.disabled = true;
+                    if (petBreedSelect._fursDD) petBreedSelect._fursDD.refresh();
+                }
+
+                if (petTypeInput) {
+                    petTypeInput.disabled = false;
+                    petTypeInput.style.background = '';
+                    petTypeInput.style.color = '';
+                    petTypeInput.style.cursor = '';
+                }
+
+                if (petSaveBtn) petSaveBtn.textContent = 'Save';
+            }
+
+            function populatePetForm(data) {
+                if (!data) return;
+
+                if (petNameInput) petNameInput.value = data.name || '';
+                if (petWeightInput) petWeightInput.value = data.weight || '';
+                setBirthdayField(parseBirthdayToISO(data.birthday || ''));
+
+                const sexRadio = addPetForm?.querySelector(`input[name="sex"][value="${data.sex}"]`);
+                if (sexRadio) sexRadio.checked = true;
+
+                const personalityField = document.getElementById('pet-personality-notes');
+                if (personalityField) personalityField.value = data.notes || '';
+
+                setPetFormAvatar(data.image || '');
+
+                const typeGroups = addPetForm?.querySelectorAll('.pf-toggle-group') || [];
+                const typeLower = (data.type || '').toLowerCase();
+
+                if (typeLower === 'cat' || typeLower === 'dog') {
+                    clickToggleButton(typeGroups[0], label => label === typeLower);
+                } else {
+                    clickToggleButton(typeGroups[0], label => label === 'other');
+                    if (petTypeInput) {
+                        petTypeInput.value = data.type || '';
+                        petTypeInput.dispatchEvent(new Event('input', {
+                            bubbles: true
+                        }));
+                    }
+                }
+
+                const weightValue = parseFloat(data.weight) || 0;
+                clickToggleButton(typeGroups[1], label => {
+                    if (weightValue <= 7) return label.includes('small');
+                    if (weightValue <= 18) return label.includes('medium');
+                    return label.includes('large');
+                });
+
+                window.setTimeout(() => {
+                    if (petBreedSelect && data.breed) {
+                        petBreedSelect.value = data.breed;
+                        if (petBreedSelect._fursDD) petBreedSelect._fursDD.refresh();
+                    }
+                }, 0);
+            }
+
+            function openPetForm(mode = 'add', card = null) {
+                if (!sliderContainer || !formContainer) return;
+
+                sliderContainer.classList.add('hidden');
+                formContainer.classList.remove('hidden');
+                addPetBtn.style.display = 'none';
+                resetPetForm();
+
+                if (mode === 'edit' && card) {
+                    editingPetCard = card;
+                    populatePetForm(extractPetDataFromCard(card));
+                    if (petSaveBtn) petSaveBtn.textContent = 'Save';
+                } else if (mode === 'add') {
+                    formContainer.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            }
+
+            function closePetForm() {
+                if (!sliderContainer || !formContainer) return;
+                formContainer.classList.add('hidden');
+                addPetBtn.style.display = 'block';
+                sliderContainer.classList.remove('hidden');
+                resetPetForm();
+            }
 
             // Load pet breeds JSON once
             fetch('<?= BASE_URL ?>assets/data/pet-breeds.json')
                 .then(res => res.json())
                 .then(data => {
                     petBreedsData = data.petTypes;
-                    // Populate type dropdown if it exists
                     if (petTypeSelect) {
                         petBreedsData.forEach(pt => {
                             const opt = document.createElement('option');
@@ -7036,7 +7500,6 @@
                 })
                 .catch(err => console.error('Failed to load pet breeds:', err));
 
-            // When pet type changes, populate breeds
             if (petTypeSelect) {
                 petTypeSelect.addEventListener('change', () => {
                     const selectedType = petTypeSelect.value;
@@ -7060,45 +7523,25 @@
                 });
             }
 
-            // Show form, hide slider
             if (addPetBtn) {
-                addPetBtn.addEventListener('click', () => {
-                    sliderContainer.classList.add('hidden');
-                    formContainer.classList.remove('hidden');
-                    // Scroll to form
-                    formContainer.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                });
+                addPetBtn.addEventListener('click', () => openPetForm('add'));
             }
 
-            // Cancel: show slider, hide form
+            document.querySelectorAll('.btn-edit-pet').forEach(button => {
+                button.addEventListener('click', () => {
+                    const card = button.closest('.pet-card');
+                    if (card) openPetForm('edit', card);
+                });
+            });
+
             if (cancelPetBtn) {
-                cancelPetBtn.addEventListener('click', () => {
-                    formContainer.classList.add('hidden');
-                    sliderContainer.classList.remove('hidden');
-                    // Reset the form
-                    document.getElementById('add-pet-form').reset();
-                    if (petBreedSelect) {
-                        petBreedSelect.innerHTML = '<option value="" disabled selected>Select breed</option>';
-                        petBreedSelect.disabled = true;
-                    }
-                });
+                cancelPetBtn.addEventListener('click', closePetForm);
             }
 
-            // Handle form submit
-            const addPetForm = document.getElementById('add-pet-form');
             if (addPetForm) {
                 addPetForm.addEventListener('submit', (e) => {
                     e.preventDefault();
-                    addPetForm.reset();
-                    if (petBreedSelect) {
-                        petBreedSelect.innerHTML = '<option value="" disabled selected>Select breed</option>';
-                        petBreedSelect.disabled = true;
-                    }
-                    formContainer.classList.add('hidden');
-                    sliderContainer.classList.remove('hidden');
+                    closePetForm();
                 });
             }
         });
@@ -7383,6 +7826,138 @@
         document.addEventListener('click', () => {
             document.querySelectorAll('.sort-by-filter, .venue-list')
                 .forEach(el => el.style.display = 'none');
+        });
+    </script>
+    <script>
+        function setupVenueTags(sectionSelector, inputName, containerId) {
+            const section = document.querySelector(sectionSelector);
+            const container = document.getElementById(containerId);
+
+            if (!section || !container) return;
+
+            const inputs = Array.from(section.querySelectorAll(`input[name="${inputName}"]`));
+            if (!inputs.length) return;
+
+            function getLabelText(input) {
+                return input.closest('label')?.querySelector('.option-text')?.textContent.trim() || input.value;
+            }
+
+            function renderTags() {
+                const checkedInputs = inputs.filter(input => input.checked);
+
+                container.innerHTML = checkedInputs.map((input) => `
+                    <button type="button" class="venue-tag" data-value="${input.value}">
+                        <span>${getLabelText(input)}</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="9" height="9" viewBox="0 0 9 9" fill="none">
+                            <path d="M0.5 7.57L7.572 0.5M0.5 0.5L7.572 7.57" stroke="white" stroke-linecap="round" />
+                        </svg>
+                    </button>
+                `).join('');
+
+                container.querySelectorAll('.venue-tag').forEach((tagButton) => {
+                    tagButton.addEventListener('click', () => {
+                        const matchedInput = inputs.find(input => input.value === tagButton.dataset.value);
+                        if (!matchedInput) return;
+
+                        matchedInput.checked = false;
+                        matchedInput.dispatchEvent(new Event('change', {
+                            bubbles: true
+                        }));
+                    });
+                });
+            }
+
+            inputs.forEach((input) => {
+                input.addEventListener('change', renderTags);
+            });
+
+            renderTags();
+        }
+
+        function setupSortTag(sectionSelector, containerId) {
+            const section = document.querySelector(sectionSelector);
+            const container = document.getElementById(containerId);
+
+            if (!section || !container) return;
+
+            const radios = Array.from(section.querySelectorAll('.sort-by-filter input[type="radio"]'));
+            const sortDropdown = section.querySelector('.sort-by-filter');
+
+            if (!radios.length) return;
+
+            function getLabelText(radio) {
+                return radio.closest('label')?.querySelector('.option-text')?.textContent.trim() || radio.value;
+            }
+
+            function renderTag() {
+                const selectedRadio = radios.find(radio => radio.checked);
+
+                if (!selectedRadio) {
+                    container.innerHTML = '';
+                    return;
+                }
+
+                container.innerHTML = `
+                    <button type="button" class="venue-tag" data-value="${selectedRadio.value}">
+                        <span>${getLabelText(selectedRadio)}</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="9" height="9" viewBox="0 0 9 9" fill="none">
+                            <path d="M0.5 7.57L7.572 0.5M0.5 0.5L7.572 7.57" stroke="white" stroke-linecap="round" />
+                        </svg>
+                    </button>
+                `;
+
+                const tagButton = container.querySelector('.venue-tag');
+                tagButton?.addEventListener('click', () => {
+                    if (sortDropdown) sortDropdown.style.display = 'block';
+                });
+            }
+
+            radios.forEach((radio) => {
+                radio.addEventListener('change', () => {
+                    renderTag();
+                    if (sortDropdown) sortDropdown.style.display = 'none';
+                });
+            });
+
+            renderTag();
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            setupVenueTags('#groomers-sec', 'groomer-venue[]', 'groomer-venue-tags');
+            setupVenueTags('#spaces-sec', 'space-venue[]', 'space-venue-tags');
+            setupVenueTags('#reviews-section', 'groomer-venue[]', 'review-groomer-venue-tags');
+            setupVenueTags('#reviews-section', 'space-venue[]', 'review-space-venue-tags');
+            setupSortTag('#groomers-sec', 'groomer-sort-tags');
+            setupSortTag('#spaces-sec', 'space-sort-tags');
+            setupSortTag('#reviews-section', 'review-sort-tags');
+
+            document.querySelectorAll('#rewards-section .copy-box').forEach((copyBox) => {
+                const input = copyBox.querySelector('input');
+                const button = copyBox.querySelector('button');
+
+                if (!input || !button) return;
+
+                let resetTimer;
+
+                button.addEventListener('click', async () => {
+                    try {
+                        await navigator.clipboard.writeText(input.value);
+                    } catch (error) {
+                        input.removeAttribute('readonly');
+                        input.select();
+                        document.execCommand('copy');
+                        input.setAttribute('readonly', 'readonly');
+                        input.blur();
+                    }
+
+                    clearTimeout(resetTimer);
+                    button.textContent = 'Copied';
+
+                    resetTimer = setTimeout(() => {
+                        button.textContent = 'Copy';
+                    }, 1600);
+                });
+            });
         });
     </script>
     <script>
