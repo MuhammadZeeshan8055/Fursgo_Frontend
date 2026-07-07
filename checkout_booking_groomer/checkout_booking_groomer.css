@@ -657,6 +657,13 @@ body.cbg-page {
     padding: 20px;
 }
 
+.groomer-img-container {
+    position: relative;
+    width: 92px;
+    height: 92px;
+    flex-shrink: 0;
+}
+
 .cb-category-tag {
     background: #FFC97A;
     padding: 5px 15px;
@@ -1753,6 +1760,7 @@ body.cbg-page {
     display: flex;
     gap: 16px;
     align-items: flex-start;
+    position: relative;
 }
 
 .cbg-summary-studio img {
@@ -1760,6 +1768,20 @@ body.cbg-page {
     height: 72px;
     border-radius: 50%;
     object-fit: cover;
+}
+
+.cbg-summary-badge-shield {
+    position: absolute;
+    left: 3px;
+    top: 0px;
+    background: var(--white);
+    color: #fff;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
 }
 
 .cbg-summary-studio .name {
