@@ -18,6 +18,7 @@ $studioImage = BASE_URL . 'assets/images/card1.png';
     <link rel="stylesheet" href="<?= BASE_URL ?>assets/css/bootstrap.css">
     <link rel="stylesheet" href="<?= BASE_URL ?>assets/css/media_query.css">
     <link rel="stylesheet" href="<?= BASE_URL ?>assets/css/common.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>assets/css/checkout_booking.css">
     <link rel="stylesheet" href="<?= BASE_URL ?>checkout_booking_groomer/checkout_booking_groomer.css">
 </head>
 
