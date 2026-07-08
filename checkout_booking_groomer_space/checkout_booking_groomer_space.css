@@ -1,0 +1,233 @@
+/**
+
+ * checkout_booking_groomer_space — combined groomer + space flow overrides.
+
+ * Shared styles: assets/css/checkout_booking.css
+
+ */
+
+/* --------------------------------------------------------------------------
+
+   Step indicator (4 steps — wider label for "Service & Extra's")
+
+   -------------------------------------------------------------------------- */
+
+.cbgs-steps-container .cbg-step-label {
+  max-width: 110px;
+}
+
+/* --------------------------------------------------------------------------
+
+   Sidebar: dual bookings summary
+
+   -------------------------------------------------------------------------- */
+
+.cbgs-booking-summary h3 {
+  letter-spacing: 0.06em;
+}
+
+.cbgs-summary-booking {
+  margin-bottom: 1.25rem;
+}
+
+.cbgs-summary-booking--groomer .cbg-summary-studio {
+  padding: 0;
+}
+
+.cbgs-summary-line {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  font-family: Lato, sans-serif;
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  color: #9d9b98;
+
+  margin-bottom: 8px;
+}
+
+.cbgs-summary-line > span:first-child {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 8px;
+}
+
+.cbgs-summary-dot {
+  width: 8px;
+
+  height: 8px;
+
+  border-radius: 50%;
+
+  flex-shrink: 0;
+}
+
+.cbgs-summary-dot--groomer {
+  background: #ffc97a;
+}
+
+.cbgs-summary-dot--space {
+  background: #ffa899;
+}
+
+.cbs-booking-details-4 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.cbs-space-extras-title {
+  margin-top: 1.5rem;
+}
+
+.cbs-extras-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 1.5rem;
+}
+
+.cbs-extras-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #ffc97a;
+  color: #fff;
+  font-family: Lato, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: none;
+  cursor: default;
+}
+
+.cbs-extras-tag-remove {
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1;
+  padding: 0;
+  opacity: 0.9;
+}
+
+.cbs-extras-tag-remove:hover {
+  opacity: 1;
+}
+
+.cbs-extras-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 1.5rem;
+}
+
+.cbs-extra-option {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 20px;
+  border-radius: 8px;
+  border: none;
+  background: #f8f8f8;
+  cursor: pointer;
+  text-align: left;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.cbs-extra-option.selected {
+  background: #fff;
+  border-color: #eae8e5;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(201, 221, 160, 0.1);
+}
+
+.cbs-extra-radio {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1px solid #d4d4d4;
+  background: #fff;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cbs-extra-option.selected .cbs-extra-radio {
+  border-color: #ffc97a;
+}
+
+.cbs-extra-radio-inner {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #ffc97a;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.cbs-extra-option.selected .cbs-extra-radio-inner {
+  opacity: 1;
+}
+
+.cbs-extra-name {
+  flex: 1;
+  color: #3b3731;
+  font-family: Lato, sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.cbs-extra-price {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.cbs-extra-amount {
+  color: #3b3731;
+  font-family: Lato, sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.cbs-extra-unit {
+  color: #9d9b98;
+  font-family: Lato, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+@media (max-width: 991px) {
+  .cbs-booking-details-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 576px) {
+  .cbs-booking-details-4 {
+    grid-template-columns: 1fr;
+  }
+}
+
+.cbg-sub-panel.cbgs-service-subpanel.active {
+  border-radius: 0;
+  border: none;
+  background: none;
+  padding: 0;
+}

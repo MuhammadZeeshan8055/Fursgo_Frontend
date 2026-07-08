@@ -301,14 +301,14 @@ $studioImage = BASE_URL . 'assets/images/booking-space-card-image.svg';
                         <div class="cbg-provider-card">
                             <div class="cbg-provider-top">
                                 <div class="groomer-img-container">
-                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="92" height="92" viewBox="0 0 92 92" fill="none">
-    <defs>
-        <clipPath id="cardClip_721_8672">
-            <path d="M92 87C92 89.7614 89.7614 92 87 92H5C2.23858 92 0 89.7614 0 87V25C0 22.2386 2.23858 20 5 20H15C17.7614 20 20 17.7614 20 15V5C20 2.23858 22.2386 0 25 0H87C89.7614 0 92 2.23858 92 5V87Z" />
-        </clipPath>
-    </defs>
-    <image href="<?= BASE_URL ?>assets/images/message_profile_1.png" preserveAspectRatio="xMidYMid slice" width="92" height="92" clip-path="url(#cardClip_721_8672)"></image>
-</svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="92" height="92" viewBox="0 0 92 92" fill="none">
+                                        <defs>
+                                            <clipPath id="cardClip_721_8672">
+                                                <path d="M92 87C92 89.7614 89.7614 92 87 92H5C2.23858 92 0 89.7614 0 87V25C0 22.2386 2.23858 20 5 20H15C17.7614 20 20 17.7614 20 15V5C20 2.23858 22.2386 0 25 0H87C89.7614 0 92 2.23858 92 5V87Z" />
+                                            </clipPath>
+                                        </defs>
+                                        <image href="<?= BASE_URL ?>assets/images/message_profile_1.png" preserveAspectRatio="xMidYMid slice" width="92" height="92" clip-path="url(#cardClip_721_8672)"></image>
+                                    </svg>
                                     <div class="cbg-summary-badge-shield" title="Verified">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none">
                                             <path d="M7.46466 0.0854281C7.34094 0.029458 7.20838 0 7.06993 0C6.93148 0 6.79891 0.029458 6.67519 0.0854281L1.12825 2.43912C0.480178 2.71308 -0.0029324 3.35232 1.33989e-05 4.12412C0.0147424 7.04635 1.21663 12.393 6.29224 14.8233C6.78419 15.0589 7.35567 15.0589 7.84762 14.8233C12.9232 12.393 14.1251 7.04635 14.1398 4.12412C14.1428 3.35232 13.6597 2.71308 13.0116 2.43912L7.46466 0.0854281Z" fill="#CBDCE8" />
@@ -394,15 +394,6 @@ $studioImage = BASE_URL . 'assets/images/booking-space-card-image.svg';
                                         Time
                                     </span>
                                     <p class="cbg-detail-value">Half-day (14:30–18:30)</p>
-                                </div>
-                                <div class="cbg-detail-box">
-                                    <span class="cbg-detail-label">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="11" height="15" viewBox="0 0 11 15" fill="none" aria-hidden="true">
-                                            <path d="M5.5 0.5C6.83339 0.5 8.10786 1.00588 9.04395 1.89941C9.9792 2.79219 10.5 3.99796 10.5 5.25C10.5 6.6294 9.73861 8.338 8.73145 9.9707C7.73727 11.5823 6.5574 13.0362 5.82422 13.8867C5.6489 14.0901 5.3511 14.0901 5.17578 13.8867C4.4426 13.0362 3.26273 11.5823 2.26855 9.9707C1.26139 8.338 0.5 6.6294 0.5 5.25C0.5 3.99796 1.0208 2.79219 1.95605 1.89941C2.89214 1.00588 4.16661 0.5 5.5 0.5ZM5.5 2.875C4.85374 2.875 4.22936 3.11984 3.76562 3.5625C3.30115 4.00591 3.03613 4.61245 3.03613 5.25C3.03613 5.88755 3.30115 6.49409 3.76562 6.9375C4.22936 7.38016 4.85374 7.625 5.5 7.625C5.82047 7.625 6.13831 7.56479 6.43555 7.44727C6.73282 7.32973 7.00457 7.15686 7.23438 6.9375C7.46409 6.7182 7.64771 6.45659 7.77344 6.16699C7.89921 5.87715 7.96387 5.5652 7.96387 5.25C7.96387 4.61245 7.69885 4.00591 7.23438 3.5625C6.77064 3.11984 6.14626 2.875 5.5 2.875Z" stroke="#9D9B98" />
-                                        </svg>
-                                        Location
-                                    </span>
-                                    <p class="cbg-detail-value">Victoria Embankment</p>
                                 </div>
                             </div>
                         </div>
@@ -821,7 +812,7 @@ $studioImage = BASE_URL . 'assets/images/booking-space-card-image.svg';
                     <div class="cbg-booking-summary">
                         <h3>Your Booking</h3>
 
-                        <div class="cbg-summary-space">
+                        <div class="cbg-summary-padding bg">
                             <div class="cbg-summary-studio">
                                 <img src="<?= htmlspecialchars($studioImage) ?>" alt="Furs & Co. Studio">
                                 <div class="cbg-summary-badge-shield" title="Verified">
