@@ -1716,6 +1716,11 @@ body.cbg-page {
   justify-content: flex-end;
 }
 
+.cbg-panel-footer:has(> .cbg-btn-secondary) {
+  justify-content: space-between;
+  align-items: center;
+}
+
 .cbg-continue-wrap {
   display: flex;
   align-items: center;
@@ -1910,14 +1915,6 @@ body.cbg-page {
 
 .cbg-sub-panel.active {
   display: block;
-}
-
-#cbgStep0 .cbg-sub-panel {
-  display: block;
-}
-
-#cbgStep0 .cbg-sub-panel + .cbg-sub-panel {
-  margin-top: 2.5rem;
 }
 
 @media (max-width: 991px) {

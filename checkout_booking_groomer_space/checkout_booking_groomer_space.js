@@ -7,6 +7,7 @@
   const SPACE_EXTRA_PRICE = 5;
 
   let currentStep = 0;
+  let petSubView = "choice";
   let selectedPetId = null;
   let newPetData = null;
   let serviceSubstep = "groomer";
@@ -37,6 +38,11 @@
       selectExisting: document.getElementById("cbgContinueSelectExisting"),
       service: document.getElementById("cbgContinueService"),
       space: document.getElementById("cbgContinueSpace"),
+    },
+    subPanels: {
+      choice: document.getElementById("cbgPetChoice"),
+      addNew: document.getElementById("cbgPetAddNew"),
+      selectExisting: document.getElementById("cbgPetSelectExisting"),
     },
     summaryGroomerService: document.getElementById("cbgSummaryGroomerService"),
     summaryGroomerExtras: document.getElementById("cbgSummaryGroomerExtras"),
@@ -276,6 +282,17 @@
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
+  function showPetSubView(view) {
+    petSubView = view;
+    Object.keys(els.subPanels).forEach((key) => {
+      if (els.subPanels[key]) {
+        els.subPanels[key].classList.toggle("active", key === view);
+      }
+    });
+    updateContinueState();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
   function getSelectedPetInfo() {
     if (newPetData) return newPetData;
     if (selectedPetId == null) return null;
@@ -355,11 +372,11 @@
   function updateContinueState() {
     setContinueState(
       els.continueWraps.addNew,
-      currentStep === 0 && validateNewPetForm(false),
+      petSubView === "addNew" && validateNewPetForm(false),
     );
     setContinueState(
       els.continueWraps.selectExisting,
-      currentStep === 0 && selectedPetId != null,
+      petSubView === "selectExisting" && selectedPetId != null,
     );
     setContinueState(
       els.continueWraps.service,
@@ -922,6 +939,19 @@
         }
       });
     });
+
+    document
+      .getElementById("cbgAddNewPetBtn")
+      ?.addEventListener("click", () => showPetSubView("addNew"));
+    document
+      .getElementById("cbgSelectExistingBtn")
+      ?.addEventListener("click", () => showPetSubView("selectExisting"));
+    document
+      .getElementById("cbgPetAddNewBackBtn")
+      ?.addEventListener("click", () => showPetSubView("choice"));
+    document
+      .getElementById("cbgPetSelectExistingBackBtn")
+      ?.addEventListener("click", () => showPetSubView("choice"));
 
     setupPetTypeToggle();
     setupNewPetValidation();

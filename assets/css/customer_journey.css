@@ -51,7 +51,7 @@ body:has(.top-tabs.find-space-search.active) {
     z-index: 1000;
     align-self: flex-start;
     width: 100%;
-    background: var(--bg, #faf8f4);
+    background: #FDFCF8;
     padding-top: 12px;
     padding-bottom: 12px;
     margin-top: 0;

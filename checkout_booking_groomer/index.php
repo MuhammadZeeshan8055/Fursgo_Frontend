@@ -87,7 +87,7 @@ $studioImage = BASE_URL . 'assets/images/card1.png';
                         </div>
                     </div>
 
-                    <div class="cbg-sub-panel active" id="cbgPetAddNew">
+                    <div class="cbg-sub-panel" id="cbgPetAddNew">
                         <p class="cbg-step-badge">Step 1 of 5</p>
                         <h2>Tell us about your Pet</h2>
                         <div class="cbg-card">
@@ -196,6 +196,7 @@ $studioImage = BASE_URL . 'assets/images/card1.png';
                                 <textarea id="cbgPetNotes" placeholder="Anything your groomer should know? (e.g. anxious around dryers, allergies, behaviour cues)" rows="4"></textarea>
                             </div>
                             <div class="cbg-panel-footer">
+                                <button type="button" class="cbg-btn-secondary" id="cbgPetAddNewBackBtn">Back</button>
                                 <div class="cbg-continue-wrap" id="cbgContinueAddNew" data-continue-context="addNew">
                                     <button type="button" disabled>
                                         Continue
@@ -209,7 +210,7 @@ $studioImage = BASE_URL . 'assets/images/card1.png';
                         </div>
                     </div>
 
-                    <div class="cbg-sub-panel active" id="cbgPetSelectExisting">
+                    <div class="cbg-sub-panel" id="cbgPetSelectExisting">
                         <p class="cbg-step-badge">Step 1 of 5</p>
                         <h2>Select existing Pet</h2>
                         <div class="cbg-pet-list">
@@ -282,6 +283,7 @@ $studioImage = BASE_URL . 'assets/images/card1.png';
                             <?php endforeach; ?>
                         </div>
                         <div class="cbg-panel-footer">
+                            <button type="button" class="cbg-btn-secondary" id="cbgPetSelectExistingBackBtn">Back</button>
                             <div class="cbg-continue-wrap" id="cbgContinueSelectExisting" data-continue-context="selectExisting">
                                 <button type="button" disabled>
                                     Continue
