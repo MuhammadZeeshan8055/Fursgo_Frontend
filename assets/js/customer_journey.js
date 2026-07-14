@@ -1263,14 +1263,28 @@ document.addEventListener('DOMContentLoaded', () => {
 // range js ends  
 
 
-// search bar widget sticky
-window.addEventListener('scroll', function () {
+// search bar widget sticky + filter bar offset below it
+(function () {
     const stickyBar = document.querySelector('.sticky-search');
+    if (!stickyBar) return;
 
-    if (window.scrollY > 10) {
-
-        stickyBar.classList.add('scrolled');
-    } else {
-        stickyBar.classList.remove('scrolled');
+    function setStickySearchOffset() {
+        document.documentElement.style.setProperty(
+            '--sticky-search-offset',
+            stickyBar.offsetHeight + 'px'
+        );
     }
-});  
+
+    function onScroll() {
+        if (window.scrollY > 10) {
+            stickyBar.classList.add('scrolled');
+        } else {
+            stickyBar.classList.remove('scrolled');
+        }
+        setStickySearchOffset();
+    }
+
+    setStickySearchOffset();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', setStickySearchOffset);
+})();  
