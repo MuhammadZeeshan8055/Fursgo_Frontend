@@ -16,7 +16,7 @@
   let petBreedsData = {};
   let appliedPromo = null;
   let promoDiscount = 0;
-  let selectedPayMethod = "card";
+  let selectedPayMethod = null;
 
   let selectedSpaceExtraId = "1";
 
@@ -634,11 +634,24 @@
     });
   }
 
+  function updatePayHeading() {
+    const heading = document.getElementById("cbgPayHeading");
+    if (!heading) return;
+    heading.textContent = selectedPayMethod
+      ? "Confirm & Pay"
+      : "Select Payment Method";
+  }
+
   function updatePayButtonState() {
     const btn = document.getElementById("cbgPayBtn");
     if (!btn || currentStep !== 3) return;
 
-    const canPay = selectedPayMethod === "card" ? isCardFormValid() : true;
+    const canPay =
+      !selectedPayMethod
+        ? false
+        : selectedPayMethod === "card"
+          ? isCardFormValid()
+          : true;
     btn.disabled = !canPay;
     btn.classList.toggle("active", canPay);
   }
@@ -668,6 +681,7 @@
       el.classList.toggle("active", el.dataset.payMethod === method);
     });
 
+    updatePayHeading();
     positionPayFooter();
     updatePayButtonState();
 
@@ -680,9 +694,14 @@
 
   function positionPayFooter() {
     const footer = document.getElementById("cbgPayFooter");
+    const methods = document.getElementById("cbgPayMethods");
     const activeMethod = document.querySelector(".cbg-pay-method.active");
-    if (footer && activeMethod) {
+    if (!footer) return;
+
+    if (activeMethod) {
       activeMethod.insertAdjacentElement("afterend", footer);
+    } else if (methods) {
+      methods.appendChild(footer);
     }
   }
 

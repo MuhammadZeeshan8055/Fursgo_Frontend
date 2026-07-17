@@ -700,17 +700,15 @@ $studioImage = BASE_URL . 'assets/images/card1.png';
                     <p class="cbg-step-badge">Step 5 of 5</p>
 
                     <div class="cbg-pay">
-                        <h2>Select Payment Method</h2>
+                        <h2 id="cbgPayHeading">Select Payment Method</h2>
 
                         <div class="cbg-pay-total-bar">
                             <span class="cbg-pay-total-label">Total to Pay</span>
                             <span class="cbg-pay-total-amount" id="cbgPayTotalAmount">£0.00</span>
                         </div>
 
-                        <p class="cbg-pay-method-label">Select payment method</p>
-
                         <div class="cbg-pay-methods" id="cbgPayMethods">
-                            <div class="cbg-pay-method active" data-pay-method="card">
+                            <div class="cbg-pay-method" data-pay-method="card">
                                 <button type="button" class="cbg-pay-method-head">
                                     <span class="cbg-pay-radio" aria-hidden="true"></span>
                                     <span class="cbg-pay-method-title">Pay with credit/debit card</span>
