@@ -442,15 +442,20 @@ document.querySelectorAll('.custom-select[data-multiselect]').forEach(select => 
         pill.className = 'selected-item d-flex align-items-center gap-10';
         pill.dataset.value = val;
 
+        const bg = select.dataset.bg || 'none';
+        const borderColor = select.dataset.border || color;
+
         pill.style.cssText = `
-        background:none;
+        background:${bg};
         color:${color};
-        border:1px solid ${color};
+        border:1px solid ${borderColor};
+        border-radius:100px;
         cursor:pointer;
+        box-shadow: 0 4px 5px 0 rgba(59, 55, 49, 0.10);
     `;
 
         pill.innerHTML = `
-        <p>${label}</p>
+        <p style="color:${color};margin:0;">${label}</p>
         <svg style="flex-shrink:0;pointer-events:none;"
             xmlns="http://www.w3.org/2000/svg"
             width="9" height="9" viewBox="0 0 9 9" fill="none">

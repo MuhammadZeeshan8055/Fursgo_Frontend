@@ -159,17 +159,20 @@
 
         .filter .selected-item {
             border-radius: 100px;
-            /* border: 1px solid var(--groomer-color);
-            background: var(--groomer-color); */
+            border: 1px solid #BACF8E;
+            background: #C9DDA0;
             padding: 10px 20px 10px 20px;
-            color: var(--groomer-color);
             text-align: center;
             font-family: Lato;
             font-size: 14px;
             font-weight: 500;
-            background: #fff;
-            color: var(--groomer-color) !important;
+            color: #FFF !important;
             padding: 10px;
+        }
+
+        .service-selected-options .selected-item,
+        .service-selected-options .selected-item p {
+            color: #FFF !important;
         }
 
 
@@ -2542,7 +2545,7 @@
                         </span>
                         <div class="service-type-select mt-4">
                             <p class="label">Service Type</p>
-                            <div class="custom-select" data-multiselect data-color="#FBAC83">
+                            <div class="custom-select" data-multiselect data-color="#FFF" data-bg="#C9DDA0" data-border="#BACF8E">
                                 <div class="select-trigger w-auto">
                                     <span class="selected-text">Select services</span>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="15" height="8" viewBox="0 0 15 8" fill="none">
@@ -2563,7 +2566,7 @@
 
                         <div class="service-type-select mt-4">
                             <p class="label">Extra's & Add-ons</p>
-                            <div class="custom-select" data-multiselect data-color="#FFC97A">
+                            <div class="custom-select" data-multiselect data-color="#FFF" data-bg="#C9DDA0" data-border="#BACF8E">
                                 <div class="select-trigger w-auto">
                                     <span class="selected-text">Select add-ons</span>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="15" height="8" viewBox="0 0 15 8" fill="none">
