@@ -38,6 +38,21 @@ body.cbg-page {
   margin-bottom: 0.75rem;
 }
 
+.cbg-breadcrumb-back {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  line-height: 0;
+  text-decoration: none;
+}
+
+.cbg-breadcrumb-back svg {
+  width: 32px;
+  height: 32px;
+  display: block;
+}
+
 /* Stepper */
 .cbg-step-indicator {
   width: 100%;
@@ -1447,11 +1462,12 @@ body.cbg-page {
   margin-top: 2rem;
   padding: 20px 24px;
   border-radius: 10px;
-  background: #fff5eb;
+  border: 1px solid #ffd88c;
+  background: #fff8ee;
 }
 
 .cbg-pay-total-label {
-  font-family: "Playfair Display", serif;
+  font-family: lato;
   font-size: 18px;
   font-weight: 400;
   color: #3b3731;
@@ -1667,8 +1683,8 @@ body.cbg-page {
   min-height: 82px;
   box-sizing: border-box;
   border-radius: 10px;
-  background: #F8F8F8;
-  border-color: #F8F8F8;
+  background: #f8f8f8;
+  border-color: #f8f8f8;
 }
 
 .cbg-pay-footer {
@@ -1711,7 +1727,7 @@ body.cbg-page {
 .cbg-panel-footer {
   margin-top: 2rem;
   padding-top: 1.5rem;
-  border-top: 1px solid #D4D4D4;
+  border-top: 1px solid #d4d4d4;
   display: flex;
   justify-content: flex-end;
 }
