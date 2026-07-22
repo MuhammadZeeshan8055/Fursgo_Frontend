@@ -32,7 +32,7 @@
 //     const locations = [
 //         { name: 'Waterloo Station', lat: 51.5033, lng: -0.1147 },
 //         { name: 'Westminster', lat: 51.4995, lng: -0.1248 },
-//         { name: 'Strand', lat: 51.511227, lng: -0.119470 }
+//         { name: 'Sarah', lat: 51.511227, lng: -0.119470 }
 //     ];
 
 //     // Add markers now
@@ -285,7 +285,7 @@ document.addEventListener('DOMContentLoaded', function () {
             reviews: '45'
         },
         {
-            loc_name: "Strand Grooming",
+            loc_name: "Sarah Grooming",
             name: "Sarah W.",
             lat: 51.511227,
             lng: -0.119470,
