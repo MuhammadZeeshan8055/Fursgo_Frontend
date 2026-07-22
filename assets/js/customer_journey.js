@@ -198,12 +198,25 @@ function spaceCustomTooltipSVG(color = '#CBDCE8', width = 21, height = 22) {
 
 
 document.addEventListener('DOMContentLoaded', function () {
-    // Initialize Leaflet map globally
-    window.map = L.map('map', {
-        zoomControl: true,
+    const mapOptions = {
+        zoomControl: false,
         attributionControl: false,
-        preferCanvas: true
-    });
+        preferCanvas: true,
+        zoomAnimation: true,
+        fadeAnimation: true,
+        markerZoomAnimation: true,
+        zoomSnap: 1,
+        zoomDelta: 1,
+        wheelPxPerZoomLevel: 90
+    };
+
+    // Initialize Leaflet map globally
+    window.map = L.map('map', { ...mapOptions });
+    L.control.zoom({
+        position: 'bottomright',
+        zoomInTitle: 'Zoom in',
+        zoomOutTitle: 'Zoom out'
+    }).addTo(window.map);
 
     enableCtrlScrollZoom(window.map);
 
@@ -218,11 +231,12 @@ document.addEventListener('DOMContentLoaded', function () {
     }).addTo(window.map);
 
     // Initialize SECOND map for space view
-    window.spaceMap = L.map('space-map', {
-        zoomControl: true,
-        attributionControl: false,
-        preferCanvas: true
-    });
+    window.spaceMap = L.map('space-map', { ...mapOptions });
+    L.control.zoom({
+        position: 'bottomright',
+        zoomInTitle: 'Zoom in',
+        zoomOutTitle: 'Zoom out'
+    }).addTo(window.spaceMap);
 
     enableCtrlScrollZoom(window.spaceMap);
 
@@ -424,21 +438,61 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     function enableCtrlScrollZoom(map) {
-    map.scrollWheelZoom.disable();
+        map.scrollWheelZoom.disable();
 
-    map.getContainer().addEventListener('wheel', function (e) {
-        if (e.ctrlKey) {
-            map.scrollWheelZoom.enable();
+        const container = map.getContainer();
+        const wrapper = container.closest('.map-wrapper') || container.parentElement;
 
-            clearTimeout(map._ctrlZoomTimeout);
-            map._ctrlZoomTimeout = setTimeout(() => {
-                map.scrollWheelZoom.disable();
-            }, 1000);
-        } else {
-            map.scrollWheelZoom.disable();
+        if (wrapper && !wrapper.querySelector('.map-zoom-hint')) {
+            const hint = document.createElement('div');
+            hint.className = 'map-zoom-hint';
+            hint.setAttribute('aria-hidden', 'true');
+            const isMac = /Mac|iPhone|iPad|iPod/.test(navigator.platform || '')
+                || /Mac OS/.test(navigator.userAgent || '');
+            hint.innerHTML = isMac
+                ? '<span class="map-zoom-hint__key">⌘</span> + scroll to zoom'
+                : '<span class="map-zoom-hint__key">Ctrl</span> + scroll to zoom';
+            wrapper.appendChild(hint);
         }
-    });
-}
+
+        const hint = wrapper && wrapper.querySelector('.map-zoom-hint');
+
+        const syncScrollZoom = (e) => {
+            if (e.ctrlKey || e.metaKey) {
+                map.scrollWheelZoom.enable();
+            } else {
+                map.scrollWheelZoom.disable();
+            }
+        };
+
+        // Enable map zoom as soon as Ctrl/⌘ is held so the first wheel tick works
+        document.addEventListener('keydown', syncScrollZoom);
+        document.addEventListener('keyup', syncScrollZoom);
+        window.addEventListener('blur', () => map.scrollWheelZoom.disable());
+
+        container.addEventListener('wheel', function (e) {
+            if (e.ctrlKey || e.metaKey) {
+                // Stop the browser from zooming the page; only the map should zoom
+                e.preventDefault();
+                map.scrollWheelZoom.enable();
+
+                if (hint) {
+                    hint.classList.remove('is-prompt');
+                }
+            } else {
+                map.scrollWheelZoom.disable();
+
+                // Prompt when scrolling over the map without Ctrl (Google Maps-style)
+                if (hint) {
+                    hint.classList.add('is-prompt');
+                    clearTimeout(map._hintTimeout);
+                    map._hintTimeout = setTimeout(() => {
+                        hint.classList.remove('is-prompt');
+                    }, 1500);
+                }
+            }
+        }, { passive: false });
+    }
 
 
     // ---- Custom Tabs ----
@@ -512,31 +566,57 @@ toggleBtn.addEventListener('click', () => {
 
 // sort and venue selection starts
 
-// loop through all venu-sorting-section blocks
+function closeAllVenueSortDropdowns() {
+    document.querySelectorAll('.sort-by-filter, .venue-list').forEach(el => {
+        el.style.display = 'none';
+    });
+}
+
+// loop through all venu-sorting-section blocks (groomer + space)
 document.querySelectorAll('.venu-sorting-section').forEach(container => {
     const sortBy = container.querySelector('.sort-by');
     const sortByFilter = container.querySelector('.sort-by-filter');
-
     const venueSelection = container.querySelector('.venue-selection');
     const venueList = container.querySelector('.venue-list');
 
-    sortBy.addEventListener('click', () => {
-        // hide venue dropdown only inside this container
-        venueList.style.display = 'none';
+    if (!sortBy || !sortByFilter || !venueSelection || !venueList) return;
 
-        // toggle sort dropdown
-        sortByFilter.style.display = (sortByFilter.style.display === 'block') ? 'none' : 'block';
+    sortBy.addEventListener('click', (e) => {
+        // Keep open while interacting with options; only toggle via the Sort trigger
+        if (e.target.closest('.sort-by-filter')) return;
+
+        const isOpen = sortByFilter.style.display === 'block';
+        closeAllVenueSortDropdowns();
+        sortByFilter.style.display = isOpen ? 'none' : 'block';
     });
 
-    venueSelection.addEventListener('click', () => {
-        // hide sort dropdown only inside this container
-        sortByFilter.style.display = 'none';
+    venueSelection.addEventListener('click', (e) => {
+        // Keep open while toggling venue checkboxes
+        if (e.target.closest('.venue-list')) return;
 
-        // toggle venue dropdown
-        venueList.style.display = (venueList.style.display === 'block') ? 'none' : 'block';
+        const isOpen = venueList.style.display === 'block';
+        closeAllVenueSortDropdowns();
+        venueList.style.display = isOpen ? 'none' : 'block';
+    });
+
+    // Close sort after an option is selected
+    sortByFilter.querySelectorAll('input[type="radio"]').forEach(radio => {
+        radio.addEventListener('change', () => {
+            sortByFilter.style.display = 'none';
+        });
     });
 });
 
+// Close venue/sort when clicking anywhere else on the page
+// (capture so it still runs even if other controls stopPropagation)
+document.addEventListener('click', (e) => {
+    if (e.target.closest('.venue-selection, .sort-by')) return;
+    closeAllVenueSortDropdowns();
+}, true);
+
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeAllVenueSortDropdowns();
+});
 
 // sort and venue selection ends
 
