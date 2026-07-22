@@ -1,4 +1,4 @@
-// document.addEventListener('DOMContentLoaded', function () {
+﻿// document.addEventListener('DOMContentLoaded', function () {
 //     // Initialize Leaflet map globally
 //     window.map = L.map('map', {
 //         zoomControl: true,
@@ -94,20 +94,20 @@
 function groomerTooltipCardSVG(imageUrl, clipId) {
     return `
     <svg xmlns="http://www.w3.org/2000/svg"
-         width="65"
-         height="65"
-         viewBox="0 0 170 246"
+         width="41"
+         height="60"
+         viewBox="0 0 41 60"
          style="display:block;">
         <defs>
             <clipPath id="${clipId}">
-                <path d="M165 0C167.761 0 170 2.23858 170 5V241C170 243.761 167.761 246 165 246H5C2.23858 246 0 243.761 0 241V37C0 34.2386 2.23858 32 5 32H27C29.7614 32 32 29.7614 32 27V5C32 2.23858 34.2386 0 37 0H165Z"/>
+                <path d="M41 58C41 59.1046 40.1046 60 39 60H2C0.895431 60 0 59.1046 0 58V14C0 12.8954 0.895431 12 2 12H10C11.1046 12 12 11.1046 12 10V2C12 0.895431 12.8954 0 14 0H39C40.1046 0 41 0.895431 41 2V58Z"/>
             </clipPath>
         </defs>
 
         <image
             href="${imageUrl}"
-            width="170"
-            height="246"
+            width="41"
+            height="60"
             preserveAspectRatio="xMidYMid slice"
             clip-path="url(#${clipId})" />
     </svg>`;
@@ -116,20 +116,20 @@ function groomerTooltipCardSVG(imageUrl, clipId) {
 function spaceTooltipCardSVG(imageUrl, clipId) {
     return `
     <svg xmlns="http://www.w3.org/2000/svg"
-         width="65"
-         height="65"
-         viewBox="0 0 170 246"
+         width="41"
+         height="60"
+         viewBox="0 0 41 60"
          style="display:block;">
         <defs>
             <clipPath id="${clipId}">
-                <path d="M165 0C167.761 0 170 2.23858 170 5V241C170 243.761 167.761 246 165 246H5C2.23858 246 0 243.761 0 241V37C0 34.2386 2.23858 32 5 32H27C29.7614 32 32 29.7614 32 27V5C32 2.23858 34.2386 0 37 0H165Z"/>
+                <path d="M41 58C41 59.1046 40.1046 60 39 60H2C0.895431 60 0 59.1046 0 58V14C0 12.8954 0.895431 12 2 12H10C11.1046 12 12 11.1046 12 10V2C12 0.895431 12.8954 0 14 0H39C40.1046 0 41 0.895431 41 2V58Z"/>
             </clipPath>
         </defs>
 
         <image
             href="${imageUrl}"
-            width="170"
-            height="246"
+            width="41"
+            height="60"
             preserveAspectRatio="xMidYMid slice"
             clip-path="url(#${clipId})" />
     </svg>`;
@@ -299,7 +299,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const spaceLocations = [
         {
             loc_name: 'Furs & Co. Studio',
-            name: 'Dev É',
+            name: 'Dev Ã‰',
             lat: 51.5074,
             lng: -0.1657,
             image: BASE_URL + 'assets/images/space_card3.png',
@@ -353,18 +353,18 @@ document.addEventListener('DOMContentLoaded', function () {
         const tooltipContent = `
         <div style="min-width:215px;position:relative;">
             <div class="map-top-left-svg">
-                ${customTooltipSVG('#C9DDA0', 7, 7)}
+                ${customTooltipSVG('#C9DDA0', 8, 11)}
             </div>
-            <div style="display:flex; gap:6px; align-items:center;">
+            <div style="display:flex; gap:10px; align-items:center;">
                 <div style="display:flex; justify-content:center; align-items:center;">
                     ${svgImage}
                 </div>
                 <div style="flex:1;">
-                    <h2 class="name" style="margin:0 0 0px;font-size:14px;font-weight:600;color:#333;">
+                    <h2 class="name" style="margin:0 0 0px;font-size:14px;font-weight:600;color:#3B3731;">
                         ${loc.loc_name}
                     </h2>
                     <span class="studio"> ${loc.name}</span>
-                    <div class="map-meta d-flex align-items-center justify-content-between mt-2" style="font-size:12px;color:#666;line-height:1.4;">
+                    <div class="map-meta d-flex align-items-center justify-content-between mt-2" style="font-size:14px;color:#3B3731;font-weight: 500;line-height:1.4;">
                         <span class="d-flex align-items-center">${locationSVG} ${loc.distance || '2.5 mi'}</span>
                         <span class="d-flex align-items-center">${starSVG} ${loc.rating || '4.3'} (${loc.reviews || '20'})</span>
                     </div>
@@ -401,18 +401,18 @@ document.addEventListener('DOMContentLoaded', function () {
         const tooltipContent = `
         <div style="min-width:215px;position:relative;">
             <div class="map-top-left-svg">
-                ${spaceCustomTooltipSVG('#CBDCE8', 7, 7)}
+                ${spaceCustomTooltipSVG('#CBDCE8', 8, 11)}
             </div>
-            <div style="display:flex; gap:6px; align-items:center;">
+            <div style="display:flex; gap:10px; align-items:center;">
                 <div style="display:flex; justify-content:center; align-items:center;">
                     ${svgImage}
                 </div>
                 <div style="flex:1;">
-                    <h2 class="name" style="margin:0 0 0px;font-size:14px;font-weight:600;color:#333;">
+                    <h2 class="name" style="margin:0 0 0px;font-size:14px;font-weight:600;color:#3B3731;">
                         ${loc.loc_name}
                     </h2>
-                    <h2 class="name" style="margin:0 0 0px;font-size:14px;font-weight:600;color:#333;">Hosted by <span class="studio"> ${loc.name}</span></h2>                
-                    <div class="map-meta d-flex align-items-center justify-content-between mt-2" style="font-size:12px;color:#666;line-height:1.4;">
+                    <h2 class="name" style="margin:0 0 0px;font-size:14px;font-weight:600;color:#3B3731;">Hosted by <span class="studio"> ${loc.name}</span></h2>                
+                    <div class="map-meta d-flex align-items-center justify-content-between mt-2" style="font-size:14px;color:#3B3731;font-weight: 500;line-height:1.4;">
                         <span class="d-flex align-items-center">${locationSVG} ${loc.distance || '2.5 mi'}</span>
                         <span class="d-flex align-items-center">${starSVG} ${loc.rating || '4.3'} (${loc.reviews || '20'})</span>
                     </div>
@@ -450,7 +450,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const isMac = /Mac|iPhone|iPad|iPod/.test(navigator.platform || '')
                 || /Mac OS/.test(navigator.userAgent || '');
             hint.innerHTML = isMac
-                ? '<span class="map-zoom-hint__key">⌘</span> + scroll to zoom'
+                ? '<span class="map-zoom-hint__key">âŒ˜</span> + scroll to zoom'
                 : '<span class="map-zoom-hint__key">Ctrl</span> + scroll to zoom';
             wrapper.appendChild(hint);
         }
@@ -465,7 +465,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         };
 
-        // Enable map zoom as soon as Ctrl/⌘ is held so the first wheel tick works
+        // Enable map zoom as soon as Ctrl/âŒ˜ is held so the first wheel tick works
         document.addEventListener('keydown', syncScrollZoom);
         document.addEventListener('keyup', syncScrollZoom);
         window.addEventListener('blur', () => map.scrollWheelZoom.disable());
@@ -561,7 +561,7 @@ toggleBtn.addEventListener('click', () => {
     header.classList.toggle('fixed');
     document.body.classList.toggle('menu-open');
 
-    toggleBtn.innerHTML = menu.classList.contains('active') ? '✖' : '&#9776;';
+    toggleBtn.innerHTML = menu.classList.contains('active') ? 'âœ–' : '&#9776;';
 });
 
 // sort and venue selection starts
@@ -1131,7 +1131,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         let sw = 0; // slot width in px, computed per render
 
-        // ── Transform helpers ─────────────────────────────────────
+        // â”€â”€ Transform helpers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
         const restTx = () => -EXTRA * sw; // offset that shows center 7
 
         function setTx(x, animate = false) {
@@ -1146,20 +1146,20 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(run, 350);
         }
 
-        // ── Header ────────────────────────────────────────────────
+        // â”€â”€ Header â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
         function updateHeader() {
             const start = addDays(selectedDate, -3);
             const end = addDays(selectedDate, 3);
             const sm = start.toLocaleString(undefined, { month: 'long' });
             const em = end.toLocaleString(undefined, { month: 'long' });
             rangeEl.textContent =
-                `${pad(start.getDate())} – ${pad(end.getDate())} ` +
+                `${pad(start.getDate())} â€“ ${pad(end.getDate())} ` +
                 (sm === em ? sm : `${sm} / ${em}`);
             monthEl.textContent =
                 selectedDate.toLocaleString(undefined, { month: 'long', year: 'numeric' });
         }
 
-        // ── Build 13-column strip ─────────────────────────────────
+        // â”€â”€ Build 13-column strip â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
         function buildWeek() {
             weekEl.innerHTML = '';
 
@@ -1200,7 +1200,7 @@ document.addEventListener('DOMContentLoaded', () => {
             setTx(restTx()); // show center 7 immediately, no animation
         }
 
-        // ── Slide animation helper (nav buttons) ──────────────────
+        // â”€â”€ Slide animation helper (nav buttons) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
         function slideNav(direction) {
             // direction: +1 = enter from right (prev), -1 = enter from left (next)
             setTx(restTx() + direction * sw);
@@ -1209,7 +1209,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }));
         }
 
-        // ── Nav buttons ───────────────────────────────────────────
+        // â”€â”€ Nav buttons â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
         if (prevBtn) {
             prevBtn.addEventListener('click', () => {
                 selectedDate = addDays(selectedDate, -1);
@@ -1226,7 +1226,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        // ── Drag ──────────────────────────────────────────────────
+        // â”€â”€ Drag â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
         function onStart(x) {
             dragging = true;
             startX = x;
@@ -1262,11 +1262,11 @@ document.addEventListener('DOMContentLoaded', () => {
             setTx(restTx() - days * sw, true);
             afterTransition(() => {
                 if (days !== 0) selectedDate = addDays(selectedDate, days);
-                buildWeek(); // re-renders at restTx — invisible cut
+                buildWeek(); // re-renders at restTx â€” invisible cut
             });
         }
 
-        // ── Event listeners ───────────────────────────────────────
+        // â”€â”€ Event listeners â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
         wrapEl.addEventListener('mousedown', e => { e.preventDefault(); onStart(e.clientX); });
         window.addEventListener('mousemove', e => onMove(e.clientX));
         window.addEventListener('mouseup', e => onEnd(e.clientX));
@@ -1329,7 +1329,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const value = range.value;
             const percent = (value / max) * 100;
 
-            output.textContent = '£' + value;
+            output.textContent = 'Â£' + value;
             output.style.left = percent + '%';
             inclRange.style.width = percent + '%';
         }
