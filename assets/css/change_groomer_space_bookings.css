@@ -155,10 +155,10 @@ body.change-space {
 }
 
 .cb-update-section {
-    background: #ffffff;
-    border: 1px solid #d4d4d4;
-    border-radius: 10px;
-    padding: 30px;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    padding: 0;
     margin-top: 2rem;
 }
 
@@ -171,6 +171,14 @@ body.change-space {
     font-weight: 800;
     line-height: normal;
     margin-top: -0.9rem;
+}
+
+/* Date & Time editor — same bordered card as Extras when open */
+#datetime-editor {
+    background: #ffffff;
+    border: 1px solid #d4d4d4;
+    border-radius: 10px;
+    padding: 30px;
 }
 
 .cb-selection-container {
@@ -573,6 +581,31 @@ body.change-space {
     border-radius: 96px;
     background: #FFC97A;
     box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.10);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.cb-btn-filled.is-disabled,
+.cb-btn-filled[aria-disabled="true"] {
+    background: #EAE8E5;
+    color: #9D9B98;
+    box-shadow: none;
+    pointer-events: none;
+    cursor: not-allowed;
+}
+
+.cb-panel-summary {
+    display: none;
+}
+
+.cb-panel-summary.is-visible {
+    display: flex;
+}
+
+.cb-panel-editor.is-hidden {
+    display: none !important;
 }
 
 .cb-extras-addons {

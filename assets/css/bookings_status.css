@@ -1,154 +1,167 @@
 :root {
-    --border-color: #D8E8B7;
-    --bg-color: #FFEDED;
+  --border-color: #d8e8b7;
+  --bg-color: #ffeded;
 }
 
 /* Page-specific bullet color */
 body.status-updated {
-    --border-color: #D8E8B7;
-    --bg-color: #D8E8B7;
+  --border-color: #d8e8b7;
+  --bg-color: #d8e8b7;
 }
 
 body.status-cancel {
-    --border-color: #FF6E6E;
-    --bg-color: #FFEDED;
+  --border-color: #ff6e6e;
+  --bg-color: #ffeded;
 }
 
 body.cancelled-booking {
-    --border-color: #BABABA;
-    --bg-color: #FAFAFA;
+  --border-color: #bababa;
+  --bg-color: #fafafa;
 }
 
 .bg-color {
-    background-color: var(--bg-color) !important;
+  background-color: var(--bg-color) !important;
 }
 
 .color {
-    color: var(--border-color) !important;
+  color: var(--border-color) !important;
 }
 
 .top-head.d-flex.align-items-center.justify-content-center {
-    padding: 25px 50px;
-    border-radius: 10px;
-    background: #F8F8F8;
+  padding: 25px 50px;
+  border-radius: 10px;
+  background: #f8f8f8;
 }
 
 .booking-cards {
-    width: 610px;
-    height: auto;
-    border-radius: 10px;
-    border: 1px solid var(--border-color);
-    background: #FFF;
+  width: 610px;
+  height: auto;
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+  background: #fff;
 }
 
 .booking-card-top {
-    /* width: 610px; */
-    height: 68px;
-    border-radius: 10px 10px 0 0;
-    border-bottom: 1px solid var(--border-color);
-    background: #F5F9ED;
-    padding: 30px;
+  /* width: 610px; */
+  height: 68px;
+  border-radius: 10px 10px 0 0;
+  border-bottom: 1px solid var(--border-color);
+  background: #f5f9ed;
+  padding: 30px;
 }
 
 .booking-card-bottom-section {
-    padding: 30px;
+  padding: 30px;
 }
 
 .tag {
-    background: #FFC97A;
-    border: 1px solid rgba(246, 168, 127, 0.15);
-    color: #FFF;
-    padding: 6px 10px;
-    border-radius: 999px;
-    text-align: center;
-    font-family: "Lato";
-    font-size: 14px;
-    font-weight: 400;
+  background: #ffc97a;
+  border: 1px solid rgba(246, 168, 127, 0.15);
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 999px;
+  text-align: center;
+  font-family: "Lato";
+  font-size: 14px;
+  font-weight: 400;
 
-    display: inline-block;
+  display: inline-block;
 
-    min-width: 80px;
-    max-width: 100%;
-    width: fit-content;
+  min-width: 80px;
+  max-width: 100%;
+  width: fit-content;
 }
 
 .vertical-line {
-    width: 1px;
-    height: 54px;
-    background: #ccc;
-    border: none;
-    margin: 0;
+  width: 1px;
+  height: 54px;
+  background: #ccc;
+  border: none;
+  margin: 0;
 }
 
 .no-border {
-    border: none !important;
-    background: #F2F6F9;
+  border: none !important;
+  background: #f2f6f9;
 }
 
 .list-style-default {
-    list-style: disc;
-    /* or 'circle' / 'square' depending on bullet type */
-    padding-left: 20px;
-    /* controls spacing from the edge */
-    margin-left: 12px;
-    /* optional, adjust spacing around list */
+  list-style: disc;
+  /* or 'circle' / 'square' depending on bullet type */
+  padding-left: 20px;
+  /* controls spacing from the edge */
+  margin-left: 12px;
+  /* optional, adjust spacing around list */
 }
 
 .footer-buttons .btn-custom {
-    width: 295px;
-    height: 48px;
+  width: 295px;
+  height: 48px;
 }
 
 .green-btn {
-    background: #C9DDA0;
-    border: none;
-    color: #fff;
+  background: #c9dda0;
+  border: none;
+  color: #fff;
 }
 
 .blue-btn {
-    background: #CBDCE8;
-    border: none;
-    color: #fff;
+  background: #cbdce8;
+  border: none;
+  color: #fff;
 }
 
 .cb-back-btn {
-    background: none;
-    border: 1px solid #3b3731;
-    border-radius: 50px;
-    padding: 15px 25px;
-    cursor: pointer;
-    color: #3b3731;
-    text-align: center;
-    font-family: Lato;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: fit-content;
-    gap: 6px;
+  background: none;
+  border: 1px solid #3b3731;
+  border-radius: 50px;
+  padding: 15px 25px;
+  cursor: pointer;
+  color: #3b3731;
+  text-align: center;
+  font-family: Lato;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  gap: 6px;
 }
 
 .cancel-policy.mt-5 {
-    border-radius: 10px;
-    border: 1px solid #FF6E6E;
-    background: #FFEDED;
-    padding: 25px;
+  border-radius: 10px;
+  border: 1px solid #ff6e6e;
+  background: #ffeded;
+  padding: 25px;
 }
 
 .cancel-policy h3,
 .cancel-policy ul {
-    color: #FF6E6E;
+  color: #ff6e6e;
 }
 
 .keep-my-booking-btn {
-    width: 212px !important;
+  width: 212px !important;
+  padding: 14px 35px;
+  font-family: Lato;
+  color: var(--font-color);
+  border: none;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+  border-radius: 75px;
+  border: 1px solid #d4d4d4;
+  background: #fdfdfd;
 }
 
 .cancel-my-booking-btn {
-    width: auto !important;
-    border-radius: 75px;
-    background: #FF6E6E;
+  width: auto !important;
+  border-radius: 75px;
+  background: #ff6e6e;
 }

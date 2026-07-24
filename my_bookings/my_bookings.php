@@ -408,35 +408,37 @@
 
                                 <div class="fs-14-500-f-color sort-by">
                                     Sort
-                                    <img src="/assets/icons/filter-arrow-down.svg" class="arrow" alt="">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="13" height="7" viewBox="0 0 13 7" fill="none">
+                                        <path d="M11.9102 0.5L6.15672 6.25344L0.499867 0.596581" stroke="#FBAC83" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
 
                                     <div class="sort-dropdown">
                                         <ul>
                                             <li>
                                                 <label>
-                                                    <span>Recommended (default)</span>
-                                                    <input type="radio" name="sort" checked>
+                                                    <span class="option-text">Recommended (default)</span>
+                                                    <input type="radio" name="sort" value="recommended" checked>
                                                     <span class="check-circle"></span>
                                                 </label>
                                             </li>
                                             <li>
                                                 <label>
-                                                    <span>Distance</span>
-                                                    <input type="radio" name="sort">
+                                                    <span class="option-text">Distance</span>
+                                                    <input type="radio" name="sort" value="distance">
                                                     <span class="check-circle"></span>
                                                 </label>
                                             </li>
                                             <li>
                                                 <label>
-                                                    <span>Lowest price</span>
-                                                    <input type="radio" name="sort">
+                                                    <span class="option-text">Lowest price</span>
+                                                    <input type="radio" name="sort" value="lowest_price">
                                                     <span class="check-circle"></span>
                                                 </label>
                                             </li>
                                             <li>
                                                 <label>
-                                                    <span>Soonest available</span>
-                                                    <input type="radio" name="sort">
+                                                    <span class="option-text">Soonest available</span>
+                                                    <input type="radio" name="sort" value="soonest_available">
                                                     <span class="check-circle"></span>
                                                 </label>
                                             </li>
@@ -447,16 +449,7 @@
                         </div>
 
 
-                        <div class="chips-container">
-                            <div class="chip light-color-font d-flex align-items-center gap-10 close cursor">Most Recent <span><svg xmlns="http://www.w3.org/2000/svg" width="9"
-                                        height="9" viewBox="0 0 9 9" fill="none">
-                                        <path d="M0.5 7.57L7.572 0.5M0.5 0.5L7.572 7.57" stroke="#FBAC83" stroke-linecap="round" />
-                                    </svg></span></div>
-                            <div class="chip light-color-font d-flex align-items-center gap-10 close cursor">2 Feb - 4 Mar <span><svg xmlns="http://www.w3.org/2000/svg" width="9"
-                                        height="9" viewBox="0 0 9 9" fill="none">
-                                        <path d="M0.5 7.57L7.572 0.5M0.5 0.5L7.572 7.57" stroke="#FBAC83" stroke-linecap="round" />
-                                    </svg></span></div>
-                        </div>
+                        <div class="chips-container"></div>
 
                     </div>
 
@@ -813,7 +806,7 @@
 
                                                             <div class="card-actions d-flex justify-content-center gap-20 mt-5">
                                                                 <a href="<?= BASE_URL ?>/my_bookings/change_groomer_booking.php" class="btn-outline medium-light-font text-center">Change Booking</a>
-                                                                <button class="btn-green medium-light-font">Message Groomer</button>
+                                                                <a href="<?= BASE_URL ?>messages_notification/messages.php" class="btn-green text-center medium-light-font">Message Groomer</a>
                                                             </div>
 
 
@@ -822,10 +815,10 @@
                                                 </div>
                                                 <div class="booking-footer d-flex align-items-center justify-content-between mt-5">
                                                     <div class="cancel-policy">
-                                                        <a href="#">Cancel Booking</a>
+                                                        <a href="<?= BASE_URL ?>my_bookings/cancelled_bookings.php">Cancel Booking</a>
                                                         <p class="normal-light-color-font mt-2">Free cancellations up to 24 hours before appointment.</p>
                                                     </div>
-                                                    <a href="#" class="view-policy">View cancellation policy</a>
+                                                    <a href="<?= BASE_URL ?>profile_pets_preferences/company_information.php#tab-terms-conditions" class="view-policy">View cancellation policy</a>
                                                 </div>
 
                                                 <div class="help-text d-flex align-items-center justify-content-center gap-10 mt-5 mb-5">
@@ -836,7 +829,7 @@
                                                         <div>
                                                             <p class="medium-light-font ">
                                                                 Need help? Chat with
-                                                                <a class="view-policy" style="font-weight:600" href="#">Fursgo Support</a>.
+                                                                <a class="view-policy" style="font-weight:600" href="#" data-open-chat>Fursgo Support</a>.
                                                             </p>
                                                         </div>
                                                     </div>
@@ -1267,7 +1260,7 @@
 
                                                         <div class="card-actions d-flex justify-content-center gap-20 mt-5">
                                                             <a href="<?= BASE_URL ?>/my_bookings/change_space_booking.php" class="btn-outline medium-light-font text-center">Change Booking</a>
-                                                            <button class="btn-green medium-light-font">Message Host</button>
+                                                            <a href="<?= BASE_URL ?>messages_notification/messages.php" class="btn-green text-center medium-light-font">Message Host</a>
                                                         </div>
 
 
@@ -1279,10 +1272,10 @@
 
                                         <div class="booking-footer">
                                             <div class="cancel-policy">
-                                                <a href="#">Cancel Booking</a>
+                                                <a href="<?= BASE_URL ?>my_bookings/cancelled_bookings.php">Cancel Booking</a>
                                                 <p>Free cancellations up to 24 hours before appointment.</p>
                                             </div>
-                                            <a href="#" class="view-policy">View cancellation policy</a>
+                                            <a href="<?= BASE_URL ?>profile_pets_preferences/company_information.php#tab-terms-conditions" class="view-policy">View cancellation policy</a>
                                         </div>
 
                                         <div class="help-text d-flex align-items-center justify-content-center gap-10 mt-5">
@@ -1290,7 +1283,7 @@
                                                 <path
                                                     d="M3.08333 13.875C1.3875 13.875 0 12.4875 0 10.7917V3.08333C0 1.3875 1.3875 0 3.08333 0H15.4167C17.1125 0 18.5 1.3875 18.5 3.08333V10.7917C18.5 12.4875 17.1125 13.875 15.4167 13.875H12.3333V18.5L7.70833 13.875H3.08333ZM30.8333 23.125C32.5292 23.125 33.9167 21.7375 33.9167 20.0417V12.3333C33.9167 10.6375 32.5292 9.25 30.8333 9.25H21.5833V10.7917C21.5833 14.1833 18.8083 16.9583 15.4167 16.9583V20.0417C15.4167 21.7375 16.8042 23.125 18.5 23.125H21.5833V27.75L26.2083 23.125H30.8333Z"
                                                     fill="#D8E8B7" />
-                                            </svg> Need help? Chat with<a href="#">Fursgo Support</a>.
+                                            </svg> Need help? Chat with <a class="view-policy" style="font-weight:600" href="#" data-open-chat>Fursgo Support</a>.
                                         </div>
                                     </div>
                                 </div>
@@ -1410,12 +1403,14 @@
                                             <rect width="48" height="48" rx="24" fill="#D4D4D4" />
                                             <path d="M33.4955 23.7425C33.8911 24.1343 33.8906 24.7738 33.4942 25.1649L28.4257 30.1665C28.0359 30.5512 27.4078 30.5461 27.0242 30.1552C26.8723 30.0053 26.8115 29.8554 26.8419 29.7055C26.8799 29.5555 26.9634 29.4131 27.0926 29.2782L30.3629 26.0735C30.5452 25.8936 30.7161 25.7324 30.8756 25.59C31.0019 25.4772 30.9047 25.2517 30.7362 25.2687C30.5411 25.2885 30.3407 25.3056 30.135 25.3201C29.7172 25.3501 29.2842 25.3651 28.836 25.3651H14.9164C14.4103 25.3651 14 24.9548 14 24.4487C14 23.9426 14.4103 23.5323 14.9164 23.5323H28.836C29.2842 23.5323 29.721 23.5473 30.1464 23.5772C30.3491 23.5915 30.5466 23.6084 30.7389 23.6278C30.9098 23.645 31.0063 23.4188 30.8756 23.3074C30.7161 23.1649 30.5452 23.0038 30.3629 22.8239L27.0698 19.5967C26.933 19.4618 26.8495 19.3193 26.8191 19.1694C26.7887 19.0195 26.8457 18.8696 26.99 18.7196C27.3781 18.3243 28.0165 18.3169 28.4101 18.7067L33.4955 23.7425Z" fill="white" />
                                         </svg>
-                                        <svg class="cursor" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
-                                            <rect width="48" height="48" rx="24" fill="#D4D4D4" />
-                                            <path d="M16.3081 33.994V30.1499H20.1519" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                                            <path d="M33.8208 22.1634C34.2286 24.3394 33.9025 26.5892 32.8935 28.5598C31.8846 30.5304 30.25 32.11 28.2462 33.052C26.2423 33.993 23.9827 34.242 21.8219 33.761C19.661 33.279 17.7212 32.093 16.3068 30.3903M14.1711 25.8366C13.7632 23.6606 14.0894 21.4108 15.0983 19.4402C16.1072 17.4696 17.7419 15.8897 19.7457 14.9484C21.7495 14.0071 24.0091 13.7578 26.17 14.2394C28.3309 14.7211 30.2707 15.9065 31.685 17.6097" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                                            <path d="M31.6834 14.0063V17.8501H27.8396M19.4856 24.5178C18.9416 24.4233 18.9416 23.6421 19.4856 23.5476C20.4486 23.3791 21.3396 22.9282 22.0456 22.252C22.7516 21.5759 23.2405 20.7051 23.4503 19.7503L23.4829 19.6C23.6007 19.0621 24.3663 19.059 24.4887 19.5953L24.529 19.7704C24.7455 20.7215 25.2385 21.5873 25.9459 22.2588C26.6533 22.9304 27.5435 23.3777 28.5046 23.5445C29.0517 23.639 29.0517 24.4248 28.5046 24.5209C27.5437 24.6876 26.6536 25.1347 25.9463 25.8059C25.2389 26.4772 24.7458 27.3426 24.529 28.2934L24.4887 28.467C24.3663 29.0032 23.6007 29.0001 23.4829 28.4623L23.4519 28.3135C23.2419 27.3584 22.7525 26.4872 22.0459 25.811C21.3393 25.1348 20.4476 24.6841 19.4841 24.5163" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                                        </svg>
+                                        <a href="<?= BASE_URL ?>profiles/groomer/groomer_profile.php">
+                                            <svg class="cursor" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+                                                <rect width="48" height="48" rx="24" fill="#D4D4D4" />
+                                                <path d="M16.3081 33.994V30.1499H20.1519" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                                <path d="M33.8208 22.1634C34.2286 24.3394 33.9025 26.5892 32.8935 28.5598C31.8846 30.5304 30.25 32.11 28.2462 33.052C26.2423 33.993 23.9827 34.242 21.8219 33.761C19.661 33.279 17.7212 32.093 16.3068 30.3903M14.1711 25.8366C13.7632 23.6606 14.0894 21.4108 15.0983 19.4402C16.1072 17.4696 17.7419 15.8897 19.7457 14.9484C21.7495 14.0071 24.0091 13.7578 26.17 14.2394C28.3309 14.7211 30.2707 15.9065 31.685 17.6097" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                                <path d="M31.6834 14.0063V17.8501H27.8396M19.4856 24.5178C18.9416 24.4233 18.9416 23.6421 19.4856 23.5476C20.4486 23.3791 21.3396 22.9282 22.0456 22.252C22.7516 21.5759 23.2405 20.7051 23.4503 19.7503L23.4829 19.6C23.6007 19.0621 24.3663 19.059 24.4887 19.5953L24.529 19.7704C24.7455 20.7215 25.2385 21.5873 25.9459 22.2588C26.6533 22.9304 27.5435 23.3777 28.5046 23.5445C29.0517 23.639 29.0517 24.4248 28.5046 24.5209C27.5437 24.6876 26.6536 25.1347 25.9463 25.8059C25.2389 26.4772 24.7458 27.3426 24.529 28.2934L24.4887 28.467C24.3663 29.0032 23.6007 29.0001 23.4829 28.4623L23.4519 28.3135C23.2419 27.3584 22.7525 26.4872 22.0459 25.811C21.3393 25.1348 20.4476 24.6841 19.4841 24.5163" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+                                        </a>
                                     </div>
                                 </div>
 
@@ -1519,12 +1514,14 @@
                                             <rect width="48" height="48" rx="24" fill="#FF6E6E" />
                                             <path d="M33.4955 23.7425C33.8911 24.1343 33.8906 24.7738 33.4942 25.1649L28.4257 30.1665C28.0359 30.5512 27.4078 30.5461 27.0242 30.1552C26.8723 30.0053 26.8115 29.8554 26.8419 29.7055C26.8799 29.5555 26.9634 29.4131 27.0926 29.2782L30.3629 26.0735C30.5452 25.8936 30.7161 25.7324 30.8756 25.59C31.0019 25.4772 30.9047 25.2517 30.7362 25.2687C30.5411 25.2885 30.3407 25.3056 30.135 25.3201C29.7172 25.3501 29.2842 25.3651 28.836 25.3651H14.9164C14.4103 25.3651 14 24.9548 14 24.4487C14 23.9426 14.4103 23.5323 14.9164 23.5323H28.836C29.2842 23.5323 29.721 23.5473 30.1464 23.5772C30.3491 23.5915 30.5466 23.6084 30.7389 23.6278C30.9098 23.645 31.0063 23.4188 30.8756 23.3074C30.7161 23.1649 30.5452 23.0038 30.3629 22.8239L27.0698 19.5967C26.933 19.4618 26.8495 19.3193 26.8191 19.1694C26.7887 19.0195 26.8457 18.8696 26.99 18.7196C27.3781 18.3243 28.0165 18.3169 28.4101 18.7067L33.4955 23.7425Z" fill="white" />
                                         </svg>
-                                        <svg class="cursor" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
-                                            <rect width="48" height="48" rx="24" fill="#FF6E6E" />
-                                            <path d="M16.3081 33.994V30.1499H20.1519" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                                            <path d="M33.8208 22.1634C34.2286 24.3394 33.9025 26.5892 32.8935 28.5598C31.8846 30.5304 30.25 32.11 28.2462 33.052C26.2423 33.993 23.9827 34.242 21.8219 33.761C19.661 33.279 17.7212 32.093 16.3068 30.3903M14.1711 25.8366C13.7632 23.6606 14.0894 21.4108 15.0983 19.4402C16.1072 17.4696 17.7419 15.8897 19.7457 14.9484C21.7495 14.0071 24.0091 13.7578 26.17 14.2394C28.3309 14.7211 30.2707 15.9065 31.685 17.6097" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                                            <path d="M31.6834 14.0063V17.8501H27.8396M19.4856 24.5178C18.9416 24.4233 18.9416 23.6421 19.4856 23.5476C20.4486 23.3791 21.3396 22.9282 22.0456 22.252C22.7516 21.5759 23.2405 20.7051 23.4503 19.7503L23.4829 19.6C23.6007 19.0621 24.3663 19.059 24.4887 19.5953L24.529 19.7704C24.7455 20.7215 25.2385 21.5873 25.9459 22.2588C26.6533 22.9304 27.5435 23.3777 28.5046 23.5445C29.0517 23.639 29.0517 24.4248 28.5046 24.5209C27.5437 24.6876 26.6536 25.1347 25.9463 25.8059C25.2389 26.4772 24.7458 27.3426 24.529 28.2934L24.4887 28.467C24.3663 29.0032 23.6007 29.0001 23.4829 28.4623L23.4519 28.3135C23.2419 27.3584 22.7525 26.4872 22.0459 25.811C21.3393 25.1348 20.4476 24.6841 19.4841 24.5163" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                                        </svg>
+                                        <a href="<?= BASE_URL ?>profiles/space/space_profile.php">
+                                            <svg class="cursor" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+                                                <rect width="48" height="48" rx="24" fill="#FF6E6E" />
+                                                <path d="M16.3081 33.994V30.1499H20.1519" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                                <path d="M33.8208 22.1634C34.2286 24.3394 33.9025 26.5892 32.8935 28.5598C31.8846 30.5304 30.25 32.11 28.2462 33.052C26.2423 33.993 23.9827 34.242 21.8219 33.761C19.661 33.279 17.7212 32.093 16.3068 30.3903M14.1711 25.8366C13.7632 23.6606 14.0894 21.4108 15.0983 19.4402C16.1072 17.4696 17.7419 15.8897 19.7457 14.9484C21.7495 14.0071 24.0091 13.7578 26.17 14.2394C28.3309 14.7211 30.2707 15.9065 31.685 17.6097" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                                <path d="M31.6834 14.0063V17.8501H27.8396M19.4856 24.5178C18.9416 24.4233 18.9416 23.6421 19.4856 23.5476C20.4486 23.3791 21.3396 22.9282 22.0456 22.252C22.7516 21.5759 23.2405 20.7051 23.4503 19.7503L23.4829 19.6C23.6007 19.0621 24.3663 19.059 24.4887 19.5953L24.529 19.7704C24.7455 20.7215 25.2385 21.5873 25.9459 22.2588C26.6533 22.9304 27.5435 23.3777 28.5046 23.5445C29.0517 23.639 29.0517 24.4248 28.5046 24.5209C27.5437 24.6876 26.6536 25.1347 25.9463 25.8059C25.2389 26.4772 24.7458 27.3426 24.529 28.2934L24.4887 28.467C24.3663 29.0032 23.6007 29.0001 23.4829 28.4623L23.4519 28.3135C23.2419 27.3584 22.7525 26.4872 22.0459 25.811C21.3393 25.1348 20.4476 24.6841 19.4841 24.5163" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+                                        </a>
                                     </div>
                                 </div>
 
@@ -1644,12 +1641,14 @@
                                             <path d="M33.4955 23.7425C33.8911 24.1343 33.8906 24.7738 33.4942 25.1649L28.4257 30.1665C28.0359 30.5512 27.4078 30.5461 27.0242 30.1552C26.8723 30.0053 26.8115 29.8554 26.8419 29.7055C26.8799 29.5555 26.9634 29.4131 27.0926 29.2782L30.3629 26.0735C30.5452 25.8936 30.7161 25.7324 30.8756 25.59C31.0019 25.4772 30.9047 25.2517 30.7362 25.2687C30.5411 25.2885 30.3407 25.3056 30.135 25.3201C29.7172 25.3501 29.2842 25.3651 28.836 25.3651H14.9164C14.4103 25.3651 14 24.9548 14 24.4487C14 23.9426 14.4103 23.5323 14.9164 23.5323H28.836C29.2842 23.5323 29.721 23.5473 30.1464 23.5772C30.3491 23.5915 30.5466 23.6084 30.7389 23.6278C30.9098 23.645 31.0063 23.4188 30.8756 23.3074C30.7161 23.1649 30.5452 23.0038 30.3629 22.8239L27.0698 19.5967C26.933 19.4618 26.8495 19.3193 26.8191 19.1694C26.7887 19.0195 26.8457 18.8696 26.99 18.7196C27.3781 18.3243 28.0165 18.3169 28.4101 18.7067L33.4955 23.7425Z" fill="white" />
                                         </svg>
 
-                                        <svg class="cursor" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
-                                            <rect width="48" height="48" rx="24" fill="#D4D4D4" />
-                                            <path d="M16.3081 33.994V30.1499H20.1519" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                                            <path d="M33.8208 22.1634C34.2286 24.3394 33.9025 26.5892 32.8935 28.5598C31.8846 30.5304 30.25 32.11 28.2462 33.052C26.2423 33.993 23.9827 34.242 21.8219 33.761C19.661 33.279 17.7212 32.093 16.3068 30.3903M14.1711 25.8366C13.7632 23.6606 14.0894 21.4108 15.0983 19.4402C16.1072 17.4696 17.7419 15.8897 19.7457 14.9484C21.7495 14.0071 24.0091 13.7578 26.17 14.2394C28.3309 14.7211 30.2707 15.9065 31.685 17.6097" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                                            <path d="M31.6834 14.0063V17.8501H27.8396M19.4856 24.5178C18.9416 24.4233 18.9416 23.6421 19.4856 23.5476C20.4486 23.3791 21.3396 22.9282 22.0456 22.252C22.7516 21.5759 23.2405 20.7051 23.4503 19.7503L23.4829 19.6C23.6007 19.0621 24.3663 19.059 24.4887 19.5953L24.529 19.7704C24.7455 20.7215 25.2385 21.5873 25.9459 22.2588C26.6533 22.9304 27.5435 23.3777 28.5046 23.5445C29.0517 23.639 29.0517 24.4248 28.5046 24.5209C27.5437 24.6876 26.6536 25.1347 25.9463 25.8059C25.2389 26.4772 24.7458 27.3426 24.529 28.2934L24.4887 28.467C24.3663 29.0032 23.6007 29.0001 23.4829 28.4623L23.4519 28.3135C23.2419 27.3584 22.7525 26.4872 22.0459 25.811C21.3393 25.1348 20.4476 24.6841 19.4841 24.5163" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                                        </svg>
+                                        <a href="<?= BASE_URL ?>profiles/groomer/groomer_profile.php">
+                                            <svg class="cursor" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+                                                <rect width="48" height="48" rx="24" fill="#D4D4D4" />
+                                                <path d="M16.3081 33.994V30.1499H20.1519" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                                <path d="M33.8208 22.1634C34.2286 24.3394 33.9025 26.5892 32.8935 28.5598C31.8846 30.5304 30.25 32.11 28.2462 33.052C26.2423 33.993 23.9827 34.242 21.8219 33.761C19.661 33.279 17.7212 32.093 16.3068 30.3903M14.1711 25.8366C13.7632 23.6606 14.0894 21.4108 15.0983 19.4402C16.1072 17.4696 17.7419 15.8897 19.7457 14.9484C21.7495 14.0071 24.0091 13.7578 26.17 14.2394C28.3309 14.7211 30.2707 15.9065 31.685 17.6097" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                                <path d="M31.6834 14.0063V17.8501H27.8396M19.4856 24.5178C18.9416 24.4233 18.9416 23.6421 19.4856 23.5476C20.4486 23.3791 21.3396 22.9282 22.0456 22.252C22.7516 21.5759 23.2405 20.7051 23.4503 19.7503L23.4829 19.6C23.6007 19.0621 24.3663 19.059 24.4887 19.5953L24.529 19.7704C24.7455 20.7215 25.2385 21.5873 25.9459 22.2588C26.6533 22.9304 27.5435 23.3777 28.5046 23.5445C29.0517 23.639 29.0517 24.4248 28.5046 24.5209C27.5437 24.6876 26.6536 25.1347 25.9463 25.8059C25.2389 26.4772 24.7458 27.3426 24.529 28.2934L24.4887 28.467C24.3663 29.0032 23.6007 29.0001 23.4829 28.4623L23.4519 28.3135C23.2419 27.3584 22.7525 26.4872 22.0459 25.811C21.3393 25.1348 20.4476 24.6841 19.4841 24.5163" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+                                        </a>
                                     </div>
                                 </div>
 
@@ -1753,12 +1752,14 @@
                                             <rect width="48" height="48" rx="24" fill="#FF6E6E" />
                                             <path d="M33.4955 23.7425C33.8911 24.1343 33.8906 24.7738 33.4942 25.1649L28.4257 30.1665C28.0359 30.5512 27.4078 30.5461 27.0242 30.1552C26.8723 30.0053 26.8115 29.8554 26.8419 29.7055C26.8799 29.5555 26.9634 29.4131 27.0926 29.2782L30.3629 26.0735C30.5452 25.8936 30.7161 25.7324 30.8756 25.59C31.0019 25.4772 30.9047 25.2517 30.7362 25.2687C30.5411 25.2885 30.3407 25.3056 30.135 25.3201C29.7172 25.3501 29.2842 25.3651 28.836 25.3651H14.9164C14.4103 25.3651 14 24.9548 14 24.4487C14 23.9426 14.4103 23.5323 14.9164 23.5323H28.836C29.2842 23.5323 29.721 23.5473 30.1464 23.5772C30.3491 23.5915 30.5466 23.6084 30.7389 23.6278C30.9098 23.645 31.0063 23.4188 30.8756 23.3074C30.7161 23.1649 30.5452 23.0038 30.3629 22.8239L27.0698 19.5967C26.933 19.4618 26.8495 19.3193 26.8191 19.1694C26.7887 19.0195 26.8457 18.8696 26.99 18.7196C27.3781 18.3243 28.0165 18.3169 28.4101 18.7067L33.4955 23.7425Z" fill="white" />
                                         </svg>
-                                        <svg class="cursor" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
-                                            <rect width="48" height="48" rx="24" fill="#FF6E6E" />
-                                            <path d="M16.3081 33.994V30.1499H20.1519" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                                            <path d="M33.8208 22.1634C34.2286 24.3394 33.9025 26.5892 32.8935 28.5598C31.8846 30.5304 30.25 32.11 28.2462 33.052C26.2423 33.993 23.9827 34.242 21.8219 33.761C19.661 33.279 17.7212 32.093 16.3068 30.3903M14.1711 25.8366C13.7632 23.6606 14.0894 21.4108 15.0983 19.4402C16.1072 17.4696 17.7419 15.8897 19.7457 14.9484C21.7495 14.0071 24.0091 13.7578 26.17 14.2394C28.3309 14.7211 30.2707 15.9065 31.685 17.6097" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                                            <path d="M31.6834 14.0063V17.8501H27.8396M19.4856 24.5178C18.9416 24.4233 18.9416 23.6421 19.4856 23.5476C20.4486 23.3791 21.3396 22.9282 22.0456 22.252C22.7516 21.5759 23.2405 20.7051 23.4503 19.7503L23.4829 19.6C23.6007 19.0621 24.3663 19.059 24.4887 19.5953L24.529 19.7704C24.7455 20.7215 25.2385 21.5873 25.9459 22.2588C26.6533 22.9304 27.5435 23.3777 28.5046 23.5445C29.0517 23.639 29.0517 24.4248 28.5046 24.5209C27.5437 24.6876 26.6536 25.1347 25.9463 25.8059C25.2389 26.4772 24.7458 27.3426 24.529 28.2934L24.4887 28.467C24.3663 29.0032 23.6007 29.0001 23.4829 28.4623L23.4519 28.3135C23.2419 27.3584 22.7525 26.4872 22.0459 25.811C21.3393 25.1348 20.4476 24.6841 19.4841 24.5163" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                                        </svg>
+                                        <a href="<?= BASE_URL ?>profiles/space/space_profile.php">
+                                            <svg class="cursor" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+                                                <rect width="48" height="48" rx="24" fill="#FF6E6E" />
+                                                <path d="M16.3081 33.994V30.1499H20.1519" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                                <path d="M33.8208 22.1634C34.2286 24.3394 33.9025 26.5892 32.8935 28.5598C31.8846 30.5304 30.25 32.11 28.2462 33.052C26.2423 33.993 23.9827 34.242 21.8219 33.761C19.661 33.279 17.7212 32.093 16.3068 30.3903M14.1711 25.8366C13.7632 23.6606 14.0894 21.4108 15.0983 19.4402C16.1072 17.4696 17.7419 15.8897 19.7457 14.9484C21.7495 14.0071 24.0091 13.7578 26.17 14.2394C28.3309 14.7211 30.2707 15.9065 31.685 17.6097" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                                <path d="M31.6834 14.0063V17.8501H27.8396M19.4856 24.5178C18.9416 24.4233 18.9416 23.6421 19.4856 23.5476C20.4486 23.3791 21.3396 22.9282 22.0456 22.252C22.7516 21.5759 23.2405 20.7051 23.4503 19.7503L23.4829 19.6C23.6007 19.0621 24.3663 19.059 24.4887 19.5953L24.529 19.7704C24.7455 20.7215 25.2385 21.5873 25.9459 22.2588C26.6533 22.9304 27.5435 23.3777 28.5046 23.5445C29.0517 23.639 29.0517 24.4248 28.5046 24.5209C27.5437 24.6876 26.6536 25.1347 25.9463 25.8059C25.2389 26.4772 24.7458 27.3426 24.529 28.2934L24.4887 28.467C24.3663 29.0032 23.6007 29.0001 23.4829 28.4623L23.4519 28.3135C23.2419 27.3584 22.7525 26.4872 22.0459 25.811C21.3393 25.1348 20.4476 24.6841 19.4841 24.5163" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+                                        </a>
                                     </div>
                                 </div>
 
@@ -2273,8 +2274,171 @@
         </div>
     </div>
 
+    <?php include '../components/chatbot_modal.php' ?>
     <?php include '../components/footer.php' ?>
     <script src="<?= BASE_URL ?>/assets/js/common.js"></script>
+    <script>
+        // Open / close the FursGo chat bot
+        document.addEventListener('DOMContentLoaded', function() {
+            const panel = document.getElementById('chat-panel');
+            const chatBtn = document.getElementById('chat-btn');
+            const openIcon = document.getElementById('chat-open-icon');
+            const closeIcon = document.getElementById('chat-close-icon');
+
+            if (!panel || !chatBtn) return;
+
+            function openChat(e) {
+                if (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                }
+
+                panel.classList.add('open');
+                document.body.classList.add('chat-open');
+                openIcon.style.display = 'none';
+                closeIcon.style.display = 'block';
+            }
+
+            function closeChat() {
+                panel.classList.remove('open');
+                document.body.classList.remove('chat-open');
+                openIcon.style.display = 'block';
+                closeIcon.style.display = 'none';
+            }
+
+            // Floating chat button (bottom left)
+            chatBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+
+                if (panel.classList.contains('open')) {
+                    closeChat();
+                } else {
+                    openChat();
+                }
+            });
+
+            // "Fursgo Support" links on booking cards
+            document.querySelectorAll('[data-open-chat]').forEach(function(link) {
+                link.addEventListener('click', openChat);
+            });
+
+            // Click outside the panel to close
+            document.addEventListener('click', function(e) {
+                if (!panel.contains(e.target) && !chatBtn.contains(e.target)) {
+                    closeChat();
+                }
+            });
+        });
+    </script>
+    <script>
+        // Chat bot rating stars
+        document.addEventListener('DOMContentLoaded', function() {
+            const stars = document.querySelectorAll('.fs-star');
+            const ratingInput = document.getElementById('ratingValue');
+            let selectedRating = 0;
+
+            function updateStars(rating) {
+                stars.forEach(function(star) {
+                    const value = parseInt(star.dataset.value);
+
+                    if (value <= rating) {
+                        star.classList.add('active');
+                    } else {
+                        star.classList.remove('active');
+                    }
+                });
+            }
+
+            stars.forEach(function(star) {
+                // Click to select rating
+                star.addEventListener('click', function() {
+                    selectedRating = parseInt(this.dataset.value);
+                    if (ratingInput) ratingInput.value = selectedRating;
+                    updateStars(selectedRating);
+                });
+
+                // Hover preview
+                star.addEventListener('mouseover', function() {
+                    updateStars(parseInt(this.dataset.value));
+                });
+
+                // Reset to selected rating when mouse leaves
+                star.addEventListener('mouseout', function() {
+                    updateStars(selectedRating);
+                });
+            });
+        });
+    </script>
+    <script>
+        // Chat bot steps — show one card at a time
+        document.addEventListener('DOMContentLoaded', function() {
+            const card1 = document.querySelector('.fs-card-1');
+            const card2 = document.querySelector('.fs-card-2');
+            const card3 = document.querySelector('.fs-card-3');
+            const card4 = document.querySelector('.fs-card-4');
+            const card5 = document.querySelector('.fs-card-5');
+            const card6 = document.querySelector('.fs-card-6');
+
+            const bookingBtn = document.querySelector('.fs-card-1 .fs-menu-item:first-child');
+            const optionButtons = document.querySelectorAll('.fs-card-2 .fs-opt-btn');
+            const submitRequestBtn = document.querySelector('.fs-submit-request');
+            const doneBtn = document.querySelector('.iamdone-btn');
+            const endConversationBtn = document.querySelector('.end-conversation');
+            const backBtns = document.querySelectorAll('.fs-back-arrow');
+
+            let currentStep = 1;
+
+            function showCard(step) {
+                currentStep = step;
+
+                // Hide all cards
+                [card1, card2, card3, card4, card5, card6].forEach(function(card) {
+                    if (card) card.style.display = 'none';
+                });
+
+                // Show only the current step
+                const cards = {
+                    1: card1,
+                    2: card2,
+                    3: card3,
+                    4: card4,
+                    5: card5,
+                    6: card6
+                };
+
+                if (cards[step]) {
+                    cards[step].style.display = 'block';
+                }
+
+                document.querySelectorAll('.fs-card-body').forEach(function(chatBody) {
+                    chatBody.scrollTop = chatBody.scrollHeight;
+                });
+            }
+
+            // Start on step 1
+            showCard(1);
+
+            // Step buttons
+            if (bookingBtn) bookingBtn.addEventListener('click', function() { showCard(2); });
+
+            optionButtons.forEach(function(btn) {
+                btn.addEventListener('click', function() { showCard(3); });
+            });
+
+            if (submitRequestBtn) submitRequestBtn.addEventListener('click', function() { showCard(4); });
+            if (doneBtn) doneBtn.addEventListener('click', function() { showCard(5); });
+            if (endConversationBtn) endConversationBtn.addEventListener('click', function() { showCard(6); });
+
+            // Back arrow — go to previous step
+            backBtns.forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    if (currentStep > 1) {
+                        showCard(currentStep - 1);
+                    }
+                });
+            });
+        });
+    </script>
     <script>
         const tabs = document.querySelectorAll('.tab');
 
@@ -2357,6 +2521,59 @@
             day: 'numeric',
             month: 'long'
         });
+        const fmtShort = d => d.getDate() + ' ' + MONTHS[d.getMonth()];
+        const CHIP_CLOSE_SVG = `<span><svg xmlns="http://www.w3.org/2000/svg" width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M0.5 7.57L7.572 0.5M0.5 0.5L7.572 7.57" stroke="#FBAC83" stroke-linecap="round" /></svg></span>`;
+
+        function getChipsContainer() {
+            return document.querySelector('.chips-container');
+        }
+
+        function createFilterChip(filter, value, label) {
+            const chip = document.createElement('div');
+            chip.className = 'chip light-color-font d-flex align-items-center gap-10 close cursor';
+            chip.dataset.filter = filter;
+            chip.dataset.value = value;
+            chip.innerHTML = `${label} ${CHIP_CLOSE_SVG}`;
+            return chip;
+        }
+
+        function upsertFilterChip(filter, value, label) {
+            const container = getChipsContainer();
+            if (!container) return;
+
+            let chip = container.querySelector(`.chip[data-filter="${filter}"]`);
+            if (!chip) {
+                chip = createFilterChip(filter, value, label);
+                container.appendChild(chip);
+                return;
+            }
+
+            chip.dataset.value = value;
+            chip.innerHTML = `${label} ${CHIP_CLOSE_SVG}`;
+        }
+
+        function removeFilterChip(filter) {
+            const container = getChipsContainer();
+            container?.querySelector(`.chip[data-filter="${filter}"]`)?.remove();
+        }
+
+        function updateDateChip() {
+            if (phase === 'done' && start && end) {
+                upsertFilterChip('date', `${key(start)}_${key(end)}`, `${fmtShort(start)} - ${fmtShort(end)}`);
+            } else {
+                removeFilterChip('date');
+            }
+        }
+
+        function clearDateRange() {
+            start = null;
+            end = null;
+            phase = 'none';
+            hover = null;
+            render();
+            setHint();
+            updateDateChip();
+        }
 
         function setHint() {
             const el = document.getElementById('hint');
@@ -2483,6 +2700,7 @@
 
             render();
             setHint();
+            updateDateChip();
         });
 
         // ── Hover preview ONLY while picking ────────────────────────────────────
@@ -2577,27 +2795,34 @@
 
         const calendarBtn = document.getElementById("toggleCalendar");
         const calendar = document.getElementById("calendarCard");
-
         const sortBtn = document.querySelector(".sort-by");
         const sortDropdown = document.querySelector(".sort-dropdown");
+        const chipsContainer = document.querySelector(".chips-container");
+        const sortRadios = document.querySelectorAll('input[name="sort"]');
+
+        function getSortLabel(radio) {
+            return radio.closest('label')?.querySelector('.option-text')?.textContent.trim() || radio.value;
+        }
+
+        function syncSortChip() {
+            const selected = Array.from(sortRadios).find(radio => radio.checked);
+            if (!selected) {
+                removeFilterChip('sort');
+                return;
+            }
+            upsertFilterChip('sort', selected.value, getSortLabel(selected));
+        }
 
         calendarBtn.addEventListener("click", function(e) {
             e.stopPropagation();
-
-            // close other
             sortDropdown.classList.remove("show");
-
-            // toggle current
             calendar.classList.toggle("show");
         });
 
         sortBtn.addEventListener("click", function(e) {
             e.stopPropagation();
-
-            // close other
+            if (sortDropdown.contains(e.target)) return;
             calendar.classList.remove("show");
-
-            // toggle current
             sortDropdown.classList.toggle("show");
         });
 
@@ -2609,6 +2834,36 @@
             sortDropdown.classList.remove("show");
         });
 
+        sortRadios.forEach(radio => {
+            radio.addEventListener('change', function() {
+                syncSortChip();
+                sortDropdown.classList.remove('show');
+            });
+        });
+
+        chipsContainer?.addEventListener('click', function(e) {
+            const chip = e.target.closest('.chip');
+            if (!chip) return;
+
+            const filter = chip.dataset.filter;
+
+            if (filter === 'sort') {
+                sortRadios.forEach(radio => {
+                    radio.checked = false;
+                });
+                chip.remove();
+                return;
+            }
+
+            if (filter === 'date') {
+                clearDateRange();
+                return;
+            }
+
+            chip.remove();
+        });
+
+        syncSortChip();
     });
 </script>
 <script>
@@ -2639,8 +2894,8 @@
             }
         });
 
-        // remove chips
-        document.querySelectorAll('.chip').forEach(c => c.remove());
+        // remove chips inside the review form only
+        form.querySelectorAll('.chip').forEach(c => c.remove());
 
         // reset upload boxes
         document.querySelectorAll('.upload-box').forEach(box => {

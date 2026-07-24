@@ -66,7 +66,7 @@ document.addEventListener('click', function (e) {
     if (noScroll) requestAnimationFrame(() => window.scrollTo({ top: scrollY, behavior: 'instant' })); // 👈
 });
 
-// tab js starts
+// tab js ends
 
 
 // accodian js starts 

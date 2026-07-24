@@ -203,10 +203,19 @@
                                 </div>
 
                                 <div class="footer-buttons d-flex align-items-center justify-content-between">
-                                    <a href="http://localhost:8000/my_bookings/my_bookings.php" class="keep-my-booking-btn btn-custom btn-no-bg text-center mt-5">
-                                        ← Keep my booking
+                                    <a href="<?= BASE_URL ?>my_bookings/my_bookings.php" class="keep-my-booking-btn text-center mt-5">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="9" viewBox="0 0 14 9" fill="none">
+                                            <path d="M0.29268 4.97723C-0.0980831 4.58646 -0.0978101 3.95283 0.29329 3.5624L3.61639 0.245043C3.94686 -0.0848552 4.48321 -0.0810483 4.80896 0.253508C4.93163 0.381508 4.97963 0.509508 4.95296 0.637507C4.93163 0.760174 4.86496 0.877508 4.75296 0.989508L2.79296 2.94151C2.78235 2.95212 2.77177 2.96266 2.76123 2.97314C2.56808 3.165 2.73725 3.55049 3.00896 3.53351C3.35563 3.50684 3.70496 3.49351 4.05696 3.49351H13.093C13.5237 3.49351 13.873 3.84273 13.873 4.27351C13.873 4.70429 13.5237 5.05351 13.093 5.05351H4.05696C3.69963 5.05351 3.34763 5.04284 3.00096 5.02151C2.82751 5.01067 2.65819 4.99707 2.493 4.98072C2.36495 4.96805 2.28994 5.14275 2.38496 5.22951C2.51296 5.34151 2.64896 5.46684 2.79296 5.60551L4.76896 7.57351C4.88096 7.68551 4.94763 7.80551 4.96896 7.93351C4.99563 8.05617 4.94763 8.17884 4.82496 8.30151C4.49993 8.63972 3.96053 8.64508 3.62884 8.31339L0.29268 4.97723Z" fill="#3B3731" />
+                                        </svg>
+                                        Keep my booking
                                     </a>
-                                    <button type="button" class="cancel-my-booking-btn btn-custom btn-no-bg green-btn text-center mt-5">Yes, cancel this booking</button>
+                                    <a href="<?= BASE_URL ?>my_bookings/cancelled_bookings_confirmation.php" type="button" class="cancel-my-booking-btn btn-custom btn-no-bg green-btn text-center mt-5">Yes, cancel this booking</a>
+                                </div>
+
+                                <div class="reshedule-booking-text mt-5 d-flex align-items-center justify-content-center">
+                                    <p class="fs-16-400">
+                                        Need to change the date instead? <a href=""><span class="fs-16-600" style="color: #FFC97A"> Reschedule this booking </span></a>
+                                    </p>
                                 </div>
 
                             </div>

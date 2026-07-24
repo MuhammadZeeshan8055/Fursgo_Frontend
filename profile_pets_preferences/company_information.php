@@ -227,6 +227,29 @@
 
         updateNavHeight();
         window.addEventListener('resize', updateNavHeight);
+
+        // Open a tab from the URL hash, e.g. #tab-terms-conditions
+        // Used by links like "View cancellation policy" on My Bookings
+        const tabId = window.location.hash.replace('#', '');
+
+        if (tabId) {
+            const tabButton = document.querySelector('.tab-btn[data-tab="' + tabId + '"]');
+            const tabPanel = document.getElementById(tabId);
+
+            if (tabButton && tabPanel) {
+                // Turn off the current active tab/panel
+                document.querySelectorAll('.tab-btn').forEach(function (btn) {
+                    btn.classList.remove('active');
+                });
+                document.querySelectorAll('.tab-panel').forEach(function (panel) {
+                    panel.classList.remove('active');
+                });
+
+                // Turn on the tab from the URL
+                tabButton.classList.add('active');
+                tabPanel.classList.add('active');
+            }
+        }
     </script>
 
 </body>

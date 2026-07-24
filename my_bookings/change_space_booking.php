@@ -155,278 +155,116 @@ include_once __DIR__ . '/../components/extras-addons.php';
                             </div>
                         </div>
 
-                        <section class="cb-update-section cb-container">
+                        <!-- DATE & TIME -->
+                        <section class="cb-update-section cb-container" id="datetime-section">
                             <h2 class="cb-update-title">Update Date & Time</h2>
 
-                            <div class="cb-selection-container">
-                                <div class="cb-current-info">
-                                    <div class="cb-info-group">
+                            <!-- Summary (shown after Save) -->
+                            <div class="cb-booking-groomer-card cb-container mt-4 justify-content-between cb-panel-summary" id="datetime-summary">
+                                <div class="date-time-container">
+                                    <div class="cb-detail-item">
                                         <div class="d-flex align-items-center gap-5">
-                                            <span><svg xmlns="http://www.w3.org/2000/svg" width="19" height="17"
-                                                    viewBox="0 0 19 17" fill="none">
-                                                    <path
-                                                        d="M0.5 8.29554C0.5 5.20139 0.5 3.6539 1.50457 2.69308C2.50914 1.73227 4.12486 1.73145 7.35714 1.73145H10.7857C14.018 1.73145 15.6346 1.73145 16.6383 2.69308C17.642 3.65472 17.6429 5.20139 17.6429 8.29554V9.93656C17.6429 13.0307 17.6429 14.5782 16.6383 15.539C15.6337 16.4998 14.018 16.5007 10.7857 16.5007H7.35714C4.12486 16.5007 2.50829 16.5007 1.50457 15.539C0.500857 14.5774 0.5 13.0307 0.5 9.93656V8.29554Z"
-                                                        stroke="#3B3731" />
-                                                    <path d="M4.78585 1.73077V0.5M13.3573 1.73077V0.5M0.928711 5.83333H17.2144"
-                                                        stroke="#3B3731" stroke-linecap="round" />
-                                                    <path
-                                                        d="M14.2139 12.3975C14.2139 12.6151 14.1236 12.8238 13.9629 12.9777C13.8021 13.1315 13.5841 13.218 13.3568 13.218C13.1295 13.218 12.9114 13.1315 12.7507 12.9777C12.59 12.8238 12.4997 12.6151 12.4997 12.3975C12.4997 12.1799 12.59 11.9712 12.7507 11.8173C12.9114 11.6634 13.1295 11.577 13.3568 11.577C13.5841 11.577 13.8021 11.6634 13.9629 11.8173C14.1236 11.9712 14.2139 12.1799 14.2139 12.3975ZM14.2139 9.11543C14.2139 9.33305 14.1236 9.54175 13.9629 9.69562C13.8021 9.8495 13.5841 9.93595 13.3568 9.93595C13.1295 9.93595 12.9114 9.8495 12.7507 9.69562C12.59 9.54175 12.4997 9.33305 12.4997 9.11543C12.4997 8.89782 12.59 8.68912 12.7507 8.53524C12.9114 8.38137 13.1295 8.29492 13.3568 8.29492C13.5841 8.29492 13.8021 8.38137 13.9629 8.53524C14.1236 8.68912 14.2139 8.89782 14.2139 9.11543ZM9.92822 12.3975C9.92822 12.6151 9.83792 12.8238 9.67717 12.9777C9.51643 13.1315 9.29841 13.218 9.07108 13.218C8.84375 13.218 8.62573 13.1315 8.46499 12.9777C8.30424 12.8238 8.21394 12.6151 8.21394 12.3975C8.21394 12.1799 8.30424 11.9712 8.46499 11.8173C8.62573 11.6634 8.84375 11.577 9.07108 11.577C9.29841 11.577 9.51643 11.6634 9.67717 11.8173C9.83792 11.9712 9.92822 12.1799 9.92822 12.3975ZM9.92822 9.11543C9.92822 9.33305 9.83792 9.54175 9.67717 9.69562C9.51643 9.8495 9.29841 9.93595 9.07108 9.93595C8.84375 9.93595 8.62573 9.8495 8.46499 9.69562C8.30424 9.54175 8.21394 9.33305 8.21394 9.11543C8.21394 8.89782 8.30424 8.68912 8.46499 8.53524C8.62573 8.38137 8.84375 8.29492 9.07108 8.29492C9.29841 8.29492 9.51643 8.38137 9.67717 8.53524C9.83792 8.68912 9.92822 8.89782 9.92822 9.11543ZM5.64251 12.3975C5.64251 12.6151 5.5522 12.8238 5.39146 12.9777C5.23071 13.1315 5.01269 13.218 4.78537 13.218C4.55804 13.218 4.34002 13.1315 4.17927 12.9777C4.01853 12.8238 3.92822 12.6151 3.92822 12.3975C3.92822 12.1799 4.01853 11.9712 4.17927 11.8173C4.34002 11.6634 4.55804 11.577 4.78537 11.577C5.01269 11.577 5.23071 11.6634 5.39146 11.8173C5.5522 11.9712 5.64251 12.1799 5.64251 12.3975ZM5.64251 9.11543C5.64251 9.33305 5.5522 9.54175 5.39146 9.69562C5.23071 9.8495 5.01269 9.93595 4.78537 9.93595C4.55804 9.93595 4.34002 9.8495 4.17927 9.69562C4.01853 9.54175 3.92822 9.33305 3.92822 9.11543C3.92822 8.89782 4.01853 8.68912 4.17927 8.53524C4.34002 8.38137 4.55804 8.29492 4.78537 8.29492C5.01269 8.29492 5.23071 8.38137 5.39146 8.53524C5.5522 8.68912 5.64251 8.89782 5.64251 9.11543Z"
-                                                        fill="#3B3731" />
-                                                </svg></span>
+                                            <span><svg xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17" fill="none"><path d="M0.5 8.29554C0.5 5.20139 0.5 3.6539 1.50457 2.69308C2.50914 1.73227 4.12486 1.73145 7.35714 1.73145H10.7857C14.018 1.73145 15.6346 1.73145 16.6383 2.69308C17.642 3.65472 17.6429 5.20139 17.6429 8.29554V9.93656C17.6429 13.0307 17.6429 14.5782 16.6383 15.539C15.6337 16.4998 14.018 16.5007 10.7857 16.5007H7.35714C4.12486 16.5007 2.50829 16.5007 1.50457 15.539C0.500857 14.5774 0.5 13.0307 0.5 9.93656V8.29554Z" stroke="#3B3731" /><path d="M4.78585 1.73077V0.5M13.3573 1.73077V0.5M0.928711 5.83333H17.2144" stroke="#3B3731" stroke-linecap="round" /></svg></span>
                                             <p class="cb-label"> Date</p>
                                         </div>
-                                        <p class="cb-value mt-2">18/12/2025</p>
+                                        <p class="cb-value" id="summary-date">18/12/2025</p>
                                     </div>
-
-                                    <div class="cb-info-group">
+                                    <hr class="vertical-line">
+                                    <div class="cb-detail-item">
                                         <div class="d-flex align-items-center gap-5">
-                                            <span><svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                                                    <circle cx="8" cy="8" r="6" stroke="#3B3731"
-                                                        stroke-width="1.5" />
-                                                    <path d="M8 4.5V8L10.5 10" stroke="#3B3731" stroke-width="1.5"
-                                                        stroke-linecap="round" />
-                                                </svg></span>
+                                            <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 0.5C12.1423 0.5 15.5 3.85774 15.5 8C15.5 12.1423 12.1423 15.5 8 15.5C3.85774 15.5 0.5 12.1423 0.5 8C0.5 3.85774 3.85774 0.5 8 0.5Z" stroke="#3B3731" stroke-linecap="round" /><line x1="8" y1="8" x2="8" y2="4" stroke="#3B3731" stroke-width="1.2" stroke-linecap="round" /><line x1="8" y1="8" x2="11" y2="9.5" stroke="#3B3731" stroke-width="1.2" stroke-linecap="round" /></svg></span>
                                             <p class="cb-label"> Time</p>
                                         </div>
-                                        <p class="cb-value mt-2">14:30 - 15:30</p>
-                                        <span class="cb-sub-text">(80 minutes)</span>
+                                        <p class="cb-value"><span id="summary-time">14:30 - 15:30</span> <span class="fs-14-400-light" id="summary-duration">(60 minutes)</span></p>
                                     </div>
                                 </div>
-
-                                <div class="calendar mt-4">
-                                    <div class="calendar-header">
-                                        <button class="nav-btn">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="7" height="11" viewBox="0 0 7 11" fill="none">
-                                                <path d="M5.53426 10.484L0.499999 5.44975L5.44975 0.500005" stroke="#3B3731"
-                                                    stroke-linecap="round" stroke-linejoin="round" />
-                                            </svg>
-                                        </button>
-                                        <span>October 2025</span>
-                                        <button class="nav-btn">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="7" height="11" viewBox="0 0 7 11" fill="none">
-                                                <path d="M0.5 10.484L5.53426 5.44975L0.58451 0.500005" stroke="#3B3731"
-                                                    stroke-linecap="round" stroke-linejoin="round" />
-                                            </svg>
-                                        </button>
-                                    </div>
-
-                                    <div class="weekdays mt-4">
-                                        <div>M</div>
-                                        <div>T</div>
-                                        <div>W</div>
-                                        <div>T</div>
-                                        <div>F</div>
-                                        <div>S</div>
-                                        <div>S</div>
-                                    </div>
-
-                                    <div class="dates mt-4">
-                                        <div></div>
-                                        <div></div>
-                                        <div class="date">1</div>
-                                        <div class="date">2</div>
-                                        <div class="date">3</div>
-                                        <div class="date">4</div>
-
-                                        <div class="date">5</div>
-                                        <div class="date">6</div>
-                                        <div class="date">7</div>
-                                        <div class="date">8</div>
-                                        <div class="date">9</div>
-                                        <div class="date">10</div>
-                                        <div class="date">11</div>
-
-                                        <div class="date">12</div>
-                                        <div class="date">13</div>
-                                        <div class="date available selected">14</div>
-                                        <div class="date">15</div>
-                                        <div class="date">16</div>
-                                        <div class="date">17</div>
-                                        <div class="date">18</div>
-
-                                        <div class="date">19</div>
-                                        <div class="date">20</div>
-                                        <div class="date">21</div>
-                                        <div class="date">22</div>
-                                        <div class="date">23</div>
-                                        <div class="date">24</div>
-                                        <div class="date">25</div>
-
-                                        <div class="date">26</div>
-                                        <div class="date">27</div>
-                                        <div class="date">28</div>
-                                        <div class="date">29</div>
-                                        <div class="date">30</div>
-                                        <div class="date">31</div>
-                                    </div>
-
-
-                                </div>
-
-                                <div class="cb-time-slots">
-                                    <p class="cb-availability-title"><span><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
-                                                viewBox="0 0 18 18" fill="none">
-                                                <path
-                                                    d="M9 0C4.05 0 0 4.05 0 9C0 13.95 4.05 18 9 18C13.95 18 18 13.95 18 9C18 4.05 13.95 0 9 0ZM7.2 13.5L2.7 9L3.969 7.731L7.2 10.953L14.031 4.122L15.3 5.4L7.2 13.5Z"
-                                                    fill="#D8E8B7" />
-                                            </svg></span> Availability</p>
-                                    <div class="time">09:00 AM</div>
-                                    <div class="time selected">11:00 AM</div>
-                                    <div class="time">12:00 PM</div>
-                                    <div class="time" id="halfDay">16:00 PM</div>
-                                    <div class="time" id="fullDay">20:00 PM</div>
-                                </div>
+                                <button type="button" class="cb-btn-cancel cursor" style="border: 1px solid #fff" id="edit-datetime">Edit</button>
                             </div>
 
-                            <div class="cb-modal-footer">
-                                <button class="cb-btn-save">Save</button>
+                            <!-- Editor -->
+                            <div class="cb-panel-editor" id="datetime-editor">
+                                <div class="cb-selection-container">
+                                    <div class="cb-current-info">
+                                        <div class="cb-info-group">
+                                            <div class="d-flex align-items-center gap-5">
+                                                <span><svg xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17" fill="none"><path d="M0.5 8.29554C0.5 5.20139 0.5 3.6539 1.50457 2.69308C2.50914 1.73227 4.12486 1.73145 7.35714 1.73145H10.7857C14.018 1.73145 15.6346 1.73145 16.6383 2.69308C17.642 3.65472 17.6429 5.20139 17.6429 8.29554V9.93656C17.6429 13.0307 17.6429 14.5782 16.6383 15.539C15.6337 16.4998 14.018 16.5007 10.7857 16.5007H7.35714C4.12486 16.5007 2.50829 16.5007 1.50457 15.539C0.500857 14.5774 0.5 13.0307 0.5 9.93656V8.29554Z" stroke="#3B3731" /><path d="M4.78585 1.73077V0.5M13.3573 1.73077V0.5M0.928711 5.83333H17.2144" stroke="#3B3731" stroke-linecap="round" /></svg></span>
+                                                <p class="cb-label"> Date</p>
+                                            </div>
+                                            <p class="cb-value mt-2" id="editor-date">18/12/2025</p>
+                                        </div>
+                                        <div class="cb-info-group">
+                                            <div class="d-flex align-items-center gap-5">
+                                                <span><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="#3B3731" stroke-width="1.5" /><path d="M8 4.5V8L10.5 10" stroke="#3B3731" stroke-width="1.5" stroke-linecap="round" /></svg></span>
+                                                <p class="cb-label"> Time</p>
+                                            </div>
+                                            <p class="cb-value mt-2" id="editor-time">14:30 - 15:30</p>
+                                            <span class="cb-sub-text" id="editor-duration">(60 minutes)</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="calendar mt-4">
+                                        <div class="calendar-header">
+                                            <button type="button" class="nav-btn" id="cal-prev">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="7" height="11" viewBox="0 0 7 11" fill="none"><path d="M5.53426 10.484L0.499999 5.44975L5.44975 0.500005" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                                            </button>
+                                            <span id="cal-title">December 2025</span>
+                                            <button type="button" class="nav-btn" id="cal-next">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="7" height="11" viewBox="0 0 7 11" fill="none"><path d="M0.5 10.484L5.53426 5.44975L0.58451 0.500005" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                                            </button>
+                                        </div>
+                                        <div class="weekdays mt-4">
+                                            <div>M</div><div>T</div><div>W</div><div>T</div><div>F</div><div>S</div><div>S</div>
+                                        </div>
+                                        <div class="dates mt-4" id="cal-dates"></div>
+                                    </div>
+
+                                    <div class="cb-time-slots">
+                                        <p class="cb-availability-title"><span><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 0C4.05 0 0 4.05 0 9C0 13.95 4.05 18 9 18C13.95 18 18 13.95 18 9C18 4.05 13.95 0 9 0ZM7.2 13.5L2.7 9L3.969 7.731L7.2 10.953L14.031 4.122L15.3 5.4L7.2 13.5Z" fill="#D8E8B7" /></svg></span> Availability</p>
+                                        <div class="time" data-range="09:00 - 10:00">09:00 AM</div>
+                                        <div class="time" data-range="11:00 - 12:00">11:00 AM</div>
+                                        <div class="time" data-range="13:00 - 14:00">13:00 PM</div>
+                                        <div class="time selected" data-range="14:30 - 15:30">14:30 PM</div>
+                                        <div class="time" data-range="20:00 - 21:00">20:00 PM</div>
+                                    </div>
+                                </div>
+                                <div class="cb-modal-footer">
+                                    <button type="button" class="cb-btn-save" id="save-datetime">Save</button>
+                                </div>
                             </div>
                         </section>
 
-                        <script>
-                            // calendar
-                            const monthNames = [
-                                "January", "February", "March", "April", "May", "June",
-                                "July", "August", "September", "October", "November", "December"
-                            ];
-
-                            let currentDate = new Date(2025, 9); // October 2025
-
-                            const headerTitle = document.querySelector('.calendar-header span');
-                            const datesContainer = document.querySelector('.dates');
-                            const prevBtn = document.querySelector('.nav-btn:first-child');
-                            const nextBtn = document.querySelector('.nav-btn:last-child');
-
-                            // Example available dates (can come from backend later)
-                            const availableDates = [
-                                "2025-10-07",
-                                "2025-10-09",
-                                "2025-10-14",
-                                "2025-10-15",
-                                "2025-10-20",
-                                "2025-10-26",
-                                "2025-10-29",
-                                "2025-10-30"
-                            ];
-
-                            function renderCalendar() {
-                                datesContainer.innerHTML = '';
-
-                                const year = currentDate.getFullYear();
-                                const month = currentDate.getMonth();
-
-                                headerTitle.textContent = `${monthNames[month]} ${year}`;
-
-                                const firstDay = new Date(year, month, 1).getDay() || 7;
-                                const daysInMonth = new Date(year, month + 1, 0).getDate();
-
-                                for (let i = 1; i < firstDay; i++) {
-                                    datesContainer.appendChild(document.createElement('div'));
-                                }
-
-                                for (let day = 1; day <= daysInMonth; day++) {
-                                    const dateDiv = document.createElement('div');
-                                    dateDiv.classList.add('date');
-                                    dateDiv.textContent = day;
-
-                                    const dateKey = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
-
-                                    if (availableDates.includes(dateKey)) {
-                                        dateDiv.classList.add('available');
-
-                                        dateDiv.addEventListener('click', () => {
-                                            document.querySelectorAll('.date').forEach(d => d.classList.remove('selected'));
-                                            dateDiv.classList.add('selected');
-                                        });
-                                    }
-
-                                    datesContainer.appendChild(dateDiv);
-                                }
-                            }
-
-                            prevBtn.addEventListener('click', () => {
-                                currentDate.setMonth(currentDate.getMonth() - 1);
-                                renderCalendar();
-                            });
-
-                            nextBtn.addEventListener('click', () => {
-                                currentDate.setMonth(currentDate.getMonth() + 1);
-                                renderCalendar();
-                            });
-
-                            // Time selection (unchanged)
-                            document.querySelectorAll('.time').forEach(time => {
-                                time.addEventListener('click', () => {
-                                    document.querySelectorAll('.time').forEach(t => t.classList.remove('selected'));
-                                    time.classList.add('selected');
-                                });
-                            });
-
-                            renderCalendar();
-                        </script>
-
-                        <div class="addons-section cb-container">
-                            <h2>Add-ons Services</h2>
-
-                            <div class="addons-grid mt-5">
-                                <!-- <div class="addon-card selected">
-                                    <span class="addon-name">Storage Locker</span>
-                                    <div class="addon-price">
-                                        <span class="currency">£5</span> <span class="unit">/ day</span>
-                                    </div>
-                                    <i class="fas fa-check-circle check-icon"></i>
-                                </div>
-
-                                <div class="addon-card selected">
-                                    <span class="addon-name">Deep Clean</span>
-                                    <div class="addon-price">
-                                        <span class="currency">£10</span>
-                                    </div>
-                                    <i class="fas fa-check-circle check-icon"></i>
-                                </div>
-
-                                <div class="addon-card ed-4">
-                                    <span class="addon-name">After-hours access</span>
-                                    <div class="addon-price">
-                                        <span class="currency">£20</span>
-                                    </div>
-                                </div> -->
-                                <button type="button" class="space-service-button">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="10"
-                                        viewBox="0 0 14 10" fill="none">
-                                        <path
-                                            d="M13.6793 0.289386C13.5867 0.197689 13.4765 0.124907 13.3551 0.0752394C13.2337 0.0255714 13.1035 0 12.972 0C12.8405 0 12.7103 0.0255714 12.5889 0.0752394C12.4675 0.124907 12.3574 0.197689 12.2647 0.289386L4.84329 7.58766L1.72529 4.51573C1.62913 4.42451 1.51563 4.35279 1.39125 4.30465C1.26688 4.25652 1.13406 4.23291 1.0004 4.23518C0.86673 4.23745 0.734828 4.26555 0.612221 4.31789C0.489614 4.37022 0.378704 4.44576 0.285823 4.54019C0.192942 4.63462 0.119909 4.74609 0.0708932 4.86824C0.0218778 4.99039 -0.00216024 5.12082 0.000152332 5.25209C0.0024649 5.38336 0.0310826 5.5129 0.0843711 5.63331C0.13766 5.75372 0.214575 5.86265 0.310727 5.95386L4.13601 9.71062C4.22862 9.80231 4.3388 9.87509 4.46019 9.92476C4.58158 9.97443 4.71179 10 4.84329 10C4.9748 10 5.105 9.97443 5.22639 9.92476C5.34779 9.87509 5.45796 9.80231 5.55057 9.71062L13.6793 1.72752C13.7804 1.63591 13.8611 1.52472 13.9163 1.40096C13.9715 1.2772 14 1.14356 14 1.00845C14 0.873344 13.9715 0.7397 13.9163 0.615943C13.8611 0.492186 13.7804 0.380998 13.6793 0.289386Z"
-                                            fill="white" />
-                                    </svg>
-                                    <span class="addon-name">Storage Locker <span class="addon-price currency">£5</span> <span class="unit">/ day</span></span>
-                                    <i class="fas fa-check-circle check-icon"></i>
-                                </button>
-                                <button type="button" class="space-service-button">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="10"
-                                        viewBox="0 0 14 10" fill="none">
-                                        <path
-                                            d="M13.6793 0.289386C13.5867 0.197689 13.4765 0.124907 13.3551 0.0752394C13.2337 0.0255714 13.1035 0 12.972 0C12.8405 0 12.7103 0.0255714 12.5889 0.0752394C12.4675 0.124907 12.3574 0.197689 12.2647 0.289386L4.84329 7.58766L1.72529 4.51573C1.62913 4.42451 1.51563 4.35279 1.39125 4.30465C1.26688 4.25652 1.13406 4.23291 1.0004 4.23518C0.86673 4.23745 0.734828 4.26555 0.612221 4.31789C0.489614 4.37022 0.378704 4.44576 0.285823 4.54019C0.192942 4.63462 0.119909 4.74609 0.0708932 4.86824C0.0218778 4.99039 -0.00216024 5.12082 0.000152332 5.25209C0.0024649 5.38336 0.0310826 5.5129 0.0843711 5.63331C0.13766 5.75372 0.214575 5.86265 0.310727 5.95386L4.13601 9.71062C4.22862 9.80231 4.3388 9.87509 4.46019 9.92476C4.58158 9.97443 4.71179 10 4.84329 10C4.9748 10 5.105 9.97443 5.22639 9.92476C5.34779 9.87509 5.45796 9.80231 5.55057 9.71062L13.6793 1.72752C13.7804 1.63591 13.8611 1.52472 13.9163 1.40096C13.9715 1.2772 14 1.14356 14 1.00845C14 0.873344 13.9715 0.7397 13.9163 0.615943C13.8611 0.492186 13.7804 0.380998 13.6793 0.289386Z"
-                                            fill="white" />
-                                    </svg>
-                                    <span class="addon-name">Deep Clean <span class="addon-price currency">£10</span> <span class="unit">/ day</span></span>
-                                    <i class="fas fa-check-circle check-icon"></i>
-                                </button>
-                                <button type="button" class="space-service-button">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="10"
-                                        viewBox="0 0 14 10" fill="none">
-                                        <path
-                                            d="M13.6793 0.289386C13.5867 0.197689 13.4765 0.124907 13.3551 0.0752394C13.2337 0.0255714 13.1035 0 12.972 0C12.8405 0 12.7103 0.0255714 12.5889 0.0752394C12.4675 0.124907 12.3574 0.197689 12.2647 0.289386L4.84329 7.58766L1.72529 4.51573C1.62913 4.42451 1.51563 4.35279 1.39125 4.30465C1.26688 4.25652 1.13406 4.23291 1.0004 4.23518C0.86673 4.23745 0.734828 4.26555 0.612221 4.31789C0.489614 4.37022 0.378704 4.44576 0.285823 4.54019C0.192942 4.63462 0.119909 4.74609 0.0708932 4.86824C0.0218778 4.99039 -0.00216024 5.12082 0.000152332 5.25209C0.0024649 5.38336 0.0310826 5.5129 0.0843711 5.63331C0.13766 5.75372 0.214575 5.86265 0.310727 5.95386L4.13601 9.71062C4.22862 9.80231 4.3388 9.87509 4.46019 9.92476C4.58158 9.97443 4.71179 10 4.84329 10C4.9748 10 5.105 9.97443 5.22639 9.92476C5.34779 9.87509 5.45796 9.80231 5.55057 9.71062L13.6793 1.72752C13.7804 1.63591 13.8611 1.52472 13.9163 1.40096C13.9715 1.2772 14 1.14356 14 1.00845C14 0.873344 13.9715 0.7397 13.9163 0.615943C13.8611 0.492186 13.7804 0.380998 13.6793 0.289386Z"
-                                            fill="white" />
-                                    </svg>
-                                    <span class="addon-name">After-hours access <span class="addon-price currency">£20</span> <span class="unit">/ day</span></span>
-                                    <i class="fas fa-check-circle check-icon"></i>
-                                </button>
+                        <!-- EXTRAS -->
+                        <section class="cb-container" id="extras-section">
+                            <h2 class="cb-update-title mt-5" id="extras-summary-title" style="display:none;">Extras & Add-ons</h2>
+                            <div class="cb-booking-groomer-card cb-container mt-4 justify-content-between cb-panel-summary" id="extras-summary">
+                                <div class="extras-container" id="extras-summary-list"></div>
+                                <button type="button" class="cb-btn-cancel cursor" style="border: 1px solid #fff" id="edit-extras">Edit</button>
                             </div>
 
-                            <div class="cb-modal-footer">
-                                <button class="cb-btn-save">Save</button>
+                            <div class="addons-section cb-panel-editor" id="extras-editor">
+                                <h2>Extras & Add-ons</h2>
+                                <div class="addons-grid mt-5">
+                                    <button type="button" class="space-service-button" data-id="storage" data-name="Storage Locker £5 / day" data-price="5">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M13.6793 0.289386C13.5867 0.197689 13.4765 0.124907 13.3551 0.0752394C13.2337 0.0255714 13.1035 0 12.972 0C12.8405 0 12.7103 0.0255714 12.5889 0.0752394C12.4675 0.124907 12.3574 0.197689 12.2647 0.289386L4.84329 7.58766L1.72529 4.51573C1.62913 4.42451 1.51563 4.35279 1.39125 4.30465C1.26688 4.25652 1.13406 4.23291 1.0004 4.23518C0.86673 4.23745 0.734828 4.26555 0.612221 4.31789C0.489614 4.37022 0.378704 4.44576 0.285823 4.54019C0.192942 4.63462 0.119909 4.74609 0.0708932 4.86824C0.0218778 4.99039 -0.00216024 5.12082 0.000152332 5.25209C0.0024649 5.38336 0.0310826 5.5129 0.0843711 5.63331C0.13766 5.75372 0.214575 5.86265 0.310727 5.95386L4.13601 9.71062C4.22862 9.80231 4.3388 9.87509 4.46019 9.92476C4.58158 9.97443 4.71179 10 4.84329 10C4.9748 10 5.105 9.97443 5.22639 9.92476C5.34779 9.87509 5.45796 9.80231 5.55057 9.71062L13.6793 1.72752C13.7804 1.63591 13.8611 1.52472 13.9163 1.40096C13.9715 1.2772 14 1.14356 14 1.00845C14 0.873344 13.9715 0.7397 13.9163 0.615943C13.8611 0.492186 13.7804 0.380998 13.6793 0.289386Z" fill="white" /></svg>
+                                        <span class="addon-name">Storage Locker <span class="addon-price currency">£5</span> <span class="unit">/ day</span></span>
+                                        <i class="fas fa-check-circle check-icon"></i>
+                                    </button>
+                                    <button type="button" class="space-service-button" data-id="deep-clean" data-name="Deep Clean £10 / day" data-price="10">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M13.6793 0.289386C13.5867 0.197689 13.4765 0.124907 13.3551 0.0752394C13.2337 0.0255714 13.1035 0 12.972 0C12.8405 0 12.7103 0.0255714 12.5889 0.0752394C12.4675 0.124907 12.3574 0.197689 12.2647 0.289386L4.84329 7.58766L1.72529 4.51573C1.62913 4.42451 1.51563 4.35279 1.39125 4.30465C1.26688 4.25652 1.13406 4.23291 1.0004 4.23518C0.86673 4.23745 0.734828 4.26555 0.612221 4.31789C0.489614 4.37022 0.378704 4.44576 0.285823 4.54019C0.192942 4.63462 0.119909 4.74609 0.0708932 4.86824C0.0218778 4.99039 -0.00216024 5.12082 0.000152332 5.25209C0.0024649 5.38336 0.0310826 5.5129 0.0843711 5.63331C0.13766 5.75372 0.214575 5.86265 0.310727 5.95386L4.13601 9.71062C4.22862 9.80231 4.3388 9.87509 4.46019 9.92476C4.58158 9.97443 4.71179 10 4.84329 10C4.9748 10 5.105 9.97443 5.22639 9.92476C5.34779 9.87509 5.45796 9.80231 5.55057 9.71062L13.6793 1.72752C13.7804 1.63591 13.8611 1.52472 13.9163 1.40096C13.9715 1.2772 14 1.14356 14 1.00845C14 0.873344 13.9715 0.7397 13.9163 0.615943C13.8611 0.492186 13.7804 0.380998 13.6793 0.289386Z" fill="white" /></svg>
+                                        <span class="addon-name">Deep Clean <span class="addon-price currency">£10</span> <span class="unit">/ day</span></span>
+                                        <i class="fas fa-check-circle check-icon"></i>
+                                    </button>
+                                    <button type="button" class="space-service-button" data-id="after-hours" data-name="After-hours access £20 / day" data-price="20">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M13.6793 0.289386C13.5867 0.197689 13.4765 0.124907 13.3551 0.0752394C13.2337 0.0255714 13.1035 0 12.972 0C12.8405 0 12.7103 0.0255714 12.5889 0.0752394C12.4675 0.124907 12.3574 0.197689 12.2647 0.289386L4.84329 7.58766L1.72529 4.51573C1.62913 4.42451 1.51563 4.35279 1.39125 4.30465C1.26688 4.25652 1.13406 4.23291 1.0004 4.23518C0.86673 4.23745 0.734828 4.26555 0.612221 4.31789C0.489614 4.37022 0.378704 4.44576 0.285823 4.54019C0.192942 4.63462 0.119909 4.74609 0.0708932 4.86824C0.0218778 4.99039 -0.00216024 5.12082 0.000152332 5.25209C0.0024649 5.38336 0.0310826 5.5129 0.0843711 5.63331C0.13766 5.75372 0.214575 5.86265 0.310727 5.95386L4.13601 9.71062C4.22862 9.80231 4.3388 9.87509 4.46019 9.92476C4.58158 9.97443 4.71179 10 4.84329 10C4.9748 10 5.105 9.97443 5.22639 9.92476C5.34779 9.87509 5.45796 9.80231 5.55057 9.71062L13.6793 1.72752C13.7804 1.63591 13.8611 1.52472 13.9163 1.40096C13.9715 1.2772 14 1.14356 14 1.00845C14 0.873344 13.9715 0.7397 13.9163 0.615943C13.8611 0.492186 13.7804 0.380998 13.6793 0.289386Z" fill="white" /></svg>
+                                        <span class="addon-name">After-hours access <span class="addon-price currency">£20</span> <span class="unit">/ day</span></span>
+                                        <i class="fas fa-check-circle check-icon"></i>
+                                    </button>
+                                </div>
+                                <div class="cb-modal-footer">
+                                    <button type="button" class="cb-btn-save" id="save-extras">Save</button>
+                                </div>
                             </div>
-                        </div>
+                        </section>
 
                         <div class="section-divider mt-5" style="border-top: 1px solid #EAE8E5;"></div>
 
@@ -437,17 +275,16 @@ include_once __DIR__ . '/../components/extras-addons.php';
                             </div>
                             <div class="cb-price-row">
                                 <span class="cb-price-label bold">Updated Total:</span>
-                                <span class="cb-price-value updated bold">£61.00</span>
+                                <span class="cb-price-value updated bold" id="updated-total">£48.00</span>
                             </div>
                         </section>
 
-                        <div class="charge-alert mt-4">
-                            You'll be charged an additional £3.00.
-                        </div>
+                        <div class="charge-alert mt-4" id="charge-alert" style="display:none;"></div>
+                        <div class="cb-refund-alert mt-4" id="refund-alert" style="display:none;"></div>
 
                         <div class="cb-action-footer cb-container">
-                            <button class="cb-btn-outline">Cancel changes</button>
-                            <a href="<?= BASE_URL ?>my_bookings/change_space_booking_confirmed.php" class="cb-btn-filled">Confirm changes</a>
+                            <a href="<?= BASE_URL ?>my_bookings/my_bookings.php" class="cb-btn-outline">Cancel changes</a>
+                            <a href="<?= BASE_URL ?>my_bookings/updated_bookings.php" class="cb-btn-filled is-disabled" id="confirm-changes" aria-disabled="true">Confirm changes</a>
                         </div>
 
                     </div>
@@ -462,16 +299,275 @@ include_once __DIR__ . '/../components/extras-addons.php';
     </div>
 
     <?php include '../components/footer.php' ?>
-    <script>
-        // Preferred groomer service button selection 
-        const groomerServiceButtons = document.querySelectorAll('.space-service-button');
 
-        groomerServiceButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                // Toggle 'active' on the clicked button
-                button.classList.toggle('active');
+    <script>
+        // Original booking (before edits)
+        const originalBooking = {
+            date: '18/12/2025',
+            time: '14:30 - 15:30',
+            duration: '(60 minutes)',
+            extras: []
+        };
+
+        // Currently saved values
+        const savedBooking = {
+            date: originalBooking.date,
+            time: originalBooking.time,
+            duration: originalBooking.duration,
+            extras: [],
+            extrasNames: [],
+            extrasTotal: 0
+        };
+
+        const CHECK_SVG = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="11" viewBox="0 0 16 11" fill="none"><path d="M15.6335 0.318324C15.5276 0.217458 15.4017 0.137398 15.263 0.0827634C15.1243 0.0281285 14.9755 0 14.8252 0C14.6749 0 14.5261 0.0281285 14.3873 0.0827634C14.2486 0.137398 14.1227 0.217458 14.0168 0.318324L5.53519 8.34643L1.97176 4.9673C1.86187 4.86697 1.73215 4.78807 1.59 4.73512C1.44786 4.68217 1.29607 4.6562 1.14331 4.6587C0.990548 4.6612 0.839803 4.69211 0.699681 4.74968C0.559559 4.80724 0.432805 4.89034 0.326655 4.99421C0.220505 5.09808 0.137038 5.2207 0.0810208 5.35506C0.0250032 5.48943 -0.00246884 5.6329 0.000174094 5.7773C0.00281703 5.9217 0.035523 6.06419 0.0964241 6.19664C0.157325 6.32909 0.245229 6.44891 0.355117 6.54925L4.72687 10.6817C4.83271 10.7825 4.95862 10.8626 5.09736 10.9172C5.23609 10.9719 5.3849 11 5.53519 11C5.68548 11 5.83429 10.9719 5.97302 10.9172C6.11176 10.8626 6.23767 10.7825 6.34351 10.6817L15.6335 1.90027C15.749 1.7995 15.8413 1.67719 15.9044 1.54106C15.9674 1.40492 16 1.25792 16 1.1093C16 0.960678 15.9674 0.81367 15.9044 0.677537C15.8413 0.541404 15.749 0.419098 15.6335 0.318324Z" fill="#3B3731" /></svg>';
+
+        function sameExtras(a, b) {
+            if (a.length !== b.length) return false;
+            const aa = a.slice().sort();
+            const bb = b.slice().sort();
+            return aa.every(function(id, i) { return id === bb[i]; });
+        }
+
+        function hasChanges() {
+            if (savedBooking.date !== originalBooking.date) return true;
+            if (savedBooking.time !== originalBooking.time) return true;
+            if (!sameExtras(savedBooking.extras, originalBooking.extras)) return true;
+            return false;
+        }
+
+        function updateConfirmButton() {
+            const btn = document.getElementById('confirm-changes');
+            if (hasChanges()) {
+                btn.classList.remove('is-disabled');
+                btn.setAttribute('aria-disabled', 'false');
+            } else {
+                btn.classList.add('is-disabled');
+                btn.setAttribute('aria-disabled', 'true');
+            }
+        }
+
+        function getLiveExtras() {
+            const selected = [];
+            let total = 0;
+            const names = [];
+
+            document.querySelectorAll('.space-service-button.active').forEach(function(btn) {
+                selected.push(btn.dataset.id);
+                names.push(btn.dataset.name);
+                total += parseFloat(btn.dataset.price) || 0;
+            });
+
+            return { ids: selected, names: names, total: total };
+        }
+
+        function updatePrices() {
+            const originalTotal = 48;
+            const extrasEditorOpen = !document.getElementById('extras-editor').classList.contains('is-hidden');
+            const extrasTotal = extrasEditorOpen ? getLiveExtras().total : savedBooking.extrasTotal;
+            const updated = originalTotal + extrasTotal;
+
+            document.getElementById('updated-total').textContent = '£' + updated.toFixed(2);
+
+            const chargeAlert = document.getElementById('charge-alert');
+            const refundAlert = document.getElementById('refund-alert');
+            const diff = updated - originalTotal;
+
+            if (diff > 0) {
+                chargeAlert.style.display = 'block';
+                chargeAlert.textContent = "You'll be charged an additional £" + diff.toFixed(2) + '.';
+                refundAlert.style.display = 'none';
+            } else if (diff < 0) {
+                refundAlert.style.display = 'block';
+                refundAlert.textContent = "You'll receive a £" + Math.abs(diff).toFixed(2) + ' refund. Refunds processed in 3-5 days';
+                chargeAlert.style.display = 'none';
+            } else {
+                chargeAlert.style.display = 'none';
+                refundAlert.style.display = 'none';
+            }
+        }
+
+        function showDatetimeSummary() {
+            document.getElementById('summary-date').textContent = savedBooking.date;
+            document.getElementById('summary-time').textContent = savedBooking.time;
+            document.getElementById('summary-duration').textContent = savedBooking.duration;
+            document.getElementById('datetime-summary').classList.add('is-visible');
+            document.getElementById('datetime-editor').classList.add('is-hidden');
+        }
+
+        function showDatetimeEditor() {
+            document.getElementById('datetime-summary').classList.remove('is-visible');
+            document.getElementById('datetime-editor').classList.remove('is-hidden');
+        }
+
+        function showExtrasSummary() {
+            const list = document.getElementById('extras-summary-list');
+            list.innerHTML = '';
+
+            if (!savedBooking.extrasNames.length) {
+                list.innerHTML = '<p class="cb-label">No extras selected</p>';
+            } else {
+                savedBooking.extrasNames.forEach(function(name) {
+                    const row = document.createElement('div');
+                    row.className = 'cb-detail-item';
+                    row.innerHTML = '<div class="d-flex align-items-center gap-10"><span>' + CHECK_SVG + '</span><p class="cb-label"> ' + name + '</p></div>';
+                    list.appendChild(row);
+                });
+            }
+
+            document.getElementById('extras-summary-title').style.display = 'block';
+            document.getElementById('extras-summary').classList.add('is-visible');
+            document.getElementById('extras-editor').classList.add('is-hidden');
+        }
+
+        function showExtrasEditor() {
+            document.getElementById('extras-summary-title').style.display = 'none';
+            document.getElementById('extras-summary').classList.remove('is-visible');
+            document.getElementById('extras-editor').classList.remove('is-hidden');
+        }
+
+        // Only one editor open at a time
+        function openOnly(panel) {
+            if (panel === 'datetime') {
+                if (!document.getElementById('extras-editor').classList.contains('is-hidden')) {
+                    const live = getLiveExtras();
+                    savedBooking.extras = live.ids;
+                    savedBooking.extrasNames = live.names;
+                    savedBooking.extrasTotal = live.total;
+                    showExtrasSummary();
+                }
+                showDatetimeEditor();
+            }
+
+            if (panel === 'extras') {
+                if (!document.getElementById('datetime-editor').classList.contains('is-hidden')) {
+                    savedBooking.date = document.getElementById('editor-date').textContent.trim();
+                    savedBooking.time = document.getElementById('editor-time').textContent.trim();
+                    savedBooking.duration = document.getElementById('editor-duration').textContent.trim();
+                    showDatetimeSummary();
+                }
+                showExtrasEditor();
+            }
+
+            updateConfirmButton();
+            updatePrices();
+        }
+
+        // Calendar
+        const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+        let viewDate = new Date(2025, 11);
+        let selectedDateKey = '2025-12-18';
+        const availableDates = ['2025-12-14', '2025-12-15', '2025-12-18', '2025-12-20', '2025-12-26', '2025-12-29', '2025-12-30'];
+
+        function formatDisplayDate(key) {
+            const parts = key.split('-');
+            return parts[2] + '/' + parts[1] + '/' + parts[0];
+        }
+
+        function renderCalendar() {
+            const datesContainer = document.getElementById('cal-dates');
+            const headerTitle = document.getElementById('cal-title');
+            datesContainer.innerHTML = '';
+
+            const year = viewDate.getFullYear();
+            const month = viewDate.getMonth();
+            headerTitle.textContent = monthNames[month] + ' ' + year;
+
+            const firstDay = new Date(year, month, 1).getDay() || 7;
+            const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+            for (let i = 1; i < firstDay; i++) {
+                datesContainer.appendChild(document.createElement('div'));
+            }
+
+            for (let day = 1; day <= daysInMonth; day++) {
+                const dateDiv = document.createElement('div');
+                dateDiv.classList.add('date');
+                dateDiv.textContent = day;
+
+                const dateKey = year + '-' + String(month + 1).padStart(2, '0') + '-' + String(day).padStart(2, '0');
+
+                if (availableDates.includes(dateKey)) {
+                    dateDiv.classList.add('available');
+                    if (dateKey === selectedDateKey) dateDiv.classList.add('selected');
+
+                    dateDiv.addEventListener('click', function() {
+                        selectedDateKey = dateKey;
+                        document.getElementById('editor-date').textContent = formatDisplayDate(dateKey);
+                        renderCalendar();
+                    });
+                }
+
+                datesContainer.appendChild(dateDiv);
+            }
+        }
+
+        document.getElementById('cal-prev').addEventListener('click', function() {
+            viewDate.setMonth(viewDate.getMonth() - 1);
+            renderCalendar();
+        });
+
+        document.getElementById('cal-next').addEventListener('click', function() {
+            viewDate.setMonth(viewDate.getMonth() + 1);
+            renderCalendar();
+        });
+
+        // Time slots
+        document.querySelectorAll('.cb-time-slots .time').forEach(function(slot) {
+            slot.addEventListener('click', function() {
+                document.querySelectorAll('.cb-time-slots .time').forEach(function(t) {
+                    t.classList.remove('selected');
+                });
+                slot.classList.add('selected');
+                document.getElementById('editor-time').textContent = slot.dataset.range || slot.textContent.trim();
             });
         });
+
+        // Addon toggle
+        document.querySelectorAll('.space-service-button').forEach(function(button) {
+            button.addEventListener('click', function() {
+                button.classList.toggle('active');
+                updatePrices();
+            });
+        });
+
+        // Save date/time
+        document.getElementById('save-datetime').addEventListener('click', function() {
+            savedBooking.date = document.getElementById('editor-date').textContent.trim();
+            savedBooking.time = document.getElementById('editor-time').textContent.trim();
+            savedBooking.duration = document.getElementById('editor-duration').textContent.trim();
+            showDatetimeSummary();
+            updateConfirmButton();
+            updatePrices();
+        });
+
+        // Save extras
+        document.getElementById('save-extras').addEventListener('click', function() {
+            const live = getLiveExtras();
+            savedBooking.extras = live.ids;
+            savedBooking.extrasNames = live.names;
+            savedBooking.extrasTotal = live.total;
+            showExtrasSummary();
+            updateConfirmButton();
+            updatePrices();
+        });
+
+        document.getElementById('edit-datetime').addEventListener('click', function() {
+            openOnly('datetime');
+        });
+
+        document.getElementById('edit-extras').addEventListener('click', function() {
+            openOnly('extras');
+        });
+
+        document.getElementById('confirm-changes').addEventListener('click', function(e) {
+            if (this.classList.contains('is-disabled') || this.getAttribute('aria-disabled') === 'true') {
+                e.preventDefault();
+            }
+        });
+
+        renderCalendar();
+        updateConfirmButton();
+        updatePrices();
     </script>
 
 </body>
