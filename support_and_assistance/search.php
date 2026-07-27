@@ -20,10 +20,6 @@ if (isset($_GET['search_results'])) {
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/common.css">
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/company_information.css">
     <style>
-        #chat-btn {
-            display: none;
-        }
-
         #request-submitted-modal .modal-content.size {
             width: 645px;
         }
@@ -34,7 +30,6 @@ if (isset($_GET['search_results'])) {
 <body>
 
     <?php include '../components/header.php' ?>
-    <?php include '../components/chatbot_modal.php' ?>
 
     <div class="container mb-5 mt-5">
         <div class="row">
@@ -113,55 +108,6 @@ if (isset($_GET['search_results'])) {
 
         <?php include '../components/footer.php' ?>
         <script src="<?= BASE_URL ?>/assets/js/common.js"></script>
-
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                const panel = document.getElementById('chat-panel');
-                const chatBtn = document.getElementById('chat-btn');
-                const openIcon = document.getElementById('chat-open-icon');
-                const closeIcon = document.getElementById('chat-close-icon');
-
-                if (!panel || !chatBtn) return;
-
-                function openChat(e) {
-                    if (e) {
-                        e.preventDefault();
-                        e.stopPropagation();
-                    }
-
-                    panel.classList.add('open');
-                    document.body.classList.add('chat-open');
-                    chatBtn.style.display = 'flex';
-                    openIcon.style.display = 'none';
-                    closeIcon.style.display = 'block';
-                }
-
-                function closeChat() {
-                    panel.classList.remove('open');
-                    document.body.classList.remove('chat-open');
-                    chatBtn.style.display = 'none';
-                    openIcon.style.display = 'block';
-                    closeIcon.style.display = 'none';
-                }
-
-                function toggleChat(e) {
-                    if (e) e.stopPropagation();
-                    panel.classList.contains('open') ? closeChat() : openChat();
-                }
-
-                chatBtn.addEventListener('click', toggleChat);
-
-                document.querySelectorAll('[data-open-chat]').forEach(function(btn) {
-                    btn.addEventListener('click', openChat);
-                });
-
-                document.addEventListener('click', function(e) {
-                    if (!panel.contains(e.target) && !chatBtn.contains(e.target)) {
-                        closeChat();
-                    }
-                });
-            });
-        </script>
 
 </body>
 

@@ -126,6 +126,11 @@
     </div>
 </footer>
 
+<?php if (empty($hide_global_chatbot)): ?>
+<?php include __DIR__ . '/chatbot_modal.php'; ?>
+<script src="<?= BASE_URL ?>/assets/js/chatbot.js"></script>
+<?php endif; ?>
+
 <script>
     const BASE_URL = "<?= BASE_URL ?>";
 </script>

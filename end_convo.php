@@ -1297,6 +1297,7 @@
 
 
 
+    <?php $hide_global_chatbot = true; ?>
     <?php include('components/footer.php'); ?>
 
 

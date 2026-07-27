@@ -109,8 +109,9 @@
             <div class="col-lg-1"></div>
 
         </div>
+    </div>
 
-        <?php include '../components/footer.php' ?>
+    <?php include '../components/footer.php' ?>
 
 </body>
 
