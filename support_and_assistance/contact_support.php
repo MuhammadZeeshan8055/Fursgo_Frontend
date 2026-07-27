@@ -255,7 +255,7 @@
                             <div class="col-lg-12" style="padding: 15px 35px;">
 
                                 <div class="modal-head d-flex flex-column align-items-center justify-content-center">
-                                    <h1 class="large-font-lato line-default mt-3">Request submitted!</h1>
+                                    <h1 class="fs-28-pf-display-700 line-default mt-3">Request submitted!</h1>
                                     <h3 class="normal-light-color mt-2 text-center">Your support request has been received. Our team will review it and get <br> back to you as soon as possible — usually within 24 hours.</h3>
                                 </div>
 
@@ -349,8 +349,8 @@
 
                                     <div class="footer-text mt-4 fs-14-400-f-color">
                                         Need urgent help?
-                                        <a href="#" class="fs-14-600-f-color" style="color:#FFC97A">Chat with our support team</a>
-                                        or visit the <a href="#" class="fs-14-600-f-color" style="color:#FFC97A">Help Centre</a>.
+                                        <a href="#" class="fs-14-600-f-color cursor" style="color:#FFC97A" data-open-chat>Chat with our support team</a>
+                                        or visit the <a href="<?= BASE_URL ?>support_and_assistance/help_and_support.php" class="fs-14-600-f-color cursor" style="color:#FFC97A" id="helpCentreLink">Help Centre</a>.
                                     </div>
 
                                 </div>
@@ -362,6 +362,37 @@
             </div>
 
             <!-- Review submitted Modal  -->
+
+            <script>
+                (function() {
+                    const requestModal = document.getElementById('request-submitted-modal');
+                    const helpCentreLink = document.getElementById('helpCentreLink');
+
+                    function closeRequestModal() {
+                        if (requestModal) {
+                            requestModal.style.display = 'none';
+                        }
+                    }
+
+                    if (helpCentreLink) {
+                        helpCentreLink.addEventListener('click', function(e) {
+                            closeRequestModal();
+
+                            if (window.location.pathname.includes('help_and_support.php')) {
+                                e.preventDefault();
+                                window.scrollTo({
+                                    top: 0,
+                                    behavior: 'smooth'
+                                });
+                            }
+                        });
+                    }
+
+                    document.querySelectorAll('#request-submitted-modal [data-open-chat]').forEach(function(link) {
+                        link.addEventListener('click', closeRequestModal);
+                    });
+                })();
+            </script>
 
 
             <div class="box-wrapper d-flex flex-column align-items-center justify-content-center gap-20">

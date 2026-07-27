@@ -495,7 +495,10 @@
                 const closeIcon = document.getElementById('chat-close-icon');
 
                 function openChat(e) {
-                    if (e) e.stopPropagation();
+                    if (e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                    }
                     panel.classList.add('open');
                     document.body.classList.add('chat-open');
                     chatBtn.style.display = 'flex';
