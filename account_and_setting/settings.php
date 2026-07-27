@@ -27,6 +27,35 @@
             background: #FDFCF8;
             top: 0;
         }
+
+        .modal-buttons .close-btn {
+            width: 170px;
+            height: 36px;
+            border-radius: 96px;
+            border: 1px solid #E2E2E2;
+            background: #FFF;
+        }
+
+        .modal-buttons .update-btn {
+            color: #FFF;
+            width: 170px;
+            height: 36px;
+            border-radius: 75px;
+            background: #FFC97A;
+            border: none;
+        }
+
+        .unlink-account-pill {
+            padding: 12px 20px;
+            border-radius: 50px;
+            background: #F3F0E8;
+            border: 1px solid #E8E4DC;
+        }
+
+        .unlink-account-pill .social-icons {
+            width: 32px;
+            height: 32px;
+        }
     </style>
 
 </head>
@@ -276,7 +305,7 @@
                                         <div class="container">
                                             <div class="row">
                                                 <div class="d-flex align-items-center justify-content-between mt-2">
-                                                    <h1 class="fs-18-400">Update password</h1>
+                                                    <h1 class="fs-18-pf-display-700">Update password</h1>
                                                     <svg class="cursor" data-modal-close xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                                                         <circle cx="10" cy="10" r="9.5" transform="matrix(-1 0 0 1 20 0)" fill="#F3F3F3" stroke="#E8E8E8" />
                                                         <path d="M13.1465 13.24L10.0001 10.0936L13.0937 6.99999" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
@@ -406,7 +435,7 @@
                                                 <div class="col-lg-12" style="padding: 15px 35px;">
 
                                                     <div class="d-flex flex-column align-items-center gap-5 justify-content-center">
-                                                        <h2 class="fs-18-400">Password updated</h2>
+                                                        <h2 class="fs-18-pf-display-700">Password updated</h2>
                                                         <p class="fs-12-400-f-color text-light">You'll stay signed in on this device.</p>
 
                                                         <button class="update-btn fs-16-600 btn-active-bg text-center cursor mt-4" data-modal-close>Done</button>
@@ -451,7 +480,7 @@
                                                     <path d="M9.56982 25.9497H12.9298" stroke="#3B3731" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                                                 </svg>
 
-                                                <p>Logged in on iPhone - <span style="color:#9D9B98">28/08/2025, 18:52 GMT</span></p>
+                                                <p class="fs-18-400">Logged in on iPhone - <span style="color:#9D9B98">28/08/2025, 18:52 GMT</span></p>
                                             </div>
                                             <a
                                                 class="link-tag cursor signout-trigger"
@@ -467,7 +496,7 @@
                                                     <path d="M6.77246 16.2041H14.2275C14.2319 16.2041 14.2347 16.2054 14.2363 16.2061C14.2384 16.207 14.2408 16.2086 14.2432 16.2109C14.2457 16.2135 14.2471 16.2166 14.248 16.2188C14.2488 16.2204 14.25 16.223 14.25 16.2275C14.25 16.2319 14.2487 16.2347 14.248 16.2363C14.2471 16.2384 14.2456 16.2408 14.2432 16.2432C14.2408 16.2456 14.2384 16.2471 14.2363 16.248C14.2347 16.2487 14.2319 16.25 14.2275 16.25H6.77246C6.76811 16.25 6.76532 16.2487 6.76367 16.248C6.7616 16.2471 6.75922 16.2456 6.75684 16.2432C6.75445 16.2408 6.75291 16.2384 6.75195 16.2363C6.75126 16.2347 6.75003 16.2319 6.75 16.2275C6.75 16.223 6.75124 16.2204 6.75195 16.2188C6.75288 16.2166 6.75427 16.2135 6.75684 16.2109C6.75922 16.2086 6.76163 16.207 6.76367 16.2061C6.76532 16.2054 6.76811 16.2041 6.77246 16.2041ZM1 0.75H20C20.1381 0.75 20.25 0.861929 20.25 1V12.9092C20.25 13.0472 20.138 13.1592 20 13.1592H1C0.861958 13.1592 0.750048 13.0472 0.75 12.9092V1C0.75 0.861929 0.861929 0.75 1 0.75Z" stroke="#3B3731" stroke-width="1.5" />
                                                 </svg>
 
-                                                <p>Logged in on Web - <span style="color:#9D9B98">28/08/2025, 18:52 GMT</span></p>
+                                                <p class="fs-18-400">Logged in on Web - <span style="color:#9D9B98">28/08/2025, 18:52 GMT</span></p>
                                             </div>
                                             <a class="link-tag cursor signout-trigger"
                                                 data-device="Web"
@@ -481,7 +510,7 @@
                                                     <path d="M0.75 10.35V18.35M21.75 10.35V18.35M3.98077 8.75H18.5192M3.98077 8.75V19.15C3.98077 19.7865 4.23606 20.397 4.69047 20.8471C5.14489 21.2971 5.76121 21.55 6.40385 21.55H16.0962C17.4369 21.55 18.5192 20.478 18.5192 19.15V8.75M3.98077 8.75C3.98077 4.766 7.22769 2.35 11.25 2.35C15.2723 2.35 18.5192 4.766 18.5192 8.75M5.59615 0.75L7.21154 3.15M16.9038 0.75L15.2885 3.15M7.21154 21.55V24.75M15.2885 21.55V24.75" stroke="#3B3731" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                                                 </svg>
 
-                                                <p>Logged in on Android - <span style="color:#9D9B98">28/08/2025, 18:52 GMT</span></p>
+                                                <p class="fs-18-400">Logged in on Android - <span style="color:#9D9B98">28/08/2025, 18:52 GMT</span></p>
                                             </div>
                                             <a class="link-tag cursor signout-trigger"
                                                 data-device="Android"
@@ -502,7 +531,7 @@
                                                 <!-- <div class="col-lg-1"></div> -->
                                                 <div class="col-lg-12">
                                                     <div class="d-flex align-items-center justify-content-between">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="20" viewBox="0 0 16 20" fill="none">
+                                                        <svg class="mt-4" xmlns="http://www.w3.org/2000/svg" width="16" height="20" viewBox="0 0 16 20" fill="none">
                                                             <path d="M0 10C0 10.1326 0.0526785 10.2598 0.146447 10.3536C0.240215 10.4473 0.367392 10.5 0.5 10.5H9.293L6.646 13.146C6.59951 13.1924 6.56262 13.2475 6.53744 13.3082C6.51225 13.3689 6.49927 13.4339 6.49922 13.4996C6.49913 13.6323 6.55175 13.7596 6.6455 13.8535C6.73925 13.9474 6.86646 14.0002 6.99915 14.0003C7.13183 14.0004 7.25911 13.9478 7.353 13.854L10.853 10.354C10.9467 10.2602 10.9994 10.1331 10.9994 10.0005C10.9994 9.86792 10.9467 9.74076 10.853 9.647L7.353 6.147C7.2587 6.05592 7.1324 6.00552 7.0013 6.00666C6.8702 6.0078 6.74479 6.06039 6.65209 6.15309C6.55939 6.24579 6.5068 6.3712 6.50566 6.5023C6.50452 6.6334 6.55492 6.7597 6.646 6.854L9.293 9.5H0.5C0.367392 9.5 0.240215 9.55268 0.146447 9.64645C0.0526785 9.74021 0 9.86739 0 10ZM13.5 0H2.5C1.83696 0 1.20107 0.263392 0.732233 0.732233C0.263392 1.20107 0 1.83696 0 2.5V6.5C0 6.63261 0.0526785 6.75979 0.146447 6.85355C0.240215 6.94732 0.367392 7 0.5 7C0.632608 7 0.759785 6.94732 0.853553 6.85355C0.947321 6.75979 1 6.63261 1 6.5V2.5C1 2.10218 1.15804 1.72064 1.43934 1.43934C1.72064 1.15804 2.10218 1 2.5 1H13.5C13.8978 1 14.2794 1.15804 14.5607 1.43934C14.842 1.72064 15 2.10218 15 2.5V17.5C15 17.8978 14.842 18.2794 14.5607 18.5607C14.2794 18.842 13.8978 19 13.5 19H2.5C2.10218 19 1.72064 18.842 1.43934 18.5607C1.15804 18.2794 1 17.8978 1 17.5V13.5C1 13.3674 0.947321 13.2402 0.853553 13.1464C0.759785 13.0527 0.632608 13 0.5 13C0.367392 13 0.240215 13.0527 0.146447 13.1464C0.0526785 13.2402 0 13.3674 0 13.5V17.5C0 18.163 0.263392 18.7989 0.732233 19.2678C1.20107 19.7366 1.83696 20 2.5 20H13.5C14.163 20 14.7989 19.7366 15.2678 19.2678C15.7366 18.7989 16 18.163 16 17.5V2.5C16 1.83696 15.7366 1.20107 15.2678 0.732233C14.7989 0.263392 14.163 0 13.5 0Z" fill="black" />
                                                         </svg>
                                                         <svg class="cursor" data-modal-close xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -513,7 +542,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-12">
-                                                    <h3 id="signout-title" class="fs-18-400 mt-4">Sign out of iPhone?</h3>
+                                                    <h3 id="signout-title" class="fs-18-pf-display-700 mt-4 mb-2">Sign out of iPhone?</h3>
                                                     <span id="signout-description" class="fs-12-400-f-color text-light">This ends your session on iPhone. Last active 28/08/2025, 18:52 GMT — you'll need to sign in again on that device.</span>
                                                 </div>
                                                 <div class="modal-buttons d-flex justify-content-between align-items-center mt-4">
@@ -562,7 +591,7 @@
                                                 <!-- <div class="col-lg-1"></div> -->
                                                 <div class="col-lg-12">
                                                     <div class="d-flex align-items-center justify-content-between">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="21" viewBox="0 0 23 21" fill="none">
+                                                        <svg class="mt-4" xmlns="http://www.w3.org/2000/svg" width="23" height="21" viewBox="0 0 23 21" fill="none">
                                                             <path d="M11.1835 12.2434V6.73901M2.33789 20.5H20.029C21.4198 20.5 22.3042 19.0138 21.6427 17.7909L12.7972 1.46121C12.1027 0.179598 10.2642 0.179598 9.56976 1.46121L0.725106 17.7909C0.061826 19.0138 0.947116 20.5 2.33789 20.5Z" stroke="#FF6E6E" stroke-linecap="round" />
                                                             <circle cx="11.1835" cy="15.5" r="0.75" fill="#FF6E6E" />
                                                         </svg>
@@ -574,7 +603,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-12">
-                                                    <h3 class="fs-18-400 mt-4">Deactivate your account?</h3>
+                                                    <h3 class="fs-18-pf-display-700 mt-4 mb-2">Deactivate your account?</h3>
                                                     <span class="fs-12-400-f-color text-light">This removes your profile, booking history, saved pets and payment details. This can't be undone.</span>
                                                 </div>
                                                 <div class="modal-buttons d-flex justify-content-between align-items-center mt-4">
@@ -600,7 +629,7 @@
                                                 <!-- <div class="col-lg-1"></div> -->
                                                 <div class="col-lg-12">
                                                     <div class="d-flex align-items-center justify-content-between">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="21" viewBox="0 0 23 21" fill="none">
+                                                        <svg class="mt-4" xmlns="http://www.w3.org/2000/svg" width="23" height="21" viewBox="0 0 23 21" fill="none">
                                                             <path d="M11.1835 12.2434V6.73901M2.33789 20.5H20.029C21.4198 20.5 22.3042 19.0138 21.6427 17.7909L12.7972 1.46121C12.1027 0.179598 10.2642 0.179598 9.56976 1.46121L0.725106 17.7909C0.061826 19.0138 0.947116 20.5 2.33789 20.5Z" stroke="#FF6E6E" stroke-linecap="round" />
                                                             <circle cx="11.1835" cy="15.5" r="0.75" fill="#FF6E6E" />
                                                         </svg>
@@ -612,7 +641,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-12">
-                                                    <h3 class="fs-18-400 mt-4">Confirm deactivation</h3>
+                                                    <h3 class="fs-18-pf-display-700 mt-4">Confirm deactivation</h3>
                                                     <span class="fs-12-400-f-color text-light">Type DEACTIVATE to confirm.</span>
 
                                                     <div class="form-field mt-3">
@@ -654,7 +683,7 @@
                                                 <div class="col-lg-12" style="padding: 15px 35px;">
 
                                                     <div class="d-flex flex-column align-items-center gap-5 justify-content-center">
-                                                        <h2 class="fs-18-400">Account deactivated</h2>
+                                                        <h2 class="fs-18-pf-display-700">Account deactivated</h2>
                                                         <p class="fs-12-400-f-color text-light text-center">We're sorry to see you go. You've been signed out of every device.</p>
 
                                                         <button class="update-btn fs-16-600 btn-active-bg text-center cursor mt-4" style="background-color:#3B3731" data-modal-close>Return to homepage</button>
@@ -757,7 +786,7 @@
                                         <div class="container">
                                             <div class="row">
                                                 <div class="d-flex align-items-center justify-content-between mt-2">
-                                                    <h1 class="fs-18-400 modal-title">Add payment method</h1>
+                                                    <h1 class="fs-18-pf-display-700 modal-title">Add payment method</h1>
                                                     <svg class="cursor" data-modal-close xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                                                         <circle cx="10" cy="10" r="9.5" transform="matrix(-1 0 0 1 20 0)" fill="#F3F3F3" stroke="#E8E8E8" />
                                                         <path d="M13.1465 13.24L10.0001 10.0936L13.0937 6.99999" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
@@ -765,7 +794,7 @@
                                                     </svg>
                                                 </div>
                                                 <span id="subtitle" class="fs-12-400-f-color text-light mt-1 mb-1">Card details are stored securely and never shown in full.</span>
-                                                <div id="edit_card" class="mt-3" style="display:none; margin-left: 10px; width: auto;align-items:center; gap:14px; background:#fff; border:1px solid #e5e7eb; border-radius:10px; padding:12px 18px;">
+                                                <div id="edit_card" class="mt-3" style="display:none; margin-left: 10px; width: auto;align-items:center; gap:14px; background:#fff; border:1px solid #e5e7eb; border-radius:10px; padding:20px 18px;">
                                                     <div id="edit_card_icon">
 
 
@@ -881,7 +910,7 @@
                                                                 font-family: Lato;
                                                                 font-size: 14px;
                                                                 font-style: normal;
-                                                                font-weight: 400;
+                                                                font-weight: 700;
                                                                 line-height: normal;
                                                                 text-decoration-line: underline;
                                                                 text-decoration-style: solid;
@@ -899,9 +928,9 @@
                                                             Set as default payment method
                                                         </label>
 
-                                                        <span id="remove_card" class="mt-3 mb-3 cursor">Remove card</span>
+                                                        <span id="remove_card" class="mt-3 mb-5 cursor">Remove card</span>
 
-                                                        <div class="modal-buttons d-flex justify-content-between align-items-center mt-3">
+                                                        <div class="modal-buttons d-flex justify-content-between align-items-center mt-4">
                                                             <button type="button" class="close-btn fs-16-400 text-light cursor" data-modal-close>Cancel</button>
                                                             <button id="add_payment_btn" class="update-btn fs-16-600 btn-active-bg text-center cursor" style="background-color: #C9DDA0">+ Add payment</button>
                                                         </div>
@@ -1008,7 +1037,7 @@
                                         <div class="container">
                                             <div class="row">
                                                 <div class="d-flex align-items-center justify-content-between mt-2">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="20" viewBox="0 0 18 20" fill="none">
+                                                    <svg class="mt-4" xmlns="http://www.w3.org/2000/svg" width="18" height="20" viewBox="0 0 18 20" fill="none">
                                                         <path d="M3.36343 20C2.78743 20 2.29714 19.8005 1.89257 19.4014C1.488 19.0023 1.28571 18.5191 1.28571 17.9518V2.24477H0V0.976538H5.14286V0H12.8571V0.976538H18V2.24477H16.7143V17.9518C16.7143 18.5352 16.5163 19.0226 16.1203 19.4141C15.7243 19.8055 15.2297 20.0008 14.6366 20H3.36343ZM15.4286 2.24477H2.57143V17.9518C2.57143 18.1792 2.64557 18.3661 2.79386 18.5124C2.94214 18.6586 3.132 18.7318 3.36343 18.7318H14.6379C14.835 18.7318 15.0163 18.6506 15.1817 18.4883C15.3471 18.3259 15.4294 18.1467 15.4286 17.9505V2.24477ZM6.18171 16.1953H7.46743V4.78123H6.18171V16.1953ZM10.5326 16.1953H11.8183V4.78123H10.5326V16.1953Z" fill="#FF6E6E" />
                                                     </svg>
                                                     <svg class="cursor" data-modal-close xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -1017,9 +1046,9 @@
                                                         <path d="M7.09375 13.24L10.2402 10.0936L7.14657 6.99999" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
                                                     </svg>
                                                 </div>
-                                                <h1 class="fs-18-400 mt-4">Remove this card?</h1>
+                                                <h1 class="fs-18-pf-display-700 mt-4">Remove this card?</h1>
                                                 <span class="fs-12-400-f-color text-light mt-2 mb-1">You'll need another payment method before your next booking.</span>
-                                                <div id="edit_card" class="mt-3" style="margin-left: 10px; width: 360px;align-items:center; gap:14px; background:#fff; border:1px solid #e5e7eb; border-radius:10px; padding:12px 18px;">
+                                                <div id="edit_card" class="mt-3" style="margin-left: 10px; width: 360px;align-items:center; gap:14px; background:#fff; border:1px solid #e5e7eb; border-radius:10px; padding:20px 18px;">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="62" height="20" viewBox="0 0 62 20" fill="none">
                                                         <path d="M32.0649 6.39377C32.0295 9.17985 34.5505 10.7345 36.4495 11.6589C38.4005 12.6073 39.0559 13.2155 39.0481 14.0637C39.0336 15.3617 37.4918 15.9346 36.0491 15.9568C33.5321 15.9958 32.0685 15.278 30.9051 14.7351L29.9983 18.9735C31.1657 19.5108 33.3272 19.9794 35.5686 20C40.8301 20 44.2724 17.4055 44.291 13.3829C44.3116 8.27769 37.222 7.99511 37.2705 5.71321C37.2872 5.02129 37.9481 4.28292 39.3964 4.09518C40.1133 4.00034 42.0922 3.92776 44.3358 4.95984L45.2164 0.859098C44.0098 0.420235 42.4591 0 40.5284 0C35.5761 0 32.093 2.6298 32.0649 6.39377ZM53.678 0.35322C52.7172 0.35322 51.9076 0.91305 51.5462 1.77215L44.0304 19.6988H49.2881L50.3343 16.8104H56.7591L57.366 19.6988H62L57.9562 0.35322H53.678ZM54.4135 5.57918L55.9308 12.8437H51.7753L54.4135 5.57918ZM25.6903 0.353462L21.546 19.6986H26.5561L30.6985 0.352978L25.6903 0.353462ZM18.2786 0.353462L13.0638 13.5206L10.9544 2.32472C10.7069 1.0749 9.7294 0.35322 8.64391 0.35322H0.119398L0 0.914984C1.75005 1.29433 3.73841 1.90618 4.94305 2.56084C5.68027 2.96076 5.89048 3.31035 6.13267 4.26066L10.128 19.6988H15.4225L23.5397 0.35322L18.2786 0.353462Z" fill="url(#paint0_linear_5_657)"></path>
                                                         <defs>
@@ -1064,7 +1093,7 @@
                                                 <div class="col-lg-12" style="padding: 15px 35px;">
 
                                                     <div class="d-flex flex-column align-items-center gap-5 justify-content-center">
-                                                        <h2 class="fs-18-400">Card removed</h2>
+                                                        <h2 class="fs-18-pf-display-700">Card removed</h2>
                                                         <span class="fs-12-400-f-color text-light text-center">Visa ending in 7890 is no longer saved <br> to your account.</span>
 
                                                         <button class="update-btn fs-16-600 btn-active-bg text-center cursor mt-4" style="background: #3B3731;" data-modal-close>Return to homepage</button>
@@ -1126,7 +1155,7 @@
                                                 <div class="col-lg-12" style="padding: 15px 35px;">
 
                                                     <div class="d-flex flex-column align-items-center gap-5 justify-content-center">
-                                                        <h2 class="fs-18-400">Changes saved</h2>
+                                                        <h2 class="fs-18-pf-display-700">Changes saved</h2>
                                                         <span class="fs-12-400-f-color text-light text-center">Your Visa ending in 7890 has been updated.</span>
 
                                                         <button class="update-btn fs-16-600 btn-active-bg text-center cursor mt-4" data-modal-close>Done</button>
@@ -1785,7 +1814,7 @@
                                             <!-- <div class="col-lg-1"></div> -->
                                             <div class="col-lg-12">
                                                 <div class="d-flex align-items-center justify-content-between">
-                                                    <h4 class="fs-18-400">Unblock <span id="unblock_name">Provider</span></h4>
+                                                    <h4 class="fs-18-pf-display-700">Unblock <span id="unblock_name">Provider</span></h4>
                                                     <svg class="cursor" data-modal-close xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                                                         <circle cx="10" cy="10" r="9.5" transform="matrix(-1 0 0 1 20 0)" fill="#F3F3F3" stroke="#E8E8E8" />
                                                         <path d="M13.1465 13.24L10.0001 10.0936L13.0937 6.99999" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
@@ -1924,7 +1953,40 @@
                                         </div>
                                     </div>
                                     <div>
-                                        <a href="" class="small-link-tag">Unlink</a>
+                                        <a href="#" class="small-link-tag cursor" data-modal-open="unlink_facebook_modal">Unlink</a>
+                                    </div>
+                                </div>
+
+                                <div class="modal" id="unlink_facebook_modal">
+                                    <div class="modal-content size">
+                                        <div class="container">
+                                            <div class="row mt-2">
+                                                <div class="col-lg-12">
+                                                    <div class="d-flex align-items-center justify-content-between">
+                                                        <h3 class="fs-18-pf-display-700 mb-0">Unlink Facebook?</h3>
+                                                        <svg class="cursor" data-modal-close xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                                            <circle cx="10" cy="10" r="9.5" transform="matrix(-1 0 0 1 20 0)" fill="#F3F3F3" stroke="#E8E8E8" />
+                                                            <path d="M13.1465 13.24L10.0001 10.0936L13.0937 6.99999" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                                                            <path d="M7.09375 13.24L10.2402 10.0936L7.14657 6.99999" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="unlink-account-pill d-flex align-items-center gap-10 mt-4">
+                                                        <img src="<?= BASE_URL ?>/assets/images/social_media/facebook.png" class="social-icons" alt="Facebook">
+                                                        <div>
+                                                            <p class="normal-font-bold mb-0">Facebook</p>
+                                                            <p class="fs-12-400-f-color text-light mb-0">username@example.com</p>
+                                                        </div>
+                                                    </div>
+                                                    <span class="fs-12-400-f-color text-light d-block mt-4">You won't be able to sign in with Facebook anymore. You can re-link it anytime from Account Linking.</span>
+                                                </div>
+                                                <div class="modal-buttons d-flex justify-content-between align-items-center mt-4">
+                                                    <button type="button" class="close-btn fs-16-400 text-light cursor" data-modal-close>Cancel</button>
+                                                    <button type="button" class="update-btn fs-16-600 text-center cursor" style="background-color:#FF6E6E" data-modal-close>Unlink</button>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -2039,7 +2101,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-lg-12">
-                                                <h3 class="fs-18-400 mt-4">Delete your personal data?</h3>
+                                                <h3 class="fs-18-pf-display-700 mt-4">Delete your personal data?</h3>
                                                 <span class="fs-12-400-f-color text-light">This permanently deletes your profile, saved pets, messages and preferences. Booking and payment records are kept for legal and tax purposes.</span>
                                             </div>
                                             <div class="modal-buttons d-flex justify-content-between align-items-center mt-4">
@@ -2073,7 +2135,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-lg-12">
-                                                <h3 class="fs-18-400 mt-4">Confirm deactivation</h3>
+                                                <h3 class="fs-18-pf-display-700 mt-4">Confirm deactivation</h3>
                                                 <span class="fs-12-400-f-color text-light">Type DELETE to confirm.</span>
 
                                                 <div class="form-field mt-3">
@@ -2108,7 +2170,7 @@
                                             <div class="col-lg-12" style="padding: 15px 35px;">
 
                                                 <div class="d-flex flex-column align-items-center gap-5 justify-content-center">
-                                                    <h2 class="fs-18-400">Personal data deleted</h2>
+                                                    <h2 class="fs-18-pf-display-700">Personal data deleted</h2>
                                                     <p class="fs-12-400-f-color text-light text-center">Your profile and saved info have been removed. This can take a few minutes to fully process.</p>
 
                                                     <button class="update-btn fs-16-600 btn-active-bg text-center cursor mt-4" style="background-color:#3B3731" data-modal-close>Done</button>

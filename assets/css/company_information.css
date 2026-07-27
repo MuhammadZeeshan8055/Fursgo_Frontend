@@ -222,7 +222,8 @@ body {
     display: none;
 }
 
-.tab-panel p {
+/* Scoped so settings.php (and similar) can use their own font classes */
+.company-info-content .tab-panel p {
     color: #3B3731;
     font-family: Lato;
     font-size: 18px;

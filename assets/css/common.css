@@ -6,6 +6,12 @@
 
 @font-face {
   font-family: "Playfair Display";
+  src: url("../fonts/Playfair_Display/static/PlayfairDisplay-Bold.ttf") format("truetype");
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "Playfair Display";
   src: url("../fonts/Playfair_Display/static/PlayfairDisplay-ExtraBold.ttf") format("truetype");
   font-weight: 900;
 }
@@ -291,6 +297,13 @@
   font-size: 25px;
   font-style: italic;
   font-weight: 500;
+}
+
+.fs-18-pf-display-700 {
+  color: #3b3731;
+  font-family: "Playfair Display";
+  font-size: 18px;
+  font-weight: 700;
 }
 
 /* ===== 20px ===== */

@@ -43,7 +43,7 @@
                             <button class="tab-btn normal-font-weight" data-tab="tab-cookies-policy">Cookies Policy</button>
                         </div>
 
-                        <div class="tab-panels mt-5">
+                        <div class="tab-panels company-info-content mt-5">
 
                             <div class="tab-panel active" id="tab-platform-overview">
                                 <h1 class="large-font">Learn how FursGo works</h1>
