@@ -2503,7 +2503,7 @@
 
         <div class="row">
             <div class="col-lg-4">
-                <div class="service-card mt-4 mb-5">
+                <div id="booking-sidebar" class="service-card mt-4 mb-5">
                     <div class="service__header">
                         <div class="d-flex align-items-center gap-20">
                             <div class="avatar-wrap d-flex align-items-center">
