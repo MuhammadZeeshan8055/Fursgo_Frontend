@@ -494,23 +494,104 @@
             color: white;
         }
 
-        /* Add to the bottom of style.css */
-
-        .pets-grid {
-            display: flex;
-            align-items: flex-start;
-            gap: 20px;
-            margin-top: 20px;
+        /* Active pets slider only — keep archived / other layouts untouched */
+        #pets-slider-container.pets-slider-container {
             position: relative;
-            /* overflow: hidden; */
+            overflow: visible;
         }
 
-        .pet-card {
+        #pets-slider-container .pets-grid {
+            display: flex;
+            align-items: stretch;
+            flex-wrap: nowrap;
+            gap: 20px;
+            margin-top: 20px;
+            overflow-x: auto;
+            overflow-y: hidden;
+            scroll-behavior: smooth;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        #pets-slider-container .pets-grid::-webkit-scrollbar {
+            display: none;
+        }
+
+        #pets-slider-container .pet-card {
             min-width: 325px;
+            width: 325px;
+            flex: 0 0 325px;
             border-radius: 15px;
             padding: 45px;
             position: relative;
-            justify-content: flex-start !important;
+            box-sizing: border-box;
+        }
+
+        #pets-slider-container .pet-info {
+            flex-grow: 1;
+        }
+
+        #pets-slider-container .slider-arrow-prev,
+        #pets-slider-container .slider-arrow-next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #fff;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
+            cursor: pointer;
+            z-index: 20;
+            border: 1px solid #E4E4E4;
+            padding: 0;
+        }
+
+        #pets-slider-container .slider-arrow-prev {
+            left: 8px;
+        }
+
+        #pets-slider-container .slider-arrow-next {
+            right: 8px;
+        }
+
+        #pets-slider-container .slider-arrow-prev:hover,
+        #pets-slider-container .slider-arrow-next:hover {
+            background: #FAFAFA;
+        }
+
+        #pets-slider-container .slider-arrow-prev.is-hidden,
+        #pets-slider-container .slider-arrow-next.is-hidden {
+            display: none;
+        }
+
+        /* Archived pets: same card look, no slider */
+        .archived-pets-grid.pets-grid {
+            display: flex;
+            align-items: stretch;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+            overflow: visible;
+        }
+
+        .archived-pets-grid .pet-card {
+            min-width: 325px;
+            width: 325px;
+            flex: 0 0 325px;
+            border-radius: 15px;
+            padding: 45px;
+            position: relative;
+            box-sizing: border-box;
+        }
+
+        .pet-card {
+            border-radius: 15px;
+            padding: 45px;
+            position: relative;
         }
 
         .pet-card-overlay-active {
@@ -535,7 +616,7 @@
         .pet-card-menu-dropdown {
             position: absolute;
             right: -130px;
-            top: calc(100% + -19px);
+            top: calc(100% + -32px);
             width: 154px;
             border-radius: 8px;
             border: 1px solid #E4E4E4;
@@ -809,7 +890,7 @@
         }
 
         .pet-info {
-            flex-grow: 0;
+            flex-grow: 1;
         }
 
         .pet-card>.d-flex.justify-content-between {
@@ -889,6 +970,11 @@
             border-radius: 15px;
             font-family: "Lato", sans-serif;
             color: #333;
+            overflow: visible;
+        }
+
+        #pets-view {
+            overflow: visible;
         }
 
         h3.section-title {
@@ -4708,14 +4794,21 @@
                                         </div>
 
 
-                                        <div class="slider-arrow-next">
-                                            <span><svg xmlns="http://www.w3.org/2000/svg" width="7" height="11"
-                                                    viewBox="0 0 7 11" fill="none">
-                                                    <path d="M0.5 10.484L5.53426 5.44975L0.58451 0.500005" stroke="#3B3731"
-                                                        stroke-linecap="round" stroke-linejoin="round" />
-                                                </svg></span>
-                                        </div>
                                     </div>
+                                    <button type="button" class="slider-arrow-prev is-hidden" id="pets-slider-prev" aria-label="Previous pets">
+                                        <span><svg xmlns="http://www.w3.org/2000/svg" width="7" height="11"
+                                                viewBox="0 0 7 11" fill="none">
+                                                <path d="M6.5 0.5L1.46574 5.53425L6.41549 10.484" stroke="#3B3731"
+                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg></span>
+                                    </button>
+                                    <button type="button" class="slider-arrow-next" id="pets-slider-next" aria-label="Next pets">
+                                        <span><svg xmlns="http://www.w3.org/2000/svg" width="7" height="11"
+                                                viewBox="0 0 7 11" fill="none">
+                                                <path d="M0.5 10.484L5.53426 5.44975L0.58451 0.500005" stroke="#3B3731"
+                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg></span>
+                                    </button>
                                 </div>
                             </div>
 
@@ -7492,6 +7585,10 @@
                         target.classList.remove('hidden');
                         target.style.display = 'block';
                     }
+
+                    if (label === 'My Pets' && typeof window.refreshPetsSlider === 'function') {
+                        window.setTimeout(window.refreshPetsSlider, 50);
+                    }
                 });
             });
         });
@@ -7841,6 +7938,8 @@
 
         document.addEventListener('DOMContentLoaded', () => {
             const petsGrid = document.querySelector('#pets-slider-container .pets-grid');
+            const petsSliderNext = document.getElementById('pets-slider-next');
+            const petsSliderPrev = document.getElementById('pets-slider-prev');
             const archivedGrid = document.querySelector('.archived-pets-grid');
             const activePetsView = document.getElementById('active-pets-view');
             const archivedPetsView = document.getElementById('archived-pets-view');
@@ -7850,6 +7949,44 @@
             const archivedEmpty = document.querySelector('.archived-pets-empty');
             if (!petsGrid) return;
 
+            function getPetsSlideStep() {
+                const card = petsGrid.querySelector('.pet-card');
+                return card ? card.offsetWidth + 20 : 345;
+            }
+
+            function updatePetsSliderArrow() {
+                const maxScroll = petsGrid.scrollWidth - petsGrid.clientWidth;
+                const canScroll = maxScroll > 4;
+                const atStart = petsGrid.scrollLeft <= 4;
+                const atEnd = petsGrid.scrollLeft >= maxScroll - 4;
+
+                // If section is still hidden, sizes are 0 — keep next visible as default
+                if (petsGrid.clientWidth === 0) {
+                    petsSliderPrev?.classList.add('is-hidden');
+                    petsSliderNext?.classList.remove('is-hidden');
+                    return;
+                }
+
+                petsSliderPrev?.classList.toggle('is-hidden', !canScroll || atStart);
+                petsSliderNext?.classList.toggle('is-hidden', !canScroll || atEnd);
+            }
+
+            petsSliderNext?.addEventListener('click', (event) => {
+                event.preventDefault();
+                event.stopPropagation();
+                petsGrid.scrollBy({ left: getPetsSlideStep(), behavior: 'smooth' });
+            });
+
+            petsSliderPrev?.addEventListener('click', (event) => {
+                event.preventDefault();
+                event.stopPropagation();
+                petsGrid.scrollBy({ left: -getPetsSlideStep(), behavior: 'smooth' });
+            });
+
+            petsGrid.addEventListener('scroll', updatePetsSliderArrow, { passive: true });
+            window.addEventListener('resize', updatePetsSliderArrow);
+            window.refreshPetsSlider = updatePetsSliderArrow;
+
             function updateArchivedEmptyState() {
                 if (!archivedEmpty || !archivedGrid) return;
                 archivedEmpty.classList.toggle('show', archivedGrid.children.length === 0);
@@ -7858,6 +7995,7 @@
             function showActivePetsView() {
                 activePetsView?.classList.add('active');
                 archivedPetsView?.classList.remove('active');
+                window.setTimeout(updatePetsSliderArrow, 0);
             }
 
             function showArchivedPetsView() {
@@ -7964,15 +8102,10 @@
                     activeCard = null;
                 }
 
-                const sliderArrow = petsGrid.querySelector('.slider-arrow-next');
-                if (sliderArrow) {
-                    petsGrid.insertBefore(card, sliderArrow);
-                } else {
-                    petsGrid.appendChild(card);
-                }
-
+                petsGrid.appendChild(card);
                 setPetCardArchivedMode(card, false);
                 updateArchivedEmptyState();
+                updatePetsSliderArrow();
             }
 
             function archivePet(card) {
@@ -7986,6 +8119,7 @@
                 archivedGrid.appendChild(card);
                 setPetCardArchivedMode(card, true);
                 updateArchivedEmptyState();
+                updatePetsSliderArrow();
             }
 
             const deleteIcon = `
@@ -8150,6 +8284,7 @@
                 card.querySelector('.confirm-delete')?.addEventListener('click', () => {
                     card.remove();
                     updateArchivedEmptyState();
+                    updatePetsSliderArrow();
                     if (activeCard === card) {
                         activeCard = null;
                     }
@@ -8165,6 +8300,7 @@
             });
 
             updateArchivedEmptyState();
+            updatePetsSliderArrow();
 
             document.addEventListener('click', (event) => {
                 if (event.target.closest('.pet-card-menu')) return;
