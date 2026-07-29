@@ -1,4 +1,4 @@
-<?php include '../function_helper.php'; ?>
+﻿<?php include '../function_helper.php'; ?>
 <?php include_once '../components/calendar.php'; ?>
 
 
@@ -15,9 +15,55 @@
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/bootstrap.css">
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/media_query.css">
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/common.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/my_bookings.css">
     <style>
         body {
             background: #fff;
+        }
+
+        /* Keep profile upcoming booking cards intact (my_bookings.css uses .booking-card for stats) */
+        .col-lg-7 > .booking-card,
+        .col-lg-7 .booking-card.bg-body-yellow,
+        .col-lg-7 .booking-card.bg-body-pink {
+            width: auto !important;
+            height: auto !important;
+            min-height: 0 !important;
+            display: block !important;
+            text-align: left !important;
+            align-items: initial !important;
+            justify-content: initial !important;
+            flex-direction: initial !important;
+            border-radius: 10px !important;
+            overflow: visible !important;
+        }
+
+        .col-lg-7 .booking-body {
+            display: flex !important;
+            justify-content: space-between !important;
+            align-items: center !important;
+            padding: 0 22px !important;
+        }
+
+        .col-lg-7 .booking-info {
+            margin-top: 14px !important;
+            display: flex !important;
+            gap: 28px !important;
+            padding: 8px 0 20px 22px !important;
+            color: inherit !important;
+            text-align: left !important;
+            font-family: inherit !important;
+            font-size: inherit !important;
+            font-weight: inherit !important;
+            line-height: inherit !important;
+        }
+
+        .col-lg-7 .view-btn {
+            flex-shrink: 0;
+            white-space: nowrap;
+        }
+
+        .col-lg-7 .profile-text {
+            min-width: 0;
         }
 
         .profile-tabs {
@@ -452,10 +498,11 @@
 
         .pets-grid {
             display: flex;
+            align-items: flex-start;
             gap: 20px;
             margin-top: 20px;
             position: relative;
-            overflow: hidden;
+            /* overflow: hidden; */
         }
 
         .pet-card {
@@ -463,6 +510,239 @@
             border-radius: 15px;
             padding: 45px;
             position: relative;
+            justify-content: flex-start !important;
+        }
+
+        .pet-card-overlay-active {
+            min-height: 270px;
+            background: transparent !important;
+        }
+
+        .pet-card-overlay-active> :not(.pet-card-confirm) {
+            display: none !important;
+        }
+
+        .pet-card-menu {
+            position: relative;
+        }
+
+        .pet-card-menu-trigger {
+            display: block;
+            cursor: pointer;
+            line-height: 0;
+        }
+
+        .pet-card-menu-dropdown {
+            position: absolute;
+            right: -130px;
+            top: calc(100% + -19px);
+            width: 154px;
+            border-radius: 8px;
+            border: 1px solid #E4E4E4;
+            background: #FFF;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            display: none;
+            overflow: hidden;
+            z-index: 6;
+        }
+
+        .pet-card-menu-dropdown.active {
+            display: block;
+        }
+
+        .pet-card-menu-dropdown button {
+            width: 100%;
+            border: none;
+            background: #FFF;
+            padding: 10px 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #A9BED0;
+            font-family: Lato;
+            font-size: 14px;
+            font-weight: 500;
+            text-align: left;
+            cursor: pointer;
+        }
+
+        .pet-card-menu-dropdown button+button {
+            border-top: 1px solid #EAEAEA;
+        }
+
+        .pet-card-menu-dropdown .delete-action {
+            color: #FF7F7F;
+        }
+
+        .pet-card-confirm {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            z-index: 5;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 10px 24px;
+            border-radius: 15px;
+            border: 1px solid #E4E4E4;
+            background: #FFF;
+            height: 280px;
+        }
+
+        .pet-card-confirm.active {
+            display: flex;
+        }
+
+        .pet-card-confirm.delete-confirm {
+            background: #FFF7F7;
+            border-color: #FF8E8E;
+        }
+
+        .pet-card-confirm.archive-confirm {
+            border: 1px solid #F5F5F5;
+            background: #FFF;
+        }
+
+        .pet-card-confirm svg {
+            margin-bottom: 18px;
+        }
+
+        .pet-card-confirm h4 {
+            margin: 0 0 14px;
+            color: #3B3731;
+            text-align: center;
+            font-family: "Playfair Display";
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .pet-card-confirm p {
+            margin: 0;
+            font-family: Lato;
+            font-size: 16px;
+            line-height: 1.35;
+        }
+
+        .pet-card-confirm .confirm-copy-strong {
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .pet-card-confirm.delete-confirm .confirm-copy-strong,
+        .pet-card-confirm.delete-confirm .confirm-copy-soft {
+            color: #FF8E8E;
+        }
+
+        .pet-card-confirm.archive-confirm .confirm-copy-strong,
+        .pet-card-confirm.archive-confirm .confirm-copy-soft {
+            color: #A9BED0;
+        }
+
+        .pet-card-confirm .confirm-copy-soft {
+            font-size: 14px;
+            max-width: 245px;
+        }
+
+        .pet-card-confirm-actions {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 22px;
+        }
+
+        .pet-card-confirm-btn {
+            border-radius: 999px;
+            padding: 12px 22px;
+            font-family: Lato;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            border: 1px solid #E4E4E4;
+            background: #FFF;
+            color: #3B3731;
+        }
+
+        .pet-card-confirm-btn.confirm-delete {
+            background: #FF7F7F;
+            border-color: #FF7F7F;
+            color: #FFF;
+        }
+
+        .pet-card-confirm-btn.confirm-archive {
+            background: #B8D6ED;
+            border-color: #B8D6ED;
+            color: #FFF;
+        }
+
+        .pet-card-confirm.restore-confirm {
+            border: 1px solid #F5F5F5;
+            background: #FFF;
+        }
+
+        .pet-card-confirm.restore-confirm .confirm-copy-soft {
+            color: #A9BED0;
+            max-width: 260px;
+        }
+
+        .pet-card-confirm-btn.confirm-restore {
+            background: #B8D6ED;
+            border-color: #B8D6ED;
+            color: #FFF;
+        }
+
+        .pet-card .btn-restore-pet {
+            color: #A8C9E2 !important;
+        }
+
+        .pet-card-menu-dropdown .edit-action {
+            color: #A9BED0;
+        }
+
+        .pets-subview {
+            display: none;
+        }
+
+        .pets-subview.active {
+            display: block;
+        }
+
+        .archived-pets-empty {
+            display: none;
+            margin-top: 40px;
+            text-align: center;
+            color: #9D9B98;
+            font-family: Lato;
+            font-size: 16px;
+        }
+
+        .archived-pets-empty.show {
+            display: block;
+        }
+
+        .view-archived-link,
+        .back-to-pets-link {
+            border: none;
+            background: none;
+            padding: 0;
+            cursor: pointer;
+        }
+
+        .archived-pets-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .close-archived-pets-btn {
+            border: none;
+            background: none;
+            padding: 0;
+            cursor: pointer;
+            line-height: 0;
+            flex-shrink: 0;
         }
 
         /* Background Colors from your image */
@@ -522,13 +802,19 @@
             color: #3b3731;
             font-family: Lato;
             font-size: 16px;
-
             font-weight: 400;
-
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         .pet-info {
-            flex-grow: 1;
+            flex-grow: 0;
+        }
+
+        .pet-card>.d-flex.justify-content-between {
+            margin-top: 24px;
+            flex-shrink: 0;
         }
 
         .pet-card .btn-edit-outline {
@@ -537,18 +823,19 @@
             font-family: Lato;
             font-size: 15px;
             font-weight: 600;
-
         }
 
         .my-pets.btn-edit-outline {
-            border: 1px solid #333;
-            background: white;
-            /* padding: 8px 20px; */
-            border-radius: 100px;
             cursor: pointer;
-            height: auto;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
             width: fit-content;
             height: 48px;
+            border-radius: 100px;
+            border: 1px solid #E4E4E4;
+            background: #FFF;
         }
 
         .btn-add-another-pet {
@@ -581,6 +868,7 @@
             justify-content: center;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             cursor: pointer;
+            z-index: 8;
         }
 
         #edit-view {
@@ -1206,11 +1494,12 @@
         .groomer-grid .card {
             width: 295px;
             flex: 0 0 295px;
+            position: relative;
         }
 
         .favourite-delete-confirm {
-            width: 274px;
-            flex: 0 0 274px;
+            width: 100%;
+            height: 100%;
             min-height: 248px;
             padding: 24px 20px;
             border: 1px solid #FF8E8E;
@@ -1218,10 +1507,26 @@
             background: #FFF7F7;
             text-align: center;
             display: none;
+            position: absolute;
+            inset: 0;
+            z-index: 5;
         }
 
         .favourite-delete-confirm.active {
-            display: block;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .groomer-grid .card.delete-confirm-active,
+        .spaces-grid .space-card.delete-confirm-active {
+            height: 270px;
+            min-height: 270px;
+        }
+
+        .groomer-grid .card.delete-confirm-active> :not(.favourite-delete-confirm),
+        .spaces-grid .space-card.delete-confirm-active> :not(.favourite-delete-confirm) {
+            display: none !important;
         }
 
         .favourite-delete-confirm svg {
@@ -1289,9 +1594,8 @@
             }
 
             .favourite-delete-confirm {
-                width: 295px;
-                flex-basis: 295px;
-                min-height: auto;
+                width: 100%;
+                min-height: 248px;
             }
         }
 
@@ -1643,6 +1947,17 @@
             gap: 10px;
         }
 
+        .review-filter-tags {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .review-filter-tags>.venue-tags {
+            display: contents;
+        }
+
         .venue-tag {
             display: inline-flex;
             align-items: center;
@@ -1690,6 +2005,7 @@
             border-radius: 16px;
             width: 295px;
             flex: 0 0 295px;
+            position: relative;
         }
 
         /* LABEL */
@@ -1974,21 +2290,30 @@
         /* REVIEW CARD */
         .review-item {
             display: flex;
-            justify-content: space-between;
+            align-items: flex-start;
             gap: 20px;
-            padding: 25px 0;
-            border-bottom: 1px solid #eee;
+            padding: 25px;
+            border-radius: 10px;
         }
 
-        .review-item:last-child {
-            border: none;
+        #received-reviews .review-item {
+            background: #FAFAFA;
+        }
+
+        #written-reviews .review-item {
+            border-bottom: 1px solid #D4D4D4;
+        }
+
+        #written-reviews .review-item:last-child {
+            border-bottom: none;
         }
 
         /* LEFT SIDE */
         .review-left {
             display: flex;
             gap: 15px;
-            min-width: 230px;
+            flex: 0 0 250px;
+            min-width: 250px;
         }
 
         .avatar {
@@ -2028,12 +2353,29 @@
         }
 
         /* CONTENT */
+        #written-reviews .review-content {
+            flex: 1;
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            min-width: 0;
+        }
+
+        #written-reviews .review-content>div:first-child {
+            flex: 1;
+            min-width: 0;
+        }
+
+        #received-reviews .review-content {
+            flex: 1;
+            min-width: 0;
+        }
 
         .review-top {
             display: flex;
             align-items: center;
             gap: 15px;
-            margin-bottom: 23px;
+            margin-bottom: 10px;
         }
 
         .date {
@@ -2067,7 +2409,8 @@
             font-weight: 400;
 
             margin-bottom: 25px;
-            width: 674px;
+            max-width: 674px;
+            width: 100%;
         }
 
         /* TAGS */
@@ -2095,6 +2438,13 @@
             position: relative;
             cursor: pointer;
             font-size: 22px;
+            flex: 0 0 25px;
+            width: 25px;
+        }
+
+        .review-menu.is-hidden {
+            visibility: hidden;
+            pointer-events: none;
         }
 
         /* DROPDOWN */
@@ -2113,6 +2463,148 @@
         .editReview-btn-bg,
         .removeReview-btn-bg {
             padding: 5px 10px 5px 10px;
+            cursor: pointer;
+        }
+
+        .editReview-btn-bg:hover,
+        .removeReview-btn-bg:hover {
+            opacity: 0.85;
+        }
+
+        /* EDIT / REMOVE PANELS */
+        .review-body {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .review-edit-panel,
+        .review-remove-panel {
+            display: none;
+        }
+
+        .review-item.is-editing .review-view {
+            display: none;
+        }
+
+        .review-item.is-editing .review-edit-panel {
+            display: block;
+        }
+
+        .review-item.is-removing .review-body {
+            display: flex;
+            flex-direction: column;
+            border: 2px solid #FF6E6E;
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        .review-item.is-removing .review-remove-panel {
+            display: contents;
+        }
+
+        .review-item.is-removing .review-remove-panel .review-panel-title {
+            order: -1;
+            margin-bottom: 0;
+        }
+
+        .review-item.is-removing .review-view {
+            display: block;
+        }
+
+        .review-item.is-removing .review-remove-panel .review-panel-actions {
+            order: 1;
+            margin-top: 20px;
+        }
+
+        .review-item.is-editing .review-menu,
+        .review-item.is-removing .review-menu {
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .review-panel-title {
+            color: #3b3731;
+            font-family: Lato;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .review-edit-textarea {
+            width: 100%;
+            min-height: 120px;
+            padding: 15px;
+            border: 1px solid #D4D4D4;
+            border-radius: 10px;
+            background: #fff;
+            color: #3b3731;
+            font-family: Lato;
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 1.5;
+            resize: vertical;
+        }
+
+        .review-edit-textarea:focus {
+            outline: none;
+            border-color: #FBAC83;
+        }
+
+        .review-panel-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .review-btn {
+            padding: 20px 24px;
+            border-radius: 25px;
+            font-family: Lato;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .review-btn-cancel {
+            border-radius: 96px;
+            background: none;
+            border: 1px solid #D4D4D4;
+            box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.05);
+            color: #3b3731;
+            width: 88px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #9D9B98;
+        }
+
+        .review-item.is-removing .review-btn-cancel {
+            border: none;
+            background: transparent;
+            padding: 10px 16px;
+            color: #3b3731;
+        }
+
+        .review-btn-save {
+            border: none;
+            border-radius: 96px;
+            background: #FFC97A;
+            box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.05);
+            color: #fff;
+            width: 143px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .review-btn-remove {
+            border: none;
+            background: #FF6E6E;
+            color: #fff;
+            border-radius: 96px;
         }
 
         .editReview-btn-bg {
@@ -2869,6 +3361,48 @@
             align-items: center;
             justify-content: center;
             gap: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pf-photo-preview {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+
+        .pf-photo-card.has-photo .pf-paw-icon {
+            display: none;
+        }
+
+        .pf-photo-card.has-photo .pf-upload-btn {
+            display: none;
+        }
+
+        .pf-photo-delete {
+            display: none;
+            position: absolute;
+            bottom: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            border: none;
+            background: #FF6E6E;
+            border-radius: 999px;
+            width: 36px;
+            height: 36px;
+            padding: 0;
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+            line-height: 0;
+        }
+
+        .pf-photo-card.has-photo .pf-photo-delete {
+            display: inline-flex;
         }
 
         .pf-upload-btn {
@@ -3347,12 +3881,12 @@
                                     </div>
 
                                     <div class="profile-text">
-                                        <div class="normal-font-bold ">Sarah’s Grooming Studio</div>
+                                        <div class="normal-font-bold ">Sarah's Grooming Studio</div>
                                         <div class="normal-light-color">Sarah W.</div>
                                     </div>
                                 </div>
 
-                                <button class="view-btn medium-font-bold">View</button>
+                                <button class="view-btn medium-font-bold" data-modal-open="view_booking_groom_modal">View</button>
 
                             </div>
 
@@ -3464,7 +3998,7 @@
                                     </div>
                                 </div>
 
-                                <button class="view-btn medium-font-bold space-background">View</button>
+                                <button class="view-btn medium-font-bold space-background" data-modal-open="view_booking_space_modal">View</button>
 
                             </div>
 
@@ -3856,317 +4390,348 @@
                                 <div class="section-divider mt-4 mb-5"></div>
                             </div>
 
-                            <div class="d-flex align-items-center justify-content-end mt-5">
+                            <div id="active-pets-view" class="pets-subview active">
+                                <div class="d-flex align-items-center justify-content-between mt-5">
 
-                                <button id="btn-add-new-pet" class="btn-edit-outline" fdprocessedid="hkpgf">
-                                    + Add another pet
-                                </button>
-                                <!-- <button id="btn-add-new-pet" class="btn-add-another-pet">+ Add another pet</button> -->
-                            </div>
+                                    <button type="button" id="view-archived-pets-btn" class="view-archived-link fs-16-600 muted-color underlined-font">View achived pets</button>
 
-                            <div id="pets-slider-container" class="pets-slider-container">
-                                <div class="pets-grid mt-5">
-                                    <div class="pet-card d-flex flex-column justify-content-between orange-bg">
-                                        <div class="pet-card-header">
-                                            <img src="<?= BASE_URL ?>assets/images/pet_details_1.png"
-                                                class="pet-avatar">
-                                            <div class="pet-name-type">
-                                                <h4><svg xmlns="http://www.w3.org/2000/svg" width="16" height="15"
-                                                        viewBox="0 0 16 15" fill="none">
+                                    <button id="btn-add-new-pet" class="btn-edit-outline" fdprocessedid="hkpgf">
+                                        + Add another pet
+                                    </button>
+                                    <!-- <button id="btn-add-new-pet" class="btn-add-another-pet">+ Add another pet</button> -->
+                                </div>
+
+                                <div id="pets-slider-container" class="pets-slider-container">
+                                    <div class="pets-grid mt-5">
+                                        <div class="pet-card d-flex flex-column justify-content-between orange-bg">
+                                            <div class="pet-card-header">
+                                                <img src="<?= BASE_URL ?>assets/images/pet_details_1.png"
+                                                    class="pet-avatar">
+                                                <div class="pet-name-type">
+                                                    <h4><svg xmlns="http://www.w3.org/2000/svg" width="16" height="15"
+                                                            viewBox="0 0 16 15" fill="none">
+                                                            <path
+                                                                d="M8 6.02632C5.73786 6.02632 3.82643 8.06405 3.20929 10.6813C2.93786 11.8323 3.34714 13.0539 4.35179 13.6279C5.14821 14.0829 6.33286 14.5 8 14.5C9.66714 14.5 10.8521 14.0829 11.6486 13.6279C12.6532 13.0539 13.0621 11.8323 12.7907 10.6813C12.1736 8.06368 10.2621 6.02632 8 6.02632ZM0.5 5.45305C0.5 6.47063 1.13929 7.5 1.92857 7.5C2.71786 7.5 3.35714 6.47063 3.35714 5.45305C3.35714 4.43547 2.71786 3.81579 1.92857 3.81579C1.13929 3.81579 0.5 4.43584 0.5 5.45305ZM15.5 5.45305C15.5 6.47063 14.8607 7.5 14.0714 7.5C13.2821 7.5 12.6429 6.47063 12.6429 5.45305C12.6429 4.43547 13.2821 3.81579 14.0714 3.81579C14.8607 3.81579 15.5 4.43584 15.5 5.45305ZM4.25 2.13726C4.25 3.15484 4.88929 4.18421 5.67857 4.18421C6.46786 4.18421 7.10714 3.15484 7.10714 2.13726C7.10714 1.11968 6.46786 0.5 5.67857 0.5C4.88929 0.5 4.25 1.12005 4.25 2.13726ZM11.75 2.13726C11.75 3.15484 11.1107 4.18421 10.3214 4.18421C9.53214 4.18421 8.89286 3.15484 8.89286 2.13726C8.89286 1.11968 9.53214 0.5 10.3214 0.5C11.1107 0.5 11.75 1.12005 11.75 2.13726Z"
+                                                                stroke="#3B3731" stroke-linecap="round"
+                                                                stroke-linejoin="round" />
+                                                        </svg> Bella</h4>
+                                                    <p>Rabbit • Mini Lop</p>
+                                                </div>
+                                            </div>
+                                            <div class="pet-info">
+                                                <p><svg xmlns="http://www.w3.org/2000/svg" width="11" height="15"
+                                                        viewBox="0 0 11 15" fill="none">
                                                         <path
-                                                            d="M8 6.02632C5.73786 6.02632 3.82643 8.06405 3.20929 10.6813C2.93786 11.8323 3.34714 13.0539 4.35179 13.6279C5.14821 14.0829 6.33286 14.5 8 14.5C9.66714 14.5 10.8521 14.0829 11.6486 13.6279C12.6532 13.0539 13.0621 11.8323 12.7907 10.6813C12.1736 8.06368 10.2621 6.02632 8 6.02632ZM0.5 5.45305C0.5 6.47063 1.13929 7.5 1.92857 7.5C2.71786 7.5 3.35714 6.47063 3.35714 5.45305C3.35714 4.43547 2.71786 3.81579 1.92857 3.81579C1.13929 3.81579 0.5 4.43584 0.5 5.45305ZM15.5 5.45305C15.5 6.47063 14.8607 7.5 14.0714 7.5C13.2821 7.5 12.6429 6.47063 12.6429 5.45305C12.6429 4.43547 13.2821 3.81579 14.0714 3.81579C14.8607 3.81579 15.5 4.43584 15.5 5.45305ZM4.25 2.13726C4.25 3.15484 4.88929 4.18421 5.67857 4.18421C6.46786 4.18421 7.10714 3.15484 7.10714 2.13726C7.10714 1.11968 6.46786 0.5 5.67857 0.5C4.88929 0.5 4.25 1.12005 4.25 2.13726ZM11.75 2.13726C11.75 3.15484 11.1107 4.18421 10.3214 4.18421C9.53214 4.18421 8.89286 3.15484 8.89286 2.13726C8.89286 1.11968 9.53214 0.5 10.3214 0.5C11.1107 0.5 11.75 1.12005 11.75 2.13726Z"
-                                                            stroke="#3B3731" stroke-linecap="round"
+                                                            d="M5.5 0.5C8.2836 0.5 10.5 2.64831 10.5 5.25C10.5 7.739 8.47279 9.81207 5.85938 9.98828L5.5 10.0117L5.14062 9.98828C2.52723 9.81207 0.5 7.73865 0.5 5.25C0.5 2.64831 2.7164 0.5 5.5 0.5Z"
+                                                            stroke="#9D9B98" />
+                                                    </svg> Female</p>
+                                                <p><svg xmlns="http://www.w3.org/2000/svg" width="15" height="17"
+                                                        viewBox="0 0 15 17" fill="none">
+                                                        <path
+                                                            d="M1.27778 11.7778V14.5C1.27778 14.9126 1.44167 15.3082 1.73339 15.5999C2.02511 15.8917 2.42077 16.0556 2.83333 16.0556H12.1667C12.5792 16.0556 12.9749 15.8917 13.2666 15.5999C13.5583 15.3082 13.7222 14.9126 13.7222 14.5V11.7778M0.5 9.83333V9.05556C0.5 8.643 0.663888 8.24734 0.955612 7.95561C1.24733 7.66389 1.643 7.5 2.05556 7.5H12.9444C13.357 7.5 13.7527 7.66389 14.0444 7.95561C14.3361 8.24734 14.5 8.643 14.5 9.05556V9.83333M7.5 5.16667V7.5M7.5 5.16667C8.48156 5.16667 9.05556 4.41378 9.05556 3.125C9.05556 1.83622 7.5 0.5 7.5 0.5C7.5 0.5 5.94444 1.83622 5.94444 3.125C5.94444 4.41378 6.51844 5.16667 7.5 5.16667Z"
+                                                            stroke="#9D9B98" stroke-linecap="round"
                                                             stroke-linejoin="round" />
-                                                    </svg> Bella</h4>
-                                                <p>Rabbit • Mini Lop</p>
+                                                        <path
+                                                            d="M0.5 9.83331C0.5 10.4522 0.745833 11.0456 1.18342 11.4832C1.621 11.9208 2.21449 12.1666 2.83333 12.1666C3.45217 12.1666 4.04566 11.9208 4.48325 11.4832C4.92083 11.0456 5.16667 10.4522 5.16667 9.83331C5.16667 10.4522 5.4125 11.0456 5.85008 11.4832C6.28767 11.9208 6.88116 12.1666 7.5 12.1666C8.11884 12.1666 8.71233 11.9208 9.14992 11.4832C9.5875 11.0456 9.83333 10.4522 9.83333 9.83331C9.83333 10.4522 10.0792 11.0456 10.5168 11.4832C10.9543 11.9208 11.5478 12.1666 12.1667 12.1666C12.7855 12.1666 13.379 11.9208 13.8166 11.4832C14.2542 11.0456 14.5 10.4522 14.5 9.83331"
+                                                            stroke="#9D9B98" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                    </svg> 22/08/2020</p>
+                                                <p><svg xmlns="http://www.w3.org/2000/svg" width="15" height="16"
+                                                        viewBox="0 0 15 16" fill="none">
+                                                        <path
+                                                            d="M4.7373 3.14703C4.7373 3.84907 5.01619 4.52235 5.51261 5.01876C6.00903 5.51518 6.68232 5.79406 7.38436 5.79406C8.08641 5.79406 8.7597 5.51518 9.25612 5.01876C9.75254 4.52235 10.0314 3.84907 10.0314 3.14703C10.0314 2.44499 9.75254 1.77171 9.25612 1.2753C8.7597 0.778883 8.08641 0.5 7.38436 0.5C6.68232 0.5 6.00903 0.778883 5.51261 1.2753C5.01619 1.77171 4.7373 2.44499 4.7373 3.14703Z"
+                                                            stroke="#9D9B98" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                        <path
+                                                            d="M2.8269 5.79425H11.9416C12.1482 5.79422 12.3483 5.86671 12.507 5.9991C12.6657 6.13148 12.7728 6.31535 12.8098 6.51865L14.2542 14.4597C14.2774 14.5869 14.2723 14.7176 14.2394 14.8426C14.2064 14.9676 14.1464 15.0838 14.0636 15.1831C13.9807 15.2823 13.8771 15.3621 13.76 15.4169C13.643 15.4717 13.5153 15.5 13.386 15.5H1.38249C1.25323 15.5 1.12554 15.4717 1.00846 15.4169C0.891377 15.3621 0.78776 15.2823 0.704935 15.1831C0.62211 15.0838 0.5621 14.9676 0.52915 14.8426C0.496199 14.7176 0.491113 14.5869 0.514251 14.4597L1.95866 6.51865C1.99565 6.31535 2.10282 6.13148 2.26149 5.9991C2.42016 5.86671 2.62026 5.79422 2.8269 5.79425Z"
+                                                            stroke="#9D9B98" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                    </svg> 5 kg</p>
+                                                <p><svg xmlns="http://www.w3.org/2000/svg" width="15" height="16"
+                                                        viewBox="0 0 15 16" fill="none">
+                                                        <path
+                                                            d="M13.5905 8.11123L13.9601 6.73016C14.3918 5.1182 14.6084 4.31257 14.4462 3.61489C14.3176 3.0641 14.0285 2.56382 13.6155 2.17734C13.093 1.68768 12.2866 1.4718 10.6747 1.04003C9.0627 0.607553 8.25636 0.391671 7.55939 0.55394C7.0086 0.682549 6.50833 0.971618 6.12185 1.38458C5.70224 1.83207 5.4835 2.48758 5.15824 3.67851L4.98382 4.32544L4.61425 5.70651C4.18177 7.31847 3.96589 8.1241 4.12816 8.82178C4.25677 9.37257 4.54584 9.87285 4.9588 10.2593C5.48135 10.749 6.28769 10.9649 7.89966 11.3974C9.35221 11.7862 10.1507 12 10.8048 11.9192C10.8763 11.9101 10.9463 11.8977 11.0149 11.882C11.5655 11.7538 12.0658 11.4652 12.4525 11.0528C12.9421 10.5295 13.158 9.7232 13.5905 8.11123Z"
+                                                            stroke="#9D9B98" />
+                                                        <path
+                                                            d="M10.8047 11.9191C10.6553 12.3768 10.3927 12.7894 10.0413 13.1186C9.51875 13.6082 8.71241 13.8241 7.10045 14.2559C5.48848 14.6876 4.68214 14.9042 3.98517 14.7413C3.43447 14.6128 2.9342 14.324 2.54763 13.9113C2.05796 13.3888 1.84137 12.5824 1.4096 10.9705L1.04003 9.5894C0.607553 7.97744 0.391671 7.1711 0.55394 6.47413C0.682549 5.92334 0.971618 5.42306 1.38458 5.03658C1.90713 4.54692 2.71347 4.33104 4.32544 3.89856C4.62948 3.81659 4.90708 3.74296 5.15823 3.67767"
+                                                            stroke="#9D9B98" />
+                                                        <path
+                                                            d="M7.48902 6.21906L10.9417 7.14406M6.93359 8.29066L9.0052 8.84538"
+                                                            stroke="#9D9B98" stroke-linecap="round" />
+                                                    </svg> Nervous around hair-dryers.</p>
                                             </div>
-                                        </div>
-                                        <div class="pet-info">
-                                            <div class="d-flex align-items-center gap-10">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="11" height="15"
-                                                    viewBox="0 0 11 15" fill="none">
-                                                    <path
-                                                        d="M5.5 0.5C8.2836 0.5 10.5 2.64831 10.5 5.25C10.5 7.739 8.47279 9.81207 5.85938 9.98828L5.5 10.0117L5.14062 9.98828C2.52723 9.81207 0.5 7.73865 0.5 5.25C0.5 2.64831 2.7164 0.5 5.5 0.5Z"
-                                                        stroke="#9D9B98" />
-                                                </svg>
-                                                <p>Female</p>
-                                            </div>
-                                            <div class="d-flex align-items-center gap-10">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="17"
-                                                    viewBox="0 0 15 17" fill="none">
-                                                    <path
-                                                        d="M1.27778 11.7778V14.5C1.27778 14.9126 1.44167 15.3082 1.73339 15.5999C2.02511 15.8917 2.42077 16.0556 2.83333 16.0556H12.1667C12.5792 16.0556 12.9749 15.8917 13.2666 15.5999C13.5583 15.3082 13.7222 14.9126 13.7222 14.5V11.7778M0.5 9.83333V9.05556C0.5 8.643 0.663888 8.24734 0.955612 7.95561C1.24733 7.66389 1.643 7.5 2.05556 7.5H12.9444C13.357 7.5 13.7527 7.66389 14.0444 7.95561C14.3361 8.24734 14.5 8.643 14.5 9.05556V9.83333M7.5 5.16667V7.5M7.5 5.16667C8.48156 5.16667 9.05556 4.41378 9.05556 3.125C9.05556 1.83622 7.5 0.5 7.5 0.5C7.5 0.5 5.94444 1.83622 5.94444 3.125C5.94444 4.41378 6.51844 5.16667 7.5 5.16667Z"
-                                                        stroke="#9D9B98" stroke-linecap="round"
-                                                        stroke-linejoin="round" />
-                                                    <path
-                                                        d="M0.5 9.83331C0.5 10.4522 0.745833 11.0456 1.18342 11.4832C1.621 11.9208 2.21449 12.1666 2.83333 12.1666C3.45217 12.1666 4.04566 11.9208 4.48325 11.4832C4.92083 11.0456 5.16667 10.4522 5.16667 9.83331C5.16667 10.4522 5.4125 11.0456 5.85008 11.4832C6.28767 11.9208 6.88116 12.1666 7.5 12.1666C8.11884 12.1666 8.71233 11.9208 9.14992 11.4832C9.5875 11.0456 9.83333 10.4522 9.83333 9.83331C9.83333 10.4522 10.0792 11.0456 10.5168 11.4832C10.9543 11.9208 11.5478 12.1666 12.1667 12.1666C12.7855 12.1666 13.379 11.9208 13.8166 11.4832C14.2542 11.0456 14.5 10.4522 14.5 9.83331"
-                                                        stroke="#9D9B98" stroke-linecap="round"
-                                                        stroke-linejoin="round" />
-                                                </svg>
-                                                <p> 22/08/2020</p>
-                                            </div>
-                                            <div class="d-flex align-items-center gap-10">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="16"
-                                                    viewBox="0 0 15 16" fill="none">
-                                                    <path
-                                                        d="M4.7373 3.14703C4.7373 3.84907 5.01619 4.52235 5.51261 5.01876C6.00903 5.51518 6.68232 5.79406 7.38436 5.79406C8.08641 5.79406 8.7597 5.51518 9.25612 5.01876C9.75254 4.52235 10.0314 3.84907 10.0314 3.14703C10.0314 2.44499 9.75254 1.77171 9.25612 1.2753C8.7597 0.778883 8.08641 0.5 7.38436 0.5C6.68232 0.5 6.00903 0.778883 5.51261 1.2753C5.01619 1.77171 4.7373 2.44499 4.7373 3.14703Z"
-                                                        stroke="#9D9B98" stroke-linecap="round"
-                                                        stroke-linejoin="round" />
-                                                    <path
-                                                        d="M2.8269 5.79425H11.9416C12.1482 5.79422 12.3483 5.86671 12.507 5.9991C12.6657 6.13148 12.7728 6.31535 12.8098 6.51865L14.2542 14.4597C14.2774 14.5869 14.2723 14.7176 14.2394 14.8426C14.2064 14.9676 14.1464 15.0838 14.0636 15.1831C13.9807 15.2823 13.8771 15.3621 13.76 15.4169C13.643 15.4717 13.5153 15.5 13.386 15.5H1.38249C1.25323 15.5 1.12554 15.4717 1.00846 15.4169C0.891377 15.3621 0.78776 15.2823 0.704935 15.1831C0.62211 15.0838 0.5621 14.9676 0.52915 14.8426C0.496199 14.7176 0.491113 14.5869 0.514251 14.4597L1.95866 6.51865C1.99565 6.31535 2.10282 6.13148 2.26149 5.9991C2.42016 5.86671 2.62026 5.79422 2.8269 5.79425Z"
-                                                        stroke="#9D9B98" stroke-linecap="round"
-                                                        stroke-linejoin="round" />
-                                                </svg>
-                                                <p> 5 kg</p>
-                                            </div>
-                                            <div class="d-flex align-items-center gap-10">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="16"
-                                                    viewBox="0 0 15 16" fill="none">
-                                                    <path
-                                                        d="M13.5905 8.11123L13.9601 6.73016C14.3918 5.1182 14.6084 4.31257 14.4462 3.61489C14.3176 3.0641 14.0285 2.56382 13.6155 2.17734C13.093 1.68768 12.2866 1.4718 10.6747 1.04003C9.0627 0.607553 8.25636 0.391671 7.55939 0.55394C7.0086 0.682549 6.50833 0.971618 6.12185 1.38458C5.70224 1.83207 5.4835 2.48758 5.15824 3.67851L4.98382 4.32544L4.61425 5.70651C4.18177 7.31847 3.96589 8.1241 4.12816 8.82178C4.25677 9.37257 4.54584 9.87285 4.9588 10.2593C5.48135 10.749 6.28769 10.9649 7.89966 11.3974C9.35221 11.7862 10.1507 12 10.8048 11.9192C10.8763 11.9101 10.9463 11.8977 11.0149 11.882C11.5655 11.7538 12.0658 11.4652 12.4525 11.0528C12.9421 10.5295 13.158 9.7232 13.5905 8.11123Z"
-                                                        stroke="#9D9B98" />
-                                                    <path
-                                                        d="M10.8047 11.9191C10.6553 12.3768 10.3927 12.7894 10.0413 13.1186C9.51875 13.6082 8.71241 13.8241 7.10045 14.2559C5.48848 14.6876 4.68214 14.9042 3.98517 14.7413C3.43447 14.6128 2.9342 14.324 2.54763 13.9113C2.05796 13.3888 1.84137 12.5824 1.4096 10.9705L1.04003 9.5894C0.607553 7.97744 0.391671 7.1711 0.55394 6.47413C0.682549 5.92334 0.971618 5.42306 1.38458 5.03658C1.90713 4.54692 2.71347 4.33104 4.32544 3.89856C4.62948 3.81659 4.90708 3.74296 5.15823 3.67767"
-                                                        stroke="#9D9B98" />
-                                                    <path
-                                                        d="M7.48902 6.21906L10.9417 7.14406M6.93359 8.29066L9.0052 8.84538"
-                                                        stroke="#9D9B98" stroke-linecap="round" />
-                                                </svg>
-                                                <p> Nervous around hair-dryers.</p>
-                                            </div>
-                                        </div>
-                                        <div class="d-flex align-items-center justify-content-center mt-4">
-                                            <button type="button" class="my-pets btn-edit-outline btn-edit-pet"><svg
-                                                    xmlns="http://www.w3.org/2000/svg" width="16" height="15" viewBox="0
+                                            <div class="d-flex align-items-center justify-content-between">
+                                                <button type="button" class="my-pets btn-edit-outline btn-edit-pet"><svg
+                                                        xmlns="http://www.w3.org/2000/svg" width="16" height="15" viewBox="0
                                                     0 16 15" fill="none">
-                                                    <path
-                                                        d="M10.2059 2.37997L12.8529 4.97712M8.44118 14.5H15.5M1.38235 11.0371L0.5 14.5L4.02941 13.6343L14.2524 3.60409C14.5832 3.2794 14.769 2.83908 14.769 2.37997C14.769 1.92085 14.5832 1.48054 14.2524 1.15584L14.1006 1.00694C13.7697 0.682347 13.3209 0.5 12.8529 0.5C12.385 0.5 11.9362 0.682347 11.6053 1.00694L1.38235 11.0371Z"
-                                                        stroke="#3B3731" stroke-linecap="round"
-                                                        stroke-linejoin="round" />
-                                                </svg>Edit details</button>
-                                        </div>
-
-                                    </div>
-
-                                    <div class="pet-card d-flex flex-column justify-content-between red-bg">
-                                        <div class="pet-card-header">
-                                            <img src="<?= BASE_URL ?>assets/images/pet_details_2.png"
-                                                class="pet-avatar">
-                                            <div class="pet-name-type">
-                                                <h4><svg xmlns="http://www.w3.org/2000/svg" width="16" height="15"
-                                                        viewBox="0 0 16 15" fill="none">
                                                         <path
-                                                            d="M8 6.02632C5.73786 6.02632 3.82643 8.06405 3.20929 10.6813C2.93786 11.8323 3.34714 13.0539 4.35179 13.6279C5.14821 14.0829 6.33286 14.5 8 14.5C9.66714 14.5 10.8521 14.0829 11.6486 13.6279C12.6532 13.0539 13.0621 11.8323 12.7907 10.6813C12.1736 8.06368 10.2621 6.02632 8 6.02632ZM0.5 5.45305C0.5 6.47063 1.13929 7.5 1.92857 7.5C2.71786 7.5 3.35714 6.47063 3.35714 5.45305C3.35714 4.43547 2.71786 3.81579 1.92857 3.81579C1.13929 3.81579 0.5 4.43584 0.5 5.45305ZM15.5 5.45305C15.5 6.47063 14.8607 7.5 14.0714 7.5C13.2821 7.5 12.6429 6.47063 12.6429 5.45305C12.6429 4.43547 13.2821 3.81579 14.0714 3.81579C14.8607 3.81579 15.5 4.43584 15.5 5.45305ZM4.25 2.13726C4.25 3.15484 4.88929 4.18421 5.67857 4.18421C6.46786 4.18421 7.10714 3.15484 7.10714 2.13726C7.10714 1.11968 6.46786 0.5 5.67857 0.5C4.88929 0.5 4.25 1.12005 4.25 2.13726ZM11.75 2.13726C11.75 3.15484 11.1107 4.18421 10.3214 4.18421C9.53214 4.18421 8.89286 3.15484 8.89286 2.13726C8.89286 1.11968 9.53214 0.5 10.3214 0.5C11.1107 0.5 11.75 1.12005 11.75 2.13726Z"
+                                                            d="M10.2059 2.37997L12.8529 4.97712M8.44118 14.5H15.5M1.38235 11.0371L0.5 14.5L4.02941 13.6343L14.2524 3.60409C14.5832 3.2794 14.769 2.83908 14.769 2.37997C14.769 1.92085 14.5832 1.48054 14.2524 1.15584L14.1006 1.00694C13.7697 0.682347 13.3209 0.5 12.8529 0.5C12.385 0.5 11.9362 0.682347 11.6053 1.00694L1.38235 11.0371Z"
                                                             stroke="#3B3731" stroke-linecap="round"
                                                             stroke-linejoin="round" />
-                                                    </svg> Louis</h4>
-                                                <p>Dog • Labrador</p>
+                                                    </svg>Edit details</button>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+                                                    <rect x="0.5" y="0.5" width="47" height="47" rx="23.5" fill="white" stroke="#E4E4E4" />
+                                                    <circle cx="23.3" cy="17.7" r="1.7" transform="rotate(90 23.3 17.7)" fill="#A2A09E" />
+                                                    <circle cx="23.3" cy="24.5" r="1.7" transform="rotate(90 23.3 24.5)" fill="#A2A09E" />
+                                                    <circle cx="23.3" cy="31.3" r="1.7" transform="rotate(90 23.3 31.3)" fill="#A2A09E" />
+                                                </svg>
                                             </div>
-                                        </div>
-                                        <div class="pet-info">
-                                            <p><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
-                                                    viewBox="0 0 14 14" fill="none">
-                                                    <path
-                                                        d="M4.66699 5.16699C5.14208 5.16703 5.5938 5.25271 6.02539 5.4248V5.42578C6.47992 5.60644 6.91391 5.84052 7.32715 6.12988L7.6709 6.37109L7.6748 6.36621L7.86719 6.64551C8.15425 7.06305 8.38906 7.50348 8.57227 7.96582C8.7461 8.40462 8.83297 8.85911 8.83301 9.33301C8.83301 10.5038 8.43204 11.4793 7.62305 12.2891C6.81389 13.0988 5.83895 13.5005 4.66895 13.5C3.49846 13.4994 2.52252 13.098 1.71191 12.2891C0.901734 11.4805 0.5 10.5057 0.5 9.33496C0.500055 8.1642 0.902094 7.18873 1.71191 6.37891C2.52184 5.56912 3.49688 5.16755 4.66699 5.16699Z"
-                                                        stroke="#9D9B98" />
-                                                </svg> Male</p>
-                                            <p><svg xmlns="http://www.w3.org/2000/svg" width="15" height="17"
-                                                    viewBox="0 0 15 17" fill="none">
-                                                    <path
-                                                        d="M1.27778 11.7778V14.5C1.27778 14.9126 1.44167 15.3082 1.73339 15.5999C2.02511 15.8917 2.42077 16.0556 2.83333 16.0556H12.1667C12.5792 16.0556 12.9749 15.8917 13.2666 15.5999C13.5583 15.3082 13.7222 14.9126 13.7222 14.5V11.7778M0.5 9.83333V9.05556C0.5 8.643 0.663888 8.24734 0.955612 7.95561C1.24733 7.66389 1.643 7.5 2.05556 7.5H12.9444C13.357 7.5 13.7527 7.66389 14.0444 7.95561C14.3361 8.24734 14.5 8.643 14.5 9.05556V9.83333M7.5 5.16667V7.5M7.5 5.16667C8.48156 5.16667 9.05556 4.41378 9.05556 3.125C9.05556 1.83622 7.5 0.5 7.5 0.5C7.5 0.5 5.94444 1.83622 5.94444 3.125C5.94444 4.41378 6.51844 5.16667 7.5 5.16667Z"
-                                                        stroke="#9D9B98" stroke-linecap="round"
-                                                        stroke-linejoin="round" />
-                                                    <path
-                                                        d="M0.5 9.83331C0.5 10.4522 0.745833 11.0456 1.18342 11.4832C1.621 11.9208 2.21449 12.1666 2.83333 12.1666C3.45217 12.1666 4.04566 11.9208 4.48325 11.4832C4.92083 11.0456 5.16667 10.4522 5.16667 9.83331C5.16667 10.4522 5.4125 11.0456 5.85008 11.4832C6.28767 11.9208 6.88116 12.1666 7.5 12.1666C8.11884 12.1666 8.71233 11.9208 9.14992 11.4832C9.5875 11.0456 9.83333 10.4522 9.83333 9.83331C9.83333 10.4522 10.0792 11.0456 10.5168 11.4832C10.9543 11.9208 11.5478 12.1666 12.1667 12.1666C12.7855 12.1666 13.379 11.9208 13.8166 11.4832C14.2542 11.0456 14.5 10.4522 14.5 9.83331"
-                                                        stroke="#9D9B98" stroke-linecap="round"
-                                                        stroke-linejoin="round" />
-                                                </svg> 22/08/2020</p>
-                                            <p><svg xmlns="http://www.w3.org/2000/svg" width="15" height="16"
-                                                    viewBox="0 0 15 16" fill="none">
-                                                    <path
-                                                        d="M4.7373 3.14703C4.7373 3.84907 5.01619 4.52235 5.51261 5.01876C6.00903 5.51518 6.68232 5.79406 7.38436 5.79406C8.08641 5.79406 8.7597 5.51518 9.25612 5.01876C9.75254 4.52235 10.0314 3.84907 10.0314 3.14703C10.0314 2.44499 9.75254 1.77171 9.25612 1.2753C8.7597 0.778883 8.08641 0.5 7.38436 0.5C6.68232 0.5 6.00903 0.778883 5.51261 1.2753C5.01619 1.77171 4.7373 2.44499 4.7373 3.14703Z"
-                                                        stroke="#9D9B98" stroke-linecap="round"
-                                                        stroke-linejoin="round" />
-                                                    <path
-                                                        d="M2.8269 5.79395H11.9416C12.1482 5.79391 12.3483 5.86641 12.507 5.99879C12.6657 6.13117 12.7728 6.31505 12.8098 6.51835L14.2542 14.4594C14.2774 14.5866 14.2723 14.7173 14.2394 14.8423C14.2064 14.9673 14.1464 15.0835 14.0636 15.1827C13.9807 15.282 13.8771 15.3618 13.76 15.4166C13.643 15.4714 13.5153 15.4997 13.386 15.4997H1.38249C1.25323 15.4997 1.12554 15.4714 1.00846 15.4166C0.891377 15.3618 0.78776 15.282 0.704935 15.1827C0.62211 15.0835 0.5621 14.9673 0.52915 14.8423C0.496199 14.7173 0.491113 14.5866 0.514251 14.4594L1.95866 6.51835C1.99565 6.31505 2.10282 6.13117 2.26149 5.99879C2.42016 5.86641 2.62026 5.79391 2.8269 5.79395Z"
-                                                        stroke="#9D9B98" stroke-linecap="round"
-                                                        stroke-linejoin="round" />
-                                                </svg> 40 kg</p>
-                                            <p><svg xmlns="http://www.w3.org/2000/svg" width="15" height="16"
-                                                    viewBox="0 0 15 16" fill="none">
-                                                    <path
-                                                        d="M13.5905 8.11123L13.9601 6.73016C14.3918 5.1182 14.6084 4.31257 14.4462 3.61489C14.3176 3.0641 14.0285 2.56382 13.6155 2.17734C13.093 1.68768 12.2866 1.4718 10.6747 1.04003C9.0627 0.607553 8.25636 0.391671 7.55939 0.55394C7.0086 0.682549 6.50833 0.971618 6.12185 1.38458C5.70224 1.83207 5.4835 2.48758 5.15824 3.67851L4.98382 4.32544L4.61425 5.70651C4.18177 7.31847 3.96589 8.1241 4.12816 8.82178C4.25677 9.37257 4.54584 9.87285 4.9588 10.2593C5.48135 10.749 6.28769 10.9649 7.89966 11.3974C9.35221 11.7862 10.1507 12 10.8048 11.9192C10.8763 11.9101 10.9463 11.8977 11.0149 11.882C11.5655 11.7538 12.0658 11.4652 12.4525 11.0528C12.9421 10.5295 13.158 9.7232 13.5905 8.11123Z"
-                                                        stroke="#9D9B98" />
-                                                    <path
-                                                        d="M10.8047 11.9191C10.6553 12.3768 10.3927 12.7894 10.0413 13.1186C9.51875 13.6082 8.71241 13.8241 7.10045 14.2559C5.48848 14.6876 4.68214 14.9042 3.98517 14.7413C3.43447 14.6128 2.9342 14.324 2.54763 13.9113C2.05796 13.3888 1.84137 12.5824 1.4096 10.9705L1.04003 9.5894C0.607553 7.97744 0.391671 7.1711 0.55394 6.47413C0.682549 5.92334 0.971618 5.42306 1.38458 5.03658C1.90713 4.54692 2.71347 4.33104 4.32544 3.89856C4.62948 3.81659 4.90708 3.74296 5.15823 3.67767"
-                                                        stroke="#9D9B98" />
-                                                    <path
-                                                        d="M7.48902 6.21906L10.9417 7.14406M6.93359 8.29066L9.0052 8.84538"
-                                                        stroke="#9D9B98" stroke-linecap="round" />
-                                                </svg> Allergic to dust.</p>
-                                        </div>
-                                        <div class="d-flex align-items-center justify-content-center">
-                                            <button type="button" class="my-pets btn-edit-outline btn-edit-pet"><svg
-                                                    xmlns="http://www.w3.org/2000/svg" width="16" height="15"
-                                                    viewBox="0 0 16 15" fill="none">
-                                                    <path
-                                                        d="M10.2059 2.37997L12.8529 4.97712M8.44118 14.5H15.5M1.38235 11.0371L0.5 14.5L4.02941 13.6343L14.2524 3.60409C14.5832 3.2794 14.769 2.83908 14.769 2.37997C14.769 1.92085 14.5832 1.48054 14.2524 1.15584L14.1006 1.00694C13.7697 0.682347 13.3209 0.5 12.8529 0.5C12.385 0.5 11.9362 0.682347 11.6053 1.00694L1.38235 11.0371Z"
-                                                        stroke="#3B3731" stroke-linecap="round"
-                                                        stroke-linejoin="round" />
-                                                </svg>Edit details</button>
-                                        </div>
-                                    </div>
 
-                                    <div class="pet-card d-flex flex-column justify-content-between blue-bg">
-                                        <div class="pet-card-header">
-                                            <img src="<?= BASE_URL ?>assets/images/surf.png" class="pet-avatar">
-                                            <div class="pet-name-type">
-                                                <h4><svg xmlns="http://www.w3.org/2000/svg" width="16" height="15"
+                                        </div>
+
+                                        <div class="pet-card d-flex flex-column justify-content-between red-bg">
+                                            <div class="pet-card-header">
+                                                <img src="<?= BASE_URL ?>assets/images/pet_details_2.png"
+                                                    class="pet-avatar">
+                                                <div class="pet-name-type">
+                                                    <h4><svg xmlns="http://www.w3.org/2000/svg" width="16" height="15"
+                                                            viewBox="0 0 16 15" fill="none">
+                                                            <path
+                                                                d="M8 6.02632C5.73786 6.02632 3.82643 8.06405 3.20929 10.6813C2.93786 11.8323 3.34714 13.0539 4.35179 13.6279C5.14821 14.0829 6.33286 14.5 8 14.5C9.66714 14.5 10.8521 14.0829 11.6486 13.6279C12.6532 13.0539 13.0621 11.8323 12.7907 10.6813C12.1736 8.06368 10.2621 6.02632 8 6.02632ZM0.5 5.45305C0.5 6.47063 1.13929 7.5 1.92857 7.5C2.71786 7.5 3.35714 6.47063 3.35714 5.45305C3.35714 4.43547 2.71786 3.81579 1.92857 3.81579C1.13929 3.81579 0.5 4.43584 0.5 5.45305ZM15.5 5.45305C15.5 6.47063 14.8607 7.5 14.0714 7.5C13.2821 7.5 12.6429 6.47063 12.6429 5.45305C12.6429 4.43547 13.2821 3.81579 14.0714 3.81579C14.8607 3.81579 15.5 4.43584 15.5 5.45305ZM4.25 2.13726C4.25 3.15484 4.88929 4.18421 5.67857 4.18421C6.46786 4.18421 7.10714 3.15484 7.10714 2.13726C7.10714 1.11968 6.46786 0.5 5.67857 0.5C4.88929 0.5 4.25 1.12005 4.25 2.13726ZM11.75 2.13726C11.75 3.15484 11.1107 4.18421 10.3214 4.18421C9.53214 4.18421 8.89286 3.15484 8.89286 2.13726C8.89286 1.11968 9.53214 0.5 10.3214 0.5C11.1107 0.5 11.75 1.12005 11.75 2.13726Z"
+                                                                stroke="#3B3731" stroke-linecap="round"
+                                                                stroke-linejoin="round" />
+                                                        </svg> Louis</h4>
+                                                    <p>Dog • Labrador</p>
+                                                </div>
+                                            </div>
+                                            <div class="pet-info">
+                                                <p><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
+                                                        viewBox="0 0 14 14" fill="none">
+                                                        <path
+                                                            d="M4.66699 5.16699C5.14208 5.16703 5.5938 5.25271 6.02539 5.4248V5.42578C6.47992 5.60644 6.91391 5.84052 7.32715 6.12988L7.6709 6.37109L7.6748 6.36621L7.86719 6.64551C8.15425 7.06305 8.38906 7.50348 8.57227 7.96582C8.7461 8.40462 8.83297 8.85911 8.83301 9.33301C8.83301 10.5038 8.43204 11.4793 7.62305 12.2891C6.81389 13.0988 5.83895 13.5005 4.66895 13.5C3.49846 13.4994 2.52252 13.098 1.71191 12.2891C0.901734 11.4805 0.5 10.5057 0.5 9.33496C0.500055 8.1642 0.902094 7.18873 1.71191 6.37891C2.52184 5.56912 3.49688 5.16755 4.66699 5.16699Z"
+                                                            stroke="#9D9B98" />
+                                                    </svg> Male</p>
+                                                <p><svg xmlns="http://www.w3.org/2000/svg" width="15" height="17"
+                                                        viewBox="0 0 15 17" fill="none">
+                                                        <path
+                                                            d="M1.27778 11.7778V14.5C1.27778 14.9126 1.44167 15.3082 1.73339 15.5999C2.02511 15.8917 2.42077 16.0556 2.83333 16.0556H12.1667C12.5792 16.0556 12.9749 15.8917 13.2666 15.5999C13.5583 15.3082 13.7222 14.9126 13.7222 14.5V11.7778M0.5 9.83333V9.05556C0.5 8.643 0.663888 8.24734 0.955612 7.95561C1.24733 7.66389 1.643 7.5 2.05556 7.5H12.9444C13.357 7.5 13.7527 7.66389 14.0444 7.95561C14.3361 8.24734 14.5 8.643 14.5 9.05556V9.83333M7.5 5.16667V7.5M7.5 5.16667C8.48156 5.16667 9.05556 4.41378 9.05556 3.125C9.05556 1.83622 7.5 0.5 7.5 0.5C7.5 0.5 5.94444 1.83622 5.94444 3.125C5.94444 4.41378 6.51844 5.16667 7.5 5.16667Z"
+                                                            stroke="#9D9B98" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                        <path
+                                                            d="M0.5 9.83331C0.5 10.4522 0.745833 11.0456 1.18342 11.4832C1.621 11.9208 2.21449 12.1666 2.83333 12.1666C3.45217 12.1666 4.04566 11.9208 4.48325 11.4832C4.92083 11.0456 5.16667 10.4522 5.16667 9.83331C5.16667 10.4522 5.4125 11.0456 5.85008 11.4832C6.28767 11.9208 6.88116 12.1666 7.5 12.1666C8.11884 12.1666 8.71233 11.9208 9.14992 11.4832C9.5875 11.0456 9.83333 10.4522 9.83333 9.83331C9.83333 10.4522 10.0792 11.0456 10.5168 11.4832C10.9543 11.9208 11.5478 12.1666 12.1667 12.1666C12.7855 12.1666 13.379 11.9208 13.8166 11.4832C14.2542 11.0456 14.5 10.4522 14.5 9.83331"
+                                                            stroke="#9D9B98" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                    </svg> 22/08/2020</p>
+                                                <p><svg xmlns="http://www.w3.org/2000/svg" width="15" height="16"
+                                                        viewBox="0 0 15 16" fill="none">
+                                                        <path
+                                                            d="M4.7373 3.14703C4.7373 3.84907 5.01619 4.52235 5.51261 5.01876C6.00903 5.51518 6.68232 5.79406 7.38436 5.79406C8.08641 5.79406 8.7597 5.51518 9.25612 5.01876C9.75254 4.52235 10.0314 3.84907 10.0314 3.14703C10.0314 2.44499 9.75254 1.77171 9.25612 1.2753C8.7597 0.778883 8.08641 0.5 7.38436 0.5C6.68232 0.5 6.00903 0.778883 5.51261 1.2753C5.01619 1.77171 4.7373 2.44499 4.7373 3.14703Z"
+                                                            stroke="#9D9B98" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                        <path
+                                                            d="M2.8269 5.79395H11.9416C12.1482 5.79391 12.3483 5.86641 12.507 5.99879C12.6657 6.13117 12.7728 6.31505 12.8098 6.51835L14.2542 14.4594C14.2774 14.5866 14.2723 14.7173 14.2394 14.8423C14.2064 14.9673 14.1464 15.0835 14.0636 15.1827C13.9807 15.282 13.8771 15.3618 13.76 15.4166C13.643 15.4714 13.5153 15.4997 13.386 15.4997H1.38249C1.25323 15.4997 1.12554 15.4714 1.00846 15.4166C0.891377 15.3618 0.78776 15.282 0.704935 15.1827C0.62211 15.0835 0.5621 14.9673 0.52915 14.8423C0.496199 14.7173 0.491113 14.5866 0.514251 14.4594L1.95866 6.51835C1.99565 6.31505 2.10282 6.13117 2.26149 5.99879C2.42016 5.86641 2.62026 5.79391 2.8269 5.79395Z"
+                                                            stroke="#9D9B98" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                    </svg> 40 kg</p>
+                                                <p><svg xmlns="http://www.w3.org/2000/svg" width="15" height="16"
+                                                        viewBox="0 0 15 16" fill="none">
+                                                        <path
+                                                            d="M13.5905 8.11123L13.9601 6.73016C14.3918 5.1182 14.6084 4.31257 14.4462 3.61489C14.3176 3.0641 14.0285 2.56382 13.6155 2.17734C13.093 1.68768 12.2866 1.4718 10.6747 1.04003C9.0627 0.607553 8.25636 0.391671 7.55939 0.55394C7.0086 0.682549 6.50833 0.971618 6.12185 1.38458C5.70224 1.83207 5.4835 2.48758 5.15824 3.67851L4.98382 4.32544L4.61425 5.70651C4.18177 7.31847 3.96589 8.1241 4.12816 8.82178C4.25677 9.37257 4.54584 9.87285 4.9588 10.2593C5.48135 10.749 6.28769 10.9649 7.89966 11.3974C9.35221 11.7862 10.1507 12 10.8048 11.9192C10.8763 11.9101 10.9463 11.8977 11.0149 11.882C11.5655 11.7538 12.0658 11.4652 12.4525 11.0528C12.9421 10.5295 13.158 9.7232 13.5905 8.11123Z"
+                                                            stroke="#9D9B98" />
+                                                        <path
+                                                            d="M10.8047 11.9191C10.6553 12.3768 10.3927 12.7894 10.0413 13.1186C9.51875 13.6082 8.71241 13.8241 7.10045 14.2559C5.48848 14.6876 4.68214 14.9042 3.98517 14.7413C3.43447 14.6128 2.9342 14.324 2.54763 13.9113C2.05796 13.3888 1.84137 12.5824 1.4096 10.9705L1.04003 9.5894C0.607553 7.97744 0.391671 7.1711 0.55394 6.47413C0.682549 5.92334 0.971618 5.42306 1.38458 5.03658C1.90713 4.54692 2.71347 4.33104 4.32544 3.89856C4.62948 3.81659 4.90708 3.74296 5.15823 3.67767"
+                                                            stroke="#9D9B98" />
+                                                        <path
+                                                            d="M7.48902 6.21906L10.9417 7.14406M6.93359 8.29066L9.0052 8.84538"
+                                                            stroke="#9D9B98" stroke-linecap="round" />
+                                                    </svg> Allergic to dust.</p>
+                                            </div>
+                                            <div class="d-flex align-items-center justify-content-between">
+                                                <button type="button" class="my-pets btn-edit-outline btn-edit-pet"><svg
+                                                        xmlns="http://www.w3.org/2000/svg" width="16" height="15"
                                                         viewBox="0 0 16 15" fill="none">
                                                         <path
-                                                            d="M8 6.02632C5.73786 6.02632 3.82643 8.06405 3.20929 10.6813C2.93786 11.8323 3.34714 13.0539 4.35179 13.6279C5.14821 14.0829 6.33286 14.5 8 14.5C9.66714 14.5 10.8521 14.0829 11.6486 13.6279C12.6532 13.0539 13.0621 11.8323 12.7907 10.6813C12.1736 8.06368 10.2621 6.02632 8 6.02632ZM0.5 5.45305C0.5 6.47063 1.13929 7.5 1.92857 7.5C2.71786 7.5 3.35714 6.47063 3.35714 5.45305C3.35714 4.43547 2.71786 3.81579 1.92857 3.81579C1.13929 3.81579 0.5 4.43584 0.5 5.45305ZM15.5 5.45305C15.5 6.47063 14.8607 7.5 14.0714 7.5C13.2821 7.5 12.6429 6.47063 12.6429 5.45305C12.6429 4.43547 13.2821 3.81579 14.0714 3.81579C14.8607 3.81579 15.5 4.43584 15.5 5.45305ZM4.25 2.13726C4.25 3.15484 4.88929 4.18421 5.67857 4.18421C6.46786 4.18421 7.10714 3.15484 7.10714 2.13726C7.10714 1.11968 6.46786 0.5 5.67857 0.5C4.88929 0.5 4.25 1.12005 4.25 2.13726ZM11.75 2.13726C11.75 3.15484 11.1107 4.18421 10.3214 4.18421C9.53214 4.18421 8.89286 3.15484 8.89286 2.13726C8.89286 1.11968 9.53214 0.5 10.3214 0.5C11.1107 0.5 11.75 1.12005 11.75 2.13726Z"
+                                                            d="M10.2059 2.37997L12.8529 4.97712M8.44118 14.5H15.5M1.38235 11.0371L0.5 14.5L4.02941 13.6343L14.2524 3.60409C14.5832 3.2794 14.769 2.83908 14.769 2.37997C14.769 1.92085 14.5832 1.48054 14.2524 1.15584L14.1006 1.00694C13.7697 0.682347 13.3209 0.5 12.8529 0.5C12.385 0.5 11.9362 0.682347 11.6053 1.00694L1.38235 11.0371Z"
                                                             stroke="#3B3731" stroke-linecap="round"
                                                             stroke-linejoin="round" />
-                                                    </svg> Surf</h4>
-                                                <p>Turtle • Red-Ear</p>
+                                                    </svg>Edit details</button>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+                                                    <rect x="0.5" y="0.5" width="47" height="47" rx="23.5" fill="white" stroke="#E4E4E4" />
+                                                    <circle cx="23.3" cy="17.7" r="1.7" transform="rotate(90 23.3 17.7)" fill="#A2A09E" />
+                                                    <circle cx="23.3" cy="24.5" r="1.7" transform="rotate(90 23.3 24.5)" fill="#A2A09E" />
+                                                    <circle cx="23.3" cy="31.3" r="1.7" transform="rotate(90 23.3 31.3)" fill="#A2A09E" />
+                                                </svg>
                                             </div>
                                         </div>
-                                        <div class="pet-info">
-                                            <p><svg xmlns="http://www.w3.org/2000/svg" width="11" height="15"
-                                                    viewBox="0 0 11 15" fill="none">
-                                                    <path
-                                                        d="M5.5 0.5C8.2836 0.5 10.5 2.64831 10.5 5.25C10.5 7.739 8.47279 9.81207 5.85938 9.98828L5.5 10.0117L5.14062 9.98828C2.52723 9.81207 0.5 7.73865 0.5 5.25C0.5 2.64831 2.7164 0.5 5.5 0.5Z"
-                                                        stroke="#9D9B98" />
-                                                </svg>
-                                                Female</p>
-                                            <p><svg xmlns="http://www.w3.org/2000/svg" width="15" height="17"
-                                                    viewBox="0 0 15 17" fill="none">
-                                                    <path
-                                                        d="M1.27778 11.7778V14.5C1.27778 14.9126 1.44167 15.3082 1.73339 15.5999C2.02511 15.8917 2.42077 16.0556 2.83333 16.0556H12.1667C12.5792 16.0556 12.9749 15.8917 13.2666 15.5999C13.5583 15.3082 13.7222 14.9126 13.7222 14.5V11.7778M0.5 9.83333V9.05556C0.5 8.643 0.663888 8.24734 0.955612 7.95561C1.24733 7.66389 1.643 7.5 2.05556 7.5H12.9444C13.357 7.5 13.7527 7.66389 14.0444 7.95561C14.3361 8.24734 14.5 8.643 14.5 9.05556V9.83333M7.5 5.16667V7.5M7.5 5.16667C8.48156 5.16667 9.05556 4.41378 9.05556 3.125C9.05556 1.83622 7.5 0.5 7.5 0.5C7.5 0.5 5.94444 1.83622 5.94444 3.125C5.94444 4.41378 6.51844 5.16667 7.5 5.16667Z"
-                                                        stroke="#9D9B98" stroke-linecap="round"
-                                                        stroke-linejoin="round" />
-                                                    <path
-                                                        d="M0.5 9.83331C0.5 10.4522 0.745833 11.0456 1.18342 11.4832C1.621 11.9208 2.21449 12.1666 2.83333 12.1666C3.45217 12.1666 4.04566 11.9208 4.48325 11.4832C4.92083 11.0456 5.16667 10.4522 5.16667 9.83331C5.16667 10.4522 5.4125 11.0456 5.85008 11.4832C6.28767 11.9208 6.88116 12.1666 7.5 12.1666C8.11884 12.1666 8.71233 11.9208 9.14992 11.4832C9.5875 11.0456 9.83333 10.4522 9.83333 9.83331C9.83333 10.4522 10.0792 11.0456 10.5168 11.4832C10.9543 11.9208 11.5478 12.1666 12.1667 12.1666C12.7855 12.1666 13.379 11.9208 13.8166 11.4832C14.2542 11.0456 14.5 10.4522 14.5 9.83331"
-                                                        stroke="#9D9B98" stroke-linecap="round"
-                                                        stroke-linejoin="round" />
-                                                </svg> 22/08/2020</p>
-                                            <p><svg xmlns="http://www.w3.org/2000/svg" width="15" height="16"
-                                                    viewBox="0 0 15 16" fill="none">
-                                                    <path
-                                                        d="M4.7373 3.14703C4.7373 3.84907 5.01619 4.52235 5.51261 5.01876C6.00903 5.51518 6.68232 5.79406 7.38436 5.79406C8.08641 5.79406 8.7597 5.51518 9.25612 5.01876C9.75254 4.52235 10.0314 3.84907 10.0314 3.14703C10.0314 2.44499 9.75254 1.77171 9.25612 1.2753C8.7597 0.778883 8.08641 0.5 7.38436 0.5C6.68232 0.5 6.00903 0.778883 5.51261 1.2753C5.01619 1.77171 4.7373 2.44499 4.7373 3.14703Z"
-                                                        stroke="#9D9B98" stroke-linecap="round"
-                                                        stroke-linejoin="round" />
-                                                    <path
-                                                        d="M2.8269 5.79419H11.9416C12.1482 5.79416 12.3483 5.86665 12.507 5.99904C12.6657 6.13142 12.7728 6.31529 12.8098 6.51859L14.2542 14.4597C14.2774 14.5869 14.2723 14.7176 14.2394 14.8425C14.2064 14.9675 14.1464 15.0838 14.0636 15.183C13.9807 15.2822 13.8771 15.3621 13.76 15.4168C13.643 15.4716 13.5153 15.5 13.386 15.5H1.38249C1.25323 15.5 1.12554 15.4716 1.00846 15.4168C0.891377 15.3621 0.78776 15.2822 0.704935 15.183C0.62211 15.0838 0.5621 14.9675 0.52915 14.8425C0.496199 14.7176 0.491113 14.5869 0.514251 14.4597L1.95866 6.51859C1.99565 6.31529 2.10282 6.13142 2.26149 5.99904C2.42016 5.86665 2.62026 5.79416 2.8269 5.79419Z"
-                                                        stroke="#9D9B98" stroke-linecap="round"
-                                                        stroke-linejoin="round" />
-                                                </svg> 2 kg</p>
-                                            <p><svg xmlns="http://www.w3.org/2000/svg" width="15" height="16"
-                                                    viewBox="0 0 15 16" fill="none">
-                                                    <path
-                                                        d="M13.5905 8.11123L13.9601 6.73016C14.3918 5.1182 14.6084 4.31257 14.4462 3.61489C14.3176 3.0641 14.0285 2.56382 13.6155 2.17734C13.093 1.68768 12.2866 1.4718 10.6747 1.04003C9.0627 0.607553 8.25636 0.391671 7.55939 0.55394C7.0086 0.682549 6.50833 0.971618 6.12185 1.38458C5.70224 1.83207 5.4835 2.48758 5.15824 3.67851L4.98382 4.32544L4.61425 5.70651C4.18177 7.31847 3.96589 8.1241 4.12816 8.82178C4.25677 9.37257 4.54584 9.87285 4.9588 10.2593C5.48135 10.749 6.28769 10.9649 7.89966 11.3974C9.35221 11.7862 10.1507 12 10.8048 11.9192C10.8763 11.9101 10.9463 11.8977 11.0149 11.882C11.5655 11.7538 12.0658 11.4652 12.4525 11.0528C12.9421 10.5295 13.158 9.7232 13.5905 8.11123Z"
-                                                        stroke="#9D9B98" />
-                                                    <path
-                                                        d="M10.8047 11.9191C10.6553 12.3768 10.3927 12.7894 10.0413 13.1186C9.51875 13.6082 8.71241 13.8241 7.10045 14.2559C5.48848 14.6876 4.68214 14.9042 3.98517 14.7413C3.43447 14.6128 2.9342 14.324 2.54763 13.9113C2.05796 13.3888 1.84137 12.5824 1.4096 10.9705L1.04003 9.5894C0.607553 7.97744 0.391671 7.1711 0.55394 6.47413C0.682549 5.92334 0.971618 5.42306 1.38458 5.03658C1.90713 4.54692 2.71347 4.33104 4.32544 3.89856C4.62948 3.81659 4.90708 3.74296 5.15823 3.67767"
-                                                        stroke="#9D9B98" />
-                                                    <path
-                                                        d="M7.48951 6.21906L10.9422 7.14406M6.93408 8.29066L9.00569 8.84538"
-                                                        stroke="#9D9B98" stroke-linecap="round" />
-                                                </svg>
-                                                Loves the water.</p>
-                                        </div>
-                                        <div class="d-flex align-items-center justify-content-center">
-                                            <button type="button" class="my-pets btn-edit-outline btn-edit-pet"><svg
-                                                    xmlns="http://www.w3.org/2000/svg" width="16" height="15" viewBox="0
+
+                                        <div class="pet-card d-flex flex-column justify-content-between blue-bg">
+                                            <div class="pet-card-header">
+                                                <img src="<?= BASE_URL ?>assets/images/surf.png" class="pet-avatar">
+                                                <div class="pet-name-type">
+                                                    <h4><svg xmlns="http://www.w3.org/2000/svg" width="16" height="15"
+                                                            viewBox="0 0 16 15" fill="none">
+                                                            <path
+                                                                d="M8 6.02632C5.73786 6.02632 3.82643 8.06405 3.20929 10.6813C2.93786 11.8323 3.34714 13.0539 4.35179 13.6279C5.14821 14.0829 6.33286 14.5 8 14.5C9.66714 14.5 10.8521 14.0829 11.6486 13.6279C12.6532 13.0539 13.0621 11.8323 12.7907 10.6813C12.1736 8.06368 10.2621 6.02632 8 6.02632ZM0.5 5.45305C0.5 6.47063 1.13929 7.5 1.92857 7.5C2.71786 7.5 3.35714 6.47063 3.35714 5.45305C3.35714 4.43547 2.71786 3.81579 1.92857 3.81579C1.13929 3.81579 0.5 4.43584 0.5 5.45305ZM15.5 5.45305C15.5 6.47063 14.8607 7.5 14.0714 7.5C13.2821 7.5 12.6429 6.47063 12.6429 5.45305C12.6429 4.43547 13.2821 3.81579 14.0714 3.81579C14.8607 3.81579 15.5 4.43584 15.5 5.45305ZM4.25 2.13726C4.25 3.15484 4.88929 4.18421 5.67857 4.18421C6.46786 4.18421 7.10714 3.15484 7.10714 2.13726C7.10714 1.11968 6.46786 0.5 5.67857 0.5C4.88929 0.5 4.25 1.12005 4.25 2.13726ZM11.75 2.13726C11.75 3.15484 11.1107 4.18421 10.3214 4.18421C9.53214 4.18421 8.89286 3.15484 8.89286 2.13726C8.89286 1.11968 9.53214 0.5 10.3214 0.5C11.1107 0.5 11.75 1.12005 11.75 2.13726Z"
+                                                                stroke="#3B3731" stroke-linecap="round"
+                                                                stroke-linejoin="round" />
+                                                        </svg> Surf</h4>
+                                                    <p>Turtle • Red-Ear</p>
+                                                </div>
+                                            </div>
+                                            <div class="pet-info">
+                                                <p><svg xmlns="http://www.w3.org/2000/svg" width="11" height="15"
+                                                        viewBox="0 0 11 15" fill="none">
+                                                        <path
+                                                            d="M5.5 0.5C8.2836 0.5 10.5 2.64831 10.5 5.25C10.5 7.739 8.47279 9.81207 5.85938 9.98828L5.5 10.0117L5.14062 9.98828C2.52723 9.81207 0.5 7.73865 0.5 5.25C0.5 2.64831 2.7164 0.5 5.5 0.5Z"
+                                                            stroke="#9D9B98" />
+                                                    </svg>
+                                                    Female</p>
+                                                <p><svg xmlns="http://www.w3.org/2000/svg" width="15" height="17"
+                                                        viewBox="0 0 15 17" fill="none">
+                                                        <path
+                                                            d="M1.27778 11.7778V14.5C1.27778 14.9126 1.44167 15.3082 1.73339 15.5999C2.02511 15.8917 2.42077 16.0556 2.83333 16.0556H12.1667C12.5792 16.0556 12.9749 15.8917 13.2666 15.5999C13.5583 15.3082 13.7222 14.9126 13.7222 14.5V11.7778M0.5 9.83333V9.05556C0.5 8.643 0.663888 8.24734 0.955612 7.95561C1.24733 7.66389 1.643 7.5 2.05556 7.5H12.9444C13.357 7.5 13.7527 7.66389 14.0444 7.95561C14.3361 8.24734 14.5 8.643 14.5 9.05556V9.83333M7.5 5.16667V7.5M7.5 5.16667C8.48156 5.16667 9.05556 4.41378 9.05556 3.125C9.05556 1.83622 7.5 0.5 7.5 0.5C7.5 0.5 5.94444 1.83622 5.94444 3.125C5.94444 4.41378 6.51844 5.16667 7.5 5.16667Z"
+                                                            stroke="#9D9B98" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                        <path
+                                                            d="M0.5 9.83331C0.5 10.4522 0.745833 11.0456 1.18342 11.4832C1.621 11.9208 2.21449 12.1666 2.83333 12.1666C3.45217 12.1666 4.04566 11.9208 4.48325 11.4832C4.92083 11.0456 5.16667 10.4522 5.16667 9.83331C5.16667 10.4522 5.4125 11.0456 5.85008 11.4832C6.28767 11.9208 6.88116 12.1666 7.5 12.1666C8.11884 12.1666 8.71233 11.9208 9.14992 11.4832C9.5875 11.0456 9.83333 10.4522 9.83333 9.83331C9.83333 10.4522 10.0792 11.0456 10.5168 11.4832C10.9543 11.9208 11.5478 12.1666 12.1667 12.1666C12.7855 12.1666 13.379 11.9208 13.8166 11.4832C14.2542 11.0456 14.5 10.4522 14.5 9.83331"
+                                                            stroke="#9D9B98" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                    </svg> 22/08/2020</p>
+                                                <p><svg xmlns="http://www.w3.org/2000/svg" width="15" height="16"
+                                                        viewBox="0 0 15 16" fill="none">
+                                                        <path
+                                                            d="M4.7373 3.14703C4.7373 3.84907 5.01619 4.52235 5.51261 5.01876C6.00903 5.51518 6.68232 5.79406 7.38436 5.79406C8.08641 5.79406 8.7597 5.51518 9.25612 5.01876C9.75254 4.52235 10.0314 3.84907 10.0314 3.14703C10.0314 2.44499 9.75254 1.77171 9.25612 1.2753C8.7597 0.778883 8.08641 0.5 7.38436 0.5C6.68232 0.5 6.00903 0.778883 5.51261 1.2753C5.01619 1.77171 4.7373 2.44499 4.7373 3.14703Z"
+                                                            stroke="#9D9B98" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                        <path
+                                                            d="M2.8269 5.79419H11.9416C12.1482 5.79416 12.3483 5.86665 12.507 5.99904C12.6657 6.13142 12.7728 6.31529 12.8098 6.51859L14.2542 14.4597C14.2774 14.5869 14.2723 14.7176 14.2394 14.8425C14.2064 14.9675 14.1464 15.0838 14.0636 15.183C13.9807 15.2822 13.8771 15.3621 13.76 15.4168C13.643 15.4716 13.5153 15.5 13.386 15.5H1.38249C1.25323 15.5 1.12554 15.4716 1.00846 15.4168C0.891377 15.3621 0.78776 15.2822 0.704935 15.183C0.62211 15.0838 0.5621 14.9675 0.52915 14.8425C0.496199 14.7176 0.491113 14.5869 0.514251 14.4597L1.95866 6.51859C1.99565 6.31529 2.10282 6.13142 2.26149 5.99904C2.42016 5.86665 2.62026 5.79416 2.8269 5.79419Z"
+                                                            stroke="#9D9B98" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                    </svg> 2 kg</p>
+                                                <p><svg xmlns="http://www.w3.org/2000/svg" width="15" height="16"
+                                                        viewBox="0 0 15 16" fill="none">
+                                                        <path
+                                                            d="M13.5905 8.11123L13.9601 6.73016C14.3918 5.1182 14.6084 4.31257 14.4462 3.61489C14.3176 3.0641 14.0285 2.56382 13.6155 2.17734C13.093 1.68768 12.2866 1.4718 10.6747 1.04003C9.0627 0.607553 8.25636 0.391671 7.55939 0.55394C7.0086 0.682549 6.50833 0.971618 6.12185 1.38458C5.70224 1.83207 5.4835 2.48758 5.15824 3.67851L4.98382 4.32544L4.61425 5.70651C4.18177 7.31847 3.96589 8.1241 4.12816 8.82178C4.25677 9.37257 4.54584 9.87285 4.9588 10.2593C5.48135 10.749 6.28769 10.9649 7.89966 11.3974C9.35221 11.7862 10.1507 12 10.8048 11.9192C10.8763 11.9101 10.9463 11.8977 11.0149 11.882C11.5655 11.7538 12.0658 11.4652 12.4525 11.0528C12.9421 10.5295 13.158 9.7232 13.5905 8.11123Z"
+                                                            stroke="#9D9B98" />
+                                                        <path
+                                                            d="M10.8047 11.9191C10.6553 12.3768 10.3927 12.7894 10.0413 13.1186C9.51875 13.6082 8.71241 13.8241 7.10045 14.2559C5.48848 14.6876 4.68214 14.9042 3.98517 14.7413C3.43447 14.6128 2.9342 14.324 2.54763 13.9113C2.05796 13.3888 1.84137 12.5824 1.4096 10.9705L1.04003 9.5894C0.607553 7.97744 0.391671 7.1711 0.55394 6.47413C0.682549 5.92334 0.971618 5.42306 1.38458 5.03658C1.90713 4.54692 2.71347 4.33104 4.32544 3.89856C4.62948 3.81659 4.90708 3.74296 5.15823 3.67767"
+                                                            stroke="#9D9B98" />
+                                                        <path
+                                                            d="M7.48951 6.21906L10.9422 7.14406M6.93408 8.29066L9.00569 8.84538"
+                                                            stroke="#9D9B98" stroke-linecap="round" />
+                                                    </svg>
+                                                    Loves the water.</p>
+                                            </div>
+                                            <div class="d-flex align-items-center justify-content-between">
+                                                <button type="button" class="my-pets btn-edit-outline btn-edit-pet"><svg
+                                                        xmlns="http://www.w3.org/2000/svg" width="16" height="15" viewBox="0
                                                     0 16 15" fill="none">
-                                                    <path
-                                                        d="M10.2059 2.37997L12.8529 4.97712M8.44118 14.5H15.5M1.38235 11.0371L0.5 14.5L4.02941 13.6343L14.2524 3.60409C14.5832 3.2794 14.769 2.83908 14.769 2.37997C14.769 1.92085 14.5832 1.48054 14.2524 1.15584L14.1006 1.00694C13.7697 0.682347 13.3209 0.5 12.8529 0.5C12.385 0.5 11.9362 0.682347 11.6053 1.00694L1.38235 11.0371Z"
-                                                        stroke="#3B3731" stroke-linecap="round"
-                                                        stroke-linejoin="round" />
-                                                </svg>Edit details</button>
-                                        </div>
-
-                                    </div>
-
-                                    <div class="pet-card d-flex flex-column justify-content-between blue-bg">
-                                        <div class="pet-card-header">
-                                            <img src="<?= BASE_URL ?>assets/images/surf.png" class="pet-avatar">
-                                            <div class="pet-name-type">
-                                                <h4><svg xmlns="http://www.w3.org/2000/svg" width="16" height="15"
-                                                        viewBox="0 0 16 15" fill="none">
                                                         <path
-                                                            d="M8 6.02632C5.73786 6.02632 3.82643 8.06405 3.20929 10.6813C2.93786 11.8323 3.34714 13.0539 4.35179 13.6279C5.14821 14.0829 6.33286 14.5 8 14.5C9.66714 14.5 10.8521 14.0829 11.6486 13.6279C12.6532 13.0539 13.0621 11.8323 12.7907 10.6813C12.1736 8.06368 10.2621 6.02632 8 6.02632ZM0.5 5.45305C0.5 6.47063 1.13929 7.5 1.92857 7.5C2.71786 7.5 3.35714 6.47063 3.35714 5.45305C3.35714 4.43547 2.71786 3.81579 1.92857 3.81579C1.13929 3.81579 0.5 4.43584 0.5 5.45305ZM15.5 5.45305C15.5 6.47063 14.8607 7.5 14.0714 7.5C13.2821 7.5 12.6429 6.47063 12.6429 5.45305C12.6429 4.43547 13.2821 3.81579 14.0714 3.81579C14.8607 3.81579 15.5 4.43584 15.5 5.45305ZM4.25 2.13726C4.25 3.15484 4.88929 4.18421 5.67857 4.18421C6.46786 4.18421 7.10714 3.15484 7.10714 2.13726C7.10714 1.11968 6.46786 0.5 5.67857 0.5C4.88929 0.5 4.25 1.12005 4.25 2.13726ZM11.75 2.13726C11.75 3.15484 11.1107 4.18421 10.3214 4.18421C9.53214 4.18421 8.89286 3.15484 8.89286 2.13726C8.89286 1.11968 9.53214 0.5 10.3214 0.5C11.1107 0.5 11.75 1.12005 11.75 2.13726Z"
+                                                            d="M10.2059 2.37997L12.8529 4.97712M8.44118 14.5H15.5M1.38235 11.0371L0.5 14.5L4.02941 13.6343L14.2524 3.60409C14.5832 3.2794 14.769 2.83908 14.769 2.37997C14.769 1.92085 14.5832 1.48054 14.2524 1.15584L14.1006 1.00694C13.7697 0.682347 13.3209 0.5 12.8529 0.5C12.385 0.5 11.9362 0.682347 11.6053 1.00694L1.38235 11.0371Z"
                                                             stroke="#3B3731" stroke-linecap="round"
                                                             stroke-linejoin="round" />
-                                                    </svg> Surf</h4>
-                                                <p>Turtle • Red-Ear</p>
+                                                    </svg>Edit details</button>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+                                                    <rect x="0.5" y="0.5" width="47" height="47" rx="23.5" fill="white" stroke="#E4E4E4" />
+                                                    <circle cx="23.3" cy="17.7" r="1.7" transform="rotate(90 23.3 17.7)" fill="#A2A09E" />
+                                                    <circle cx="23.3" cy="24.5" r="1.7" transform="rotate(90 23.3 24.5)" fill="#A2A09E" />
+                                                    <circle cx="23.3" cy="31.3" r="1.7" transform="rotate(90 23.3 31.3)" fill="#A2A09E" />
+                                                </svg>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="pet-card d-flex flex-column justify-content-between blue-bg">
+                                            <div class="pet-card-header">
+                                                <img src="<?= BASE_URL ?>assets/images/surf.png" class="pet-avatar">
+                                                <div class="pet-name-type">
+                                                    <h4><svg xmlns="http://www.w3.org/2000/svg" width="16" height="15"
+                                                            viewBox="0 0 16 15" fill="none">
+                                                            <path
+                                                                d="M8 6.02632C5.73786 6.02632 3.82643 8.06405 3.20929 10.6813C2.93786 11.8323 3.34714 13.0539 4.35179 13.6279C5.14821 14.0829 6.33286 14.5 8 14.5C9.66714 14.5 10.8521 14.0829 11.6486 13.6279C12.6532 13.0539 13.0621 11.8323 12.7907 10.6813C12.1736 8.06368 10.2621 6.02632 8 6.02632ZM0.5 5.45305C0.5 6.47063 1.13929 7.5 1.92857 7.5C2.71786 7.5 3.35714 6.47063 3.35714 5.45305C3.35714 4.43547 2.71786 3.81579 1.92857 3.81579C1.13929 3.81579 0.5 4.43584 0.5 5.45305ZM15.5 5.45305C15.5 6.47063 14.8607 7.5 14.0714 7.5C13.2821 7.5 12.6429 6.47063 12.6429 5.45305C12.6429 4.43547 13.2821 3.81579 14.0714 3.81579C14.8607 3.81579 15.5 4.43584 15.5 5.45305ZM4.25 2.13726C4.25 3.15484 4.88929 4.18421 5.67857 4.18421C6.46786 4.18421 7.10714 3.15484 7.10714 2.13726C7.10714 1.11968 6.46786 0.5 5.67857 0.5C4.88929 0.5 4.25 1.12005 4.25 2.13726ZM11.75 2.13726C11.75 3.15484 11.1107 4.18421 10.3214 4.18421C9.53214 4.18421 8.89286 3.15484 8.89286 2.13726C8.89286 1.11968 9.53214 0.5 10.3214 0.5C11.1107 0.5 11.75 1.12005 11.75 2.13726Z"
+                                                                stroke="#3B3731" stroke-linecap="round"
+                                                                stroke-linejoin="round" />
+                                                        </svg> Surf</h4>
+                                                    <p>Turtle • Red-Ear</p>
+                                                </div>
+                                            </div>
+                                            <div class="pet-info">
+                                                <p><svg xmlns="http://www.w3.org/2000/svg" width="11" height="15"
+                                                        viewBox="0 0 11 15" fill="none">
+                                                        <path
+                                                            d="M5.5 0.5C8.2836 0.5 10.5 2.64831 10.5 5.25C10.5 7.739 8.47279 9.81207 5.85938 9.98828L5.5 10.0117L5.14062 9.98828C2.52723 9.81207 0.5 7.73865 0.5 5.25C0.5 2.64831 2.7164 0.5 5.5 0.5Z"
+                                                            stroke="#9D9B98" />
+                                                    </svg>
+                                                    Female</p>
+                                                <p><svg xmlns="http://www.w3.org/2000/svg" width="15" height="17"
+                                                        viewBox="0 0 15 17" fill="none">
+                                                        <path
+                                                            d="M1.27778 11.7778V14.5C1.27778 14.9126 1.44167 15.3082 1.73339 15.5999C2.02511 15.8917 2.42077 16.0556 2.83333 16.0556H12.1667C12.5792 16.0556 12.9749 15.8917 13.2666 15.5999C13.5583 15.3082 13.7222 14.9126 13.7222 14.5V11.7778M0.5 9.83333V9.05556C0.5 8.643 0.663888 8.24734 0.955612 7.95561C1.24733 7.66389 1.643 7.5 2.05556 7.5H12.9444C13.357 7.5 13.7527 7.66389 14.0444 7.95561C14.3361 8.24734 14.5 8.643 14.5 9.05556V9.83333M7.5 5.16667V7.5M7.5 5.16667C8.48156 5.16667 9.05556 4.41378 9.05556 3.125C9.05556 1.83622 7.5 0.5 7.5 0.5C7.5 0.5 5.94444 1.83622 5.94444 3.125C5.94444 4.41378 6.51844 5.16667 7.5 5.16667Z"
+                                                            stroke="#9D9B98" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                        <path
+                                                            d="M0.5 9.83331C0.5 10.4522 0.745833 11.0456 1.18342 11.4832C1.621 11.9208 2.21449 12.1666 2.83333 12.1666C3.45217 12.1666 4.04566 11.9208 4.48325 11.4832C4.92083 11.0456 5.16667 10.4522 5.16667 9.83331C5.16667 10.4522 5.4125 11.0456 5.85008 11.4832C6.28767 11.9208 6.88116 12.1666 7.5 12.1666C8.11884 12.1666 8.71233 11.9208 9.14992 11.4832C9.5875 11.0456 9.83333 10.4522 9.83333 9.83331C9.83333 10.4522 10.0792 11.0456 10.5168 11.4832C10.9543 11.9208 11.5478 12.1666 12.1667 12.1666C12.7855 12.1666 13.379 11.9208 13.8166 11.4832C14.2542 11.0456 14.5 10.4522 14.5 9.83331"
+                                                            stroke="#9D9B98" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                    </svg> 22/08/2020</p>
+                                                <p><svg xmlns="http://www.w3.org/2000/svg" width="15" height="16"
+                                                        viewBox="0 0 15 16" fill="none">
+                                                        <path
+                                                            d="M4.7373 3.14703C4.7373 3.84907 5.01619 4.52235 5.51261 5.01876C6.00903 5.51518 6.68232 5.79406 7.38436 5.79406C8.08641 5.79406 8.7597 5.51518 9.25612 5.01876C9.75254 4.52235 10.0314 3.84907 10.0314 3.14703C10.0314 2.44499 9.75254 1.77171 9.25612 1.2753C8.7597 0.778883 8.08641 0.5 7.38436 0.5C6.68232 0.5 6.00903 0.778883 5.51261 1.2753C5.01619 1.77171 4.7373 2.44499 4.7373 3.14703Z"
+                                                            stroke="#9D9B98" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                        <path
+                                                            d="M2.8269 5.79419H11.9416C12.1482 5.79416 12.3483 5.86665 12.507 5.99904C12.6657 6.13142 12.7728 6.31529 12.8098 6.51859L14.2542 14.4597C14.2774 14.5869 14.2723 14.7176 14.2394 14.8425C14.2064 14.9675 14.1464 15.0838 14.0636 15.183C13.9807 15.2822 13.8771 15.3621 13.76 15.4168C13.643 15.4716 13.5153 15.5 13.386 15.5H1.38249C1.25323 15.5 1.12554 15.4716 1.00846 15.4168C0.891377 15.3621 0.78776 15.2822 0.704935 15.183C0.62211 15.0838 0.5621 14.9675 0.52915 14.8425C0.496199 14.7176 0.491113 14.5869 0.514251 14.4597L1.95866 6.51859C1.99565 6.31529 2.10282 6.13142 2.26149 5.99904C2.42016 5.86665 2.62026 5.79416 2.8269 5.79419Z"
+                                                            stroke="#9D9B98" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                    </svg> 2 kg</p>
+                                                <p><svg xmlns="http://www.w3.org/2000/svg" width="15" height="16"
+                                                        viewBox="0 0 15 16" fill="none">
+                                                        <path
+                                                            d="M13.5905 8.11123L13.9601 6.73016C14.3918 5.1182 14.6084 4.31257 14.4462 3.61489C14.3176 3.0641 14.0285 2.56382 13.6155 2.17734C13.093 1.68768 12.2866 1.4718 10.6747 1.04003C9.0627 0.607553 8.25636 0.391671 7.55939 0.55394C7.0086 0.682549 6.50833 0.971618 6.12185 1.38458C5.70224 1.83207 5.4835 2.48758 5.15824 3.67851L4.98382 4.32544L4.61425 5.70651C4.18177 7.31847 3.96589 8.1241 4.12816 8.82178C4.25677 9.37257 4.54584 9.87285 4.9588 10.2593C5.48135 10.749 6.28769 10.9649 7.89966 11.3974C9.35221 11.7862 10.1507 12 10.8048 11.9192C10.8763 11.9101 10.9463 11.8977 11.0149 11.882C11.5655 11.7538 12.0658 11.4652 12.4525 11.0528C12.9421 10.5295 13.158 9.7232 13.5905 8.11123Z"
+                                                            stroke="#9D9B98" />
+                                                        <path
+                                                            d="M10.8047 11.9191C10.6553 12.3768 10.3927 12.7894 10.0413 13.1186C9.51875 13.6082 8.71241 13.8241 7.10045 14.2559C5.48848 14.6876 4.68214 14.9042 3.98517 14.7413C3.43447 14.6128 2.9342 14.324 2.54763 13.9113C2.05796 13.3888 1.84137 12.5824 1.4096 10.9705L1.04003 9.5894C0.607553 7.97744 0.391671 7.1711 0.55394 6.47413C0.682549 5.92334 0.971618 5.42306 1.38458 5.03658C1.90713 4.54692 2.71347 4.33104 4.32544 3.89856C4.62948 3.81659 4.90708 3.74296 5.15823 3.67767"
+                                                            stroke="#9D9B98" />
+                                                        <path
+                                                            d="M7.48951 6.21906L10.9422 7.14406M6.93408 8.29066L9.00569 8.84538"
+                                                            stroke="#9D9B98" stroke-linecap="round" />
+                                                    </svg>
+                                                    Loves the water.</p>
+                                            </div>
+                                            <div class="d-flex align-items-center justify-content-between">
+                                                <button type="button" class="my-pets btn-edit-outline btn-edit-pet"><svg
+                                                        xmlns="http://www.w3.org/2000/svg" width="16" height="15"
+                                                        viewBox="0 0 16 15" fill="none">
+                                                        <path
+                                                            d="M10.2059 2.37997L12.8529 4.97712M8.44118 14.5H15.5M1.38235 11.0371L0.5 14.5L4.02941 13.6343L14.2524 3.60409C14.5832 3.2794 14.769 2.83908 14.769 2.37997C14.769 1.92085 14.5832 1.48054 14.2524 1.15584L14.1006 1.00694C13.7697 0.682347 13.3209 0.5 12.8529 0.5C12.385 0.5 11.9362 0.682347 11.6053 1.00694L1.38235 11.0371Z"
+                                                            stroke="#3B3731" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                    </svg>Edit details</button>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+                                                    <rect x="0.5" y="0.5" width="47" height="47" rx="23.5" fill="white" stroke="#E4E4E4" />
+                                                    <circle cx="23.3" cy="17.7" r="1.7" transform="rotate(90 23.3 17.7)" fill="#A2A09E" />
+                                                    <circle cx="23.3" cy="24.5" r="1.7" transform="rotate(90 23.3 24.5)" fill="#A2A09E" />
+                                                    <circle cx="23.3" cy="31.3" r="1.7" transform="rotate(90 23.3 31.3)" fill="#A2A09E" />
+                                                </svg>
                                             </div>
                                         </div>
-                                        <div class="pet-info">
-                                            <p><svg xmlns="http://www.w3.org/2000/svg" width="11" height="15"
-                                                    viewBox="0 0 11 15" fill="none">
-                                                    <path
-                                                        d="M5.5 0.5C8.2836 0.5 10.5 2.64831 10.5 5.25C10.5 7.739 8.47279 9.81207 5.85938 9.98828L5.5 10.0117L5.14062 9.98828C2.52723 9.81207 0.5 7.73865 0.5 5.25C0.5 2.64831 2.7164 0.5 5.5 0.5Z"
-                                                        stroke="#9D9B98" />
-                                                </svg>
-                                                Female</p>
-                                            <p><svg xmlns="http://www.w3.org/2000/svg" width="15" height="17"
-                                                    viewBox="0 0 15 17" fill="none">
-                                                    <path
-                                                        d="M1.27778 11.7778V14.5C1.27778 14.9126 1.44167 15.3082 1.73339 15.5999C2.02511 15.8917 2.42077 16.0556 2.83333 16.0556H12.1667C12.5792 16.0556 12.9749 15.8917 13.2666 15.5999C13.5583 15.3082 13.7222 14.9126 13.7222 14.5V11.7778M0.5 9.83333V9.05556C0.5 8.643 0.663888 8.24734 0.955612 7.95561C1.24733 7.66389 1.643 7.5 2.05556 7.5H12.9444C13.357 7.5 13.7527 7.66389 14.0444 7.95561C14.3361 8.24734 14.5 8.643 14.5 9.05556V9.83333M7.5 5.16667V7.5M7.5 5.16667C8.48156 5.16667 9.05556 4.41378 9.05556 3.125C9.05556 1.83622 7.5 0.5 7.5 0.5C7.5 0.5 5.94444 1.83622 5.94444 3.125C5.94444 4.41378 6.51844 5.16667 7.5 5.16667Z"
-                                                        stroke="#9D9B98" stroke-linecap="round"
-                                                        stroke-linejoin="round" />
-                                                    <path
-                                                        d="M0.5 9.83331C0.5 10.4522 0.745833 11.0456 1.18342 11.4832C1.621 11.9208 2.21449 12.1666 2.83333 12.1666C3.45217 12.1666 4.04566 11.9208 4.48325 11.4832C4.92083 11.0456 5.16667 10.4522 5.16667 9.83331C5.16667 10.4522 5.4125 11.0456 5.85008 11.4832C6.28767 11.9208 6.88116 12.1666 7.5 12.1666C8.11884 12.1666 8.71233 11.9208 9.14992 11.4832C9.5875 11.0456 9.83333 10.4522 9.83333 9.83331C9.83333 10.4522 10.0792 11.0456 10.5168 11.4832C10.9543 11.9208 11.5478 12.1666 12.1667 12.1666C12.7855 12.1666 13.379 11.9208 13.8166 11.4832C14.2542 11.0456 14.5 10.4522 14.5 9.83331"
-                                                        stroke="#9D9B98" stroke-linecap="round"
-                                                        stroke-linejoin="round" />
-                                                </svg> 22/08/2020</p>
-                                            <p><svg xmlns="http://www.w3.org/2000/svg" width="15" height="16"
-                                                    viewBox="0 0 15 16" fill="none">
-                                                    <path
-                                                        d="M4.7373 3.14703C4.7373 3.84907 5.01619 4.52235 5.51261 5.01876C6.00903 5.51518 6.68232 5.79406 7.38436 5.79406C8.08641 5.79406 8.7597 5.51518 9.25612 5.01876C9.75254 4.52235 10.0314 3.84907 10.0314 3.14703C10.0314 2.44499 9.75254 1.77171 9.25612 1.2753C8.7597 0.778883 8.08641 0.5 7.38436 0.5C6.68232 0.5 6.00903 0.778883 5.51261 1.2753C5.01619 1.77171 4.7373 2.44499 4.7373 3.14703Z"
-                                                        stroke="#9D9B98" stroke-linecap="round"
-                                                        stroke-linejoin="round" />
-                                                    <path
-                                                        d="M2.8269 5.79419H11.9416C12.1482 5.79416 12.3483 5.86665 12.507 5.99904C12.6657 6.13142 12.7728 6.31529 12.8098 6.51859L14.2542 14.4597C14.2774 14.5869 14.2723 14.7176 14.2394 14.8425C14.2064 14.9675 14.1464 15.0838 14.0636 15.183C13.9807 15.2822 13.8771 15.3621 13.76 15.4168C13.643 15.4716 13.5153 15.5 13.386 15.5H1.38249C1.25323 15.5 1.12554 15.4716 1.00846 15.4168C0.891377 15.3621 0.78776 15.2822 0.704935 15.183C0.62211 15.0838 0.5621 14.9675 0.52915 14.8425C0.496199 14.7176 0.491113 14.5869 0.514251 14.4597L1.95866 6.51859C1.99565 6.31529 2.10282 6.13142 2.26149 5.99904C2.42016 5.86665 2.62026 5.79416 2.8269 5.79419Z"
-                                                        stroke="#9D9B98" stroke-linecap="round"
-                                                        stroke-linejoin="round" />
-                                                </svg> 2 kg</p>
-                                            <p><svg xmlns="http://www.w3.org/2000/svg" width="15" height="16"
-                                                    viewBox="0 0 15 16" fill="none">
-                                                    <path
-                                                        d="M13.5905 8.11123L13.9601 6.73016C14.3918 5.1182 14.6084 4.31257 14.4462 3.61489C14.3176 3.0641 14.0285 2.56382 13.6155 2.17734C13.093 1.68768 12.2866 1.4718 10.6747 1.04003C9.0627 0.607553 8.25636 0.391671 7.55939 0.55394C7.0086 0.682549 6.50833 0.971618 6.12185 1.38458C5.70224 1.83207 5.4835 2.48758 5.15824 3.67851L4.98382 4.32544L4.61425 5.70651C4.18177 7.31847 3.96589 8.1241 4.12816 8.82178C4.25677 9.37257 4.54584 9.87285 4.9588 10.2593C5.48135 10.749 6.28769 10.9649 7.89966 11.3974C9.35221 11.7862 10.1507 12 10.8048 11.9192C10.8763 11.9101 10.9463 11.8977 11.0149 11.882C11.5655 11.7538 12.0658 11.4652 12.4525 11.0528C12.9421 10.5295 13.158 9.7232 13.5905 8.11123Z"
-                                                        stroke="#9D9B98" />
-                                                    <path
-                                                        d="M10.8047 11.9191C10.6553 12.3768 10.3927 12.7894 10.0413 13.1186C9.51875 13.6082 8.71241 13.8241 7.10045 14.2559C5.48848 14.6876 4.68214 14.9042 3.98517 14.7413C3.43447 14.6128 2.9342 14.324 2.54763 13.9113C2.05796 13.3888 1.84137 12.5824 1.4096 10.9705L1.04003 9.5894C0.607553 7.97744 0.391671 7.1711 0.55394 6.47413C0.682549 5.92334 0.971618 5.42306 1.38458 5.03658C1.90713 4.54692 2.71347 4.33104 4.32544 3.89856C4.62948 3.81659 4.90708 3.74296 5.15823 3.67767"
-                                                        stroke="#9D9B98" />
-                                                    <path
-                                                        d="M7.48951 6.21906L10.9422 7.14406M6.93408 8.29066L9.00569 8.84538"
-                                                        stroke="#9D9B98" stroke-linecap="round" />
-                                                </svg>
-                                                Loves the water.</p>
-                                        </div>
-                                        <div class="d-flex align-items-center justify-content-center">
-                                            <button type="button" class="my-pets btn-edit-outline btn-edit-pet"><svg
-                                                    xmlns="http://www.w3.org/2000/svg" width="16" height="15"
-                                                    viewBox="0 0 16 15" fill="none">
-                                                    <path
-                                                        d="M10.2059 2.37997L12.8529 4.97712M8.44118 14.5H15.5M1.38235 11.0371L0.5 14.5L4.02941 13.6343L14.2524 3.60409C14.5832 3.2794 14.769 2.83908 14.769 2.37997C14.769 1.92085 14.5832 1.48054 14.2524 1.15584L14.1006 1.00694C13.7697 0.682347 13.3209 0.5 12.8529 0.5C12.385 0.5 11.9362 0.682347 11.6053 1.00694L1.38235 11.0371Z"
-                                                        stroke="#3B3731" stroke-linecap="round"
-                                                        stroke-linejoin="round" />
-                                                </svg>Edit details</button>
-                                        </div>
-                                    </div>
 
 
-                                    <div class="slider-arrow-next">
-                                        <span><svg xmlns="http://www.w3.org/2000/svg" width="7" height="11"
-                                                viewBox="0 0 7 11" fill="none">
-                                                <path d="M0.5 10.484L5.53426 5.44975L0.58451 0.500005" stroke="#3B3731"
-                                                    stroke-linecap="round" stroke-linejoin="round" />
-                                            </svg></span>
+                                        <div class="slider-arrow-next">
+                                            <span><svg xmlns="http://www.w3.org/2000/svg" width="7" height="11"
+                                                    viewBox="0 0 7 11" fill="none">
+                                                    <path d="M0.5 10.484L5.53426 5.44975L0.58451 0.500005" stroke="#3B3731"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                </svg></span>
+                                        </div>
                                     </div>
                                 </div>
+                            </div>
+
+                            <div id="archived-pets-view" class="pets-subview">
+                                <div class="archived-pets-header mt-5">
+                                    <button type="button" id="back-to-pets-btn" class="back-to-pets-link fs-16-600 muted-color underlined-font">Back</button>
+                                    <button type="button" id="close-archived-pets-btn" class="close-archived-pets-btn" aria-label="Close archived pets">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+                                            <rect x="0.5" y="0.5" width="47" height="47" rx="23.5" fill="white" stroke="#DEDEDE" />
+                                            <line x1="30.2627" y1="18.3231" x2="18.1725" y2="30.4133" stroke="#3B3731" stroke-width="1.5" stroke-linecap="round" />
+                                            <line x1="29.828" y1="30.4131" x2="17.7379" y2="18.3229" stroke="#3B3731" stroke-width="1.5" stroke-linecap="round" />
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="archived-pets-grid pets-grid mt-5"></div>
+                                <p class="archived-pets-empty">No archived pets yet.</p>
                             </div>
 
                             <!-- Add New Pet Form (hidden by default) -->
@@ -4191,7 +4756,8 @@
                                         <img id="pet-form-avatar-img" src="" alt="Pet" class="hidden" style="width:190px;height:190px;border-radius:50%;object-fit:cover;">
                                     </div>
 
-                                    <button class="pf-edit-btn">
+                                    <input type="file" id="pet-form-avatar-input" name="pet_photo" accept="image/*" hidden>
+                                    <button type="button" class="pf-edit-btn" id="pet-form-avatar-btn">
                                         <span>
                                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="15"
                                                 viewBox="0 0 20 15" fill="none">
@@ -4318,7 +4884,7 @@
                                             font-size: 16px;
                                             font-style: normal;
                                             font-weight: 600;
-                                            line-height: normal;">(for ‘other’ pets)</span></label>
+                                            line-height: normal;">(for 'other' pets)</span></label>
                                             <div style="position:relative; display:block;width: 300px;">
                                                 <input type="text" id="pet_type" placeholder="e.g. Dog, Cat, Rabbit..."
                                                     autocomplete="off"
@@ -4417,6 +4983,7 @@
 
                                         <div class="pf-photo-grid">
                                             <div class="pf-photo-card">
+                                                <img class="pf-photo-preview hidden" alt="Pet gallery photo">
                                                 <div class="pf-paw-icon">
                                                     <i class="fas fa-paw"><svg xmlns="http://www.w3.org/2000/svg"
                                                             width="80" height="64" viewBox="0 0 80 64" fill="none">
@@ -4426,17 +4993,23 @@
                                                         </svg></i>
                                                 </div>
                                                 <label class="pf-upload-btn">
-                                                    <input type="pf-file" hidden>
+                                                    <input type="file" class="pf-gallery-input" name="pet_gallery[]" accept="image/*" hidden>
                                                     <span class="pf-upload-icon"><svg xmlns="http://www.w3.org/2000/svg"
                                                             width="14" height="14" viewBox="0 0 14 14" fill="none">
                                                             <path
                                                                 d="M7 10.3163C6.72386 10.3163 6.5 10.0924 6.5 9.81626V1.66626L4.52903 3.63722C4.33115 3.8351 4.00998 3.83398 3.81349 3.63471C3.61896 3.43744 3.62005 3.12016 3.81593 2.92422L6.55492 0.184464C6.80072 -0.0614062 7.19931 -0.0614344 7.44514 0.184402L10.185 2.92425C10.3809 3.1202 10.3822 3.43753 10.1877 3.63499C9.99116 3.83461 9.66959 3.83585 9.47149 3.63775L7.5 1.66626V9.81626C7.5 10.0924 7.27614 10.3163 7 10.3163ZM1.616 13.7393C1.15533 13.7393 0.771 13.5853 0.463 13.2773C0.155 12.9693 0.000666667 12.5846 0 12.1233V10.2003C0 9.92412 0.223858 9.70026 0.5 9.70026C0.776142 9.70026 1 9.92412 1 10.2003V12.1233C1 12.2773 1.064 12.4186 1.192 12.5473C1.32 12.6759 1.461 12.7399 1.615 12.7393H12.385C12.5383 12.7393 12.6793 12.6753 12.808 12.5473C12.9367 12.4193 13.0007 12.2779 13 12.1233V10.2003C13 9.92412 13.2239 9.70026 13.5 9.70026C13.7761 9.70026 14 9.92412 14 10.2003V12.1233C14 12.5839 13.846 12.9683 13.538 13.2763C13.23 13.5843 12.8453 13.7386 12.384 13.7393H1.616Z"
                                                                 fill="#3B3731" />
-                                                        </svg></span> Upload Photo
+                                                        </svg></span> <span class="pf-upload-label">Upload Photo</span>
                                                 </label>
+                                                <button type="button" class="pf-photo-delete" aria-label="Remove photo">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="13" height="15" viewBox="0 0 13 15" fill="none">
+                                                        <path d="M2.42915 15C2.01624 15 1.66308 14.8494 1.36965 14.5482C1.07622 14.247 0.929196 13.8859 0.928577 13.4648V1.68358H0.464292C0.332435 1.68358 0.222244 1.63792 0.133721 1.54661C0.0451968 1.45529 0.000625407 1.34211 6.36006e-06 1.20704C-0.000612687 1.07197 0.0439588 0.9591 0.133721 0.868421C0.223482 0.777743 0.333673 0.732403 0.464292 0.732403H3.71429C3.71429 0.535827 3.78548 0.364616 3.92786 0.21877C4.07024 0.0729233 4.23738 0 4.42929 0H8.57071C8.76262 0 8.92976 0.0729233 9.07214 0.21877C9.21452 0.364616 9.28571 0.535827 9.28571 0.732403H12.5357C12.6676 0.732403 12.7778 0.77806 12.8663 0.869372C12.9548 0.960685 12.9994 1.07387 13 1.20894C13.0006 1.34401 12.956 1.45688 12.8663 1.54756C12.7765 1.63824 12.6663 1.68358 12.5357 1.68358H12.0714V13.4639C12.0714 13.8862 11.9244 14.2476 11.6304 14.5482C11.3363 14.8488 10.9834 14.9994 10.5718 15H2.42915ZM11.1429 1.68358H1.85715V13.4639C1.85715 13.6344 1.91069 13.7746 2.01779 13.8843C2.12489 13.994 2.262 14.0488 2.42915 14.0488H10.5718C10.7383 14.0488 10.8751 13.994 10.9822 13.8843C11.0893 13.7746 11.1429 13.6344 11.1429 13.4639V1.68358ZM4.92886 12.1465C5.06072 12.1465 5.17122 12.1008 5.26036 12.0095C5.3495 11.9182 5.39376 11.8053 5.39314 11.6709V4.06151C5.39314 3.92644 5.34857 3.81357 5.25943 3.72289C5.17029 3.63221 5.05979 3.58656 4.92793 3.58592C4.79607 3.58529 4.68588 3.63094 4.59736 3.72289C4.50884 3.81484 4.46457 3.92771 4.46457 4.06151V11.6709C4.46457 11.806 4.50914 11.9188 4.59829 12.0095C4.68743 12.1008 4.79762 12.1465 4.92886 12.1465ZM8.07207 12.1465C8.20393 12.1465 8.31412 12.1008 8.40264 12.0095C8.49117 11.9182 8.53543 11.8053 8.53543 11.6709V4.06151C8.53543 3.92644 8.49086 3.81357 8.40171 3.72289C8.31257 3.63158 8.20238 3.58592 8.07114 3.58592C7.93928 3.58592 7.82878 3.63158 7.73964 3.72289C7.6505 3.8142 7.60624 3.92708 7.60686 4.06151V11.6709C7.60686 11.806 7.65143 11.9188 7.74057 12.0095C7.82971 12.1002 7.94021 12.1458 8.07207 12.1465Z" fill="#ffff" />
+                                                    </svg>
+                                                </button>
                                             </div>
 
                                             <div class="pf-photo-card">
+                                                <img class="pf-photo-preview hidden" alt="Pet gallery photo">
                                                 <div class="pf-paw-icon">
                                                     <i class="fas fa-paw"> <svg xmlns="http://www.w3.org/2000/svg"
                                                             width="80" height="64" viewBox="0 0 80 64" fill="none">
@@ -4446,17 +5019,23 @@
                                                         </svg></i>
                                                 </div>
                                                 <label class="pf-upload-btn">
-                                                    <input type="pf-file" hidden>
+                                                    <input type="file" class="pf-gallery-input" name="pet_gallery[]" accept="image/*" hidden>
                                                     <span class="pf-upload-icon"><svg xmlns="http://www.w3.org/2000/svg"
                                                             width="14" height="14" viewBox="0 0 14 14" fill="none">
                                                             <path
                                                                 d="M7 10.3163C6.72386 10.3163 6.5 10.0924 6.5 9.81626V1.66626L4.52903 3.63722C4.33115 3.8351 4.00998 3.83398 3.81349 3.63471C3.61896 3.43744 3.62005 3.12016 3.81593 2.92422L6.55492 0.184464C6.80072 -0.0614062 7.19931 -0.0614344 7.44514 0.184402L10.185 2.92425C10.3809 3.1202 10.3822 3.43753 10.1877 3.63499C9.99116 3.83461 9.66959 3.83585 9.47149 3.63775L7.5 1.66626V9.81626C7.5 10.0924 7.27614 10.3163 7 10.3163ZM1.616 13.7393C1.15533 13.7393 0.771 13.5853 0.463 13.2773C0.155 12.9693 0.000666667 12.5846 0 12.1233V10.2003C0 9.92412 0.223858 9.70026 0.5 9.70026C0.776142 9.70026 1 9.92412 1 10.2003V12.1233C1 12.2773 1.064 12.4186 1.192 12.5473C1.32 12.6759 1.461 12.7399 1.615 12.7393H12.385C12.5383 12.7393 12.6793 12.6753 12.808 12.5473C12.9367 12.4193 13.0007 12.2779 13 12.1233V10.2003C13 9.92412 13.2239 9.70026 13.5 9.70026C13.7761 9.70026 14 9.92412 14 10.2003V12.1233C14 12.5839 13.846 12.9683 13.538 13.2763C13.23 13.5843 12.8453 13.7386 12.384 13.7393H1.616Z"
                                                                 fill="#3B3731" />
-                                                        </svg></span> Upload Photo
+                                                        </svg></span> <span class="pf-upload-label">Upload Photo</span>
                                                 </label>
+                                                <button type="button" class="pf-photo-delete" aria-label="Remove photo">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="13" height="15" viewBox="0 0 13 15" fill="none">
+                                                        <path d="M2.42915 15C2.01624 15 1.66308 14.8494 1.36965 14.5482C1.07622 14.247 0.929196 13.8859 0.928577 13.4648V1.68358H0.464292C0.332435 1.68358 0.222244 1.63792 0.133721 1.54661C0.0451968 1.45529 0.000625407 1.34211 6.36006e-06 1.20704C-0.000612687 1.07197 0.0439588 0.9591 0.133721 0.868421C0.223482 0.777743 0.333673 0.732403 0.464292 0.732403H3.71429C3.71429 0.535827 3.78548 0.364616 3.92786 0.21877C4.07024 0.0729233 4.23738 0 4.42929 0H8.57071C8.76262 0 8.92976 0.0729233 9.07214 0.21877C9.21452 0.364616 9.28571 0.535827 9.28571 0.732403H12.5357C12.6676 0.732403 12.7778 0.77806 12.8663 0.869372C12.9548 0.960685 12.9994 1.07387 13 1.20894C13.0006 1.34401 12.956 1.45688 12.8663 1.54756C12.7765 1.63824 12.6663 1.68358 12.5357 1.68358H12.0714V13.4639C12.0714 13.8862 11.9244 14.2476 11.6304 14.5482C11.3363 14.8488 10.9834 14.9994 10.5718 15H2.42915ZM11.1429 1.68358H1.85715V13.4639C1.85715 13.6344 1.91069 13.7746 2.01779 13.8843C2.12489 13.994 2.262 14.0488 2.42915 14.0488H10.5718C10.7383 14.0488 10.8751 13.994 10.9822 13.8843C11.0893 13.7746 11.1429 13.6344 11.1429 13.4639V1.68358ZM4.92886 12.1465C5.06072 12.1465 5.17122 12.1008 5.26036 12.0095C5.3495 11.9182 5.39376 11.8053 5.39314 11.6709V4.06151C5.39314 3.92644 5.34857 3.81357 5.25943 3.72289C5.17029 3.63221 5.05979 3.58656 4.92793 3.58592C4.79607 3.58529 4.68588 3.63094 4.59736 3.72289C4.50884 3.81484 4.46457 3.92771 4.46457 4.06151V11.6709C4.46457 11.806 4.50914 11.9188 4.59829 12.0095C4.68743 12.1008 4.79762 12.1465 4.92886 12.1465ZM8.07207 12.1465C8.20393 12.1465 8.31412 12.1008 8.40264 12.0095C8.49117 11.9182 8.53543 11.8053 8.53543 11.6709V4.06151C8.53543 3.92644 8.49086 3.81357 8.40171 3.72289C8.31257 3.63158 8.20238 3.58592 8.07114 3.58592C7.93928 3.58592 7.82878 3.63158 7.73964 3.72289C7.6505 3.8142 7.60624 3.92708 7.60686 4.06151V11.6709C7.60686 11.806 7.65143 11.9188 7.74057 12.0095C7.82971 12.1002 7.94021 12.1458 8.07207 12.1465Z" fill="#ffff" />
+                                                    </svg>
+                                                </button>
                                             </div>
 
                                             <div class="pf-photo-card">
+                                                <img class="pf-photo-preview hidden" alt="Pet gallery photo">
                                                 <div class="pf-paw-icon">
                                                     <i class="fas fa-paw"><svg xmlns="http://www.w3.org/2000/svg"
                                                             width="80" height="64" viewBox="0 0 80 64" fill="none">
@@ -4466,14 +5045,19 @@
                                                         </svg></i>
                                                 </div>
                                                 <label class="pf-upload-btn">
-                                                    <input type="pf-file" hidden>
+                                                    <input type="file" class="pf-gallery-input" name="pet_gallery[]" accept="image/*" hidden>
                                                     <span class="pf-upload-icon"><svg xmlns="http://www.w3.org/2000/svg"
                                                             width="14" height="14" viewBox="0 0 14 14" fill="none">
                                                             <path
                                                                 d="M7 10.3163C6.72386 10.3163 6.5 10.0924 6.5 9.81626V1.66626L4.52903 3.63722C4.33115 3.8351 4.00998 3.83398 3.81349 3.63471C3.61896 3.43744 3.62005 3.12016 3.81593 2.92422L6.55492 0.184464C6.80072 -0.0614062 7.19931 -0.0614344 7.44514 0.184402L10.185 2.92425C10.3809 3.1202 10.3822 3.43753 10.1877 3.63499C9.99116 3.83461 9.66959 3.83585 9.47149 3.63775L7.5 1.66626V9.81626C7.5 10.0924 7.27614 10.3163 7 10.3163ZM1.616 13.7393C1.15533 13.7393 0.771 13.5853 0.463 13.2773C0.155 12.9693 0.000666667 12.5846 0 12.1233V10.2003C0 9.92412 0.223858 9.70026 0.5 9.70026C0.776142 9.70026 1 9.92412 1 10.2003V12.1233C1 12.2773 1.064 12.4186 1.192 12.5473C1.32 12.6759 1.461 12.7399 1.615 12.7393H12.385C12.5383 12.7393 12.6793 12.6753 12.808 12.5473C12.9367 12.4193 13.0007 12.2779 13 12.1233V10.2003C13 9.92412 13.2239 9.70026 13.5 9.70026C13.7761 9.70026 14 9.92412 14 10.2003V12.1233C14 12.5839 13.846 12.9683 13.538 13.2763C13.23 13.5843 12.8453 13.7386 12.384 13.7393H1.616Z"
                                                                 fill="#3B3731" />
-                                                        </svg></span> Upload Photo
+                                                        </svg></span> <span class="pf-upload-label">Upload Photo</span>
                                                 </label>
+                                                <button type="button" class="pf-photo-delete" aria-label="Remove photo">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="13" height="15" viewBox="0 0 13 15" fill="none">
+                                                        <path d="M2.42915 15C2.01624 15 1.66308 14.8494 1.36965 14.5482C1.07622 14.247 0.929196 13.8859 0.928577 13.4648V1.68358H0.464292C0.332435 1.68358 0.222244 1.63792 0.133721 1.54661C0.0451968 1.45529 0.000625407 1.34211 6.36006e-06 1.20704C-0.000612687 1.07197 0.0439588 0.9591 0.133721 0.868421C0.223482 0.777743 0.333673 0.732403 0.464292 0.732403H3.71429C3.71429 0.535827 3.78548 0.364616 3.92786 0.21877C4.07024 0.0729233 4.23738 0 4.42929 0H8.57071C8.76262 0 8.92976 0.0729233 9.07214 0.21877C9.21452 0.364616 9.28571 0.535827 9.28571 0.732403H12.5357C12.6676 0.732403 12.7778 0.77806 12.8663 0.869372C12.9548 0.960685 12.9994 1.07387 13 1.20894C13.0006 1.34401 12.956 1.45688 12.8663 1.54756C12.7765 1.63824 12.6663 1.68358 12.5357 1.68358H12.0714V13.4639C12.0714 13.8862 11.9244 14.2476 11.6304 14.5482C11.3363 14.8488 10.9834 14.9994 10.5718 15H2.42915ZM11.1429 1.68358H1.85715V13.4639C1.85715 13.6344 1.91069 13.7746 2.01779 13.8843C2.12489 13.994 2.262 14.0488 2.42915 14.0488H10.5718C10.7383 14.0488 10.8751 13.994 10.9822 13.8843C11.0893 13.7746 11.1429 13.6344 11.1429 13.4639V1.68358ZM4.92886 12.1465C5.06072 12.1465 5.17122 12.1008 5.26036 12.0095C5.3495 11.9182 5.39376 11.8053 5.39314 11.6709V4.06151C5.39314 3.92644 5.34857 3.81357 5.25943 3.72289C5.17029 3.63221 5.05979 3.58656 4.92793 3.58592C4.79607 3.58529 4.68588 3.63094 4.59736 3.72289C4.50884 3.81484 4.46457 3.92771 4.46457 4.06151V11.6709C4.46457 11.806 4.50914 11.9188 4.59829 12.0095C4.68743 12.1008 4.79762 12.1465 4.92886 12.1465ZM8.07207 12.1465C8.20393 12.1465 8.31412 12.1008 8.40264 12.0095C8.49117 11.9182 8.53543 11.8053 8.53543 11.6709V4.06151C8.53543 3.92644 8.49086 3.81357 8.40171 3.72289C8.31257 3.63158 8.20238 3.58592 8.07114 3.58592C7.93928 3.58592 7.82878 3.63158 7.73964 3.72289C7.6505 3.8142 7.60624 3.92708 7.60686 4.06151V11.6709C7.60686 11.806 7.65143 11.9188 7.74057 12.0095C7.82971 12.1002 7.94021 12.1458 8.07207 12.1465Z" fill="#ffff" />
+                                                    </svg>
+                                                </button>
                                             </div>
                                         </div>
 
@@ -4554,8 +5138,8 @@
                                                             </li>
                                                             <li>
                                                                 <label>
-                                                                    <span class="option-text">Groomer’s studio</span>
-                                                                    <input type="checkbox" name="groomer-venue[]" value="Groomer’s studio">
+                                                                    <span class="option-text">Groomer's studio</span>
+                                                                    <input type="checkbox" name="groomer-venue[]" value="Groomer's studio">
                                                                     <span class="check-circle"></span>
                                                                 </label>
                                                             </li>
@@ -4730,8 +5314,8 @@
 
                                             <div class="card-review mt-4">
                                                 <p class="review">
-                                                    “Hands down the best groomer we’ve tried. The studio is
-                                                    spotless...”
+                                                    "Hands down the best groomer we've tried. The studio is
+                                                    spotless..."
                                                 </p>
                                             </div>
 
@@ -4829,7 +5413,7 @@
                                             </div>
                                             <div class="card-title mt-1">
                                                 <h3>Ken T.</h3>
-                                                <p class="sub">Ken’s Grooming Mobile</p>
+                                                <p class="sub">Ken's Grooming Mobile</p>
                                             </div>
 
                                             <div class="meta mt-4">
@@ -4856,8 +5440,8 @@
 
                                             <div class="card-review mt-4">
                                                 <p class="review">
-                                                    “Hands down the best groomer we’ve tried. The studio is
-                                                    spotless...”
+                                                    "Hands down the best groomer we've tried. The studio is
+                                                    spotless..."
                                                 </p>
                                             </div>
 
@@ -4953,7 +5537,7 @@
                                             </div>
                                             <div class="card-title mt-1">
                                                 <h3>Cathy P.</h3>
-                                                <p class="sub">Cathy’s Services</p>
+                                                <p class="sub">Cathy's Services</p>
                                             </div>
 
                                             <div class="meta mt-4">
@@ -4980,8 +5564,8 @@
 
                                             <div class="card-review mt-4">
                                                 <p class="review">
-                                                    “Hands down the best groomer we’ve tried. The studio is
-                                                    spotless...”
+                                                    "Hands down the best groomer we've tried. The studio is
+                                                    spotless..."
                                                 </p>
                                             </div>
 
@@ -5254,7 +5838,7 @@
                                                 </div>
                                                 <div class="card-review mt-4">
                                                     <p class="review">
-                                                        “I rent this space weekly — always clean and ready.”
+                                                        "I rent this space weekly - always clean and ready."
                                                     </p>
                                                 </div>
 
@@ -5412,7 +5996,7 @@
                                                 </div>
                                                 <div class="card-review mt-4">
                                                     <p class="review">
-                                                        “Smooth check-in and secure entry.”
+                                                        "Smooth check-in and secure entry."
                                                     </p>
                                                 </div>
 
@@ -5567,7 +6151,7 @@
                                                 </div>
                                                 <div class="card-review mt-4">
                                                     <p class="review">
-                                                        “This space has become my go-to for weekday clients.”
+                                                        "This space has become my go-to for weekday clients."
                                                     </p>
                                                 </div>
 
@@ -5706,8 +6290,8 @@
                                                         </li>
                                                         <li>
                                                             <label>
-                                                                <span class="option-text">Groomer’s studio</span>
-                                                                <input type="checkbox" name="groomer-venue[]" value="Groomer’s studio">
+                                                                <span class="option-text">Groomer's studio</span>
+                                                                <input type="checkbox" name="groomer-venue[]" value="Groomer's studio">
                                                                 <span class="check-circle"></span>
                                                             </label>
                                                         </li>
@@ -5833,15 +6417,17 @@
                                 </div>
                             </div>
 
-                            <div id="review-groomer-venue-tags" class="venue-tags mt-4"></div>
-                            <div id="review-space-venue-tags" class="venue-tags mt-2"></div>
-                            <div id="review-sort-tags" class="venue-tags mt-2"></div>
+                            <div class="review-filter-tags mt-4">
+                                <div id="review-groomer-venue-tags" class="venue-tags"></div>
+                                <div id="review-space-venue-tags" class="venue-tags"></div>
+                                <div id="review-sort-tags" class="venue-tags"></div>
+                            </div>
 
                             <div id="written-reviews" class="review-group active">
                                 <div class="reviews-list">
 
                                     <!-- REVIEW ITEM -->
-                                    <div class="review-item">
+                                    <div class="review-item" data-posted-at="">
 
                                         <div class="review-left">
                                             <div class="avatar-wrap">
@@ -5864,7 +6450,7 @@
                                                 <h4>Cathy P.</h4>
                                                 <p>Sarah's Grooming Studio</p>
 
-                                                <div class="reviews-card-icon">
+                                                <div class="reviews-card-icon mt-2">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="53" height="24"
                                                         viewBox="0 0 53 24" fill="none">
                                                         <rect width="24" height="24" rx="12" fill="#CBDCE8" />
@@ -5892,72 +6478,71 @@
                                             </div>
                                         </div>
 
-                                        <div class="review-content">
+                                        <div class="review-content d-flex">
 
-                                            <div class="review-top">
-                                                <div class="stars"><svg xmlns="http://www.w3.org/2000/svg" width="163"
-                                                        height="30" viewBox="0 0 163 30" fill="none">
-                                                        <path
-                                                            d="M12.6642 6.04253C13.2526 4.17853 15.8904 4.17854 16.4787 6.04254L17.4017 8.96675C17.6644 9.79894 18.4363 10.3647 19.309 10.3647H22.4163C24.3397 10.3647 25.1544 12.8144 23.6142 13.9664L21.0015 15.9204C20.3207 16.4296 20.0362 17.3134 20.2921 18.124L21.2664 21.2107C21.8512 23.0636 19.7172 24.578 18.1613 23.4143L15.7693 21.6254C15.0591 21.0942 14.0838 21.0942 13.3736 21.6254L10.9817 23.4143C9.42574 24.578 7.29174 23.0636 7.87658 21.2107L8.85085 18.124C9.10672 17.3134 8.8222 16.4296 8.14146 15.9204L5.52874 13.9664C3.98849 12.8144 4.80322 10.3647 6.7266 10.3647H9.83398C10.7066 10.3647 11.4786 9.79893 11.7412 8.96674L12.6642 6.04253Z"
-                                                            fill="#FFC97A" />
-                                                        <path
-                                                            d="M46.0939 6.04253C46.6823 4.17853 49.3201 4.17854 49.9084 6.04254L50.8314 8.96675C51.0941 9.79894 51.866 10.3647 52.7386 10.3647H55.846C57.7694 10.3647 58.5841 12.8144 57.0439 13.9664L54.4312 15.9204C53.7504 16.4296 53.4659 17.3134 53.7218 18.124L54.696 21.2107C55.2809 23.0636 53.1469 24.578 51.5909 23.4143L49.199 21.6254C48.4888 21.0942 47.5135 21.0942 46.8033 21.6254L44.4114 23.4143C42.8554 24.578 40.7214 23.0636 41.3063 21.2107L42.2805 18.124C42.5364 17.3134 42.2519 16.4296 41.5711 15.9204L38.9584 13.9664C37.4182 12.8144 38.2329 10.3647 40.1563 10.3647H43.2637C44.1363 10.3647 44.9082 9.79893 45.1709 8.96674L46.0939 6.04253Z"
-                                                            fill="#FFC97A" />
-                                                        <path
-                                                            d="M79.5216 6.04253C80.11 4.17853 82.7478 4.17854 83.3361 6.04254L84.2591 8.96675C84.5218 9.79894 85.2937 10.3647 86.1664 10.3647H89.2738C91.1971 10.3647 92.0119 12.8144 90.4716 13.9664L87.8589 15.9204C87.1782 16.4296 86.8936 17.3134 87.1495 18.124L88.1238 21.2107C88.7086 23.0636 86.5746 24.578 85.0187 23.4143L82.6267 21.6254C81.9165 21.0942 80.9413 21.0942 80.231 21.6254L77.8391 23.4143C76.2832 24.578 74.1492 23.0636 74.734 21.2107L75.7083 18.124C75.9641 17.3134 75.6796 16.4296 74.9989 15.9204L72.3862 13.9664C70.8459 12.8144 71.6606 10.3647 73.584 10.3647H76.6914C77.5641 10.3647 78.336 9.79893 78.5987 8.96674L79.5216 6.04253Z"
-                                                            fill="#FFC97A" />
-                                                        <path
-                                                            d="M112.95 6.04253C113.539 4.17853 116.177 4.17854 116.765 6.04254L117.688 8.96675C117.951 9.79894 118.722 10.3647 119.595 10.3647H122.702C124.626 10.3647 125.441 12.8144 123.9 13.9664L121.288 15.9204C120.607 16.4296 120.322 17.3134 120.578 18.124L121.552 21.2107C122.137 23.0636 120.003 24.578 118.447 23.4143L116.055 21.6254C115.345 21.0942 114.37 21.0942 113.66 21.6254L111.268 23.4143C109.712 24.578 107.578 23.0636 108.163 21.2107L109.137 18.124C109.393 17.3134 109.108 16.4296 108.428 15.9204L105.815 13.9664C104.275 12.8144 105.089 10.3647 107.013 10.3647H110.12C110.993 10.3647 111.765 9.79893 112.027 8.96674L112.95 6.04253Z"
-                                                            fill="#FFC97A" />
-                                                        <path
-                                                            d="M146.378 6.04253C146.966 4.17853 149.604 4.17854 150.193 6.04254L151.116 8.96675C151.378 9.79894 152.15 10.3647 153.023 10.3647H156.13C158.054 10.3647 158.868 12.8144 157.328 13.9664L154.715 15.9204C154.035 16.4296 153.75 17.3134 154.006 18.124L154.98 21.2107C155.565 23.0636 153.431 24.578 151.875 23.4143L149.483 21.6254C148.773 21.0942 147.798 21.0942 147.087 21.6254L144.696 23.4143C143.14 24.578 141.006 23.0636 141.59 21.2107L142.565 18.124C142.821 17.3134 142.536 16.4296 141.855 15.9204L139.243 13.9664C137.702 12.8144 138.517 10.3647 140.44 10.3647H143.548C144.421 10.3647 145.192 9.79893 145.455 8.96674L146.378 6.04253Z"
-                                                            fill="#EFEFEF" />
-                                                    </svg></div>
-                                                <span class="date">25/02/2025</span>
-                                                <span class="badge">Reviews Written</span>
-                                            </div>
-
-                                            <p class="review-text">
-                                                I booked this groomer through Fursgo for my anxious little
-                                                cockapoo
-                                                and honestly couldn’t be happier. They took the time to let him
-                                                settle and never rushed him...
-                                            </p>
-
-                                            <div class="review-tags">
-                                                <span>Home Visit</span>
-                                                <span>Mobile Station</span>
-                                            </div>
-
-                                        </div>
-
-                                        <div class="review-menu">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="5" viewBox="0 0 25 5" fill="none">
-                                                <circle cx="2.5" cy="2.5" r="2.5" fill="#3B3731" />
-                                                <circle cx="12.5" cy="2.5" r="2.5" fill="#3B3731" />
-                                                <circle cx="22.5" cy="2.5" r="2.5" fill="#3B3731" />
-                                            </svg>
-                                            <div class="review-menu-dropdown">
-                                                <div class="d-flex align-items-center justify-content-between editReview-btn-bg">
-                                                    <p class="fs-14-400-f-color cursor">Edit</p>
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="11" viewBox="0 0 12 11" fill="none">
-                                                        <path d="M7.36765 1.59283L9.30882 3.44794M6.07353 10.25H11.25M0.897059 7.77652L0.25 10.25L2.83824 9.63163L10.3351 2.46721C10.5777 2.23528 10.714 1.92077 10.714 1.59283C10.714 1.26489 10.5777 0.950382 10.3351 0.71846L10.2238 0.6121C9.98108 0.380248 9.65198 0.25 9.30882 0.25C8.96567 0.25 8.63657 0.380248 8.39388 0.6121L0.897059 7.77652Z" stroke="#3B3731" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" />
-                                                    </svg>
+                                            <div>
+                                                <div class="review-top">
+                                                    <div class="stars"><svg xmlns="http://www.w3.org/2000/svg" width="163"
+                                                            height="30" viewBox="0 0 163 30" fill="none">
+                                                            <path
+                                                                d="M12.6642 6.04253C13.2526 4.17853 15.8904 4.17854 16.4787 6.04254L17.4017 8.96675C17.6644 9.79894 18.4363 10.3647 19.309 10.3647H22.4163C24.3397 10.3647 25.1544 12.8144 23.6142 13.9664L21.0015 15.9204C20.3207 16.4296 20.0362 17.3134 20.2921 18.124L21.2664 21.2107C21.8512 23.0636 19.7172 24.578 18.1613 23.4143L15.7693 21.6254C15.0591 21.0942 14.0838 21.0942 13.3736 21.6254L10.9817 23.4143C9.42574 24.578 7.29174 23.0636 7.87658 21.2107L8.85085 18.124C9.10672 17.3134 8.8222 16.4296 8.14146 15.9204L5.52874 13.9664C3.98849 12.8144 4.80322 10.3647 6.7266 10.3647H9.83398C10.7066 10.3647 11.4786 9.79893 11.7412 8.96674L12.6642 6.04253Z"
+                                                                fill="#FFC97A" />
+                                                            <path
+                                                                d="M46.0939 6.04253C46.6823 4.17853 49.3201 4.17854 49.9084 6.04254L50.8314 8.96675C51.0941 9.79894 51.866 10.3647 52.7386 10.3647H55.846C57.7694 10.3647 58.5841 12.8144 57.0439 13.9664L54.4312 15.9204C53.7504 16.4296 53.4659 17.3134 53.7218 18.124L54.696 21.2107C55.2809 23.0636 53.1469 24.578 51.5909 23.4143L49.199 21.6254C48.4888 21.0942 47.5135 21.0942 46.8033 21.6254L44.4114 23.4143C42.8554 24.578 40.7214 23.0636 41.3063 21.2107L42.2805 18.124C42.5364 17.3134 42.2519 16.4296 41.5711 15.9204L38.9584 13.9664C37.4182 12.8144 38.2329 10.3647 40.1563 10.3647H43.2637C44.1363 10.3647 44.9082 9.79893 45.1709 8.96674L46.0939 6.04253Z"
+                                                                fill="#FFC97A" />
+                                                            <path
+                                                                d="M79.5216 6.04253C80.11 4.17853 82.7478 4.17854 83.3361 6.04254L84.2591 8.96675C84.5218 9.79894 85.2937 10.3647 86.1664 10.3647H89.2738C91.1971 10.3647 92.0119 12.8144 90.4716 13.9664L87.8589 15.9204C87.1782 16.4296 86.8936 17.3134 87.1495 18.124L88.1238 21.2107C88.7086 23.0636 86.5746 24.578 85.0187 23.4143L82.6267 21.6254C81.9165 21.0942 80.9413 21.0942 80.231 21.6254L77.8391 23.4143C76.2832 24.578 74.1492 23.0636 74.734 21.2107L75.7083 18.124C75.9641 17.3134 75.6796 16.4296 74.9989 15.9204L72.3862 13.9664C70.8459 12.8144 71.6606 10.3647 73.584 10.3647H76.6914C77.5641 10.3647 78.336 9.79893 78.5987 8.96674L79.5216 6.04253Z"
+                                                                fill="#FFC97A" />
+                                                            <path
+                                                                d="M112.95 6.04253C113.539 4.17853 116.177 4.17854 116.765 6.04254L117.688 8.96675C117.951 9.79894 118.722 10.3647 119.595 10.3647H122.702C124.626 10.3647 125.441 12.8144 123.9 13.9664L121.288 15.9204C120.607 16.4296 120.322 17.3134 120.578 18.124L121.552 21.2107C122.137 23.0636 120.003 24.578 118.447 23.4143L116.055 21.6254C115.345 21.0942 114.37 21.0942 113.66 21.6254L111.268 23.4143C109.712 24.578 107.578 23.0636 108.163 21.2107L109.137 18.124C109.393 17.3134 109.108 16.4296 108.428 15.9204L105.815 13.9664C104.275 12.8144 105.089 10.3647 107.013 10.3647H110.12C110.993 10.3647 111.765 9.79893 112.027 8.96674L112.95 6.04253Z"
+                                                                fill="#FFC97A" />
+                                                            <path
+                                                                d="M146.378 6.04253C146.966 4.17853 149.604 4.17854 150.193 6.04254L151.116 8.96675C151.378 9.79894 152.15 10.3647 153.023 10.3647H156.13C158.054 10.3647 158.868 12.8144 157.328 13.9664L154.715 15.9204C154.035 16.4296 153.75 17.3134 154.006 18.124L154.98 21.2107C155.565 23.0636 153.431 24.578 151.875 23.4143L149.483 21.6254C148.773 21.0942 147.798 21.0942 147.087 21.6254L144.696 23.4143C143.14 24.578 141.006 23.0636 141.59 21.2107L142.565 18.124C142.821 17.3134 142.536 16.4296 141.855 15.9204L139.243 13.9664C137.702 12.8144 138.517 10.3647 140.44 10.3647H143.548C144.421 10.3647 145.192 9.79893 145.455 8.96674L146.378 6.04253Z"
+                                                                fill="#EFEFEF" />
+                                                        </svg></div>
+                                                    <span class="date">25/02/2025</span>
+                                                    <span class="badge">Reviews Written</span>
                                                 </div>
-                                                <div class="d-flex align-items-center justify-content-between removeReview-btn-bg">
-                                                    <p class="fs-14-400-f-color cursor">Remove</p>
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="9" height="10" viewBox="0 0 9 10" fill="none">
-                                                        <path d="M1.68172 10C1.39586 10 1.15136 9.8996 0.948218 9.6988C0.745075 9.49799 0.64329 9.25724 0.642861 8.97654V1.12238H0.321433C0.230147 1.12238 0.153861 1.09195 0.0925758 1.03107C0.0312901 0.970196 0.000432974 0.894737 4.40312e-06 0.804692C-0.000424168 0.714648 0.030433 0.6394 0.0925758 0.578947C0.154719 0.518495 0.231004 0.488269 0.321433 0.488269H2.57143C2.57143 0.357218 2.62072 0.243078 2.71929 0.145847C2.81786 0.0486155 2.93357 0 3.06643 0H5.93357C6.06643 0 6.18214 0.0486155 6.28071 0.145847C6.37928 0.243078 6.42857 0.357218 6.42857 0.488269H8.67857C8.76985 0.488269 8.84614 0.518706 8.90742 0.579581C8.96871 0.640457 8.99957 0.715916 9 0.805961C9.00042 0.896005 8.96957 0.971253 8.90742 1.03171C8.84528 1.09216 8.769 1.12238 8.67857 1.12238H8.35714V8.9759C8.35714 9.25745 8.25535 9.49841 8.05178 9.6988C7.84821 9.89918 7.60393 9.99958 7.31893 10H1.68172ZM7.71428 1.12238H1.28572V8.9759C1.28572 9.08962 1.32279 9.18305 1.39693 9.25618C1.47107 9.32932 1.566 9.36588 1.68172 9.36588H7.31893C7.43421 9.36588 7.52893 9.32932 7.60307 9.25618C7.67721 9.18305 7.71428 9.08962 7.71428 8.9759V1.12238ZM3.41229 8.09765C3.50357 8.09765 3.58007 8.06722 3.64179 8.00634C3.7035 7.94547 3.73414 7.87022 3.73371 7.7806V2.70767C3.73371 2.61763 3.70286 2.54238 3.64114 2.48193C3.57943 2.42148 3.50293 2.39104 3.41164 2.39061C3.32036 2.39019 3.24407 2.42063 3.18279 2.48193C3.1215 2.54323 3.09086 2.61847 3.09086 2.70767V7.7806C3.09086 7.87064 3.12172 7.94589 3.18343 8.00634C3.24514 8.06722 3.32143 8.09765 3.41229 8.09765ZM5.58836 8.09765C5.67964 8.09765 5.75593 8.06722 5.81721 8.00634C5.8785 7.94547 5.90914 7.87022 5.90914 7.7806V2.70767C5.90914 2.61763 5.87828 2.54238 5.81657 2.48193C5.75486 2.42105 5.67857 2.39061 5.58771 2.39061C5.49643 2.39061 5.41993 2.42105 5.35821 2.48193C5.2965 2.5428 5.26586 2.61805 5.26629 2.70767V7.7806C5.26629 7.87064 5.29714 7.94589 5.35886 8.00634C5.42057 8.06679 5.49707 8.09723 5.58836 8.09765Z" fill="#3B3731" />
-                                                    </svg>
+
+                                                <p class="review-text">
+                                                    I booked this groomer through Fursgo for my anxious little cockapoo and honestly couldn't be happier. They took the time to let him settle and never rushed him...
+                                                </p>
+
+                                                <div class="review-tags">
+                                                    <span>Home Visit</span>
+                                                    <span>Mobile Station</span>
                                                 </div>
                                             </div>
+
+                                            <div class="review-menu">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="5" viewBox="0 0 25 5" fill="none">
+                                                    <circle cx="2.5" cy="2.5" r="2.5" fill="#3B3731" />
+                                                    <circle cx="12.5" cy="2.5" r="2.5" fill="#3B3731" />
+                                                    <circle cx="22.5" cy="2.5" r="2.5" fill="#3B3731" />
+                                                </svg>
+                                                <div class="review-menu-dropdown">
+                                                    <div class="d-flex align-items-center justify-content-between editReview-btn-bg">
+                                                        <p class="fs-14-400-f-color cursor">Edit</p>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="11" viewBox="0 0 12 11" fill="none">
+                                                            <path d="M7.36765 1.59283L9.30882 3.44794M6.07353 10.25H11.25M0.897059 7.77652L0.25 10.25L2.83824 9.63163L10.3351 2.46721C10.5777 2.23528 10.714 1.92077 10.714 1.59283C10.714 1.26489 10.5777 0.950382 10.3351 0.71846L10.2238 0.6121C9.98108 0.380248 9.65198 0.25 9.30882 0.25C8.96567 0.25 8.63657 0.380248 8.39388 0.6121L0.897059 7.77652Z" stroke="#3B3731" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" />
+                                                        </svg>
+                                                    </div>
+                                                    <div class="d-flex align-items-center justify-content-between removeReview-btn-bg">
+                                                        <p class="fs-14-400-f-color cursor">Remove</p>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="9" height="10" viewBox="0 0 9 10" fill="none">
+                                                            <path d="M1.68172 10C1.39586 10 1.15136 9.8996 0.948218 9.6988C0.745075 9.49799 0.64329 9.25724 0.642861 8.97654V1.12238H0.321433C0.230147 1.12238 0.153861 1.09195 0.0925758 1.03107C0.0312901 0.970196 0.000432974 0.894737 4.40312e-06 0.804692C-0.000424168 0.714648 0.030433 0.6394 0.0925758 0.578947C0.154719 0.518495 0.231004 0.488269 0.321433 0.488269H2.57143C2.57143 0.357218 2.62072 0.243078 2.71929 0.145847C2.81786 0.0486155 2.93357 0 3.06643 0H5.93357C6.06643 0 6.18214 0.0486155 6.28071 0.145847C6.37928 0.243078 6.42857 0.357218 6.42857 0.488269H8.67857C8.76985 0.488269 8.84614 0.518706 8.90742 0.579581C8.96871 0.640457 8.99957 0.715916 9 0.805961C9.00042 0.896005 8.96957 0.971253 8.90742 1.03171C8.84528 1.09216 8.769 1.12238 8.67857 1.12238H8.35714V8.9759C8.35714 9.25745 8.25535 9.49841 8.05178 9.6988C7.84821 9.89918 7.60393 9.99958 7.31893 10H1.68172ZM7.71428 1.12238H1.28572V8.9759C1.28572 9.08962 1.32279 9.18305 1.39693 9.25618C1.47107 9.32932 1.566 9.36588 1.68172 9.36588H7.31893C7.43421 9.36588 7.52893 9.32932 7.60307 9.25618C7.67721 9.18305 7.71428 9.08962 7.71428 8.9759V1.12238ZM3.41229 8.09765C3.50357 8.09765 3.58007 8.06722 3.64179 8.00634C3.7035 7.94547 3.73414 7.87022 3.73371 7.7806V2.70767C3.73371 2.61763 3.70286 2.54238 3.64114 2.48193C3.57943 2.42148 3.50293 2.39104 3.41164 2.39061C3.32036 2.39019 3.24407 2.42063 3.18279 2.48193C3.1215 2.54323 3.09086 2.61847 3.09086 2.70767V7.7806C3.09086 7.87064 3.12172 7.94589 3.18343 8.00634C3.24514 8.06722 3.32143 8.09765 3.41229 8.09765ZM5.58836 8.09765C5.67964 8.09765 5.75593 8.06722 5.81721 8.00634C5.8785 7.94547 5.90914 7.87022 5.90914 7.7806V2.70767C5.90914 2.61763 5.87828 2.54238 5.81657 2.48193C5.75486 2.42105 5.67857 2.39061 5.58771 2.39061C5.49643 2.39061 5.41993 2.42105 5.35821 2.48193C5.2965 2.5428 5.26586 2.61805 5.26629 2.70767V7.7806C5.26629 7.87064 5.29714 7.94589 5.35886 8.00634C5.42057 8.06679 5.49707 8.09723 5.58836 8.09765Z" fill="#3B3731" />
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                            </div>
+
                                         </div>
 
                                     </div>
 
 
                                     <!-- REVIEW ITEM -->
-                                    <div class="review-item">
+                                    <div class="review-item" data-posted-at="">
 
                                         <div class="review-left">
                                             <div class="avatar-wrap">
@@ -5999,7 +6584,7 @@
                                                 <h4>Paws & Bubbles</h4>
                                                 <p>Hosted by Patrick B.</p>
 
-                                                <div class="reviews-card-icon">
+                                                <div class="reviews-card-icon mt-2">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="82" height="24"
                                                         viewBox="0 0 82 24" fill="none">
                                                         <rect width="24" height="24" rx="12" fill="#CBDCE8" />
@@ -6030,68 +6615,71 @@
                                             </div>
                                         </div>
 
-                                        <div class="review-content">
+                                        <div class="review-content  d-flex">
 
-                                            <div class="review-top">
-                                                <div class="stars"><svg xmlns="http://www.w3.org/2000/svg" width="163"
-                                                        height="30" viewBox="0 0 163 30" fill="none">
-                                                        <path
-                                                            d="M12.6642 6.04253C13.2526 4.17853 15.8904 4.17854 16.4787 6.04254L17.4017 8.96675C17.6644 9.79894 18.4363 10.3647 19.309 10.3647H22.4163C24.3397 10.3647 25.1544 12.8144 23.6142 13.9664L21.0015 15.9204C20.3207 16.4296 20.0362 17.3134 20.2921 18.124L21.2664 21.2107C21.8512 23.0636 19.7172 24.578 18.1613 23.4143L15.7693 21.6254C15.0591 21.0942 14.0838 21.0942 13.3736 21.6254L10.9817 23.4143C9.42574 24.578 7.29174 23.0636 7.87658 21.2107L8.85085 18.124C9.10672 17.3134 8.8222 16.4296 8.14146 15.9204L5.52874 13.9664C3.98849 12.8144 4.80322 10.3647 6.7266 10.3647H9.83398C10.7066 10.3647 11.4786 9.79893 11.7412 8.96674L12.6642 6.04253Z"
-                                                            fill="#FFC97A" />
-                                                        <path
-                                                            d="M46.0939 6.04253C46.6823 4.17853 49.3201 4.17854 49.9084 6.04254L50.8314 8.96675C51.0941 9.79894 51.866 10.3647 52.7386 10.3647H55.846C57.7694 10.3647 58.5841 12.8144 57.0439 13.9664L54.4312 15.9204C53.7504 16.4296 53.4659 17.3134 53.7218 18.124L54.696 21.2107C55.2809 23.0636 53.1469 24.578 51.5909 23.4143L49.199 21.6254C48.4888 21.0942 47.5135 21.0942 46.8033 21.6254L44.4114 23.4143C42.8554 24.578 40.7214 23.0636 41.3063 21.2107L42.2805 18.124C42.5364 17.3134 42.2519 16.4296 41.5711 15.9204L38.9584 13.9664C37.4182 12.8144 38.2329 10.3647 40.1563 10.3647H43.2637C44.1363 10.3647 44.9082 9.79893 45.1709 8.96674L46.0939 6.04253Z"
-                                                            fill="#FFC97A" />
-                                                        <path
-                                                            d="M79.5216 6.04253C80.11 4.17853 82.7478 4.17854 83.3361 6.04254L84.2591 8.96675C84.5218 9.79894 85.2937 10.3647 86.1664 10.3647H89.2738C91.1971 10.3647 92.0119 12.8144 90.4716 13.9664L87.8589 15.9204C87.1782 16.4296 86.8936 17.3134 87.1495 18.124L88.1238 21.2107C88.7086 23.0636 86.5746 24.578 85.0187 23.4143L82.6267 21.6254C81.9165 21.0942 80.9413 21.0942 80.231 21.6254L77.8391 23.4143C76.2832 24.578 74.1492 23.0636 74.734 21.2107L75.7083 18.124C75.9641 17.3134 75.6796 16.4296 74.9989 15.9204L72.3862 13.9664C70.8459 12.8144 71.6606 10.3647 73.584 10.3647H76.6914C77.5641 10.3647 78.336 9.79893 78.5987 8.96674L79.5216 6.04253Z"
-                                                            fill="#FFC97A" />
-                                                        <path
-                                                            d="M112.95 6.04253C113.539 4.17853 116.177 4.17854 116.765 6.04254L117.688 8.96675C117.951 9.79894 118.722 10.3647 119.595 10.3647H122.702C124.626 10.3647 125.441 12.8144 123.9 13.9664L121.288 15.9204C120.607 16.4296 120.322 17.3134 120.578 18.124L121.552 21.2107C122.137 23.0636 120.003 24.578 118.447 23.4143L116.055 21.6254C115.345 21.0942 114.37 21.0942 113.66 21.6254L111.268 23.4143C109.712 24.578 107.578 23.0636 108.163 21.2107L109.137 18.124C109.393 17.3134 109.108 16.4296 108.428 15.9204L105.815 13.9664C104.275 12.8144 105.089 10.3647 107.013 10.3647H110.12C110.993 10.3647 111.765 9.79893 112.027 8.96674L112.95 6.04253Z"
-                                                            fill="#FFC97A" />
-                                                        <path
-                                                            d="M146.378 6.04253C146.966 4.17853 149.604 4.17854 150.193 6.04254L151.116 8.96675C151.378 9.79894 152.15 10.3647 153.023 10.3647H156.13C158.054 10.3647 158.868 12.8144 157.328 13.9664L154.715 15.9204C154.035 16.4296 153.75 17.3134 154.006 18.124L154.98 21.2107C155.565 23.0636 153.431 24.578 151.875 23.4143L149.483 21.6254C148.773 21.0942 147.798 21.0942 147.087 21.6254L144.696 23.4143C143.14 24.578 141.006 23.0636 141.59 21.2107L142.565 18.124C142.821 17.3134 142.536 16.4296 141.855 15.9204L139.243 13.9664C137.702 12.8144 138.517 10.3647 140.44 10.3647H143.548C144.421 10.3647 145.192 9.79893 145.455 8.96674L146.378 6.04253Z"
-                                                            fill="#EFEFEF" />
-                                                    </svg></div>
-                                                <span class="date">25/02/2025</span>
-                                                <span class="badge">Reviews Written</span>
+                                            <div>
+
+                                                <div class="review-top">
+                                                    <div class="stars"><svg xmlns="http://www.w3.org/2000/svg" width="163"
+                                                            height="30" viewBox="0 0 163 30" fill="none">
+                                                            <path
+                                                                d="M12.6642 6.04253C13.2526 4.17853 15.8904 4.17854 16.4787 6.04254L17.4017 8.96675C17.6644 9.79894 18.4363 10.3647 19.309 10.3647H22.4163C24.3397 10.3647 25.1544 12.8144 23.6142 13.9664L21.0015 15.9204C20.3207 16.4296 20.0362 17.3134 20.2921 18.124L21.2664 21.2107C21.8512 23.0636 19.7172 24.578 18.1613 23.4143L15.7693 21.6254C15.0591 21.0942 14.0838 21.0942 13.3736 21.6254L10.9817 23.4143C9.42574 24.578 7.29174 23.0636 7.87658 21.2107L8.85085 18.124C9.10672 17.3134 8.8222 16.4296 8.14146 15.9204L5.52874 13.9664C3.98849 12.8144 4.80322 10.3647 6.7266 10.3647H9.83398C10.7066 10.3647 11.4786 9.79893 11.7412 8.96674L12.6642 6.04253Z"
+                                                                fill="#FFC97A" />
+                                                            <path
+                                                                d="M46.0939 6.04253C46.6823 4.17853 49.3201 4.17854 49.9084 6.04254L50.8314 8.96675C51.0941 9.79894 51.866 10.3647 52.7386 10.3647H55.846C57.7694 10.3647 58.5841 12.8144 57.0439 13.9664L54.4312 15.9204C53.7504 16.4296 53.4659 17.3134 53.7218 18.124L54.696 21.2107C55.2809 23.0636 53.1469 24.578 51.5909 23.4143L49.199 21.6254C48.4888 21.0942 47.5135 21.0942 46.8033 21.6254L44.4114 23.4143C42.8554 24.578 40.7214 23.0636 41.3063 21.2107L42.2805 18.124C42.5364 17.3134 42.2519 16.4296 41.5711 15.9204L38.9584 13.9664C37.4182 12.8144 38.2329 10.3647 40.1563 10.3647H43.2637C44.1363 10.3647 44.9082 9.79893 45.1709 8.96674L46.0939 6.04253Z"
+                                                                fill="#FFC97A" />
+                                                            <path
+                                                                d="M79.5216 6.04253C80.11 4.17853 82.7478 4.17854 83.3361 6.04254L84.2591 8.96675C84.5218 9.79894 85.2937 10.3647 86.1664 10.3647H89.2738C91.1971 10.3647 92.0119 12.8144 90.4716 13.9664L87.8589 15.9204C87.1782 16.4296 86.8936 17.3134 87.1495 18.124L88.1238 21.2107C88.7086 23.0636 86.5746 24.578 85.0187 23.4143L82.6267 21.6254C81.9165 21.0942 80.9413 21.0942 80.231 21.6254L77.8391 23.4143C76.2832 24.578 74.1492 23.0636 74.734 21.2107L75.7083 18.124C75.9641 17.3134 75.6796 16.4296 74.9989 15.9204L72.3862 13.9664C70.8459 12.8144 71.6606 10.3647 73.584 10.3647H76.6914C77.5641 10.3647 78.336 9.79893 78.5987 8.96674L79.5216 6.04253Z"
+                                                                fill="#FFC97A" />
+                                                            <path
+                                                                d="M112.95 6.04253C113.539 4.17853 116.177 4.17854 116.765 6.04254L117.688 8.96675C117.951 9.79894 118.722 10.3647 119.595 10.3647H122.702C124.626 10.3647 125.441 12.8144 123.9 13.9664L121.288 15.9204C120.607 16.4296 120.322 17.3134 120.578 18.124L121.552 21.2107C122.137 23.0636 120.003 24.578 118.447 23.4143L116.055 21.6254C115.345 21.0942 114.37 21.0942 113.66 21.6254L111.268 23.4143C109.712 24.578 107.578 23.0636 108.163 21.2107L109.137 18.124C109.393 17.3134 109.108 16.4296 108.428 15.9204L105.815 13.9664C104.275 12.8144 105.089 10.3647 107.013 10.3647H110.12C110.993 10.3647 111.765 9.79893 112.027 8.96674L112.95 6.04253Z"
+                                                                fill="#FFC97A" />
+                                                            <path
+                                                                d="M146.378 6.04253C146.966 4.17853 149.604 4.17854 150.193 6.04254L151.116 8.96675C151.378 9.79894 152.15 10.3647 153.023 10.3647H156.13C158.054 10.3647 158.868 12.8144 157.328 13.9664L154.715 15.9204C154.035 16.4296 153.75 17.3134 154.006 18.124L154.98 21.2107C155.565 23.0636 153.431 24.578 151.875 23.4143L149.483 21.6254C148.773 21.0942 147.798 21.0942 147.087 21.6254L144.696 23.4143C143.14 24.578 141.006 23.0636 141.59 21.2107L142.565 18.124C142.821 17.3134 142.536 16.4296 141.855 15.9204L139.243 13.9664C137.702 12.8144 138.517 10.3647 140.44 10.3647H143.548C144.421 10.3647 145.192 9.79893 145.455 8.96674L146.378 6.04253Z"
+                                                                fill="#EFEFEF" />
+                                                        </svg></div>
+                                                    <span class="date">25/02/2025</span>
+                                                    <span class="badge">Reviews Written</span>
+                                                </div>
+
+                                                <p class="review-text">
+                                                    This grooming space was perfect - bright, clean, and clearly designed with pets in mind. Everything felt organised and hygienic.
+                                                </p>
+
+                                                <div class="review-tags">
+                                                    <span>Garden / Shed</span>
+                                                </div>
                                             </div>
 
-                                            <p class="review-text">
-                                                This grooming space was perfect — bright, clean, and clearly
-                                                designed with pets in mind. Everything felt organised and
-                                                hygienic.
-                                            </p>
-
-                                            <div class="review-tags">
-                                                <span>Garden / Shed</span>
+                                            <div class="review-menu">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="5" viewBox="0 0 25 5" fill="none">
+                                                    <circle cx="2.5" cy="2.5" r="2.5" fill="#3B3731" />
+                                                    <circle cx="12.5" cy="2.5" r="2.5" fill="#3B3731" />
+                                                    <circle cx="22.5" cy="2.5" r="2.5" fill="#3B3731" />
+                                                </svg>
+                                                <div class="review-menu-dropdown">
+                                                    <div class="d-flex align-items-center justify-content-between editReview-btn-bg">
+                                                        <p class="fs-14-400-f-color cursor">Edit</p>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="11" viewBox="0 0 12 11" fill="none">
+                                                            <path d="M7.36765 1.59283L9.30882 3.44794M6.07353 10.25H11.25M0.897059 7.77652L0.25 10.25L2.83824 9.63163L10.3351 2.46721C10.5777 2.23528 10.714 1.92077 10.714 1.59283C10.714 1.26489 10.5777 0.950382 10.3351 0.71846L10.2238 0.6121C9.98108 0.380248 9.65198 0.25 9.30882 0.25C8.96567 0.25 8.63657 0.380248 8.39388 0.6121L0.897059 7.77652Z" stroke="#3B3731" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" />
+                                                        </svg>
+                                                    </div>
+                                                    <div class="d-flex align-items-center justify-content-between removeReview-btn-bg">
+                                                        <p class="fs-14-400-f-color cursor">Remove</p>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="9" height="10" viewBox="0 0 9 10" fill="none">
+                                                            <path d="M1.68172 10C1.39586 10 1.15136 9.8996 0.948218 9.6988C0.745075 9.49799 0.64329 9.25724 0.642861 8.97654V1.12238H0.321433C0.230147 1.12238 0.153861 1.09195 0.0925758 1.03107C0.0312901 0.970196 0.000432974 0.894737 4.40312e-06 0.804692C-0.000424168 0.714648 0.030433 0.6394 0.0925758 0.578947C0.154719 0.518495 0.231004 0.488269 0.321433 0.488269H2.57143C2.57143 0.357218 2.62072 0.243078 2.71929 0.145847C2.81786 0.0486155 2.93357 0 3.06643 0H5.93357C6.06643 0 6.18214 0.0486155 6.28071 0.145847C6.37928 0.243078 6.42857 0.357218 6.42857 0.488269H8.67857C8.76985 0.488269 8.84614 0.518706 8.90742 0.579581C8.96871 0.640457 8.99957 0.715916 9 0.805961C9.00042 0.896005 8.96957 0.971253 8.90742 1.03171C8.84528 1.09216 8.769 1.12238 8.67857 1.12238H8.35714V8.9759C8.35714 9.25745 8.25535 9.49841 8.05178 9.6988C7.84821 9.89918 7.60393 9.99958 7.31893 10H1.68172ZM7.71428 1.12238H1.28572V8.9759C1.28572 9.08962 1.32279 9.18305 1.39693 9.25618C1.47107 9.32932 1.566 9.36588 1.68172 9.36588H7.31893C7.43421 9.36588 7.52893 9.32932 7.60307 9.25618C7.67721 9.18305 7.71428 9.08962 7.71428 8.9759V1.12238ZM3.41229 8.09765C3.50357 8.09765 3.58007 8.06722 3.64179 8.00634C3.7035 7.94547 3.73414 7.87022 3.73371 7.7806V2.70767C3.73371 2.61763 3.70286 2.54238 3.64114 2.48193C3.57943 2.42148 3.50293 2.39104 3.41164 2.39061C3.32036 2.39019 3.24407 2.42063 3.18279 2.48193C3.1215 2.54323 3.09086 2.61847 3.09086 2.70767V7.7806C3.09086 7.87064 3.12172 7.94589 3.18343 8.00634C3.24514 8.06722 3.32143 8.09765 3.41229 8.09765ZM5.58836 8.09765C5.67964 8.09765 5.75593 8.06722 5.81721 8.00634C5.8785 7.94547 5.90914 7.87022 5.90914 7.7806V2.70767C5.90914 2.61763 5.87828 2.54238 5.81657 2.48193C5.75486 2.42105 5.67857 2.39061 5.58771 2.39061C5.49643 2.39061 5.41993 2.42105 5.35821 2.48193C5.2965 2.5428 5.26586 2.61805 5.26629 2.70767V7.7806C5.26629 7.87064 5.29714 7.94589 5.35886 8.00634C5.42057 8.06679 5.49707 8.09723 5.58836 8.09765Z" fill="#3B3731" />
+                                                        </svg>
+                                                    </div>
+                                                </div>
                                             </div>
 
                                         </div>
 
-                                        <div class="review-menu">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="5" viewBox="0 0 25 5" fill="none">
-                                                <circle cx="2.5" cy="2.5" r="2.5" fill="#3B3731" />
-                                                <circle cx="12.5" cy="2.5" r="2.5" fill="#3B3731" />
-                                                <circle cx="22.5" cy="2.5" r="2.5" fill="#3B3731" />
-                                            </svg>
-                                            <div class="review-menu-dropdown">
-                                                <div class="d-flex align-items-center justify-content-between editReview-btn-bg">
-                                                    <p class="fs-14-400-f-color cursor">Edit</p>
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="11" viewBox="0 0 12 11" fill="none">
-                                                        <path d="M7.36765 1.59283L9.30882 3.44794M6.07353 10.25H11.25M0.897059 7.77652L0.25 10.25L2.83824 9.63163L10.3351 2.46721C10.5777 2.23528 10.714 1.92077 10.714 1.59283C10.714 1.26489 10.5777 0.950382 10.3351 0.71846L10.2238 0.6121C9.98108 0.380248 9.65198 0.25 9.30882 0.25C8.96567 0.25 8.63657 0.380248 8.39388 0.6121L0.897059 7.77652Z" stroke="#3B3731" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" />
-                                                    </svg>
-                                                </div>
-                                                <div class="d-flex align-items-center justify-content-between removeReview-btn-bg">
-                                                    <p class="fs-14-400-f-color cursor">Remove</p>
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="9" height="10" viewBox="0 0 9 10" fill="none">
-                                                        <path d="M1.68172 10C1.39586 10 1.15136 9.8996 0.948218 9.6988C0.745075 9.49799 0.64329 9.25724 0.642861 8.97654V1.12238H0.321433C0.230147 1.12238 0.153861 1.09195 0.0925758 1.03107C0.0312901 0.970196 0.000432974 0.894737 4.40312e-06 0.804692C-0.000424168 0.714648 0.030433 0.6394 0.0925758 0.578947C0.154719 0.518495 0.231004 0.488269 0.321433 0.488269H2.57143C2.57143 0.357218 2.62072 0.243078 2.71929 0.145847C2.81786 0.0486155 2.93357 0 3.06643 0H5.93357C6.06643 0 6.18214 0.0486155 6.28071 0.145847C6.37928 0.243078 6.42857 0.357218 6.42857 0.488269H8.67857C8.76985 0.488269 8.84614 0.518706 8.90742 0.579581C8.96871 0.640457 8.99957 0.715916 9 0.805961C9.00042 0.896005 8.96957 0.971253 8.90742 1.03171C8.84528 1.09216 8.769 1.12238 8.67857 1.12238H8.35714V8.9759C8.35714 9.25745 8.25535 9.49841 8.05178 9.6988C7.84821 9.89918 7.60393 9.99958 7.31893 10H1.68172ZM7.71428 1.12238H1.28572V8.9759C1.28572 9.08962 1.32279 9.18305 1.39693 9.25618C1.47107 9.32932 1.566 9.36588 1.68172 9.36588H7.31893C7.43421 9.36588 7.52893 9.32932 7.60307 9.25618C7.67721 9.18305 7.71428 9.08962 7.71428 8.9759V1.12238ZM3.41229 8.09765C3.50357 8.09765 3.58007 8.06722 3.64179 8.00634C3.7035 7.94547 3.73414 7.87022 3.73371 7.7806V2.70767C3.73371 2.61763 3.70286 2.54238 3.64114 2.48193C3.57943 2.42148 3.50293 2.39104 3.41164 2.39061C3.32036 2.39019 3.24407 2.42063 3.18279 2.48193C3.1215 2.54323 3.09086 2.61847 3.09086 2.70767V7.7806C3.09086 7.87064 3.12172 7.94589 3.18343 8.00634C3.24514 8.06722 3.32143 8.09765 3.41229 8.09765ZM5.58836 8.09765C5.67964 8.09765 5.75593 8.06722 5.81721 8.00634C5.8785 7.94547 5.90914 7.87022 5.90914 7.7806V2.70767C5.90914 2.61763 5.87828 2.54238 5.81657 2.48193C5.75486 2.42105 5.67857 2.39061 5.58771 2.39061C5.49643 2.39061 5.41993 2.42105 5.35821 2.48193C5.2965 2.5428 5.26586 2.61805 5.26629 2.70767V7.7806C5.26629 7.87064 5.29714 7.94589 5.35886 8.00634C5.42057 8.06679 5.49707 8.09723 5.58836 8.09765Z" fill="#3B3731" />
-                                                    </svg>
-                                                </div>
-                                            </div>
-                                        </div>
+
 
                                     </div>
 
-                                    <div class="review-item">
+                                    <div class="review-item" data-posted-at="">
 
                                         <div class="review-left">
                                             <div class="avatar-wrap">
@@ -6132,7 +6720,7 @@
                                             <div class="review-user">
                                                 <h4>Paws & Bubbles</h4>
                                                 <p>Hosted by Patrick B.</p>
-                                                <div class="reviews-card-icon">
+                                                <div class="reviews-card-icon mt-2">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="82" height="24"
                                                         viewBox="0 0 82 24" fill="none">
                                                         <rect width="24" height="24" rx="12" fill="#CBDCE8" />
@@ -6163,46 +6751,70 @@
                                             </div>
                                         </div>
 
-                                        <div class="review-content">
+                                        <div class="review-content d-flex">
 
-                                            <div class="review-top">
-                                                <div class="stars"><svg xmlns="http://www.w3.org/2000/svg" width="163"
-                                                        height="30" viewBox="0 0 163 30" fill="none">
-                                                        <path
-                                                            d="M12.6642 6.04253C13.2526 4.17853 15.8904 4.17854 16.4787 6.04254L17.4017 8.96675C17.6644 9.79894 18.4363 10.3647 19.309 10.3647H22.4163C24.3397 10.3647 25.1544 12.8144 23.6142 13.9664L21.0015 15.9204C20.3207 16.4296 20.0362 17.3134 20.2921 18.124L21.2664 21.2107C21.8512 23.0636 19.7172 24.578 18.1613 23.4143L15.7693 21.6254C15.0591 21.0942 14.0838 21.0942 13.3736 21.6254L10.9817 23.4143C9.42574 24.578 7.29174 23.0636 7.87658 21.2107L8.85085 18.124C9.10672 17.3134 8.8222 16.4296 8.14146 15.9204L5.52874 13.9664C3.98849 12.8144 4.80322 10.3647 6.7266 10.3647H9.83398C10.7066 10.3647 11.4786 9.79893 11.7412 8.96674L12.6642 6.04253Z"
-                                                            fill="#FFC97A" />
-                                                        <path
-                                                            d="M46.0939 6.04253C46.6823 4.17853 49.3201 4.17854 49.9084 6.04254L50.8314 8.96675C51.0941 9.79894 51.866 10.3647 52.7386 10.3647H55.846C57.7694 10.3647 58.5841 12.8144 57.0439 13.9664L54.4312 15.9204C53.7504 16.4296 53.4659 17.3134 53.7218 18.124L54.696 21.2107C55.2809 23.0636 53.1469 24.578 51.5909 23.4143L49.199 21.6254C48.4888 21.0942 47.5135 21.0942 46.8033 21.6254L44.4114 23.4143C42.8554 24.578 40.7214 23.0636 41.3063 21.2107L42.2805 18.124C42.5364 17.3134 42.2519 16.4296 41.5711 15.9204L38.9584 13.9664C37.4182 12.8144 38.2329 10.3647 40.1563 10.3647H43.2637C44.1363 10.3647 44.9082 9.79893 45.1709 8.96674L46.0939 6.04253Z"
-                                                            fill="#FFC97A" />
-                                                        <path
-                                                            d="M79.5216 6.04253C80.11 4.17853 82.7478 4.17854 83.3361 6.04254L84.2591 8.96675C84.5218 9.79894 85.2937 10.3647 86.1664 10.3647H89.2738C91.1971 10.3647 92.0119 12.8144 90.4716 13.9664L87.8589 15.9204C87.1782 16.4296 86.8936 17.3134 87.1495 18.124L88.1238 21.2107C88.7086 23.0636 86.5746 24.578 85.0187 23.4143L82.6267 21.6254C81.9165 21.0942 80.9413 21.0942 80.231 21.6254L77.8391 23.4143C76.2832 24.578 74.1492 23.0636 74.734 21.2107L75.7083 18.124C75.9641 17.3134 75.6796 16.4296 74.9989 15.9204L72.3862 13.9664C70.8459 12.8144 71.6606 10.3647 73.584 10.3647H76.6914C77.5641 10.3647 78.336 9.79893 78.5987 8.96674L79.5216 6.04253Z"
-                                                            fill="#FFC97A" />
-                                                        <path
-                                                            d="M112.95 6.04253C113.539 4.17853 116.177 4.17854 116.765 6.04254L117.688 8.96675C117.951 9.79894 118.722 10.3647 119.595 10.3647H122.702C124.626 10.3647 125.441 12.8144 123.9 13.9664L121.288 15.9204C120.607 16.4296 120.322 17.3134 120.578 18.124L121.552 21.2107C122.137 23.0636 120.003 24.578 118.447 23.4143L116.055 21.6254C115.345 21.0942 114.37 21.0942 113.66 21.6254L111.268 23.4143C109.712 24.578 107.578 23.0636 108.163 21.2107L109.137 18.124C109.393 17.3134 109.108 16.4296 108.428 15.9204L105.815 13.9664C104.275 12.8144 105.089 10.3647 107.013 10.3647H110.12C110.993 10.3647 111.765 9.79893 112.027 8.96674L112.95 6.04253Z"
-                                                            fill="#FFC97A" />
-                                                        <path
-                                                            d="M146.378 6.04253C146.966 4.17853 149.604 4.17854 150.193 6.04254L151.116 8.96675C151.378 9.79894 152.15 10.3647 153.023 10.3647H156.13C158.054 10.3647 158.868 12.8144 157.328 13.9664L154.715 15.9204C154.035 16.4296 153.75 17.3134 154.006 18.124L154.98 21.2107C155.565 23.0636 153.431 24.578 151.875 23.4143L149.483 21.6254C148.773 21.0942 147.798 21.0942 147.087 21.6254L144.696 23.4143C143.14 24.578 141.006 23.0636 141.59 21.2107L142.565 18.124C142.821 17.3134 142.536 16.4296 141.855 15.9204L139.243 13.9664C137.702 12.8144 138.517 10.3647 140.44 10.3647H143.548C144.421 10.3647 145.192 9.79893 145.455 8.96674L146.378 6.04253Z"
-                                                            fill="#EFEFEF" />
-                                                    </svg></div>
-                                                <span class="date">25/02/2025</span>
-                                                <span class="badge">Reviews Written</span>
+                                            <div>
+                                                <div class="review-top">
+                                                    <div class="stars"><svg xmlns="http://www.w3.org/2000/svg" width="163"
+                                                            height="30" viewBox="0 0 163 30" fill="none">
+                                                            <path
+                                                                d="M12.6642 6.04253C13.2526 4.17853 15.8904 4.17854 16.4787 6.04254L17.4017 8.96675C17.6644 9.79894 18.4363 10.3647 19.309 10.3647H22.4163C24.3397 10.3647 25.1544 12.8144 23.6142 13.9664L21.0015 15.9204C20.3207 16.4296 20.0362 17.3134 20.2921 18.124L21.2664 21.2107C21.8512 23.0636 19.7172 24.578 18.1613 23.4143L15.7693 21.6254C15.0591 21.0942 14.0838 21.0942 13.3736 21.6254L10.9817 23.4143C9.42574 24.578 7.29174 23.0636 7.87658 21.2107L8.85085 18.124C9.10672 17.3134 8.8222 16.4296 8.14146 15.9204L5.52874 13.9664C3.98849 12.8144 4.80322 10.3647 6.7266 10.3647H9.83398C10.7066 10.3647 11.4786 9.79893 11.7412 8.96674L12.6642 6.04253Z"
+                                                                fill="#FFC97A" />
+                                                            <path
+                                                                d="M46.0939 6.04253C46.6823 4.17853 49.3201 4.17854 49.9084 6.04254L50.8314 8.96675C51.0941 9.79894 51.866 10.3647 52.7386 10.3647H55.846C57.7694 10.3647 58.5841 12.8144 57.0439 13.9664L54.4312 15.9204C53.7504 16.4296 53.4659 17.3134 53.7218 18.124L54.696 21.2107C55.2809 23.0636 53.1469 24.578 51.5909 23.4143L49.199 21.6254C48.4888 21.0942 47.5135 21.0942 46.8033 21.6254L44.4114 23.4143C42.8554 24.578 40.7214 23.0636 41.3063 21.2107L42.2805 18.124C42.5364 17.3134 42.2519 16.4296 41.5711 15.9204L38.9584 13.9664C37.4182 12.8144 38.2329 10.3647 40.1563 10.3647H43.2637C44.1363 10.3647 44.9082 9.79893 45.1709 8.96674L46.0939 6.04253Z"
+                                                                fill="#FFC97A" />
+                                                            <path
+                                                                d="M79.5216 6.04253C80.11 4.17853 82.7478 4.17854 83.3361 6.04254L84.2591 8.96675C84.5218 9.79894 85.2937 10.3647 86.1664 10.3647H89.2738C91.1971 10.3647 92.0119 12.8144 90.4716 13.9664L87.8589 15.9204C87.1782 16.4296 86.8936 17.3134 87.1495 18.124L88.1238 21.2107C88.7086 23.0636 86.5746 24.578 85.0187 23.4143L82.6267 21.6254C81.9165 21.0942 80.9413 21.0942 80.231 21.6254L77.8391 23.4143C76.2832 24.578 74.1492 23.0636 74.734 21.2107L75.7083 18.124C75.9641 17.3134 75.6796 16.4296 74.9989 15.9204L72.3862 13.9664C70.8459 12.8144 71.6606 10.3647 73.584 10.3647H76.6914C77.5641 10.3647 78.336 9.79893 78.5987 8.96674L79.5216 6.04253Z"
+                                                                fill="#FFC97A" />
+                                                            <path
+                                                                d="M112.95 6.04253C113.539 4.17853 116.177 4.17854 116.765 6.04254L117.688 8.96675C117.951 9.79894 118.722 10.3647 119.595 10.3647H122.702C124.626 10.3647 125.441 12.8144 123.9 13.9664L121.288 15.9204C120.607 16.4296 120.322 17.3134 120.578 18.124L121.552 21.2107C122.137 23.0636 120.003 24.578 118.447 23.4143L116.055 21.6254C115.345 21.0942 114.37 21.0942 113.66 21.6254L111.268 23.4143C109.712 24.578 107.578 23.0636 108.163 21.2107L109.137 18.124C109.393 17.3134 109.108 16.4296 108.428 15.9204L105.815 13.9664C104.275 12.8144 105.089 10.3647 107.013 10.3647H110.12C110.993 10.3647 111.765 9.79893 112.027 8.96674L112.95 6.04253Z"
+                                                                fill="#FFC97A" />
+                                                            <path
+                                                                d="M146.378 6.04253C146.966 4.17853 149.604 4.17854 150.193 6.04254L151.116 8.96675C151.378 9.79894 152.15 10.3647 153.023 10.3647H156.13C158.054 10.3647 158.868 12.8144 157.328 13.9664L154.715 15.9204C154.035 16.4296 153.75 17.3134 154.006 18.124L154.98 21.2107C155.565 23.0636 153.431 24.578 151.875 23.4143L149.483 21.6254C148.773 21.0942 147.798 21.0942 147.087 21.6254L144.696 23.4143C143.14 24.578 141.006 23.0636 141.59 21.2107L142.565 18.124C142.821 17.3134 142.536 16.4296 141.855 15.9204L139.243 13.9664C137.702 12.8144 138.517 10.3647 140.44 10.3647H143.548C144.421 10.3647 145.192 9.79893 145.455 8.96674L146.378 6.04253Z"
+                                                                fill="#EFEFEF" />
+                                                        </svg></div>
+                                                    <span class="date">25/02/2025</span>
+                                                    <span class="badge">Reviews Written</span>
+                                                </div>
+
+                                                <p class="review-text">
+                                                    Such a nice grooming environment. The space was tidy, well
+                                                    ventilated,
+                                                    and had all
+                                                    the
+                                                    equipment needed without feeling overwhelming. It felt very
+                                                    calm and
+                                                    welcoming,
+                                                    which
+                                                    made
+                                                    drop-off...
+                                                </p>
+
+                                                <div class="review-tags">
+                                                    <span>Private Room</span>
+                                                </div>
                                             </div>
 
-                                            <p class="review-text">
-                                                Such a nice grooming environment. The space was tidy, well
-                                                ventilated,
-                                                and had all
-                                                the
-                                                equipment needed without feeling overwhelming. It felt very
-                                                calm and
-                                                welcoming,
-                                                which
-                                                made
-                                                drop-off...
-                                            </p>
-
-                                            <div class="review-tags">
-                                                <span>Private Room</span>
+                                            <div class="review-menu">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="5" viewBox="0 0 25 5" fill="none">
+                                                    <circle cx="2.5" cy="2.5" r="2.5" fill="#3B3731" />
+                                                    <circle cx="12.5" cy="2.5" r="2.5" fill="#3B3731" />
+                                                    <circle cx="22.5" cy="2.5" r="2.5" fill="#3B3731" />
+                                                </svg>
+                                                <div class="review-menu-dropdown">
+                                                    <div class="d-flex align-items-center justify-content-between editReview-btn-bg">
+                                                        <p class="fs-14-400-f-color cursor">Edit</p>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="11" viewBox="0 0 12 11" fill="none">
+                                                            <path d="M7.36765 1.59283L9.30882 3.44794M6.07353 10.25H11.25M0.897059 7.77652L0.25 10.25L2.83824 9.63163L10.3351 2.46721C10.5777 2.23528 10.714 1.92077 10.714 1.59283C10.714 1.26489 10.5777 0.950382 10.3351 0.71846L10.2238 0.6121C9.98108 0.380248 9.65198 0.25 9.30882 0.25C8.96567 0.25 8.63657 0.380248 8.39388 0.6121L0.897059 7.77652Z" stroke="#3B3731" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" />
+                                                        </svg>
+                                                    </div>
+                                                    <div class="d-flex align-items-center justify-content-between removeReview-btn-bg">
+                                                        <p class="fs-14-400-f-color cursor">Remove</p>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="9" height="10" viewBox="0 0 9 10" fill="none">
+                                                            <path d="M1.68172 10C1.39586 10 1.15136 9.8996 0.948218 9.6988C0.745075 9.49799 0.64329 9.25724 0.642861 8.97654V1.12238H0.321433C0.230147 1.12238 0.153861 1.09195 0.0925758 1.03107C0.0312901 0.970196 0.000432974 0.894737 4.40312e-06 0.804692C-0.000424168 0.714648 0.030433 0.6394 0.0925758 0.578947C0.154719 0.518495 0.231004 0.488269 0.321433 0.488269H2.57143C2.57143 0.357218 2.62072 0.243078 2.71929 0.145847C2.81786 0.0486155 2.93357 0 3.06643 0H5.93357C6.06643 0 6.18214 0.0486155 6.28071 0.145847C6.37928 0.243078 6.42857 0.357218 6.42857 0.488269H8.67857C8.76985 0.488269 8.84614 0.518706 8.90742 0.579581C8.96871 0.640457 8.99957 0.715916 9 0.805961C9.00042 0.896005 8.96957 0.971253 8.90742 1.03171C8.84528 1.09216 8.769 1.12238 8.67857 1.12238H8.35714V8.9759C8.35714 9.25745 8.25535 9.49841 8.05178 9.6988C7.84821 9.89918 7.60393 9.99958 7.31893 10H1.68172ZM7.71428 1.12238H1.28572V8.9759C1.28572 9.08962 1.32279 9.18305 1.39693 9.25618C1.47107 9.32932 1.566 9.36588 1.68172 9.36588H7.31893C7.43421 9.36588 7.52893 9.32932 7.60307 9.25618C7.67721 9.18305 7.71428 9.08962 7.71428 8.9759V1.12238ZM3.41229 8.09765C3.50357 8.09765 3.58007 8.06722 3.64179 8.00634C3.7035 7.94547 3.73414 7.87022 3.73371 7.7806V2.70767C3.73371 2.61763 3.70286 2.54238 3.64114 2.48193C3.57943 2.42148 3.50293 2.39104 3.41164 2.39061C3.32036 2.39019 3.24407 2.42063 3.18279 2.48193C3.1215 2.54323 3.09086 2.61847 3.09086 2.70767V7.7806C3.09086 7.87064 3.12172 7.94589 3.18343 8.00634C3.24514 8.06722 3.32143 8.09765 3.41229 8.09765ZM5.58836 8.09765C5.67964 8.09765 5.75593 8.06722 5.81721 8.00634C5.8785 7.94547 5.90914 7.87022 5.90914 7.7806V2.70767C5.90914 2.61763 5.87828 2.54238 5.81657 2.48193C5.75486 2.42105 5.67857 2.39061 5.58771 2.39061C5.49643 2.39061 5.41993 2.42105 5.35821 2.48193C5.2965 2.5428 5.26586 2.61805 5.26629 2.70767V7.7806C5.26629 7.87064 5.29714 7.94589 5.35886 8.00634C5.42057 8.06679 5.49707 8.09723 5.58836 8.09765Z" fill="#3B3731" />
+                                                        </svg>
+                                                    </div>
+                                                </div>
                                             </div>
 
                                         </div>
@@ -6218,7 +6830,7 @@
                                 <div class="reviews-list">
 
                                     <!-- REVIEW ITEM -->
-                                    <div class="review-item">
+                                    <div class="review-item mt-5">
 
                                         <div class="review-left">
 
@@ -6242,7 +6854,7 @@
                                                 <h4>Cathy P.</h4>
                                                 <p>Sarah's Grooming Studio</p>
 
-                                                <div class="reviews-card-icon">
+                                                <div class="reviews-card-icon mt-2">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="53" height="24"
                                                         viewBox="0 0 53 24" fill="none">
                                                         <rect width="24" height="24" rx="12" fill="#CBDCE8" />
@@ -6311,7 +6923,7 @@
 
 
                                     <!-- REVIEW ITEM -->
-                                    <div class="review-item">
+                                    <div class="review-item mt-5">
 
                                         <div class="review-left">
                                             <div class="avatar-wrap">
@@ -6352,7 +6964,7 @@
                                                 <h4>Paws & Bubbles</h4>
                                                 <p>Hosted by Patrick B.</p>
 
-                                                <div class="reviews-card-icon">
+                                                <div class="reviews-card-icon mt-2">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="82" height="24"
                                                         viewBox="0 0 82 24" fill="none">
                                                         <rect width="24" height="24" rx="12" fill="#CBDCE8" />
@@ -6424,7 +7036,7 @@
 
                                     </div>
 
-                                    <div class="review-item">
+                                    <div class="review-item mt-5">
 
                                         <div class="review-left">
                                             <div class="avatar-wrap">
@@ -6446,7 +7058,7 @@
                                             <div class="review-user">
                                                 <h4>Paws & Bubbles</h4>
                                                 <p>Hosted by Patrick B.</p>
-                                                <div class="reviews-card-icon">
+                                                <div class="reviews-card-icon mt-2">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="82" height="24"
                                                         viewBox="0 0 82 24" fill="none">
                                                         <rect width="24" height="24" rx="12" fill="#CBDCE8" />
@@ -7086,19 +7698,14 @@
                 if (!confirmBox) return;
                 confirmBox.classList.remove('active');
                 confirmBox.setAttribute('aria-hidden', 'true');
+                activeCard?.classList.remove('delete-confirm-active');
                 groomerGrid.appendChild(confirmBox);
                 activeCard = null;
             }
 
             function placeConfirmBox(card) {
                 if (!confirmBox || !card) return;
-
-                if (window.innerWidth <= 991) {
-                    card.insertAdjacentElement('afterend', confirmBox);
-                    return;
-                }
-
-                card.insertAdjacentElement('afterend', confirmBox);
+                card.appendChild(confirmBox);
             }
 
             groomerGrid.querySelectorAll('.card .delete').forEach((deleteTrigger) => {
@@ -7114,7 +7721,12 @@
                         return;
                     }
 
+                    if (activeCard && activeCard !== card) {
+                        activeCard.classList.remove('delete-confirm-active');
+                    }
+
                     activeCard = card;
+                    activeCard.classList.add('delete-confirm-active');
                     placeConfirmBox(card);
                     confirmBox.classList.add('active');
                     confirmBox.setAttribute('aria-hidden', 'false');
@@ -7171,19 +7783,14 @@
                 if (!confirmBox) return;
                 confirmBox.classList.remove('active');
                 confirmBox.setAttribute('aria-hidden', 'true');
+                activeCard?.classList.remove('delete-confirm-active');
                 spacesGrid.appendChild(confirmBox);
                 activeCard = null;
             }
 
             function placeConfirmBox(card) {
                 if (!confirmBox || !card) return;
-
-                if (window.innerWidth <= 991) {
-                    card.insertAdjacentElement('afterend', confirmBox);
-                    return;
-                }
-
-                card.insertAdjacentElement('afterend', confirmBox);
+                card.appendChild(confirmBox);
             }
 
             spacesGrid.querySelectorAll('.space-card .delete').forEach((deleteTrigger) => {
@@ -7199,7 +7806,12 @@
                         return;
                     }
 
+                    if (activeCard && activeCard !== card) {
+                        activeCard.classList.remove('delete-confirm-active');
+                    }
+
                     activeCard = card;
+                    activeCard.classList.add('delete-confirm-active');
                     placeConfirmBox(card);
                     confirmBox.classList.add('active');
                     confirmBox.setAttribute('aria-hidden', 'false');
@@ -7224,6 +7836,339 @@
                 if (confirmBox.contains(event.target)) return;
                 if (activeCard?.contains(event.target)) return;
                 hideConfirmBox();
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const petsGrid = document.querySelector('#pets-slider-container .pets-grid');
+            const archivedGrid = document.querySelector('.archived-pets-grid');
+            const activePetsView = document.getElementById('active-pets-view');
+            const archivedPetsView = document.getElementById('archived-pets-view');
+            const viewArchivedBtn = document.getElementById('view-archived-pets-btn');
+            const backToPetsBtn = document.getElementById('back-to-pets-btn');
+            const closeArchivedBtn = document.getElementById('close-archived-pets-btn');
+            const archivedEmpty = document.querySelector('.archived-pets-empty');
+            if (!petsGrid) return;
+
+            function updateArchivedEmptyState() {
+                if (!archivedEmpty || !archivedGrid) return;
+                archivedEmpty.classList.toggle('show', archivedGrid.children.length === 0);
+            }
+
+            function showActivePetsView() {
+                activePetsView?.classList.add('active');
+                archivedPetsView?.classList.remove('active');
+            }
+
+            function showArchivedPetsView() {
+                activePetsView?.classList.remove('active');
+                archivedPetsView?.classList.add('active');
+                updateArchivedEmptyState();
+            }
+
+            viewArchivedBtn?.addEventListener('click', showArchivedPetsView);
+            backToPetsBtn?.addEventListener('click', showActivePetsView);
+            closeArchivedBtn?.addEventListener('click', showActivePetsView);
+
+            const editBtnIcon = `
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="15" viewBox="0 0 16 15" fill="none">
+                    <path d="M10.2059 2.37997L12.8529 4.97712M8.44118 14.5H15.5M1.38235 11.0371L0.5 14.5L4.02941 13.6343L14.2524 3.60409C14.5832 3.2794 14.769 2.83908 14.769 2.37997C14.769 1.92085 14.5832 1.48054 14.2524 1.15584L14.1006 1.00694C13.7697 0.682347 13.3209 0.5 12.8529 0.5C12.385 0.5 11.9362 0.682347 11.6053 1.00694L1.38235 11.0371Z" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>`;
+
+            const editMenuIcon = `
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="13" viewBox="0 0 16 15" fill="none">
+                    <path d="M10.2059 2.37997L12.8529 4.97712M8.44118 14.5H15.5M1.38235 11.0371L0.5 14.5L4.02941 13.6343L14.2524 3.60409C14.5832 3.2794 14.769 2.83908 14.769 2.37997C14.769 1.92085 14.5832 1.48054 14.2524 1.15584L14.1006 1.00694C13.7697 0.682347 13.3209 0.5 12.8529 0.5C12.385 0.5 11.9362 0.682347 11.6053 1.00694L1.38235 11.0371Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>`;
+
+            const restoreBtnIcon = `
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                    <path d="M7 0C3.13385 0 0 3.13384 0 7C0 10.8661 3.13385 14 7 14C7.91941 14.0011 8.82997 13.8205 9.67938 13.4687C10.5288 13.1168 11.3003 12.6005 11.9495 11.9495C12.0447 11.8475 12.0964 11.7125 12.094 11.573C12.0915 11.4335 12.035 11.3004 11.9363 11.2017C11.8377 11.103 11.7046 11.0465 11.5651 11.0441C11.4256 11.0416 11.2906 11.0934 11.1885 11.1885C10.4997 11.8772 9.65175 12.3854 8.71966 12.6681C7.78757 12.9508 6.80015 12.9993 5.84485 12.8092C4.88955 12.6192 3.99586 12.1965 3.24294 11.5786C2.49002 10.9607 1.9011 10.1666 1.52835 9.26673C1.1556 8.36686 1.01052 7.38895 1.10596 6.41962C1.20139 5.45029 1.53441 4.51946 2.0755 3.70957C2.6166 2.89967 3.34907 2.23572 4.20804 1.77651C5.06702 1.3173 6.02598 1.07701 7 1.07692C8.83508 1.07692 10.1748 1.91549 11.4283 3.11087L10.0513 4.48718C10.0513 4.78441 10.2925 5.02564 10.5897 5.02564H13.4615C13.6043 5.02564 13.7413 4.96891 13.8423 4.86793C13.9433 4.76695 14 4.62999 14 4.48718V1.61538C14 1.47258 13.9433 1.33562 13.8423 1.23463C13.7413 1.13365 13.6043 1.07692 13.4615 1.07692L12.1908 2.34769C10.8267 1.04461 9.22205 0 7 0Z" fill="#A8C9E2"/>
+                </svg>`;
+
+            const restoreModalIcon = `
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 14 14" fill="none">
+                    <path d="M7 0C3.13385 0 0 3.13384 0 7C0 10.8661 3.13385 14 7 14C7.91941 14.0011 8.82997 13.8205 9.67938 13.4687C10.5288 13.1168 11.3003 12.6005 11.9495 11.9495C12.0447 11.8475 12.0964 11.7125 12.094 11.573C12.0915 11.4335 12.035 11.3004 11.9363 11.2017C11.8377 11.103 11.7046 11.0465 11.5651 11.0441C11.4256 11.0416 11.2906 11.0934 11.1885 11.1885C10.4997 11.8772 9.65175 12.3854 8.71966 12.6681C7.78757 12.9508 6.80015 12.9993 5.84485 12.8092C4.88955 12.6192 3.99586 12.1965 3.24294 11.5786C2.49002 10.9607 1.9011 10.1666 1.52835 9.26673C1.1556 8.36686 1.01052 7.38895 1.10596 6.41962C1.20139 5.45029 1.53441 4.51946 2.0755 3.70957C2.6166 2.89967 3.34907 2.23572 4.20804 1.77651C5.06702 1.3173 6.02598 1.07701 7 1.07692C8.83508 1.07692 10.1748 1.91549 11.4283 3.11087L10.0513 4.48718C10.0513 4.78441 10.2925 5.02564 10.5897 5.02564H13.4615C13.6043 5.02564 13.7413 4.96891 13.8423 4.86793C13.9433 4.76695 14 4.62999 14 4.48718V1.61538C14 1.47258 13.9433 1.33562 13.8423 1.23463C13.7413 1.13365 13.6043 1.07692 13.4615 1.07692L12.1908 2.34769C10.8267 1.04461 9.22205 0 7 0Z" fill="#A8C9E2"/>
+                </svg>`;
+
+            function getPetName(card) {
+                return card.querySelector('.pet-name-type h4')?.childNodes[1]?.textContent?.trim() ||
+                    card.querySelector('.pet-name-type h4')?.textContent?.trim() ||
+                    'this pet';
+            }
+
+            function bindDropdownActions(card, dropdown) {
+                dropdown.querySelector('.delete-action')?.addEventListener('click', (event) => {
+                    event.stopPropagation();
+                    showOverlay(card, 'delete');
+                });
+
+                dropdown.querySelector('.archive-action')?.addEventListener('click', (event) => {
+                    event.stopPropagation();
+                    showOverlay(card, 'archive');
+                });
+
+                dropdown.querySelector('.edit-action')?.addEventListener('click', (event) => {
+                    event.stopPropagation();
+                    closeDropdown();
+                    document.dispatchEvent(new CustomEvent('pet-edit-request', {
+                        detail: {
+                            card
+                        }
+                    }));
+                });
+            }
+
+            function bindPrimaryButton(card, isArchived) {
+                const btn = card.querySelector('.pet-card-primary-btn');
+                if (!btn || !isArchived) return;
+
+                const newBtn = btn.cloneNode(true);
+                btn.replaceWith(newBtn);
+                newBtn.addEventListener('click', () => showOverlay(card, 'restore'));
+            }
+
+            function setPetCardArchivedMode(card, isArchived) {
+                const primaryBtn = card.querySelector('.pet-card-primary-btn');
+                if (primaryBtn) {
+                    if (isArchived) {
+                        primaryBtn.className = 'my-pets btn-edit-outline btn-restore-pet pet-card-primary-btn';
+                        primaryBtn.innerHTML = `${restoreBtnIcon} Restore pet`;
+                    } else {
+                        primaryBtn.className = 'my-pets btn-edit-outline btn-edit-pet pet-card-primary-btn';
+                        primaryBtn.innerHTML = `${editBtnIcon} Edit details`;
+                    }
+                    bindPrimaryButton(card, isArchived);
+                }
+
+                const dropdown = card.querySelector('.pet-card-menu-dropdown');
+                if (dropdown) {
+                    dropdown.innerHTML = isArchived ?
+                        `<button type="button" class="edit-action">${editMenuIcon}<span>Edit details</span></button>
+                         <button type="button" class="delete-action">${deleteIcon}<span>Delete pet</span></button>` :
+                        `<button type="button" class="archive-action">${archiveIcon}<span>Archive pet</span></button>
+                         <button type="button" class="delete-action">${deleteIcon}<span>Delete pet</span></button>`;
+                    bindDropdownActions(card, dropdown);
+                }
+
+                closeOverlay(card);
+                if (activeCard === card) {
+                    activeCard = null;
+                }
+            }
+
+            function restorePet(card) {
+                if (!petsGrid || !card) return;
+
+                closeOverlay(card);
+                if (activeCard === card) {
+                    activeCard = null;
+                }
+
+                const sliderArrow = petsGrid.querySelector('.slider-arrow-next');
+                if (sliderArrow) {
+                    petsGrid.insertBefore(card, sliderArrow);
+                } else {
+                    petsGrid.appendChild(card);
+                }
+
+                setPetCardArchivedMode(card, false);
+                updateArchivedEmptyState();
+            }
+
+            function archivePet(card) {
+                if (!archivedGrid || !card) return;
+
+                closeOverlay(card);
+                if (activeCard === card) {
+                    activeCard = null;
+                }
+
+                archivedGrid.appendChild(card);
+                setPetCardArchivedMode(card, true);
+                updateArchivedEmptyState();
+            }
+
+            const deleteIcon = `
+                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="15" viewBox="0 0 13 15" fill="none">
+                    <path d="M2.42915 15C2.01624 15 1.66308 14.8494 1.36965 14.5482C1.07622 14.247 0.929196 13.8859 0.928577 13.4648V1.68358H0.464292C0.332435 1.68358 0.222244 1.63792 0.133721 1.54661C0.0451968 1.45529 0.000625407 1.34211 6.36006e-06 1.20704C-0.000612687 1.07197 0.0439588 0.9591 0.133721 0.868421C0.223482 0.777743 0.333673 0.732403 0.464292 0.732403H3.71429C3.71429 0.535827 3.78548 0.364616 3.92786 0.21877C4.07024 0.0729233 4.23738 0 4.42929 0H8.57071C8.76262 0 8.92976 0.0729233 9.07214 0.21877C9.21452 0.364616 9.28571 0.535827 9.28571 0.732403H12.5357C12.6676 0.732403 12.7778 0.77806 12.8663 0.869372C12.9548 0.960685 12.9994 1.07387 13 1.20894C13.0006 1.34401 12.956 1.45688 12.8663 1.54756C12.7765 1.63824 12.6663 1.68358 12.5357 1.68358H12.0714V13.4639C12.0714 13.8862 11.9244 14.2476 11.6304 14.5482C11.3363 14.8488 10.9834 14.9994 10.5718 15H2.42915ZM11.1429 1.68358H1.85715V13.4639C1.85715 13.6344 1.91069 13.7746 2.01779 13.8843C2.12489 13.994 2.262 14.0488 2.42915 14.0488H10.5718C10.7383 14.0488 10.8751 13.994 10.9822 13.8843C11.0893 13.7746 11.1429 13.6344 11.1429 13.4639V1.68358ZM4.92886 12.1465C5.06072 12.1465 5.17122 12.1008 5.26036 12.0095C5.3495 11.9182 5.39376 11.8053 5.39314 11.6709V4.06151C5.39314 3.92644 5.34857 3.81357 5.25943 3.72289C5.17029 3.63221 5.05979 3.58656 4.92793 3.58592C4.79607 3.58529 4.68588 3.63094 4.59736 3.72289C4.50884 3.81484 4.46457 3.92771 4.46457 4.06151V11.6709C4.46457 11.806 4.50914 11.9188 4.59829 12.0095C4.68743 12.1008 4.79762 12.1465 4.92886 12.1465ZM8.07207 12.1465C8.20393 12.1465 8.31412 12.1008 8.40264 12.0095C8.49117 11.9182 8.53543 11.8053 8.53543 11.6709V4.06151C8.53543 3.92644 8.49086 3.81357 8.40171 3.72289C8.31257 3.63158 8.20238 3.58592 8.07114 3.58592C7.93928 3.58592 7.82878 3.63158 7.73964 3.72289C7.6505 3.8142 7.60624 3.92708 7.60686 4.06151V11.6709C7.60686 11.806 7.65143 11.9188 7.74057 12.0095C7.82971 12.1002 7.94021 12.1458 8.07207 12.1465Z" fill="#FF6E6E"/>
+                </svg>
+            `;
+
+            const archiveIcon = `
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="15" viewBox="0 0 14 15" fill="none">
+                    <path d="M1.75 4.125H12.25V12.375C12.25 12.8391 12.0656 13.2842 11.7374 13.6124C11.4092 13.9406 10.9641 14.125 10.5 14.125H3.5C3.03587 14.125 2.59075 13.9406 2.26256 13.6124C1.93437 13.2842 1.75 12.8391 1.75 12.375V4.125Z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path d="M12.6875 0.625H1.3125C0.829251 0.625 0.4375 1.01675 0.4375 1.5V3.25C0.4375 3.73325 0.829251 4.125 1.3125 4.125H12.6875C13.1707 4.125 13.5625 3.73325 13.5625 3.25V1.5C13.5625 1.01675 13.1707 0.625 12.6875 0.625Z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path d="M5.25 7.625L7 9.375L8.75 7.625" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path d="M7 5.875V9.375" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+            `;
+
+            const deleteModalIcon = `
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22" viewBox="0 0 24 22" fill="none">
+                <path d="M20.5981 21H2.6817C2.3907 20.9999 2.1047 20.9244 1.85164 20.7807C1.59858 20.6371 1.38712 20.4302 1.23792 20.1804C1.08872 19.9306 1.00688 19.6463 1.00042 19.3554C0.993947 19.0645 1.06306 18.7768 1.20101 18.5206L10.1587 1.88463C10.7942 0.705125 12.4856 0.705125 13.1211 1.88463L22.0788 18.5206C22.2168 18.7768 22.2859 19.0645 22.2794 19.3554C22.2729 19.6463 22.1911 19.9306 22.0419 20.1804C21.8927 20.4302 21.6812 20.6371 21.4282 20.7807C21.1751 20.9244 20.8891 20.9999 20.5981 21Z" stroke="#FF6E6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M11.6388 14.2267L11.3371 7.81407C11.3356 7.7738 11.3422 7.73363 11.3566 7.69595C11.3709 7.65827 11.3926 7.62384 11.4204 7.59469C11.4482 7.56554 11.4816 7.54226 11.5186 7.52622C11.5556 7.51019 11.5954 7.50172 11.6357 7.50133C11.6767 7.50093 11.7174 7.5089 11.7552 7.52475C11.793 7.5406 11.8272 7.564 11.8557 7.59351C11.8842 7.62303 11.9064 7.65805 11.9209 7.69642C11.9354 7.7348 11.9419 7.77572 11.94 7.8167L11.6388 14.2267Z" stroke="#FF6E6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M11.6401 18.4248C11.4322 18.4248 11.229 18.3631 11.0561 18.2476C10.8832 18.1321 10.7485 17.9679 10.6689 17.7758C10.5893 17.5837 10.5685 17.3723 10.6091 17.1684C10.6496 16.9645 10.7498 16.7772 10.8968 16.6302C11.0438 16.4831 11.2311 16.383 11.435 16.3425C11.6389 16.3019 11.8503 16.3227 12.0424 16.4023C12.2345 16.4819 12.3987 16.6166 12.5142 16.7895C12.6297 16.9623 12.6914 17.1656 12.6914 17.3735C12.6914 17.6523 12.5806 17.9197 12.3835 18.1169C12.1863 18.314 11.9189 18.4248 11.6401 18.4248Z" fill="#FF6E6E"/>
+                </svg>
+            `;
+
+            const archiveModalIcon = `
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path d="M9.293 15.7832C9.6835 16.1736 10.3165 16.1736 10.707 15.7832L13.6924 12.7987C13.9368 12.5544 13.9369 12.1581 13.6925 11.9137C13.4481 11.6693 13.0519 11.6693 12.8075 11.9137L10.625 14.0963V8.84625C10.625 8.50107 10.3452 8.22125 10 8.22125C9.65482 8.22125 9.375 8.50107 9.375 8.84625V14.0963L7.19247 11.9137C6.9481 11.6693 6.5519 11.6693 6.30753 11.9137C6.06314 12.1581 6.06317 12.5544 6.3076 12.7987L9.293 15.7832ZM1.25 4.76V17.9813C1.25 18.2054 1.32208 18.3896 1.46625 18.5338C1.61042 18.6779 1.795 18.75 2.02 18.75H17.9813C18.2054 18.75 18.3896 18.6779 18.5338 18.5338C18.6779 18.3896 18.75 18.2054 18.75 17.9813V4.76H1.25ZM2.2125 20C1.6525 20 1.14375 19.7713 0.68625 19.3138C0.22875 18.8563 0 18.3479 0 17.7888V4.3575C0 4.11417 0.0387499 3.885 0.11625 3.67C0.19375 3.455 0.310417 3.25708 0.46625 3.07625L2.41375 0.73875C2.59458 0.494583 2.82083 0.310417 3.0925 0.18625C3.36417 0.0620835 3.65542 0 3.96625 0H15.9862C16.2962 0 16.5913 0.0620835 16.8713 0.18625C17.1513 0.310417 17.3817 0.494167 17.5625 0.7375L19.5338 3.125C19.6896 3.30583 19.8062 3.50792 19.8837 3.73125C19.9613 3.95375 20 4.18708 20 4.43125V17.7875C20 18.3467 19.7713 18.855 19.3138 19.3125C18.8563 19.77 18.3479 19.9988 17.7888 19.9988L2.2125 20ZM1.725 3.51H18.25L16.5875 1.5125C16.5067 1.4325 16.4142 1.36875 16.31 1.32125C16.2058 1.27375 16.0975 1.25 15.985 1.25H3.99C3.87833 1.25 3.77 1.27417 3.665 1.3225C3.56 1.37083 3.46833 1.435 3.39 1.515L1.725 3.51Z" fill="#90AFC5"/>
+                </svg>
+            `;
+
+            let activeCard = null;
+            let activeDropdown = null;
+
+            function closeDropdown() {
+                if (!activeDropdown) return;
+                activeDropdown.classList.remove('active');
+                activeDropdown = null;
+            }
+
+            function closeOverlay(card) {
+                if (!card) return;
+                card.classList.remove('pet-card-overlay-active');
+                card.querySelectorAll('.pet-card-confirm').forEach((box) => {
+                    box.classList.remove('active');
+                });
+            }
+
+            function showOverlay(card, type) {
+                if (!card) return;
+
+                if (activeCard && activeCard !== card) {
+                    closeOverlay(activeCard);
+                }
+
+                closeDropdown();
+                closeOverlay(card);
+
+                const targetBox = card.querySelector(`.pet-card-confirm.${type}-confirm`);
+                if (!targetBox) return;
+
+                card.classList.add('pet-card-overlay-active');
+                targetBox.classList.add('active');
+                activeCard = card;
+            }
+
+            petsGrid.querySelectorAll('.pet-card').forEach((card) => {
+                const petName = getPetName(card);
+                const actionRow = Array.from(card.children).find((child) =>
+                    child.classList?.contains('d-flex') &&
+                    child.classList?.contains('align-items-center') &&
+                    child.classList?.contains('justify-content-between')
+                );
+                const menuSvg = actionRow?.lastElementChild;
+                const primaryBtn = actionRow?.querySelector('.btn-edit-pet');
+
+                if (!actionRow || !menuSvg || menuSvg.tagName.toLowerCase() !== 'svg') return;
+
+                if (primaryBtn) {
+                    primaryBtn.classList.add('pet-card-primary-btn');
+                }
+
+                const menuWrapper = document.createElement('div');
+                menuWrapper.className = 'pet-card-menu';
+                menuWrapper.innerHTML = `
+                    <div class="pet-card-menu-trigger" aria-label="Open pet actions" role="button" tabindex="0">
+                        ${menuSvg.outerHTML}
+                    </div>
+                    <div class="pet-card-menu-dropdown" aria-hidden="true">
+                        <button type="button" class="archive-action">${archiveIcon}<span>Archive pet</span></button>
+                        <button type="button" class="delete-action">${deleteIcon}<span>Delete pet</span></button>
+                    </div>
+                `;
+
+                menuSvg.replaceWith(menuWrapper);
+
+                const deleteMessage = `${petName} from your account.`;
+                const archiveMessage = `Groomers won't see ${petName} while this pet is archived. Your pet's history is kept safe so you can restore it anytime.`;
+                const restoreMessage = `${petName}'s profile will be visible to groomers again and can be added to new bookings.`;
+
+                card.insertAdjacentHTML('beforeend', `
+                    <div class="pet-card-confirm delete-confirm">
+                        ${deleteModalIcon}
+                        <h4>Delete ${petName}'s profile?</h4>
+                        <p class="confirm-copy-strong">This permanently removes ${deleteMessage}</p>
+                        <p class="confirm-copy-soft">Booking history that references ${petName} is kept for legal purposes.</p>
+                        <div class="pet-card-confirm-actions">
+                            <button type="button" class="pet-card-confirm-btn cancel-confirm">Cancel</button>
+                            <button type="button" class="pet-card-confirm-btn confirm-delete">Delete pet</button>
+                        </div>
+                    </div>
+                    <div class="pet-card-confirm archive-confirm">
+                        ${archiveModalIcon}
+                        <h4>Archive ${petName}?</h4>
+                        <p class="confirm-copy-strong">${archiveMessage}</p>
+                        <div class="pet-card-confirm-actions">
+                            <button type="button" class="pet-card-confirm-btn cancel-confirm">Cancel</button>
+                            <button type="button" class="pet-card-confirm-btn confirm-archive">Archive Pet</button>
+                        </div>
+                    </div>
+                    <div class="pet-card-confirm restore-confirm">
+                        ${restoreModalIcon}
+                        <h4>Restore ${petName}?</h4>
+                        <p class="confirm-copy-soft">${restoreMessage}</p>
+                        <div class="pet-card-confirm-actions">
+                            <button type="button" class="pet-card-confirm-btn cancel-confirm">Cancel</button>
+                            <button type="button" class="pet-card-confirm-btn confirm-restore">Restore Pet</button>
+                        </div>
+                    </div>
+                `);
+
+                const dropdown = menuWrapper.querySelector('.pet-card-menu-dropdown');
+                const toggle = menuWrapper.querySelector('.pet-card-menu-trigger');
+
+                toggle.addEventListener('click', (event) => {
+                    event.stopPropagation();
+                    const isOpen = dropdown.classList.contains('active');
+                    closeDropdown();
+                    if (!isOpen) {
+                        dropdown.classList.add('active');
+                        activeDropdown = dropdown;
+                    }
+                });
+
+                toggle.addEventListener('keydown', (event) => {
+                    if (event.key !== 'Enter' && event.key !== ' ') return;
+                    event.preventDefault();
+                    toggle.click();
+                });
+
+                bindDropdownActions(card, dropdown);
+
+                card.querySelectorAll('.cancel-confirm').forEach((button) => {
+                    button.addEventListener('click', () => {
+                        closeOverlay(card);
+                        if (activeCard === card) {
+                            activeCard = null;
+                        }
+                    });
+                });
+
+                card.querySelector('.confirm-delete')?.addEventListener('click', () => {
+                    card.remove();
+                    updateArchivedEmptyState();
+                    if (activeCard === card) {
+                        activeCard = null;
+                    }
+                });
+
+                card.querySelector('.confirm-archive')?.addEventListener('click', () => {
+                    archivePet(card);
+                });
+
+                card.querySelector('.confirm-restore')?.addEventListener('click', () => {
+                    restorePet(card);
+                });
+            });
+
+            updateArchivedEmptyState();
+
+            document.addEventListener('click', (event) => {
+                if (event.target.closest('.pet-card-menu')) return;
+                closeDropdown();
             });
         });
 
@@ -7289,7 +8234,7 @@
             });
         }
 
-        // ===== Add New Pet: Toggle slider ↔ form =====
+        // ===== Add New Pet: Toggle slider â†” form =====
         document.addEventListener('DOMContentLoaded', () => {
             const addPetBtn = document.getElementById('btn-add-new-pet');
             const cancelPetBtn = document.getElementById('cancel-add-pet');
@@ -7303,10 +8248,57 @@
             const petTypeInput = document.getElementById('pet_type');
             const petFormAvatarImg = document.getElementById('pet-form-avatar-img');
             const petFormAvatarPlaceholder = document.getElementById('pet-form-avatar-placeholder');
+            const petFormAvatarInput = document.getElementById('pet-form-avatar-input');
+            const petFormAvatarBtn = document.getElementById('pet-form-avatar-btn');
             const petSaveBtn = addPetForm?.querySelector('.btn-save');
 
             let petBreedsData = null;
             let editingPetCard = null;
+            let petFormReturnView = 'active';
+
+            const MAX_IMAGE_SIZE = 5 * 1024 * 1024;
+
+            function readImageFile(file, onSuccess) {
+                if (!file) return false;
+
+                if (!file.type.startsWith('image/')) {
+                    alert('Please select an image file.');
+                    return false;
+                }
+
+                if (file.size > MAX_IMAGE_SIZE) {
+                    alert('Image size must be less than 5MB.');
+                    return false;
+                }
+
+                const reader = new FileReader();
+                reader.onload = (event) => onSuccess(event.target.result);
+                reader.readAsDataURL(file);
+                return true;
+            }
+
+            function setGalleryPhoto(card, src) {
+                const preview = card.querySelector('.pf-photo-preview');
+                if (!preview) return;
+
+                if (src) {
+                    preview.src = src;
+                    preview.classList.remove('hidden');
+                    card.classList.add('has-photo');
+                } else {
+                    preview.src = '';
+                    preview.classList.add('hidden');
+                    card.classList.remove('has-photo');
+                }
+            }
+
+            function resetGalleryPhotos() {
+                addPetForm?.querySelectorAll('.pf-photo-card').forEach((card) => {
+                    const input = card.querySelector('.pf-gallery-input');
+                    if (input) input.value = '';
+                    setGalleryPhoto(card, '');
+                });
+            }
 
             function extractPetDataFromCard(card) {
                 const name = card.querySelector('.pet-name-type h4')?.textContent.trim() || '';
@@ -7396,6 +8388,9 @@
                 editingPetCard = null;
                 setBirthdayField('');
                 setPetFormAvatar('');
+                resetGalleryPhotos();
+
+                if (petFormAvatarInput) petFormAvatarInput.value = '';
 
                 if (petBreedSelect) {
                     petBreedSelect.innerHTML = '<option value="" disabled selected>Select breed</option>';
@@ -7461,9 +8456,16 @@
             function openPetForm(mode = 'add', card = null) {
                 if (!sliderContainer || !formContainer) return;
 
+                const activePetsView = document.getElementById('active-pets-view');
+                const archivedPetsView = document.getElementById('archived-pets-view');
+
+                petFormReturnView = archivedPetsView?.classList.contains('active') ? 'archived' : 'active';
+
+                activePetsView?.classList.remove('active');
+                archivedPetsView?.classList.remove('active');
                 sliderContainer.classList.add('hidden');
                 formContainer.classList.remove('hidden');
-                addPetBtn.style.display = 'none';
+                if (addPetBtn) addPetBtn.style.display = 'none';
                 resetPetForm();
 
                 if (mode === 'edit' && card) {
@@ -7480,9 +8482,20 @@
 
             function closePetForm() {
                 if (!sliderContainer || !formContainer) return;
+
+                const activePetsView = document.getElementById('active-pets-view');
+                const archivedPetsView = document.getElementById('archived-pets-view');
+
                 formContainer.classList.add('hidden');
-                addPetBtn.style.display = 'block';
-                sliderContainer.classList.remove('hidden');
+
+                if (petFormReturnView === 'archived') {
+                    archivedPetsView?.classList.add('active');
+                } else {
+                    activePetsView?.classList.add('active');
+                    sliderContainer.classList.remove('hidden');
+                    if (addPetBtn) addPetBtn.style.display = 'block';
+                }
+
                 resetPetForm();
             }
 
@@ -7529,11 +8542,60 @@
                 addPetBtn.addEventListener('click', () => openPetForm('add'));
             }
 
-            document.querySelectorAll('.btn-edit-pet').forEach(button => {
-                button.addEventListener('click', () => {
-                    const card = button.closest('.pet-card');
-                    if (card) openPetForm('edit', card);
+            if (petFormAvatarBtn && petFormAvatarInput) {
+                petFormAvatarBtn.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    petFormAvatarInput.click();
                 });
+
+                petFormAvatarInput.addEventListener('change', () => {
+                    const file = petFormAvatarInput.files[0];
+                    if (!readImageFile(file, setPetFormAvatar)) {
+                        petFormAvatarInput.value = '';
+                    }
+                });
+            }
+
+            addPetForm?.querySelectorAll('.pf-gallery-input').forEach((input) => {
+                input.addEventListener('change', () => {
+                    const card = input.closest('.pf-photo-card');
+                    const file = input.files[0];
+
+                    if (!file) {
+                        setGalleryPhoto(card, '');
+                        return;
+                    }
+
+                    if (!readImageFile(file, (src) => setGalleryPhoto(card, src))) {
+                        input.value = '';
+                        setGalleryPhoto(card, '');
+                    }
+                });
+            });
+
+            addPetForm?.querySelectorAll('.pf-photo-delete').forEach((button) => {
+                button.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    const card = button.closest('.pf-photo-card');
+                    const input = card?.querySelector('.pf-gallery-input');
+                    if (input) input.value = '';
+                    setGalleryPhoto(card, '');
+                });
+            });
+
+            document.addEventListener('click', (event) => {
+                const editBtn = event.target.closest('.btn-edit-pet');
+                if (editBtn) {
+                    const card = editBtn.closest('.pet-card');
+                    if (card) openPetForm('edit', card);
+                    return;
+                }
+            });
+
+            document.addEventListener('pet-edit-request', (event) => {
+                const card = event.detail?.card;
+                if (card) openPetForm('edit', card);
             });
 
             if (cancelPetBtn) {
@@ -7632,7 +8694,7 @@
                     if (petBreedSelect._fursDD) petBreedSelect._fursDD.refresh();
                 }
 
-                // Exact match → auto-populate breeds
+                // Exact match â†’ auto-populate breeds
                 const exactMatch = profilePetBreedsData.petTypes.find(p => p.name.toLowerCase() === inputValue);
                 if (exactMatch) {
                     profilePopulateBreeds(exactMatch);
@@ -7676,7 +8738,7 @@
 
         document.addEventListener('DOMContentLoaded', function() {
 
-            // ── Select Pet Type toggle ──────────────────────────────────────────
+            // â”€â”€ Select Pet Type toggle â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
             const petTypeGroup = document.querySelector('.pf-toggle-group');
             if (petTypeGroup) {
                 const typeButtons = petTypeGroup.querySelectorAll('button[type="button"]');
@@ -7716,7 +8778,7 @@
                                 if (match) profilePopulateBreeds(match);
                             }
                         } else {
-                            // "Other" — enable the free-text input
+                            // "Other" - enable the free-text input
                             if (petTypeInput) {
                                 petTypeInput.disabled = false;
                                 petTypeInput.style.background = '';
@@ -7733,7 +8795,7 @@
                 });
             }
 
-            // ── Select Pet Size toggle ──────────────────────────────────────────
+            // â”€â”€ Select Pet Size toggle â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
             const sizeGroups = document.querySelectorAll('.pf-toggle-group');
             // The second .pf-toggle-group is the size selector
             if (sizeGroups.length >= 2) {
@@ -8006,32 +9068,804 @@
             }
         });
 
-        document.querySelectorAll('.review-menu').forEach(menu => {
-            menu.addEventListener('click', function(e) {
-                e.stopPropagation();
-
-                const dropdown = this.querySelector('.review-menu-dropdown');
-
-                // Hide all other dropdowns
-                document.querySelectorAll('.review-menu-dropdown').forEach(item => {
-                    if (item !== dropdown) {
-                        item.style.display = 'none';
-                    }
-                });
-
-                // Toggle current dropdown
-                dropdown.style.display =
-                    dropdown.style.display === 'flex' ? 'none' : 'flex';
-            });
-        });
-
-        // Close dropdown when clicking anywhere outside
         document.addEventListener('click', function() {
             document.querySelectorAll('.review-menu-dropdown').forEach(item => {
                 item.style.display = 'none';
             });
         });
+
+        (function initWrittenReviewActions() {
+            const writtenReviews = document.getElementById('written-reviews');
+            if (!writtenReviews) return;
+
+            const EDIT_WINDOW_MS = 10 * 60 * 1000;
+
+            function isEditable(item) {
+                const postedAt = Number(item.dataset.postedAt);
+                if (!postedAt) return false;
+                return Date.now() - postedAt < EDIT_WINDOW_MS;
+            }
+
+            function closeDropdowns() {
+                document.querySelectorAll('.review-menu-dropdown').forEach(item => {
+                    item.style.display = 'none';
+                });
+            }
+
+            function resetReviewState(item) {
+                item.classList.remove('is-editing', 'is-removing');
+            }
+
+            function setupReviewBody(item) {
+                const contentCol = item.querySelector('.review-content > div:first-child');
+                if (!contentCol || contentCol.classList.contains('review-body')) return;
+
+                const reviewText = contentCol.querySelector('.review-text');
+                const originalText = reviewText ? reviewText.textContent.trim() : '';
+
+                const body = document.createElement('div');
+                body.className = 'review-body';
+
+                const view = document.createElement('div');
+                view.className = 'review-view';
+                while (contentCol.firstChild) {
+                    view.appendChild(contentCol.firstChild);
+                }
+
+                const editPanel = document.createElement('div');
+                editPanel.className = 'review-edit-panel';
+                editPanel.innerHTML =
+                    '<h4 class="review-panel-title">Edit review</h4>' +
+                    '<textarea class="review-edit-textarea"></textarea>' +
+                    '<div class="review-panel-actions">' +
+                    '<button type="button" class="review-btn review-btn-cancel">Cancel</button>' +
+                    '<button type="button" class="review-btn review-btn-save">Save</button>' +
+                    '</div>';
+                editPanel.querySelector('.review-edit-textarea').value = originalText;
+
+                const removePanel = document.createElement('div');
+                removePanel.className = 'review-remove-panel';
+                removePanel.innerHTML =
+                    '<h4 class="review-panel-title mb-3">Remove review?</h4>' +
+                    '<div class="review-panel-actions">' +
+                    '<button type="button" class="review-btn review-btn-cancel">Cancel</button>' +
+                    '<button type="button" class="review-btn review-btn-remove">Yes, remove</button>' +
+                    '</div>';
+
+                body.appendChild(view);
+                body.appendChild(editPanel);
+                body.appendChild(removePanel);
+                contentCol.replaceWith(body);
+            }
+
+            writtenReviews.querySelectorAll('.review-item').forEach((item, index) => {
+                if (!item.dataset.postedAt) {
+                    item.dataset.postedAt = String(
+                        index < 2 ?
+                        Date.now() - (2 * 60 * 1000) :
+                        Date.now() - (15 * 60 * 1000)
+                    );
+                }
+
+                setupReviewBody(item);
+
+                const menu = item.querySelector('.review-menu');
+                if (menu && !isEditable(item)) {
+                    menu.classList.add('is-hidden');
+                }
+            });
+
+            writtenReviews.addEventListener('click', function(e) {
+                const item = e.target.closest('.review-item');
+                if (!item || !writtenReviews.contains(item)) return;
+
+                const editAction = e.target.closest('.editReview-btn-bg');
+                const removeAction = e.target.closest('.removeReview-btn-bg');
+                const saveBtn = e.target.closest('.review-btn-save');
+                const removeBtn = e.target.closest('.review-btn-remove');
+                const cancelBtn = e.target.closest('.review-btn-cancel');
+                const menu = e.target.closest('.review-menu');
+
+                if (editAction && isEditable(item)) {
+                    e.stopPropagation();
+                    closeDropdowns();
+                    resetReviewState(item);
+                    item.classList.add('is-editing');
+                    const textarea = item.querySelector('.review-edit-textarea');
+                    const reviewText = item.querySelector('.review-text');
+                    if (textarea && reviewText) {
+                        textarea.value = reviewText.textContent.trim();
+                    }
+                    if (textarea) textarea.focus();
+                    return;
+                }
+
+                if (removeAction && isEditable(item)) {
+                    e.stopPropagation();
+                    closeDropdowns();
+                    resetReviewState(item);
+                    item.classList.add('is-removing');
+                    return;
+                }
+
+                if (saveBtn && item.classList.contains('is-editing')) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const textarea = item.querySelector('.review-edit-textarea');
+                    const reviewText = item.querySelector('.review-text');
+                    if (textarea && reviewText) {
+                        const updated = textarea.value.trim();
+                        if (updated) {
+                            reviewText.textContent = updated;
+                        }
+                    }
+                    resetReviewState(item);
+                    return;
+                }
+
+                if (removeBtn && item.classList.contains('is-removing')) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    item.remove();
+                    return;
+                }
+
+                if (cancelBtn) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const textarea = item.querySelector('.review-edit-textarea');
+                    const reviewText = item.querySelector('.review-text');
+                    if (item.classList.contains('is-editing') && textarea && reviewText) {
+                        textarea.value = reviewText.textContent.trim();
+                    }
+                    resetReviewState(item);
+                    return;
+                }
+
+                if (menu && !menu.classList.contains('is-hidden') && !e.target.closest('.review-menu-dropdown')) {
+                    e.stopPropagation();
+                    const dropdown = menu.querySelector('.review-menu-dropdown');
+                    closeDropdowns();
+                    dropdown.style.display = dropdown.style.display === 'flex' ? 'none' : 'flex';
+                }
+            });
+        })();
     </script>
+    
+    
+    <!-- Booking View Modals (from my_bookings) -->
+                            <!-- Up Coming Groomer Booking Modal  -->
+
+                            <div class="modal" id="view_booking_groom_modal">
+                                <div class="modal-content size">
+                                    <div class="container" style="padding:0 40px;">
+                                        <div class="row mt-4">
+                                            <div class="col-lg-1"></div>
+                                            <div class="col-lg-9">
+                                                <div class="modal-head d-flex flex-column align-items-center justify-content-center">
+                                                    <h1 class="large-font line-default" style="font-family: Lato;">My Bookings</h1>
+                                                    <h3 class="normal-font-weight mt-2 normal-light-color text-center">Your upcoming booking.</h3>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-2">
+                                                <div class="d-flex align-items-center justify-content-end cursor modal-cross mt-3" data-modal-close>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36" fill="none">
+                                                        <circle cx="18" cy="18" r="17.5" stroke="#3B3731" />
+                                                        <path d="M12.8 24.0008L24 12.8008M12.8 12.8008L24 24.0008" stroke="#3B3731" stroke-width="1.5" stroke-linecap="round" />
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12" style="padding: 0 60px;">
+                                                <div class="modal-card mt-5">
+                                                    <div class="modal-booking-card">
+                                                        <div class="card-header-bar">
+                                                            <span class="status-badge light-color-font">Confirmed</span>
+                                                            <div class="ref-container d-flex align-items-center gap-20">
+                                                                Booking reference: FG-10294
+                                                                <span class="pdf-download d-flex align-items-center gap-5"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="15"
+                                                                        viewBox="0 0 13 15" fill="none">
+                                                                        <path
+                                                                            d="M3.07717 14.5H9.27418C9.95769 14.5 10.6132 14.2209 11.0965 13.7242C11.5798 13.2275 11.8514 12.5538 11.8514 11.8514V7.66649C11.8516 6.96411 11.5804 6.29039 11.0973 5.79351L6.70216 1.27568C6.46282 1.02973 6.1787 0.834645 5.86601 0.701554C5.55331 0.568463 5.21817 0.499975 4.87972 0.5H3.07717C2.39367 0.5 1.73815 0.779053 1.25484 1.27577C0.771523 1.77249 0.5 2.44618 0.5 3.14865V11.8514C0.5 12.5538 0.771523 13.2275 1.25484 13.7242C1.73815 14.2209 2.39367 14.5 3.07717 14.5Z"
+                                                                            stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                                                                        <path
+                                                                            d="M5.9458 0.772461V5.0557C5.9458 5.45711 6.10096 5.84208 6.37714 6.12592C6.65332 6.40976 7.0279 6.56922 7.41847 6.56922H11.5876"
+                                                                            stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                                                                        <path
+                                                                            d="M2.67822 10.9055V10.1488M2.67822 10.1488V8.63525H3.41456C3.60985 8.63525 3.79714 8.71498 3.93523 8.8569C4.07332 8.99882 4.15089 9.19131 4.15089 9.39201C4.15089 9.59272 4.07332 9.7852 3.93523 9.92712C3.79714 10.069 3.60985 10.1488 3.41456 10.1488H2.67822ZM8.56891 10.9055V9.95958M8.56891 9.95958V8.63525H9.67341M8.56891 9.95958H9.67341M5.62357 10.9055V8.63525H5.99173C6.28467 8.63525 6.5656 8.75485 6.77274 8.96773C6.97987 9.18061 7.09624 9.46933 7.09624 9.77039C7.09624 10.0714 6.97987 10.3602 6.77274 10.5731C6.5656 10.7859 6.28467 10.9055 5.99173 10.9055H5.62357Z"
+                                                                            stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                                                                    </svg> PDF</span>
+                                                            </div>
+                                                        </div>
+
+                                                        <div style="padding: 30px;">
+                                                            <div class="card-content">
+                                                                <div class="groomer-row d-flex gap-25">
+                                                                    <div class="groomer-img-container">
+                                                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="130" height="156" viewBox="0 0 130 156" fill="none">
+                                                                            <defs>
+                                                                                <clipPath id="cardClip">
+                                                                                    <path d="M125 0C127.761 1.93277e-06 130 2.23858 130 5V151C130 153.761 127.761 156 125 156H5C2.23858 156 1.53016e-07 153.761 0 151V35C0 32.2386 2.23858 30 5 30H25C27.7614 30 30 27.7614 30 25V5C30 2.23858 32.2386 0 35 0H125Z" />
+                                                                                </clipPath>
+                                                                            </defs>
+
+                                                                            <!-- Image with clip path -->
+                                                                            <image href="<?= BASE_URL ?>/assets/images/card1.png" preserveAspectRatio="xMidYMid slice" width="130" height="156" clip-path="url(#cardClip)" />
+                                                                        </svg>
+                                                                        <div class="badge-shield" style="top: -2px;left: 0;" title="Verified">
+                                                                            <svg xmlns="http://www.w3.org/2000/svg" width="19" height="20" viewBox="0 0 19 20" fill="none">
+                                                                                <path d="M9.67847 0.113904C9.51805 0.0392773 9.34618 0 9.16667 0C8.98715 0 8.81528 0.0392773 8.65486 0.113904L1.46286 3.25216C0.622586 3.61744 -0.00380206 4.46976 1.73727e-05 5.49882C0.0191146 9.39513 1.57745 16.524 8.15834 19.7643C8.79618 20.0786 9.53715 20.0786 10.175 19.7643C16.7559 16.524 18.3142 9.39513 18.3333 5.49882C18.3371 4.46976 17.7107 3.61744 16.8705 3.25216L9.67847 0.113904ZM5.53438 11.2412C5.71771 11.2883 5.91251 11.3119 6.11112 11.3119C7.45938 11.3119 8.55556 10.1846 8.55556 8.79811V6.28437H10.2437C10.7059 6.28437 11.1299 6.55145 11.3361 6.97958L11.6111 7.54124H14.0555C14.3917 7.54124 14.6667 7.82404 14.6667 8.16968V9.42655C14.6667 11.1626 13.2993 12.5687 11.6111 12.5687H9.77778V14.5601C9.77778 14.8468 9.55243 15.0825 9.26979 15.0825C9.20104 15.0825 9.13229 15.0668 9.07118 15.0393L5.3014 13.3778C5.04931 13.2679 4.8889 13.0126 4.8889 12.7337C4.8889 12.6237 4.91181 12.5177 4.96147 12.4195L5.53438 11.2412ZM5.50001 6.28437H7.33334V8.79811C7.33334 9.49332 6.78716 10.055 6.11112 10.055C5.43508 10.055 4.8889 9.49332 4.8889 8.79811V6.9128C4.8889 6.56716 5.1639 6.28437 5.50001 6.28437ZM10.3889 8.16968C10.3889 8.00301 10.3245 7.84316 10.2099 7.72531C10.0953 7.60745 9.93985 7.54124 9.77778 7.54124C9.6157 7.54124 9.46026 7.60745 9.34566 7.72531C9.23105 7.84316 9.16667 8.00301 9.16667 8.16968C9.16667 8.33635 9.23105 8.49619 9.34566 8.61405C9.46026 8.7319 9.6157 8.79811 9.77778 8.79811C9.93985 8.79811 10.0953 8.7319 10.2099 8.61405C10.3245 8.49619 10.3889 8.33635 10.3889 8.16968Z" fill="#C9DDA0" />
+                                                                            </svg>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="groomer-main-info">
+                                                                        <div class="studio-header d-flex align-items-center justify-content-between">
+                                                                            <h3 class="normal-font-bold">Sarah's Grooming Studio</h3>
+                                                                            <div class="modal-tags" gap="10px">
+                                                                                <div class="tags">
+                                                                                    <div>
+                                                                                        <svg xmlns="http://www.w3.org/2000/svg" width="10" height="9" viewBox="0 0 10 9"
+                                                                                            fill="none">
+                                                                                            <path
+                                                                                                d="M2 8.99999C1.85833 8.99999 1.73967 8.95199 1.644 8.85599C1.54833 8.75999 1.50033 8.64133 1.5 8.49999C1.49967 8.35866 1.54767 8.23999 1.644 8.14399C1.74033 8.04799 1.859 7.99999 2 7.99999H8C8.14166 7.99999 8.2605 8.04799 8.3565 8.14399C8.4525 8.23999 8.50033 8.35866 8.5 8.49999C8.49966 8.64133 8.45166 8.76016 8.356 8.85649C8.26033 8.95283 8.14166 9.00066 8 8.99999H2ZM2.35 7.24999C2.10833 7.24999 1.89383 7.17083 1.7065 7.0125C1.51917 6.85416 1.4045 6.65416 1.3625 6.4125L0.862501 3.2375C0.845834 3.2375 0.827167 3.23967 0.806501 3.244C0.785834 3.24833 0.767001 3.25033 0.750001 3.25C0.541667 3.25 0.364668 3.17717 0.219001 3.0315C0.0733344 2.88583 0.000334469 2.70867 1.13636e-06 2.5C-0.000332197 2.29133 0.0726677 2.11433 0.219001 1.969C0.365334 1.82367 0.542334 1.75067 0.750001 1.75C0.957667 1.74933 1.13483 1.82233 1.2815 1.969C1.42817 2.11567 1.501 2.29267 1.5 2.5C1.5 2.55833 1.49367 2.6125 1.481 2.6625C1.46833 2.7125 1.45383 2.75833 1.4375 2.8L3 3.5L4.5625 1.3625C4.47083 1.29583 4.39583 1.20833 4.3375 1.1C4.27917 0.991667 4.25 0.875 4.25 0.75C4.25 0.541667 4.323 0.364501 4.469 0.218501C4.615 0.0725011 4.792 -0.000332194 5 1.13895e-06C5.208 0.000334472 5.38516 0.0733344 5.5315 0.219001C5.67783 0.364667 5.75066 0.541667 5.75 0.75C5.75 0.875 5.72083 0.991667 5.6625 1.1C5.60416 1.20833 5.52916 1.29583 5.4375 1.3625L7 3.5L8.5625 2.8C8.54583 2.75833 8.53116 2.7125 8.5185 2.6625C8.50583 2.6125 8.49966 2.55833 8.5 2.5C8.5 2.29167 8.573 2.1145 8.719 1.9685C8.865 1.8225 9.042 1.74967 9.25 1.75C9.458 1.75033 9.63516 1.82333 9.7815 1.969C9.92783 2.11467 10.0007 2.29167 10 2.5C9.99933 2.70833 9.92649 2.8855 9.7815 3.0315C9.6365 3.1775 9.45933 3.25033 9.25 3.25C9.23333 3.25 9.21466 3.248 9.194 3.244C9.17333 3.24 9.1545 3.23783 9.1375 3.2375L8.6375 6.4125C8.59583 6.65416 8.48133 6.85416 8.294 7.0125C8.10666 7.17083 7.892 7.24999 7.65 7.24999H2.35ZM2.35 6.25H7.65L7.975 4.1625L7.4 4.4125C7.18333 4.50416 6.9625 4.52083 6.7375 4.4625C6.5125 4.40416 6.32916 4.27916 6.1875 4.0875L5 2.45L3.8125 4.0875C3.67083 4.27916 3.4875 4.40416 3.2625 4.4625C3.0375 4.52083 2.81667 4.50416 2.6 4.4125L2.025 4.1625L2.35 6.25Z"
+                                                                                                fill="white" />
+                                                                                        </svg>
+                                                                                        <span>Popular</span>
+                                                                                    </div>
+                                                                                    <div>
+                                                                                        <svg xmlns="http://www.w3.org/2000/svg" width="9" height="11" viewBox="0 0 9 11"
+                                                                                            fill="none">
+                                                                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                                                                d="M6.41322 7.89398C6.44215 7.34453 6.31579 6.79804 6.0486 6.31706C5.78142 5.83608 5.3842 5.44005 4.90243 5.1743C4.81687 5.12481 4.71545 5.11047 4.61952 5.1343C4.5236 5.15813 4.44068 5.21827 4.38824 5.30205L3.77553 6.28276L3.26579 5.66624C3.23778 5.63245 3.20308 5.60482 3.16387 5.5851C3.12466 5.56538 3.08178 5.554 3.03795 5.55167C2.99413 5.54934 2.95029 5.55612 2.90921 5.57157C2.86813 5.58702 2.83069 5.61082 2.79926 5.64146C2.49919 5.93182 2.2648 6.2831 2.11186 6.67164C1.95892 7.06019 1.89098 7.47698 1.91262 7.89398C1.91262 8.49072 2.14967 9.06301 2.57162 9.48496C2.99358 9.90692 3.56587 10.144 4.1626 10.144C4.75934 10.144 5.33163 9.90692 5.75358 9.48496C6.17554 9.06301 6.41259 8.49072 6.41259 7.89398M3.01028 6.35586L2.97087 6.40798C2.67197 6.82551 2.52221 7.33145 2.54566 7.84441L2.54757 7.88191C2.54757 8.31007 2.71766 8.7207 3.02042 9.02346C3.32317 9.32621 3.7338 9.4963 4.16197 9.4963C4.59013 9.4963 5.00076 9.32621 5.30352 9.02346C5.60628 8.7207 5.77636 8.31007 5.77636 7.88191L5.77827 7.84504C5.78272 7.80373 5.88187 6.6673 4.84205 5.89442L4.79056 5.85692L4.12701 6.91835C4.09497 6.96954 4.05123 7.01239 3.99939 7.04337C3.94755 7.07435 3.8891 7.09258 3.82884 7.09655C3.76858 7.10052 3.70823 7.09013 3.65278 7.06622C3.59732 7.04231 3.54834 7.00557 3.50985 6.95903L3.01028 6.35586Z"
+                                                                                                fill="#FEFEFE" />
+                                                                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                                                                d="M3.79701 0.30821C3.81025 0.23997 3.84191 0.176658 3.88858 0.125138C3.93524 0.0736173 3.99512 0.0358558 4.06172 0.0159479C4.12832 -0.00396001 4.1991 -0.00525449 4.26638 0.0122049C4.33367 0.0296642 4.39489 0.0652111 4.4434 0.114991C4.56671 0.240837 4.80378 0.489988 5.04467 0.777274C5.28111 1.05884 5.53916 1.39761 5.68788 1.69951C5.8328 1.99443 5.98661 2.37578 6.10801 2.69421L6.67305 1.75354C6.70456 1.701 6.74826 1.65683 6.80046 1.62476C6.85265 1.59269 6.91181 1.57367 6.97292 1.56931C7.03402 1.56494 7.09528 1.57536 7.1515 1.59969C7.20773 1.62401 7.25727 1.66152 7.29592 1.70905C8.09867 2.70057 8.49846 3.76263 8.6974 4.57365C8.79718 4.97979 8.8474 5.32491 8.87282 5.57025C8.88576 5.69278 8.89424 5.81574 8.89824 5.93889V5.97131C8.89824 8.4482 6.93364 10.4649 4.44785 10.4649C1.96206 10.4649 0 8.44756 0 5.97004C0 5.28805 0.322244 3.68192 1.27563 2.36498C1.31266 2.31422 1.36166 2.27341 1.41826 2.24615C1.47487 2.2189 1.53734 2.20605 1.60011 2.20876C1.66287 2.21146 1.724 2.22963 1.77806 2.26166C1.83211 2.29368 1.87741 2.33856 1.90994 2.39231L2.55507 3.46709C2.75083 3.16073 3.01269 2.73044 3.21163 2.3332C3.49765 1.76117 3.72455 0.682572 3.79701 0.308845M4.3201 0.912655C4.20506 1.42113 4.01501 2.14697 3.77985 2.61858C3.46714 3.24336 3.0165 3.9298 2.86142 4.16051C2.82554 4.21345 2.77693 4.25651 2.72005 4.28574C2.66317 4.31497 2.59986 4.32943 2.53593 4.32778C2.472 4.32614 2.40952 4.30844 2.35422 4.27632C2.29892 4.24421 2.25258 4.1987 2.21948 4.14399L1.57118 3.06476C0.87457 4.19166 0.635589 5.45839 0.635589 5.97131C0.635589 8.10561 2.32244 9.82806 4.44785 9.82806C6.57326 9.82806 8.26265 8.10561 8.26265 5.97131V5.95351L8.26011 5.88995C8.25568 5.80484 8.24911 5.71986 8.24041 5.63508C8.20712 5.3287 8.15362 5.02487 8.08024 4.72555C7.87826 3.89157 7.52027 3.10334 7.02516 2.40248L6.38068 3.47535C6.34338 3.53732 6.28925 3.58743 6.22459 3.61985C6.15993 3.65227 6.08739 3.66566 6.01542 3.65847C5.94344 3.65128 5.87499 3.6238 5.81802 3.57923C5.76105 3.53466 5.71791 3.47483 5.6936 3.40671C5.59064 3.11815 5.33831 2.42917 5.11713 1.98044C5.00463 1.751 4.78916 1.46117 4.55781 1.18596C4.4801 1.09353 4.40086 1.00242 4.3201 0.912655Z"
+                                                                                                fill="#FEFEFE" />
+                                                                                        </svg>
+                                                                                        <span>Top Rated</span>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <p class="sub-name normal-light-color">Sarah W.</p>
+
+
+                                                                        <div class="rating-loc-row d-flex align-items-center justify-content-between mt-2">
+                                                                            <span class="rating-service-type light-color-font">Home Visits</span>
+                                                                            <div class="d-flex align-items-center gap-10">
+
+                                                                                <div class="d-flex align-items-center gap-10">
+                                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="10" height="14" viewBox="0 0 10 14" fill="none">
+                                                                                        <path d="M5 6.65C4.5264 6.65 4.0722 6.46563 3.73731 6.13744C3.40242 5.80925 3.21429 5.36413 3.21429 4.9C3.21429 4.43587 3.40242 3.99075 3.73731 3.66256C4.0722 3.33437 4.5264 3.15 5 3.15C5.4736 3.15 5.9278 3.33437 6.26269 3.66256C6.59758 3.99075 6.78571 4.43587 6.78571 4.9C6.78571 5.12981 6.73953 5.35738 6.64979 5.5697C6.56004 5.78202 6.42851 5.97493 6.26269 6.13744C6.09687 6.29994 5.90002 6.42884 5.68336 6.51679C5.46671 6.60473 5.2345 6.65 5 6.65ZM5 0C3.67392 0 2.40215 0.516248 1.46447 1.43518C0.526784 2.3541 0 3.60044 0 4.9C0 8.575 5 14 5 14C5 14 10 8.575 10 4.9C10 3.60044 9.47322 2.3541 8.53553 1.43518C7.59785 0.516248 6.32608 0 5 0Z" fill="#FFC97A" />
+                                                                                    </svg>
+                                                                                    <span class="light-color-font font-color d-flex align-items-centers">
+                                                                                        2.5 mi
+                                                                                    </span>
+                                                                                </div>
+
+                                                                                <div class="d-flex align-items-center gap-10">
+                                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                                                                        <path d="M6.12956 0.660476C6.40354 -0.220161 7.59647 -0.220158 7.87045 0.660479L8.89548 3.95519C9.01801 4.34902 9.36942 4.61566 9.76593 4.61566H13.083C13.9696 4.61566 14.3383 5.80055 13.621 6.34481L10.9374 8.38106C10.6166 8.62446 10.4824 9.0559 10.6049 9.44973L11.63 12.7444C11.9039 13.6251 10.9388 14.3574 10.2215 13.8131L7.53797 11.7769C7.21719 11.5335 6.78282 11.5335 6.46204 11.7769L3.77846 13.8131C3.06117 14.3574 2.09607 13.6251 2.37005 12.7444L3.39508 9.44973C3.51761 9.0559 3.38338 8.62446 3.0626 8.38106L0.37903 6.34481C-0.338258 5.80055 0.0303816 4.61566 0.916998 4.61566H4.23408C4.63058 4.61566 4.98199 4.34902 5.10452 3.95519L6.12956 0.660476Z" fill="#FFC97A" />
+                                                                                    </svg>
+                                                                                    <span class="light-color-font font-color d-flex align-items-centers">
+                                                                                        4.3 <span class="muted-color">(20 reviews)</span>
+                                                                                    </span>
+                                                                                </div>
+
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="booking-meta-flex d-flex align-items-center justify-content-between mt-4">
+                                                                            <div class="meta-box d-flex flex-column gap-10">
+                                                                                <div class="d-flex align-items-center gap-10">
+                                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="17" viewBox="0 0 16 17" fill="none">
+                                                                                        <path d="M4.94591 11.5544C6.23114 12.8397 9.35699 11.798 11.9274 9.22713C14.4983 6.65667 15.54 3.53082 14.2548 2.24559M8.72754 1.37259L9.30927 1.95473M6.6915 3.40904L7.27322 3.99077M4.9455 5.73636L5.52722 6.31809M4.36377 8.6454L4.9455 9.22713M11.9274 0.5L12.5092 1.08173M11.3457 3.99118L12.5092 5.15463M9.30968 6.02763L10.4731 7.19109M6.98236 7.77281L8.14581 8.93627" stroke="#9D9B98" stroke-linecap="round" stroke-linejoin="round" />
+                                                                                        <path d="M4.94547 13.2998C5.42747 12.8178 5.42747 12.0364 4.94548 11.5544C4.46348 11.0724 3.68202 11.0724 3.20003 11.5544L0.872775 13.8816C0.390784 14.3636 0.390784 15.1451 0.872775 15.6271C1.35477 16.1091 2.13623 16.1091 2.61822 15.6271L4.94547 13.2998Z" stroke="#9D9B98" stroke-linecap="round" stroke-linejoin="round" />
+                                                                                    </svg>
+                                                                                    <p class="normal-font-bold muted-color">Service</p>
+                                                                                </div>
+                                                                                <p class="normal-light-color font-color">Full Groom</p>
+                                                                            </div>
+                                                                            <hr class="vertical-line">
+                                                                            <div class="meta-box d-flex flex-column gap-10">
+                                                                                <div class="d-flex align-items-center gap-10">
+                                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17" fill="none">
+                                                                                        <path d="M0.5 8.29554C0.5 5.20139 0.5 3.6539 1.50457 2.69308C2.50914 1.73227 4.12486 1.73145 7.35714 1.73145H10.7857C14.018 1.73145 15.6346 1.73145 16.6383 2.69308C17.642 3.65472 17.6429 5.20139 17.6429 8.29554V9.93656C17.6429 13.0307 17.6429 14.5782 16.6383 15.539C15.6337 16.4998 14.018 16.5007 10.7857 16.5007H7.35714C4.12486 16.5007 2.50829 16.5007 1.50457 15.539C0.500857 14.5774 0.5 13.0307 0.5 9.93656V8.29554Z" stroke="#9D9B98" />
+                                                                                        <path d="M4.78585 1.73077V0.5M13.3573 1.73077V0.5M0.928711 5.83333H17.2144" stroke="#9D9B98" stroke-linecap="round" />
+                                                                                        <path d="M14.2139 12.3975C14.2139 12.6151 14.1236 12.8238 13.9629 12.9777C13.8021 13.1315 13.5841 13.218 13.3568 13.218C13.1295 13.218 12.9114 13.1315 12.7507 12.9777C12.59 12.8238 12.4997 12.6151 12.4997 12.3975C12.4997 12.1799 12.59 11.9712 12.7507 11.8173C12.9114 11.6634 13.1295 11.577 13.3568 11.577C13.5841 11.577 13.8021 11.6634 13.9629 11.8173C14.1236 11.9712 14.2139 12.1799 14.2139 12.3975ZM14.2139 9.11543C14.2139 9.33305 14.1236 9.54175 13.9629 9.69562C13.8021 9.8495 13.5841 9.93595 13.3568 9.93595C13.1295 9.93595 12.9114 9.8495 12.7507 9.69562C12.59 9.54175 12.4997 9.33305 12.4997 9.11543C12.4997 8.89782 12.59 8.68912 12.7507 8.53524C12.9114 8.38137 13.1295 8.29492 13.3568 8.29492C13.5841 8.29492 13.8021 8.38137 13.9629 8.53524C14.1236 8.68912 14.2139 8.89782 14.2139 9.11543ZM9.92822 12.3975C9.92822 12.6151 9.83792 12.8238 9.67717 12.9777C9.51643 13.1315 9.29841 13.218 9.07108 13.218C8.84375 13.218 8.62573 13.1315 8.46499 12.9777C8.30424 12.8238 8.21394 12.6151 8.21394 12.3975C8.21394 12.1799 8.30424 11.9712 8.46499 11.8173C8.62573 11.6634 8.84375 11.577 9.07108 11.577C9.29841 11.577 9.51643 11.6634 9.67717 11.8173C9.83792 11.9712 9.92822 12.1799 9.92822 12.3975ZM9.92822 9.11543C9.92822 9.33305 9.83792 9.54175 9.67717 9.69562C9.51643 9.8495 9.29841 9.93595 9.07108 9.93595C8.84375 9.93595 8.62573 9.8495 8.46499 9.69562C8.30424 9.54175 8.21394 9.33305 8.21394 9.11543C8.21394 8.89782 8.30424 8.68912 8.46499 8.53524C8.62573 8.38137 8.84375 8.29492 9.07108 8.29492C9.29841 8.29492 9.51643 8.38137 9.67717 8.53524C9.83792 8.68912 9.92822 8.89782 9.92822 9.11543ZM5.64251 12.3975C5.64251 12.6151 5.5522 12.8238 5.39146 12.9777C5.23071 13.1315 5.01269 13.218 4.78537 13.218C4.55804 13.218 4.34002 13.1315 4.17927 12.9777C4.01853 12.8238 3.92822 12.6151 3.92822 12.3975C3.92822 12.1799 4.01853 11.9712 4.17927 11.8173C4.34002 11.6634 4.55804 11.577 4.78537 11.577C5.01269 11.577 5.23071 11.6634 5.39146 11.8173C5.5522 11.9712 5.64251 12.1799 5.64251 12.3975ZM5.64251 9.11543C5.64251 9.33305 5.5522 9.54175 5.39146 9.69562C5.23071 9.8495 5.01269 9.93595 4.78537 9.93595C4.55804 9.93595 4.34002 9.8495 4.17927 9.69562C4.01853 9.54175 3.92822 9.33305 3.92822 9.11543C3.92822 8.89782 4.01853 8.68912 4.17927 8.53524C4.34002 8.38137 4.55804 8.29492 4.78537 8.29492C5.01269 8.29492 5.23071 8.38137 5.39146 8.53524C5.5522 8.68912 5.64251 8.89782 5.64251 9.11543Z" fill="#9D9B98" />
+                                                                                    </svg>
+                                                                                    <p class="normal-font-bold muted-color">Date</p>
+                                                                                </div>
+                                                                                <p class="normal-light-color font-color">18/12/2025</p>
+                                                                            </div>
+                                                                            <hr class="vertical-line">
+                                                                            <div class="meta-box d-flex flex-column gap-10">
+                                                                                <div class="d-flex align-items-center gap-10">
+                                                                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                                                                        <circle cx="8" cy="8" r="6" stroke="#9D9B98"
+                                                                                            stroke-width="1.5" />
+                                                                                        <path d="M8 4.5V8L10.5 10" stroke="#9D9B98" stroke-width="1.5"
+                                                                                            stroke-linecap="round" />
+                                                                                    </svg>
+                                                                                    <p class="normal-font-bold muted-color">Time</p>
+                                                                                </div>
+                                                                                <p class="normal-light-color font-color">14:30 - 15:30</p>
+                                                                            </div>
+                                                                            <hr class="vertical-line">
+                                                                            <div class="meta-box d-flex flex-column gap-10">
+                                                                                <div class="d-flex align-items-center gap-10">
+                                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="16" viewBox="0 0 12 16" fill="none">
+                                                                                        <path d="M6 0.5C7.4694 0.5 8.87214 1.04525 9.90137 2.00586C10.9293 2.96529 11.4999 4.25871 11.5 5.59961C11.5 7.10011 10.6408 8.95946 9.51855 10.7236C8.41048 12.4655 7.10434 14.0263 6.32227 14.9082C6.14625 15.1067 5.85375 15.1067 5.67773 14.9082C4.89566 14.0263 3.58952 12.4655 2.48145 10.7236C1.35919 8.95946 0.5 7.10011 0.5 5.59961C0.500111 4.25871 1.07068 2.96529 2.09863 2.00586C3.12786 1.04525 4.53061 0.5 6 0.5ZM6 3.09961C5.30978 3.09961 4.64141 3.35564 4.14355 3.82031C3.64466 4.28597 3.35753 4.92517 3.35742 5.59961C3.35742 6.27422 3.64453 6.91413 4.14355 7.37988C4.64141 7.84453 5.30979 8.09961 6 8.09961C6.34236 8.09961 6.68202 8.03695 7 7.91406C7.31807 7.7911 7.60965 7.61022 7.85645 7.37988C8.10326 7.14952 8.30086 6.87397 8.43652 6.56836C8.57224 6.26256 8.64258 5.93289 8.64258 5.59961C8.64247 4.92517 8.35534 4.28597 7.85645 3.82031C7.35859 3.35564 6.69022 3.09961 6 3.09961Z" stroke="#9D9B98" />
+                                                                                    </svg>
+                                                                                    <p class="normal-font-bold muted-color">Location</p>
+                                                                                </div>
+                                                                                <p class="normal-light-color font-color">At your home</p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="pet-info-card mt-4">
+                                                                <div class="pet-profile d-flex align-items-center justify-content-between w-full">
+                                                                    <img src="<?= BASE_URL ?>/assets/images/pet_details_1.png" alt="Bella">
+
+                                                                    <div class="detail-item d-flex flex-column gap-5">
+                                                                        <div class="d-flex align-items-center gap-10">
+                                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="15" viewBox="0 0 16 15" fill="none">
+                                                                                <path d="M8 6.02632C5.73786 6.02632 3.82643 8.06405 3.20929 10.6813C2.93786 11.8323 3.34714 13.0539 4.35179 13.6279C5.14821 14.0829 6.33286 14.5 8 14.5C9.66714 14.5 10.8521 14.0829 11.6486 13.6279C12.6532 13.0539 13.0621 11.8323 12.7907 10.6813C12.1736 8.06368 10.2621 6.02632 8 6.02632ZM0.5 5.45305C0.5 6.47063 1.13929 7.5 1.92857 7.5C2.71786 7.5 3.35714 6.47063 3.35714 5.45305C3.35714 4.43547 2.71786 3.81579 1.92857 3.81579C1.13929 3.81579 0.5 4.43584 0.5 5.45305ZM15.5 5.45305C15.5 6.47063 14.8607 7.5 14.0714 7.5C13.2821 7.5 12.6429 6.47063 12.6429 5.45305C12.6429 4.43547 13.2821 3.81579 14.0714 3.81579C14.8607 3.81579 15.5 4.43584 15.5 5.45305ZM4.25 2.13726C4.25 3.15484 4.88929 4.18421 5.67857 4.18421C6.46786 4.18421 7.10714 3.15484 7.10714 2.13726C7.10714 1.11968 6.46786 0.5 5.67857 0.5C4.88929 0.5 4.25 1.12005 4.25 2.13726ZM11.75 2.13726C11.75 3.15484 11.1107 4.18421 10.3214 4.18421C9.53214 4.18421 8.89286 3.15484 8.89286 2.13726C8.89286 1.11968 9.53214 0.5 10.3214 0.5C11.1107 0.5 11.75 1.12005 11.75 2.13726Z" stroke="#9D9B98" stroke-linecap="round" stroke-linejoin="round" />
+                                                                            </svg>
+                                                                            <p class="light-bold-color-font">Bella</p>
+                                                                        </div>
+                                                                        <p class="simple-font">Rabbit • Mini Lop</p>
+                                                                    </div>
+                                                                    <div class="detail-item d-flex flex-column gap-5">
+                                                                        <div class="d-flex align-items-center gap-10">
+                                                                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="17" viewBox="0 0 15 17" fill="none">
+                                                                                <path d="M1.27778 11.7778V14.5C1.27778 14.9126 1.44167 15.3082 1.73339 15.5999C2.02511 15.8917 2.42077 16.0556 2.83333 16.0556H12.1667C12.5792 16.0556 12.9749 15.8917 13.2666 15.5999C13.5583 15.3082 13.7222 14.9126 13.7222 14.5V11.7778M0.5 9.83333V9.05556C0.5 8.643 0.663888 8.24734 0.955612 7.95561C1.24733 7.66389 1.643 7.5 2.05556 7.5H12.9444C13.357 7.5 13.7527 7.66389 14.0444 7.95561C14.3361 8.24734 14.5 8.643 14.5 9.05556V9.83333M7.5 5.16667V7.5M7.5 5.16667C8.48156 5.16667 9.05556 4.41378 9.05556 3.125C9.05556 1.83622 7.5 0.5 7.5 0.5C7.5 0.5 5.94444 1.83622 5.94444 3.125C5.94444 4.41378 6.51844 5.16667 7.5 5.16667Z" stroke="#9D9B98" stroke-linecap="round" stroke-linejoin="round" />
+                                                                                <path d="M0.5 9.83398C0.5 10.4528 0.745833 11.0463 1.18342 11.4839C1.621 11.9215 2.21449 12.1673 2.83333 12.1673C3.45217 12.1673 4.04566 11.9215 4.48325 11.4839C4.92083 11.0463 5.16667 10.4528 5.16667 9.83398C5.16667 10.4528 5.4125 11.0463 5.85008 11.4839C6.28767 11.9215 6.88116 12.1673 7.5 12.1673C8.11884 12.1673 8.71233 11.9215 9.14992 11.4839C9.5875 11.0463 9.83333 10.4528 9.83333 9.83398C9.83333 10.4528 10.0792 11.0463 10.5168 11.4839C10.9543 11.9215 11.5478 12.1673 12.1667 12.1673C12.7855 12.1673 13.379 11.9215 13.8166 11.4839C14.2542 11.0463 14.5 10.4528 14.5 9.83398" stroke="#9D9B98" stroke-linecap="round" stroke-linejoin="round" />
+                                                                            </svg>
+                                                                            <p class="light-bold-color-font">Birthday</p>
+                                                                        </div>
+                                                                        <p class="simple-font">22/08/2020</p>
+                                                                    </div>
+                                                                    <div class="detail-item d-flex flex-column gap-5">
+                                                                        <div class="d-flex align-items-center gap-10">
+                                                                            <svg xmlns="http://www.w3.org/2000/svg" width="11" height="15" viewBox="0 0 11 15" fill="none">
+                                                                                <path d="M5.5 0.5C8.2836 0.5 10.5 2.64831 10.5 5.25C10.5 7.739 8.47279 9.81207 5.85938 9.98828L5.5 10.0117L5.14062 9.98828C2.52723 9.81207 0.5 7.73865 0.5 5.25C0.5 2.64831 2.7164 0.5 5.5 0.5Z" stroke="#9D9B98" />
+                                                                            </svg>
+                                                                            <p class="light-bold-color-font">Sex</p>
+                                                                        </div>
+                                                                        <p class="simple-font">Female</p>
+                                                                    </div>
+                                                                    <div class="detail-item d-flex flex-column gap-5">
+                                                                        <div class="d-flex align-items-center gap-10">
+                                                                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="16" viewBox="0 0 15 16" fill="none">
+                                                                                <path d="M13.5905 8.11123L13.9601 6.73015C14.3918 5.11819 14.6084 4.31256 14.4462 3.61488C14.3176 3.06409 14.0285 2.56382 13.6155 2.17734C13.093 1.68767 12.2866 1.47179 10.6747 1.04003C9.0627 0.607547 8.25636 0.391666 7.55939 0.553934C7.0086 0.682543 6.50833 0.971613 6.12185 1.38458C5.70224 1.83207 5.4835 2.48758 5.15824 3.6785L4.98382 4.32543L4.61425 5.7065C4.18177 7.31847 3.96589 8.12409 4.12816 8.82178C4.25677 9.37257 4.54584 9.87284 4.9588 10.2593C5.48135 10.749 6.28769 10.9649 7.89966 11.3973C9.35221 11.7862 10.1507 12 10.8048 11.9192C10.8763 11.9101 10.9463 11.8977 11.0149 11.882C11.5655 11.7538 12.0658 11.4652 12.4525 11.0528C12.9421 10.5295 13.158 9.72319 13.5905 8.11123Z" stroke="#9D9B98" />
+                                                                                <path d="M10.8047 11.9191C10.6553 12.3769 10.3927 12.7894 10.0413 13.1186C9.51875 13.6083 8.71241 13.8242 7.10045 14.2559C5.48848 14.6877 4.68214 14.9043 3.98517 14.7413C3.43447 14.6129 2.9342 14.3241 2.54763 13.9114C2.05796 13.3888 1.84137 12.5825 1.4096 10.9705L1.04003 9.58946C0.607553 7.97749 0.391671 7.17115 0.55394 6.47418C0.682549 5.9234 0.971618 5.42312 1.38458 5.03664C1.90713 4.54697 2.71347 4.33109 4.32544 3.89861C4.62948 3.81665 4.90708 3.74302 5.15823 3.67773" stroke="#9D9B98" />
+                                                                                <path d="M7.48951 6.21874L10.9422 7.14375M6.93408 8.29035L9.00569 8.84507" stroke="#9D9B98" stroke-linecap="round" />
+                                                                            </svg>
+                                                                            <p class="light-bold-color-font">Notes</p>
+                                                                        </div>
+                                                                        <p class="simple-font">Nervous around hair-dryers</p>
+                                                                    </div>
+
+                                                                    <svg class="cursor" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+                                                                        <rect width="48" height="48" rx="24" transform="matrix(1 0 0 -1 0 48)" fill="#E3E3E3" />
+                                                                        <path d="M32.7098 24.8277C33.1054 24.4359 33.1048 23.7964 32.7085 23.4053L28.1513 18.9082C27.796 18.5576 27.2233 18.5622 26.8737 18.9185C26.7351 19.0552 26.6797 19.1919 26.7074 19.3286C26.7421 19.4653 26.8182 19.5951 26.936 19.7181L29.9174 22.6397C30.0836 22.8037 30.2394 22.9507 30.3848 23.0805C30.5 23.1833 30.4113 23.3889 30.2577 23.3734C30.0799 23.3554 29.8972 23.3397 29.7096 23.3265C29.3287 23.2992 28.934 23.2855 28.5254 23.2855H15.8355C15.3741 23.2855 15 23.6596 15 24.121C15 24.5824 15.3741 24.9565 15.8355 24.9565H28.5254C28.934 24.9565 29.3322 24.9428 29.72 24.9154C29.9048 24.9024 30.0849 24.8871 30.2602 24.8694C30.416 24.8537 30.504 25.0599 30.3848 25.1615C30.2394 25.2913 30.0836 25.4383 29.9174 25.6023L26.9152 28.5443C26.7905 28.6674 26.7144 28.7972 26.6867 28.9339C26.659 29.0706 26.7109 29.2072 26.8425 29.3439C27.1977 29.7058 27.7795 29.7099 28.1398 29.3531L32.7098 24.8277Z" fill="white" />
+                                                                    </svg>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="what-next d-flex justify-content-between mt-4">
+                                                                <div>
+                                                                    <h3 class="normal-font-bold">What happens next?</h3>
+                                                                    <ul class="normal-font-bold list-style-default mt-4">
+                                                                        <li class="normal-light-color">Your booking is secured for the selected time.</li>
+                                                                        <li class="normal-light-color">You can manage or cancel your booking from your account.</li>
+                                                                    </ul>
+                                                                </div>
+
+                                                                <div class="price-line align-self-end d-flex gap-10">
+                                                                    <span class="medium-font-bold">Total</span>
+                                                                    <span class="total-amount">£48.00</span>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="card-actions d-flex justify-content-center gap-20 mt-5">
+                                                                <a href="<?= BASE_URL ?>/my_bookings/change_groomer_booking.php" class="btn-outline medium-light-font text-center">Change Booking</a>
+                                                                <a href="<?= BASE_URL ?>messages_notification/messages.php" class="btn-green text-center medium-light-font">Message Groomer</a>
+                                                            </div>
+
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="booking-footer d-flex align-items-center justify-content-between mt-5">
+                                                    <div class="cancel-policy">
+                                                        <a href="<?= BASE_URL ?>my_bookings/cancelled_bookings.php">Cancel Booking</a>
+                                                        <p class="normal-light-color-font mt-2">Free cancellations up to 24 hours before appointment.</p>
+                                                    </div>
+                                                    <a href="<?= BASE_URL ?>profile_pets_preferences/company_information.php#tab-terms-conditions" class="view-policy">View cancellation policy</a>
+                                                </div>
+
+                                                <div class="help-text d-flex align-items-center justify-content-center gap-10 mt-5 mb-5">
+                                                    <div class="d-flex align-items-center gap-10">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="34" height="28" viewBox="0 0 34 28" fill="none">
+                                                            <path d="M3.08333 13.875C1.3875 13.875 0 12.4875 0 10.7917V3.08333C0 1.3875 1.3875 0 3.08333 0H15.4167C17.1125 0 18.5 1.3875 18.5 3.08333V10.7917C18.5 12.4875 17.1125 13.875 15.4167 13.875H12.3333V18.5L7.70833 13.875H3.08333ZM30.8333 23.125C32.5292 23.125 33.9167 21.7375 33.9167 20.0417V12.3333C33.9167 10.6375 32.5292 9.25 30.8333 9.25H21.5833V10.7917C21.5833 14.1833 18.8083 16.9583 15.4167 16.9583V20.0417C15.4167 21.7375 16.8042 23.125 18.5 23.125H21.5833V27.75L26.2083 23.125H30.8333Z" fill="#D8E8B7" />
+                                                        </svg>
+                                                        <div>
+                                                            <p class="medium-light-font ">
+                                                                Need help? Chat with
+                                                                <a class="view-policy" style="font-weight:600" href="#" data-open-chat>Fursgo Support</a>.
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Up Coming Space Booking Modal  -->
+
+                            <div class="modal" id="view_booking_space_modal">
+                                <div class="modal-content size">
+                                    <div class="booking-modal main-container">
+                                        <button class="close-x" data-modal-close><svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36"
+                                                fill="none">
+                                                <circle cx="18" cy="18" r="17.5" stroke="#3B3731" />
+                                                <path d="M12.7998 23.9998L23.9998 12.7998M12.7998 12.7998L23.9998 23.9998" stroke="#3B3731"
+                                                    stroke-width="1.5" stroke-linecap="round" />
+                                            </svg></button>
+
+                                        <div class="booking-modal-header">
+                                            <h1>My Bookings</h1>
+                                            <p>Your upcoming booking.</p>
+                                        </div>
+
+                                        <div class="booking-modal-page-2">
+                                            <div class="modal-booking-card">
+                                                <div class="modal-header">
+                                                    <span class="modal-header-status">Confirmed</span>
+
+                                                    <div class="ref-container d-flex align-items-center gap-20">
+                                                        Booking reference: FG-10294
+                                                        <span class="pdf-download d-flex align-items-center gap-5"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="15"
+                                                                viewBox="0 0 13 15" fill="none">
+                                                                <path
+                                                                    d="M3.07717 14.5H9.27418C9.95769 14.5 10.6132 14.2209 11.0965 13.7242C11.5798 13.2275 11.8514 12.5538 11.8514 11.8514V7.66649C11.8516 6.96411 11.5804 6.29039 11.0973 5.79351L6.70216 1.27568C6.46282 1.02973 6.1787 0.834645 5.86601 0.701554C5.55331 0.568463 5.21817 0.499975 4.87972 0.5H3.07717C2.39367 0.5 1.73815 0.779053 1.25484 1.27577C0.771523 1.77249 0.5 2.44618 0.5 3.14865V11.8514C0.5 12.5538 0.771523 13.2275 1.25484 13.7242C1.73815 14.2209 2.39367 14.5 3.07717 14.5Z"
+                                                                    stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                                                                <path
+                                                                    d="M5.9458 0.772461V5.0557C5.9458 5.45711 6.10096 5.84208 6.37714 6.12592C6.65332 6.40976 7.0279 6.56922 7.41847 6.56922H11.5876"
+                                                                    stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                                                                <path
+                                                                    d="M2.67822 10.9055V10.1488M2.67822 10.1488V8.63525H3.41456C3.60985 8.63525 3.79714 8.71498 3.93523 8.8569C4.07332 8.99882 4.15089 9.19131 4.15089 9.39201C4.15089 9.59272 4.07332 9.7852 3.93523 9.92712C3.79714 10.069 3.60985 10.1488 3.41456 10.1488H2.67822ZM8.56891 10.9055V9.95958M8.56891 9.95958V8.63525H9.67341M8.56891 9.95958H9.67341M5.62357 10.9055V8.63525H5.99173C6.28467 8.63525 6.5656 8.75485 6.77274 8.96773C6.97987 9.18061 7.09624 9.46933 7.09624 9.77039C7.09624 10.0714 6.97987 10.3602 6.77274 10.5731C6.5656 10.7859 6.28467 10.9055 5.99173 10.9055H5.62357Z"
+                                                                    stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                                                            </svg> PDF</span>
+                                                    </div>
+                                                </div>
+                                                <div style="padding: 21px; ">
+                                                    <div class="modal-content-page-2">
+
+                                                        <div class="modal-studio">
+                                                            <div class="studio-image">
+                                                                <img src="<?= BASE_URL ?>assets/images/message_profile_1.png" class="inverted-radius" alt="Grooming">
+                                                                <div class="badge-shield" title="Verified" style="left: 12px;">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="29" height="31" viewBox="0 0 29 31" fill="none">
+                                                                        <path d="M15.3096 0.175208C15.0558 0.0604166 14.784 0 14.5 0C14.216 0 13.9442 0.0604166 13.6904 0.175208L2.31398 5.00249C0.984817 5.56436 -0.00601417 6.8754 2.74804e-05 8.45832C0.0302358 14.4516 2.49523 25.4172 12.905 30.4016C13.914 30.8849 15.086 30.8849 16.095 30.4016C26.5048 25.4172 28.9698 14.4516 29 8.45832C29.006 6.8754 28.0152 5.56436 26.686 5.00249L15.3096 0.175208Z" fill="#CBDCE8"></path>
+                                                                        <path d="M22.3736 8.3902L16.1586 14.9936L22.3736 8.3902ZM13.3976 14.6712C11.471 15.4108 9.93043 15.2842 8.38989 14.6735C8.77833 19.6789 11.112 21.6032 14.2234 22.3739C14.2234 22.3739 16.5672 20.716 16.9052 16.7858C16.9417 16.3601 16.9596 16.148 16.8718 15.908C16.7832 15.6679 16.6092 15.4962 16.2619 15.1521C15.6902 14.5865 15.405 14.3037 15.0655 14.2323C14.7261 14.1624 14.2832 14.3317 13.3976 14.6712Z" fill="#CBDCE8"></path>
+                                                                        <path d="M22.3736 8.3902L16.1586 14.9936M13.3976 14.6712C11.471 15.4108 9.93043 15.2842 8.38989 14.6735C8.77833 19.6789 11.112 21.6032 14.2234 22.3739C14.2234 22.3739 16.5672 20.716 16.9052 16.7858C16.9417 16.3601 16.9596 16.148 16.8718 15.908C16.7832 15.6679 16.6092 15.4962 16.2619 15.1521C15.6902 14.5865 15.405 14.3037 15.0655 14.2323C14.7261 14.1624 14.2832 14.3317 13.3976 14.6712Z" stroke="white" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                                        <path d="M9.55615 18.8365C9.55615 18.8365 11.4983 19.2125 13.4405 17.7131L9.55615 18.8365Z" fill="#CBDCE8"></path>
+                                                                        <path d="M9.55615 18.8365C9.55615 18.8365 11.4983 19.2125 13.4405 17.7131" stroke="white" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                                        <path d="M12.6631 11.6924C12.6631 11.95 12.5608 12.197 12.3787 12.3791C12.1966 12.5612 11.9496 12.6635 11.692 12.6635C11.4345 12.6635 11.1875 12.5612 11.0054 12.3791C10.8233 12.197 10.7209 11.95 10.7209 11.6924C10.7209 11.4349 10.8233 11.1879 11.0054 11.0057C11.1875 10.8236 11.4345 10.7213 11.692 10.7213C11.9496 10.7213 12.1966 10.8236 12.3787 11.0057C12.5608 11.1879 12.6631 11.4349 12.6631 11.6924Z" fill="#CBDCE8" stroke="white"></path>
+                                                                        <path d="M14.6052 9.16711V9.2448V9.16711Z" fill="#CBDCE8"></path>
+                                                                        <path d="M14.6052 9.16711V9.2448" stroke="white" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                                    </svg>
+                                                                </div>
+                                                                <div class="modal-host">
+                                                                    <div>
+                                                                        <h3>Furs & Co. Studio</h3>
+                                                                        <p class="hosted">Hosted <span>by Dev É.</span> </p>
+                                                                    </div>
+                                                                    <div class="modal-category">
+                                                                        <p>Garden / Shed</p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="modal-tags" gap="10px">
+                                                                <div class="tags">
+                                                                    <div>
+                                                                        <svg xmlns="http://www.w3.org/2000/svg" width="10" height="9" viewBox="0 0 10 9"
+                                                                            fill="none">
+                                                                            <path
+                                                                                d="M2 8.99999C1.85833 8.99999 1.73967 8.95199 1.644 8.85599C1.54833 8.75999 1.50033 8.64133 1.5 8.49999C1.49967 8.35866 1.54767 8.23999 1.644 8.14399C1.74033 8.04799 1.859 7.99999 2 7.99999H8C8.14166 7.99999 8.2605 8.04799 8.3565 8.14399C8.4525 8.23999 8.50033 8.35866 8.5 8.49999C8.49966 8.64133 8.45166 8.76016 8.356 8.85649C8.26033 8.95283 8.14166 9.00066 8 8.99999H2ZM2.35 7.24999C2.10833 7.24999 1.89383 7.17083 1.7065 7.0125C1.51917 6.85416 1.4045 6.65416 1.3625 6.4125L0.862501 3.2375C0.845834 3.2375 0.827167 3.23967 0.806501 3.244C0.785834 3.24833 0.767001 3.25033 0.750001 3.25C0.541667 3.25 0.364668 3.17717 0.219001 3.0315C0.0733344 2.88583 0.000334469 2.70867 1.13636e-06 2.5C-0.000332197 2.29133 0.0726677 2.11433 0.219001 1.969C0.365334 1.82367 0.542334 1.75067 0.750001 1.75C0.957667 1.74933 1.13483 1.82233 1.2815 1.969C1.42817 2.11567 1.501 2.29267 1.5 2.5C1.5 2.55833 1.49367 2.6125 1.481 2.6625C1.46833 2.7125 1.45383 2.75833 1.4375 2.8L3 3.5L4.5625 1.3625C4.47083 1.29583 4.39583 1.20833 4.3375 1.1C4.27917 0.991667 4.25 0.875 4.25 0.75C4.25 0.541667 4.323 0.364501 4.469 0.218501C4.615 0.0725011 4.792 -0.000332194 5 1.13895e-06C5.208 0.000334472 5.38516 0.0733344 5.5315 0.219001C5.67783 0.364667 5.75066 0.541667 5.75 0.75C5.75 0.875 5.72083 0.991667 5.6625 1.1C5.60416 1.20833 5.52916 1.29583 5.4375 1.3625L7 3.5L8.5625 2.8C8.54583 2.75833 8.53116 2.7125 8.5185 2.6625C8.50583 2.6125 8.49966 2.55833 8.5 2.5C8.5 2.29167 8.573 2.1145 8.719 1.9685C8.865 1.8225 9.042 1.74967 9.25 1.75C9.458 1.75033 9.63516 1.82333 9.7815 1.969C9.92783 2.11467 10.0007 2.29167 10 2.5C9.99933 2.70833 9.92649 2.8855 9.7815 3.0315C9.6365 3.1775 9.45933 3.25033 9.25 3.25C9.23333 3.25 9.21466 3.248 9.194 3.244C9.17333 3.24 9.1545 3.23783 9.1375 3.2375L8.6375 6.4125C8.59583 6.65416 8.48133 6.85416 8.294 7.0125C8.10666 7.17083 7.892 7.24999 7.65 7.24999H2.35ZM2.35 6.25H7.65L7.975 4.1625L7.4 4.4125C7.18333 4.50416 6.9625 4.52083 6.7375 4.4625C6.5125 4.40416 6.32916 4.27916 6.1875 4.0875L5 2.45L3.8125 4.0875C3.67083 4.27916 3.4875 4.40416 3.2625 4.4625C3.0375 4.52083 2.81667 4.50416 2.6 4.4125L2.025 4.1625L2.35 6.25Z"
+                                                                                fill="white" />
+                                                                        </svg>
+                                                                        <span>Popular</span>
+                                                                    </div>
+                                                                    <div>
+                                                                        <svg xmlns="http://www.w3.org/2000/svg" width="9" height="11" viewBox="0 0 9 11"
+                                                                            fill="none">
+                                                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                                                d="M6.41322 7.89398C6.44215 7.34453 6.31579 6.79804 6.0486 6.31706C5.78142 5.83608 5.3842 5.44005 4.90243 5.1743C4.81687 5.12481 4.71545 5.11047 4.61952 5.1343C4.5236 5.15813 4.44068 5.21827 4.38824 5.30205L3.77553 6.28276L3.26579 5.66624C3.23778 5.63245 3.20308 5.60482 3.16387 5.5851C3.12466 5.56538 3.08178 5.554 3.03795 5.55167C2.99413 5.54934 2.95029 5.55612 2.90921 5.57157C2.86813 5.58702 2.83069 5.61082 2.79926 5.64146C2.49919 5.93182 2.2648 6.2831 2.11186 6.67164C1.95892 7.06019 1.89098 7.47698 1.91262 7.89398C1.91262 8.49072 2.14967 9.06301 2.57162 9.48496C2.99358 9.90692 3.56587 10.144 4.1626 10.144C4.75934 10.144 5.33163 9.90692 5.75358 9.48496C6.17554 9.06301 6.41259 8.49072 6.41259 7.89398M3.01028 6.35586L2.97087 6.40798C2.67197 6.82551 2.52221 7.33145 2.54566 7.84441L2.54757 7.88191C2.54757 8.31007 2.71766 8.7207 3.02042 9.02346C3.32317 9.32621 3.7338 9.4963 4.16197 9.4963C4.59013 9.4963 5.00076 9.32621 5.30352 9.02346C5.60628 8.7207 5.77636 8.31007 5.77636 7.88191L5.77827 7.84504C5.78272 7.80373 5.88187 6.6673 4.84205 5.89442L4.79056 5.85692L4.12701 6.91835C4.09497 6.96954 4.05123 7.01239 3.99939 7.04337C3.94755 7.07435 3.8891 7.09258 3.82884 7.09655C3.76858 7.10052 3.70823 7.09013 3.65278 7.06622C3.59732 7.04231 3.54834 7.00557 3.50985 6.95903L3.01028 6.35586Z"
+                                                                                fill="#FEFEFE" />
+                                                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                                                d="M3.79701 0.30821C3.81025 0.23997 3.84191 0.176658 3.88858 0.125138C3.93524 0.0736173 3.99512 0.0358558 4.06172 0.0159479C4.12832 -0.00396001 4.1991 -0.00525449 4.26638 0.0122049C4.33367 0.0296642 4.39489 0.0652111 4.4434 0.114991C4.56671 0.240837 4.80378 0.489988 5.04467 0.777274C5.28111 1.05884 5.53916 1.39761 5.68788 1.69951C5.8328 1.99443 5.98661 2.37578 6.10801 2.69421L6.67305 1.75354C6.70456 1.701 6.74826 1.65683 6.80046 1.62476C6.85265 1.59269 6.91181 1.57367 6.97292 1.56931C7.03402 1.56494 7.09528 1.57536 7.1515 1.59969C7.20773 1.62401 7.25727 1.66152 7.29592 1.70905C8.09867 2.70057 8.49846 3.76263 8.6974 4.57365C8.79718 4.97979 8.8474 5.32491 8.87282 5.57025C8.88576 5.69278 8.89424 5.81574 8.89824 5.93889V5.97131C8.89824 8.4482 6.93364 10.4649 4.44785 10.4649C1.96206 10.4649 0 8.44756 0 5.97004C0 5.28805 0.322244 3.68192 1.27563 2.36498C1.31266 2.31422 1.36166 2.27341 1.41826 2.24615C1.47487 2.2189 1.53734 2.20605 1.60011 2.20876C1.66287 2.21146 1.724 2.22963 1.77806 2.26166C1.83211 2.29368 1.87741 2.33856 1.90994 2.39231L2.55507 3.46709C2.75083 3.16073 3.01269 2.73044 3.21163 2.3332C3.49765 1.76117 3.72455 0.682572 3.79701 0.308845M4.3201 0.912655C4.20506 1.42113 4.01501 2.14697 3.77985 2.61858C3.46714 3.24336 3.0165 3.9298 2.86142 4.16051C2.82554 4.21345 2.77693 4.25651 2.72005 4.28574C2.66317 4.31497 2.59986 4.32943 2.53593 4.32778C2.472 4.32614 2.40952 4.30844 2.35422 4.27632C2.29892 4.24421 2.25258 4.1987 2.21948 4.14399L1.57118 3.06476C0.87457 4.19166 0.635589 5.45839 0.635589 5.97131C0.635589 8.10561 2.32244 9.82806 4.44785 9.82806C6.57326 9.82806 8.26265 8.10561 8.26265 5.97131V5.95351L8.26011 5.88995C8.25568 5.80484 8.24911 5.71986 8.24041 5.63508C8.20712 5.3287 8.15362 5.02487 8.08024 4.72555C7.87826 3.89157 7.52027 3.10334 7.02516 2.40248L6.38068 3.47535C6.34338 3.53732 6.28925 3.58743 6.22459 3.61985C6.15993 3.65227 6.08739 3.66566 6.01542 3.65847C5.94344 3.65128 5.87499 3.6238 5.81802 3.57923C5.76105 3.53466 5.71791 3.47483 5.6936 3.40671C5.59064 3.11815 5.33831 2.42917 5.11713 1.98044C5.00463 1.751 4.78916 1.46117 4.55781 1.18596C4.4801 1.09353 4.40086 1.00242 4.3201 0.912655Z"
+                                                                                fill="#FEFEFE" />
+                                                                        </svg>
+                                                                        <span>Top Rated</span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="ratings">
+                                                                    <div><svg xmlns="http://www.w3.org/2000/svg" width="10" height="14"
+                                                                            viewBox="0 0 10 14" fill="none">
+                                                                            <path
+                                                                                d="M5 6.65C4.5264 6.65 4.0722 6.46563 3.73731 6.13744C3.40242 5.80925 3.21429 5.36413 3.21429 4.9C3.21429 4.43587 3.40242 3.99075 3.73731 3.66256C4.0722 3.33437 4.5264 3.15 5 3.15C5.4736 3.15 5.9278 3.33437 6.26269 3.66256C6.59758 3.99075 6.78571 4.43587 6.78571 4.9C6.78571 5.12981 6.73953 5.35738 6.64979 5.5697C6.56004 5.78202 6.42851 5.97493 6.26269 6.13744C6.09687 6.29994 5.90002 6.42884 5.68336 6.51679C5.46671 6.60473 5.2345 6.65 5 6.65ZM5 0C3.67392 0 2.40215 0.516248 1.46447 1.43518C0.526784 2.3541 0 3.60044 0 4.9C0 8.575 5 14 5 14C5 14 10 8.575 10 4.9C10 3.60044 9.47322 2.3541 8.53553 1.43518C7.59785 0.516248 6.32608 0 5 0Z"
+                                                                                fill="#FFC97A" />
+                                                                        </svg>
+                                                                        <p>2.5 mi</p>
+                                                                    </div>
+                                                                    <div><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
+                                                                            viewBox="0 0 14 14" fill="none">
+                                                                            <path
+                                                                                d="M6.12956 0.660476C6.40354 -0.220161 7.59647 -0.220158 7.87045 0.660479L8.89548 3.95519C9.01801 4.34902 9.36942 4.61566 9.76593 4.61566H13.083C13.9696 4.61566 14.3383 5.80055 13.621 6.34481L10.9374 8.38106C10.6166 8.62446 10.4824 9.0559 10.6049 9.44973L11.63 12.7444C11.9039 13.6251 10.9388 14.3574 10.2215 13.8131L7.53797 11.7769C7.21719 11.5335 6.78282 11.5335 6.46204 11.7769L3.77846 13.8131C3.06117 14.3574 2.09607 13.6251 2.37005 12.7444L3.39508 9.44973C3.51761 9.0559 3.38338 8.62446 3.0626 8.38106L0.37903 6.34481C-0.338258 5.80055 0.0303816 4.61566 0.916998 4.61566H4.23408C4.63058 4.61566 4.98199 4.34902 5.10452 3.95519L6.12956 0.660476Z"
+                                                                                fill="#FFC97A" />
+                                                                        </svg>
+                                                                        <p>4.3</p><span> (20 reviews)</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="modal-booking-meta">
+
+                                                            <div class="modal-meta-item">
+                                                                <div class="d-flex align-items-center gap-10">
+                                                                    <span>
+                                                                        <svg xmlns="http://www.w3.org/2000/svg" width="20"
+                                                                            height="16" viewBox="0 0 20 16" fill="none">
+                                                                            <path
+                                                                                d="M16.7801 15.5092V4.90774C16.7801 4.8823 16.7822 4.85737 16.7861 4.83297L13.9198 2.38869C13.3102 1.86965 12.8891 1.51192 12.5318 1.2787C12.1869 1.05357 11.955 0.981548 11.7333 0.981548C11.5117 0.981548 11.2813 1.05383 10.9367 1.2787C10.5794 1.51195 10.1571 1.86936 9.54677 2.38869L6.67838 4.83297C6.68232 4.85747 6.68642 4.8822 6.68642 4.90774V15.5092C6.68599 15.7799 6.45561 16 6.17148 16C5.88754 15.9998 5.65697 15.7798 5.65654 15.5092V5.70333L5.1255 6.15768C4.91349 6.33835 4.5869 6.31948 4.39734 6.11742C4.20853 5.91549 4.2262 5.60589 4.43757 5.42535L8.85884 1.65828H8.86085C9.45081 1.15631 9.92858 0.747109 10.3534 0.469686C10.791 0.184003 11.2255 2.87993e-07 11.7333 0C12.241 0 12.6754 0.183991 13.1132 0.469686C13.5382 0.747176 14.018 1.15613 14.6077 1.65828L19.029 5.42535C19.2403 5.60589 19.258 5.91549 19.0692 6.11742C18.8796 6.31948 18.553 6.33835 18.341 6.15768L17.81 5.70333V15.5092C17.8096 15.7798 17.579 15.9998 17.2951 16C17.0109 16 16.7805 15.7799 16.7801 15.5092Z"
+                                                                                fill="#9D9B98" />
+                                                                            <path
+                                                                                d="M2.33495 8.53426C2.33495 8.16407 2.22966 7.84645 2.07983 7.63201C1.92995 7.41771 1.75582 7.32764 1.6 7.32764C1.44427 7.32777 1.26995 7.41787 1.12017 7.63201C0.970467 7.84645 0.865048 8.16427 0.865048 8.53426C0.865185 8.90438 0.970282 9.22221 1.12017 9.43651C1.26992 9.65054 1.44431 9.73895 1.6 9.73908C1.75569 9.73908 1.93003 9.65044 2.07983 9.43651C2.22972 9.22221 2.33481 8.90438 2.33495 8.53426ZM3.2 8.53426C3.19986 9.08569 3.04508 9.60303 2.77254 9.99272C2.49976 10.3827 2.08915 10.6667 1.6 10.6667C1.11119 10.6666 0.701863 10.3824 0.429145 9.99272C0.156583 9.60302 0.000136435 9.08572 0 8.53426C0 7.98254 0.156463 7.46387 0.429145 7.07399C0.701863 6.68442 1.11129 6.40016 1.6 6.40002C2.08908 6.40002 2.49976 6.68407 2.77254 7.07399C3.04523 7.46387 3.2 7.98254 3.2 8.53426Z"
+                                                                                fill="#9D9B98" />
+                                                                            <path
+                                                                                d="M1.06689 15.5V10.0999C1.06689 9.82382 1.30568 9.59998 1.60023 9.59998C1.89478 9.59998 2.13356 9.82382 2.13356 10.0999V15.5C2.13334 15.776 1.89464 16 1.60023 16C1.30581 16 1.06712 15.776 1.06689 15.5Z"
+                                                                                fill="#9D9B98" />
+                                                                            <path
+                                                                                d="M13.6421 11.9202C13.6421 11.4847 13.6402 11.2082 13.6125 11.0056C13.5868 10.8177 13.5475 10.7688 13.5237 10.7453C13.4999 10.7219 13.4506 10.6814 13.2592 10.656C13.0531 10.6287 12.7707 10.6288 12.3276 10.6288H11.4197C10.9766 10.6288 10.6942 10.6287 10.4882 10.656C10.2968 10.6814 10.2475 10.7219 10.2237 10.7453C10.1999 10.7688 10.1606 10.8177 10.1349 11.0056C10.1072 11.2082 10.1053 11.4847 10.1053 11.9202V15.0041H13.6421V11.9202ZM12.7836 6.94881C13.0622 6.94902 13.2884 7.17187 13.2888 7.44595C13.2888 7.72038 13.0624 7.94288 12.7836 7.94309H10.9638C10.6849 7.94288 10.4586 7.72038 10.4586 7.44595C10.459 7.17187 10.6852 6.94901 10.9638 6.94881H12.7836ZM12.7836 4.26501L12.8842 4.27472C13.1149 4.32077 13.2888 4.52163 13.2888 4.76216C13.2888 5.00269 13.1149 5.20354 12.8842 5.24959L12.7836 5.2593H10.9638C10.6849 5.25909 10.4586 5.03659 10.4586 4.76216C10.4586 4.48772 10.6849 4.26522 10.9638 4.26501H12.7836ZM14.6526 15.0041H18.6947C18.9738 15.0041 19.2 15.2266 19.2 15.5012C19.1996 15.7754 18.9735 15.9983 18.6947 15.9983H0.505263C0.226477 15.9983 0.000425559 15.7754 0 15.5012C0 15.2266 0.226214 15.0041 0.505263 15.0041H9.09474V11.9202C9.09474 11.513 9.09346 11.1577 9.13224 10.8735C9.17309 10.5747 9.26667 10.2811 9.50921 10.0424C9.7519 9.80356 10.0502 9.71164 10.3539 9.67144C10.643 9.6332 11.0053 9.63454 11.4197 9.63454H12.3276C12.742 9.63454 13.1043 9.6332 13.3934 9.67144C13.6972 9.71164 13.9955 9.80356 14.2382 10.0424C14.4807 10.2811 14.5743 10.5747 14.6151 10.8735C14.6539 11.1577 14.6526 11.513 14.6526 11.9202V15.0041Z"
+                                                                                fill="#9D9B98" />
+                                                                        </svg>
+                                                                    </span>
+                                                                    <p class="modal-meta-title">Space</p>
+                                                                </div>
+                                                                <span class="modal-meta-value">Garden / Shed</span>
+                                                            </div>
+                                                            <hr class="vertical-line">
+
+                                                            <div class="modal-meta-item">
+                                                                <div class="d-flex align-items-center gap-10">
+                                                                    <span>
+                                                                        <svg xmlns="http://www.w3.org/2000/svg" width="19"
+                                                                            height="17" viewBox="0 0 19 17" fill="none">
+                                                                            <path
+                                                                                d="M0.5 8.29443C0.5 5.20012 0.5 3.65254 1.50463 2.69167C2.50925 1.7308 4.12506 1.72998 7.35752 1.72998H10.7863C14.0187 1.72998 15.6354 1.72998 16.6392 2.69167C17.6429 3.65337 17.6438 5.20012 17.6438 8.29443V9.93555C17.6438 13.0299 17.6438 14.5774 16.6392 15.5383C15.6345 16.4992 14.0187 16.5 10.7863 16.5H7.35752C4.12506 16.5 2.5084 16.5 1.50463 15.5383C0.500857 14.5766 0.5 13.0299 0.5 9.93555V8.29443Z"
+                                                                                stroke="#9D9B98" />
+                                                                            <path d="M4.78607 1.73084V0.5M13.358 1.73084V0.5M0.928711 5.83362H17.2153"
+                                                                                stroke="#9D9B98" stroke-linecap="round" />
+                                                                            <path
+                                                                                d="M14.215 12.3978C14.215 12.6155 14.1247 12.8242 13.9639 12.978C13.8032 13.1319 13.5851 13.2184 13.3578 13.2184C13.1305 13.2184 12.9124 13.1319 12.7517 12.978C12.5909 12.8242 12.5006 12.6155 12.5006 12.3978C12.5006 12.1802 12.5909 11.9715 12.7517 11.8176C12.9124 11.6637 13.1305 11.5773 13.3578 11.5773C13.5851 11.5773 13.8032 11.6637 13.9639 11.8176C14.1247 11.9715 14.215 12.1802 14.215 12.3978ZM14.215 9.1156C14.215 9.33323 14.1247 9.54194 13.9639 9.69582C13.8032 9.84971 13.5851 9.93616 13.3578 9.93616C13.1305 9.93616 12.9124 9.84971 12.7517 9.69582C12.5909 9.54194 12.5006 9.33323 12.5006 9.1156C12.5006 8.89798 12.5909 8.68926 12.7517 8.53538C12.9124 8.3815 13.1305 8.29504 13.3578 8.29504C13.5851 8.29504 13.8032 8.3815 13.9639 8.53538C14.1247 8.68926 14.215 8.89798 14.215 9.1156ZM9.92904 12.3978C9.92904 12.6155 9.83873 12.8242 9.67798 12.978C9.51722 13.1319 9.29919 13.2184 9.07185 13.2184C8.84451 13.2184 8.62648 13.1319 8.46573 12.978C8.30497 12.8242 8.21466 12.6155 8.21466 12.3978C8.21466 12.1802 8.30497 11.9715 8.46573 11.8176C8.62648 11.6637 8.84451 11.5773 9.07185 11.5773C9.29919 11.5773 9.51722 11.6637 9.67798 11.8176C9.83873 11.9715 9.92904 12.1802 9.92904 12.3978ZM9.92904 9.1156C9.92904 9.33323 9.83873 9.54194 9.67798 9.69582C9.51722 9.84971 9.29919 9.93616 9.07185 9.93616C8.84451 9.93616 8.62648 9.84971 8.46573 9.69582C8.30497 9.54194 8.21466 9.33323 8.21466 9.1156C8.21466 8.89798 8.30497 8.68926 8.46573 8.53538C8.62648 8.3815 8.84451 8.29504 9.07185 8.29504C9.29919 8.29504 9.51722 8.3815 9.67798 8.53538C9.83873 8.68926 9.92904 8.89798 9.92904 9.1156ZM5.64309 12.3978C5.64309 12.6155 5.55278 12.8242 5.39203 12.978C5.23127 13.1319 5.01324 13.2184 4.7859 13.2184C4.55856 13.2184 4.34053 13.1319 4.17978 12.978C4.01902 12.8242 3.92871 12.6155 3.92871 12.3978C3.92871 12.1802 4.01902 11.9715 4.17978 11.8176C4.34053 11.6637 4.55856 11.5773 4.7859 11.5773C5.01324 11.5773 5.23127 11.6637 5.39203 11.8176C5.55278 11.9715 5.64309 12.1802 5.64309 12.3978ZM5.64309 9.1156C5.64309 9.33323 5.55278 9.54194 5.39203 9.69582C5.23127 9.84971 5.01324 9.93616 4.7859 9.93616C4.55856 9.93616 4.34053 9.84971 4.17978 9.69582C4.01902 9.54194 3.92871 9.33323 3.92871 9.1156C3.92871 8.89798 4.01902 8.68926 4.17978 8.53538C4.34053 8.3815 4.55856 8.29504 4.7859 8.29504C5.01324 8.29504 5.23127 8.3815 5.39203 8.53538C5.55278 8.68926 5.64309 8.89798 5.64309 9.1156Z"
+                                                                                fill="#9D9B98" />
+                                                                        </svg>
+                                                                    </span>
+                                                                    <p class="modal-meta-title">Date</p>
+                                                                </div>
+                                                                <span class="modal-meta-value">18/12/2025</span>
+                                                            </div>
+                                                            <hr class="vertical-line">
+
+                                                            <div class="modal-meta-item">
+                                                                <div class="d-flex align-items-center gap-10">
+                                                                    <span>
+                                                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                                                            <circle cx="8" cy="8" r="6" stroke="#9D9B98"
+                                                                                stroke-width="1.5" />
+                                                                            <path d="M8 4.5V8L10.5 10" stroke="#9D9B98" stroke-width="1.5"
+                                                                                stroke-linecap="round" />
+                                                                        </svg>
+                                                                    </span>
+                                                                    <p class="modal-meta-title">Time</p>
+                                                                </div>
+                                                                <span class="modal-meta-value">Half-Day (14:30 - 18:30)</span>
+                                                            </div>
+                                                            <hr class="vertical-line">
+
+                                                            <div class="modal-meta-item">
+                                                                <div class="d-flex align-items-center gap-10">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="12"
+                                                                        height="16" viewBox="0 0 12 16" fill="none">
+                                                                        <path
+                                                                            d="M6 0.5C7.4694 0.5 8.87214 1.04525 9.90137 2.00586C10.9293 2.96529 11.4999 4.25871 11.5 5.59961C11.5 7.10011 10.6408 8.95946 9.51855 10.7236C8.41048 12.4655 7.10434 14.0263 6.32227 14.9082C6.14625 15.1067 5.85375 15.1067 5.67773 14.9082C4.89566 14.0263 3.58952 12.4655 2.48145 10.7236C1.35919 8.95946 0.5 7.10011 0.5 5.59961C0.500111 4.25871 1.07068 2.96529 2.09863 2.00586C3.12786 1.04525 4.53061 0.5 6 0.5ZM6 3.09961C5.30978 3.09961 4.64141 3.35564 4.14355 3.82031C3.64466 4.28597 3.35753 4.92517 3.35742 5.59961C3.35742 6.27422 3.64453 6.91413 4.14355 7.37988C4.64141 7.84453 5.30979 8.09961 6 8.09961C6.34236 8.09961 6.68202 8.03695 7 7.91406C7.31807 7.7911 7.60965 7.61022 7.85645 7.37988C8.10326 7.14952 8.30086 6.87397 8.43652 6.56836C8.57224 6.26256 8.64258 5.93289 8.64258 5.59961C8.64247 4.92517 8.35534 4.28597 7.85645 3.82031C7.35859 3.35564 6.69022 3.09961 6 3.09961Z"
+                                                                            stroke="#9D9B98" />
+                                                                    </svg>
+                                                                    <p class="modal-meta-title">Location</p>
+                                                                </div>
+                                                                <span class="modal-meta-value">Victoria Embankment</span>
+                                                            </div>
+
+                                                        </div>
+
+                                                        <div class="modal-pet-selection">
+
+                                                            <div class="modal-pet-card">
+                                                                <img src="<?= BASE_URL ?>assets/images/pet_details_2.png" alt="Louis">
+
+                                                                <div class="modal-pet-info">
+                                                                    <p class="modal-pet-name"><span><svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                                                                height="15" viewBox="0 0 16 15" fill="none">
+                                                                                <path
+                                                                                    d="M8 6.02632C5.73786 6.02632 3.82643 8.06405 3.20929 10.6813C2.93786 11.8323 3.34714 13.0539 4.35179 13.6279C5.14821 14.0829 6.33286 14.5 8 14.5C9.66714 14.5 10.8521 14.0829 11.6486 13.6279C12.6532 13.0539 13.0621 11.8323 12.7907 10.6813C12.1736 8.06368 10.2621 6.02632 8 6.02632ZM0.5 5.45305C0.5 6.47063 1.13929 7.5 1.92857 7.5C2.71786 7.5 3.35714 6.47063 3.35714 5.45305C3.35714 4.43547 2.71786 3.81579 1.92857 3.81579C1.13929 3.81579 0.5 4.43584 0.5 5.45305ZM15.5 5.45305C15.5 6.47063 14.8607 7.5 14.0714 7.5C13.2821 7.5 12.6429 6.47063 12.6429 5.45305C12.6429 4.43547 13.2821 3.81579 14.0714 3.81579C14.8607 3.81579 15.5 4.43584 15.5 5.45305ZM4.25 2.13726C4.25 3.15484 4.88929 4.18421 5.67857 4.18421C6.46786 4.18421 7.10714 3.15484 7.10714 2.13726C7.10714 1.11968 6.46786 0.5 5.67857 0.5C4.88929 0.5 4.25 1.12005 4.25 2.13726ZM11.75 2.13726C11.75 3.15484 11.1107 4.18421 10.3214 4.18421C9.53214 4.18421 8.89286 3.15484 8.89286 2.13726C8.89286 1.11968 9.53214 0.5 10.3214 0.5C11.1107 0.5 11.75 1.12005 11.75 2.13726Z"
+                                                                                    stroke="#9D9B98" stroke-linecap="round" stroke-linejoin="round" />
+                                                                            </svg></span> Louis</p>
+                                                                    <span>Dog • Labrador</span>
+                                                                </div>
+
+                                                                <div class="modal-pet-arrow">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48"
+                                                                        fill="none">
+                                                                        <rect width="48" height="48" rx="24" transform="matrix(1 0 0 -1 0 48)"
+                                                                            fill="#E3E3E3" />
+                                                                        <path
+                                                                            d="M32.7098 24.8277C33.1054 24.4359 33.1048 23.7964 32.7085 23.4053L28.1513 18.9082C27.796 18.5576 27.2233 18.5622 26.8737 18.9185C26.7351 19.0552 26.6797 19.1919 26.7074 19.3286C26.7421 19.4653 26.8182 19.5951 26.936 19.7181L29.9174 22.6397C30.0836 22.8037 30.2394 22.9507 30.3848 23.0805C30.5 23.1833 30.4113 23.3889 30.2577 23.3734C30.0799 23.3554 29.8972 23.3397 29.7096 23.3265C29.3287 23.2992 28.934 23.2855 28.5254 23.2855H15.8355C15.3741 23.2855 15 23.6596 15 24.121C15 24.5824 15.3741 24.9565 15.8355 24.9565H28.5254C28.934 24.9565 29.3322 24.9428 29.72 24.9154C29.9048 24.9024 30.0849 24.8871 30.2602 24.8694C30.416 24.8537 30.504 25.0599 30.3848 25.1615C30.2394 25.2913 30.0836 25.4383 29.9174 25.6023L26.9152 28.5443C26.7905 28.6674 26.7144 28.7972 26.6867 28.9339C26.659 29.0706 26.7109 29.2072 26.8425 29.3439C27.1977 29.7058 27.7795 29.7099 28.1398 29.3531L32.7098 24.8277Z"
+                                                                            fill="white" />
+                                                                    </svg>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="modal-pet-card">
+                                                                <img src="<?= BASE_URL ?>assets/images/pet_details_1.png" alt="Bella">
+
+                                                                <div class="modal-pet-info">
+                                                                    <p class="modal-pet-name"><span><svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                                                                height="15" viewBox="0 0 16 15" fill="none">
+                                                                                <path
+                                                                                    d="M8 6.02632C5.73786 6.02632 3.82643 8.06405 3.20929 10.6813C2.93786 11.8323 3.34714 13.0539 4.35179 13.6279C5.14821 14.0829 6.33286 14.5 8 14.5C9.66714 14.5 10.8521 14.0829 11.6486 13.6279C12.6532 13.0539 13.0621 11.8323 12.7907 10.6813C12.1736 8.06368 10.2621 6.02632 8 6.02632ZM0.5 5.45305C0.5 6.47063 1.13929 7.5 1.92857 7.5C2.71786 7.5 3.35714 6.47063 3.35714 5.45305C3.35714 4.43547 2.71786 3.81579 1.92857 3.81579C1.13929 3.81579 0.5 4.43584 0.5 5.45305ZM15.5 5.45305C15.5 6.47063 14.8607 7.5 14.0714 7.5C13.2821 7.5 12.6429 6.47063 12.6429 5.45305C12.6429 4.43547 13.2821 3.81579 14.0714 3.81579C14.8607 3.81579 15.5 4.43584 15.5 5.45305ZM4.25 2.13726C4.25 3.15484 4.88929 4.18421 5.67857 4.18421C6.46786 4.18421 7.10714 3.15484 7.10714 2.13726C7.10714 1.11968 6.46786 0.5 5.67857 0.5C4.88929 0.5 4.25 1.12005 4.25 2.13726ZM11.75 2.13726C11.75 3.15484 11.1107 4.18421 10.3214 4.18421C9.53214 4.18421 8.89286 3.15484 8.89286 2.13726C8.89286 1.11968 9.53214 0.5 10.3214 0.5C11.1107 0.5 11.75 1.12005 11.75 2.13726Z"
+                                                                                    stroke="#9D9B98" stroke-linecap="round" stroke-linejoin="round" />
+                                                                            </svg></span> Bella</p>
+                                                                    <span>Rabbit • Mini Lop</span>
+                                                                </div>
+
+                                                                <div class="modal-pet-arrow">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48"
+                                                                        fill="none">
+                                                                        <rect width="48" height="48" rx="24" transform="matrix(1 0 0 -1 0 48)"
+                                                                            fill="#E3E3E3" />
+                                                                        <path
+                                                                            d="M32.7098 24.8277C33.1054 24.4359 33.1048 23.7964 32.7085 23.4053L28.1513 18.9082C27.796 18.5576 27.2233 18.5622 26.8737 18.9185C26.7351 19.0552 26.6797 19.1919 26.7074 19.3286C26.7421 19.4653 26.8182 19.5951 26.936 19.7181L29.9174 22.6397C30.0836 22.8037 30.2394 22.9507 30.3848 23.0805C30.5 23.1833 30.4113 23.3889 30.2577 23.3734C30.0799 23.3554 29.8972 23.3397 29.7096 23.3265C29.3287 23.2992 28.934 23.2855 28.5254 23.2855H15.8355C15.3741 23.2855 15 23.6596 15 24.121C15 24.5824 15.3741 24.9565 15.8355 24.9565H28.5254C28.934 24.9565 29.3322 24.9428 29.72 24.9154C29.9048 24.9024 30.0849 24.8871 30.2602 24.8694C30.416 24.8537 30.504 25.0599 30.3848 25.1615C30.2394 25.2913 30.0836 25.4383 29.9174 25.6023L26.9152 28.5443C26.7905 28.6674 26.7144 28.7972 26.6867 28.9339C26.659 29.0706 26.7109 29.2072 26.8425 29.3439C27.1977 29.7058 27.7795 29.7099 28.1398 29.3531L32.7098 24.8277Z"
+                                                                            fill="white" />
+                                                                    </svg>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+
+                                                        <div class="map-div mt-4">
+                                                            <img src="<?= BASE_URL ?>assets/images/modal_map.png" class="map-image" alt="">
+                                                        </div>
+
+                                                        <div class="amenities-section">
+
+                                                            <h3>Amenities Include</h3>
+
+                                                            <div class="amenities-list">
+                                                                <p><span><svg xmlns="http://www.w3.org/2000/svg" width="12" height="9"
+                                                                            viewBox="0 0 12 9" fill="none">
+                                                                            <path d="M0.75 4.75L4.25 8.25L11.25 0.75" stroke="#3B3731"
+                                                                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                                                        </svg></span> Grooming Table</p>
+                                                                <p><span><svg xmlns="http://www.w3.org/2000/svg" width="12" height="9"
+                                                                            viewBox="0 0 12 9" fill="none">
+                                                                            <path d="M0.75 4.75L4.25 8.25L11.25 0.75" stroke="#3B3731"
+                                                                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                                                        </svg></span> Bath</p>
+                                                                <p><span><svg xmlns="http://www.w3.org/2000/svg" width="12" height="9"
+                                                                            viewBox="0 0 12 9" fill="none">
+                                                                            <path d="M0.75 4.75L4.25 8.25L11.25 0.75" stroke="#3B3731"
+                                                                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                                                        </svg></span> Dryer</p>
+                                                                <p><span><svg xmlns="http://www.w3.org/2000/svg" width="12" height="9"
+                                                                            viewBox="0 0 12 9" fill="none">
+                                                                            <path d="M0.75 4.75L4.25 8.25L11.25 0.75" stroke="#3B3731"
+                                                                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                                                        </svg></span> Towels</p>
+                                                                <p><span><svg xmlns="http://www.w3.org/2000/svg" width="12" height="9"
+                                                                            viewBox="0 0 12 9" fill="none">
+                                                                            <path d="M0.75 4.75L4.25 8.25L11.25 0.75" stroke="#3B3731"
+                                                                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                                                        </svg></span> Waiting area</p>
+                                                                <p><span><svg xmlns="http://www.w3.org/2000/svg" width="12" height="9"
+                                                                            viewBox="0 0 12 9" fill="none">
+                                                                            <path d="M0.75 4.75L4.25 8.25L11.25 0.75" stroke="#3B3731"
+                                                                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin("round") />
+                                                                        </svg></span> Parking</p>
+                                                                <p><span>âœ”</span> Wi-Fi</p>
+                                                            </div>
+
+                                                            <p class="amenities-desc">
+                                                                Extra towels Â· Premium shampoos Â· Drying crates Â· Tool storage (where available).
+                                                            </p>
+
+                                                            <div class="d-flex align-items-center justify-content-center">
+                                                                <div class="access-info">
+                                                                    <h4>Access information</h4>
+                                                                    <p>
+                                                                        You'll receive the exact address and access instructions closer to your booking
+                                                                        time via email and in your booking details.
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+
+
+                                                        </div>
+
+                                                        <div class="modal-booking-next">
+
+                                                            <div class="modal-next-left">
+                                                                <h3>What happens next?</h3>
+
+                                                                <ul class="list-style-default">
+                                                                    <li>The groomer and space host have both been notified.</li>
+                                                                    <li>You'll receive the exact address and access instructions closer to your booking
+                                                                        time via email and in your booking details.</li>
+                                                                    <li>You can manage or cancel your bookings from your account.</li>
+                                                                </ul>
+                                                            </div>
+
+                                                            <div class="modal-next-right">
+                                                                <p class="modal-total">Total <span>£158.00</span></p>
+                                                            </div>
+
+                                                        </div>
+
+                                                        <div class="card-actions d-flex justify-content-center gap-20 mt-5">
+                                                            <a href="<?= BASE_URL ?>/my_bookings/change_space_booking.php" class="btn-outline medium-light-font text-center">Change Booking</a>
+                                                            <a href="<?= BASE_URL ?>messages_notification/messages.php" class="btn-green text-center medium-light-font">Message Host</a>
+                                                        </div>
+
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="booking-footer">
+                                            <div class="cancel-policy">
+                                                <a href="<?= BASE_URL ?>my_bookings/cancelled_bookings.php">Cancel Booking</a>
+                                                <p>Free cancellations up to 24 hours before appointment.</p>
+                                            </div>
+                                            <a href="<?= BASE_URL ?>profile_pets_preferences/company_information.php#tab-terms-conditions" class="view-policy">View cancellation policy</a>
+                                        </div>
+
+                                        <div class="help-text d-flex align-items-center justify-content-center gap-10 mt-5">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="34" height="28" viewBox="0 0 34 28" fill="none">
+                                                <path
+                                                    d="M3.08333 13.875C1.3875 13.875 0 12.4875 0 10.7917V3.08333C0 1.3875 1.3875 0 3.08333 0H15.4167C17.1125 0 18.5 1.3875 18.5 3.08333V10.7917C18.5 12.4875 17.1125 13.875 15.4167 13.875H12.3333V18.5L7.70833 13.875H3.08333ZM30.8333 23.125C32.5292 23.125 33.9167 21.7375 33.9167 20.0417V12.3333C33.9167 10.6375 32.5292 9.25 30.8333 9.25H21.5833V10.7917C21.5833 14.1833 18.8083 16.9583 15.4167 16.9583V20.0417C15.4167 21.7375 16.8042 23.125 18.5 23.125H21.5833V27.75L26.2083 23.125H30.8333Z"
+                                                    fill="#D8E8B7" />
+                                            </svg> Need help? Chat with <a class="view-policy" style="font-weight:600" href="#" data-open-chat>Fursgo Support</a>.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Up Coming Space Booking Modal  -->
+
+    <script src="<?= BASE_URL ?>/assets/js/common.js"></script>
+
+
 
     <?php bcAssets(); ?>
 
