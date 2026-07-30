@@ -116,7 +116,7 @@ aside.sidebar {
 }
 
 .sidebar.is-archived-view .filters {
-    display: none;
+    display: none !important;
 }
 
 .tab-wrapper {
