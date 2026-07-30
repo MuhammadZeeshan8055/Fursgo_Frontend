@@ -25,6 +25,11 @@
 
     let activeConversationId = null;
     let showingArchived = false;
+    let activeFilter = null;
+
+    const filterCheckSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="12" height="9" viewBox="0 0 12 9" fill="none">
+        <path d="M0.75 4.75L4.25 8.25L11.25 0.75" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>`;
 
     const lockedSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="21" viewBox="0 0 16 21" fill="none">
         <path d="M2 21C1.45 21 0.979333 20.8043 0.588 20.413C0.196666 20.0217 0.000666667 19.5507 0 19V9C0 8.45 0.196 7.97933 0.588 7.588C0.98 7.19667 1.45067 7.00067 2 7H3V5C3 3.61667 3.48767 2.43767 4.463 1.463C5.43833 0.488334 6.61733 0.000667349 8 6.82594e-07C9.38267 -0.000665984 10.562 0.487001 11.538 1.463C12.514 2.439 13.0013 3.618 13 5V7H14C14.55 7 15.021 7.196 15.413 7.588C15.805 7.98 16.0007 8.45067 16 9V19C16 19.55 15.8043 20.021 15.413 20.413C15.0217 20.805 14.5507 21.0007 14 21H2ZM2 19H14V9H2V19ZM8 16C8.55 16 9.021 15.8043 9.413 15.413C9.805 15.0217 10.0007 14.5507 10 14C9.99933 13.4493 9.80367 12.9787 9.413 12.588C9.02233 12.1973 8.55133 12.0013 8 12C7.44867 11.9987 6.978 12.1947 6.588 12.588C6.198 12.9813 6.002 13.452 6 14C5.998 14.548 6.194 15.019 6.588 15.413C6.982 15.807 7.45267 16.0027 8 16ZM5 7H11V5C11 4.16667 10.7083 3.45833 10.125 2.875C9.54167 2.29167 8.83333 2 8 2C7.16667 2 6.45833 2.29167 5.875 2.875C5.29167 3.45833 5 4.16667 5 5V7Z" fill="#D4D4D4" />
@@ -81,13 +86,82 @@
         return document.querySelector('.tablinks.active')?.dataset.tab || 'groomer-messages';
     }
 
+    function getProfileUrl(conversation) {
+        if (conversation.profileUrl) {
+            return conversation.profileUrl;
+        }
+
+        const base = config.baseUrl || '';
+        return conversation.list.badge === 'groomer'
+            ? `${base}profiles/groomer/groomer_profile.php`
+            : `${base}profiles/space/space_profile.php`;
+    }
+
+    function matchesActiveFilter(conversation) {
+        if (showingArchived || !activeFilter || activeFilter === 'most-recent') {
+            return true;
+        }
+
+        if (activeFilter === 'unread') {
+            return conversation.list.unread === true;
+        }
+
+        if (activeFilter === 'active-bookings') {
+            return conversation.locked !== true;
+        }
+
+        return true;
+    }
+
+    function sortConversations(list) {
+        const byActivity = (a, b) => (b.lastActivityAt || 0) - (a.lastActivityAt || 0);
+        const open = list.filter((conversation) => !conversation.locked).sort(byActivity);
+        const locked = list.filter((conversation) => conversation.locked).sort(byActivity);
+        return [...open, ...locked];
+    }
+
     function getVisibleConversations(tabId) {
-        return conversations.filter((conversation) => {
+        const filtered = conversations.filter((conversation) => {
             const matchesTab = conversation.tab === tabId;
             const matchesArchiveState = showingArchived
                 ? conversation.archived === true
                 : conversation.archived !== true;
-            return matchesTab && matchesArchiveState;
+            return matchesTab && matchesArchiveState && matchesActiveFilter(conversation);
+        });
+
+        return sortConversations(filtered);
+    }
+
+    function syncFilterButtons() {
+        document.querySelectorAll('.filter[data-filter]').forEach((filterEl) => {
+            const isActive = filterEl.dataset.filter === activeFilter;
+            filterEl.classList.toggle('active', isActive);
+
+            const existingCheck = filterEl.querySelector('svg');
+            if (isActive && !existingCheck) {
+                filterEl.insertAdjacentHTML('afterbegin', filterCheckSvg);
+            } else if (!isActive && existingCheck) {
+                existingCheck.remove();
+            }
+        });
+    }
+
+    function setActiveFilter(filterId) {
+        // Clicking the active filter again clears it (back to full list).
+        activeFilter = activeFilter === filterId ? null : filterId;
+        syncFilterButtons();
+        renderChatLists();
+        refreshVisibleChat();
+    }
+
+    function bindFilters() {
+        document.querySelectorAll('.filter[data-filter]').forEach((filterEl) => {
+            filterEl.addEventListener('click', () => {
+                if (showingArchived) {
+                    return;
+                }
+                setActiveFilter(filterEl.dataset.filter);
+            });
         });
     }
 
@@ -354,6 +428,7 @@
         const statusText = headerRoot.querySelector('.tag-and-name .light-color-font');
         const statusDot = headerRoot.querySelector('.tag-and-name circle');
         const archiveMenuLabel = headerRoot.querySelector('.archived-chat .simple-font');
+        const profileLink = headerRoot.querySelector('[data-profile-link]');
 
         headerRoot.querySelector('.rounded-image.large-size').src = list.image;
         headerRoot.querySelector('.profile-image-wrapper .top-left-svg').innerHTML = getBadgeSvg(list.badge);
@@ -368,6 +443,14 @@
         headerRoot.querySelector('.name-studio .dark-color-font').textContent = detail.displayName;
         headerRoot.querySelector('.name-studio .simple-light-font').textContent = detail.subtitle;
         headerRoot.querySelector('.simple-font').textContent = `Booking reference: ${detail.bookingReference}`;
+
+        if (profileLink) {
+            profileLink.href = getProfileUrl(conversation);
+            profileLink.setAttribute(
+                'aria-label',
+                list.badge === 'groomer' ? 'View groomer profile' : 'View space profile'
+            );
+        }
 
         if (archiveMenuLabel) {
             archiveMenuLabel.textContent = conversation.archived ? 'Unarchive Chat' : 'Archive Chat';
@@ -505,9 +588,11 @@
 
     function init() {
         updateSidebarMode();
+        syncFilterButtons();
         renderChatLists();
         bindComposerInteractions();
         bindMenus();
+        bindFilters();
         bindTabThemeColors();
 
         const initialConversation = getVisibleConversations('groomer-messages')[0];

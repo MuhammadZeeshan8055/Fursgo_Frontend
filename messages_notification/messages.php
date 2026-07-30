@@ -93,16 +93,13 @@
 
                                 <div data-tab-content="groomer-messages" class="tabcontent">
                                     <div class="filters d-flex align-items-center justify-content-center mt-4 gap-10">
-                                        <div class="filter active d-flex align-items-center gap-10">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="9" viewBox="0 0 12 9" fill="none">
-                                                <path d="M0.75 4.75L4.25 8.25L11.25 0.75" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                                            </svg>
+                                        <div class="filter cursor d-flex align-items-center gap-10" data-filter="unread">
                                             Unread
                                         </div>
-                                        <div class="filter d-flex align-items-center gap-10">
+                                        <div class="filter cursor d-flex align-items-center gap-10" data-filter="active-bookings">
                                             Active Bookings
                                         </div>
-                                        <div class="filter d-flex align-items-center gap-10">
+                                        <div class="filter cursor d-flex align-items-center gap-10" data-filter="most-recent">
                                             Most recent
                                         </div>
                                     </div>
@@ -1651,16 +1648,13 @@
                                 </div>
                                 <div data-tab-content="space-messages" class="tabcontent" style="display: none;">
                                     <div class="filters d-flex align-items-center justify-content-center mt-4 gap-10">
-                                        <div class="filter active d-flex align-items-center gap-10">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="9" viewBox="0 0 12 9" fill="none">
-                                                <path d="M0.75 4.75L4.25 8.25L11.25 0.75" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                                            </svg>
+                                        <div class="filter cursor d-flex align-items-center gap-10" data-filter="unread">
                                             Unread
                                         </div>
-                                        <div class="filter d-flex align-items-center gap-10">
+                                        <div class="filter cursor d-flex align-items-center gap-10" data-filter="active-bookings">
                                             Active Bookings
                                         </div>
-                                        <div class="filter d-flex align-items-center gap-10">
+                                        <div class="filter cursor d-flex align-items-center gap-10" data-filter="most-recent">
                                             Most recent
                                         </div>
                                     </div>
@@ -3242,11 +3236,11 @@
                                 </div>
                                 <div class="d-flex align-items-center gap-10">
                                     <p class="simple-font">Booking reference: FG-10294</p>
-                                    <div class="arrow-svg">
+                                    <a href="<?= BASE_URL ?>profiles/groomer/groomer_profile.php" class="arrow-svg cursor" data-profile-link aria-label="View profile">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="13" viewBox="0 0 20 13" fill="none">
                                             <path d="M19.4955 5.3238C19.8911 5.71559 19.8906 6.35506 19.4942 6.74615L14.4257 11.7478C14.0359 12.1325 13.4078 12.1274 13.0242 11.7365C12.8723 11.5866 12.8115 11.4367 12.8419 11.2868C12.8799 11.1368 12.9634 10.9944 13.0926 10.8595L16.3629 7.65481C16.5452 7.47489 16.7161 7.31372 16.8756 7.17129C17.0019 7.05853 16.9047 6.83297 16.7362 6.85003C16.5411 6.86979 16.3407 6.88693 16.135 6.90143C15.7172 6.93141 15.2842 6.94641 14.836 6.94641H0.916421C0.410296 6.94641 0 6.53611 0 6.02998C0 5.52386 0.410296 5.11356 0.916422 5.11356H14.836C15.2842 5.11356 15.721 5.12855 16.1464 5.15854C16.3491 5.17283 16.5466 5.18967 16.7389 5.20906C16.9098 5.22629 17.0063 5.00006 16.8756 4.88867C16.7161 4.74624 16.5452 4.58507 16.3629 4.40516L13.0698 1.17801C12.933 1.04308 12.8495 0.900646 12.8191 0.75072C12.7887 0.600795 12.8457 0.450869 12.99 0.300943C13.3781 -0.0943801 14.0165 -0.101805 14.4101 0.287996L19.4955 5.3238Z" fill="white" />
                                         </svg>
-                                    </div>
+                                    </a>
                                     <div class="dots-svg cursor">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="5" viewBox="0 0 25 5" fill="none">
                                             <circle cx="2.5" cy="2.5" r="2.5" fill="#3B3731" />
@@ -3467,6 +3461,7 @@
                 tab: 'groomer-messages',
                 locked: false,
                 archived: false,
+                lastActivityAt: 600,
                 list: {
                     name: 'The Garden Grooming Spot',
                     subtitle: 'Hosted by Chloe D.',
@@ -3501,6 +3496,7 @@
                 tab: 'groomer-messages',
                 locked: false,
                 archived: false,
+                lastActivityAt: 500,
                 list: {
                     name: 'Sarah W.',
                     subtitle: 'Sarah’s Grooming Studio',
@@ -3539,6 +3535,7 @@
                 tab: 'groomer-messages',
                 locked: false,
                 archived: false,
+                lastActivityAt: 400,
                 list: {
                     name: 'Furs & Co. Studio',
                     subtitle: 'Hosted by Dev É.',
@@ -3573,6 +3570,7 @@
                 tab: 'groomer-messages',
                 locked: false,
                 archived: false,
+                lastActivityAt: 300,
                 list: {
                     name: 'Katie Z.',
                     subtitle: 'FluffLab',
@@ -3606,6 +3604,7 @@
                 tab: 'groomer-messages',
                 locked: true,
                 archived: false,
+                lastActivityAt: 200,
                 list: {
                     name: 'Paws & Bubbles',
                     subtitle: 'Hosted by Patrick B.',
@@ -3643,6 +3642,7 @@
                 tab: 'groomer-messages',
                 locked: true,
                 archived: false,
+                lastActivityAt: 100,
                 list: {
                     name: 'Cathy P.',
                     subtitle: 'Wags & Wheels',
@@ -3677,6 +3677,7 @@
                 tab: 'space-messages',
                 locked: false,
                 archived: false,
+                lastActivityAt: 550,
                 list: {
                     name: 'The Garden Loft',
                     subtitle: 'Hosted by Chloe D.',
@@ -3710,6 +3711,7 @@
                 tab: 'space-messages',
                 locked: false,
                 archived: false,
+                lastActivityAt: 450,
                 list: {
                     name: 'Studio Suite',
                     subtitle: 'Hosted by Dev É.',
@@ -3743,6 +3745,7 @@
                 tab: 'space-messages',
                 locked: true,
                 archived: false,
+                lastActivityAt: 150,
                 list: {
                     name: 'Paws Venue',
                     subtitle: 'Hosted by Patrick B.',
@@ -3776,6 +3779,7 @@
                 tab: 'space-messages',
                 locked: true,
                 archived: false,
+                lastActivityAt: 50,
                 list: {
                     name: 'Wheels Workshop',
                     subtitle: 'Hosted by Cathy P.',

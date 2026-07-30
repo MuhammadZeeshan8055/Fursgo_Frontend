@@ -212,6 +212,8 @@ aside.sidebar {
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+    cursor: pointer;
+    user-select: none;
 }
 
 .filter.active {
@@ -372,6 +374,9 @@ p.messages-count {
     align-items: center;
     justify-content: center;
     line-height: 1;
+    text-decoration: none;
+    flex-shrink: 0;
+    color: inherit;
 }
 
 /* =====================
