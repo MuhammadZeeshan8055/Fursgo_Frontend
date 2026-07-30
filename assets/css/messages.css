@@ -201,13 +201,27 @@ aside.sidebar {
     height: auto;
     border-radius: 10px;
     padding: 20px;
+    transition: background-color 0.2s ease;
 }
 
 .chat-card.unread {
     background: #F8F8F8;
 }
 
+.chat-card.is-clickable:hover,
+.chat-card.is-clickable:focus-visible {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    background: #F8F8F8;
+    outline: none;
+}
+
 .chat-card.locked {
+    opacity: 0.4;
+}
+
+.chat-card.locked.selected {
     opacity: 0.4;
 }
 
@@ -299,7 +313,6 @@ p.messages-count {
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-    width: 100px;
 }
 
 .tag.groomer {
@@ -412,6 +425,12 @@ p.messages-count {
     flex: 1;
 }
 
+.message-input.locked {
+    min-height: 74px;
+    display: flex;
+    align-items: center;
+}
+
 .message-input textarea {
     width: 100%;
     resize: none;
@@ -479,8 +498,14 @@ p.messages-count {
     margin-left: auto;
 }
 
-.overlay-text {
-    padding: 12px 0;
+.textarea-wrapper p {
+    margin-bottom: 4px;
+}
+
+.textarea-wrapper span {
+    display: block;
+    color: #6F6A64;
+    line-height: 1.5;
 }
 
 .footer {

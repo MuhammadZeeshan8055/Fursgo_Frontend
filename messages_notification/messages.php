@@ -3382,7 +3382,7 @@
                                     border-color: var(--active-bg);;
                                 }
                             </style>
-                            <div class="chat-wrapper mb-4">
+                            <div class="chat-wrapper mb-5">
                                 <div class="chat-box">
                                     <div class="preview-row" id="previewRow"></div>
                                     <div class="message-row">
@@ -3434,7 +3434,7 @@
                                     </div>
                                 </div>
 
-                                <div class="footer-note simple-light-font mt-4 mb-4">
+                                <div class="footer-note simple-light-font mt-4 mb-1">
                                     Chats remain open for 3 days after a booking ends.
                                 </div>
                             </div>
@@ -3453,125 +3453,351 @@
 
     <script src="<?= BASE_URL ?>/assets/js/common.js"></script>
     <script>
-        const textarea = document.getElementById('message');
-        const count = document.getElementById('count');
-        const sendBtn = document.getElementById('sendBtn');
+        const baseUrl = '<?= BASE_URL ?>';
 
-        textarea.addEventListener('input', () => {
-            count.textContent = textarea.value.length;
-
-            // auto-grow textarea
-            textarea.style.height = 'auto';
-            textarea.style.height = textarea.scrollHeight + 'px';
-
-            // enable / disable send button
-            if (textarea.value.trim().length > 0) {
-                sendBtn.classList.add('active');
-            } else {
-                sendBtn.classList.remove('active');
+        // Single source of truth for the page data. In the future this array can
+        // come straight from PHP/DB without changing the rendering logic.
+        const conversations = [
+            {
+                id: 'garden-grooming-spot',
+                tab: 'groomer-messages',
+                locked: false,
+                list: {
+                    name: 'The Garden Grooming Spot',
+                    subtitle: 'Hosted by Chloe D.',
+                    preview: 'Hi, just a quick reminder abou...',
+                    time: '10m',
+                    count: 2,
+                    image: `${baseUrl}/assets/images/message_profile_1.png`,
+                    badge: 'space',
+                    unread: true,
+                    cardClass: 'mt-4',
+                    dividerBefore: false
+                },
+                detail: {
+                    tag: 'Mobile Studio',
+                    tagClass: 'groomer',
+                    availability: 'Available',
+                    availabilityColor: '#C9DDA0',
+                    bookingReference: 'FG-10218',
+                    displayName: 'The Garden Grooming Spot',
+                    subtitle: 'Hosted by Chloe D.',
+                    footerNote: 'Chats remain open for 3 days after a booking ends.',
+                    messages: [
+                        { type: 'received', html: 'Hi! Just a quick reminder about tomorrow\'s appointment for Milo.', time: '10:00' },
+                        { type: 'sent', html: 'Thanks Chloe, we\'ll be ready for you.', time: '10:05' },
+                        { type: 'received', html: 'Perfect. Please keep him inside if it\'s raining when I arrive.', time: '10:06' }
+                    ],
+                    quickReplies: ['Thanks!', 'See you tomorrow!']
+                }
+            },
+            {
+                id: 'sarah-home-visits',
+                tab: 'groomer-messages',
+                locked: false,
+                list: {
+                    name: 'Sarah W.',
+                    subtitle: 'Sarah’s Grooming Studio',
+                    preview: 'Thanks for booking! I’m looki...',
+                    time: '12:30',
+                    count: 3,
+                    image: `${baseUrl}/assets/images/groomer-profile.png`,
+                    badge: 'groomer',
+                    unread: true,
+                    cardClass: 'mt-4',
+                    dividerBefore: false
+                },
+                detail: {
+                    tag: 'Home Visits',
+                    tagClass: 'groomer',
+                    availability: 'Available',
+                    availabilityColor: '#C9DDA0',
+                    bookingReference: 'FG-10294',
+                    displayName: 'Sarah W.',
+                    subtitle: 'Sarah’s Grooming Studio',
+                    footerNote: 'Chats remain open for 3 days after a booking ends.',
+                    messages: [
+                        { type: 'received', html: 'Hi Lorem! Thanks for booking 😊<br>I’m looking forward to meeting Bella tomorrow.', time: '12:30' },
+                        { type: 'sent', html: 'Hi Sarah! Thanks so much - Bella can be a bit nervous at first, but she usually settles quickly.', time: '12:35' },
+                        { type: 'received', html: 'That’s no problem at all. I’ll take things slow with her.<br>Does she have any sensitivities I should be aware of?', time: '12:40' },
+                        { type: 'sent', html: 'She’s a little sensitive around her paws, but otherwise she’s fine.', time: '12:45' },
+                        { type: 'received', html: 'Got it, thank you! I’ll be gentle when trimming her nails.<br>I’ll arrive about 10 minutes early to set up.', time: '12:50' },
+                        { type: 'sent', html: 'Perfect - there’s parking right outside the house.', time: 'Seen by Sarah W. at 12:55' },
+                        { type: 'typing', html: 'Sarah W is typing ...', time: '12:56' }
+                    ],
+                    quickReplies: ['Thank you!', 'See you soon!']
+                }
+            },
+            {
+                id: 'furs-and-co',
+                tab: 'groomer-messages',
+                locked: false,
+                list: {
+                    name: 'Furs & Co. Studio',
+                    subtitle: 'Hosted by Dev É.',
+                    preview: 'Just confirming our booking f...',
+                    time: '08:30',
+                    count: 0,
+                    image: `${baseUrl}/assets/images/space_card1.png`,
+                    badge: 'space',
+                    unread: false,
+                    cardClass: 'mt-4',
+                    dividerBefore: false
+                },
+                detail: {
+                    tag: 'Studio Visit',
+                    tagClass: 'groomer',
+                    availability: 'Available',
+                    availabilityColor: '#C9DDA0',
+                    bookingReference: 'FG-10311',
+                    displayName: 'Furs & Co. Studio',
+                    subtitle: 'Hosted by Dev É.',
+                    footerNote: 'Chats remain open for 3 days after a booking ends.',
+                    messages: [
+                        { type: 'received', html: 'Just confirming our booking for Friday morning.', time: '08:30' },
+                        { type: 'sent', html: 'Yes, Friday morning still works for us.', time: '08:34' },
+                        { type: 'received', html: 'Amazing. Please arrive 5 minutes early so we can check in your pet.', time: '08:36' }
+                    ],
+                    quickReplies: ['Sounds good', 'We’ll be there']
+                }
+            },
+            {
+                id: 'katie-flufflab',
+                tab: 'groomer-messages',
+                locked: false,
+                list: {
+                    name: 'Katie Z.',
+                    subtitle: 'FluffLab',
+                    preview: 'Your booking is confirmed for...',
+                    time: 'Thurs',
+                    count: 0,
+                    image: `${baseUrl}/assets/images/card3.png`,
+                    badge: 'groomer',
+                    unread: false,
+                    cardClass: '',
+                    dividerBefore: true
+                },
+                detail: {
+                    tag: 'Day Care',
+                    tagClass: 'groomer',
+                    availability: 'Available',
+                    availabilityColor: '#C9DDA0',
+                    bookingReference: 'FG-10342',
+                    displayName: 'Katie Z.',
+                    subtitle: 'FluffLab',
+                    footerNote: 'Chats remain open for 3 days after a booking ends.',
+                    messages: [
+                        { type: 'received', html: 'Your booking is confirmed for Thursday afternoon.', time: 'Thurs' },
+                        { type: 'sent', html: 'Perfect, thank you!', time: 'Thurs' }
+                    ],
+                    quickReplies: ['Thank you!', 'See you then']
+                }
+            },
+            {
+                id: 'paws-bubbles',
+                tab: 'groomer-messages',
+                locked: true,
+                list: {
+                    name: 'Paws & Bubbles',
+                    subtitle: 'Hosted by Patrick B.',
+                    preview: 'Your feedback helps a lot - th...',
+                    time: '31/02',
+                    count: 0,
+                    image: `${baseUrl}/assets/images/space_card2.png`,
+                    badge: 'space',
+                    unread: false,
+                    cardClass: '',
+                    dividerBefore: true
+                },
+                detail: {
+                    tag: 'Home Visits',
+                    tagClass: '',
+                    availability: 'Unavailable',
+                    availabilityColor: '#D4D4D4',
+                    bookingReference: 'FG-10294',
+                    displayName: 'Paws & Bubbles',
+                    subtitle: 'Hosted by Patrick B.',
+                    footerNote: '',
+                    messages: [
+                        { type: 'received', html: 'Hi Lorem! Thanks for booking 😊<br>I’m looking forward to meeting Bella tomorrow.', time: '12:30' },
+                        { type: 'sent', html: 'Hi Patrick! Bella can be a bit nervous at first, but she usually settles quickly.', time: '12:35' },
+                        { type: 'received', html: 'That’s no problem at all. I’ll take things slow with her.<br>Does she have any sensitivities I should be aware of?', time: '12:40' },
+                        { type: 'sent', html: 'She’s a little sensitive around her paws, but otherwise she’s fine.', time: '12:45' },
+                        { type: 'received', html: 'Got it, thank you! I’ll be gentle when trimming her nails.<br>I’ll arrive about 10 minutes early to set up.', time: '12:50' },
+                        { type: 'sent', html: 'Perfect - there’s parking right outside the house.', time: 'Seen by Patrick B. at 12:55' }
+                    ],
+                    quickReplies: []
+                }
+            },
+            {
+                id: 'cathy-wags',
+                tab: 'groomer-messages',
+                locked: true,
+                list: {
+                    name: 'Cathy P.',
+                    subtitle: 'Wags & Wheels',
+                    preview: 'Is she comfortable with dryer...',
+                    time: '07/10',
+                    count: 0,
+                    image: `${baseUrl}/assets/images/card4.png`,
+                    badge: 'groomer',
+                    unread: false,
+                    cardClass: '',
+                    dividerBefore: true
+                },
+                detail: {
+                    tag: 'Home Visits',
+                    tagClass: '',
+                    availability: 'Unavailable',
+                    availabilityColor: '#D4D4D4',
+                    bookingReference: 'FG-10408',
+                    displayName: 'Cathy P.',
+                    subtitle: 'Wags & Wheels',
+                    footerNote: '',
+                    messages: [
+                        { type: 'received', html: 'Is she comfortable with dryer noise after bath time?', time: '07/10' },
+                        { type: 'sent', html: 'Yes, but she prefers the lower setting.', time: '07/10' },
+                        { type: 'received', html: 'Perfect, thanks for letting me know.', time: '07/10' }
+                    ],
+                    quickReplies: []
+                }
+            },
+            {
+                id: 'space-loft',
+                tab: 'space-messages',
+                locked: false,
+                list: {
+                    name: 'The Garden Loft',
+                    subtitle: 'Hosted by Chloe D.',
+                    preview: 'Your booking space is ready f...',
+                    time: '09:15',
+                    count: 1,
+                    image: `${baseUrl}/assets/images/message_profile_1.png`,
+                    badge: 'space',
+                    unread: true,
+                    cardClass: 'mt-4',
+                    dividerBefore: false
+                },
+                detail: {
+                    tag: 'Private Space',
+                    tagClass: 'groomer',
+                    availability: 'Available',
+                    availabilityColor: '#C9DDA0',
+                    bookingReference: 'FG-20115',
+                    displayName: 'The Garden Loft',
+                    subtitle: 'Hosted by Chloe D.',
+                    footerNote: 'Chats remain open for 3 days after a booking ends.',
+                    messages: [
+                        { type: 'received', html: 'Your booking space is ready for next Tuesday.', time: '09:15' },
+                        { type: 'sent', html: 'Perfect, thank you.', time: '09:18' }
+                    ],
+                    quickReplies: ['Thank you!', 'See you then']
+                }
+            },
+            {
+                id: 'studio-suite',
+                tab: 'space-messages',
+                locked: false,
+                list: {
+                    name: 'Studio Suite',
+                    subtitle: 'Hosted by Dev É.',
+                    preview: 'Parking instructions for your...',
+                    time: '11:05',
+                    count: 0,
+                    image: `${baseUrl}/assets/images/space_card1.png`,
+                    badge: 'space',
+                    unread: false,
+                    cardClass: 'mt-4',
+                    dividerBefore: false
+                },
+                detail: {
+                    tag: 'Indoor Space',
+                    tagClass: 'groomer',
+                    availability: 'Available',
+                    availabilityColor: '#C9DDA0',
+                    bookingReference: 'FG-20188',
+                    displayName: 'Studio Suite',
+                    subtitle: 'Hosted by Dev É.',
+                    footerNote: 'Chats remain open for 3 days after a booking ends.',
+                    messages: [
+                        { type: 'received', html: 'Parking instructions for your booking are attached.', time: '11:05' },
+                        { type: 'sent', html: 'Great, I’ve got them.', time: '11:12' }
+                    ],
+                    quickReplies: ['Thanks!', 'All set']
+                }
+            },
+            {
+                id: 'paws-venue',
+                tab: 'space-messages',
+                locked: true,
+                list: {
+                    name: 'Paws Venue',
+                    subtitle: 'Hosted by Patrick B.',
+                    preview: 'Thanks again for using our sp...',
+                    time: '02/06',
+                    count: 0,
+                    image: `${baseUrl}/assets/images/space_card2.png`,
+                    badge: 'space',
+                    unread: false,
+                    cardClass: '',
+                    dividerBefore: true
+                },
+                detail: {
+                    tag: 'Private Space',
+                    tagClass: '',
+                    availability: 'Unavailable',
+                    availabilityColor: '#D4D4D4',
+                    bookingReference: 'FG-20231',
+                    displayName: 'Paws Venue',
+                    subtitle: 'Hosted by Patrick B.',
+                    footerNote: '',
+                    messages: [
+                        { type: 'received', html: 'Thanks again for using our space last week.', time: '02/06' },
+                        { type: 'sent', html: 'It worked really well for us.', time: '02/06' }
+                    ],
+                    quickReplies: []
+                }
+            },
+            {
+                id: 'wheels-workshop',
+                tab: 'space-messages',
+                locked: true,
+                list: {
+                    name: 'Wheels Workshop',
+                    subtitle: 'Hosted by Cathy P.',
+                    preview: 'Hope the setup worked well fo...',
+                    time: '07/10',
+                    count: 0,
+                    image: `${baseUrl}/assets/images/card4.png`,
+                    badge: 'groomer',
+                    unread: false,
+                    cardClass: '',
+                    dividerBefore: true
+                },
+                detail: {
+                    tag: 'Workshop Space',
+                    tagClass: '',
+                    availability: 'Unavailable',
+                    availabilityColor: '#D4D4D4',
+                    bookingReference: 'FG-20244',
+                    displayName: 'Wheels Workshop',
+                    subtitle: 'Hosted by Cathy P.',
+                    footerNote: '',
+                    messages: [
+                        { type: 'received', html: 'Hope the setup worked well for your visit.', time: '07/10' },
+                        { type: 'sent', html: 'It did, thank you again.', time: '07/10' }
+                    ],
+                    quickReplies: []
+                }
             }
-        });
+        ];
 
-        sendBtn.addEventListener('click', () => {
-            if (!textarea.value.trim()) return;
-
-            alert('Message sent:\n\n' + textarea.value);
-            textarea.value = '';
-            count.textContent = 0;
-            sendBtn.classList.remove('active');
-            textarea.style.height = 'auto';
-        });
+        window.messagesPageConfig = {
+            baseUrl,
+            conversations
+        };
     </script>
-    <script>
-        const messagesDiv = document.querySelector('.messages');
-        if (messagesDiv) {
-            // Smooth scroll to bottom
-            messagesDiv.scrollTo({
-                top: messagesDiv.scrollHeight,
-                behavior: 'smooth'
-            });
-        } else {
-            alert('messagesDiv not found!');
-        }
-    </script>
-    <script>
-        const settingsBtn = document.querySelector('.setting');
-        const archived = document.querySelector('.archived');
-
-        settingsBtn.addEventListener('click', () => {
-            archived.classList.toggle('show');
-        });
-
-        const dotsBtn = document.querySelector('.dots-svg');
-        const archivedChat = document.querySelector('.archived-chat');
-
-        dotsBtn.addEventListener('click', () => {
-            archivedChat.classList.toggle('show');
-        });
-
-        // color differentiation
-        document.querySelectorAll('.tablinks').forEach(tab => {
-            tab.addEventListener('click', function() {
-
-                const theme = {
-                    'groomer-messages': {
-                        active: '#FFC97A',
-                        bg: 'rgba(255, 201, 122, 0.13)'
-                    },
-                    'space-messages': {
-                        active: '#FFA899',
-                        bg: 'rgba(255, 168, 153, 0.13)'
-                    }
-                };
-
-                const selected = theme[this.dataset.tab];
-
-                document.documentElement.style.setProperty('--active-bg', selected.active);
-                document.documentElement.style.setProperty('--active-bg-light', selected.bg);
-            });
-        });
-
-        // preview image attachment 
-        const previewRow = document.getElementById('previewRow');
-
-        function handleFiles(files) {
-            Array.from(files).forEach(file => {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    const item = document.createElement('div');
-                    item.className = 'preview-item';
-
-                    let preview;
-                    if (file.type.startsWith('image/')) {
-                        preview = document.createElement('img');
-                        preview.src = e.target.result;
-                    } else {
-                        // Non-image file: show icon + filename
-                        preview = document.createElement('div');
-                        preview.style.cssText = 'width:60px;height:60px;border-radius:8px;background:#f0f0f0;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:9px;color:#555;padding:4px;text-align:center;word-break:break-all;box-sizing:border-box;';
-                        preview.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-3-3v6M4 4h16v16H4z"/></svg>${file.name.slice(0, 12)}`;
-                    }
-
-                    const btn = document.createElement('span');
-                    btn.className = 'remove-btn';
-                    btn.innerHTML = '&#x2715;';
-                    btn.addEventListener('click', () => item.remove());
-
-                    item.appendChild(preview);
-                    item.appendChild(btn);
-                    previewRow.appendChild(item);
-                };
-                reader.readAsDataURL(file);
-            });
-        }
-
-        document.querySelectorAll('.actions-row input[type="file"]').forEach(input => {
-            input.addEventListener('change', function() {
-                handleFiles(this.files);
-                this.value = '';
-            });
-        });
-    </script>
+    <script src="<?= BASE_URL ?>/assets/js/messages-page.js"></script>
 </body>
 
 </html>

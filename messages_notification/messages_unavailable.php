@@ -605,10 +605,8 @@
                                         <div class="message-input locked">
                                             <div class="textarea-wrapper">
                                                 <!-- <textarea disabled></textarea> -->
-                                                <div class="overlay-text">
-                                                    <p class="normal-font-bold">Chat Unavailable</p><br>
-                                                    <span class="normal-font-weight"> This booking has been completed, and the 3-day messaging window has now passed.</span>
-                                                </div>
+                                                <p class="normal-font-bold">Chat Unavailable</p><br>
+                                                <span class="normal-font-weight"> This booking has been completed, and the 3-day messaging window has now passed.</span>
                                             </div>
                                         </div>
 
@@ -667,30 +665,32 @@
         const count = document.getElementById('count');
         const sendBtn = document.getElementById('sendBtn');
 
-        textarea.addEventListener('input', () => {
-            count.textContent = textarea.value.length;
+        if (textarea && count && sendBtn) {
+            textarea.addEventListener('input', () => {
+                count.textContent = textarea.value.length;
 
-            // auto-grow textarea
-            textarea.style.height = 'auto';
-            textarea.style.height = textarea.scrollHeight + 'px';
+                // auto-grow textarea
+                textarea.style.height = 'auto';
+                textarea.style.height = textarea.scrollHeight + 'px';
 
-            // enable / disable send button
-            if (textarea.value.trim().length > 0) {
-                sendBtn.classList.add('active');
-            } else {
+                // enable / disable send button
+                if (textarea.value.trim().length > 0) {
+                    sendBtn.classList.add('active');
+                } else {
+                    sendBtn.classList.remove('active');
+                }
+            });
+
+            sendBtn.addEventListener('click', () => {
+                if (!textarea.value.trim()) return;
+
+                alert('Message sent:\n\n' + textarea.value);
+                textarea.value = '';
+                count.textContent = 0;
                 sendBtn.classList.remove('active');
-            }
-        });
-
-        sendBtn.addEventListener('click', () => {
-            if (!textarea.value.trim()) return;
-
-            alert('Message sent:\n\n' + textarea.value);
-            textarea.value = '';
-            count.textContent = 0;
-            sendBtn.classList.remove('active');
-            textarea.style.height = 'auto';
-        });
+                textarea.style.height = 'auto';
+            });
+        }
     </script>
     <script>
         const messagesDiv = document.querySelector('.messages');
@@ -738,6 +738,32 @@
 
                 document.documentElement.style.setProperty('--active-bg', selected.active);
                 document.documentElement.style.setProperty('--active-bg-light', selected.bg);
+            });
+        });
+
+        const chatRoutes = {
+            default: '<?= BASE_URL ?>messages_notification/messages.php',
+            locked: '<?= BASE_URL ?>messages_notification/messages_unavailable.php'
+        };
+
+        document.querySelectorAll('.chat-card').forEach(card => {
+            const isLocked = card.classList.contains('locked');
+            const targetHref = isLocked ? chatRoutes.locked : chatRoutes.default;
+
+            card.classList.add('is-clickable');
+            card.setAttribute('role', 'link');
+            card.setAttribute('tabindex', '0');
+
+            const openChat = () => {
+                window.location.href = targetHref;
+            };
+
+            card.addEventListener('click', openChat);
+            card.addEventListener('keydown', event => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    openChat();
+                }
             });
         });
     </script>
