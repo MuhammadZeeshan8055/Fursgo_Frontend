@@ -9,6 +9,7 @@
     const messagesRoot = document.querySelector('.messages');
     const chatBox = document.querySelector('.chat-box');
     const footerNote = document.querySelector('.footer-note');
+    const chatPanel = document.querySelector('.chat-width');
     const sidebar = document.querySelector('.sidebar');
     const messagesTitle = document.querySelector('.messages-title');
     const settingsArchived = document.querySelector('.settings-archived');
@@ -378,10 +379,20 @@
         selectedCard.classList.add('selected');
     }
 
+    function playChatBodyAnimation() {
+        if (!chatPanel) return;
+
+        chatPanel.classList.remove('is-switching');
+        // Force a reflow so the animation can restart on each chat click.
+        void chatPanel.offsetWidth;
+        chatPanel.classList.add('is-switching');
+    }
+
     function renderChat(conversationId) {
         const conversation = getConversationById(conversationId);
         if (!conversation) return;
 
+        const isSameChat = activeConversationId === conversationId;
         const screenDetail = {
             ...conversation.detail,
             locked: conversation.locked
@@ -397,6 +408,10 @@
         renderHeader(conversation);
         renderMessages(screenDetail);
         renderComposer(screenDetail);
+
+        if (!isSameChat) {
+            playChatBodyAnimation();
+        }
     }
 
     function bindConversationCards() {

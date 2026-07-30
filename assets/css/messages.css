@@ -313,6 +313,27 @@ p.messages-count {
     flex-direction: column;
 }
 
+.chat-width.is-switching {
+    animation: chatBodyIn 0.28s ease;
+}
+
+@keyframes chatBodyIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .chat-width.is-switching {
+        animation: none;
+    }
+}
+
 .chat-header {
     border-radius: 135px;
     border: 1px solid rgba(255, 201, 122, 0.20);
