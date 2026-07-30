@@ -9,6 +9,10 @@
     const messagesRoot = document.querySelector('.messages');
     const chatBox = document.querySelector('.chat-box');
     const footerNote = document.querySelector('.footer-note');
+    const sidebar = document.querySelector('.sidebar');
+    const messagesTitle = document.querySelector('.messages-title');
+    const settingsArchived = document.querySelector('.settings-archived');
+    const exitArchivedBtn = document.querySelector('.exit-archived');
     const chatListsByTab = {
         'groomer-messages': document.querySelector('[data-tab-content="groomer-messages"] .chat-list'),
         'space-messages': document.querySelector('[data-tab-content="space-messages"] .chat-list')
@@ -17,6 +21,9 @@
     if (!headerRoot || !messagesRoot || !chatBox || !footerNote) {
         return;
     }
+
+    let activeConversationId = null;
+    let showingArchived = false;
 
     const lockedSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="21" viewBox="0 0 16 21" fill="none">
         <path d="M2 21C1.45 21 0.979333 20.8043 0.588 20.413C0.196666 20.0217 0.000666667 19.5507 0 19V9C0 8.45 0.196 7.97933 0.588 7.588C0.98 7.19667 1.45067 7.00067 2 7H3V5C3 3.61667 3.48767 2.43767 4.463 1.463C5.43833 0.488334 6.61733 0.000667349 8 6.82594e-07C9.38267 -0.000665984 10.562 0.487001 11.538 1.463C12.514 2.439 13.0013 3.618 13 5V7H14C14.55 7 15.021 7.196 15.413 7.588C15.805 7.98 16.0007 8.45067 16 9V19C16 19.55 15.8043 20.021 15.413 20.413C15.0217 20.805 14.5507 21.0007 14 21H2ZM2 19H14V9H2V19ZM8 16C8.55 16 9.021 15.8043 9.413 15.413C9.805 15.0217 10.0007 14.5507 10 14C9.99933 13.4493 9.80367 12.9787 9.413 12.588C9.02233 12.1973 8.55133 12.0013 8 12C7.44867 11.9987 6.978 12.1947 6.588 12.588C6.198 12.9813 6.002 13.452 6 14C5.998 14.548 6.194 15.019 6.588 15.413C6.982 15.807 7.45267 16.0027 8 16ZM5 7H11V5C11 4.16667 10.7083 3.45833 10.125 2.875C9.54167 2.29167 8.83333 2 8 2C7.16667 2 6.45833 2.29167 5.875 2.875C5.29167 3.45833 5 4.16667 5 5V7Z" fill="#D4D4D4" />
@@ -69,8 +76,18 @@
         return conversations.find((conversation) => conversation.id === conversationId);
     }
 
-    function getConversationsByTab(tabId) {
-        return conversations.filter((conversation) => conversation.tab === tabId);
+    function getActiveTabId() {
+        return document.querySelector('.tablinks.active')?.dataset.tab || 'groomer-messages';
+    }
+
+    function getVisibleConversations(tabId) {
+        return conversations.filter((conversation) => {
+            const matchesTab = conversation.tab === tabId;
+            const matchesArchiveState = showingArchived
+                ? conversation.archived === true
+                : conversation.archived !== true;
+            return matchesTab && matchesArchiveState;
+        });
     }
 
     function renderChatListCard(conversation) {
@@ -107,13 +124,111 @@
         `;
     }
 
+    function renderEmptyListMessage() {
+        return `
+            <div class="chat-card d-flex align-items-center justify-content-center mt-4">
+                <p class="simple-light-font">
+                    ${showingArchived ? 'No archived chats yet.' : 'No chats to show.'}
+                </p>
+            </div>
+        `;
+    }
+
     function renderChatLists() {
         Object.entries(chatListsByTab).forEach(([tabId, listRoot]) => {
             if (!listRoot) return;
-            listRoot.innerHTML = getConversationsByTab(tabId)
-                .map((conversation) => renderChatListCard(conversation))
-                .join('');
+
+            const tabConversations = getVisibleConversations(tabId);
+            listRoot.innerHTML = tabConversations.length
+                ? tabConversations.map((conversation) => renderChatListCard(conversation)).join('')
+                : renderEmptyListMessage();
         });
+
+        bindConversationCards();
+    }
+
+    function refreshVisibleChat() {
+        const visible = getVisibleConversations(getActiveTabId());
+        if (visible.length) {
+            const stillVisible = visible.some((conversation) => conversation.id === activeConversationId);
+            renderChat(stillVisible ? activeConversationId : visible[0].id);
+            return;
+        }
+
+        activeConversationId = null;
+        messagesRoot.innerHTML = '';
+        chatBox.innerHTML = '';
+        footerNote.style.display = 'none';
+    }
+
+    function updateSidebarMode() {
+        if (!sidebar || !messagesTitle) return;
+
+        sidebar.classList.toggle('is-archived-view', showingArchived);
+        messagesTitle.textContent = showingArchived ? 'Archived Messages' : 'Messages';
+
+        if (settingsArchived) {
+            settingsArchived.hidden = showingArchived;
+        }
+
+        if (exitArchivedBtn) {
+            exitArchivedBtn.hidden = !showingArchived;
+        }
+    }
+
+    function openArchivedView() {
+        showingArchived = true;
+        document.querySelector('.archived')?.classList.remove('show');
+        updateSidebarMode();
+        renderChatLists();
+        refreshVisibleChat();
+    }
+
+    function closeArchivedView() {
+        showingArchived = false;
+        updateSidebarMode();
+        renderChatLists();
+        refreshVisibleChat();
+    }
+
+    function archiveActiveChat() {
+        const conversation = getConversationById(activeConversationId);
+        const menu = document.querySelector('.archived-chat');
+        menu?.classList.remove('show');
+
+        if (!conversation || conversation.archived) {
+            return;
+        }
+
+        conversation.archived = true;
+        renderChatLists();
+        refreshVisibleChat();
+    }
+
+    function unarchiveActiveChat() {
+        const conversation = getConversationById(activeConversationId);
+        const menu = document.querySelector('.archived-chat');
+        menu?.classList.remove('show');
+
+        if (!conversation || !conversation.archived) {
+            return;
+        }
+
+        conversation.archived = false;
+        renderChatLists();
+        refreshVisibleChat();
+    }
+
+    function toggleArchiveActiveChat() {
+        const conversation = getConversationById(activeConversationId);
+        if (!conversation) return;
+
+        if (conversation.archived) {
+            unarchiveActiveChat();
+            return;
+        }
+
+        archiveActiveChat();
     }
 
     function renderMessages(chat) {
@@ -237,6 +352,7 @@
         const tag = headerRoot.querySelector('.tag');
         const statusText = headerRoot.querySelector('.tag-and-name .light-color-font');
         const statusDot = headerRoot.querySelector('.tag-and-name circle');
+        const archiveMenuLabel = headerRoot.querySelector('.archived-chat .simple-font');
 
         headerRoot.querySelector('.rounded-image.large-size').src = list.image;
         headerRoot.querySelector('.profile-image-wrapper .top-left-svg').innerHTML = getBadgeSvg(list.badge);
@@ -251,6 +367,10 @@
         headerRoot.querySelector('.name-studio .dark-color-font').textContent = detail.displayName;
         headerRoot.querySelector('.name-studio .simple-light-font').textContent = detail.subtitle;
         headerRoot.querySelector('.simple-font').textContent = `Booking reference: ${detail.bookingReference}`;
+
+        if (archiveMenuLabel) {
+            archiveMenuLabel.textContent = conversation.archived ? 'Unarchive Chat' : 'Archive Chat';
+        }
     }
 
     function setSelectedCard(selectedCard) {
@@ -267,6 +387,8 @@
             locked: conversation.locked
         };
 
+        activeConversationId = conversationId;
+
         const selectedCard = document.querySelector(`[data-conversation-id="${conversationId}"]`);
         if (selectedCard) {
             setSelectedCard(selectedCard);
@@ -278,7 +400,7 @@
     }
 
     function bindConversationCards() {
-        document.querySelectorAll('.chat-card').forEach((card) => {
+        document.querySelectorAll('.chat-card[data-conversation-id]').forEach((card) => {
             const conversationId = card.dataset.conversationId;
 
             card.classList.add('is-clickable');
@@ -299,18 +421,39 @@
         const archived = document.querySelector('.archived');
         const dotsBtn = document.querySelector('.dots-svg');
         const archivedChat = document.querySelector('.archived-chat');
+        const openArchivedTrigger = document.querySelector('[data-action="open-archived"]');
+        const archiveChatTrigger = document.querySelector('[data-action="archive-chat"]');
 
         if (settingsBtn && archived) {
-            settingsBtn.addEventListener('click', () => {
+            settingsBtn.addEventListener('click', (event) => {
+                event.stopPropagation();
                 archived.classList.toggle('show');
             });
         }
 
         if (dotsBtn && archivedChat) {
-            dotsBtn.addEventListener('click', () => {
+            dotsBtn.addEventListener('click', (event) => {
+                event.stopPropagation();
                 archivedChat.classList.toggle('show');
             });
         }
+
+        openArchivedTrigger?.addEventListener('click', (event) => {
+            event.stopPropagation();
+            openArchivedView();
+        });
+
+        archiveChatTrigger?.addEventListener('click', (event) => {
+            event.stopPropagation();
+            toggleArchiveActiveChat();
+        });
+
+        exitArchivedBtn?.addEventListener('click', closeArchivedView);
+
+        document.addEventListener('click', () => {
+            archived?.classList.remove('show');
+            archivedChat?.classList.remove('show');
+        });
     }
 
     function bindTabThemeColors() {
@@ -334,9 +477,11 @@
                 document.documentElement.style.setProperty('--active-bg-light', selected.bg);
 
                 setTimeout(() => {
-                    const firstConversation = getConversationsByTab(this.dataset.tab)[0];
+                    const firstConversation = getVisibleConversations(this.dataset.tab)[0];
                     if (firstConversation) {
                         renderChat(firstConversation.id);
+                    } else {
+                        refreshVisibleChat();
                     }
                 }, 0);
             });
@@ -344,13 +489,13 @@
     }
 
     function init() {
+        updateSidebarMode();
         renderChatLists();
-        bindConversationCards();
         bindComposerInteractions();
         bindMenus();
         bindTabThemeColors();
 
-        const initialConversation = getConversationsByTab('groomer-messages')[0];
+        const initialConversation = getVisibleConversations('groomer-messages')[0];
         if (initialConversation) {
             renderChat(initialConversation.id);
         }

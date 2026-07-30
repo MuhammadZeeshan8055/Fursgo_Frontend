@@ -96,6 +96,29 @@ aside.sidebar {
     opacity: 1;
 }
 
+.exit-archived {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border: 0;
+    background: transparent;
+    padding: 0;
+}
+
+.exit-archived[hidden] {
+    display: none !important;
+}
+
+.sidebar.is-archived-view .settings-archived {
+    display: none;
+}
+
+.sidebar.is-archived-view .filters {
+    display: none;
+}
+
 .tab-wrapper {
     flex: 1;
     min-height: 0;
