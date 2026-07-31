@@ -12,6 +12,13 @@
 
 @font-face {
     font-family: "Playfair Display";
+    src: url("../fonts/Playfair_Display/static/PlayfairDisplay-SemiBoldItalic.ttf") format("truetype");
+    font-style: italic;
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: "Playfair Display";
     src: url("../fonts/Playfair_Display/static/PlayfairDisplay-ExtraBoldItalic.ttf") format("truetype");
     font-style: italic;
     font-weight: 900;
@@ -79,7 +86,7 @@
 
 button.form-submit-button {
     padding: 12px 52px 12px 52px;
-    border-radius: 20px;
+    border-radius: 96px;
     border: none;
     color: white;
     text-align: center;
@@ -167,7 +174,7 @@ a {
 .find-groomer {
     color: #FDFCF8;
     background: #F0EAD9;
-    padding: 8px;
+    padding: 5px;
     text-align: center;
     font-family: "Lato";
     font-size: 18px;
@@ -336,7 +343,7 @@ a {
 .find-space {
     color: var(--font-color);
     background: #F0EAD9;
-    padding: 8px;
+    padding: 5px;
     text-align: center;
     font-family: "Lato";
     font-size: 18px;
@@ -487,24 +494,27 @@ a {
 }
 
 .hero-text {
-    color: var(--font-color);
+    color: #3B3731;
     font-family: "Playfair Display";
-    line-height: 60px;
+    font-size: 45px;
+    font-style: normal;
     font-weight: 900;
+    line-height: 60px;
 }
 
 .book-text {
-    color: var(--font-color);
+    color: #3B3731;
     font-family: "Playfair Display";
+    font-size: 45px;
     font-style: italic;
-    line-height: 60px;
     font-weight: 600;
+    line-height: 60px;
 }
 
 .hero-section .book-text,
 .hero-text {
     font-size: clamp(30px, 5vw, 45px);
-    line-height: clamp(30px, 6vw, 57px);
+    line-height: clamp(36px, 6vw, 60px);
 }
 
 .inverted-radius {
