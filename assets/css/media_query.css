@@ -329,7 +329,17 @@
 
 }
 
-@media (max-width: 767px) {}
+@media (max-width: 767px) {
+    .text-area {
+        text-align: center;
+        align-self: center;
+    }
+
+    .text-area h2,
+    .text-area span {
+        text-align: center;
+    }
+}
 
 @media (max-width: 520px) {
 

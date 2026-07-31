@@ -1541,17 +1541,6 @@
                         </div>
                     </div>
 
-                    <div class="payments-protected-text d-flex align-items-center justify-content-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none">
-                            <path
-                                d="M7.5 0C3.375 0 0 3.375 0 7.5C0 11.625 3.375 15 7.5 15C11.625 15 15 11.625 15 7.5C15 3.375 11.625 0 7.5 0ZM6 11.25L2.25 7.5L3.3075 6.4425L6 9.1275L11.6925 3.435L12.75 4.5L6 11.25Z"
-                                fill="#D8E8B7" />
-                        </svg>
-                        &nbsp;
-                        &nbsp;
-                        <p class="protected-text">All payments and messages are protected through FursGo.</p>
-                    </div>
-
                 </div>
             </div>
         </div>
