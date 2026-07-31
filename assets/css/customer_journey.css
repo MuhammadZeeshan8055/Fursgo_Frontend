@@ -48,7 +48,7 @@ body:has(.top-tabs.find-space-search.active) {
 .sticky-filters {
     position: sticky;
     top: var(--sticky-search-offset, 220px);
-    z-index: 1001;
+    z-index: 999;
     align-self: flex-start;
     width: 100%;
     background: #FDFCF8;
