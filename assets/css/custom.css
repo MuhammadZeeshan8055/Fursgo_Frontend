@@ -159,16 +159,6 @@ img {
   cursor: pointer;
 }
 
-.find-groomer.active {
-  background: var(--groomer-color);
-  color: #FFF;
-}
-
-.find-space.active {
-  background: var(--groomer-color);
-  color: #FFF;
-}
-
 .find-groomer-content-area {
   position: absolute;
   width: 1030px;

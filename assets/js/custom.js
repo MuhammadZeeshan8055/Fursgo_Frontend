@@ -16,21 +16,19 @@ const groomerBtn = document.querySelector(".find-groomer");
 const spaceBtn = document.querySelector(".find-space");
 const groomerContent = document.querySelector(".find-groomer-content-area");
 const spaceContent = document.querySelector(".find-space-content-area");
+const groomerText = groomerBtn?.querySelector(".find-groomer-space-text");
+const spaceText = spaceBtn?.querySelector(".find-groomer-space-text");
 
-if (groomerBtn && spaceBtn && groomerContent && spaceContent) {
-  groomerBtn.addEventListener("click", () => {
-    groomerContent.style.display = "block";
-    spaceContent.style.display = "none";
-    groomerBtn.classList.add("active");
-    spaceBtn.classList.remove("active");
-  });
+if (groomerBtn && spaceBtn && groomerContent && spaceContent && groomerText && spaceText) {
+  const setActiveTab = (isGroomer) => {
+    groomerContent.style.display = isGroomer ? "block" : "none";
+    spaceContent.style.display = isGroomer ? "none" : "block";
+    groomerText.classList.toggle("active", isGroomer);
+    spaceText.classList.toggle("active", !isGroomer);
+  };
 
-  spaceBtn.addEventListener("click", () => {
-    spaceContent.style.display = "block";
-    groomerContent.style.display = "none";
-    spaceBtn.classList.add("active");
-    groomerBtn.classList.remove("active");
-  });
+  groomerBtn.addEventListener("click", () => setActiveTab(true));
+  spaceBtn.addEventListener("click", () => setActiveTab(false));
 }
 
 function toggleActive(containerSelector, itemSelector, activeClass) {

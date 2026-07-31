@@ -89,15 +89,10 @@ button.form-submit-button {
     font-weight: 700;
     line-height: normal;
     cursor: pointer;
-    background-color: var(--space-color);
-}
-
-.find-grommer-content .find-groomer.active~.find-groomer-content-area .form-submit-button {
     background-color: var(--groomer-color);
-    ;
 }
 
-.find-grommer-content .find-space.active~.find-groomer-content-area .form-submit-button {
+.find-space-content-area .form-submit-button {
     background-color: var(--space-color);
 }
 
@@ -130,22 +125,49 @@ a {
     justify-self: center;
 }
 
-.find-groomer.active {
-    background-color: var(--groomer-color);
-    color: #fff;
-    font-weight: 700;
+.find-groomer-space-text {
+    width: 200px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: #F0EAD9;
+    color: var(--font-color);
 }
 
-.find-space.active {
-    background-color: var(--space-color);
-    color: #fff;
-    font-weight: 700;
+.find-groomer-space-text svg path[stroke] {
+    stroke: var(--font-color);
+}
+
+.find-groomer-space-text svg path[fill] {
+    fill: var(--font-color);
+}
+
+.find-groomer-space-text.active {
+    color: #FDFCF8 !important;
+    background: #FBAC83;
+    box-shadow: 0 2px 10px 0 rgba(59, 55, 49, 0.30);
+    border-radius: 10px;
+    font-weight: 600;
+}
+
+.find-space .find-groomer-space-text.active {
+    background: #FFA999;
+}
+
+.find-groomer-space-text.active svg path[stroke] {
+    stroke: #FDFCF8;
+}
+
+.find-groomer-space-text.active svg path[fill] {
+    fill: #FDFCF8;
 }
 
 .find-groomer {
-    color: var(--font-color);
-    background: #FDFCF8;
-    padding: 12px 45px 12px 45px;
+    color: #FDFCF8;
+    background: #F0EAD9;
+    padding: 8px;
     text-align: center;
     font-family: "Lato";
     font-size: 18px;
@@ -160,8 +182,8 @@ a {
     position: absolute;
     width: 1080px;
     height: 235px;
-    border-radius: 0 0 10px 10px;
-    background: #FDFCF8;
+    border-radius: 0 10px 10px 10px;
+    background: #F7F4EC;
     box-shadow: 0 5px 55px 0 rgba(0, 0, 0, 0.05);
 }
 
@@ -313,8 +335,8 @@ a {
 
 .find-space {
     color: var(--font-color);
-    background: #FDFCF8;
-    padding: 12px 45px 12px 45px;
+    background: #F0EAD9;
+    padding: 8px;
     text-align: center;
     font-family: "Lato";
     font-size: 18px;
