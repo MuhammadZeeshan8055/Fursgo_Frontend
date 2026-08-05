@@ -1,4 +1,4 @@
- <div class="col-lg-12 section-gap sticky-filters">
+ <div class="col-lg-12 section-gap">
      <div class="selection-box d-flex justify-content-between">
          <div class="selected-item-section d-flex align-items-center flex-wrap" id="groomerSelectedSection" style="width: 100%; max-width: 75%;">
              <div class="selected-item cursor d-flex align-items-center" >

@@ -631,13 +631,11 @@ const space_form_fields = document.querySelector('.find-space-search-content-are
 main_tabs.forEach(button => {
     button.addEventListener('click', () => {
         const tabName = button.dataset.section;
+        const isGroomer = tabName === 'groomer';
 
-        if (tabName === 'groomer') {
-            groomer_form_fields.style.display = 'block';
-            space_form_fields.style.display = 'none';
-        } else {
-            groomer_form_fields.style.display = 'none';
-            space_form_fields.style.display = 'block';
+        if (groomer_form_fields && space_form_fields) {
+            groomer_form_fields.style.display = isGroomer ? 'block' : 'none';
+            space_form_fields.style.display = isGroomer ? 'none' : 'block';
         }
 
         // Hide all tab contents
@@ -646,16 +644,17 @@ main_tabs.forEach(button => {
             tc.classList.remove('active');
         });
 
-        // Remove active class from all buttons
-        main_tabs.forEach(btn => btn.classList.remove('active'));
+        // Toggle active on tab text (same as home page), not the wrapper div
+        main_tabs.forEach(btn => {
+            btn.querySelector('.find-groomer-space-text')?.classList.remove('active');
+        });
+        button.querySelector('.find-groomer-space-text')?.classList.add('active');
 
         // Show clicked tab content
-        document.getElementById(tabName).style.display = 'block';
-
-        // Set clicked button as active
-        setTimeout(() => {
-            button.classList.add('active');
-        }, 10);
+        const tabContent = document.getElementById(tabName);
+        if (tabContent) {
+            tabContent.style.display = 'block';
+        }
     });
 });
 
@@ -1348,10 +1347,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const stickyBar = document.querySelector('.sticky-search');
     if (!stickyBar) return;
 
-    function setStickySearchOffset() {
+    const siteHeader = document.querySelector('header');
+
+    function setStickyOffsets() {
+        const headerHeight = siteHeader ? siteHeader.offsetHeight : 0;
+        document.documentElement.style.setProperty(
+            '--header-height',
+            headerHeight + 'px'
+        );
         document.documentElement.style.setProperty(
             '--sticky-search-offset',
-            stickyBar.offsetHeight + 'px'
+            (headerHeight + stickyBar.offsetHeight) + 'px'
         );
     }
 
@@ -1361,10 +1367,17 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             stickyBar.classList.remove('scrolled');
         }
-        setStickySearchOffset();
+        setStickyOffsets();
     }
 
-    setStickySearchOffset();
+    setStickyOffsets();
     window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', setStickySearchOffset);
+    window.addEventListener('resize', setStickyOffsets);
+
+    // Keep offsets in sync when header/search height changes (scroll shrink, pet dropdowns)
+    if (typeof ResizeObserver !== 'undefined') {
+        const ro = new ResizeObserver(setStickyOffsets);
+        ro.observe(stickyBar);
+        if (siteHeader) ro.observe(siteHeader);
+    }
 })();  
