@@ -470,24 +470,155 @@ body:has(.find-groomer-search .find-groomer-space-text.active) {
     margin-right: 0px;
 }
 
-.field.date.streched {
-    width: 148px;
+/* Date + Time: one shared bordered control, separate popovers */
+.mini-search-widget .datetime-wrapper {
+    display: flex;
+    gap: 0;
+    column-gap: 0;
+    align-items: flex-start;
 }
 
-.field.time .input-row svg {
+.mini-search-widget .datetime-wrapper .field-group {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+}
+
+.mini-search-widget .field.date.streched,
+.mini-search-widget .field.time.streched {
+    width: 148px;
+    height: 48px;
+    margin: 0;
+    background: #fff;
+    box-shadow: none;
+}
+
+/* Join into one control — no gap, shared outer radius, center divider */
+.mini-search-widget .field.date.streched {
+    border: 1px solid var(--border, #ddd);
+    border-right: none;
+    border-radius: 10px 0 0 10px;
+}
+
+.mini-search-widget .field.time.streched {
+    border: 1px solid var(--border, #ddd);
+    border-radius: 0 10px 10px 0;
+}
+
+.mini-search-widget .field.date.focused,
+.mini-search-widget .field.date.has-value,
+.mini-search-widget .field.time.focused,
+.mini-search-widget .field.time.has-value {
+    border-color: var(--border, #ddd);
+}
+
+.mini-search-widget .field.date.streched.focused,
+.mini-search-widget .field.date.streched.has-value {
+    border-right: none;
+}
+
+/* When date calendar is open: inputs + panel read as one card (first pic) */
+.mini-search-widget .datetime-wrapper:has(.field.date.focused) .field.date.streched {
+    border-radius: 10px 0 0 0;
+    border-bottom-color: transparent;
+}
+
+.mini-search-widget .datetime-wrapper:has(.field.date.focused) .field.time.streched {
+    border-radius: 0 10px 0 0;
+    border-bottom-color: transparent;
+}
+
+/* When time list is open: square off bottom of the joined control */
+.mini-search-widget .datetime-wrapper:has(.field.time.focused) .field.date.streched {
+    border-radius: 10px 0 0 0;
+    border-bottom-color: transparent;
+}
+
+.mini-search-widget .datetime-wrapper:has(.field.time.focused) .field.time.streched {
+    border-radius: 0 10px 0 0;
+    border-bottom-color: transparent;
+}
+
+.mini-search-widget .field.time .input-row svg {
     width: 15px;
-    height: 15px;
+    height: 8px;
 }
 
-.field.date.focused,
-.field.date.has-value,
-.field.time.focused,
-.field.time.has-value {
-    border: 1px solid #ddd;
+.mini-search-widget .popover.date-popover,
+.mini-search-widget .popover.time-popover {
+    position: absolute;
+    top: 100%;
+    z-index: 1100;
+    display: none;
+    overflow: hidden;
+    margin: 0;
+    background: #fff;
+    border: 1px solid var(--border, #ddd);
+    box-shadow: 0 8px 24px rgba(20, 20, 20, 0.08);
 }
 
-.field.time.streched {
-    width: 148px;
+/* Date calendar spans full Date+Time width, flush under inputs */
+.mini-search-widget .popover.date-popover {
+    left: 0;
+    width: 296px;
+    border-radius: 0 0 12px 12px;
+    border-top: 1px solid var(--border, #ddd);
+}
+
+.mini-search-widget .popover.date-popover .calendar {
+    width: 100%;
+}
+
+.mini-search-widget .popover.date-popover .panel {
+    padding: 16px;
+}
+
+/* Time list flush under the time half */
+.mini-search-widget .popover.time-popover {
+    left: 0;
+    right: 0;
+    width: 100%;
+    min-width: 148px;
+    border-radius: 0 0 12px 12px;
+    border-top: 1px solid var(--border, #ddd);
+}
+
+.mini-search-widget .popover.time-popover .time-col {
+    padding: 8px 0;
+    width: 100%;
+}
+
+.mini-search-widget .popover.time-popover .time-list {
+    max-height: 200px;
+    overflow-y: auto;
+    padding: 0 8px;
+}
+
+.mini-search-widget .month-label {
+    color: #3B3731;
+    text-align: center;
+    font-family: Lato;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.mini-search-widget .prev-month,
+.mini-search-widget .next-month {
+    width: 24px;
+    height: 24px;
+    border: 2px solid #F5F5F5;
+    border-radius: 50%;
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2px;
+}
+
+.mini-search-widget .next-month {
+    background: #F5F5F5;
 }
 
 .pet-type-wrapper.wider,

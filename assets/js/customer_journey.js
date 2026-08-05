@@ -822,17 +822,22 @@ document.querySelectorAll('.service-type-select .custom-select').forEach(select 
 
     datetimeWrappers.forEach((wrapper) => {
         const dateField = wrapper.querySelector('.field.date');
-        const dateInput = dateField.querySelector('.fake-input');
-        const datePopover = dateField.querySelector('.popover');
-        const daysGrid = datePopover.querySelector('.days-grid');
-        const monthLabel = datePopover.querySelector('#monthLabel');
-        const prevMonthBtn = datePopover.querySelector('#prevMonth');
-        const nextMonthBtn = datePopover.querySelector('#nextMonth');
-        const weekdayRow = datePopover.querySelector('.weekday-row');
-
         const timeField = wrapper.querySelector('.field.time');
+        if (!dateField || !timeField) return;
+
+        const dateInput = dateField.querySelector('.fake-input');
+        const datePopover = dateField.querySelector('.date-popover');
         const timeInput = timeField.querySelector('.fake-input');
-        const timeList = datePopover.querySelector('.time-list');
+        const timePopover = timeField.querySelector('.time-popover');
+        if (!datePopover || !timePopover || !dateInput || !timeInput) return;
+
+        const daysGrid = datePopover.querySelector('.days-grid');
+        const monthLabel = datePopover.querySelector('.month-label');
+        const prevMonthBtn = datePopover.querySelector('.prev-month');
+        const nextMonthBtn = datePopover.querySelector('.next-month');
+        const weekdayRow = datePopover.querySelector('.weekday-row');
+        const timeList = timePopover.querySelector('.time-list');
+        if (!daysGrid || !monthLabel || !prevMonthBtn || !nextMonthBtn || !weekdayRow || !timeList) return;
 
         const weekdays = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
 
@@ -943,47 +948,45 @@ document.querySelectorAll('.service-type-select .custom-select').forEach(select 
         }
 
         /* ---------------------- Popover ---------------------- */
-        function openPopover() {
-            datePopover.style.display = 'block';
-            dateField.classList.add('focused');
-            timeField.classList.add('focused');
-
-            dateField.style.borderBottomLeftRadius = '0px';
-            timeField.style.borderBottomRightRadius = '0px';
-
-            // Auto scroll to selected time
-            const el = timeList.querySelector(`.time-item[data-time="${selectedTime}"]`);
-            // if (el) el.scrollIntoView({ block: 'center', behavior: 'smooth' });
-        }
-
         function closeAllPopovers() {
-            document.querySelectorAll('.popover').forEach(p => p.style.display = 'none');
-
+            datePopover.style.display = 'none';
+            timePopover.style.display = 'none';
             dateField.classList.remove('focused');
             timeField.classList.remove('focused');
+            dateField.querySelector('.input-row').setAttribute('aria-expanded', 'false');
+            timeField.querySelector('.input-row').setAttribute('aria-expanded', 'false');
+        }
 
-            dateField.style.borderBottomLeftRadius = '10px';
-            timeField.style.borderBottomRightRadius = '10px';
+        function openDatePopover() {
+            closeAllPopovers();
+            datePopover.style.display = 'block';
+            dateField.classList.add('focused');
+            dateField.querySelector('.input-row').setAttribute('aria-expanded', 'true');
+        }
+
+        function openTimePopover() {
+            closeAllPopovers();
+            timePopover.style.display = 'block';
+            timeField.classList.add('focused');
+            timeField.querySelector('.input-row').setAttribute('aria-expanded', 'true');
+
+            const el = timeList.querySelector(`.time-item[data-time="${selectedTime}"]`);
+            if (el) el.scrollIntoView({ block: 'center' });
         }
 
         /* ---------------------- Events ---------------------- */
-        dateField.querySelector('.input-row').addEventListener('click', () => {
-            datePopover.style.display === 'block' ? closeAllPopovers() : openPopover();
+        dateField.querySelector('.input-row').addEventListener('click', (e) => {
+            e.stopPropagation();
+            datePopover.style.display === 'block' ? closeAllPopovers() : openDatePopover();
         });
 
-        timeField.querySelector('.input-row').addEventListener('click', () => {
-            const isOpen = datePopover.style.display === 'block' && timeList.closest('.popover')?.style.display === 'block';
-
-            const timePopover = timeList.closest('.popover');
-
-            const isTimeOpen = timePopover && timePopover.style.display === 'block';
-
-            if (isTimeOpen) {
-                closeAllPopovers();
-            } else {
-                openPopover('time');
-            }
+        timeField.querySelector('.input-row').addEventListener('click', (e) => {
+            e.stopPropagation();
+            timePopover.style.display === 'block' ? closeAllPopovers() : openTimePopover();
         });
+
+        datePopover.addEventListener('click', (e) => e.stopPropagation());
+        timePopover.addEventListener('click', (e) => e.stopPropagation());
 
         prevMonthBtn.addEventListener('click', () => {
             viewMonth--;
@@ -1009,7 +1012,6 @@ document.querySelectorAll('.service-type-select .custom-select').forEach(select 
             const selectedEl = timeList.querySelector(`.time-item[data-time="${selectedTime}"]`);
             if (selectedEl) {
                 selectedEl.classList.add('selected');
-                selectedEl.scrollIntoView({ block: 'center' });
             }
         }
 
@@ -1019,24 +1021,23 @@ document.querySelectorAll('.service-type-select .custom-select').forEach(select 
     document.addEventListener('click', (e) => {
         if (!e.target.closest('.datetime-wrapper')) {
             datetimeWrappers.forEach(wrapper => {
+                const datePopover = wrapper.querySelector('.date-popover');
+                const timePopover = wrapper.querySelector('.time-popover');
                 const dateField = wrapper.querySelector('.field.date');
                 const timeField = wrapper.querySelector('.field.time');
-                const popover = wrapper.querySelector('.popover');
 
-                popover.style.display = 'none';
-
-                dateField.classList.remove('focused');
-                timeField.classList.remove('focused');
-
-                dateField.style.borderBottomLeftRadius = '10px';
-                timeField.style.borderBottomRightRadius = '10px';
+                if (datePopover) datePopover.style.display = 'none';
+                if (timePopover) timePopover.style.display = 'none';
+                dateField?.classList.remove('focused');
+                timeField?.classList.remove('focused');
             });
         }
     });
 
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
-            document.querySelectorAll('.popover').forEach(p => p.style.display = 'none');
+            document.querySelectorAll('.datetime-wrapper .popover').forEach(p => p.style.display = 'none');
+            document.querySelectorAll('.datetime-wrapper .field').forEach(f => f.classList.remove('focused'));
         }
     });
 })();

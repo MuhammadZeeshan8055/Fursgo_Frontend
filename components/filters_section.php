@@ -59,16 +59,15 @@
 
                                     </div>
                                     <div class="w-auto">
-                                        <div class="datetime-wrapper" id="datetime">
+                                        <div class="datetime-wrapper">
                                             <!-- Date field -->
                                             <div class="field-group">
                                                 <p class="label">Date</p>
-                                                <div class="field date streched" id="dateField">
+                                                <div class="field date streched">
                                                     <div class="input-row streched" tabindex="0" role="button"
                                                         aria-haspopup="dialog" aria-expanded="false">
-                                                        <input class="fake-input" id="dateInput" readonly
+                                                        <input class="fake-input" readonly
                                                             placeholder="02/11/25" aria-label="Date input" />
-                                                        <!-- chevron down svg -->
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="15" height="8"
                                                             viewBox="0 0 15 8" fill="none">
                                                             <path d="M13.5105 0.5L6.95017 7.06033L0.499971 0.610127"
@@ -77,39 +76,29 @@
                                                         </svg>
                                                     </div>
 
-                                                    <div class="popover" id="datePopover" data-type="date">
-                                                        <div style="display:flex;flex-direction: column;">
-                                                            <div class="panel calendar">
-                                                                <div class="month-nav">
-                                                                    <button type="button" id="prevMonth"
-                                                                        title="Previous month"
-                                                                        aria-label="Previous month">
-                                                                        <svg xmlns="http://www.w3.org/2000/svg" width="6" height="10" viewBox="0 0 6 10" fill="none">
-                                                                            <path d="M4.56836 0.5L0.500066 4.56829L4.50007 8.56829" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
-                                                                        </svg>
-                                                                    </button>
+                                                    <div class="popover date-popover" data-type="date">
+                                                        <div class="panel calendar">
+                                                            <div class="month-nav">
+                                                                <button type="button" class="prev-month"
+                                                                    title="Previous month"
+                                                                    aria-label="Previous month">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="6" height="10" viewBox="0 0 6 10" fill="none">
+                                                                        <path d="M4.56836 0.5L0.500066 4.56829L4.50007 8.56829" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                                                                    </svg>
+                                                                </button>
 
-                                                                    <div id="monthLabel">November 2025</div>
+                                                                <div class="month-label">November 2025</div>
 
-                                                                    <button type="button" id="nextMonth"
-                                                                        title="Next month" aria-label="Next month">
-                                                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                                                            <circle cx="10" cy="10" r="9.5" fill="#F5F5F5" stroke="#F5F5F5" />
-                                                                            <path d="M9 6L13.0683 10.0683L9.06829 14.0683" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
-                                                                        </svg>
-                                                                    </button>
-                                                                </div>
-                                                                <div class="weekday-row" id="weekdayRow"></div>
-                                                                <div class="days-grid" id="daysGrid"></div>
+                                                                <button type="button" class="next-month"
+                                                                    title="Next month" aria-label="Next month">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                                                        <circle cx="10" cy="10" r="9.5" fill="#F5F5F5" stroke="#F5F5F5" />
+                                                                        <path d="M9 6L13.0683 10.0683L9.06829 14.0683" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                                                                    </svg>
+                                                                </button>
                                                             </div>
-
-                                                            <div class="time-col">
-                                                                <div class="title">
-                                                                    <div>Time</div>
-                                                                </div>
-                                                                <div class="time-list d-flex flex-column align-items-center justify-content-center" id="timeList" role="listbox"
-                                                                    aria-label="Time options"></div>
-                                                            </div>
+                                                            <div class="weekday-row"></div>
+                                                            <div class="days-grid"></div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -118,10 +107,10 @@
                                             <!-- Time field -->
                                             <div class="field-group">
                                                 <p class="label">Time</p>
-                                                <div class="field time streched" id="timeField">
+                                                <div class="field time streched">
                                                     <div class="input-row streched" tabindex="0" role="button"
                                                         aria-haspopup="dialog" aria-expanded="false">
-                                                        <input class="fake-input" id="timeInput" readonly
+                                                        <input class="fake-input" readonly
                                                             placeholder="13:00" aria-label="Time input" />
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="15" height="8"
                                                             viewBox="0 0 15 8" fill="none">
@@ -129,6 +118,13 @@
                                                                 stroke="#3B3731" stroke-linecap="round"
                                                                 stroke-linejoin="round" />
                                                         </svg>
+                                                    </div>
+
+                                                    <div class="popover time-popover" data-type="time">
+                                                        <div class="time-col">
+                                                            <div class="time-list d-flex flex-column align-items-center justify-content-center" role="listbox"
+                                                                aria-label="Time options"></div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -285,16 +281,15 @@
 
                                     </div>
                                     <div class="w-auto">
-                                        <div class="datetime-wrapper" id="datetime">
+                                        <div class="datetime-wrapper">
                                             <!-- Date field -->
                                             <div class="field-group">
                                                 <p class="label">Date</p>
-                                                <div class="field date streched" id="dateField">
+                                                <div class="field date streched">
                                                     <div class="input-row streched" tabindex="0" role="button"
                                                         aria-haspopup="dialog" aria-expanded="false">
-                                                        <input class="fake-input" id="dateInput" readonly
+                                                        <input class="fake-input" readonly
                                                             placeholder="02/11/25" aria-label="Date input" />
-                                                        <!-- chevron down svg -->
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="15" height="8"
                                                             viewBox="0 0 15 8" fill="none">
                                                             <path d="M13.5105 0.5L6.95017 7.06033L0.499971 0.610127"
@@ -303,39 +298,29 @@
                                                         </svg>
                                                     </div>
 
-                                                    <div class="popover" id="datePopover" data-type="date">
-                                                        <div style="display:flex;flex-direction: column;">
-                                                            <div class="panel calendar">
-                                                                <div class="month-nav">
-                                                                    <button type="button" id="prevMonth"
-                                                                        title="Previous month"
-                                                                        aria-label="Previous month">
-                                                                        <svg xmlns="http://www.w3.org/2000/svg" width="6" height="10" viewBox="0 0 6 10" fill="none">
-                                                                            <path d="M4.56836 0.5L0.500066 4.56829L4.50007 8.56829" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
-                                                                        </svg>
-                                                                    </button>
+                                                    <div class="popover date-popover" data-type="date">
+                                                        <div class="panel calendar">
+                                                            <div class="month-nav">
+                                                                <button type="button" class="prev-month"
+                                                                    title="Previous month"
+                                                                    aria-label="Previous month">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="6" height="10" viewBox="0 0 6 10" fill="none">
+                                                                        <path d="M4.56836 0.5L0.500066 4.56829L4.50007 8.56829" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                                                                    </svg>
+                                                                </button>
 
-                                                                    <div id="monthLabel">November 2025</div>
+                                                                <div class="month-label">November 2025</div>
 
-                                                                    <button type="button" id="nextMonth"
-                                                                        title="Next month" aria-label="Next month">
-                                                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                                                            <circle cx="10" cy="10" r="9.5" fill="#F5F5F5" stroke="#F5F5F5" />
-                                                                            <path d="M9 6L13.0683 10.0683L9.06829 14.0683" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
-                                                                        </svg>
-                                                                    </button>
-                                                                </div>
-                                                                <div class="weekday-row" id="weekdayRow"></div>
-                                                                <div class="days-grid" id="daysGrid"></div>
+                                                                <button type="button" class="next-month"
+                                                                    title="Next month" aria-label="Next month">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                                                        <circle cx="10" cy="10" r="9.5" fill="#F5F5F5" stroke="#F5F5F5" />
+                                                                        <path d="M9 6L13.0683 10.0683L9.06829 14.0683" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                                                                    </svg>
+                                                                </button>
                                                             </div>
-
-                                                            <div class="time-col">
-                                                                <div class="title">
-                                                                    <div>Time</div>
-                                                                </div>
-                                                                <div class="time-list d-flex flex-column align-items-center justify-content-center" id="timeList" role="listbox"
-                                                                    aria-label="Time options"></div>
-                                                            </div>
+                                                            <div class="weekday-row"></div>
+                                                            <div class="days-grid"></div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -344,10 +329,10 @@
                                             <!-- Time field -->
                                             <div class="field-group">
                                                 <p class="label">Time</p>
-                                                <div class="field time streched" id="timeField">
+                                                <div class="field time streched">
                                                     <div class="input-row streched" tabindex="0" role="button"
                                                         aria-haspopup="dialog" aria-expanded="false">
-                                                        <input class="fake-input" id="timeInput" readonly
+                                                        <input class="fake-input" readonly
                                                             placeholder="13:00" aria-label="Time input" />
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="15" height="8"
                                                             viewBox="0 0 15 8" fill="none">
@@ -355,6 +340,13 @@
                                                                 stroke="#3B3731" stroke-linecap="round"
                                                                 stroke-linejoin="round" />
                                                         </svg>
+                                                    </div>
+
+                                                    <div class="popover time-popover" data-type="time">
+                                                        <div class="time-col">
+                                                            <div class="time-list d-flex flex-column align-items-center justify-content-center" role="listbox"
+                                                                aria-label="Time options"></div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
