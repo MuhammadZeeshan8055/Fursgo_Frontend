@@ -449,7 +449,7 @@ a {
 /* CSS */
 .search-box {
     position: relative;
-    width: 410px;
+    width: 447px;
     /* adjust width */
 }
 
@@ -1790,7 +1790,7 @@ p.time-text {
 /* custom select dropdown styles  */
 .custom-select {
     position: relative;
-    width: 100%;
+    width: 270px;
     max-width: 350px;
     font-weight: 400;
     font-family: "lato";

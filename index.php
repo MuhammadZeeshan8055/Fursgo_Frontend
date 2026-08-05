@@ -669,7 +669,7 @@
                                                 </div> -->
                                                 <div class="custom-select">
                                                     <div class="select-trigger">
-                                                        <span class="selected-text">Full Groom, Face Trim ...</span>
+                                                        <span class="selected-text">Full Grooming, Pet Spa ...</span>
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="15" height="8"
                                                             viewBox="0 0 15 8" fill="none">
                                                             <path d="M13.5105 0.5L6.95017 7.06033L0.499971 0.610127"
