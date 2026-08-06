@@ -141,7 +141,6 @@ body:has(.find-space-search .find-groomer-space-text.active) {
 
 .modal-footer .modal-footer-btn {
     padding: 12px 40px 12px 40px;
-    border-radius: 4px;
     color: #3B3731;
     text-align: center;
     font-family: Lato;
@@ -154,6 +153,7 @@ body:has(.find-space-search .find-groomer-space-text.active) {
     background: none;
     cursor: pointer;
     box-shadow: 0 0 8.5px 0 rgba(0, 0, 0, 0.05);
+    border: 1px solid #9D9B98;
 }
 
 .modal-footer .modal-footer-btn.apply {
@@ -935,7 +935,7 @@ img.svg {
     border-radius: 10px 0px 10px 10px;
     display: none;
     transition: opacity 0.3s ease, transform 0.3s ease;
-    z-index: 1000;
+    z-index: 990;
 }
 
 ul.grommers-options {
