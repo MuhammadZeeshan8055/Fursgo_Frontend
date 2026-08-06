@@ -631,13 +631,11 @@ const space_form_fields = document.querySelector('.find-space-search-content-are
 main_tabs.forEach(button => {
     button.addEventListener('click', () => {
         const tabName = button.dataset.section;
+        const isGroomer = tabName === 'groomer';
 
-        if (tabName === 'groomer') {
-            groomer_form_fields.style.display = 'block';
-            space_form_fields.style.display = 'none';
-        } else {
-            groomer_form_fields.style.display = 'none';
-            space_form_fields.style.display = 'block';
+        if (groomer_form_fields && space_form_fields) {
+            groomer_form_fields.style.display = isGroomer ? 'block' : 'none';
+            space_form_fields.style.display = isGroomer ? 'none' : 'block';
         }
 
         // Hide all tab contents
@@ -646,16 +644,17 @@ main_tabs.forEach(button => {
             tc.classList.remove('active');
         });
 
-        // Remove active class from all buttons
-        main_tabs.forEach(btn => btn.classList.remove('active'));
+        // Toggle active on tab text (same as home page), not the wrapper div
+        main_tabs.forEach(btn => {
+            btn.querySelector('.find-groomer-space-text')?.classList.remove('active');
+        });
+        button.querySelector('.find-groomer-space-text')?.classList.add('active');
 
         // Show clicked tab content
-        document.getElementById(tabName).style.display = 'block';
-
-        // Set clicked button as active
-        setTimeout(() => {
-            button.classList.add('active');
-        }, 10);
+        const tabContent = document.getElementById(tabName);
+        if (tabContent) {
+            tabContent.style.display = 'block';
+        }
     });
 });
 
@@ -823,17 +822,22 @@ document.querySelectorAll('.service-type-select .custom-select').forEach(select 
 
     datetimeWrappers.forEach((wrapper) => {
         const dateField = wrapper.querySelector('.field.date');
-        const dateInput = dateField.querySelector('.fake-input');
-        const datePopover = dateField.querySelector('.popover');
-        const daysGrid = datePopover.querySelector('.days-grid');
-        const monthLabel = datePopover.querySelector('#monthLabel');
-        const prevMonthBtn = datePopover.querySelector('#prevMonth');
-        const nextMonthBtn = datePopover.querySelector('#nextMonth');
-        const weekdayRow = datePopover.querySelector('.weekday-row');
-
         const timeField = wrapper.querySelector('.field.time');
+        if (!dateField || !timeField) return;
+
+        const dateInput = dateField.querySelector('.fake-input');
+        const datePopover = dateField.querySelector('.date-popover');
         const timeInput = timeField.querySelector('.fake-input');
-        const timeList = datePopover.querySelector('.time-list');
+        const timePopover = timeField.querySelector('.time-popover');
+        if (!datePopover || !timePopover || !dateInput || !timeInput) return;
+
+        const daysGrid = datePopover.querySelector('.days-grid');
+        const monthLabel = datePopover.querySelector('.month-label');
+        const prevMonthBtn = datePopover.querySelector('.prev-month');
+        const nextMonthBtn = datePopover.querySelector('.next-month');
+        const weekdayRow = datePopover.querySelector('.weekday-row');
+        const timeList = timePopover.querySelector('.time-list');
+        if (!daysGrid || !monthLabel || !prevMonthBtn || !nextMonthBtn || !weekdayRow || !timeList) return;
 
         const weekdays = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
 
@@ -944,47 +948,45 @@ document.querySelectorAll('.service-type-select .custom-select').forEach(select 
         }
 
         /* ---------------------- Popover ---------------------- */
-        function openPopover() {
-            datePopover.style.display = 'block';
-            dateField.classList.add('focused');
-            timeField.classList.add('focused');
-
-            dateField.style.borderBottomLeftRadius = '0px';
-            timeField.style.borderBottomRightRadius = '0px';
-
-            // Auto scroll to selected time
-            const el = timeList.querySelector(`.time-item[data-time="${selectedTime}"]`);
-            // if (el) el.scrollIntoView({ block: 'center', behavior: 'smooth' });
-        }
-
         function closeAllPopovers() {
-            document.querySelectorAll('.popover').forEach(p => p.style.display = 'none');
-
+            datePopover.style.display = 'none';
+            timePopover.style.display = 'none';
             dateField.classList.remove('focused');
             timeField.classList.remove('focused');
+            dateField.querySelector('.input-row').setAttribute('aria-expanded', 'false');
+            timeField.querySelector('.input-row').setAttribute('aria-expanded', 'false');
+        }
 
-            dateField.style.borderBottomLeftRadius = '10px';
-            timeField.style.borderBottomRightRadius = '10px';
+        function openDatePopover() {
+            closeAllPopovers();
+            datePopover.style.display = 'block';
+            dateField.classList.add('focused');
+            dateField.querySelector('.input-row').setAttribute('aria-expanded', 'true');
+        }
+
+        function openTimePopover() {
+            closeAllPopovers();
+            timePopover.style.display = 'block';
+            timeField.classList.add('focused');
+            timeField.querySelector('.input-row').setAttribute('aria-expanded', 'true');
+
+            const el = timeList.querySelector(`.time-item[data-time="${selectedTime}"]`);
+            if (el) el.scrollIntoView({ block: 'center' });
         }
 
         /* ---------------------- Events ---------------------- */
-        dateField.querySelector('.input-row').addEventListener('click', () => {
-            datePopover.style.display === 'block' ? closeAllPopovers() : openPopover();
+        dateField.querySelector('.input-row').addEventListener('click', (e) => {
+            e.stopPropagation();
+            datePopover.style.display === 'block' ? closeAllPopovers() : openDatePopover();
         });
 
-        timeField.querySelector('.input-row').addEventListener('click', () => {
-            const isOpen = datePopover.style.display === 'block' && timeList.closest('.popover')?.style.display === 'block';
-
-            const timePopover = timeList.closest('.popover');
-
-            const isTimeOpen = timePopover && timePopover.style.display === 'block';
-
-            if (isTimeOpen) {
-                closeAllPopovers();
-            } else {
-                openPopover('time');
-            }
+        timeField.querySelector('.input-row').addEventListener('click', (e) => {
+            e.stopPropagation();
+            timePopover.style.display === 'block' ? closeAllPopovers() : openTimePopover();
         });
+
+        datePopover.addEventListener('click', (e) => e.stopPropagation());
+        timePopover.addEventListener('click', (e) => e.stopPropagation());
 
         prevMonthBtn.addEventListener('click', () => {
             viewMonth--;
@@ -1010,7 +1012,6 @@ document.querySelectorAll('.service-type-select .custom-select').forEach(select 
             const selectedEl = timeList.querySelector(`.time-item[data-time="${selectedTime}"]`);
             if (selectedEl) {
                 selectedEl.classList.add('selected');
-                selectedEl.scrollIntoView({ block: 'center' });
             }
         }
 
@@ -1020,24 +1021,23 @@ document.querySelectorAll('.service-type-select .custom-select').forEach(select 
     document.addEventListener('click', (e) => {
         if (!e.target.closest('.datetime-wrapper')) {
             datetimeWrappers.forEach(wrapper => {
+                const datePopover = wrapper.querySelector('.date-popover');
+                const timePopover = wrapper.querySelector('.time-popover');
                 const dateField = wrapper.querySelector('.field.date');
                 const timeField = wrapper.querySelector('.field.time');
-                const popover = wrapper.querySelector('.popover');
 
-                popover.style.display = 'none';
-
-                dateField.classList.remove('focused');
-                timeField.classList.remove('focused');
-
-                dateField.style.borderBottomLeftRadius = '10px';
-                timeField.style.borderBottomRightRadius = '10px';
+                if (datePopover) datePopover.style.display = 'none';
+                if (timePopover) timePopover.style.display = 'none';
+                dateField?.classList.remove('focused');
+                timeField?.classList.remove('focused');
             });
         }
     });
 
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
-            document.querySelectorAll('.popover').forEach(p => p.style.display = 'none');
+            document.querySelectorAll('.datetime-wrapper .popover').forEach(p => p.style.display = 'none');
+            document.querySelectorAll('.datetime-wrapper .field').forEach(f => f.classList.remove('focused'));
         }
     });
 })();
@@ -1348,10 +1348,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const stickyBar = document.querySelector('.sticky-search');
     if (!stickyBar) return;
 
-    function setStickySearchOffset() {
+    const siteHeader = document.querySelector('header');
+
+    function setStickyOffsets() {
+        const headerHeight = siteHeader ? siteHeader.offsetHeight : 0;
+        document.documentElement.style.setProperty(
+            '--header-height',
+            headerHeight + 'px'
+        );
         document.documentElement.style.setProperty(
             '--sticky-search-offset',
-            stickyBar.offsetHeight + 'px'
+            (headerHeight + stickyBar.offsetHeight) + 'px'
         );
     }
 
@@ -1361,10 +1368,17 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             stickyBar.classList.remove('scrolled');
         }
-        setStickySearchOffset();
+        setStickyOffsets();
     }
 
-    setStickySearchOffset();
+    setStickyOffsets();
     window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', setStickySearchOffset);
+    window.addEventListener('resize', setStickyOffsets);
+
+    // Keep offsets in sync when header/search height changes (scroll shrink, pet dropdowns)
+    if (typeof ResizeObserver !== 'undefined') {
+        const ro = new ResizeObserver(setStickyOffsets);
+        ro.observe(stickyBar);
+        if (siteHeader) ro.observe(siteHeader);
+    }
 })();  

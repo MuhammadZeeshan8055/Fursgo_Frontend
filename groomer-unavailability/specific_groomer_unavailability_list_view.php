@@ -68,7 +68,7 @@
                     <div data-tab-content="groomer-list-view" class="tabcontent" style="display: none;">
 
                         <!-- not found groomers -->
-                        <div class="col-lg-12 d-flex flex-column align-items-center justify-content-center">
+                        <div class="col-lg-12 d-flex flex-column align-items-center justify-content-center mt-5 mb-5">
                             <p class="not-found-message">Sorry, <span class="not-found-message">your preferred groomer
                                     isn’t available at this time. </span></p>
                             <p class="other-available-text">Please view their other available times or select a different groomer for this timeslot.</p>

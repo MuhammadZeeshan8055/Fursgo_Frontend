@@ -108,7 +108,7 @@
 
                     <div data-tab-content="space-map-view" class="tabcontent" style="display: none;">
                         <!-- not found groomers -->
-                        <div class="col-lg-12 d-flex flex-column align-items-center justify-content-center">
+                        <div class="col-lg-12 d-flex flex-column align-items-center justify-content-center mt-5 mb-5">
                             <p class="not-found-message"> Sorry, <span class="not-found-message">your preferred space isn’t
                                     available at this time. <br>
                                 </span></p>

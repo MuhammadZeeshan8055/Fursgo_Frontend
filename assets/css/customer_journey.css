@@ -6,7 +6,7 @@
     --mode-color: #FBAC83;
 }
 
-body:has(.top-tabs.find-space-search.active) {
+body:has(.find-space-search .find-groomer-space-text.active) {
     --mode-color: #ffa899;
 }
 
@@ -31,36 +31,32 @@ body:has(.top-tabs.find-space-search.active) {
 /* search widget sticky css starts */
 .sticky-search {
     position: sticky;
-    top: 0;
-    z-index: 1001;
+    /* Stick below the site <header> on every screen; JS sets --header-height */
+    top: -5px;
+    z-index: 999;
     transition: all 0.3s ease;
+    overflow: visible;
 }
 
 .sticky-search.scrolled {
-    background: #ffffff;
+    background: #F7F4EC;
     border-radius: 0;
     /* box-shadow: 0 8px 20px rgba(0,0,0,.1); */
     padding-top: 5px;
-    padding-bottom: 10px;
+    /* padding-bottom: 10px; */
+}
+.sticky-search.scrolled .find-groomer-search-content-area,
+.sticky-search.scrolled .find-space-search-content-area{
+    box-shadow: none;
 }
 
-/* Filter/sort bar sticks below the sticky search widget */
-.sticky-filters {
-    position: sticky;
-    top: var(--sticky-search-offset, 220px);
-    z-index: 999;
-    align-self: flex-start;
-    width: 100%;
-    background: #FDFCF8;
-    padding-top: 12px;
-    padding-bottom: 12px;
-    margin-top: 0;
+/* 
+.sticky-search.scrolled .top-tabs.find-groomer-search{
+    display: none;
 }
-
-.sticky-filters.section-gap {
-    padding-top: 12px;
-    padding-bottom: 12px;
-}
+.sticky-search.scrolled .top-tabs.find-space-search{
+    display: none;
+} */
 
 /* search widget sticky css  ends*/
 
@@ -308,16 +304,16 @@ body {
     background: #FDFCF8;
 }
 
-body:has(.find-space-search.active) {
+body:has(.find-space-search .find-groomer-space-text.active) {
     --active-bg: var(--space-color);
 }
 
-body:has(.find-space-search.active) .space-tab-content,
-body:has(.find-space-search.active) .modal-footer .modal-footer-btn.apply {
+body:has(.find-space-search .find-groomer-space-text.active) .space-tab-content,
+body:has(.find-space-search .find-groomer-space-text.active) .modal-footer .modal-footer-btn.apply {
     --groomer-color: var(--space-color);
 }
 
-body:has(.find-groomer-search.active) {
+body:has(.find-groomer-search .find-groomer-space-text.active) {
     --active-bg: #ffc77d;
 }
 
@@ -329,45 +325,67 @@ body:has(.find-groomer-search.active) {
 
 .mini-search-widget {
     display: flex;
-    height: 208px;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    height: auto;
+    min-height: 0;
     position: relative;
+    overflow: visible;
+}
+
+.find-groomer-search-content {
+    order: 1;
+    position: relative;
+    z-index: 1;
+}
+
+.find-space-search-content {
+    order: 2;
+    position: relative;
+    z-index: 1;
 }
 
 .find-groomer-search {
     color: var(--font-color);
     background: #FDFCF8;
-    padding: 12px 45px 12px 45px;
+    padding: 5px;
     font-family: "Lato";
     font-size: 18px;
     font-weight: 400;
     border-top-left-radius: 10px;
     cursor: pointer;
-    /* width: 200px; */
-    height: 48px;
     position: relative;
 }
 
 .find-groomer-search {
-    background: #fff;
+    background: #F0EAD9;
 }
 
-.find-groomer-search.active {
-    background-color: var(--groomer-color);
-    color: #fff;
-    font-weight: 700;
+.find-space-search .find-groomer-space-text.active {
+    background: #FFA999;
 }
 
 .find-groomer-search-content-area {
-    position: absolute;
+    order: 3;
+    flex: 0 0 100%;
     width: 100%;
-    height: 160px;
-    border-radius: 0 0 10px 10px;
-    background: #FFF;
-    bottom: 0;
+    position: relative;
+    height: 125px;
+    overflow: visible;
+    border-radius: 0 10px 10px 10px;
+    background: #F7F4EC;
+    box-shadow: 0 2px 20px 0 rgba(59, 55, 49, 0.20);
 }
 
 .input-fields {
-    padding: 35px;
+    padding: 20px 35px;
+    align-items: flex-start;
+    overflow: visible;
+}
+
+.input-fields > .w-auto {
+    position: relative;
+    overflow: visible;
 }
 
 
@@ -404,6 +422,8 @@ body:has(.find-groomer-search.active) {
 .custom-select-streched {
     width: 214.37px;
     height: 48px;
+    position: relative;
+    overflow: visible;
 }
 
 .custom-select-streched .select-trigger {
@@ -417,6 +437,15 @@ body:has(.find-groomer-search.active) {
 
 .custom-select-streched .select-trigger span {
     color: var(--font-color);
+}
+
+/* Dropdown panels float outside the search box (overlay), not expand it */
+.mini-search-widget .custom-select .select-options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 1100;
 }
 
 .popover {
@@ -441,28 +470,175 @@ body:has(.find-groomer-search.active) {
     margin-right: 0px;
 }
 
-.field.date.streched {
+/* Date + Time: one shared bordered control, separate popovers */
+.mini-search-widget .datetime-wrapper {
+    display: flex;
+    gap: 0;
+    column-gap: 0;
+    align-items: flex-start;
+}
+
+.mini-search-widget .datetime-wrapper .field-group {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+}
+
+.mini-search-widget .field.date.streched,
+.mini-search-widget .field.time.streched {
     width: 148px;
-}
-
-.field.time .input-row svg {
-    width: 15px;
-    height: 15px;
-}
-
-.field.date.focused,
-.field.date.has-value,
-.field.time.focused,
-.field.time.has-value {
-    border: 1px solid #ddd;
-}
-
-.field.time.streched {
-    width: 148px;
-}
-
-.pet-type-wrapper.wider {
     height: 48px;
+    margin: 0;
+    background: #fff;
+    box-shadow: none;
+}
+
+/* Join into one control — no gap, shared outer radius, center divider */
+.mini-search-widget .field.date.streched {
+    border: 1px solid var(--border, #ddd);
+    border-right: none;
+    border-radius: 10px 0 0 10px;
+}
+
+.mini-search-widget .field.time.streched {
+    border: 1px solid var(--border, #ddd);
+    border-radius: 0 10px 10px 0;
+}
+
+.mini-search-widget .field.date.focused,
+.mini-search-widget .field.date.has-value,
+.mini-search-widget .field.time.focused,
+.mini-search-widget .field.time.has-value {
+    border-color: var(--border, #ddd);
+}
+
+.mini-search-widget .field.date.streched.focused,
+.mini-search-widget .field.date.streched.has-value {
+    border-right: none;
+}
+
+/* When date calendar is open: inputs + panel read as one card (first pic) */
+.mini-search-widget .datetime-wrapper:has(.field.date.focused) .field.date.streched {
+    border-radius: 10px 0 0 0;
+    border-bottom-color: transparent;
+}
+
+.mini-search-widget .datetime-wrapper:has(.field.date.focused) .field.time.streched {
+    border-radius: 0 10px 0 0;
+    border-bottom-color: transparent;
+}
+
+/* When time list is open: square off bottom of the joined control */
+.mini-search-widget .datetime-wrapper:has(.field.time.focused) .field.date.streched {
+    border-radius: 10px 0 0 0;
+    border-bottom-color: transparent;
+}
+
+.mini-search-widget .datetime-wrapper:has(.field.time.focused) .field.time.streched {
+    border-radius: 0 10px 0 0;
+    border-bottom-color: transparent;
+}
+
+.mini-search-widget .field.time .input-row svg {
+    width: 15px;
+    height: 8px;
+}
+
+.mini-search-widget .popover.date-popover,
+.mini-search-widget .popover.time-popover {
+    position: absolute;
+    top: 100%;
+    z-index: 1100;
+    display: none;
+    overflow: hidden;
+    margin: 0;
+    background: #fff;
+    border: 1px solid var(--border, #ddd);
+    box-shadow: 0 8px 24px rgba(20, 20, 20, 0.08);
+}
+
+/* Date calendar spans full Date+Time width, flush under inputs */
+.mini-search-widget .popover.date-popover {
+    left: 0;
+    width: 296px;
+    border-radius: 0 0 12px 12px;
+    border-top: 1px solid var(--border, #ddd);
+}
+
+.mini-search-widget .popover.date-popover .calendar {
+    width: 100%;
+}
+
+.mini-search-widget .popover.date-popover .panel {
+    padding: 16px;
+}
+
+/* Time list flush under the time half */
+.mini-search-widget .popover.time-popover {
+    left: 0;
+    right: 0;
+    width: 100%;
+    min-width: 148px;
+    border-radius: 0 0 12px 12px;
+    border-top: 1px solid var(--border, #ddd);
+}
+
+.mini-search-widget .popover.time-popover .time-col {
+    padding: 8px 0;
+    width: 100%;
+}
+
+.mini-search-widget .popover.time-popover .time-list {
+    max-height: 200px;
+    overflow-y: auto;
+    padding: 0 8px;
+}
+
+.mini-search-widget .month-label {
+    color: #3B3731;
+    text-align: center;
+    font-family: Lato;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.mini-search-widget .prev-month,
+.mini-search-widget .next-month {
+    width: 24px;
+    height: 24px;
+    border: 2px solid #F5F5F5;
+    border-radius: 50%;
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2px;
+}
+
+.mini-search-widget .next-month {
+    background: #F5F5F5;
+}
+
+.pet-type-wrapper.wider,
+.pet-weight-wrapper.wider {
+    position: relative;
+    min-height: 48px;
+    height: auto;
+    overflow: visible;
+}
+
+/* Pet Type / Pet Size option lists overlay below the trigger, outside the beige box */
+#petTypeOptions,
+#petSizeOptions,
+#spaceTypeOptions,
+#spaceSizeOptions {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    z-index: 1100;
 }
 
 .search-custom-width {
@@ -522,33 +698,28 @@ input#dateInput#streched {
 
 /* find space css  */
 
-.find-space-search.active {
-    background-color: var(--space-color);
-    color: #fff;
-    font-weight: 700;
-}
-
 .find-space-search {
     color: var(--font-color);
-    background: #ffffff;
-    padding: 12px 45px 12px 45px;
+    padding: 5px;
     font-family: "Lato";
     font-size: 18px;
     font-weight: 400;
     cursor: pointer;
-    width: 200px;
-    height: 48px;
     border-top-right-radius: 10px;
+    background: #F0EAD9;
 }
 
 .find-space-search-content-area {
-    position: absolute;
+    order: 3;
+    flex: 0 0 100%;
     width: 100%;
-    height: 160px;
-    border-radius: 0 0 10px 10px;
-    background: #FFF;
-    bottom: 0;
+    position: relative;
+    height: 125px;
+    overflow: visible;
     display: none;
+    border-radius: 0 10px 10px 10px;
+    background: #F7F4EC;
+    box-shadow: 0 2px 20px 0 rgba(59, 55, 49, 0.20);
 }
 
 .space-tab-content {
@@ -926,8 +1097,10 @@ ul.grommers-options li {
 }
 
 @media (max-width: 1199px) {
-    .find-groomer-search-content-area {
+    .find-groomer-search-content-area,
+    .find-space-search-content-area {
         height: auto;
+        min-height: 152px;
     }
 
 }
