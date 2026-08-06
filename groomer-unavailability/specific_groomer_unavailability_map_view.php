@@ -237,7 +237,7 @@
                                             </div>
                                         </div>
                                         <div class="col-lg-12 d-flex justify-content-end mt-3">
-                                            <a href="" class="view-more">View more</a>
+                                            <a href="<?= BASE_URL ?>profiles/groomer/groomer_profile.php" class="view-more">View more</a>
                                         </div>
                                     </div>
 
