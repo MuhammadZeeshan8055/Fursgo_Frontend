@@ -1153,7 +1153,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const sm = start.toLocaleString(undefined, { month: 'long' });
             const em = end.toLocaleString(undefined, { month: 'long' });
             rangeEl.textContent =
-                `${pad(start.getDate())} â€“ ${pad(end.getDate())} ` +
+                `${pad(start.getDate())} – ${pad(end.getDate())} ` +
                 (sm === em ? sm : `${sm} / ${em}`);
             monthEl.textContent =
                 selectedDate.toLocaleString(undefined, { month: 'long', year: 'numeric' });
@@ -1329,7 +1329,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const value = range.value;
             const percent = (value / max) * 100;
 
-            output.textContent = 'Â£' + value;
+            output.textContent = '£' + value;
             output.style.left = percent + '%';
             inclRange.style.width = percent + '%';
         }
