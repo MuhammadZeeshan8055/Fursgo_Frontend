@@ -272,8 +272,8 @@
 
 
                     <div class="modal-footer mt-3">
-                        <button class="modal-footer-btn">Clear All</button>
-                        <button class="modal-footer-btn apply">Apply</button>
+                        <button type="button" class="modal-footer-btn clear">Clear All</button>
+                        <button type="button" class="modal-footer-btn apply">Apply</button>
                     </div>
 
                 </div>
@@ -485,8 +485,8 @@
                     </div>
 
                     <div class="modal-footer mt-3">
-                        <button class="modal-footer-btn">Clear All</button>
-                        <button class="modal-footer-btn apply">Apply</button>
+                        <button type="button" class="modal-footer-btn clear">Clear All</button>
+                        <button type="button" class="modal-footer-btn apply">Apply</button>
                     </div>
 
                 </div>

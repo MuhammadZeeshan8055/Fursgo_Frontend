@@ -1312,6 +1312,25 @@ document.addEventListener('click', e => {
     }
 });
 
+// Clear All filters inside groom / space modals
+document.addEventListener('click', e => {
+    const clearBtn = e.target.closest('#groomModal .modal-footer-btn.clear, #spaceModal .modal-footer-btn.clear');
+    if (!clearBtn) return;
+
+    const modal = clearBtn.closest('.modal');
+    if (!modal) return;
+
+    modal.querySelectorAll('.filter-options-section input[type="checkbox"]').forEach(input => {
+        input.checked = false;
+    });
+
+    const range = modal.querySelector('.range-slider input[type="range"]');
+    if (range) {
+        range.value = range.max;
+        range.dispatchEvent(new Event('input', { bubbles: true }));
+    }
+});
+
 // modal js ends 
 
 

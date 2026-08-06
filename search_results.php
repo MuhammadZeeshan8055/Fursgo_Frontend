@@ -175,35 +175,47 @@
         // CORE SYNC FUNCTION (SINGLE VERSION)
         // ================================
         function syncModalToPills(modalSelector, targetBox) {
+            const checkboxes = [...document.querySelectorAll(
+                `${modalSelector} .filter-options-section input[type="checkbox"]`
+            )];
 
-            const checkedItems = document.querySelectorAll(
-                `${modalSelector} .filter-options-section input[type="checkbox"]:checked`
-            );
+            const modalGroups = new Set(checkboxes.map(input => input.name));
+            const modalValues = new Set(checkboxes.map(input => input.value));
 
-            // remove ONLY dynamic pills
-            targetBox.querySelectorAll('.selected-item[data-dynamic="true"]').forEach(el => el.remove());
+            // Remove pills that came from this modal (clear + apply → empty list)
+            targetBox.querySelectorAll('.selected-item').forEach(el => {
+                if (el.dataset.dynamic === 'true') {
+                    el.remove();
+                    return;
+                }
+                if (el.dataset.group && modalGroups.has(el.dataset.group)) {
+                    el.remove();
+                    return;
+                }
+                if (!el.dataset.group && el.dataset.value && modalValues.has(el.dataset.value)) {
+                    el.remove();
+                }
+            });
 
-            checkedItems.forEach(input => {
-                createPill(input, targetBox);
+            checkboxes.forEach(input => {
+                if (input.checked) createModalPill(input, targetBox);
             });
         }
 
 
         // ================================
-        // CREATE PILL
+        // CREATE PILL (modal filters only)
         // ================================
-        function createPill(input, box) {
-
+        function createModalPill(input, box) {
             const value = input.value;
 
-            if (box.querySelector(`[data-value="${value}"]`)) return;
+            if (box.querySelector(`.selected-item[data-value="${CSS.escape(value)}"]`)) return;
 
             const div = document.createElement('div');
-
             div.className = 'selected-item cursor d-flex align-items-center gap-10';
-
             div.dataset.value = value;
-            div.dataset.dynamic = "true";
+            div.dataset.group = input.name;
+            div.dataset.dynamic = 'true';
 
             div.innerHTML = `
         <p>${value}</p>
