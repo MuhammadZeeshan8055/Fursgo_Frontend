@@ -1563,7 +1563,7 @@
                         opportunities; space owners foster meaningful connections; and Fetchers enable smooth,
                         stress‑free journeys.
                     </p>
-                    <button class="action-button">About Us</button>
+                    <a href="<?= BASE_URL ?>profile_pets_preferences/about_us.php" class="action-button">About Us</a>
                 </div>
             </div>
         </div>
