@@ -167,7 +167,7 @@
                                         </div>
                                         <div class="booking-details-listing d-flex align-items-center justify-content-between mt-4">
                                             <div class="d-flex flex-column">
-                                                <div class="d-flex align-items-center gap-15">
+                                                <div class="d-flex align-items-center gap-5">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="17" viewBox="0 0 16 17" fill="none">
                                                         <path d="M1.3 12.1V14.9C1.3 15.3243 1.46857 15.7313 1.76863 16.0314C2.06869 16.3314 2.47565 16.5 2.9 16.5H12.5C12.9243 16.5 13.3313 16.3314 13.6314 16.0314C13.9314 15.7313 14.1 15.3243 14.1 14.9V12.1M0.5 10.1V9.3C0.5 8.87565 0.668571 8.46869 0.968629 8.16863C1.26869 7.86857 1.67565 7.7 2.1 7.7H13.3C13.7243 7.7 14.1313 7.86857 14.4314 8.16863C14.7314 8.46869 14.9 8.87565 14.9 9.3V10.1M7.7 5.3V7.7M7.7 5.3C8.7096 5.3 9.3 4.5256 9.3 3.2C9.3 1.8744 7.7 0.5 7.7 0.5C7.7 0.5 6.1 1.8744 6.1 3.2C6.1 4.5256 6.6904 5.3 7.7 5.3Z" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
                                                         <path d="M0.5 10.0977C0.5 10.7342 0.752856 11.3446 1.20294 11.7947C1.65303 12.2448 2.26348 12.4977 2.9 12.4977C3.53652 12.4977 4.14697 12.2448 4.59706 11.7947C5.04714 11.3446 5.3 10.7342 5.3 10.0977C5.3 10.7342 5.55286 11.3446 6.00294 11.7947C6.45303 12.2448 7.06348 12.4977 7.7 12.4977C8.33652 12.4977 8.94697 12.2448 9.39706 11.7947C9.84714 11.3446 10.1 10.7342 10.1 10.0977C10.1 10.7342 10.3529 11.3446 10.8029 11.7947C11.253 12.2448 11.8635 12.4977 12.5 12.4977C13.1365 12.4977 13.747 12.2448 14.1971 11.7947C14.6471 11.3446 14.9 10.7342 14.9 10.0977" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
@@ -180,9 +180,10 @@
                                             <hr class="vertical-line">
 
                                             <div class="d-flex flex-column">
-                                                <div class="d-flex align-items-center gap-15">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="11" height="16" viewBox="0 0 11 16" fill="none">
-                                                        <path d="M5.5 0.5C8.25285 0.5 10.4998 2.7746 10.5 5.59961C10.5 8.30137 8.44411 10.5013 5.85742 10.6875L5.5 10.7129L5.14258 10.6875C2.55591 10.5013 0.5 8.30099 0.5 5.59961C0.500207 2.7746 2.74715 0.5 5.5 0.5Z" stroke="#3B3731" />
+                                                <div class="d-flex align-items-center gap-5">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 12 16" fill="none">
+                                                        <circle cx="6" cy="4.5" r="3.5" stroke="#3B3731" />
+                                                        <path d="M6 8V14.5M3.5 12H8.5" stroke="#3B3731" stroke-linecap="round" />
                                                     </svg>
                                                     <p class="medium-font-bold">Sex</p>
                                                 </div>
@@ -192,7 +193,7 @@
                                             <hr class="vertical-line">
 
                                             <div class="d-flex flex-column">
-                                                <div class="d-flex align-items-center gap-15">
+                                                <div class="d-flex align-items-center gap-5">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17" fill="none">
                                                         <path d="M15.1513 9.01871L15.565 7.47298C16.0482 5.66882 16.2906 4.76714 16.109 3.98627C15.9651 3.36981 15.6415 2.80989 15.1793 2.37733C14.5945 1.82928 13.692 1.58766 11.8879 1.10442C10.0837 0.620377 9.18124 0.378756 8.40117 0.560371C7.78472 0.704314 7.2248 1.02785 6.79224 1.49005C6.3226 1.9909 6.07778 2.72456 5.71375 4.05748L5.51854 4.78154L5.1049 6.32728C4.62086 8.13143 4.37924 9.03311 4.56086 9.81398C4.7048 10.4304 5.02833 10.9904 5.49054 11.4229C6.07538 11.971 6.97786 12.2126 8.78201 12.6966C10.4077 13.1319 11.3014 13.3711 12.0335 13.2807C12.1135 13.2705 12.1919 13.2567 12.2687 13.2391C12.885 13.0956 13.4449 12.7726 13.8776 12.311C14.4257 11.7253 14.6673 10.8229 15.1513 9.01871Z" stroke="#3B3731" />
                                                         <path d="M12.0333 13.2787C11.8661 13.791 11.5722 14.2528 11.1788 14.6212C10.594 15.1693 9.69152 15.4109 7.88737 15.8941C6.08322 16.3774 5.18075 16.6198 4.40069 16.4374C3.78433 16.2936 3.22442 15.9704 2.79175 15.5085C2.24371 14.9236 2.00129 14.0212 1.51805 12.217L1.10442 10.6713C0.620376 8.86711 0.378756 7.96463 0.560371 7.18456C0.704313 6.5681 1.02785 6.00818 1.49005 5.57562C2.0749 5.02757 2.97737 4.78595 4.78152 4.30191C5.12181 4.21017 5.4325 4.12776 5.71359 4.05469" stroke="#3B3731" />
@@ -220,7 +221,7 @@
 
                                 <div class="footer-buttons d-flex align-items-center justify-content-between">
                                     <button type="button" class="btn-custom btn-no-bg text-center mt-5">Message Groomer</button>
-                                    <button type="button" class="btn-custom btn-no-bg green-btn text-center mt-5">View Booking</button>
+                                    <a href="<?= BASE_URL ?>/my_bookings/my_bookings.php" type="button" class="btn-custom btn-no-bg green-btn text-center mt-5">View Booking</a>
                                 </div>
 
                             </div>

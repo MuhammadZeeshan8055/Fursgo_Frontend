@@ -675,7 +675,7 @@ $studioImage = BASE_URL . 'assets/images/booking-space-card-image.svg';
                                                 </span>
                                             </div>
                                         </div>
-                                        <div class="cbg-form-group">
+                                        <div class="cbg-form-group cbg-pay-span-2">
                                             <label for="cbgPayLastName">Last Name</label>
                                             <div class="cbg-input-wrap valid" data-pay-field="lastName">
                                                 <input type="text" id="cbgPayLastName" class="cbg-text-input" value="Ipsum">
@@ -686,7 +686,7 @@ $studioImage = BASE_URL . 'assets/images/booking-space-card-image.svg';
                                                 </span>
                                             </div>
                                         </div>
-                                        <div class="cbg-form-group cbg-pay-full">
+                                        <div class="cbg-form-group">
                                             <label for="cbgPayCardNumber">Card Number</label>
                                             <div class="cbg-input-wrap valid" data-pay-field="cardNumber">
                                                 <input type="text" id="cbgPayCardNumber" class="cbg-text-input" value="5423 6543 6543 6543" maxlength="19">
@@ -719,7 +719,7 @@ $studioImage = BASE_URL . 'assets/images/booking-space-card-image.svg';
                                                 </span>
                                             </div>
                                         </div>
-                                        <div class="cbg-form-group cbg-pay-full">
+                                        <div class="cbg-form-group cbg-pay-span-2">
                                             <label for="cbgPayCity">City</label>
                                             <div class="cbg-input-wrap" data-pay-field="city">
                                                 <input type="text" id="cbgPayCity" class="cbg-text-input" placeholder="City">
@@ -814,7 +814,7 @@ $studioImage = BASE_URL . 'assets/images/booking-space-card-image.svg';
                     <div class="cbg-booking-summary">
                         <h3>Your Booking</h3>
 
-                        <div class="cbg-summary-padding bg">
+                        <div class="cbg-summary-padding space-bg">
                             <div class="cbg-summary-studio">
                                 <img src="<?= htmlspecialchars($studioImage) ?>" alt="Furs & Co. Studio">
                                 <div class="cbg-summary-badge-shield" title="Verified">

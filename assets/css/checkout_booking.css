@@ -1578,7 +1578,7 @@ body.cbg-page {
 
 .cbg-pay-card-form {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 2fr 1fr 1fr;
   gap: 16px;
 }
 
@@ -1595,8 +1595,8 @@ body.cbg-page {
   padding-right: 40px;
 }
 
-.cbg-pay-full {
-  grid-column: 1 / -1;
+.cbg-pay-span-2 {
+  grid-column: span 2;
 }
 
 .cbg-pay-toggle-row {
@@ -1808,7 +1808,11 @@ body.cbg-page {
   padding: 20px;
 }
 
-.cbg-summary-padding.bg {
+.cbg-summary-padding.groomer-bg {
+  background: #FFF8EE;
+}
+
+.cbg-summary-padding.space-bg {
   background: #fff7f5;
 }
 
@@ -2038,6 +2042,10 @@ body.cbg-page {
 
   .cbg-pay-card-form {
     grid-template-columns: 1fr;
+  }
+
+  .cbg-pay-span-2 {
+    grid-column: auto;
   }
 
   .cbg-pay-footer {
