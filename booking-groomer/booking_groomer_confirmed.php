@@ -224,7 +224,7 @@
                                 </div>
 
                                 <div class="footer-buttons d-flex align-items-center justify-content-between">
-                                    <button type="button" class="btn-custom btn-no-bg text-center mt-5">Message Groomer</button>
+                                    <a href="<?= BASE_URL ?>messages_notification/messages.php" class="btn-custom btn-no-bg text-center mt-5">Message Groomer</a>
                                     <a href="<?= BASE_URL ?>/my_bookings/my_bookings.php" type="button" class="btn-custom btn-no-bg green-btn text-center mt-5">View Booking</a>
                                 </div>
 

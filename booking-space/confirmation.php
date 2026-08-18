@@ -357,6 +357,9 @@
         }
 
         .conf-view-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             width: 295px;
             height: 48px;
             border-radius: 75px;
@@ -370,10 +373,15 @@
             line-height: normal;
             border: none;
             cursor: pointer;
+            text-decoration: none;
+            box-sizing: border-box;
         }
 
-        .conf-view-btn:hover {
+        .conf-view-btn:hover,
+        .conf-view-btn:visited,
+        .conf-view-btn:focus {
             color: #FFF;
+            text-decoration: none;
         }
 
         /* Bottom groomer box */
@@ -625,7 +633,7 @@
                     <li>You can manage or cancel your booking from your account.</li>
                 </ul>
                 <div class="conf-btn-container">
-                    <button class="conf-view-btn">View Booking</button>
+                    <a href="<?= BASE_URL ?>my_bookings/my_bookings.php" class="conf-view-btn">View Booking</a>
                 </div>
             </div>
 
