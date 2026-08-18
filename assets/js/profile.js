@@ -313,11 +313,17 @@ function closeDropdown(input) {
 }
 
 
+function isFilterInput(input) {
+    return !input.closest('#block_profile_modal');
+}
+
 /* -------------------------
    CHANGE HANDLER
 --------------------------*/
 document.addEventListener('change', (e) => {
     const input = e.target;
+
+    if (!isFilterInput(input)) return;
 
     const label =
         input.closest('label')?.querySelector('.option-text')?.innerText
@@ -355,6 +361,8 @@ document.addEventListener('change', (e) => {
    INIT PRE-CHECKED INPUTS
 --------------------------*/
 document.querySelectorAll('input[type="checkbox"]:checked').forEach(input => {
+    if (!isFilterInput(input)) return;
+
     const label =
         input.closest('label')?.querySelector('.option-text')?.innerText
         || input.value;

@@ -159,15 +159,20 @@
 
         .filter .selected-item {
             border-radius: 100px;
-            border: 1px solid #BACF8E;
-            background: #C9DDA0;
-            padding: 10px 20px 10px 20px;
+            border: 1px solid #FBAC83 !important;
+            background: #fff;
+            padding: 10px 20px;
             text-align: center;
             font-family: Lato;
             font-size: 14px;
             font-weight: 500;
-            color: #FFF !important;
+            color: #FBAC83 !important;
             padding: 10px;
+        }
+
+        .filter .selected-item p {
+            color: #FBAC83 !important;
+            margin: 0;
         }
 
         .service-selected-options .selected-item,
@@ -735,6 +740,66 @@
                     </div>
                 </div>
 
+            </div>
+        </div>
+
+        <div class="modal" id="block_profile_modal">
+            <div class="modal-content">
+                <div class="block-modal-header">
+                    <h4 class="fs-18-600">Block this Groomer?</h4>
+                    <div class="groomer-cross-svg cursor" data-modal-close>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <circle cx="10" cy="10" r="9.5" transform="matrix(-1 0 0 1 20 0)" fill="#F3F3F3" stroke="#E8E8E8" />
+                            <path d="M13.1465 13.24L10.0001 10.0936L13.0937 6.99999" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M7.09375 13.24L10.2402 10.0936L7.14657 6.99999" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="block-modal-divider"></div>
+                <div class="block-modal-profile">
+                    <img class="block-modal-avatar" src="<?= BASE_URL ?>/assets/images/groomer-profile.png" alt="Sarah's Grooming Studio">
+                    <div>
+                        <p class="block-modal-name">Sarah's Grooming Studio <span class="dot">·</span> <span class="block-modal-type">Groomer</span></p>
+                        <p class="block-modal-owner">Sarah W.</p>
+                    </div>
+                </div>
+                <p class="block-modal-info">You won't see this Groomer in search, and Sarah W. won't be able to message you. You can unblock anytime in settings.</p>
+                <p class="block-modal-reason-label">Reason (optional)</p>
+                <div class="block-modal-reasons">
+                    <label class="block-modal-reason">
+                        <input type="radio" name="block_reason" value="not_interested" checked>
+                        <span class="block-modal-radio"></span>
+                        <span>I'm not interested in this Groomer</span>
+                    </label>
+                    <label class="block-modal-reason">
+                        <input type="radio" name="block_reason" value="unwanted_messages">
+                        <span class="block-modal-radio"></span>
+                        <span>Unwanted messages from Groomer</span>
+                    </label>
+                    <label class="block-modal-reason">
+                        <input type="radio" name="block_reason" value="inappropriate">
+                        <span class="block-modal-radio"></span>
+                        <span>Inappropriate or offensive content</span>
+                    </label>
+                    <label class="block-modal-reason">
+                        <input type="radio" name="block_reason" value="other">
+                        <span class="block-modal-radio"></span>
+                        <span>Other</span>
+                    </label>
+                </div>
+                <label class="block-modal-report">
+                    <input type="checkbox" name="also_report" checked>
+                    <span class="block-modal-checkbox">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="none">
+                            <path d="M2.2 6.2L4.7 8.7L9.8 3.3" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </span>
+                    <span>Also report this Groomer to Fursgo for review</span>
+                </label>
+                <div class="block-modal-actions">
+                    <button type="button" class="block-modal-cancel" data-modal-close>Cancel</button>
+                    <button type="button" class="block-modal-confirm" data-home-url="<?= BASE_URL ?>index.php">Block Groomer</button>
+                </div>
             </div>
         </div>
 
@@ -2395,11 +2460,11 @@
                                 </svg>
 
                                 <div class="block-btn-div">
-                                    <button class="block-btn d-flex align-items-center justify-content-between">
-                                        Block
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none">
-                                            <path d="M7.05664 0.375C7.86761 0.375004 8.63276 0.509461 9.35449 0.777344L9.66113 0.900391C10.4786 1.25264 11.1862 1.72915 11.7871 2.3291C12.3879 2.92892 12.8651 3.63584 13.2178 4.45312C13.5673 5.26324 13.7432 6.12989 13.7432 7.05664C13.7432 7.98354 13.5669 8.85036 13.2178 9.66113C12.8656 10.4789 12.3889 11.1868 11.7881 11.7871C11.187 12.3876 10.4798 12.8646 9.66406 13.2178C8.8559 13.5676 7.98971 13.7437 7.06152 13.7432C6.13461 13.7432 5.26684 13.5669 4.45605 13.2178C3.63899 12.8651 2.93181 12.3883 2.33105 11.7881C1.73017 11.1877 1.25306 10.4812 0.900391 9.66504C0.550891 8.85611 0.375027 7.98939 0.375 7.06152C0.375 6.24972 0.509614 5.4845 0.777344 4.76367L0.900391 4.45703C1.25262 3.63963 1.72876 2.93196 2.32812 2.33105C2.92737 1.73033 3.63433 1.25309 4.45215 0.900391C5.26288 0.550756 6.12982 0.375 7.05664 0.375Z" stroke="#3B3731" stroke-width="0.75" />
-                                            <line x1="1.92618" y1="2.22623" x2="11.8918" y2="12.1918" stroke="#3B3731" stroke-width="0.75" />
+                                    <button type="button" class="block-btn d-flex align-items-center justify-content-between" data-modal-open="block_profile_modal">
+                                        Block groomer
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
+                                            <path d="M5.99805 0.5C6.76207 0.500006 7.47427 0.644741 8.13965 0.931641C8.81419 1.22232 9.39675 1.61443 9.89062 2.10742C10.3843 2.60033 10.7773 3.18202 11.0684 3.85645C11.3553 4.52143 11.5 5.23387 11.5 5.99805C11.5 6.7623 11.355 7.47509 11.0684 8.14062C10.7777 8.81532 10.3852 9.39739 9.8916 9.89062C9.3975 10.3842 8.8159 10.7769 8.14258 11.0684C7.47936 11.3555 6.76738 11.5004 6.00195 11.5C5.2377 11.5 4.52491 11.355 3.85938 11.0684H3.8584C3.18441 10.7773 2.60294 10.3848 2.10938 9.8916C1.61542 9.39805 1.2227 8.81625 0.931641 8.14258C0.644906 7.47878 0.5 6.76695 0.5 6.00195C0.500006 5.23688 0.6448 4.52471 0.931641 3.86035C1.22239 3.18564 1.61474 2.6033 2.10742 2.10938C2.59984 1.61574 3.18152 1.22271 3.85645 0.931641C4.52182 0.644757 5.23404 0.5 5.99805 0.5Z" stroke="#3B3731" />
+                                            <line x1="1.76517" y1="1.76409" x2="10.2358" y2="10.2347" stroke="#3B3731" />
                                         </svg>
                                     </button>
                                 </div>
@@ -3193,7 +3258,7 @@
         function enableCtrlScrollZoom(map) {
             map.scrollWheelZoom.disable();
 
-            map.getContainer().addEventListener('wheel', function (e) {
+            map.getContainer().addEventListener('wheel', function(e) {
                 if (e.ctrlKey) {
                     map.scrollWheelZoom.enable();
 
@@ -3222,12 +3287,32 @@
 
         const blockSvg = document.querySelectorAll('.block-svg');
         const blockBtnDiv = document.querySelector('.block-btn-div');
+        const blockBtn = document.querySelector('.block-btn');
+        const blockConfirmBtn = document.querySelector('#block_profile_modal .block-modal-confirm');
 
         blockSvg.forEach(svg => {
             svg.addEventListener('click', () => {
                 blockBtnDiv.style.display = blockBtnDiv.style.display === 'block' ? 'none' : 'block';
             });
         });
+
+        if (blockBtn) {
+            blockBtn.addEventListener('click', () => {
+                if (blockBtnDiv) blockBtnDiv.style.display = 'none';
+            });
+        }
+
+        if (blockConfirmBtn) {
+            blockConfirmBtn.addEventListener('click', function() {
+                const homeUrl = this.dataset.homeUrl || '/';
+                const referrer = document.referrer;
+                if (referrer && referrer !== window.location.href) {
+                    window.location.href = referrer;
+                } else {
+                    window.location.href = homeUrl;
+                }
+            });
+        }
     </script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
