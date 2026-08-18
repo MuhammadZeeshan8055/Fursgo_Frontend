@@ -32,6 +32,10 @@
             font-family: Lato;
             font-size: 18px;
             font-weight: 400;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
         }
         .undelined_text{
             text-decoration-line: underline;
@@ -248,7 +252,7 @@
                     </div>
                     <p class="fs-lato-28-600">Need a Space?</p>
                     <p class="fs-16-400-light">You can book one separately on <span class="undelined_text">FursGo</span></p>
-                    <button type="button" class="btn-custom btn-no-bg text-center space-button mt-3">Find a Space</button>
+                    <a href="<?= BASE_URL ?>#find-space" class="btn-custom btn-no-bg text-center space-button mt-3">Find a Space</a>
                 </div>
             </div>
         </div>

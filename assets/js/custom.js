@@ -29,6 +29,10 @@ if (groomerBtn && spaceBtn && groomerContent && spaceContent && groomerText && s
 
   groomerBtn.addEventListener("click", () => setActiveTab(true));
   spaceBtn.addEventListener("click", () => setActiveTab(false));
+
+  if (window.location.hash === "#find-space") {
+    setActiveTab(false);
+  }
 }
 
 function toggleActive(containerSelector, itemSelector, activeClass) {
