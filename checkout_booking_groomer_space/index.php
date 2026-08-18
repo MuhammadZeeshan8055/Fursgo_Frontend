@@ -8,7 +8,7 @@ $groomerImage = BASE_URL . 'assets/images/card1.png';
 $spaceImage = BASE_URL . 'assets/images/booking-space-card-image.svg';
 ?>
 <!DOCTYPE html>
-<html lang="en">
+    <html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -944,7 +944,7 @@ $spaceImage = BASE_URL . 'assets/images/booking-space-card-image.svg';
                 <div class="cbg-sidebar-wrap">
                     <div class="cbg-booking-summary cbgs-booking-summary">
                         <h3>Your Bookings – 2 Services</h3>
-                        <div class="cbg-summary-padding">
+                        <div class="cbg-summary-padding groomer-bg">
                             <div class="cbgs-summary-booking cbgs-summary-booking--groomer">
                                 <div class="cbg-summary-studio">
                                     <img src="<?= htmlspecialchars($groomerImage) ?>" alt="Sarah's Grooming Studio">
@@ -974,8 +974,8 @@ $spaceImage = BASE_URL . 'assets/images/booking-space-card-image.svg';
                             </div>
                         </div>
 
-                        <div class="cbgs-summary-booking cbgs-summary-booking--space">
-                            <div class="cbg-summary-padding bg">
+                        <div class="cbgs-summary-booking cbgs-summary-booking--space mt-3">
+                            <div class="cbg-summary-padding space-bg">
                                 <div class="cbg-summary-studio">
                                     <img src="<?= htmlspecialchars($spaceImage) ?>" alt="Furs &amp; Co. Studio">
                                     <div class="cbg-summary-badge-shield" title="Verified">
