@@ -983,12 +983,515 @@ body {
 /* upcoming bookings modal css starts  */
 
 
-#view_booking_groom_modal .modal-content.size,
 #view_booking_space_modal .modal-content.size {
     width: 1030px;
     height: auto;
     background: #FDFCF8;
     margin-bottom: 5%;
+}
+
+#view_booking_groom_modal .modal-content.size {
+    width: 820px;
+    max-width: calc(100vw - 32px);
+    height: auto;
+    background: #FDFCF8;
+    margin-bottom: 5%;
+    padding: 0;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+#view_booking_groom_modal .bd-modal {
+    position: relative;
+    padding: 40px 48px 0;
+    width: 100%;
+}
+
+#view_booking_groom_modal .bd-close {
+    position: absolute;
+    top: 32px;
+    right: 32px;
+    border: none;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+    line-height: 0;
+}
+
+#view_booking_groom_modal .bd-header h1 {
+    margin: 0;
+    color: #3B3731;
+    font-family: "Playfair Display", serif;
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+#view_booking_groom_modal .bd-header p {
+    margin: 6px 0 0;
+    color: #9D9B98;
+    font-family: Lato, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+#view_booking_groom_modal .bd-divider {
+    margin: 24px 0 20px;
+    border: none;
+    border-top: 1px solid #E8E6E1;
+}
+
+#view_booking_groom_modal .bd-status-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+#view_booking_groom_modal .bd-status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    border-radius: 45px;
+    background: rgba(201, 221, 160, 0.20);
+    color: #A4C463;
+    font-family: Lato, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+#view_booking_groom_modal .bd-status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #A4C463;
+    flex-shrink: 0;
+}
+
+#view_booking_groom_modal .bd-ref-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+#view_booking_groom_modal .bd-ref-id {
+    color: #9D9B98;
+    font-family: Lato, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+#view_booking_groom_modal .bd-pdf-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #3B3731;
+    font-family: Lato, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+#view_booking_groom_modal .bd-groomer-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 16px 20px;
+    border-radius: 16px;
+    background: #F8F5F0;
+    margin-bottom: 24px;
+}
+
+#view_booking_groom_modal .bd-groomer-left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    min-width: 0;
+    flex: 1;
+}
+
+#view_booking_groom_modal .bd-groomer-avatar-wrap {
+    position: relative;
+    width: 56px;
+    height: 56px;
+    flex-shrink: 0;
+}
+
+#view_booking_groom_modal .bd-groomer-avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+}
+
+#view_booking_groom_modal .bd-verified-badge {
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    width: 20px;
+    height: 22px;
+    line-height: 0;
+    z-index: 1;
+}
+
+#view_booking_groom_modal .bd-verified-badge svg {
+    width: 20px;
+    height: 22px;
+    display: block;
+}
+
+#view_booking_groom_modal .bd-groomer-identity {
+    min-width: 0;
+}
+
+#view_booking_groom_modal .bd-groomer-title-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 4px;
+}
+
+#view_booking_groom_modal .bd-groomer-title-row h3 {
+    margin: 0;
+    color: #3B3731;
+    font-family: Lato, sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+#view_booking_groom_modal .bd-service-badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 20px;
+    background: #FFC97A;
+    color: #FFF;
+    font-family: Lato, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+#view_booking_groom_modal .bd-groomer-name {
+    margin: 0;
+    color: #9D9B98;
+    font-family: Lato, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+#view_booking_groom_modal .bd-groomer-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+#view_booking_groom_modal .bd-groomer-badges {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+}
+
+#view_booking_groom_modal .bd-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-family: Lato, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: #FFF;
+    white-space: nowrap;
+}
+
+#view_booking_groom_modal .bd-badge-popular {
+    background: #CBDCE8;
+}
+
+#view_booking_groom_modal .bd-badge-rated {
+    background: #FFA899;
+}
+
+#view_booking_groom_modal .bd-groomer-stats {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 16px;
+}
+
+#view_booking_groom_modal .bd-groomer-stats span {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #3B3731;
+    font-family: Lato, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+#view_booking_groom_modal .bd-muted {
+    color: #9D9B98;
+    font-weight: 400;
+}
+
+#view_booking_groom_modal .bd-section-label {
+    margin: 0 0 10px;
+    color: #C9C9C9;
+    font-family: Lato, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+}
+
+#view_booking_groom_modal .bd-appointment-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+#view_booking_groom_modal .bd-tile {
+    padding: 14px 16px;
+    border-radius: 10px;
+    background: #F5F0E8;
+}
+
+#view_booking_groom_modal .bd-tile-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+    color: #9D9B98;
+    font-family: Lato, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+#view_booking_groom_modal .bd-tile-value {
+    margin: 0;
+    color: #3B3731;
+    font-family: Lato, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+#view_booking_groom_modal .bd-pet-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 16px;
+    border-radius: 10px;
+    background: #F5F0E8;
+    margin-bottom: 24px;
+}
+
+#view_booking_groom_modal .bd-pet-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.bd-pet-details{
+    display: flex;
+    align-items: center;
+}
+
+#view_booking_groom_modal .bd-pet-name {
+    color: #3B3731;
+    font-family: Lato, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+#view_booking_groom_modal .bd-pet-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 20px;
+}
+
+#view_booking_groom_modal .bd-pet-meta span {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #3B3731;
+    font-family: Lato, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+#view_booking_groom_modal .bd-next-steps {
+    padding: 18px 20px;
+    border-radius: 10px;
+    background: #F2F6E6;
+    margin-bottom: 24px;
+}
+
+#view_booking_groom_modal .bd-next-steps h3 {
+    margin: 0 0 10px;
+    color: #A0BE63;
+    font-family: Lato, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+#view_booking_groom_modal .bd-next-steps ul {
+    list-style: disc;
+    list-style-position: outside;
+    margin: 0;
+    padding-left: 30px;
+    color: #A0BE63;
+    font-family: Lato, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.6;
+}
+
+#view_booking_groom_modal .bd-next-steps li + li {
+    margin-top: 4px;
+}
+
+#view_booking_groom_modal .bd-total-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 0;
+    border-top: 1px solid #F0EAD9;
+    margin-bottom: 0;
+}
+
+#view_booking_groom_modal .bd-total-label {
+    color: #9D9B98;
+    font-family: Lato, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 25px;
+}
+
+#view_booking_groom_modal .bd-total-amount {
+    color: #3B3731;
+    font-family: "Playfair Display", serif;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+#view_booking_groom_modal .bd-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 20px 48px 28px;
+    margin: 0 -48px;
+    background: #EEF2E4;
+    border-radius: 0 0 16px 16px;
+}
+
+#view_booking_groom_modal .bd-cancel-link {
+    color: #777572;
+    font-family: Lato, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    white-space: nowrap;
+}
+
+#view_booking_groom_modal .bd-footer-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+#view_booking_groom_modal .bd-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-width: 160px;
+    height: 44px;
+    padding: 0 20px;
+    border-radius: 24px;
+    font-family: Lato, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: opacity 0.15s ease;
+}
+
+#view_booking_groom_modal .bd-btn:hover {
+    opacity: 0.88;
+}
+
+#view_booking_groom_modal .bd-btn-message {
+    border-radius: 100px;
+    border: 1px solid #F2F2F2;
+    background: #FFF;
+    color: #3B3731;
+}
+
+#view_booking_groom_modal .bd-btn-change {
+    background: #3B3731;
+    border: 1px solid #3B3731;
+    color: #FFF;
+}
+
+@media (max-width: 768px) {
+    #view_booking_groom_modal .bd-modal {
+        padding: 32px 24px 0;
+    }
+
+    #view_booking_groom_modal .bd-close {
+        top: 24px;
+        right: 24px;
+    }
+
+    #view_booking_groom_modal .bd-groomer-card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    #view_booking_groom_modal .bd-groomer-right {
+        align-items: flex-start;
+        width: 100%;
+    }
+
+    #view_booking_groom_modal .bd-groomer-badges {
+        flex-wrap: wrap;
+    }
+
+    #view_booking_groom_modal .bd-groomer-stats {
+        justify-content: flex-start;
+    }
+
+    #view_booking_groom_modal .bd-appointment-grid {
+        grid-template-columns: 1fr;
+    }
+
+    #view_booking_groom_modal .bd-footer {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 20px 24px 24px;
+        margin: 0 -24px;
+    }
+
+    #view_booking_groom_modal .bd-footer-actions {
+        flex-direction: column;
+    }
+
+    #view_booking_groom_modal .bd-btn {
+        width: 100%;
+    }
 }
 
 .modal-card {
