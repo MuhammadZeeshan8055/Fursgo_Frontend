@@ -291,12 +291,12 @@ body {
 }
 
 .mb-card--completed .mb-status {
-    background: #EAF3FA;
-    color: #5B8FB8;
+    background: rgba(203, 220, 232, 0.30);
+    color: #6FA0C3;
 }
 
 .mb-card--completed .mb-status__dot {
-    background: #5B8FB8;
+    background: #6FA0C3;
 }
 
 .mb-card--cancelled .mb-status {
@@ -611,12 +611,12 @@ body {
 }
 
 .mb-btn--blue {
-    border-color: #B7D0E5;
-    color: #5B8FB8;
+    border-color: #6FA0C3;
+    color: #6FA0C3;
 }
 
 .mb-btn--blue:hover {
-    color: #5B8FB8;
+    color: #6FA0C3;
 }
 
 .mb-btn--orange {
@@ -992,7 +992,6 @@ body {
     background: #FDFCF8;
     margin-bottom: 5%;
     padding: 0;
-    border-radius: 16px;
     overflow: hidden;
 }
 
@@ -1007,6 +1006,18 @@ body {
 #view_booking_groom_modal .bd-modal{
     border-radius: 10px;
     border: 1px solid #D8E8B7;
+    background: #FDFCF8;
+}
+
+#view_booking_groom_completed_modal .bd-modal{
+    border-radius: 10px;
+    border: 1px solid #CBDCE8;
+    background: #FDFCF8;
+}
+
+#view_booking_groom_cancelled_modal .bd-modal{
+    border-radius: 10px;
+    border: 1px solid #FF6E6E;
     background: #FDFCF8;
 }
 
@@ -1555,12 +1566,12 @@ body {
 }
 
 #view_booking_groom_completed_modal .bd-status-badge--completed {
-    background: #EAF3FA;
-    color: #5B8FB8;
+    background: rgba(203, 220, 232, 0.30);
+    color: #6FA0C3;
 }
 
 #view_booking_groom_completed_modal .bd-status-badge--completed .bd-status-dot {
-    background: #5B8FB8;
+    background: #6FA0C3;
 }
 
 #view_booking_groom_completed_modal .bd-review-prompt {
@@ -1610,9 +1621,9 @@ body {
 }
 
 #view_booking_groom_completed_modal .bd-btn-rebook {
-    border: 1px solid #B7D0E5;
+    border: 1px solid #6FA0C3;
     background: #FFF;
-    color: #5B8FB8;
+    color: #6FA0C3;
 }
 
 
@@ -1693,8 +1704,8 @@ body {
 }
 
 #view_booking_groom_cancelled_modal .bd-footer--cancelled {
-    background: #FFF5F5;
-    border-top: 1px solid #F5C6C6;
+    background: #FFF1F1;
+    border-top: 1px solid #FF6E6E;
 }
 
 #view_booking_groom_cancelled_modal .bd-closed-label {
@@ -1705,9 +1716,9 @@ body {
 }
 
 #view_booking_groom_cancelled_modal .bd-btn-rebook {
-    border: 1px solid #B7D0E5;
+    border: 1px solid #6FA0C3;
     background: #FFF;
-    color: #5B8FB8;
+    color: #6FA0C3;
 }
 
 @media (max-width: 768px) {
