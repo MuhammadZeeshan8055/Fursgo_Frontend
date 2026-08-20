@@ -1450,6 +1450,416 @@
                                 </div>
                             </div>
 
+                            <!-- Completed Space Booking Modal -->
+
+                            <div class="modal" id="view_booking_space_completed_modal">
+                                <div class="modal-content size bd-modal-content">
+                                    <div class="bd-modal">
+                                        <button class="bd-close" type="button" data-modal-close aria-label="Close">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36" fill="none">
+                                                <circle cx="18" cy="18" r="17.5" stroke="#3B3731" />
+                                                <path d="M12.8 24.0008L24 12.8008M12.8 12.8008L24 24.0008" stroke="#3B3731" stroke-width="1.5" stroke-linecap="round" />
+                                            </svg>
+                                        </button>
+
+                                        <div class="bd-header">
+                                            <h1>Booking Details</h1>
+                                            <p>Your completed booking</p>
+                                        </div>
+                                        <hr class="bd-divider">
+
+                                        <div class="bd-status-bar">
+                                            <span class="bd-status-badge bd-status-badge--completed">
+                                                <span class="bd-status-dot"></span>
+                                                Completed
+                                            </span>
+                                            <div class="bd-ref-actions">
+                                                <span class="bd-ref-id">FG-10294</span>
+                                                <a href="#" class="bd-pdf-link">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="13" height="15" viewBox="0 0 13 15" fill="none">
+                                                        <path d="M3.07717 14.5H9.27418C9.95769 14.5 10.6132 14.2209 11.0965 13.7242C11.5798 13.2275 11.8514 12.5538 11.8514 11.8514V7.66649C11.8516 6.96411 11.5804 6.29039 11.0973 5.79351L6.70216 1.27568C6.46282 1.02973 6.1787 0.834645 5.86601 0.701554C5.55331 0.568463 5.21817 0.499975 4.87972 0.5H3.07717C2.39367 0.5 1.73815 0.779053 1.25484 1.27577C0.771523 1.77249 0.5 2.44618 0.5 3.14865V11.8514C0.5 12.5538 0.771523 13.2275 1.25484 13.7242C1.73815 14.2209 2.39367 14.5 3.07717 14.5Z" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                                                        <path d="M5.9458 0.772461V5.0557C5.9458 5.45711 6.10096 5.84208 6.37714 6.12592C6.65332 6.40976 7.0279 6.56922 7.41847 6.56922H11.5876" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                                                        <path d="M2.67822 10.9055V10.1488M2.67822 10.1488V8.63525H3.41456C3.60985 8.63525 3.79714 8.71498 3.93523 8.8569C4.07332 8.99882 4.15089 9.19131 4.15089 9.39201C4.15089 9.59272 4.07332 9.7852 3.93523 9.92712C3.79714 10.069 3.60985 10.1488 3.41456 10.1488H2.67822ZM8.56891 10.9055V9.95958M8.56891 9.95958V8.63525H9.67341M8.56891 9.95958H9.67341M5.62357 10.9055V8.63525H5.99173C6.28467 8.63525 6.5656 8.75485 6.77274 8.96773C6.97987 9.18061 7.09624 9.46933 7.09624 9.77039C7.09624 10.0714 6.97987 10.3602 6.77274 10.5731C6.5656 10.7859 6.28467 10.9055 5.99173 10.9055H5.62357Z" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                                                    </svg>
+                                                    Download PDF
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                        <div class="bd-groomer-card bd-space-card">
+                                            <div class="bd-groomer-left">
+                                                <div class="bd-groomer-avatar-wrap bd-space-thumb-wrap">
+                                                    <img src="<?= BASE_URL ?>assets/images/space_card1.png" alt="Furs & Co. Studio" class="bd-space-thumb">
+                                                    <div class="bd-verified-badge bd-verified-badge--space" title="Verified">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="22" viewBox="0 0 29 31" fill="none">
+                                                            <path d="M15.3096 0.175208C15.0558 0.0604166 14.784 0 14.5 0C14.216 0 13.9442 0.0604166 13.6904 0.175208L2.31398 5.00249C0.984817 5.56436 -0.00601417 6.8754 2.74804e-05 8.45832C0.0302358 14.4516 2.49523 25.4172 12.905 30.4016C13.914 30.8849 15.086 30.8849 16.095 30.4016C26.5048 25.4172 28.9698 14.4516 29 8.45832C29.006 6.8754 28.0152 5.56436 26.686 5.00249L15.3096 0.175208Z" fill="#CBDCE8"></path>
+                                                            <path d="M22.3736 8.3902L16.1586 14.9936M13.3976 14.6712C11.471 15.4108 9.93043 15.2842 8.38989 14.6735C8.77833 19.6789 11.112 21.6032 14.2234 22.3739C14.2234 22.3739 16.5672 20.716 16.9052 16.7858C16.9417 16.3601 16.9596 16.148 16.8718 15.908C16.7832 15.6679 16.6092 15.4962 16.2619 15.1521C15.6902 14.5865 15.405 14.3037 15.0655 14.2323C14.7261 14.1624 14.2832 14.3317 13.3976 14.6712Z" stroke="white" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                                <div class="bd-groomer-identity">
+                                                    <div class="bd-groomer-title-row">
+                                                        <h3>Furs &amp; Co. Studio</h3>
+                                                        <span class="bd-service-badge bd-service-badge--space">Garden/Shed</span>
+                                                    </div>
+                                                    <p class="bd-groomer-name">Hosted by Dev E.</p>
+                                                </div>
+                                            </div>
+                                            <div class="bd-groomer-right">
+                                                <div class="bd-groomer-badges">
+                                                    <span class="bd-badge bd-badge-popular">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="10" height="9" viewBox="0 0 10 9" fill="none">
+                                                            <path d="M2 8.99999C1.85833 8.99999 1.73967 8.95199 1.644 8.85599C1.54833 8.75999 1.50033 8.64133 1.5 8.49999C1.49967 8.35866 1.54767 8.23999 1.644 8.14399C1.74033 8.04799 1.859 7.99999 2 7.99999H8C8.14166 7.99999 8.2605 8.04799 8.3565 8.14399C8.4525 8.23999 8.50033 8.35866 8.5 8.49999C8.49966 8.64133 8.45166 8.76016 8.356 8.85649C8.26033 8.95283 8.14166 9.00066 8 8.99999H2ZM2.35 7.24999C2.10833 7.24999 1.89383 7.17083 1.7065 7.0125C1.51917 6.85416 1.4045 6.65416 1.3625 6.4125L0.862501 3.2375C0.845834 3.2375 0.827167 3.23967 0.806501 3.244C0.785834 3.24833 0.767001 3.25033 0.750001 3.25C0.541667 3.25 0.364668 3.17717 0.219001 3.0315C0.0733344 2.88583 0.000334469 2.70867 1.13636e-06 2.5C-0.000332197 2.29133 0.0726677 2.11433 0.219001 1.969C0.365334 1.82367 0.542334 1.75067 0.750001 1.75C0.957667 1.74933 1.13483 1.82233 1.2815 1.969C1.42817 2.11567 1.501 2.29267 1.5 2.5C1.5 2.55833 1.49367 2.6125 1.481 2.6625C1.46833 2.7125 1.45383 2.75833 1.4375 2.8L3 3.5L4.5625 1.3625C4.47083 1.29583 4.39583 1.20833 4.3375 1.1C4.27917 0.991667 4.25 0.875 4.25 0.75C4.25 0.541667 4.323 0.364501 4.469 0.218501C4.615 0.0725011 4.792 -0.000332194 5 1.13895e-06C5.208 0.000334472 5.38516 0.0733344 5.5315 0.219001C5.67783 0.364667 5.75066 0.541667 5.75 0.75C5.75 0.875 5.72083 0.991667 5.6625 1.1C5.60416 1.20833 5.52916 1.29583 5.4375 1.3625L7 3.5L8.5625 2.8C8.54583 2.75833 8.53116 2.7125 8.5185 2.6625C8.50583 2.6125 8.49966 2.55833 8.5 2.5C8.5 2.29167 8.573 2.1145 8.719 1.9685C8.865 1.8225 9.042 1.74967 9.25 1.75C9.458 1.75033 9.63516 1.82333 9.7815 1.969C9.92783 2.11467 10.0007 2.29167 10 2.5C9.99933 2.70833 9.92649 2.8855 9.7815 3.0315C9.6365 3.1775 9.45933 3.25033 9.25 3.25C9.23333 3.25 9.21466 3.248 9.194 3.244C9.17333 3.24 9.1545 3.23783 9.1375 3.2375L8.6375 6.4125C8.59583 6.65416 8.48133 6.85416 8.294 7.0125C8.10666 7.17083 7.892 7.24999 7.65 7.24999H2.35ZM2.35 6.25H7.65L7.975 4.1625L7.4 4.4125C7.18333 4.50416 6.9625 4.52083 6.7375 4.4625C6.5125 4.40416 6.32916 4.27916 6.1875 4.0875L5 2.45L3.8125 4.0875C3.67083 4.27916 3.4875 4.40416 3.2625 4.4625C3.0375 4.52083 2.81667 4.50416 2.6 4.4125L2.025 4.1625L2.35 6.25Z" fill="white" />
+                                                        </svg>
+                                                        Popular
+                                                    </span>
+                                                </div>
+                                                <div class="bd-groomer-stats">
+                                                    <span>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="10" height="14" viewBox="0 0 10 14" fill="none">
+                                                            <path d="M5 6.65C4.5264 6.65 4.0722 6.46563 3.73731 6.13744C3.40242 5.80925 3.21429 5.36413 3.21429 4.9C3.21429 4.43587 3.40242 3.99075 3.73731 3.66256C4.0722 3.33437 4.5264 3.15 5 3.15C5.4736 3.15 5.9278 3.33437 6.26269 3.66256C6.59758 3.99075 6.78571 4.43587 6.78571 4.9C6.78571 5.12981 6.73953 5.35738 6.64979 5.5697C6.56004 5.78202 6.42851 5.97493 6.26269 6.13744C6.09687 6.29994 5.90002 6.42884 5.68336 6.51679C5.46671 6.60473 5.2345 6.65 5 6.65ZM5 0C3.67392 0 2.40215 0.516248 1.46447 1.43518C0.526784 2.3541 0 3.60044 0 4.9C0 8.575 5 14 5 14C5 14 10 8.575 10 4.9C10 3.60044 9.47322 2.3541 8.53553 1.43518C7.59785 0.516248 6.32608 0 5 0Z" fill="#FFC97A" />
+                                                        </svg>
+                                                        2.5 mi
+                                                    </span>
+                                                    <span>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                                            <path d="M6.12956 0.660476C6.40354 -0.220161 7.59647 -0.220158 7.87045 0.660479L8.89548 3.95519C9.01801 4.34902 9.36942 4.61566 9.76593 4.61566H13.083C13.9696 4.61566 14.3383 5.80055 13.621 6.34481L10.9374 8.38106C10.6166 8.62446 10.4824 9.0559 10.6049 9.44973L11.63 12.7444C11.9039 13.6251 10.9388 14.3574 10.2215 13.8131L7.53797 11.7769C7.21719 11.5335 6.78282 11.5335 6.46204 11.7769L3.77846 13.8131C3.06117 14.3574 2.09607 13.6251 2.37005 12.7444L3.39508 9.44973C3.51761 9.0559 3.38338 8.62446 3.0626 8.38106L0.37903 6.34481C-0.338258 5.80055 0.0303816 4.61566 0.916998 4.61566H4.23408C4.63058 4.61566 4.98199 4.34902 5.10452 3.95519L6.12956 0.660476Z" fill="#FFC97A" />
+                                                        </svg>
+                                                        4.3 <span class="bd-muted">(20 reviews)</span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <p class="bd-section-label">APPOINTMENT</p>
+                                        <div class="bd-appointment-grid">
+                                            <div class="bd-tile">
+                                                <div class="bd-tile-label">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                                        <path d="M2.5 6.5L8 2L13.5 6.5V13.5C13.5 13.7652 13.3946 14.0196 13.2071 14.2071C13.0196 14.3946 12.7652 14.5 12.5 14.5H3.5C3.23478 14.5 2.98043 14.3946 2.79289 14.2071C2.60536 14.0196 2.5 13.7652 2.5 13.5V6.5Z" stroke="#9D9B98" stroke-linecap="round" stroke-linejoin="round" />
+                                                        <path d="M6.5 14.5V8.5H9.5V14.5" stroke="#9D9B98" stroke-linecap="round" stroke-linejoin="round" />
+                                                    </svg>
+                                                    Service
+                                                </div>
+                                                <p class="bd-tile-value">Half-Day</p>
+                                            </div>
+                                            <div class="bd-tile">
+                                                <div class="bd-tile-label">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17" fill="none">
+                                                        <path d="M0.5 8.29554C0.5 5.20139 0.5 3.6539 1.50457 2.69308C2.50914 1.73227 4.12486 1.73145 7.35714 1.73145H10.7857C14.018 1.73145 15.6346 1.73145 16.6383 2.69308C17.642 3.65472 17.6429 5.20139 17.6429 8.29554V9.93656C17.6429 13.0307 17.6429 14.5782 16.6383 15.539C15.6337 16.4998 14.018 16.5007 10.7857 16.5007H7.35714C4.12486 16.5007 2.50829 16.5007 1.50457 15.539C0.500857 14.5774 0.5 13.0307 0.5 9.93656V8.29554Z" stroke="#9D9B98" />
+                                                        <path d="M4.78585 1.73077V0.5M13.3573 1.73077V0.5M0.928711 5.83333H17.2144" stroke="#9D9B98" stroke-linecap="round" />
+                                                    </svg>
+                                                    Date
+                                                </div>
+                                                <p class="bd-tile-value">Wed, 18 Dec 2025</p>
+                                            </div>
+                                            <div class="bd-tile">
+                                                <div class="bd-tile-label">
+                                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                                        <circle cx="8" cy="8" r="6" stroke="#9D9B98" stroke-width="1.5" />
+                                                        <path d="M8 4.5V8L10.5 10" stroke="#9D9B98" stroke-width="1.5" stroke-linecap="round" />
+                                                    </svg>
+                                                    Time
+                                                </div>
+                                                <p class="bd-tile-value">14:30 - 18:30</p>
+                                            </div>
+                                            <div class="bd-tile">
+                                                <div class="bd-tile-label">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="16" viewBox="0 0 12 16" fill="none">
+                                                        <path d="M6 0.5C7.4694 0.5 8.87214 1.04525 9.90137 2.00586C10.9293 2.96529 11.4999 4.25871 11.5 5.59961C11.5 7.10011 10.6408 8.95946 9.51855 10.7236C8.41048 12.4655 7.10434 14.0263 6.32227 14.9082C6.14625 15.1067 5.85375 15.1067 5.67773 14.9082C4.89566 14.0263 3.58952 12.4655 2.48145 10.7236C1.35919 8.95946 0.5 7.10011 0.5 5.59961C0.500111 4.25871 1.07068 2.96529 2.09863 2.00586C3.12786 1.04525 4.53061 0.5 6 0.5ZM6 3.09961C5.30978 3.09961 4.64141 3.35564 4.14355 3.82031C3.64466 4.28597 3.35753 4.92517 3.35742 5.59961C3.35742 6.27422 3.64453 6.91413 4.14355 7.37988C4.64141 7.84453 5.30979 8.09961 6 8.09961C6.69022 8.09961 7.35859 7.84453 7.85645 7.37988C8.35534 6.91413 8.64247 6.27422 8.64258 5.59961C8.64258 4.92517 8.35534 4.28597 7.85645 3.82031C7.35859 3.35564 6.69022 3.09961 6 3.09961Z" stroke="#9D9B98" />
+                                                    </svg>
+                                                    Location
+                                                </div>
+                                                <p class="bd-tile-value">Victoria Embankment</p>
+                                            </div>
+                                        </div>
+
+                                        <p class="bd-section-label">PET</p>
+                                        <div class="bd-pets-row">
+                                            <div class="bd-pet-card bd-pet-card--compact">
+                                                <img src="<?= BASE_URL ?>assets/images/pet_details_1.png" alt="Bella" class="bd-pet-avatar">
+                                                <p class="bd-pet-name">Bella - Rabbit <span class="bd-pet-breed">(Mini Lop)</span></p>
+                                            </div>
+                                            <div class="bd-pet-card bd-pet-card--compact">
+                                                <img src="<?= BASE_URL ?>assets/images/pet_details_2.png" alt="Louis" class="bd-pet-avatar">
+                                                <p class="bd-pet-name">Louis - Dog <span class="bd-pet-breed">(Labrador)</span></p>
+                                            </div>
+                                        </div>
+
+                                        <p class="bd-section-label">LOCATION &amp; ACCESS</p>
+                                        <div class="bd-map-wrap">
+                                            <img src="<?= BASE_URL ?>assets/images/modal_map.png" alt="Location map" class="bd-map-image">
+                                        </div>
+
+                                        <p class="bd-section-label">AMENITIES INCLUDED</p>
+                                        <div class="bd-amenities">
+                                            <div class="bd-amenity-tags">
+                                                <span class="bd-amenity-tag"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="9" viewBox="0 0 12 9" fill="none">
+                                                        <path d="M0.75 4.75L4.25 8.25L11.25 0.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                                    </svg> Grooming Table</span>
+                                                <span class="bd-amenity-tag"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="9" viewBox="0 0 12 9" fill="none">
+                                                        <path d="M0.75 4.75L4.25 8.25L11.25 0.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                                    </svg> Bath</span>
+                                                <span class="bd-amenity-tag"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="9" viewBox="0 0 12 9" fill="none">
+                                                        <path d="M0.75 4.75L4.25 8.25L11.25 0.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                                    </svg> Dryer</span>
+                                                <span class="bd-amenity-tag"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="9" viewBox="0 0 12 9" fill="none">
+                                                        <path d="M0.75 4.75L4.25 8.25L11.25 0.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                                    </svg> Towels</span>
+                                                <span class="bd-amenity-tag"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="9" viewBox="0 0 12 9" fill="none">
+                                                        <path d="M0.75 4.75L4.25 8.25L11.25 0.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                                    </svg> Waiting area</span>
+                                                <span class="bd-amenity-tag"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="9" viewBox="0 0 12 9" fill="none">
+                                                        <path d="M0.75 4.75L4.25 8.25L11.25 0.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                                    </svg> Parking</span>
+                                                <span class="bd-amenity-tag"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="9" viewBox="0 0 12 9" fill="none">
+                                                        <path d="M0.75 4.75L4.25 8.25L11.25 0.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                                    </svg> Wi-Fi</span>
+                                            </div>
+                                            <p class="bd-amenities-note">Extra towels - Premium shampoos - Drying crates - Tool storage (where available).</p>
+                                        </div>
+
+                                        <div class="bd-reviewed-banner">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
+                                                <path d="M6 11.5C9.025 11.5 11.5 9.025 11.5 6C11.5 2.975 9.025 0.5 6 0.5C2.975 0.5 0.5 2.975 0.5 6C0.5 9.025 2.975 11.5 6 11.5Z" stroke="#AAA6A0" stroke-linecap="round" stroke-linejoin="round" />
+                                                <path d="M3.6626 6.00023L5.2191 7.55673L8.3376 4.44373" stroke="#AAA6A0" stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+                                            <p>You've reviewed this booking — thank you! Your feedback helps other pet owners.</p>
+                                        </div>
+
+                                        <div class="bd-total-row">
+                                            <span class="bd-total-label">Total Paid</span>
+                                            <span class="bd-total-amount">£48.00</span>
+                                        </div>
+
+                                        <div class="bd-footer bd-footer--completed">
+                                            <a href="<?= BASE_URL ?>messages_notification/messages.php" class="bd-btn bd-btn-message">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="15" viewBox="0 0 16 15" fill="none">
+                                                    <path d="M8 0.5C12.2044 0.5 15.5 3.48321 15.5 7.03223C15.5 10.4703 12.4072 13.3772 8.3916 13.5557L8 13.5645H7.99902C7.251 13.5661 6.50584 13.4687 5.7832 13.2744L5.59766 13.2246L5.42676 13.3115C5.00713 13.5247 4.13103 13.9084 2.72363 14.2393L2.08691 14.377C1.99742 14.3948 1.9071 14.4082 1.81738 14.4248C1.85085 14.3352 1.88498 14.2458 1.91602 14.1553L1.91895 14.1455C2.17667 13.3938 2.38924 12.5229 2.46777 11.7012L2.49023 11.4678L2.3252 11.3008C1.18119 10.1487 0.500003 8.65476 0.5 7.03223C0.5 3.48321 3.79561 0.5 8 0.5Z" stroke="#3B3731" />
+                                                </svg>
+                                                Message groomer
+                                            </a>
+                                            <div class="bd-footer-actions">
+                                                <span class="bd-btn bd-btn-reviewed">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                                        <path d="M2.5 7.2L5.5 10.2L11.5 3.8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                                    </svg>
+                                                    Reviewed
+                                                </span>
+                                                <a href="<?= BASE_URL ?>profiles/space/space_profile.php" class="bd-btn bd-btn-rebook">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                                        <path d="M3.2 6.2A5.5 5.5 0 0 1 12.8 5.1M12.8 9.8A5.5 5.5 0 0 1 3.2 10.9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" />
+                                                        <path d="M12.8 2.5V5.3H10M3.2 13.5V10.7H6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" />
+                                                    </svg>
+                                                    Rebook
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <!-- Cancelled Space Booking Modal -->
+
+                            <div class="modal" id="view_booking_space_cancelled_modal">
+                                <div class="modal-content size bd-modal-content">
+                                    <div class="bd-modal">
+                                        <button class="bd-close" type="button" data-modal-close aria-label="Close">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36" fill="none">
+                                                <circle cx="18" cy="18" r="17.5" stroke="#3B3731" />
+                                                <path d="M12.8 24.0008L24 12.8008M12.8 12.8008L24 24.0008" stroke="#3B3731" stroke-width="1.5" stroke-linecap="round" />
+                                            </svg>
+                                        </button>
+
+                                        <div class="bd-header">
+                                            <h1>Booking Details</h1>
+                                            <p>Your cancelled booking</p>
+                                        </div>
+                                        <hr class="bd-divider">
+
+                                        <div class="bd-status-bar">
+                                            <span class="bd-status-badge bd-status-badge--cancelled">
+                                                <span class="bd-status-dot"></span>
+                                                Cancelled
+                                            </span>
+                                            <div class="bd-ref-actions">
+                                                <span class="bd-ref-id">FG-10294</span>
+                                                <a href="#" class="bd-pdf-link">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="13" height="15" viewBox="0 0 13 15" fill="none">
+                                                        <path d="M3.07717 14.5H9.27418C9.95769 14.5 10.6132 14.2209 11.0965 13.7242C11.5798 13.2275 11.8514 12.5538 11.8514 11.8514V7.66649C11.8516 6.96411 11.5804 6.29039 11.0973 5.79351L6.70216 1.27568C6.46282 1.02973 6.1787 0.834645 5.86601 0.701554C5.55331 0.568463 5.21817 0.499975 4.87972 0.5H3.07717C2.39367 0.5 1.73815 0.779053 1.25484 1.27577C0.771523 1.77249 0.5 2.44618 0.5 3.14865V11.8514C0.5 12.5538 0.771523 13.2275 1.25484 13.7242C1.73815 14.2209 2.39367 14.5 3.07717 14.5Z" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                                                        <path d="M5.9458 0.772461V5.0557C5.9458 5.45711 6.10096 5.84208 6.37714 6.12592C6.65332 6.40976 7.0279 6.56922 7.41847 6.56922H11.5876" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                                                        <path d="M2.67822 10.9055V10.1488M2.67822 10.1488V8.63525H3.41456C3.60985 8.63525 3.79714 8.71498 3.93523 8.8569C4.07332 8.99882 4.15089 9.19131 4.15089 9.39201C4.15089 9.59272 4.07332 9.7852 3.93523 9.92712C3.79714 10.069 3.60985 10.1488 3.41456 10.1488H2.67822ZM8.56891 10.9055V9.95958M8.56891 9.95958V8.63525H9.67341M8.56891 9.95958H9.67341M5.62357 10.9055V8.63525H5.99173C6.28467 8.63525 6.5656 8.75485 6.77274 8.96773C6.97987 9.18061 7.09624 9.46933 7.09624 9.77039C7.09624 10.0714 6.97987 10.3602 6.77274 10.5731C6.5656 10.7859 6.28467 10.9055 5.99173 10.9055H5.62357Z" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                                                    </svg>
+                                                    Download PDF
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                        <div class="bd-cancel-notice bd-cancel-notice--host">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
+                                                <circle cx="6" cy="6" r="5.5" stroke="#FF6E6E" />
+                                                <path d="M4.2666 7.99994L7.99994 4.2666M4.2666 4.2666L7.99994 7.99994" stroke="#FF6E6E" stroke-linecap="round" />
+                                            </svg>
+                                            <div class="bd-cancel-notice-text">
+                                                <p class="bd-cancel-notice-title">Dev É. cancelled this booking &bull; 8 Oct 2025</p>
+                                                <p class="bd-cancel-notice-sub">The host had to cancel due to an unexpected maintenance issue at the space.</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="bd-groomer-card bd-space-card">
+                                            <div class="bd-groomer-left">
+                                                <div class="bd-groomer-avatar-wrap bd-space-thumb-wrap">
+                                                    <img src="<?= BASE_URL ?>assets/images/space_card1.png" alt="Furs & Co. Studio" class="bd-space-thumb">
+                                                    <div class="bd-verified-badge bd-verified-badge--space" title="Verified">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="22" viewBox="0 0 29 31" fill="none">
+                                                            <path d="M15.3096 0.175208C15.0558 0.0604166 14.784 0 14.5 0C14.216 0 13.9442 0.0604166 13.6904 0.175208L2.31398 5.00249C0.984817 5.56436 -0.00601417 6.8754 2.74804e-05 8.45832C0.0302358 14.4516 2.49523 25.4172 12.905 30.4016C13.914 30.8849 15.086 30.8849 16.095 30.4016C26.5048 25.4172 28.9698 14.4516 29 8.45832C29.006 6.8754 28.0152 5.56436 26.686 5.00249L15.3096 0.175208Z" fill="#CBDCE8"></path>
+                                                            <path d="M22.3736 8.3902L16.1586 14.9936M13.3976 14.6712C11.471 15.4108 9.93043 15.2842 8.38989 14.6735C8.77833 19.6789 11.112 21.6032 14.2234 22.3739C14.2234 22.3739 16.5672 20.716 16.9052 16.7858C16.9417 16.3601 16.9596 16.148 16.8718 15.908C16.7832 15.6679 16.6092 15.4962 16.2619 15.1521C15.6902 14.5865 15.405 14.3037 15.0655 14.2323C14.7261 14.1624 14.2832 14.3317 13.3976 14.6712Z" stroke="white" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                                <div class="bd-groomer-identity">
+                                                    <div class="bd-groomer-title-row">
+                                                        <h3>Furs &amp; Co. Studio</h3>
+                                                        <span class="bd-service-badge bd-service-badge--space">Garden/Shed</span>
+                                                    </div>
+                                                    <p class="bd-groomer-name">Hosted by Dev E.</p>
+                                                </div>
+                                            </div>
+                                            <div class="bd-groomer-right">
+                                                <div class="bd-groomer-badges">
+                                                    <span class="bd-badge bd-badge-popular">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="10" height="9" viewBox="0 0 10 9" fill="none">
+                                                            <path d="M2 8.99999C1.85833 8.99999 1.73967 8.95199 1.644 8.85599C1.54833 8.75999 1.50033 8.64133 1.5 8.49999C1.49967 8.35866 1.54767 8.23999 1.644 8.14399C1.74033 8.04799 1.859 7.99999 2 7.99999H8C8.14166 7.99999 8.2605 8.04799 8.3565 8.14399C8.4525 8.23999 8.50033 8.35866 8.5 8.49999C8.49966 8.64133 8.45166 8.76016 8.356 8.85649C8.26033 8.95283 8.14166 9.00066 8 8.99999H2ZM2.35 7.24999C2.10833 7.24999 1.89383 7.17083 1.7065 7.0125C1.51917 6.85416 1.4045 6.65416 1.3625 6.4125L0.862501 3.2375C0.845834 3.2375 0.827167 3.23967 0.806501 3.244C0.785834 3.24833 0.767001 3.25033 0.750001 3.25C0.541667 3.25 0.364668 3.17717 0.219001 3.0315C0.0733344 2.88583 0.000334469 2.70867 1.13636e-06 2.5C-0.000332197 2.29133 0.0726677 2.11433 0.219001 1.969C0.365334 1.82367 0.542334 1.75067 0.750001 1.75C0.957667 1.74933 1.13483 1.82233 1.2815 1.969C1.42817 2.11567 1.501 2.29267 1.5 2.5C1.5 2.55833 1.49367 2.6125 1.481 2.6625C1.46833 2.7125 1.45383 2.75833 1.4375 2.8L3 3.5L4.5625 1.3625C4.47083 1.29583 4.39583 1.20833 4.3375 1.1C4.27917 0.991667 4.25 0.875 4.25 0.75C4.25 0.541667 4.323 0.364501 4.469 0.218501C4.615 0.0725011 4.792 -0.000332194 5 1.13895e-06C5.208 0.000334472 5.38516 0.0733344 5.5315 0.219001C5.67783 0.364667 5.75066 0.541667 5.75 0.75C5.75 0.875 5.72083 0.991667 5.6625 1.1C5.60416 1.20833 5.52916 1.29583 5.4375 1.3625L7 3.5L8.5625 2.8C8.54583 2.75833 8.53116 2.7125 8.5185 2.6625C8.50583 2.6125 8.49966 2.55833 8.5 2.5C8.5 2.29167 8.573 2.1145 8.719 1.9685C8.865 1.8225 9.042 1.74967 9.25 1.75C9.458 1.75033 9.63516 1.82333 9.7815 1.969C9.92783 2.11467 10.0007 2.29167 10 2.5C9.99933 2.70833 9.92649 2.8855 9.7815 3.0315C9.6365 3.1775 9.45933 3.25033 9.25 3.25C9.23333 3.25 9.21466 3.248 9.194 3.244C9.17333 3.24 9.1545 3.23783 9.1375 3.2375L8.6375 6.4125C8.59583 6.65416 8.48133 6.85416 8.294 7.0125C8.10666 7.17083 7.892 7.24999 7.65 7.24999H2.35ZM2.35 6.25H7.65L7.975 4.1625L7.4 4.4125C7.18333 4.50416 6.9625 4.52083 6.7375 4.4625C6.5125 4.40416 6.32916 4.27916 6.1875 4.0875L5 2.45L3.8125 4.0875C3.67083 4.27916 3.4875 4.40416 3.2625 4.4625C3.0375 4.52083 2.81667 4.50416 2.6 4.4125L2.025 4.1625L2.35 6.25Z" fill="white" />
+                                                        </svg>
+                                                        Popular
+                                                    </span>
+                                                </div>
+                                                <div class="bd-groomer-stats">
+                                                    <span>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="10" height="14" viewBox="0 0 10 14" fill="none">
+                                                            <path d="M5 6.65C4.5264 6.65 4.0722 6.46563 3.73731 6.13744C3.40242 5.80925 3.21429 5.36413 3.21429 4.9C3.21429 4.43587 3.40242 3.99075 3.73731 3.66256C4.0722 3.33437 4.5264 3.15 5 3.15C5.4736 3.15 5.9278 3.33437 6.26269 3.66256C6.59758 3.99075 6.78571 4.43587 6.78571 4.9C6.78571 5.12981 6.73953 5.35738 6.64979 5.5697C6.56004 5.78202 6.42851 5.97493 6.26269 6.13744C6.09687 6.29994 5.90002 6.42884 5.68336 6.51679C5.46671 6.60473 5.2345 6.65 5 6.65ZM5 0C3.67392 0 2.40215 0.516248 1.46447 1.43518C0.526784 2.3541 0 3.60044 0 4.9C0 8.575 5 14 5 14C5 14 10 8.575 10 4.9C10 3.60044 9.47322 2.3541 8.53553 1.43518C7.59785 0.516248 6.32608 0 5 0Z" fill="#FFC97A" />
+                                                        </svg>
+                                                        2.5 mi
+                                                    </span>
+                                                    <span>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                                            <path d="M6.12956 0.660476C6.40354 -0.220161 7.59647 -0.220158 7.87045 0.660479L8.89548 3.95519C9.01801 4.34902 9.36942 4.61566 9.76593 4.61566H13.083C13.9696 4.61566 14.3383 5.80055 13.621 6.34481L10.9374 8.38106C10.6166 8.62446 10.4824 9.0559 10.6049 9.44973L11.63 12.7444C11.9039 13.6251 10.9388 14.3574 10.2215 13.8131L7.53797 11.7769C7.21719 11.5335 6.78282 11.5335 6.46204 11.7769L3.77846 13.8131C3.06117 14.3574 2.09607 13.6251 2.37005 12.7444L3.39508 9.44973C3.51761 9.0559 3.38338 8.62446 3.0626 8.38106L0.37903 6.34481C-0.338258 5.80055 0.0303816 4.61566 0.916998 4.61566H4.23408C4.63058 4.61566 4.98199 4.34902 5.10452 3.95519L6.12956 0.660476Z" fill="#FFC97A" />
+                                                        </svg>
+                                                        4.3 <span class="bd-muted">(20 reviews)</span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <p class="bd-section-label">APPOINTMENT</p>
+                                        <div class="bd-appointment-grid">
+                                            <div class="bd-tile">
+                                                <div class="bd-tile-label">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                                        <path d="M2.5 6.5L8 2L13.5 6.5V13.5C13.5 13.7652 13.3946 14.0196 13.2071 14.2071C13.0196 14.3946 12.7652 14.5 12.5 14.5H3.5C3.23478 14.5 2.98043 14.3946 2.79289 14.2071C2.60536 14.0196 2.5 13.7652 2.5 13.5V6.5Z" stroke="#9D9B98" stroke-linecap="round" stroke-linejoin="round" />
+                                                        <path d="M6.5 14.5V8.5H9.5V14.5" stroke="#9D9B98" stroke-linecap="round" stroke-linejoin="round" />
+                                                    </svg>
+                                                    Service
+                                                </div>
+                                                <p class="bd-tile-value">Half-Day</p>
+                                            </div>
+                                            <div class="bd-tile">
+                                                <div class="bd-tile-label">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17" fill="none">
+                                                        <path d="M0.5 8.29554C0.5 5.20139 0.5 3.6539 1.50457 2.69308C2.50914 1.73227 4.12486 1.73145 7.35714 1.73145H10.7857C14.018 1.73145 15.6346 1.73145 16.6383 2.69308C17.642 3.65472 17.6429 5.20139 17.6429 8.29554V9.93656C17.6429 13.0307 17.6429 14.5782 16.6383 15.539C15.6337 16.4998 14.018 16.5007 10.7857 16.5007H7.35714C4.12486 16.5007 2.50829 16.5007 1.50457 15.539C0.500857 14.5774 0.5 13.0307 0.5 9.93656V8.29554Z" stroke="#9D9B98" />
+                                                        <path d="M4.78585 1.73077V0.5M13.3573 1.73077V0.5M0.928711 5.83333H17.2144" stroke="#9D9B98" stroke-linecap="round" />
+                                                    </svg>
+                                                    Date
+                                                </div>
+                                                <p class="bd-tile-value">Wed, 18 Dec 2025</p>
+                                            </div>
+                                            <div class="bd-tile">
+                                                <div class="bd-tile-label">
+                                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                                        <circle cx="8" cy="8" r="6" stroke="#9D9B98" stroke-width="1.5" />
+                                                        <path d="M8 4.5V8L10.5 10" stroke="#9D9B98" stroke-width="1.5" stroke-linecap="round" />
+                                                    </svg>
+                                                    Time
+                                                </div>
+                                                <p class="bd-tile-value">14:30 - 18:30</p>
+                                            </div>
+                                            <div class="bd-tile">
+                                                <div class="bd-tile-label">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="16" viewBox="0 0 12 16" fill="none">
+                                                        <path d="M6 0.5C7.4694 0.5 8.87214 1.04525 9.90137 2.00586C10.9293 2.96529 11.4999 4.25871 11.5 5.59961C11.5 7.10011 10.6408 8.95946 9.51855 10.7236C8.41048 12.4655 7.10434 14.0263 6.32227 14.9082C6.14625 15.1067 5.85375 15.1067 5.67773 14.9082C4.89566 14.0263 3.58952 12.4655 2.48145 10.7236C1.35919 8.95946 0.5 7.10011 0.5 5.59961C0.500111 4.25871 1.07068 2.96529 2.09863 2.00586C3.12786 1.04525 4.53061 0.5 6 0.5ZM6 3.09961C5.30978 3.09961 4.64141 3.35564 4.14355 3.82031C3.64466 4.28597 3.35753 4.92517 3.35742 5.59961C3.35742 6.27422 3.64453 6.91413 4.14355 7.37988C4.64141 7.84453 5.30979 8.09961 6 8.09961C6.69022 8.09961 7.35859 7.84453 7.85645 7.37988C8.35534 6.91413 8.64247 6.27422 8.64258 5.59961C8.64258 4.92517 8.35534 4.28597 7.85645 3.82031C7.35859 3.35564 6.69022 3.09961 6 3.09961Z" stroke="#9D9B98" />
+                                                    </svg>
+                                                    Location
+                                                </div>
+                                                <p class="bd-tile-value">Victoria Embankment</p>
+                                            </div>
+                                        </div>
+
+                                        <p class="bd-section-label">LOCATION &amp; ACCESS</p>
+                                        <div class="bd-map-wrap">
+                                            <img src="<?= BASE_URL ?>assets/images/modal_map.png" alt="Location map" class="bd-map-image">
+                                        </div>
+
+                                        <p class="bd-section-label">AMENITIES INCLUDED</p>
+                                        <div class="bd-amenities">
+                                            <div class="bd-amenity-tags">
+                                                <span class="bd-amenity-tag"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="9" viewBox="0 0 12 9" fill="none">
+                                                        <path d="M0.75 4.75L4.25 8.25L11.25 0.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                                    </svg> Grooming Table</span>
+                                                <span class="bd-amenity-tag"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="9" viewBox="0 0 12 9" fill="none">
+                                                        <path d="M0.75 4.75L4.25 8.25L11.25 0.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                                    </svg> Bath</span>
+                                                <span class="bd-amenity-tag"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="9" viewBox="0 0 12 9" fill="none">
+                                                        <path d="M0.75 4.75L4.25 8.25L11.25 0.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                                    </svg> Dryer</span>
+                                                <span class="bd-amenity-tag"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="9" viewBox="0 0 12 9" fill="none">
+                                                        <path d="M0.75 4.75L4.25 8.25L11.25 0.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                                    </svg> Towels</span>
+                                                <span class="bd-amenity-tag"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="9" viewBox="0 0 12 9" fill="none">
+                                                        <path d="M0.75 4.75L4.25 8.25L11.25 0.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                                    </svg> Waiting area</span>
+                                                <span class="bd-amenity-tag"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="9" viewBox="0 0 12 9" fill="none">
+                                                        <path d="M0.75 4.75L4.25 8.25L11.25 0.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                                    </svg> Parking</span>
+                                                <span class="bd-amenity-tag"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="9" viewBox="0 0 12 9" fill="none">
+                                                        <path d="M0.75 4.75L4.25 8.25L11.25 0.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                                    </svg> Wi-Fi</span>
+                                            </div>
+                                            <p class="bd-amenities-note">Extra towels - Premium shampoos - Drying crates - Tool storage (where available).</p>
+                                        </div>
+
+                                        <div class="bd-refund-banner">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 13 13" fill="none">
+                                                <path d="M6.25 11.75C9.275 11.75 11.75 9.275 11.75 6.25C11.75 3.225 9.275 0.75 6.25 0.75C3.225 0.75 0.75 3.225 0.75 6.25C0.75 9.275 3.225 11.75 6.25 11.75Z" stroke="#A0BE63" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                                <path d="M3.9126 6.24986L5.4691 7.80636L8.5876 4.69336" stroke="#A0BE63" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+                                            <div class="bd-refund-banner-text">
+                                                <p class="bd-refund-banner-title">Partial refund of £48.00 processed</p>
+                                                <p class="bd-refund-banner-sub">Refunded to Visa ending 4242 on 19 Oct 2025</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="bd-total-row">
+                                            <span class="bd-total-label">Total Paid</span>
+                                            <span class="bd-total-amount">£48.00</span>
+                                        </div>
+
+                                        <div class="bd-footer bd-footer--cancelled">
+                                            <span class="bd-closed-label">This booking is closed</span>
+                                            <a href="<?= BASE_URL ?>profiles/space/space_profile.php" class="bd-btn bd-btn-rebook">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                                    <path d="M3.2 6.2A5.5 5.5 0 0 1 12.8 5.1M12.8 9.8A5.5 5.5 0 0 1 3.2 10.9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" />
+                                                    <path d="M12.8 2.5V5.3H10M3.2 13.5V10.7H6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" />
+                                                </svg>
+                                                Rebook
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
                             <div class="past-bookings">
                                 <div class="mb-section">
                                     <h2 class="mb-section-label section-title">Completed</h2>
@@ -1622,6 +2032,62 @@
                                                 </svg> Reviewed</span>
                                         </div>
                                     </article>
+
+                                    <!-- Completed: Space (Reviewed) -->
+                                    <article class="mb-card mb-card--completed">
+                                        <div class="mb-card__inner">
+                                            <div class="mb-card__top">
+                                                <div class="mb-card__top-left">
+                                                    <span class="mb-status"><span class="mb-status__dot"></span> Completed</span>
+                                                </div>
+                                                <div class="mb-card__ref">
+                                                    <span class="mb-card__ref-id">FG-10294</span>
+                                                    <a href="#" class="mb-card__pdf">PDF</a>
+                                                </div>
+                                            </div>
+                                            <div class="mb-card__provider">
+                                                <div class="mb-card__provider-left">
+                                                    <div class="avatar-wrap">
+                                                        <img class="avatar" src="<?= BASE_URL ?>assets/images/space_card3.png" alt="Furs &amp; Co. Studio">
+                                                    </div>
+                                                    <div class="mb-card__provider-meta">
+                                                        <div class="mb-card__title-row">
+                                                            <h3 class="mb-card__studio">Furs &amp; Co. Studio</h3>
+                                                            <span class="mb-tag mb-tag--coral">Garden / Shed</span>
+                                                        </div>
+                                                        <p class="mb-card__host">Dev É.</p>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-card__price-block">
+                                                    <p class="mb-card__date">18 Dec 2025</p>
+                                                    <p class="mb-card__price">£48.00</p>
+                                                </div>
+                                            </div>
+                                            <div class="mb-card__summary">
+                                                <div class="mb-card__meta">
+                                                    <div class="mb-meta-item">Half-Day</div>
+                                                    <div class="mb-meta-item">Wed, 18 Dec 2025</div>
+                                                    <div class="mb-meta-item">14:30 - 18:30</div>
+                                                    <div class="mb-meta-item">Victoria Embankment</div>
+                                                </div>
+                                                <div class="mb-pet">
+                                                    <div class="mb-pet__avatars">
+                                                        <img src="<?= BASE_URL ?>assets/images/pet_details_1.png" alt="Pet">
+                                                        <img src="<?= BASE_URL ?>assets/images/pet_details_2.png" alt="Pet">
+                                                    </div>
+                                                    <span class="mb-pet__label">Bella <span class="mb-pet__label-sub muted-color">+1</span></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="mb-card__footer">
+                                            <div class="mb-card__footer-left">
+                                                <button type="button" class="mb-btn" data-modal-open="view_booking_space_completed_modal">View details</button>
+                                                <a href="<?= BASE_URL ?>profiles/space/space_profile.php" class="mb-btn mb-btn--blue">Rebook</a>
+                                            </div>
+                                            <span class="mb-btn mb-btn--muted">Reviewed</span>
+                                        </div>
+                                    </article>
+
                                 </div>
                             </div>
 
@@ -1783,7 +2249,7 @@
                                         </div>
                                         <div class="mb-card__footer">
                                             <div class="mb-card__footer-left">
-                                                <button type="button" class="mb-btn"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="14" viewBox="0 0 18 14" fill="none">
+                                                <button type="button" class="mb-btn" data-modal-open="view_booking_space_cancelled_modal"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="14" viewBox="0 0 18 14" fill="none">
                                                         <path d="M1.5 7C1.5 7 4.1 1.5 9 1.5C13.9 1.5 16.5 7 16.5 7C16.5 7 13.9 12.5 9 12.5C4.1 12.5 1.5 7 1.5 7Z" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" />
                                                         <circle cx="9" cy="7" r="2.25" stroke="currentColor" stroke-width="1.4" />
                                                     </svg> View details</button>

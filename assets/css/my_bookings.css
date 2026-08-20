@@ -300,7 +300,7 @@ body {
 }
 
 .mb-card--cancelled .mb-status {
-    background: #FFEDED;
+    background: rgba(255, 110, 110, 0.10);
     color: #E85C5C;
 }
 
@@ -981,7 +981,9 @@ body {
 #view_booking_groom_modal .modal-content.size,
 #view_booking_groom_completed_modal .modal-content.size,
 #view_booking_groom_cancelled_modal .modal-content.size,
-#view_booking_space_modal .modal-content.size {
+#view_booking_space_modal .modal-content.size,
+#view_booking_space_completed_modal .modal-content.size,
+#view_booking_space_cancelled_modal .modal-content.size {
     width: 820px;
     max-width: calc(100vw - 32px);
     height: auto;
@@ -994,7 +996,9 @@ body {
 #view_booking_groom_modal .bd-modal,
 #view_booking_groom_completed_modal .bd-modal,
 #view_booking_groom_cancelled_modal .bd-modal,
-#view_booking_space_modal .bd-modal {
+#view_booking_space_modal .bd-modal,
+#view_booking_space_completed_modal .bd-modal,
+#view_booking_space_cancelled_modal .bd-modal {
     position: relative;
     padding: 40px 48px 0;
     width: 100%;
@@ -1006,13 +1010,15 @@ body {
     background: #FDFCF8;
 }
 
-#view_booking_groom_completed_modal .bd-modal{
+#view_booking_groom_completed_modal .bd-modal,
+#view_booking_space_completed_modal .bd-modal{
     border-radius: 10px;
     border: 1px solid #CBDCE8;
     background: #FDFCF8;
 }
 
-#view_booking_groom_cancelled_modal .bd-modal{
+#view_booking_groom_cancelled_modal .bd-modal,
+#view_booking_space_cancelled_modal .bd-modal{
     border-radius: 10px;
     border: 1px solid #FF6E6E;
     background: #FDFCF8;
@@ -1021,7 +1027,9 @@ body {
 #view_booking_groom_modal .bd-close,
 #view_booking_groom_completed_modal .bd-close,
 #view_booking_groom_cancelled_modal .bd-close,
-#view_booking_space_modal .bd-close {
+#view_booking_space_modal .bd-close,
+#view_booking_space_completed_modal .bd-close,
+#view_booking_space_cancelled_modal .bd-close {
     position: absolute;
     top: 32px;
     right: 32px;
@@ -1035,7 +1043,9 @@ body {
 #view_booking_groom_modal .bd-header h1,
 #view_booking_groom_completed_modal .bd-header h1,
 #view_booking_groom_cancelled_modal .bd-header h1,
-#view_booking_space_modal .bd-header h1 {
+#view_booking_space_modal .bd-header h1,
+#view_booking_space_completed_modal .bd-header h1,
+#view_booking_space_cancelled_modal .bd-header h1 {
     margin: 0;
     color: #3B3731;
     font-family: "Playfair Display", serif;
@@ -1047,7 +1057,9 @@ body {
 #view_booking_groom_modal .bd-header p,
 #view_booking_groom_completed_modal .bd-header p,
 #view_booking_groom_cancelled_modal .bd-header p,
-#view_booking_space_modal .bd-header p {
+#view_booking_space_modal .bd-header p,
+#view_booking_space_completed_modal .bd-header p,
+#view_booking_space_cancelled_modal .bd-header p {
     margin: 6px 0 0;
     color: #9D9B98;
     font-family: Lato, sans-serif;
@@ -1058,7 +1070,9 @@ body {
 #view_booking_groom_modal .bd-divider,
 #view_booking_groom_completed_modal .bd-divider,
 #view_booking_groom_cancelled_modal .bd-divider,
-#view_booking_space_modal .bd-divider {
+#view_booking_space_modal .bd-divider,
+#view_booking_space_completed_modal .bd-divider,
+#view_booking_space_cancelled_modal .bd-divider {
     margin: 24px 0 20px;
     border: none;
     border-top: 1px solid #E8E6E1;
@@ -1067,7 +1081,9 @@ body {
 #view_booking_groom_modal .bd-status-bar,
 #view_booking_groom_completed_modal .bd-status-bar,
 #view_booking_groom_cancelled_modal .bd-status-bar,
-#view_booking_space_modal .bd-status-bar {
+#view_booking_space_modal .bd-status-bar,
+#view_booking_space_completed_modal .bd-status-bar,
+#view_booking_space_cancelled_modal .bd-status-bar {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -1078,7 +1094,9 @@ body {
 #view_booking_groom_modal .bd-status-badge,
 #view_booking_groom_completed_modal .bd-status-badge,
 #view_booking_groom_cancelled_modal .bd-status-badge,
-#view_booking_space_modal .bd-status-badge {
+#view_booking_space_modal .bd-status-badge,
+#view_booking_space_completed_modal .bd-status-badge,
+#view_booking_space_cancelled_modal .bd-status-badge {
     display: inline-flex;
     align-items: center;
     gap: 8px;
@@ -1094,7 +1112,9 @@ body {
 #view_booking_groom_modal .bd-status-dot,
 #view_booking_groom_completed_modal .bd-status-dot,
 #view_booking_groom_cancelled_modal .bd-status-dot,
-#view_booking_space_modal .bd-status-dot {
+#view_booking_space_modal .bd-status-dot,
+#view_booking_space_completed_modal .bd-status-dot,
+#view_booking_space_cancelled_modal .bd-status-dot {
     width: 8px;
     height: 8px;
     border-radius: 50%;
@@ -1105,7 +1125,9 @@ body {
 #view_booking_groom_modal .bd-ref-actions,
 #view_booking_groom_completed_modal .bd-ref-actions,
 #view_booking_groom_cancelled_modal .bd-ref-actions,
-#view_booking_space_modal .bd-ref-actions {
+#view_booking_space_modal .bd-ref-actions,
+#view_booking_space_completed_modal .bd-ref-actions,
+#view_booking_space_cancelled_modal .bd-ref-actions {
     display: flex;
     align-items: center;
     gap: 16px;
@@ -1114,7 +1136,9 @@ body {
 #view_booking_groom_modal .bd-ref-id,
 #view_booking_groom_completed_modal .bd-ref-id,
 #view_booking_groom_cancelled_modal .bd-ref-id,
-#view_booking_space_modal .bd-ref-id {
+#view_booking_space_modal .bd-ref-id,
+#view_booking_space_completed_modal .bd-ref-id,
+#view_booking_space_cancelled_modal .bd-ref-id {
     color: #9D9B98;
     font-family: Lato, sans-serif;
     font-size: 14px;
@@ -1124,7 +1148,9 @@ body {
 #view_booking_groom_modal .bd-pdf-link,
 #view_booking_groom_completed_modal .bd-pdf-link,
 #view_booking_groom_cancelled_modal .bd-pdf-link,
-#view_booking_space_modal .bd-pdf-link {
+#view_booking_space_modal .bd-pdf-link,
+#view_booking_space_completed_modal .bd-pdf-link,
+#view_booking_space_cancelled_modal .bd-pdf-link {
     display: inline-flex;
     align-items: center;
     gap: 6px;
@@ -1139,7 +1165,9 @@ body {
 #view_booking_groom_modal .bd-groomer-card,
 #view_booking_groom_completed_modal .bd-groomer-card,
 #view_booking_groom_cancelled_modal .bd-groomer-card,
-#view_booking_space_modal .bd-groomer-card {
+#view_booking_space_modal .bd-groomer-card,
+#view_booking_space_completed_modal .bd-groomer-card,
+#view_booking_space_cancelled_modal .bd-groomer-card {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -1153,7 +1181,9 @@ body {
 #view_booking_groom_modal .bd-groomer-left,
 #view_booking_groom_completed_modal .bd-groomer-left,
 #view_booking_groom_cancelled_modal .bd-groomer-left,
-#view_booking_space_modal .bd-groomer-left {
+#view_booking_space_modal .bd-groomer-left,
+#view_booking_space_completed_modal .bd-groomer-left,
+#view_booking_space_cancelled_modal .bd-groomer-left {
     display: flex;
     align-items: center;
     gap: 14px;
@@ -1164,7 +1194,9 @@ body {
 #view_booking_groom_modal .bd-groomer-avatar-wrap,
 #view_booking_groom_completed_modal .bd-groomer-avatar-wrap,
 #view_booking_groom_cancelled_modal .bd-groomer-avatar-wrap,
-#view_booking_space_modal .bd-groomer-avatar-wrap {
+#view_booking_space_modal .bd-groomer-avatar-wrap,
+#view_booking_space_completed_modal .bd-groomer-avatar-wrap,
+#view_booking_space_cancelled_modal .bd-groomer-avatar-wrap {
     position: relative;
     width: 56px;
     height: 56px;
@@ -1174,7 +1206,9 @@ body {
 #view_booking_groom_modal .bd-groomer-avatar,
 #view_booking_groom_completed_modal .bd-groomer-avatar,
 #view_booking_groom_cancelled_modal .bd-groomer-avatar,
-#view_booking_space_modal .bd-groomer-avatar {
+#view_booking_space_modal .bd-groomer-avatar,
+#view_booking_space_completed_modal .bd-groomer-avatar,
+#view_booking_space_cancelled_modal .bd-groomer-avatar {
     width: 56px;
     height: 56px;
     border-radius: 50%;
@@ -1185,7 +1219,9 @@ body {
 #view_booking_groom_modal .bd-verified-badge,
 #view_booking_groom_completed_modal .bd-verified-badge,
 #view_booking_groom_cancelled_modal .bd-verified-badge,
-#view_booking_space_modal .bd-verified-badge {
+#view_booking_space_modal .bd-verified-badge,
+#view_booking_space_completed_modal .bd-verified-badge,
+#view_booking_space_cancelled_modal .bd-verified-badge {
     position: absolute;
     top: -4px;
     left: -4px;
@@ -1198,7 +1234,9 @@ body {
 #view_booking_groom_modal .bd-verified-badge svg,
 #view_booking_groom_completed_modal .bd-verified-badge svg,
 #view_booking_groom_cancelled_modal .bd-verified-badge svg,
-#view_booking_space_modal .bd-verified-badge svg {
+#view_booking_space_modal .bd-verified-badge svg,
+#view_booking_space_completed_modal .bd-verified-badge svg,
+#view_booking_space_cancelled_modal .bd-verified-badge svg {
     width: 20px;
     height: 22px;
     display: block;
@@ -1207,14 +1245,18 @@ body {
 #view_booking_groom_modal .bd-groomer-identity,
 #view_booking_groom_completed_modal .bd-groomer-identity,
 #view_booking_groom_cancelled_modal .bd-groomer-identity,
-#view_booking_space_modal .bd-groomer-identity {
+#view_booking_space_modal .bd-groomer-identity,
+#view_booking_space_completed_modal .bd-groomer-identity,
+#view_booking_space_cancelled_modal .bd-groomer-identity {
     min-width: 0;
 }
 
 #view_booking_groom_modal .bd-groomer-title-row,
 #view_booking_groom_completed_modal .bd-groomer-title-row,
 #view_booking_groom_cancelled_modal .bd-groomer-title-row,
-#view_booking_space_modal .bd-groomer-title-row {
+#view_booking_space_modal .bd-groomer-title-row,
+#view_booking_space_completed_modal .bd-groomer-title-row,
+#view_booking_space_cancelled_modal .bd-groomer-title-row {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
@@ -1225,7 +1267,9 @@ body {
 #view_booking_groom_modal .bd-groomer-title-row h3,
 #view_booking_groom_completed_modal .bd-groomer-title-row h3,
 #view_booking_groom_cancelled_modal .bd-groomer-title-row h3,
-#view_booking_space_modal .bd-groomer-title-row h3 {
+#view_booking_space_modal .bd-groomer-title-row h3,
+#view_booking_space_completed_modal .bd-groomer-title-row h3,
+#view_booking_space_cancelled_modal .bd-groomer-title-row h3 {
     margin: 0;
     color: #3B3731;
     font-family: Lato, sans-serif;
@@ -1236,7 +1280,9 @@ body {
 #view_booking_groom_modal .bd-service-badge,
 #view_booking_groom_completed_modal .bd-service-badge,
 #view_booking_groom_cancelled_modal .bd-service-badge,
-#view_booking_space_modal .bd-service-badge {
+#view_booking_space_modal .bd-service-badge,
+#view_booking_space_completed_modal .bd-service-badge,
+#view_booking_space_cancelled_modal .bd-service-badge {
     display: inline-block;
     padding: 3px 10px;
     border-radius: 20px;
@@ -1250,7 +1296,9 @@ body {
 #view_booking_groom_modal .bd-groomer-name,
 #view_booking_groom_completed_modal .bd-groomer-name,
 #view_booking_groom_cancelled_modal .bd-groomer-name,
-#view_booking_space_modal .bd-groomer-name {
+#view_booking_space_modal .bd-groomer-name,
+#view_booking_space_completed_modal .bd-groomer-name,
+#view_booking_space_cancelled_modal .bd-groomer-name {
     margin: 0;
     color: #9D9B98;
     font-family: Lato, sans-serif;
@@ -1261,7 +1309,9 @@ body {
 #view_booking_groom_modal .bd-groomer-right,
 #view_booking_groom_completed_modal .bd-groomer-right,
 #view_booking_groom_cancelled_modal .bd-groomer-right,
-#view_booking_space_modal .bd-groomer-right {
+#view_booking_space_modal .bd-groomer-right,
+#view_booking_space_completed_modal .bd-groomer-right,
+#view_booking_space_cancelled_modal .bd-groomer-right {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
@@ -1272,7 +1322,9 @@ body {
 #view_booking_groom_modal .bd-groomer-badges,
 #view_booking_groom_completed_modal .bd-groomer-badges,
 #view_booking_groom_cancelled_modal .bd-groomer-badges,
-#view_booking_space_modal .bd-groomer-badges {
+#view_booking_space_modal .bd-groomer-badges,
+#view_booking_space_completed_modal .bd-groomer-badges,
+#view_booking_space_cancelled_modal .bd-groomer-badges {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -1282,7 +1334,9 @@ body {
 #view_booking_groom_modal .bd-badge,
 #view_booking_groom_completed_modal .bd-badge,
 #view_booking_groom_cancelled_modal .bd-badge,
-#view_booking_space_modal .bd-badge {
+#view_booking_space_modal .bd-badge,
+#view_booking_space_completed_modal .bd-badge,
+#view_booking_space_cancelled_modal .bd-badge {
     display: inline-flex;
     align-items: center;
     gap: 6px;
@@ -1298,21 +1352,27 @@ body {
 #view_booking_groom_modal .bd-badge-popular,
 #view_booking_groom_completed_modal .bd-badge-popular,
 #view_booking_groom_cancelled_modal .bd-badge-popular,
-#view_booking_space_modal .bd-badge-popular {
+#view_booking_space_modal .bd-badge-popular,
+#view_booking_space_completed_modal .bd-badge-popular,
+#view_booking_space_cancelled_modal .bd-badge-popular {
     background: #CBDCE8;
 }
 
 #view_booking_groom_modal .bd-badge-rated,
 #view_booking_groom_completed_modal .bd-badge-rated,
 #view_booking_groom_cancelled_modal .bd-badge-rated,
-#view_booking_space_modal .bd-badge-rated {
+#view_booking_space_modal .bd-badge-rated,
+#view_booking_space_completed_modal .bd-badge-rated,
+#view_booking_space_cancelled_modal .bd-badge-rated {
     background: #FFA899;
 }
 
 #view_booking_groom_modal .bd-groomer-stats,
 #view_booking_groom_completed_modal .bd-groomer-stats,
 #view_booking_groom_cancelled_modal .bd-groomer-stats,
-#view_booking_space_modal .bd-groomer-stats {
+#view_booking_space_modal .bd-groomer-stats,
+#view_booking_space_completed_modal .bd-groomer-stats,
+#view_booking_space_cancelled_modal .bd-groomer-stats {
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -1322,7 +1382,9 @@ body {
 #view_booking_groom_modal .bd-groomer-stats span,
 #view_booking_groom_completed_modal .bd-groomer-stats span,
 #view_booking_groom_cancelled_modal .bd-groomer-stats span,
-#view_booking_space_modal .bd-groomer-stats span {
+#view_booking_space_modal .bd-groomer-stats span,
+#view_booking_space_completed_modal .bd-groomer-stats span,
+#view_booking_space_cancelled_modal .bd-groomer-stats span {
     display: inline-flex;
     align-items: center;
     gap: 6px;
@@ -1335,7 +1397,9 @@ body {
 #view_booking_groom_modal .bd-muted,
 #view_booking_groom_completed_modal .bd-muted,
 #view_booking_groom_cancelled_modal .bd-muted,
-#view_booking_space_modal .bd-muted {
+#view_booking_space_modal .bd-muted,
+#view_booking_space_completed_modal .bd-muted,
+#view_booking_space_cancelled_modal .bd-muted {
     color: #9D9B98;
     font-weight: 400;
 }
@@ -1343,7 +1407,9 @@ body {
 #view_booking_groom_modal .bd-section-label,
 #view_booking_groom_completed_modal .bd-section-label,
 #view_booking_groom_cancelled_modal .bd-section-label,
-#view_booking_space_modal .bd-section-label {
+#view_booking_space_modal .bd-section-label,
+#view_booking_space_completed_modal .bd-section-label,
+#view_booking_space_cancelled_modal .bd-section-label {
     margin: 0 0 10px;
     color: #C9C9C9;
     font-family: Lato, sans-serif;
@@ -1355,7 +1421,9 @@ body {
 #view_booking_groom_modal .bd-appointment-grid,
 #view_booking_groom_completed_modal .bd-appointment-grid,
 #view_booking_groom_cancelled_modal .bd-appointment-grid,
-#view_booking_space_modal .bd-appointment-grid {
+#view_booking_space_modal .bd-appointment-grid,
+#view_booking_space_completed_modal .bd-appointment-grid,
+#view_booking_space_cancelled_modal .bd-appointment-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 12px;
@@ -1365,7 +1433,9 @@ body {
 #view_booking_groom_modal .bd-tile,
 #view_booking_groom_completed_modal .bd-tile,
 #view_booking_groom_cancelled_modal .bd-tile,
-#view_booking_space_modal .bd-tile {
+#view_booking_space_modal .bd-tile,
+#view_booking_space_completed_modal .bd-tile,
+#view_booking_space_cancelled_modal .bd-tile {
     padding: 14px 16px;
     border-radius: 10px;
     background: #F7F4EC;
@@ -1374,7 +1444,9 @@ body {
 #view_booking_groom_modal .bd-tile-label,
 #view_booking_groom_completed_modal .bd-tile-label,
 #view_booking_groom_cancelled_modal .bd-tile-label,
-#view_booking_space_modal .bd-tile-label {
+#view_booking_space_modal .bd-tile-label,
+#view_booking_space_completed_modal .bd-tile-label,
+#view_booking_space_cancelled_modal .bd-tile-label {
     display: flex;
     align-items: center;
     gap: 8px;
@@ -1388,7 +1460,9 @@ body {
 #view_booking_groom_modal .bd-tile-value,
 #view_booking_groom_completed_modal .bd-tile-value,
 #view_booking_groom_cancelled_modal .bd-tile-value,
-#view_booking_space_modal .bd-tile-value {
+#view_booking_space_modal .bd-tile-value,
+#view_booking_space_completed_modal .bd-tile-value,
+#view_booking_space_cancelled_modal .bd-tile-value {
     margin: 0;
     color: #3B3731;
     font-family: Lato, sans-serif;
@@ -1399,7 +1473,9 @@ body {
 #view_booking_groom_modal .bd-pet-card,
 #view_booking_groom_completed_modal .bd-pet-card,
 #view_booking_groom_cancelled_modal .bd-pet-card,
-#view_booking_space_modal .bd-pet-card {
+#view_booking_space_modal .bd-pet-card,
+#view_booking_space_completed_modal .bd-pet-card,
+#view_booking_space_cancelled_modal .bd-pet-card {
     display: flex;
     align-items: center;
     gap: 14px;
@@ -1412,7 +1488,9 @@ body {
 #view_booking_groom_modal .bd-pet-avatar,
 #view_booking_groom_completed_modal .bd-pet-avatar,
 #view_booking_groom_cancelled_modal .bd-pet-avatar,
-#view_booking_space_modal .bd-pet-avatar {
+#view_booking_space_modal .bd-pet-avatar,
+#view_booking_space_completed_modal .bd-pet-avatar,
+#view_booking_space_cancelled_modal .bd-pet-avatar {
     width: 48px;
     height: 48px;
     border-radius: 50%;
@@ -1428,7 +1506,9 @@ body {
 #view_booking_groom_modal .bd-pet-name,
 #view_booking_groom_completed_modal .bd-pet-name,
 #view_booking_groom_cancelled_modal .bd-pet-name,
-#view_booking_space_modal .bd-pet-name {
+#view_booking_space_modal .bd-pet-name,
+#view_booking_space_completed_modal .bd-pet-name,
+#view_booking_space_cancelled_modal .bd-pet-name {
     color: #3B3731;
     font-family: Lato, sans-serif;
     font-size: 16px;
@@ -1438,7 +1518,9 @@ body {
 #view_booking_groom_modal .bd-pet-meta,
 #view_booking_groom_completed_modal .bd-pet-meta,
 #view_booking_groom_cancelled_modal .bd-pet-meta,
-#view_booking_space_modal .bd-pet-meta {
+#view_booking_space_modal .bd-pet-meta,
+#view_booking_space_completed_modal .bd-pet-meta,
+#view_booking_space_cancelled_modal .bd-pet-meta {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -1448,7 +1530,9 @@ body {
 #view_booking_groom_modal .bd-pet-meta span,
 #view_booking_groom_completed_modal .bd-pet-meta span,
 #view_booking_groom_cancelled_modal .bd-pet-meta span,
-#view_booking_space_modal .bd-pet-meta span {
+#view_booking_space_modal .bd-pet-meta span,
+#view_booking_space_completed_modal .bd-pet-meta span,
+#view_booking_space_cancelled_modal .bd-pet-meta span {
     display: inline-flex;
     align-items: center;
     gap: 6px;
@@ -1461,7 +1545,9 @@ body {
 #view_booking_groom_modal .bd-next-steps,
 #view_booking_groom_completed_modal .bd-next-steps,
 #view_booking_groom_cancelled_modal .bd-next-steps,
-#view_booking_space_modal .bd-next-steps {
+#view_booking_space_modal .bd-next-steps,
+#view_booking_space_completed_modal .bd-next-steps,
+#view_booking_space_cancelled_modal .bd-next-steps {
     padding: 18px 20px;
     border-radius: 10px;
     background: #F2F6E6;
@@ -1471,7 +1557,9 @@ body {
 #view_booking_groom_modal .bd-next-steps h3,
 #view_booking_groom_completed_modal .bd-next-steps h3,
 #view_booking_groom_cancelled_modal .bd-next-steps h3,
-#view_booking_space_modal .bd-next-steps h3 {
+#view_booking_space_modal .bd-next-steps h3,
+#view_booking_space_completed_modal .bd-next-steps h3,
+#view_booking_space_cancelled_modal .bd-next-steps h3 {
     margin: 0 0 10px;
     color: #A0BE63;
     font-family: Lato, sans-serif;
@@ -1482,7 +1570,9 @@ body {
 #view_booking_groom_modal .bd-next-steps ul,
 #view_booking_groom_completed_modal .bd-next-steps ul,
 #view_booking_groom_cancelled_modal .bd-next-steps ul,
-#view_booking_space_modal .bd-next-steps ul {
+#view_booking_space_modal .bd-next-steps ul,
+#view_booking_space_completed_modal .bd-next-steps ul,
+#view_booking_space_cancelled_modal .bd-next-steps ul {
     list-style: disc;
     list-style-position: outside;
     margin: 0;
@@ -1497,14 +1587,18 @@ body {
 #view_booking_groom_modal .bd-next-steps li + li,
 #view_booking_groom_completed_modal .bd-next-steps li + li,
 #view_booking_groom_cancelled_modal .bd-next-steps li + li,
-#view_booking_space_modal .bd-next-steps li + li {
+#view_booking_space_modal .bd-next-steps li + li,
+#view_booking_space_completed_modal .bd-next-steps li + li,
+#view_booking_space_cancelled_modal .bd-next-steps li + li {
     margin-top: 4px;
 }
 
 #view_booking_groom_modal .bd-total-row,
 #view_booking_groom_completed_modal .bd-total-row,
 #view_booking_groom_cancelled_modal .bd-total-row,
-#view_booking_space_modal .bd-total-row {
+#view_booking_space_modal .bd-total-row,
+#view_booking_space_completed_modal .bd-total-row,
+#view_booking_space_cancelled_modal .bd-total-row {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -1516,7 +1610,9 @@ body {
 #view_booking_groom_modal .bd-total-label,
 #view_booking_groom_completed_modal .bd-total-label,
 #view_booking_groom_cancelled_modal .bd-total-label,
-#view_booking_space_modal .bd-total-label {
+#view_booking_space_modal .bd-total-label,
+#view_booking_space_completed_modal .bd-total-label,
+#view_booking_space_cancelled_modal .bd-total-label {
     color: #9D9B98;
     font-family: Lato, sans-serif;
     font-size: 16px;
@@ -1527,7 +1623,9 @@ body {
 #view_booking_groom_modal .bd-total-amount,
 #view_booking_groom_completed_modal .bd-total-amount,
 #view_booking_groom_cancelled_modal .bd-total-amount,
-#view_booking_space_modal .bd-total-amount {
+#view_booking_space_modal .bd-total-amount,
+#view_booking_space_completed_modal .bd-total-amount,
+#view_booking_space_cancelled_modal .bd-total-amount {
     color: #3B3731;
     font-family: "Playfair Display", serif;
     font-size: 24px;
@@ -1537,7 +1635,9 @@ body {
 #view_booking_groom_modal .bd-footer,
 #view_booking_groom_completed_modal .bd-footer,
 #view_booking_groom_cancelled_modal .bd-footer,
-#view_booking_space_modal .bd-footer {
+#view_booking_space_modal .bd-footer,
+#view_booking_space_completed_modal .bd-footer,
+#view_booking_space_cancelled_modal .bd-footer {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -1551,7 +1651,9 @@ body {
 #view_booking_groom_modal .bd-cancel-link,
 #view_booking_groom_completed_modal .bd-cancel-link,
 #view_booking_groom_cancelled_modal .bd-cancel-link,
-#view_booking_space_modal .bd-cancel-link {
+#view_booking_space_modal .bd-cancel-link,
+#view_booking_space_completed_modal .bd-cancel-link,
+#view_booking_space_cancelled_modal .bd-cancel-link {
     color: #777572;
     font-family: Lato, sans-serif;
     font-size: 14px;
@@ -1564,7 +1666,9 @@ body {
 #view_booking_groom_modal .bd-footer-actions,
 #view_booking_groom_completed_modal .bd-footer-actions,
 #view_booking_groom_cancelled_modal .bd-footer-actions,
-#view_booking_space_modal .bd-footer-actions {
+#view_booking_space_modal .bd-footer-actions,
+#view_booking_space_completed_modal .bd-footer-actions,
+#view_booking_space_cancelled_modal .bd-footer-actions {
     display: flex;
     align-items: center;
     gap: 12px;
@@ -1573,7 +1677,9 @@ body {
 #view_booking_groom_modal .bd-btn,
 #view_booking_groom_completed_modal .bd-btn,
 #view_booking_groom_cancelled_modal .bd-btn,
-#view_booking_space_modal .bd-btn {
+#view_booking_space_modal .bd-btn,
+#view_booking_space_completed_modal .bd-btn,
+#view_booking_space_cancelled_modal .bd-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -1592,14 +1698,18 @@ body {
 #view_booking_groom_modal .bd-btn:hover,
 #view_booking_groom_completed_modal .bd-btn:hover,
 #view_booking_groom_cancelled_modal .bd-btn:hover,
-#view_booking_space_modal .bd-btn:hover {
+#view_booking_space_modal .bd-btn:hover,
+#view_booking_space_completed_modal .bd-btn:hover,
+#view_booking_space_cancelled_modal .bd-btn:hover {
     opacity: 0.88;
 }
 
 #view_booking_groom_modal .bd-btn-message,
 #view_booking_groom_completed_modal .bd-btn-message,
 #view_booking_groom_cancelled_modal .bd-btn-message,
-#view_booking_space_modal .bd-btn-message {
+#view_booking_space_modal .bd-btn-message,
+#view_booking_space_completed_modal .bd-btn-message,
+#view_booking_space_cancelled_modal .bd-btn-message {
     border-radius: 100px;
     border: 1px solid #F2F2F2;
     background: #FFF;
@@ -1609,7 +1719,9 @@ body {
 #view_booking_groom_modal .bd-btn-change,
 #view_booking_groom_completed_modal .bd-btn-change,
 #view_booking_groom_cancelled_modal .bd-btn-change,
-#view_booking_space_modal .bd-btn-change {
+#view_booking_space_modal .bd-btn-change,
+#view_booking_space_completed_modal .bd-btn-change,
+#view_booking_space_cancelled_modal .bd-btn-change {
     background: #3B3731;
     border: 1px solid #3B3731;
     color: #FFF;
@@ -1678,7 +1790,7 @@ body {
 
 
 #view_booking_groom_cancelled_modal .bd-status-badge--cancelled {
-    background: #FFEDED;
+    background: rgba(255, 110, 110, 0.10);
     color: #E85C5C;
 }
 
@@ -1775,14 +1887,18 @@ body {
     #view_booking_groom_modal .bd-modal,
 #view_booking_groom_completed_modal .bd-modal,
 #view_booking_groom_cancelled_modal .bd-modal,
-#view_booking_space_modal .bd-modal {
+#view_booking_space_modal .bd-modal,
+#view_booking_space_completed_modal .bd-modal,
+#view_booking_space_cancelled_modal .bd-modal {
         padding: 32px 24px 0;
     }
 
     #view_booking_groom_modal .bd-close,
 #view_booking_groom_completed_modal .bd-close,
 #view_booking_groom_cancelled_modal .bd-close,
-#view_booking_space_modal .bd-close {
+#view_booking_space_modal .bd-close,
+#view_booking_space_completed_modal .bd-close,
+#view_booking_space_cancelled_modal .bd-close {
         top: 24px;
         right: 24px;
     }
@@ -1790,7 +1906,9 @@ body {
     #view_booking_groom_modal .bd-groomer-card,
 #view_booking_groom_completed_modal .bd-groomer-card,
 #view_booking_groom_cancelled_modal .bd-groomer-card,
-#view_booking_space_modal .bd-groomer-card {
+#view_booking_space_modal .bd-groomer-card,
+#view_booking_space_completed_modal .bd-groomer-card,
+#view_booking_space_cancelled_modal .bd-groomer-card {
         flex-direction: column;
         align-items: flex-start;
     }
@@ -1798,7 +1916,9 @@ body {
     #view_booking_groom_modal .bd-groomer-right,
 #view_booking_groom_completed_modal .bd-groomer-right,
 #view_booking_groom_cancelled_modal .bd-groomer-right,
-#view_booking_space_modal .bd-groomer-right {
+#view_booking_space_modal .bd-groomer-right,
+#view_booking_space_completed_modal .bd-groomer-right,
+#view_booking_space_cancelled_modal .bd-groomer-right {
         align-items: flex-start;
         width: 100%;
     }
@@ -1806,28 +1926,36 @@ body {
     #view_booking_groom_modal .bd-groomer-badges,
 #view_booking_groom_completed_modal .bd-groomer-badges,
 #view_booking_groom_cancelled_modal .bd-groomer-badges,
-#view_booking_space_modal .bd-groomer-badges {
+#view_booking_space_modal .bd-groomer-badges,
+#view_booking_space_completed_modal .bd-groomer-badges,
+#view_booking_space_cancelled_modal .bd-groomer-badges {
         flex-wrap: wrap;
     }
 
     #view_booking_groom_modal .bd-groomer-stats,
 #view_booking_groom_completed_modal .bd-groomer-stats,
 #view_booking_groom_cancelled_modal .bd-groomer-stats,
-#view_booking_space_modal .bd-groomer-stats {
+#view_booking_space_modal .bd-groomer-stats,
+#view_booking_space_completed_modal .bd-groomer-stats,
+#view_booking_space_cancelled_modal .bd-groomer-stats {
         justify-content: flex-start;
     }
 
     #view_booking_groom_modal .bd-appointment-grid,
 #view_booking_groom_completed_modal .bd-appointment-grid,
 #view_booking_groom_cancelled_modal .bd-appointment-grid,
-#view_booking_space_modal .bd-appointment-grid {
+#view_booking_space_modal .bd-appointment-grid,
+#view_booking_space_completed_modal .bd-appointment-grid,
+#view_booking_space_cancelled_modal .bd-appointment-grid {
         grid-template-columns: 1fr;
     }
 
     #view_booking_groom_modal .bd-footer,
 #view_booking_groom_completed_modal .bd-footer,
 #view_booking_groom_cancelled_modal .bd-footer,
-#view_booking_space_modal .bd-footer {
+#view_booking_space_modal .bd-footer,
+#view_booking_space_completed_modal .bd-footer,
+#view_booking_space_cancelled_modal .bd-footer {
         flex-direction: column;
         align-items: stretch;
         padding: 20px 24px 24px;
@@ -1837,14 +1965,18 @@ body {
     #view_booking_groom_modal .bd-footer-actions,
 #view_booking_groom_completed_modal .bd-footer-actions,
 #view_booking_groom_cancelled_modal .bd-footer-actions,
-#view_booking_space_modal .bd-footer-actions {
+#view_booking_space_modal .bd-footer-actions,
+#view_booking_space_completed_modal .bd-footer-actions,
+#view_booking_space_cancelled_modal .bd-footer-actions {
         flex-direction: column;
     }
 
     #view_booking_groom_modal .bd-btn,
 #view_booking_groom_completed_modal .bd-btn,
 #view_booking_groom_cancelled_modal .bd-btn,
-#view_booking_space_modal .bd-btn {
+#view_booking_space_modal .bd-btn,
+#view_booking_space_completed_modal .bd-btn,
+#view_booking_space_cancelled_modal .bd-btn {
         width: 100%;
     }
 }
@@ -2024,16 +2156,22 @@ body {
 
 /* upcoming bookings space modal css starts */
 
-#view_booking_space_modal .bd-service-badge--space {
+#view_booking_space_modal .bd-service-badge--space,
+#view_booking_space_completed_modal .bd-service-badge--space,
+#view_booking_space_cancelled_modal .bd-service-badge--space {
     background: #FFA899;
 }
 
-#view_booking_space_modal .bd-space-thumb-wrap {
+#view_booking_space_modal .bd-space-thumb-wrap,
+#view_booking_space_completed_modal .bd-space-thumb-wrap,
+#view_booking_space_cancelled_modal .bd-space-thumb-wrap {
     width: 56px;
     height: 56px;
 }
 
-#view_booking_space_modal .bd-space-thumb {
+#view_booking_space_modal .bd-space-thumb,
+#view_booking_space_completed_modal .bd-space-thumb,
+#view_booking_space_cancelled_modal .bd-space-thumb {
     width: 56px;
     height: 56px;
     border-radius: 12px;
@@ -2041,19 +2179,25 @@ body {
     display: block;
 }
 
-#view_booking_space_modal .bd-verified-badge--space {
+#view_booking_space_modal .bd-verified-badge--space,
+#view_booking_space_completed_modal .bd-verified-badge--space,
+#view_booking_space_cancelled_modal .bd-verified-badge--space {
     top: -4px;
     left: -4px;
 }
 
-#view_booking_space_modal .bd-pets-row {
+#view_booking_space_modal .bd-pets-row,
+#view_booking_space_completed_modal .bd-pets-row,
+#view_booking_space_cancelled_modal .bd-pets-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 12px;
     margin-bottom: 24px;
 }
 
-#view_booking_space_modal .bd-pet-card--compact {
+#view_booking_space_modal .bd-pet-card--compact,
+#view_booking_space_completed_modal .bd-pet-card--compact,
+#view_booking_space_cancelled_modal .bd-pet-card--compact {
     margin-bottom: 0;
 }
 
@@ -2061,24 +2205,32 @@ body {
     font-weight: 400;
 }
 
-#view_booking_space_modal .bd-pet-card--compact .bd-pet-name {
+#view_booking_space_modal .bd-pet-card--compact .bd-pet-name,
+#view_booking_space_completed_modal .bd-pet-card--compact .bd-pet-name,
+#view_booking_space_cancelled_modal .bd-pet-card--compact .bd-pet-name {
     margin: 0;
 }
 
-#view_booking_space_modal .bd-map-wrap {
+#view_booking_space_modal .bd-map-wrap,
+#view_booking_space_completed_modal .bd-map-wrap,
+#view_booking_space_cancelled_modal .bd-map-wrap {
     margin-bottom: 12px;
     border-radius: 12px;
     overflow: hidden;
 }
 
-#view_booking_space_modal .bd-map-image {
+#view_booking_space_modal .bd-map-image,
+#view_booking_space_completed_modal .bd-map-image,
+#view_booking_space_cancelled_modal .bd-map-image {
     display: block;
     width: 100%;
     height: 180px;
     object-fit: cover;
 }
 
-#view_booking_space_modal .bd-access-info {
+#view_booking_space_modal .bd-access-info,
+#view_booking_space_completed_modal .bd-access-info,
+#view_booking_space_cancelled_modal .bd-access-info {
     display: flex;
     align-items: flex-start;
     gap: 12px;
@@ -2088,12 +2240,16 @@ body {
     margin-bottom: 24px;
 }
 
-#view_booking_space_modal .bd-access-info svg {
+#view_booking_space_modal .bd-access-info svg,
+#view_booking_space_completed_modal .bd-access-info svg,
+#view_booking_space_cancelled_modal .bd-access-info svg {
     flex-shrink: 0;
     margin-top: 2px;
 }
 
-#view_booking_space_modal .bd-access-info p {
+#view_booking_space_modal .bd-access-info p,
+#view_booking_space_completed_modal .bd-access-info p,
+#view_booking_space_cancelled_modal .bd-access-info p {
     margin: 0;
     color: #6FA0C3;
     font-family: Lato, sans-serif;
@@ -2102,22 +2258,30 @@ body {
     line-height: 1.5;
 }
 
-#view_booking_space_modal .bd-access-info strong {
+#view_booking_space_modal .bd-access-info strong,
+#view_booking_space_completed_modal .bd-access-info strong,
+#view_booking_space_cancelled_modal .bd-access-info strong {
     font-weight: 600;
 }
 
-#view_booking_space_modal .bd-amenities {
+#view_booking_space_modal .bd-amenities,
+#view_booking_space_completed_modal .bd-amenities,
+#view_booking_space_cancelled_modal .bd-amenities {
     margin-bottom: 24px;
 }
 
-#view_booking_space_modal .bd-amenity-tags {
+#view_booking_space_modal .bd-amenity-tags,
+#view_booking_space_completed_modal .bd-amenity-tags,
+#view_booking_space_cancelled_modal .bd-amenity-tags {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
     margin-bottom: 12px;
 }
 
-#view_booking_space_modal .bd-amenity-tag {
+#view_booking_space_modal .bd-amenity-tag,
+#view_booking_space_completed_modal .bd-amenity-tag,
+#view_booking_space_cancelled_modal .bd-amenity-tag {
     display: inline-flex;
     align-items: center;
     gap: 6px;
@@ -2130,7 +2294,9 @@ body {
     font-weight: 500;
 }
 
-#view_booking_space_modal .bd-amenities-note {
+#view_booking_space_modal .bd-amenities-note,
+#view_booking_space_completed_modal .bd-amenities-note,
+#view_booking_space_cancelled_modal .bd-amenities-note {
     margin: 0;
     color: #3B3731;
     font-family: Lato, sans-serif;
@@ -2140,10 +2306,172 @@ body {
 }
 
 @media (max-width: 768px) {
-    #view_booking_space_modal .bd-pets-row {
+    #view_booking_space_modal .bd-pets-row,
+#view_booking_space_completed_modal .bd-pets-row,
+#view_booking_space_cancelled_modal .bd-pets-row {
         grid-template-columns: 1fr;
     }
 }
+
+
+#view_booking_space_completed_modal .bd-status-badge--completed,
+#view_booking_space_cancelled_modal .bd-status-badge--completed {
+    background: #EAF3FA;
+    color: #5B8FB8;
+}
+
+#view_booking_space_completed_modal .bd-status-badge--completed .bd-status-dot,
+#view_booking_space_cancelled_modal .bd-status-badge--completed .bd-status-dot {
+    background: #5B8FB8;
+}
+
+#view_booking_space_completed_modal .bd-reviewed-banner,
+#view_booking_space_cancelled_modal .bd-reviewed-banner {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 16px 18px;
+    border-radius: 10px;
+    background: #F5F5F5;
+    margin-bottom: 24px;
+}
+
+#view_booking_space_completed_modal .bd-reviewed-banner svg,
+#view_booking_space_cancelled_modal .bd-reviewed-banner svg {
+    flex-shrink: 0;
+    margin-top: 1px;
+}
+
+#view_booking_space_completed_modal .bd-reviewed-banner p,
+#view_booking_space_cancelled_modal .bd-reviewed-banner p {
+    margin: 0;
+    color: #AAA6A0;
+    font-family: Lato, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+#view_booking_space_completed_modal .bd-footer--completed,
+#view_booking_space_cancelled_modal .bd-footer--completed {
+    background: #FDFCF8;
+    border-top: 1px solid #E8E6E1;
+}
+
+#view_booking_space_completed_modal .bd-btn-reviewed,
+#view_booking_space_cancelled_modal .bd-btn-reviewed {
+    border: 1px solid #E0E0E0;
+    background: #F5F5F5;
+    color: #9D9B98;
+    cursor: default;
+    pointer-events: none;
+}
+
+#view_booking_space_completed_modal .bd-btn-rebook,
+#view_booking_space_cancelled_modal .bd-btn-rebook {
+    border: 1px solid #B7D0E5;
+    background: #FFF;
+    color: #5B8FB8;
+}
+
+
+
+#view_booking_space_cancelled_modal .bd-status-badge--cancelled {
+    background: rgba(255, 110, 110, 0.10);
+    color: #E85C5C;
+}
+
+#view_booking_space_cancelled_modal .bd-status-badge--cancelled .bd-status-dot {
+    background: #E85C5C;
+}
+
+#view_booking_space_cancelled_modal .bd-cancel-notice--host {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px 18px;
+    border-radius: 10px;
+    background: #FFF5F5;
+    border: 1px solid #F5C6C6;
+    margin-bottom: 20px;
+}
+
+#view_booking_space_cancelled_modal .bd-cancel-notice--host svg {
+    flex-shrink: 0;
+    margin-top: 5px;
+}
+
+#view_booking_space_cancelled_modal .bd-cancel-notice--host .bd-cancel-notice-title {
+    margin: 0;
+    color: #FF6E6E;
+    font-family: Lato, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+#view_booking_space_cancelled_modal .bd-cancel-notice--host .bd-cancel-notice-sub {
+    margin: 4px 0 0;
+    color: #FF6E6E;
+    font-family: Lato, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.4;
+    opacity: 0.9;
+}
+
+#view_booking_space_cancelled_modal .bd-refund-banner {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px 18px;
+    border-radius: 10px;
+    background: #F2F6E6;
+    margin-bottom: 24px;
+}
+
+#view_booking_space_cancelled_modal .bd-refund-banner svg {
+    flex-shrink: 0;
+    margin-top: 5px;
+}
+
+#view_booking_space_cancelled_modal .bd-refund-banner-title {
+    margin: 0;
+    color: #A0BE63;
+    font-family: Lato, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+#view_booking_space_cancelled_modal .bd-refund-banner-sub {
+    margin: 4px 0 0;
+    color: #A0BE63;
+    font-family: Lato, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.4;
+    opacity: 0.85;
+}
+
+#view_booking_space_cancelled_modal .bd-footer--cancelled {
+    background: #FFF5F5;
+    border-top: 1px solid #FF6E6E;
+}
+
+#view_booking_space_cancelled_modal .bd-closed-label {
+    color: #9D9B98;
+    font-family: Lato, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+#view_booking_space_cancelled_modal .bd-btn-rebook {
+    border: 1px solid #B7D0E5;
+    background: #FFF;
+    color: #5B8FB8;
+}
+
 
 /* upcoming bookings space modal css ends */
 
