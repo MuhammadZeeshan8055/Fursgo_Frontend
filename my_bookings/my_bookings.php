@@ -1,4 +1,7 @@
-<?php include '../function_helper.php'; ?>
+<?php
+include '../function_helper.php';
+include_once __DIR__ . '/../components/extras-addons.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -526,11 +529,11 @@
                                                     <path d="M1.5 7C1.5 7 4.1 1.5 9 1.5C13.9 1.5 16.5 7 16.5 7C16.5 7 13.9 12.5 9 12.5C4.1 12.5 1.5 7 1.5 7Z" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" />
                                                     <circle cx="9" cy="7" r="2.25" stroke="currentColor" stroke-width="1.4" />
                                                 </svg> View details</button>
-                                            <a href="<?= BASE_URL ?>my_bookings/change_groomer_booking.php" class="mb-btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                            <button type="button" class="mb-btn" data-modal-open="change_groomer_booking_modal"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
                                                     <path d="M2.23096 15.4951V12.6123H5.11378" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
                                                     <path d="M15.3656 6.62252C15.6715 8.25452 15.4269 9.94189 14.6702 11.4199C13.9135 12.8978 12.6875 14.0827 11.1846 14.7887C9.68175 15.4946 7.98704 15.6817 6.3664 15.3204C4.74575 14.9592 3.2909 14.0701 2.23013 12.7927M0.628303 9.37748C0.322432 7.74548 0.567036 6.05811 1.32373 4.58014C2.08043 3.10218 3.3064 1.91725 4.80927 1.2113C6.31214 0.505355 8.00686 0.318331 9.6275 0.679579C11.2481 1.04083 12.703 1.9299 13.7638 3.2073" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
                                                     <path d="M13.7624 0.504883V3.38771H10.8796M4.61412 8.38848C4.2061 8.31757 4.2061 7.73171 4.61412 7.6608C5.3363 7.53448 6.00461 7.19626 6.53409 6.68914C7.06356 6.18203 7.43027 5.52892 7.58761 4.81285L7.61202 4.70009C7.70037 4.29673 8.27461 4.2944 8.36644 4.6966L8.39666 4.82796C8.55903 5.54126 8.92875 6.19059 9.4593 6.69425C9.98985 7.19791 10.6575 7.53339 11.3783 7.65848C11.7886 7.72938 11.7886 8.31874 11.3783 8.39081C10.6577 8.51581 9.99011 8.85111 9.45958 9.35455C8.92904 9.85799 8.55923 10.5071 8.39666 11.2202L8.36644 11.3504C8.27461 11.7526 7.70037 11.7502 7.61202 11.3469L7.58877 11.2353C7.43128 10.5189 7.06422 9.86555 6.5343 9.3584C6.00438 8.85125 5.33556 8.51322 4.61295 8.38732" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
-                                                </svg> Change booking</a>
+                                                </svg> Change booking</button>
                                             <a href="<?= BASE_URL ?>messages_notification/messages.php" class="mb-btn-icon" title="Message groomer"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="15" viewBox="0 0 16 15" fill="none">
                                                     <path d="M8 0.5C12.2044 0.5 15.5 3.48321 15.5 7.03223C15.5 10.4703 12.4072 13.3772 8.3916 13.5557L8 13.5645H7.99902C7.251 13.5661 6.50584 13.4687 5.7832 13.2744L5.59766 13.2246L5.42676 13.3115C5.00713 13.5247 4.13103 13.9084 2.72363 14.2393L2.08691 14.377C1.99742 14.3948 1.9071 14.4082 1.81738 14.4248C1.85085 14.3352 1.88498 14.2458 1.91602 14.1553L1.91895 14.1455C2.17667 13.3938 2.38924 12.5229 2.46777 11.7012L2.49023 11.4678L2.3252 11.3008C1.18119 10.1487 0.500003 8.65476 0.5 7.03223C0.5 3.48321 3.79561 0.5 8 0.5Z" stroke="#3B3731" />
                                                 </svg></a>
@@ -819,14 +822,14 @@
                                                     </svg>
                                                     Message groomer
                                                 </a>
-                                                <a href="<?= BASE_URL ?>/my_bookings/change_groomer_booking.php" class="bd-btn bd-btn-change">
+                                                <button type="button" class="bd-btn bd-btn-change" data-modal-open="change_groomer_booking_modal" data-close-parent-modal>
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
                                                         <path d="M2.23096 15.4953V12.6124H5.11378" stroke="white" stroke-linecap="round" stroke-linejoin="round" />
                                                         <path d="M15.3656 6.62252C15.6715 8.25452 15.4269 9.94189 14.6702 11.4199C13.9135 12.8978 12.6875 14.0827 11.1846 14.7887C9.68175 15.4946 7.98704 15.6817 6.3664 15.3204C4.74575 14.9592 3.2909 14.0701 2.23013 12.7927M0.628303 9.37748C0.322432 7.74548 0.567036 6.05811 1.32373 4.58014C2.08043 3.10218 3.3064 1.91725 4.80927 1.2113C6.31214 0.505355 8.00686 0.318331 9.6275 0.679579C11.2481 1.04083 12.703 1.9299 13.7638 3.2073" stroke="white" stroke-linecap="round" stroke-linejoin="round" />
                                                         <path d="M13.7624 0.504883V3.38771H10.8796M4.61412 8.38848C4.2061 8.31757 4.2061 7.73171 4.61412 7.6608C5.3363 7.53448 6.00461 7.19626 6.53409 6.68914C7.06356 6.18203 7.43027 5.52892 7.58761 4.81285L7.61202 4.70009C7.70037 4.29673 8.27461 4.2944 8.36644 4.6966L8.39666 4.82796C8.55903 5.54126 8.92875 6.19059 9.4593 6.69425C9.98985 7.19791 10.6575 7.53339 11.3783 7.65848C11.7886 7.72938 11.7886 8.31874 11.3783 8.39081C10.6577 8.51581 9.99011 8.85111 9.45958 9.35455C8.92904 9.85799 8.55923 10.5071 8.39666 11.2202L8.36644 11.3504C8.27461 11.7526 7.70037 11.7502 7.61202 11.3469L7.58877 11.2353C7.43128 10.5189 7.06422 9.86555 6.5343 9.3584C6.00438 8.85125 5.33556 8.51322 4.61295 8.38732" stroke="white" stroke-linecap="round" stroke-linejoin="round" />
                                                     </svg>
                                                     Change booking
-                                                </a>
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
@@ -2318,6 +2321,104 @@
                             </div>
 
 
+                            <!-- Change Groomer Booking Modal -->
+                            <div class="modal" id="change_groomer_booking_modal">
+                                <div class="modal-content size cbm-modal-content">
+                                    <div class="cbm-modal">
+                                        <button class="cbm-close" type="button" data-modal-close aria-label="Close">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36" fill="none">
+                                                <circle cx="18" cy="18" r="17.5" stroke="#3B3731" />
+                                                <path d="M12.8 24.0008L24 12.8008M12.8 12.8008L24 24.0008" stroke="#3B3731" stroke-width="1.5" stroke-linecap="round" />
+                                            </svg>
+                                        </button>
+
+                                        <div class="cbm-header">
+                                            <h1>Change booking</h1>
+                                            <p>Sarah's Grooming Studio · FG-10294</p>
+                                        </div>
+
+                                        <div class="cbm-body">
+                                            <!-- Update Date & Time -->
+                                            <section class="cbm-card">
+                                                <h2 class="cbm-card-title">Update Date &amp; Time</h2>
+                                                <div class="cbm-datetime">
+                                                    <div class="cbm-calendar">
+                                                        <div class="cbm-cal-header">
+                                                            <button type="button" class="cbm-nav-btn" id="cbm-cal-prev" aria-label="Previous month">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="7" height="11" viewBox="0 0 7 11" fill="none"><path d="M5.53426 10.484L0.499999 5.44975L5.44975 0.500005" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                                                            </button>
+                                                            <span id="cbm-cal-title">December 2025</span>
+                                                            <button type="button" class="cbm-nav-btn" id="cbm-cal-next" aria-label="Next month">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="7" height="11" viewBox="0 0 7 11" fill="none"><path d="M0.5 10.484L5.53426 5.44975L0.58451 0.500005" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                                                            </button>
+                                                        </div>
+                                                        <div class="cbm-weekdays">
+                                                            <div>M</div><div>T</div><div>W</div><div>T</div><div>F</div><div>S</div><div>S</div>
+                                                        </div>
+                                                        <div class="cbm-dates" id="cbm-cal-dates"></div>
+                                                    </div>
+
+                                                    <div class="cbm-times">
+                                                        <p class="cbm-times-label" id="cbm-times-label">AVAILABLE TIMES · 18 DEC</p>
+                                                        <div class="cbm-time-list" id="cbm-time-list">
+                                                            <button type="button" class="cbm-time" data-range="09:00 - 10:00">09:00 AM</button>
+                                                            <button type="button" class="cbm-time" data-range="11:00 - 12:00">11:00 AM</button>
+                                                            <button type="button" class="cbm-time" data-range="12:00 - 13:00">12:00 PM</button>
+                                                            <button type="button" class="cbm-time selected" data-range="14:30 - 15:30">14:30 PM</button>
+                                                            <button type="button" class="cbm-time" data-range="16:00 - 17:00">16:00 PM</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </section>
+
+                                            <!-- Extras & Add-ons -->
+                                            <section class="cbm-card cbm-extras">
+                                                <?php renderExtrasAddons([], [
+                                                    'instance_id' => 'change-modal',
+                                                    'on_change_js' => 'handleChangeBookingExtras',
+                                                    'default_selected' => [1, 2, 12],
+                                                ]); ?>
+                                            </section>
+
+                                            <!-- Price summary -->
+                                            <div class="cbm-price-box">
+                                                <div class="cbm-price-row">
+                                                    <span>Total Paid</span>
+                                                    <span id="cbm-total-paid">£48.00</span>
+                                                </div>
+                                                <div class="cbm-price-row cbm-price-addons">
+                                                    <span>Add-ons</span>
+                                                    <span id="cbm-addons-delta">+£0.00</span>
+                                                </div>
+                                                <div class="cbm-price-row cbm-price-updated">
+                                                    <span>Updated total</span>
+                                                    <span id="cbm-updated-total">£48.00</span>
+                                                </div>
+                                            </div>
+
+                                            <div class="cbm-alert" id="cbm-alert" style="display:none;">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                                                    <path d="M6.625 9.025H6.6298M6.625 4.225V7.225M12.625 6.625C12.625 3.3112 9.9388 0.625 6.625 0.625C3.3112 0.625 0.625 3.3112 0.625 6.625C0.625 9.9388 3.3112 12.625 6.625 12.625C9.9388 12.625 12.625 9.9388 12.625 6.625Z" stroke="#FF6E6E" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                                <span id="cbm-alert-text"></span>
+                                            </div>
+                                        </div>
+
+                                        <div class="cbm-footer">
+                                            <button type="button" class="cbm-btn-cancel" data-modal-close>Cancel changes</button>
+                                            <a href="<?= BASE_URL ?>my_bookings/updated_bookings.php" class="cbm-btn-confirm is-disabled" id="cbm-confirm" aria-disabled="true">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                                    <path d="M2.23096 15.4951V12.6123H5.11378" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" />
+                                                    <path d="M15.3656 6.62252C15.6715 8.25452 15.4269 9.94189 14.6702 11.4199C13.9135 12.8978 12.6875 14.0827 11.1846 14.7887C9.68175 15.4946 7.98704 15.6817 6.3664 15.3204C4.74575 14.9592 3.2909 14.0701 2.23013 12.7927M0.628303 9.37748C0.322432 7.74548 0.567036 6.05811 1.32373 4.58014C2.08043 3.10218 3.3064 1.91725 4.80927 1.2113C6.31214 0.505355 8.00686 0.318331 9.6275 0.679579C11.2481 1.04083 12.703 1.9299 13.7638 3.2073" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" />
+                                                    <path d="M13.7624 0.504883V3.38771H10.8796M4.61412 8.38848C4.2061 8.31757 4.2061 7.73171 4.61412 7.6608C5.3363 7.53448 6.00461 7.19626 6.53409 6.68914C7.06356 6.18203 7.43027 5.52892 7.58761 4.81285L7.61202 4.70009C7.70037 4.29673 8.27461 4.2944 8.36644 4.6966L8.39666 4.82796C8.55903 5.54126 8.92875 6.19059 9.4593 6.69425C9.98985 7.19791 10.6575 7.53339 11.3783 7.65848C11.7886 7.72938 11.7886 8.31874 11.3783 8.39081C10.6577 8.51581 9.99011 8.85111 9.45958 9.35455C8.92904 9.85799 8.55923 10.5071 8.39666 11.2202L8.36644 11.3504C8.27461 11.7526 7.70037 11.7502 7.61202 11.3469L7.58877 11.2353C7.43128 10.5189 7.06422 9.86555 6.5343 9.3584C6.00438 8.85125 5.33556 8.51322 4.61295 8.38732" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" />
+                                                </svg>
+                                                Change booking
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                             <!-- Review Modal  -->
 
                             <div class="modal" id="review-modal">
@@ -2706,16 +2807,15 @@
                                                         <path d="M24.5 37.75L33.1667 46.5L50.5 29" stroke="#B5CA89" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                                                     </svg>
 
-                                                    <div data-modal-close class="position-absolute top-0 end-0">
+                                                    <div data-modal-close class="position-absolute top-0 end-0 review-submitted-close">
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36" fill="none">
                                                             <circle cx="18" cy="18" r="17.5" stroke="#3B3731" />
                                                             <path d="M12.8 24.0008L24 12.8008M12.8 12.8008L24 24.0008" stroke="#3B3731" stroke-width="1.5" stroke-linecap="round" />
                                                         </svg>
                                                     </div>
                                                     <style>
-                                                        [data-modal-close] {
+                                                        #review-submitted-modal .review-submitted-close {
                                                             position: absolute;
-                                                            /* top: 10px; */
                                                             right: 50px;
                                                             cursor: pointer;
                                                         }
@@ -3236,6 +3336,163 @@
 
         syncSortChip();
     });
+</script>
+<script>
+    // Change booking modal
+    (function() {
+        const ORIGINAL = {
+            dateKey: '2025-12-18',
+            time: '14:30 - 15:30',
+            extras: [1, 2, 12],
+            totalPaid: 48,
+            originalExtrasTotal: 44
+        };
+
+        const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+        const monthShort = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+        const availableDates = ['2025-12-14', '2025-12-15', '2025-12-18', '2025-12-20', '2025-12-26', '2025-12-29', '2025-12-30'];
+
+        let viewDate = new Date(2025, 11);
+        let selectedDateKey = ORIGINAL.dateKey;
+        let selectedTime = ORIGINAL.time;
+        let currentExtrasTotal = ORIGINAL.originalExtrasTotal;
+        let currentExtrasIds = ORIGINAL.extras.slice();
+
+        function sameExtras(a, b) {
+            if (a.length !== b.length) return false;
+            const aa = a.slice().sort(function(x, y) { return x - y; });
+            const bb = b.slice().sort(function(x, y) { return x - y; });
+            return aa.every(function(id, i) { return id === bb[i]; });
+        }
+
+        function hasChanges() {
+            return selectedDateKey !== ORIGINAL.dateKey ||
+                selectedTime !== ORIGINAL.time ||
+                !sameExtras(currentExtrasIds, ORIGINAL.extras);
+        }
+
+        function updateConfirm() {
+            const btn = document.getElementById('cbm-confirm');
+            if (!btn) return;
+            if (hasChanges()) {
+                btn.classList.remove('is-disabled');
+                btn.setAttribute('aria-disabled', 'false');
+            } else {
+                btn.classList.add('is-disabled');
+                btn.setAttribute('aria-disabled', 'true');
+            }
+        }
+
+        function updatePrices() {
+            const extrasTotal = currentExtrasTotal || 0;
+            const updated = ORIGINAL.totalPaid + extrasTotal;
+
+            document.getElementById('cbm-addons-delta').textContent = '£' + extrasTotal.toFixed(2);
+            document.getElementById('cbm-updated-total').textContent = '£' + updated.toFixed(2);
+
+            const alertEl = document.getElementById('cbm-alert');
+            const alertText = document.getElementById('cbm-alert-text');
+            if (extrasTotal > 0) {
+                alertEl.style.display = 'flex';
+                alertText.textContent = "You'll be charged an additional £" + extrasTotal.toFixed(2) + ' when you confirm.';
+            } else {
+                alertEl.style.display = 'none';
+            }
+
+            updateConfirm();
+        }
+
+        function updateTimesLabel() {
+            const parts = selectedDateKey.split('-');
+            const day = parseInt(parts[2], 10);
+            const month = parseInt(parts[1], 10) - 1;
+            document.getElementById('cbm-times-label').textContent = 'AVAILABLE TIMES · ' + day + ' ' + monthShort[month];
+        }
+
+        function renderCalendar() {
+            const datesContainer = document.getElementById('cbm-cal-dates');
+            const headerTitle = document.getElementById('cbm-cal-title');
+            if (!datesContainer || !headerTitle) return;
+
+            datesContainer.innerHTML = '';
+            const year = viewDate.getFullYear();
+            const month = viewDate.getMonth();
+            headerTitle.textContent = monthNames[month].toUpperCase() + ' ' + year;
+
+            const firstDay = new Date(year, month, 1).getDay() || 7;
+            const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+            for (let i = 1; i < firstDay; i++) {
+                datesContainer.appendChild(document.createElement('div'));
+            }
+
+            for (let day = 1; day <= daysInMonth; day++) {
+                const dateDiv = document.createElement('div');
+                dateDiv.className = 'cbm-date';
+                dateDiv.textContent = day;
+
+                const dateKey = year + '-' + String(month + 1).padStart(2, '0') + '-' + String(day).padStart(2, '0');
+
+                if (availableDates.includes(dateKey)) {
+                    dateDiv.classList.add('available');
+                    if (dateKey === selectedDateKey) dateDiv.classList.add('selected');
+                    dateDiv.addEventListener('click', function() {
+                        selectedDateKey = dateKey;
+                        updateTimesLabel();
+                        renderCalendar();
+                        updateConfirm();
+                    });
+                }
+
+                datesContainer.appendChild(dateDiv);
+            }
+        }
+
+        window.handleChangeBookingExtras = function(ids, total) {
+            currentExtrasIds = ids.slice();
+            currentExtrasTotal = total;
+            updatePrices();
+        };
+
+        document.getElementById('cbm-cal-prev')?.addEventListener('click', function() {
+            viewDate.setMonth(viewDate.getMonth() - 1);
+            renderCalendar();
+        });
+
+        document.getElementById('cbm-cal-next')?.addEventListener('click', function() {
+            viewDate.setMonth(viewDate.getMonth() + 1);
+            renderCalendar();
+        });
+
+        document.querySelectorAll('#cbm-time-list .cbm-time').forEach(function(slot) {
+            slot.addEventListener('click', function() {
+                document.querySelectorAll('#cbm-time-list .cbm-time').forEach(function(t) {
+                    t.classList.remove('selected');
+                });
+                slot.classList.add('selected');
+                selectedTime = slot.dataset.range || slot.textContent.trim();
+                updateConfirm();
+            });
+        });
+
+        document.getElementById('cbm-confirm')?.addEventListener('click', function(e) {
+            if (this.classList.contains('is-disabled') || this.getAttribute('aria-disabled') === 'true') {
+                e.preventDefault();
+            }
+        });
+
+        // Close parent modal when opening change booking from booking details
+        document.addEventListener('click', function(e) {
+            const trigger = e.target.closest('[data-close-parent-modal]');
+            if (!trigger) return;
+            const parentModal = trigger.closest('.modal');
+            if (parentModal) parentModal.style.display = 'none';
+        });
+
+        renderCalendar();
+        updateTimesLabel();
+        updatePrices();
+    })();
 </script>
 <script>
     document.getElementById('reviewForm').addEventListener('submit', function(e) {
