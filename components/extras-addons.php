@@ -148,20 +148,22 @@ function renderExtrasAddons(array $addons = [], array $options = []): void
             border-radius: 50%;
             border: 1px solid #ccc;
             flex-shrink: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            display: block;
             transition: border-color 0.15s, background 0.15s;
             position: relative;
+            box-sizing: border-box;
         }
 
         .furs-addons-root .radio::after {
             content: '';
-            width: 16px;
-            height: 16px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 14px;
+            height: 14px;
             border-radius: 50%;
             background: #FFD88C;
-            transform: scale(0);
+            transform: translate(-50%, -50%) scale(0);
             transition: transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
@@ -171,7 +173,7 @@ function renderExtrasAddons(array $addons = [], array $options = []): void
         }
 
         .furs-addons-root .option.selected .radio::after {
-            transform: scale(1);
+            transform: translate(-50%, -50%) scale(1);
         }
 
         .furs-addons-root .option-name {

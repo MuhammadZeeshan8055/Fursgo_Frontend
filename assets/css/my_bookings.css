@@ -2483,7 +2483,8 @@ body {
 
 /* change booking css starts */
 
-#change_groomer_booking_modal .modal-content.size.cbm-modal-content {
+#change_groomer_booking_modal .modal-content.size.cbm-modal-content,
+#change_space_booking_modal .modal-content.size.cbm-modal-content {
     width: 820px;
     max-width: calc(100vw - 32px);
     height: auto;
@@ -2494,7 +2495,8 @@ body {
     box-shadow: none;
 }
 
-#change_groomer_booking_modal .cbm-modal {
+#change_groomer_booking_modal .cbm-modal,
+#change_space_booking_modal .cbm-modal {
     position: relative;
     width: 100%;
     border-radius: 16px;
@@ -2503,7 +2505,8 @@ body {
     overflow: visible;
 }
 
-#change_groomer_booking_modal .cbm-close {
+#change_groomer_booking_modal .cbm-close,
+#change_space_booking_modal .cbm-close {
     position: absolute;
     top: 32px;
     right: 32px;
@@ -2515,11 +2518,13 @@ body {
     z-index: 2;
 }
 
-#change_groomer_booking_modal .cbm-header {
+#change_groomer_booking_modal .cbm-header,
+#change_space_booking_modal .cbm-header {
     padding: 40px 48px 0;
 }
 
-#change_groomer_booking_modal .cbm-header h1 {
+#change_groomer_booking_modal .cbm-header h1,
+#change_space_booking_modal .cbm-header h1 {
     color: #3B3731;
     font-family: 'Playfair Display', serif;
     font-size: 28px;
@@ -2528,7 +2533,8 @@ body {
     line-height: 1.2;
 }
 
-#change_groomer_booking_modal .cbm-header p {
+#change_groomer_booking_modal .cbm-header p,
+#change_space_booking_modal .cbm-header p {
     color: #9D9B98;
     font-family: Lato, sans-serif;
     font-size: 16px;
@@ -2536,21 +2542,25 @@ body {
     margin: 0;
 }
 
-#change_groomer_booking_modal .cbm-body {
+#change_groomer_booking_modal .cbm-body,
+#change_space_booking_modal .cbm-body {
     display: flex;
     flex-direction: column;
     gap: 20px;
     padding: 28px 48px 24px;
 }
 
-#change_groomer_booking_modal .cbm-card {
+#change_groomer_booking_modal .cbm-card,
+#change_space_booking_modal .cbm-card {
     background: #F7F4EC;
     border-radius: 16px;
     padding: 24px 28px 28px;
 }
 
 #change_groomer_booking_modal .cbm-card-title,
-#change_groomer_booking_modal .cbm-extras .furs-addons-root h1 {
+#change_space_booking_modal .cbm-card-title,
+#change_groomer_booking_modal .cbm-extras .furs-addons-root h1,
+#change_space_booking_modal .cbm-extras .furs-addons-root h1 {
     color: #3B3731;
     font-family: 'Playfair Display', serif;
     font-size: 18px;
@@ -2568,62 +2578,74 @@ body {
     line-height: normal;
 }
 
-#change_groomer_booking_modal .cbm-extras .furs-addons-root {
+#change_groomer_booking_modal .cbm-extras .furs-addons-root,
+#change_space_booking_modal .cbm-extras .furs-addons-root {
     margin-bottom: 0;
 }
 
-#change_groomer_booking_modal .cbm-extras .furs-addons-root h1 {
+#change_groomer_booking_modal .cbm-extras .furs-addons-root h1,
+#change_space_booking_modal .cbm-extras .furs-addons-root h1 {
     margin-bottom: 16px;
 }
 
-#change_groomer_booking_modal .cbm-extras .selected-furs-addons-tags {
+#change_groomer_booking_modal .cbm-extras .selected-furs-addons-tags,
+#change_space_booking_modal .cbm-extras .selected-furs-addons-tags {
     margin-top: 0;
     margin-bottom: 20px;
     gap: 10px;
 }
 
-#change_groomer_booking_modal .cbm-extras .furs-addons-tag {
+#change_groomer_booking_modal .cbm-extras .furs-addons-tag,
+#change_space_booking_modal .cbm-extras .furs-addons-tag {
     background: #FFFAF2;
     color: #FFBF61;
     border-radius: 100px;
     padding: 6px 12px;
 }
 
-#change_groomer_booking_modal .cbm-extras .furs-addons-tag-remove {
+#change_groomer_booking_modal .cbm-extras .furs-addons-tag-remove,
+#change_space_booking_modal .cbm-extras .furs-addons-tag-remove {
     color: #FFBF61;
 }
 
-#change_groomer_booking_modal .cbm-extras .option {
+#change_groomer_booking_modal .cbm-extras .option,
+#change_space_booking_modal .cbm-extras .option {
     padding: 10px 4px;
 }
 
-/* #change_groomer_booking_modal .cbm-extras .option.selected .option-name {
+/* #change_groomer_booking_modal .cbm-extras .option.selected .option-name,
+#change_space_booking_modal .cbm-extras .option.selected .option-name {
     color: #FFBF61;
 } */
 
-#change_groomer_booking_modal .cbm-extras .option-price {
+#change_groomer_booking_modal .cbm-extras .option-price,
+#change_space_booking_modal .cbm-extras .option-price {
     font-size: 14px;
     color: #3B3731;
 }
 
-#change_groomer_booking_modal .cbm-extras .options-col:first-child {
+#change_groomer_booking_modal .cbm-extras .options-col:first-child,
+#change_space_booking_modal .cbm-extras .options-col:first-child {
     padding-right: 28px;
     border-right: 1px solid #EAE8E5;
 }
 
-#change_groomer_booking_modal .cbm-extras .options-col:last-child {
+#change_groomer_booking_modal .cbm-extras .options-col:last-child,
+#change_space_booking_modal .cbm-extras .options-col:last-child {
     padding-left: 28px;
 }
 
 /* Date & time layout */
-#change_groomer_booking_modal .cbm-datetime {
+#change_groomer_booking_modal .cbm-datetime,
+#change_space_booking_modal .cbm-datetime {
     display: grid;
     grid-template-columns: minmax(280px, 1fr) minmax(220px, 1fr);
     gap: 28px 36px;
     align-items: start;
 }
 
-#change_groomer_booking_modal .cbm-cal-header {
+#change_groomer_booking_modal .cbm-cal-header,
+#change_space_booking_modal .cbm-cal-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -2631,7 +2653,8 @@ body {
     max-width: 340px;
 }
 
-#change_groomer_booking_modal .cbm-cal-header span {
+#change_groomer_booking_modal .cbm-cal-header span,
+#change_space_booking_modal .cbm-cal-header span {
     color: #3B3731;
     font-family: Lato, sans-serif;
     font-size: 14px;
@@ -2640,7 +2663,8 @@ body {
     text-transform: uppercase;
 }
 
-#change_groomer_booking_modal .cbm-nav-btn {
+#change_groomer_booking_modal .cbm-nav-btn,
+#change_space_booking_modal .cbm-nav-btn {
     width: 32px;
     height: 32px;
     border-radius: 50%;
@@ -2654,7 +2678,9 @@ body {
 }
 
 #change_groomer_booking_modal .cbm-weekdays,
-#change_groomer_booking_modal .cbm-dates {
+#change_space_booking_modal .cbm-weekdays,
+#change_groomer_booking_modal .cbm-dates,
+#change_space_booking_modal .cbm-dates {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     gap: 8px;
@@ -2662,7 +2688,8 @@ body {
     text-align: center;
 }
 
-#change_groomer_booking_modal .cbm-weekdays {
+#change_groomer_booking_modal .cbm-weekdays,
+#change_space_booking_modal .cbm-weekdays {
     margin-bottom: 12px;
     color: #9C9790;
     font-family: Lato, sans-serif;
@@ -2670,7 +2697,8 @@ body {
     font-weight: 600;
 }
 
-#change_groomer_booking_modal .cbm-dates .cbm-date {
+#change_groomer_booking_modal .cbm-dates .cbm-date,
+#change_space_booking_modal .cbm-dates .cbm-date {
     height: 40px;
     border-radius: 12px;
     display: flex;
@@ -2685,27 +2713,32 @@ body {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
-#change_groomer_booking_modal .cbm-dates .cbm-date.available {
+#change_groomer_booking_modal .cbm-dates .cbm-date.available,
+#change_space_booking_modal .cbm-dates .cbm-date.available {
     background: #ECF4DB;
     cursor: pointer;
 }
 
-#change_groomer_booking_modal .cbm-dates .cbm-date.selected {
+#change_groomer_booking_modal .cbm-dates .cbm-date.selected,
+#change_space_booking_modal .cbm-dates .cbm-date.selected {
     border: 1px solid #91A36C;
     background: #D8E8B7;
     box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.20);
 }
 
-#change_groomer_booking_modal .cbm-dates .cbm-date:not(.available) {
+#change_groomer_booking_modal .cbm-dates .cbm-date:not(.available),
+#change_space_booking_modal .cbm-dates .cbm-date:not(.available) {
     color: #3B3731;
     cursor: default;
 }
 
-#change_groomer_booking_modal .cbm-times {
+#change_groomer_booking_modal .cbm-times,
+#change_space_booking_modal .cbm-times {
     padding-top: 4px;
 }
 
-#change_groomer_booking_modal .cbm-times-label {
+#change_groomer_booking_modal .cbm-times-label,
+#change_space_booking_modal .cbm-times-label {
     color: #6F6B64;
     font-family: Lato, sans-serif;
     font-size: 14px;
@@ -2715,13 +2748,15 @@ body {
     margin: 0 0 16px;
 }
 
-#change_groomer_booking_modal .cbm-time-list {
+#change_groomer_booking_modal .cbm-time-list,
+#change_space_booking_modal .cbm-time-list {
     display: flex;
     flex-wrap: wrap;
     gap: 10px 12px;
 }
 
-#change_groomer_booking_modal .cbm-time {
+#change_groomer_booking_modal .cbm-time,
+#change_space_booking_modal .cbm-time {
     min-width: 95px;
     padding: 11px 16px;
     border-radius: 999px;
@@ -2736,7 +2771,8 @@ body {
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
 }
 
-#change_groomer_booking_modal .cbm-time.selected {
+#change_groomer_booking_modal .cbm-time.selected,
+#change_space_booking_modal .cbm-time.selected {
     background: #ECF4DB;
     border-color: #91A36C;
     color: #A0BE63;
@@ -2744,14 +2780,16 @@ body {
 }
 
 /* Price + alert */
-#change_groomer_booking_modal .cbm-price-box {
+#change_groomer_booking_modal .cbm-price-box,
+#change_space_booking_modal .cbm-price-box {
     border: 1px solid #EAE8E5;
     border-radius: 14px;
     overflow: hidden;
     background: #fff;
 }
 
-#change_groomer_booking_modal .cbm-price-row {
+#change_groomer_booking_modal .cbm-price-row,
+#change_space_booking_modal .cbm-price-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -2763,20 +2801,24 @@ body {
     border-bottom: 1px solid #EAE8E5;
 }
 
-#change_groomer_booking_modal .cbm-price-row:last-child {
+#change_groomer_booking_modal .cbm-price-row:last-child,
+#change_space_booking_modal .cbm-price-row:last-child {
     border-bottom: none;
 }
 
-#change_groomer_booking_modal .cbm-price-addons {
+#change_groomer_booking_modal .cbm-price-addons,
+#change_space_booking_modal .cbm-price-addons {
     color: #FFBF61;
 }
 
-#change_groomer_booking_modal .cbm-price-updated {
+#change_groomer_booking_modal .cbm-price-updated,
+#change_space_booking_modal .cbm-price-updated {
     color: #3B3731;
     font-weight: 600;
 }
 
-#change_groomer_booking_modal .cbm-alert {
+#change_groomer_booking_modal .cbm-alert,
+#change_space_booking_modal .cbm-alert {
     display: flex;
     align-items: center;
     gap: 10px;
@@ -2796,12 +2838,14 @@ body {
     box-sizing: border-box;
 }
 
-#change_groomer_booking_modal .cbm-alert svg {
+#change_groomer_booking_modal .cbm-alert svg,
+#change_space_booking_modal .cbm-alert svg {
     flex-shrink: 0;
 }
 
 /* Footer — Cancel left, Change booking right */
-#change_groomer_booking_modal .cbm-footer {
+#change_groomer_booking_modal .cbm-footer,
+#change_space_booking_modal .cbm-footer {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -2813,7 +2857,8 @@ body {
     border-radius: 0 0 16px 16px;
 }
 
-#change_groomer_booking_modal .cbm-btn-cancel {
+#change_groomer_booking_modal .cbm-btn-cancel,
+#change_space_booking_modal .cbm-btn-cancel {
     position: static;
     right: auto;
     order: 1;
@@ -2829,7 +2874,8 @@ body {
     cursor: pointer;
 }
 
-#change_groomer_booking_modal .cbm-btn-confirm {
+#change_groomer_booking_modal .cbm-btn-confirm,
+#change_space_booking_modal .cbm-btn-confirm {
     order: 2;
     margin-left: auto;
     display: inline-flex;
@@ -2847,7 +2893,8 @@ body {
     cursor: pointer;
 }
 
-#change_groomer_booking_modal .cbm-btn-confirm.is-disabled {
+#change_groomer_booking_modal .cbm-btn-confirm.is-disabled,
+#change_space_booking_modal .cbm-btn-confirm.is-disabled {
     opacity: 0.45;
     pointer-events: none;
     cursor: default;
@@ -2855,71 +2902,110 @@ body {
 
 @media (max-width: 768px) {
     #change_groomer_booking_modal .cbm-header,
-    #change_groomer_booking_modal .cbm-body {
+#change_space_booking_modal .cbm-header,
+    #change_groomer_booking_modal .cbm-body,
+#change_space_booking_modal .cbm-body {
         padding-left: 24px;
         padding-right: 24px;
     }
 
-    #change_groomer_booking_modal .cbm-header {
+    #change_groomer_booking_modal .cbm-header,
+#change_space_booking_modal .cbm-header {
         padding-top: 32px;
     }
 
-    #change_groomer_booking_modal .cbm-close {
+    #change_groomer_booking_modal .cbm-close,
+#change_space_booking_modal .cbm-close {
         top: 24px;
         right: 24px;
     }
 
-    #change_groomer_booking_modal .cbm-header h1 {
+    #change_groomer_booking_modal .cbm-header h1,
+#change_space_booking_modal .cbm-header h1 {
         font-size: 24px;
         padding-right: 40px;
     }
 
-    #change_groomer_booking_modal .cbm-datetime {
+    #change_groomer_booking_modal .cbm-datetime,
+#change_space_booking_modal .cbm-datetime {
         grid-template-columns: 1fr;
         gap: 20px;
     }
 
     #change_groomer_booking_modal .cbm-cal-header,
+#change_space_booking_modal .cbm-cal-header,
     #change_groomer_booking_modal .cbm-weekdays,
-    #change_groomer_booking_modal .cbm-dates {
+#change_space_booking_modal .cbm-weekdays,
+    #change_groomer_booking_modal .cbm-dates,
+#change_space_booking_modal .cbm-dates {
         max-width: none;
     }
 
-    #change_groomer_booking_modal .cbm-time {
+    #change_groomer_booking_modal .cbm-time,
+#change_space_booking_modal .cbm-time {
         min-width: 100px;
     }
 
-    #change_groomer_booking_modal .cbm-extras .options-grid {
+    #change_groomer_booking_modal .cbm-extras .options-grid,
+#change_space_booking_modal .cbm-extras .options-grid {
         grid-template-columns: 1fr;
     }
 
     #change_groomer_booking_modal .cbm-extras .options-col:first-child,
-    #change_groomer_booking_modal .cbm-extras .options-col:last-child {
+#change_space_booking_modal .cbm-extras .options-col:first-child,
+    #change_groomer_booking_modal .cbm-extras .options-col:last-child,
+#change_space_booking_modal .cbm-extras .options-col:last-child {
         padding-left: 0;
         padding-right: 0;
         border-right: none;
     }
 
-    #change_groomer_booking_modal .cbm-footer {
+    #change_groomer_booking_modal .cbm-footer,
+#change_space_booking_modal .cbm-footer {
         padding: 16px 24px 24px;
         flex-wrap: nowrap;
         flex-direction: row;
         justify-content: space-between;
     }
 
-    #change_groomer_booking_modal .cbm-btn-cancel {
+    #change_groomer_booking_modal .cbm-btn-cancel,
+#change_space_booking_modal .cbm-btn-cancel {
         order: 1;
         margin-right: auto;
         flex: 0 1 auto;
     }
 
-    #change_groomer_booking_modal .cbm-btn-confirm {
+    #change_groomer_booking_modal .cbm-btn-confirm,
+#change_space_booking_modal .cbm-btn-confirm {
         order: 2;
         margin-left: auto;
         flex: 0 1 auto;
         justify-content: center;
         text-align: center;
     }
+}
+
+/* Space modal accents */
+#change_space_booking_modal .cbm-modal {
+    border-color: #D8E8B7;
+}
+
+#change_space_booking_modal .cbm-alert--refund {
+    background: rgba(203, 220, 232, 0.30);
+    color: #6FA0C3;
+}
+
+#change_space_booking_modal .cbm-alert--refund svg path {
+    stroke: #6FA0C3;
+}
+
+#change_space_booking_modal .cbm-extras--space .options-col:first-child {
+    border-right: none;
+}
+
+#change_space_booking_modal .cbm-btn-cancel {
+    position: static;
+    right: auto;
 }
 
 /* change booking css ends */
