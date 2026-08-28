@@ -3686,6 +3686,48 @@ body.my-bookings-page header.scrolled {
     flex-shrink: 0;
 }
 
+#space_booking_updated_modal .bum-provider-avatar-wrap {
+    position: relative;
+    flex-shrink: 0;
+}
+
+#groomer_booking_updated_modal .bum-provider-avatar-wrap {
+    position: relative;
+    flex-shrink: 0;
+}
+
+#groomer_booking_updated_modal .bum-badge-shield {
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    width: 20px;
+    height: 22px;
+    line-height: 0;
+    z-index: 1;
+}
+
+#groomer_booking_updated_modal .bum-badge-shield svg {
+    width: 20px;
+    height: 22px;
+    display: block;
+}
+
+#space_booking_updated_modal .bum-badge-shield {
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    width: 18px;
+    height: 19px;
+    line-height: 0;
+    z-index: 1;
+}
+
+#space_booking_updated_modal .bum-badge-shield svg {
+    width: 18px;
+    height: 19px;
+    display: block;
+}
+
 #groomer_booking_updated_modal .bum-provider-name,
 #space_booking_updated_modal .bum-provider-name {
     margin: 0;
