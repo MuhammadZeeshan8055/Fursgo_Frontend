@@ -398,6 +398,11 @@ body {
     height: 24px;
 }
 
+.mb-card .badge-shield--space svg {
+    width: 18px;
+    height: 19px;
+}
+
 .mb-card__provider-meta {
     display: flex;
     flex-direction: column;
@@ -839,25 +844,15 @@ body {
     position: absolute;
     top: -4px;
     left: -4px;
-    width: 20px;
-    height: 22px;
+    width: 18px;
+    height: 19px;
     line-height: 0;
     z-index: 1;
 }
 
-#review-submitted-modal .rsm-badge-shield-bg {
-    width: 20px;
-    height: 22px;
-    display: block;
-}
-
-#review-submitted-modal .rsm-badge-shield-icon {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 7px;
-    height: 7px;
-    transform: translate(-50%, -50%);
+#review-submitted-modal .rsm-badge-shield svg {
+    width: 18px;
+    height: 19px;
     display: block;
 }
 
@@ -2725,6 +2720,15 @@ body {
 #view_booking_space_cancelled_modal .bd-verified-badge--space {
     top: -4px;
     left: -4px;
+    width: 18px;
+    height: 19px;
+}
+
+#view_booking_space_modal .bd-verified-badge--space svg,
+#view_booking_space_completed_modal .bd-verified-badge--space svg,
+#view_booking_space_cancelled_modal .bd-verified-badge--space svg {
+    width: 18px;
+    height: 19px;
 }
 
 #view_booking_space_modal .bd-pets-row,
