@@ -463,7 +463,7 @@ include_once __DIR__ . '/../components/extras-addons.php';
 
                         <div class="upcoming-section">
 
-                            <div class="mb-section">
+                            <div class="mb-section upcoming-bookings">
                                 <h2 class="mb-section-label section-title">Upcoming</h2>
 
                                 <!-- Confirmed: Groomer -->
@@ -3536,12 +3536,12 @@ include_once __DIR__ . '/../components/extras-addons.php';
         <script>
             const tabs = document.querySelectorAll('.booking-filters .tab');
 
-            const upcomingSection = document.querySelector('.upcoming-section');
+            const upcomingBookings = document.querySelector('.upcoming-bookings');
             const pastBookings = document.querySelectorAll('.past-bookings');
             const cancelledBookings = document.querySelectorAll('.cancelled-bookings');
 
             function hideAll() {
-                if (upcomingSection) upcomingSection.style.display = 'none';
+                if (upcomingBookings) upcomingBookings.style.display = 'none';
                 pastBookings.forEach(el => el.style.display = 'none');
                 cancelledBookings.forEach(el => el.style.display = 'none');
             }
@@ -3550,14 +3550,14 @@ include_once __DIR__ . '/../components/extras-addons.php';
                 hideAll();
 
                 if (type === 'all') {
-                    if (upcomingSection) upcomingSection.style.display = 'block';
+                    if (upcomingBookings) upcomingBookings.style.display = 'block';
                     pastBookings.forEach(el => el.style.display = 'block');
                     cancelledBookings.forEach(el => el.style.display = 'block');
                     return;
                 }
 
-                if (type === 'upcoming' && upcomingSection) {
-                    upcomingSection.style.display = 'block';
+                if (type === 'upcoming' && upcomingBookings) {
+                    upcomingBookings.style.display = 'block';
                 }
 
                 if (type === 'past') {
