@@ -1703,13 +1703,13 @@ include_once __DIR__ . '/../components/extras-addons.php';
                                                     </svg>
                                                     Reviewed
                                                 </span>
-                                                <a href="<?= BASE_URL ?>profiles/space/space_profile.php" class="bd-btn bd-btn-rebook">
+                                                <button type="button" class="bd-btn bd-btn-rebook" data-modal-open="rebook_space_modal" data-close-parent-modal>
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
                                                         <path d="M3.2 6.2A5.5 5.5 0 0 1 12.8 5.1M12.8 9.8A5.5 5.5 0 0 1 3.2 10.9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" />
                                                         <path d="M12.8 2.5V5.3H10M3.2 13.5V10.7H6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" />
                                                     </svg>
                                                     Rebook
-                                                </a>
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
@@ -1912,13 +1912,13 @@ include_once __DIR__ . '/../components/extras-addons.php';
 
                                         <div class="bd-footer bd-footer--cancelled">
                                             <span class="bd-closed-label">This booking is closed</span>
-                                            <a href="<?= BASE_URL ?>profiles/space/space_profile.php" class="bd-btn bd-btn-rebook">
+                                            <button type="button" class="bd-btn bd-btn-rebook" data-modal-open="rebook_space_modal" data-close-parent-modal>
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
                                                     <path d="M3.2 6.2A5.5 5.5 0 0 1 12.8 5.1M12.8 9.8A5.5 5.5 0 0 1 3.2 10.9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" />
                                                     <path d="M12.8 2.5V5.3H10M3.2 13.5V10.7H6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" />
                                                 </svg>
                                                 Rebook
-                                            </a>
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
@@ -2148,7 +2148,7 @@ include_once __DIR__ . '/../components/extras-addons.php';
                                         <div class="mb-card__footer">
                                             <div class="mb-card__footer-left">
                                                 <button type="button" class="mb-btn" data-modal-open="view_booking_space_completed_modal">View details</button>
-                                                <a href="<?= BASE_URL ?>profiles/space/space_profile.php" class="mb-btn mb-btn--blue">Rebook</a>
+                                                <button type="button" class="mb-btn mb-btn--blue" data-modal-open="rebook_space_modal">Rebook</button>
                                             </div>
                                             <span class="mb-btn mb-btn--muted">Reviewed</span>
                                         </div>
@@ -2319,11 +2319,11 @@ include_once __DIR__ . '/../components/extras-addons.php';
                                                         <path d="M1.5 7C1.5 7 4.1 1.5 9 1.5C13.9 1.5 16.5 7 16.5 7C16.5 7 13.9 12.5 9 12.5C4.1 12.5 1.5 7 1.5 7Z" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" />
                                                         <circle cx="9" cy="7" r="2.25" stroke="currentColor" stroke-width="1.4" />
                                                     </svg> View details</button>
-                                                <a href="<?= BASE_URL ?>profiles/space/space_profile.php" class="mb-btn mb-btn--blue"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                                <button type="button" class="mb-btn mb-btn--blue" data-modal-open="rebook_space_modal"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
                                                         <path d="M2.2312 15.4953V12.6124H5.11403" stroke="#6FA0C3" stroke-linecap="round" stroke-linejoin="round" />
                                                         <path d="M15.3656 6.62252C15.6715 8.25452 15.4269 9.94189 14.6702 11.4199C13.9135 12.8978 12.6875 14.0827 11.1846 14.7887C9.68175 15.4946 7.98704 15.6817 6.3664 15.3204C4.74575 14.9592 3.2909 14.0701 2.23013 12.7927M0.628303 9.37748C0.322432 7.74548 0.567036 6.05811 1.32373 4.58014C2.08043 3.10218 3.3064 1.91725 4.80927 1.2113C6.31214 0.505355 8.00686 0.318331 9.6275 0.679579C11.2481 1.04083 12.703 1.9299 13.7638 3.2073" stroke="#6FA0C3" stroke-linecap="round" stroke-linejoin="round" />
                                                         <path d="M13.7626 0.504883V3.38771H10.8798" stroke="#6FA0C3" stroke-linecap="round" stroke-linejoin="round" />
-                                                    </svg> Rebook</a>
+                                                    </svg> Rebook</button>
                                             </div>
                                         </div>
                                     </article>
@@ -2374,8 +2374,13 @@ include_once __DIR__ . '/../components/extras-addons.php';
                                                     </div>
                                                 </div>
                                                 <div class="rbm-summary-meta">
-                                                    <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="17" viewBox="0 0 16 17" fill="none"><path d="M4.94591 11.5544C6.23114 12.8397 9.35699 11.798 11.9274 9.22713C14.4983 6.65667 15.54 3.53082 14.2548 2.24559M8.72754 1.37259L9.30927 1.95473M6.6915 3.40904L7.27322 3.99077M4.9455 5.73636L5.52722 6.31809M4.36377 8.6454L4.9455 9.22713M11.9274 0.5L12.5092 1.08173M11.3457 3.99118L12.5092 5.15463M9.30968 6.02763L10.4731 7.19109M6.98236 7.77281L8.14581 8.93627" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round"/><path d="M4.94547 13.2998C5.42747 12.8178 5.42747 12.0364 4.94548 11.5544C4.46348 11.0724 3.68202 11.0724 3.20003 11.5544L0.872775 13.8816C0.390784 14.3636 0.390784 15.1451 0.872775 15.6271C1.35477 16.1091 2.13623 16.1091 2.61822 15.6271L4.94547 13.2998Z" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round"/></svg> Bath &amp; Brush</span>
-                                                    <span><svg xmlns="http://www.w3.org/2000/svg" width="12" height="16" viewBox="0 0 12 16" fill="none"><path d="M6 0.5C7.4694 0.5 8.87214 1.04525 9.90137 2.00586C10.9293 2.96529 11.4999 4.25871 11.5 5.59961C11.5 7.10011 10.6408 8.95946 9.51855 10.7236C8.41048 12.4655 7.10434 14.0263 6.32227 14.9082C6.14625 15.1067 5.85375 15.1067 5.67773 14.9082C4.89566 14.0263 3.58952 12.4655 2.48145 10.7236C1.35919 8.95946 0.5 7.10011 0.5 5.59961C0.500111 4.25871 1.07068 2.96529 2.09863 2.00586C3.12786 1.04525 4.53061 0.5 6 0.5ZM6 3.09961C5.30978 3.09961 4.64141 3.35564 4.14355 3.82031C3.64466 4.28597 3.35753 4.92517 3.35742 5.59961C3.35742 6.27422 3.64453 6.91413 4.14355 7.37988C4.64141 7.84453 5.30979 8.09961 6 8.09961C6.69022 8.09961 7.35859 7.84453 7.85645 7.37988C8.35534 6.91413 8.64247 6.27422 8.64258 5.59961C8.64258 4.92517 8.35534 4.28597 7.85645 3.82031C7.35859 3.35564 6.69022 3.09961 6 3.09961Z" stroke="#3B3731"/></svg> At your home</span>
+                                                    <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="17" viewBox="0 0 16 17" fill="none">
+                                                            <path d="M4.94591 11.5544C6.23114 12.8397 9.35699 11.798 11.9274 9.22713C14.4983 6.65667 15.54 3.53082 14.2548 2.24559M8.72754 1.37259L9.30927 1.95473M6.6915 3.40904L7.27322 3.99077M4.9455 5.73636L5.52722 6.31809M4.36377 8.6454L4.9455 9.22713M11.9274 0.5L12.5092 1.08173M11.3457 3.99118L12.5092 5.15463M9.30968 6.02763L10.4731 7.19109M6.98236 7.77281L8.14581 8.93627" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                                                            <path d="M4.94547 13.2998C5.42747 12.8178 5.42747 12.0364 4.94548 11.5544C4.46348 11.0724 3.68202 11.0724 3.20003 11.5544L0.872775 13.8816C0.390784 14.3636 0.390784 15.1451 0.872775 15.6271C1.35477 16.1091 2.13623 16.1091 2.61822 15.6271L4.94547 13.2998Z" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                                                        </svg> Bath &amp; Brush</span>
+                                                    <span><svg xmlns="http://www.w3.org/2000/svg" width="12" height="16" viewBox="0 0 12 16" fill="none">
+                                                            <path d="M6 0.5C7.4694 0.5 8.87214 1.04525 9.90137 2.00586C10.9293 2.96529 11.4999 4.25871 11.5 5.59961C11.5 7.10011 10.6408 8.95946 9.51855 10.7236C8.41048 12.4655 7.10434 14.0263 6.32227 14.9082C6.14625 15.1067 5.85375 15.1067 5.67773 14.9082C4.89566 14.0263 3.58952 12.4655 2.48145 10.7236C1.35919 8.95946 0.5 7.10011 0.5 5.59961C0.500111 4.25871 1.07068 2.96529 2.09863 2.00586C3.12786 1.04525 4.53061 0.5 6 0.5ZM6 3.09961C5.30978 3.09961 4.64141 3.35564 4.14355 3.82031C3.64466 4.28597 3.35753 4.92517 3.35742 5.59961C3.35742 6.27422 3.64453 6.91413 4.14355 7.37988C4.64141 7.84453 5.30979 8.09961 6 8.09961C6.69022 8.09961 7.35859 7.84453 7.85645 7.37988C8.35534 6.91413 8.64247 6.27422 8.64258 5.59961C8.64258 4.92517 8.35534 4.28597 7.85645 3.82031C7.35859 3.35564 6.69022 3.09961 6 3.09961Z" stroke="#3B3731" />
+                                                        </svg> At your home</span>
                                                 </div>
                                                 <p class="rbm-summary-addons"><span class="rbm-summary-addons-label">Add-ons:</span> Flea &amp; Tick Treatment, Hypoallergenic Shampoo Upgrade, Anti-Itch Treatment</p>
                                             </div>
@@ -2390,7 +2395,10 @@ include_once __DIR__ . '/../components/extras-addons.php';
                                                         <div class="rbm-slot-main">
                                                             <p class="rbm-slot-date">Monday, 5 Jan 2025</p>
                                                             <p class="rbm-slot-time">
-                                                                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="6" stroke="#9D9B98" stroke-width="1.5"/><path d="M8 4.5V8L10.5 10" stroke="#9D9B98" stroke-width="1.5" stroke-linecap="round"/></svg>
+                                                                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                                                                    <circle cx="8" cy="8" r="6" stroke="#9D9B98" stroke-width="1.5" />
+                                                                    <path d="M8 4.5V8L10.5 10" stroke="#9D9B98" stroke-width="1.5" stroke-linecap="round" />
+                                                                </svg>
                                                                 14:30 - 15:30 <span class="rbm-slot-sep">•</span> 1 hour
                                                             </p>
                                                         </div>
@@ -2400,7 +2408,10 @@ include_once __DIR__ . '/../components/extras-addons.php';
                                                         <div class="rbm-slot-main">
                                                             <p class="rbm-slot-date">Tuesday, 10 Jan 2025</p>
                                                             <p class="rbm-slot-time">
-                                                                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="6" stroke="#9D9B98" stroke-width="1.5"/><path d="M8 4.5V8L10.5 10" stroke="#9D9B98" stroke-width="1.5" stroke-linecap="round"/></svg>
+                                                                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                                                                    <circle cx="8" cy="8" r="6" stroke="#9D9B98" stroke-width="1.5" />
+                                                                    <path d="M8 4.5V8L10.5 10" stroke="#9D9B98" stroke-width="1.5" stroke-linecap="round" />
+                                                                </svg>
                                                                 14:30 - 15:30 <span class="rbm-slot-sep">•</span> 1 hour
                                                             </p>
                                                         </div>
@@ -2410,7 +2421,10 @@ include_once __DIR__ . '/../components/extras-addons.php';
                                                         <div class="rbm-slot-main">
                                                             <p class="rbm-slot-date">Wednesday, 15 Jan 2025</p>
                                                             <p class="rbm-slot-time">
-                                                                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="6" stroke="#9D9B98" stroke-width="1.5"/><path d="M8 4.5V8L10.5 10" stroke="#9D9B98" stroke-width="1.5" stroke-linecap="round"/></svg>
+                                                                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                                                                    <circle cx="8" cy="8" r="6" stroke="#9D9B98" stroke-width="1.5" />
+                                                                    <path d="M8 4.5V8L10.5 10" stroke="#9D9B98" stroke-width="1.5" stroke-linecap="round" />
+                                                                </svg>
                                                                 14:30 - 15:30 <span class="rbm-slot-sep">•</span> 1 hour
                                                             </p>
                                                         </div>
@@ -2439,6 +2453,134 @@ include_once __DIR__ . '/../components/extras-addons.php';
                                                 <div class="rbm-price-row rbm-price-total">
                                                     <span>Total</span>
                                                     <span id="rbm-grand-total">£92.00</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="rbm-footer">
+                                            <button type="button" class="rbm-btn-cancel" data-modal-close>Cancel</button>
+                                            <button type="button" class="rbm-btn-confirm">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                                    <path d="M2.23096 15.4951V12.6123H5.11378" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" />
+                                                    <path d="M15.3656 6.62252C15.6715 8.25452 15.4269 9.94189 14.6702 11.4199C13.9135 12.8978 12.6875 14.0827 11.1846 14.7887C9.68175 15.4946 7.98704 15.6817 6.3664 15.3204C4.74575 14.9592 3.2909 14.0701 2.23013 12.7927M0.628303 9.37748C0.322432 7.74548 0.567036 6.05811 1.32373 4.58014C2.08043 3.10218 3.3064 1.91725 4.80927 1.2113C6.31214 0.505355 8.00686 0.318331 9.6275 0.679579C11.2481 1.04083 12.703 1.9299 13.7638 3.2073" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" />
+                                                    <path d="M13.7624 0.504883V3.38771H10.8796" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" />
+                                                </svg>
+                                                Confirm Rebook
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Rebook Space Modal -->
+                            <div class="modal" id="rebook_space_modal">
+                                <div class="modal-content size rbm-modal-content">
+                                    <div class="rbm-modal">
+                                        <button class="rbm-close" type="button" data-modal-close aria-label="Close">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36" fill="none">
+                                                <circle cx="18" cy="18" r="17.5" stroke="#3B3731" />
+                                                <path d="M12.8 24.0008L24 12.8008M12.8 12.8008L24 24.0008" stroke="#3B3731" stroke-width="1.5" stroke-linecap="round" />
+                                            </svg>
+                                        </button>
+
+                                        <div class="rbm-header">
+                                            <h1>Rebook with Furs &amp; Co. Studio</h1>
+                                            <p>Pick a new date for the same service</p>
+                                        </div>
+
+                                        <div class="rbm-body">
+                                            <div class="rbm-summary">
+                                                <div class="rbm-summary-top rbm-summary-top--space">
+                                                    <div class="rbm-summary-left">
+                                                        <img src="<?= BASE_URL ?>assets/images/space_card3.png" alt="Furs &amp; Co. Studio" class="rbm-summary-avatar">
+                                                        <div>
+                                                            <p class="rbm-summary-studio">Furs &amp; Co. Studio</p>
+                                                            <p class="rbm-summary-host">Hosted by Dev É.</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="rbm-summary-meta">
+                                                    <span><svg xmlns="http://www.w3.org/2000/svg" width="18" height="15" viewBox="0 0 18 15" fill="none">
+                                                            <path d="M15.7313 14.5399V4.60101C15.7313 4.57715 15.7333 4.55379 15.7369 4.53091L13.0497 2.2394C12.4783 1.7528 12.0835 1.41742 11.7486 1.19878C11.4252 0.987721 11.2078 0.920201 10.9999 0.920201C10.7922 0.920202 10.5762 0.987967 10.2532 1.19878C9.91817 1.41745 9.52232 1.75253 8.9501 2.2394L6.26101 4.53091C6.26472 4.55387 6.26856 4.57706 6.26856 4.60101V14.5399C6.26815 14.7937 6.05217 15 5.7858 15C5.51961 14.9998 5.30346 14.7936 5.30305 14.5399V5.34687L4.80521 5.77283C4.60646 5.9422 4.30028 5.92451 4.12257 5.73508C3.94556 5.54577 3.96212 5.25552 4.16028 5.08627L8.30518 1.55464H8.30706C8.86014 1.08404 9.30804 0.700414 9.70629 0.440331C10.1166 0.172503 10.5239 2.69994e-07 10.9999 0C11.4759 0 11.8831 0.172492 12.2936 0.440331C12.6921 0.700477 13.1418 1.08387 13.6947 1.55464L17.8396 5.08627C18.0377 5.25552 18.0543 5.54577 17.8773 5.73508C17.6996 5.92451 17.3934 5.9422 17.1946 5.77283L16.6968 5.34687V14.5399C16.6964 14.7936 16.4802 14.9998 16.214 15C15.9477 15 15.7317 14.7937 15.7313 14.5399Z" fill="#3B3731" />
+                                                            <path d="M2.18899 8.00085C2.18899 7.6538 2.09029 7.35602 1.94982 7.15499C1.8093 6.95408 1.64606 6.86964 1.49998 6.86964C1.35398 6.86976 1.19056 6.95423 1.05015 7.15499C0.909803 7.35602 0.810973 7.65398 0.810973 8.00085C0.811102 8.34783 0.90963 8.6458 1.05015 8.84671C1.19054 9.04736 1.35402 9.13024 1.49998 9.13036C1.64595 9.13036 1.80938 9.04727 1.94982 8.84671C2.09034 8.6458 2.18886 8.34783 2.18899 8.00085ZM2.99997 8.00085C2.99984 8.51781 2.85473 9.00282 2.59923 9.36815C2.3435 9.73379 1.95855 10 1.49998 10C1.04173 9.99988 0.65799 9.73349 0.402319 9.36815C0.146795 9.00281 0.000127906 8.51784 0 8.00085C0 7.4836 0.146683 6.99735 0.402319 6.63185C0.65799 6.26662 1.04182 6.00012 1.49998 6C1.95849 6 2.3435 6.26629 2.59923 6.63185C2.85487 6.99735 2.99997 7.4836 2.99997 8.00085Z" fill="#3B3731" />
+                                                            <path d="M1 14.531V9.46848C1 9.20961 1.22386 8.99976 1.49999 8.99976C1.77613 8.99976 1.99999 9.20961 1.99999 9.46848V14.531C1.99978 14.7897 1.776 14.9998 1.49999 14.9998C1.22399 14.9998 1.00021 14.7897 1 14.531Z" fill="#3B3731" />
+                                                            <path d="M12.7893 11.1768C12.7893 10.7685 12.7875 10.5092 12.7616 10.3193C12.7375 10.1431 12.7006 10.0973 12.6783 10.0753C12.656 10.0534 12.6098 10.0153 12.4304 9.99156C12.2372 9.96599 11.9724 9.96607 11.557 9.96607H10.7059C10.2905 9.96607 10.0257 9.96599 9.83254 9.99156C9.65315 10.0153 9.60689 10.0534 9.5846 10.0753C9.56228 10.0973 9.52541 10.1431 9.50133 10.3193C9.47536 10.5092 9.47358 10.7685 9.47358 11.1768V14.0679H12.7893V11.1768ZM11.9844 6.51605C12.2456 6.51625 12.4577 6.72518 12.4581 6.98213C12.4581 7.23941 12.2459 7.448 11.9844 7.4482H10.2785C10.017 7.448 9.80478 7.23941 9.80478 6.98213C9.80518 6.72518 10.0173 6.51625 10.2785 6.51605H11.9844ZM11.9844 4L12.0788 4.0091C12.295 4.05227 12.4581 4.24057 12.4581 4.46607C12.4581 4.69157 12.295 4.87987 12.0788 4.92304L11.9844 4.93214H10.2785C10.017 4.93195 9.80478 4.72335 9.80478 4.46607C9.80478 4.20879 10.017 4.0002 10.2785 4H11.9844ZM13.7367 14.0679H17.5261C17.7877 14.0679 17.9998 14.2765 17.9998 14.5339C17.9994 14.791 17.7875 15 17.5261 15H0.473679C0.21232 15 0.000398957 14.791 0 14.5339C0 14.2765 0.212073 14.0679 0.473679 14.0679H8.52622V11.1768C8.52622 10.795 8.52503 10.4619 8.56138 10.1955C8.59968 9.91535 8.6874 9.64008 8.91479 9.41625C9.14231 9.19239 9.42195 9.10621 9.70672 9.06852C9.97773 9.03268 10.3174 9.03393 10.7059 9.03393H11.557C11.9455 9.03393 12.2852 9.03268 12.5562 9.06852C12.841 9.10621 13.1206 9.19239 13.3481 9.41625C13.5755 9.64008 13.6632 9.91535 13.7015 10.1955C13.7379 10.4619 13.7367 10.795 13.7367 11.1768V14.0679Z" fill="#3B3731" />
+                                                        </svg> Half-Day</span>
+                                                    <span><svg xmlns="http://www.w3.org/2000/svg" width="12" height="16" viewBox="0 0 12 16" fill="none">
+                                                            <path d="M6 0.5C7.4694 0.5 8.87214 1.04525 9.90137 2.00586C10.9293 2.96529 11.4999 4.25871 11.5 5.59961C11.5 7.10011 10.6408 8.95946 9.51855 10.7236C8.41048 12.4655 7.10434 14.0263 6.32227 14.9082C6.14625 15.1067 5.85375 15.1067 5.67773 14.9082C4.89566 14.0263 3.58952 12.4655 2.48145 10.7236C1.35919 8.95946 0.5 7.10011 0.5 5.59961C0.500111 4.25871 1.07068 2.96529 2.09863 2.00586C3.12786 1.04525 4.53061 0.5 6 0.5ZM6 3.09961C5.30978 3.09961 4.64141 3.35564 4.14355 3.82031C3.64466 4.28597 3.35753 4.92517 3.35742 5.59961C3.35742 6.27422 3.64453 6.91413 4.14355 7.37988C4.64141 7.84453 5.30979 8.09961 6 8.09961C6.34236 8.09961 6.68202 8.03695 7 7.91406C7.31807 7.7911 7.60965 7.61022 7.85645 7.37988C8.10326 7.14952 8.30086 6.87397 8.43652 6.56836C8.57224 6.26256 8.64258 5.93289 8.64258 5.59961C8.64247 4.92517 8.35534 4.28597 7.85645 3.82031C7.35859 3.35564 6.69022 3.09961 6 3.09961Z" stroke="#3B3731" />
+                                                        </svg> Victoria Embankment</span>
+                                                </div>
+                                                <p class="rbm-summary-addons"><span class="rbm-summary-addons-label">Add-ons:</span> Deep Clean</p>
+                                            </div>
+
+                                            <section class="rbm-slots-section">
+                                                <div class="rbm-slots-head">
+                                                    <h2 class="rbm-slots-title">Next available slots</h2>
+                                                    <a href="<?= BASE_URL ?>profiles/space/space_profile.php" class="rbm-profile-link">View profile <span aria-hidden="true">→</span></a>
+                                                </div>
+                                                <div class="rbm-slots" id="rbm-space-slots">
+                                                    <button type="button" class="rbm-slot selected" data-slot="Monday, 5 Jan 2025">
+                                                        <div class="rbm-slot-main">
+                                                            <p class="rbm-slot-date">Monday, 5 Jan 2025</p>
+                                                            <p class="rbm-slot-time">
+                                                                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                                                                    <circle cx="8" cy="8" r="6" stroke="#9D9B98" stroke-width="1.5" />
+                                                                    <path d="M8 4.5V8L10.5 10" stroke="#9D9B98" stroke-width="1.5" stroke-linecap="round" />
+                                                                </svg>
+                                                                08:30 - 12:30 <span class="rbm-slot-sep">•</span> 4 hour
+                                                            </p>
+                                                        </div>
+                                                        <span class="rbm-slot-badge">Available</span>
+                                                    </button>
+                                                    <button type="button" class="rbm-slot" data-slot="Tuesday, 10 Jan 2025">
+                                                        <div class="rbm-slot-main">
+                                                            <p class="rbm-slot-date">Tuesday, 10 Jan 2025</p>
+                                                            <p class="rbm-slot-time">
+                                                                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                                                                    <circle cx="8" cy="8" r="6" stroke="#9D9B98" stroke-width="1.5" />
+                                                                    <path d="M8 4.5V8L10.5 10" stroke="#9D9B98" stroke-width="1.5" stroke-linecap="round" />
+                                                                </svg>
+                                                                08:30 - 12:30 <span class="rbm-slot-sep">•</span> 4 hour
+                                                            </p>
+                                                        </div>
+                                                        <span class="rbm-slot-badge">Available</span>
+                                                    </button>
+                                                    <button type="button" class="rbm-slot" data-slot="Wednesday, 15 Jan 2025">
+                                                        <div class="rbm-slot-main">
+                                                            <p class="rbm-slot-date">Wednesday, 15 Jan 2025</p>
+                                                            <p class="rbm-slot-time">
+                                                                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                                                                    <circle cx="8" cy="8" r="6" stroke="#9D9B98" stroke-width="1.5" />
+                                                                    <path d="M8 4.5V8L10.5 10" stroke="#9D9B98" stroke-width="1.5" stroke-linecap="round" />
+                                                                </svg>
+                                                                08:30 - 12:30 <span class="rbm-slot-sep">•</span> 4 hour
+                                                            </p>
+                                                        </div>
+                                                        <span class="rbm-slot-badge">Available</span>
+                                                    </button>
+                                                </div>
+                                            </section>
+
+                                            <section class="rbm-card rbm-extras rbm-extras--space">
+                                                <?php renderExtrasAddons([
+                                                    ['id' => 1, 'name' => 'Storage Locker', 'price' => 5, 'col' => 'left'],
+                                                    ['id' => 2, 'name' => 'Deep Clean', 'price' => 10, 'col' => 'left'],
+                                                    ['id' => 3, 'name' => 'After-hours access', 'price' => 20, 'col' => 'right'],
+                                                ], [
+                                                    'instance_id' => 'rebook-space-modal',
+                                                    'on_change_js' => 'handleRebookSpaceExtras',
+                                                    'default_selected' => [2],
+                                                ]); ?>
+                                            </section>
+
+                                            <div class="rbm-price-box">
+                                                <div class="rbm-price-row">
+                                                    <span>Service</span>
+                                                    <span id="rbm-space-service-total">£48.00</span>
+                                                </div>
+                                                <div class="rbm-price-row rbm-price-total">
+                                                    <span>Total</span>
+                                                    <span id="rbm-space-grand-total">£58.00</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -3142,7 +3284,7 @@ include_once __DIR__ . '/../components/extras-addons.php';
                                         </div>
 
                                         <div class="bcm-footer">
-                                            <a href="<?= BASE_URL ?>profiles/space/space_profile.php" class="bcm-btn-rebook">
+                                            <button type="button" class="bcm-btn-rebook" data-modal-open="rebook_space_modal" data-close-parent-modal>
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
                                                     <path d="M2.23096 15.4951V12.6123H5.11378" stroke="#6FA0C3" stroke-linecap="round" stroke-linejoin="round" />
                                                     <path d="M15.3656 6.62252C15.6715 8.25452 15.4269 9.94189 14.6702 11.4199C13.9135 12.8978 12.6875 14.0827 11.1846 14.7887C9.68175 15.4946 7.98704 15.6817 6.3664 15.3204C4.74575 14.9592 3.2909 14.0701 2.23013 12.7927M0.628303 9.37748C0.322432 7.74548 0.567036 6.05811 1.32373 4.58014C2.08043 3.10218 3.3064 1.91725 4.80927 1.2113C6.31214 0.505355 8.00686 0.318331 9.6275 0.679579C11.2481 1.04083 12.703 1.9299 13.7638 3.2073" stroke="#6FA0C3" stroke-linecap="round" stroke-linejoin="round" />
@@ -4519,31 +4661,46 @@ include_once __DIR__ . '/../components/extras-addons.php';
     }
 </script>
 <script>
-    // Rebook groomer modal
+    // Rebook modals
     (function() {
-        const SERVICE_PRICE = 48;
+        function initSlots(containerId) {
+            document.querySelectorAll('#' + containerId + ' .rbm-slot').forEach(function(slot) {
+                slot.addEventListener('click', function() {
+                    document.querySelectorAll('#' + containerId + ' .rbm-slot').forEach(function(s) {
+                        s.classList.remove('selected');
+                    });
+                    slot.classList.add('selected');
+                });
+            });
+        }
 
+        initSlots('rbm-slots');
+        initSlots('rbm-space-slots');
+
+        const groomerService = 48;
         window.handleRebookExtras = function(ids, total) {
             const countEl = document.getElementById('rbm-addons-count');
             const addonsEl = document.getElementById('rbm-addons-total');
             const grandEl = document.getElementById('rbm-grand-total');
             if (countEl) countEl.textContent = ids.length;
             if (addonsEl) addonsEl.textContent = '+ £' + total.toFixed(2);
-            if (grandEl) grandEl.textContent = '£' + (SERVICE_PRICE + total).toFixed(2);
+            if (grandEl) grandEl.textContent = '£' + (groomerService + total).toFixed(2);
         };
 
-        document.querySelectorAll('#rbm-slots .rbm-slot').forEach(function(slot) {
-            slot.addEventListener('click', function() {
-                document.querySelectorAll('#rbm-slots .rbm-slot').forEach(function(s) {
-                    s.classList.remove('selected');
-                });
-                slot.classList.add('selected');
-            });
-        });
+        const spaceService = 48;
+        window.handleRebookSpaceExtras = function(ids, total) {
+            const grandEl = document.getElementById('rbm-space-grand-total');
+            if (grandEl) grandEl.textContent = '£' + (spaceService + total).toFixed(2);
+        };
 
-        const addonsRoot = document.getElementById('furs-addons-rebook-modal');
-        if (addonsRoot && addonsRoot.fursAddons) {
-            window.handleRebookExtras(addonsRoot.fursAddons.getSelected(), addonsRoot.fursAddons.getTotal());
+        const groomerAddons = document.getElementById('furs-addons-rebook-modal');
+        if (groomerAddons && groomerAddons.fursAddons) {
+            window.handleRebookExtras(groomerAddons.fursAddons.getSelected(), groomerAddons.fursAddons.getTotal());
+        }
+
+        const spaceAddons = document.getElementById('furs-addons-rebook-space-modal');
+        if (spaceAddons && spaceAddons.fursAddons) {
+            window.handleRebookSpaceExtras(spaceAddons.fursAddons.getSelected(), spaceAddons.fursAddons.getTotal());
         }
     })();
 </script>
