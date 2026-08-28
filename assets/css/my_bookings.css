@@ -3911,6 +3911,27 @@ body.my-bookings-page header.scrolled {
     flex-shrink: 0;
 }
 
+#cancel_space_booking_modal .cnl-provider-avatar-wrap {
+    position: relative;
+    flex-shrink: 0;
+}
+
+#cancel_space_booking_modal .cnl-badge-shield {
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    width: 18px;
+    height: 19px;
+    line-height: 0;
+    z-index: 1;
+}
+
+#cancel_space_booking_modal .cnl-badge-shield svg {
+    width: 18px;
+    height: 19px;
+    display: block;
+}
+
 #cancel_groomer_booking_modal .cnl-provider-name,
 #cancel_space_booking_modal .cnl-provider-name {
     margin: 0;
@@ -4561,6 +4582,18 @@ body.my-bookings-page header.scrolled {
 #rebook_space_modal .rbm-summary-badge svg {
     width: 20px;
     height: 22px;
+}
+
+#rebook_space_modal .rbm-summary-badge {
+    top: -4px;
+    left: -4px;
+    width: 18px;
+    height: 19px;
+}
+
+#rebook_space_modal .rbm-summary-badge svg {
+    width: 18px;
+    height: 19px;
 }
 
 #rebook_groomer_modal .rbm-summary-studio ,
@@ -5216,6 +5249,27 @@ body.my-bookings-page header.scrolled {
     border-radius: 50%;
     object-fit: cover;
     flex-shrink: 0;
+}
+
+#space_rebook_confirmed_modal .rbk-provider-avatar-wrap {
+    position: relative;
+    flex-shrink: 0;
+}
+
+#space_rebook_confirmed_modal .rbk-badge-shield {
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    width: 18px;
+    height: 19px;
+    line-height: 0;
+    z-index: 1;
+}
+
+#space_rebook_confirmed_modal .rbk-badge-shield svg {
+    width: 18px;
+    height: 19px;
+    display: block;
 }
 
 #groomer_rebook_confirmed_modal .rbk-provider-name,
