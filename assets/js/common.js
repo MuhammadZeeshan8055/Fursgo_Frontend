@@ -1,30 +1,82 @@
-// modal js starts 
-document.addEventListener('click', (e) => {
+// modal js starts
+(function() {
+    let savedScrollY = 0;
 
-    // Open modal
-    const openTrigger = e.target.closest('[data-modal-open]');
-    if (openTrigger) {
-        const modal = document.getElementById(openTrigger.dataset.modalOpen);
-        if (modal) modal.style.display = 'flex';
+    function isModalOpen(modal) {
+        return window.getComputedStyle(modal).display !== 'none';
     }
 
-    // Close modal (button)
-    if (e.target.closest('[data-modal-close]')) {
-        const modal = e.target.closest('.modal');
-        if (modal) modal.style.display = 'none';
+    function hasOpenModal() {
+        return Array.from(document.querySelectorAll('.modal')).some(isModalOpen);
     }
 
-    if (e.target.closest('[data-modal-submit-close]')) {
-        const modal = e.target.closest('.modal');
-        if (modal) modal.style.display = 'none';
-    }
-    
-    // Close modal (overlay)
-    if (e.target.classList.contains('modal')) {
-        e.target.style.display = 'none';
-    }
-});
+    function syncBodyScrollLock() {
+        if (hasOpenModal()) {
+            if (document.body.classList.contains('modal-scroll-lock')) return;
 
+            savedScrollY = window.scrollY;
+            const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+
+            document.documentElement.classList.add('modal-scroll-lock');
+            document.body.classList.add('modal-scroll-lock');
+
+            if (scrollbarWidth > 0) {
+                document.body.style.paddingRight = scrollbarWidth + 'px';
+            }
+            return;
+        }
+
+        if (!document.body.classList.contains('modal-scroll-lock')) return;
+
+        document.documentElement.classList.remove('modal-scroll-lock');
+        document.body.classList.remove('modal-scroll-lock');
+        document.body.style.paddingRight = '';
+        window.scrollTo(0, savedScrollY);
+    }
+
+    window.syncBodyScrollLock = syncBodyScrollLock;
+
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.modal').forEach(function(modal) {
+            new MutationObserver(syncBodyScrollLock).observe(modal, {
+                attributes: true,
+                attributeFilter: ['style', 'class']
+            });
+        });
+    });
+
+    document.addEventListener('click', function(e) {
+        const openTrigger = e.target.closest('[data-modal-open]');
+        if (openTrigger) {
+            const modal = document.getElementById(openTrigger.dataset.modalOpen);
+            if (modal) {
+                modal.style.display = 'flex';
+                syncBodyScrollLock();
+            }
+        }
+
+        if (e.target.closest('[data-modal-close]')) {
+            const modal = e.target.closest('.modal');
+            if (modal) {
+                modal.style.display = 'none';
+                syncBodyScrollLock();
+            }
+        }
+
+        if (e.target.closest('[data-modal-submit-close]')) {
+            const modal = e.target.closest('.modal');
+            if (modal) {
+                modal.style.display = 'none';
+                syncBodyScrollLock();
+            }
+        }
+
+        if (e.target.classList.contains('modal')) {
+            e.target.style.display = 'none';
+            syncBodyScrollLock();
+        }
+    });
+})();
 // modal js ends
 
 

@@ -1680,6 +1680,12 @@ input::placeholder {
 }
 
 /* modal css */
+html.modal-scroll-lock,
+body.modal-scroll-lock {
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
 .modal {
   display: none;
   position: fixed;
