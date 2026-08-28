@@ -3916,6 +3916,27 @@ body.my-bookings-page header.scrolled {
     flex-shrink: 0;
 }
 
+#cancel_groomer_booking_modal .cnl-provider-avatar-wrap {
+    position: relative;
+    flex-shrink: 0;
+}
+
+#cancel_groomer_booking_modal .cnl-badge-shield {
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    width: 20px;
+    height: 22px;
+    line-height: 0;
+    z-index: 1;
+}
+
+#cancel_groomer_booking_modal .cnl-badge-shield svg {
+    width: 20px;
+    height: 22px;
+    display: block;
+}
+
 #cancel_space_booking_modal .cnl-badge-shield {
     position: absolute;
     top: -4px;
@@ -5254,6 +5275,27 @@ body.my-bookings-page header.scrolled {
 #space_rebook_confirmed_modal .rbk-provider-avatar-wrap {
     position: relative;
     flex-shrink: 0;
+}
+
+#groomer_rebook_confirmed_modal .rbk-provider-avatar-wrap {
+    position: relative;
+    flex-shrink: 0;
+}
+
+#groomer_rebook_confirmed_modal .rbk-badge-shield {
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    width: 20px;
+    height: 22px;
+    line-height: 0;
+    z-index: 1;
+}
+
+#groomer_rebook_confirmed_modal .rbk-badge-shield svg {
+    width: 20px;
+    height: 22px;
+    display: block;
 }
 
 #space_rebook_confirmed_modal .rbk-badge-shield {
