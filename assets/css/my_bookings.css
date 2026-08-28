@@ -3893,3 +3893,487 @@ body {
 }
 
 /* booking cancelled modal css ends */
+
+/* rebook groomer modal css starts */
+
+#rebook_groomer_modal .modal-content.size.rbm-modal-content {
+    width: 820px;
+    max-width: calc(100vw - 32px);
+    height: auto;
+    margin-bottom: 5%;
+    padding: 0;
+    overflow: visible;
+    background: transparent;
+    box-shadow: none;
+}
+
+#rebook_groomer_modal .rbm-modal {
+    position: relative;
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid #CBDCE8;
+    background: #FDFCF8;
+    overflow: visible;
+}
+
+#rebook_groomer_modal .rbm-close {
+    position: absolute;
+    top: 32px;
+    right: 32px;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    line-height: 0;
+    z-index: 2;
+}
+
+#rebook_groomer_modal .rbm-header {
+    padding: 40px 48px 0;
+}
+
+#rebook_groomer_modal .rbm-header h1 {
+    color: #3B3731;
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 600;
+    margin: 0 0 6px;
+    line-height: 1.2;
+    padding-right: 48px;
+}
+
+#rebook_groomer_modal .rbm-header p {
+    color: #9D9B98;
+    font-family: Lato, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    margin: 0;
+}
+
+#rebook_groomer_modal .rbm-body {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 28px 48px 24px;
+}
+
+#rebook_groomer_modal .rbm-summary {
+    border-radius: 10px;
+    background: #F7F4EC;
+    padding: 18px 20px;
+}
+
+#rebook_groomer_modal .rbm-summary-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 14px;
+}
+
+#rebook_groomer_modal .rbm-summary-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+}
+
+#rebook_groomer_modal .rbm-summary-avatar-wrap {
+    position: relative;
+    flex: 0 0 auto;
+}
+
+#rebook_groomer_modal .rbm-summary-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+}
+
+#rebook_groomer_modal .rbm-summary-badge {
+    position: absolute;
+    left: -4px;
+    top: -2px;
+    width: 20px;
+    height: 20px;
+    line-height: 0;
+}
+
+#rebook_groomer_modal .rbm-summary-badge svg {
+    width: 20px;
+    height: 22px;
+}
+
+#rebook_groomer_modal .rbm-summary-studio {
+    margin: 0 0 2px;
+    color: #3B3731;
+    font-family: Lato, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+#rebook_groomer_modal .rbm-summary-host {
+    margin: 0;
+    color: #9D9B98;
+    font-family: Lato, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+#rebook_groomer_modal .rbm-summary-pet {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 12px 6px 6px;
+    border-radius: 999px;
+    border: 1px solid #DEDEDE;
+    background: #fff;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+#rebook_groomer_modal .rbm-summary-pet-avatars {
+    display: flex;
+    align-items: center;
+}
+
+#rebook_groomer_modal .rbm-summary-pet-avatars img {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+#rebook_groomer_modal .rbm-summary-pet-avatars img + img {
+    margin-left: -10px;
+}
+
+#rebook_groomer_modal .rbm-summary-pet-label {
+    color: #3B3731;
+    font-family: Lato, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+#rebook_groomer_modal .rbm-summary-pet-extra {
+    color: #9D9B98;
+    font-weight: 400;
+}
+
+#rebook_groomer_modal .rbm-summary-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px 18px;
+    margin-bottom: 10px;
+    color: #3B3731;
+    font-family: Lato, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+#rebook_groomer_modal .rbm-summary-meta span {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+#rebook_groomer_modal .rbm-summary-addons {
+    margin: 0;
+    color: #9D9B98;
+    font-family: Lato, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.4;
+}
+
+#rebook_groomer_modal .rbm-summary-addons-label {
+    color: #3B3731;
+    font-weight: 600;
+}
+
+#rebook_groomer_modal .rbm-slots-section {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+#rebook_groomer_modal .rbm-card {
+    background: #F7F4EC;
+    border-radius: 16px;
+    padding: 24px 28px 28px;
+}
+
+#rebook_groomer_modal .rbm-slots-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+#rebook_groomer_modal .rbm-slots-title {
+    margin: 0;
+    color: #3B3731;
+    font-family: Lato, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+#rebook_groomer_modal .rbm-card-title,
+#rebook_groomer_modal .rbm-extras .furs-addons-root h1 {
+    color: #3B3731;
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0;
+}
+
+#rebook_groomer_modal .rbm-profile-link {
+    color: #FEAD37;
+    font-family: Lato, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+    text-underline-offset: 4px;
+    text-decoration-line: underline;
+}
+
+#rebook_groomer_modal .rbm-slots {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+#rebook_groomer_modal .rbm-slot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    width: 100%;
+    padding: 16px 18px;
+    border-radius: 10px;
+    border: 1px solid #DEDEDE;
+    background: #fff;
+    cursor: pointer;
+    text-align: left;
+}
+
+#rebook_groomer_modal .rbm-slot.selected {
+    border-color: #FFBF61;
+    background: #FFFAF2;
+}
+
+#rebook_groomer_modal .rbm-slot-main {
+    flex: 1;
+    min-width: 0;
+}
+
+#rebook_groomer_modal .rbm-slot-date {
+    margin: 0 0 6px;
+    color: #3B3731;
+    font-family: Lato, sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+#rebook_groomer_modal .rbm-slot-time {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin: 0;
+    color: #9D9B98;
+    font-family: Lato, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+#rebook_groomer_modal .rbm-slot-time svg {
+    flex-shrink: 0;
+}
+
+#rebook_groomer_modal .rbm-slot-sep {
+    color: #9D9B98;
+}
+
+#rebook_groomer_modal .rbm-slot-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 16px;
+    border-radius: 999px;
+    background: rgba(201, 221, 160, 0.20);
+    color: #A4C463;
+    font-family: Lato, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+#rebook_groomer_modal .rbm-slot.selected .rbm-slot-badge {
+    background: rgba(201, 221, 160, 0.20);
+    color: #A4C463;
+}
+
+#rebook_groomer_modal .rbm-extras .furs-addons-root {
+    margin-bottom: 0;
+}
+
+#rebook_groomer_modal .rbm-extras .furs-addons-root h1 {
+    margin-bottom: 16px;
+}
+
+#rebook_groomer_modal .rbm-extras .selected-furs-addons-tags {
+    margin-top: 0;
+    margin-bottom: 20px;
+    gap: 10px;
+}
+
+#rebook_groomer_modal .rbm-extras .furs-addons-tag {
+    background: #FFFAF2;
+    color: #FFBF61;
+    border-radius: 100px;
+    padding: 6px 12px;
+}
+
+#rebook_groomer_modal .rbm-extras .furs-addons-tag-remove {
+    color: #FFBF61;
+}
+
+#rebook_groomer_modal .rbm-extras .option {
+    padding: 10px 4px;
+}
+
+#rebook_groomer_modal .rbm-extras .option-price {
+    font-size: 14px;
+    color: #3B3731;
+}
+
+#rebook_groomer_modal .rbm-extras .options-col:first-child {
+    padding-right: 28px;
+    border-right: 1px solid #DEDEDE;
+}
+
+#rebook_groomer_modal .rbm-extras .options-col:last-child {
+    padding-left: 28px;
+}
+
+#rebook_groomer_modal .rbm-price-box {
+    border: 1px solid #F0EAD9;
+    border-radius: 14px;
+    overflow: hidden;
+    background: #fff;
+}
+
+#rebook_groomer_modal .rbm-price-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 20px;
+    color: #9D9B98;
+    font-family: Lato, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    border-bottom: 1px solid #F0EAD9;
+}
+
+#rebook_groomer_modal .rbm-price-row:last-child {
+    border-bottom: none;
+}
+
+#rebook_groomer_modal .rbm-price-total {
+    color: #3B3731;
+    font-weight: 600;
+}
+
+#rebook_groomer_modal .rbm-footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding: 18px 48px 28px;
+    background: #EDF1F4;
+    border-top: 1px solid #CBDCE8;
+    border-radius: 0 0 10px 10px;
+}
+
+#rebook_groomer_modal .rbm-btn-cancel {
+    padding: 12px 22px;
+    border-radius: 999px;
+    border: 1px solid #F2F2F2;
+    background: #fff;
+    color: #3B3731;
+    font-family: Lato, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+#rebook_groomer_modal .rbm-btn-confirm {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 22px;
+    border-radius: 999px;
+    border: 1px solid #6FA0C3;
+    background: #fff;
+    color: #6FA0C3;
+    font-family: Lato, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    #rebook_groomer_modal .rbm-header,
+    #rebook_groomer_modal .rbm-body,
+    #rebook_groomer_modal .rbm-footer {
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+
+    #rebook_groomer_modal .rbm-close {
+        top: 20px;
+        right: 20px;
+    }
+
+    #rebook_groomer_modal .rbm-header h1 {
+        font-size: 24px;
+        padding-right: 40px;
+    }
+
+    #rebook_groomer_modal .rbm-summary-top {
+        flex-direction: column;
+    }
+
+    #rebook_groomer_modal .rbm-slot {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    #rebook_groomer_modal .rbm-extras .options-col:first-child {
+        padding-right: 0;
+        border-right: none;
+        border-bottom: 1px solid #DEDEDE;
+        padding-bottom: 16px;
+        margin-bottom: 16px;
+    }
+
+    #rebook_groomer_modal .rbm-extras .options-col:last-child {
+        padding-left: 0;
+    }
+
+    #rebook_groomer_modal .rbm-footer {
+        flex-direction: column;
+    }
+
+    #rebook_groomer_modal .rbm-btn-cancel,
+    #rebook_groomer_modal .rbm-btn-confirm {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* rebook groomer modal css ends */

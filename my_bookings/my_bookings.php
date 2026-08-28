@@ -1046,14 +1046,14 @@ include_once __DIR__ . '/../components/extras-addons.php';
                                                     </svg>
                                                     Write a review
                                                 </button>
-                                                <a href="<?= BASE_URL ?>profiles/groomer/groomer_profile.php" class="bd-btn bd-btn-rebook">
+                                                <button type="button" class="bd-btn bd-btn-rebook" data-modal-open="rebook_groomer_modal" data-close-parent-modal>
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
                                                         <path d="M2.2312 15.4953V12.6124H5.11403" stroke="#6FA0C3" stroke-linecap="round" stroke-linejoin="round" />
                                                         <path d="M15.3656 6.62252C15.6715 8.25452 15.4269 9.94189 14.6702 11.4199C13.9135 12.8978 12.6875 14.0827 11.1846 14.7887C9.68175 15.4946 7.98704 15.6817 6.3664 15.3204C4.74575 14.9592 3.2909 14.0701 2.23013 12.7927M0.628303 9.37748C0.322432 7.74548 0.567036 6.05811 1.32373 4.58014C2.08043 3.10218 3.3064 1.91725 4.80927 1.2113C6.31214 0.505355 8.00686 0.318331 9.6275 0.679579C11.2481 1.04083 12.703 1.9299 13.7638 3.2073" stroke="#6FA0C3" stroke-linecap="round" stroke-linejoin="round" />
                                                         <path d="M13.7626 0.504883V3.38771H10.8798" stroke="#6FA0C3" stroke-linecap="round" stroke-linejoin="round" />
                                                     </svg>
                                                     Rebook
-                                                </a>
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
@@ -1262,14 +1262,14 @@ include_once __DIR__ . '/../components/extras-addons.php';
 
                                         <div class="bd-footer bd-footer--cancelled">
                                             <span class="bd-closed-label">This booking is closed</span>
-                                            <a href="<?= BASE_URL ?>profiles/groomer/groomer_profile.php" class="bd-btn bd-btn-rebook">
+                                            <button type="button" class="bd-btn bd-btn-rebook" data-modal-open="rebook_groomer_modal" data-close-parent-modal>
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
                                                     <path d="M2.2312 15.4953V12.6124H5.11403" stroke="#6FA0C3" stroke-linecap="round" stroke-linejoin="round" />
                                                     <path d="M15.3656 6.62252C15.6715 8.25452 15.4269 9.94189 14.6702 11.4199C13.9135 12.8978 12.6875 14.0827 11.1846 14.7887C9.68175 15.4946 7.98704 15.6817 6.3664 15.3204C4.74575 14.9592 3.2909 14.0701 2.23013 12.7927M0.628303 9.37748C0.322432 7.74548 0.567036 6.05811 1.32373 4.58014C2.08043 3.10218 3.3064 1.91725 4.80927 1.2113C6.31214 0.505355 8.00686 0.318331 9.6275 0.679579C11.2481 1.04083 12.703 1.9299 13.7638 3.2073" stroke="#6FA0C3" stroke-linecap="round" stroke-linejoin="round" />
                                                     <path d="M13.7626 0.504883V3.38771H10.8798" stroke="#6FA0C3" stroke-linecap="round" stroke-linejoin="round" />
                                                 </svg>
                                                 Rebook
-                                            </a>
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
@@ -1999,11 +1999,11 @@ include_once __DIR__ . '/../components/extras-addons.php';
                                                         <path d="M1.5 7C1.5 7 4.1 1.5 9 1.5C13.9 1.5 16.5 7 16.5 7C16.5 7 13.9 12.5 9 12.5C4.1 12.5 1.5 7 1.5 7Z" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" />
                                                         <circle cx="9" cy="7" r="2.25" stroke="currentColor" stroke-width="1.4" />
                                                     </svg> View details</button>
-                                                <a href="<?= BASE_URL ?>profiles/groomer/groomer_profile.php" class="mb-btn mb-btn--blue"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                                <button type="button" class="mb-btn mb-btn--blue" data-modal-open="rebook_groomer_modal"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
                                                         <path d="M2.2312 15.4953V12.6124H5.11403" stroke="#6FA0C3" stroke-linecap="round" stroke-linejoin="round" />
                                                         <path d="M15.3656 6.62252C15.6715 8.25452 15.4269 9.94189 14.6702 11.4199C13.9135 12.8978 12.6875 14.0827 11.1846 14.7887C9.68175 15.4946 7.98704 15.6817 6.3664 15.3204C4.74575 14.9592 3.2909 14.0701 2.23013 12.7927M0.628303 9.37748C0.322432 7.74548 0.567036 6.05811 1.32373 4.58014C2.08043 3.10218 3.3064 1.91725 4.80927 1.2113C6.31214 0.505355 8.00686 0.318331 9.6275 0.679579C11.2481 1.04083 12.703 1.9299 13.7638 3.2073" stroke="#6FA0C3" stroke-linecap="round" stroke-linejoin="round" />
                                                         <path d="M13.7626 0.504883V3.38771H10.8798" stroke="#6FA0C3" stroke-linecap="round" stroke-linejoin="round" />
-                                                    </svg> Rebook</a>
+                                                    </svg> Rebook</button>
                                                 <a href="<?= BASE_URL ?>messages_notification/messages.php" class="mb-btn-icon" title="Message groomer"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
                                                         <path d="M2.2 7.4C2.2 4.9 4.4 2.8 7.1 2.8H8.9C11.6 2.8 13.8 4.9 13.8 7.4C13.8 9.9 11.6 12 8.9 12H7.8L5.2 13.7V12C3.4 11.4 2.2 9.5 2.2 7.4Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round" />
                                                     </svg></a>
@@ -2084,11 +2084,11 @@ include_once __DIR__ . '/../components/extras-addons.php';
                                                         <path d="M1.5 7C1.5 7 4.1 1.5 9 1.5C13.9 1.5 16.5 7 16.5 7C16.5 7 13.9 12.5 9 12.5C4.1 12.5 1.5 7 1.5 7Z" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" />
                                                         <circle cx="9" cy="7" r="2.25" stroke="currentColor" stroke-width="1.4" />
                                                     </svg> View details</button>
-                                                <a href="<?= BASE_URL ?>profiles/groomer/groomer_profile.php" class="mb-btn mb-btn--blue"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                                <button type="button" class="mb-btn mb-btn--blue" data-modal-open="rebook_groomer_modal"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
                                                         <path d="M2.2312 15.4953V12.6124H5.11403" stroke="#6FA0C3" stroke-linecap="round" stroke-linejoin="round" />
                                                         <path d="M15.3656 6.62252C15.6715 8.25452 15.4269 9.94189 14.6702 11.4199C13.9135 12.8978 12.6875 14.0827 11.1846 14.7887C9.68175 15.4946 7.98704 15.6817 6.3664 15.3204C4.74575 14.9592 3.2909 14.0701 2.23013 12.7927M0.628303 9.37748C0.322432 7.74548 0.567036 6.05811 1.32373 4.58014C2.08043 3.10218 3.3064 1.91725 4.80927 1.2113C6.31214 0.505355 8.00686 0.318331 9.6275 0.679579C11.2481 1.04083 12.703 1.9299 13.7638 3.2073" stroke="#6FA0C3" stroke-linecap="round" stroke-linejoin="round" />
                                                         <path d="M13.7626 0.504883V3.38771H10.8798" stroke="#6FA0C3" stroke-linecap="round" stroke-linejoin="round" />
-                                                    </svg> Rebook</a>
+                                                    </svg> Rebook</button>
                                                 <a href="<?= BASE_URL ?>messages_notification/messages.php" class="mb-btn-icon" title="Message groomer"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
                                                         <path d="M2.2 7.4C2.2 4.9 4.4 2.8 7.1 2.8H8.9C11.6 2.8 13.8 4.9 13.8 7.4C13.8 9.9 11.6 12 8.9 12H7.8L5.2 13.7V12C3.4 11.4 2.2 9.5 2.2 7.4Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round" />
                                                     </svg></a>
@@ -2239,11 +2239,11 @@ include_once __DIR__ . '/../components/extras-addons.php';
                                                         <path d="M1.5 7C1.5 7 4.1 1.5 9 1.5C13.9 1.5 16.5 7 16.5 7C16.5 7 13.9 12.5 9 12.5C4.1 12.5 1.5 7 1.5 7Z" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" />
                                                         <circle cx="9" cy="7" r="2.25" stroke="currentColor" stroke-width="1.4" />
                                                     </svg> View details</button>
-                                                <a href="<?= BASE_URL ?>profiles/groomer/groomer_profile.php" class="mb-btn mb-btn--blue"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                                <button type="button" class="mb-btn mb-btn--blue" data-modal-open="rebook_groomer_modal"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
                                                         <path d="M2.2312 15.4953V12.6124H5.11403" stroke="#6FA0C3" stroke-linecap="round" stroke-linejoin="round" />
                                                         <path d="M15.3656 6.62252C15.6715 8.25452 15.4269 9.94189 14.6702 11.4199C13.9135 12.8978 12.6875 14.0827 11.1846 14.7887C9.68175 15.4946 7.98704 15.6817 6.3664 15.3204C4.74575 14.9592 3.2909 14.0701 2.23013 12.7927M0.628303 9.37748C0.322432 7.74548 0.567036 6.05811 1.32373 4.58014C2.08043 3.10218 3.3064 1.91725 4.80927 1.2113C6.31214 0.505355 8.00686 0.318331 9.6275 0.679579C11.2481 1.04083 12.703 1.9299 13.7638 3.2073" stroke="#6FA0C3" stroke-linecap="round" stroke-linejoin="round" />
                                                         <path d="M13.7626 0.504883V3.38771H10.8798" stroke="#6FA0C3" stroke-linecap="round" stroke-linejoin="round" />
-                                                    </svg> Rebook</a>
+                                                    </svg> Rebook</button>
                                             </div>
                                         </div>
                                     </article>
@@ -2330,6 +2330,133 @@ include_once __DIR__ . '/../components/extras-addons.php';
                                 </div>
                             </div>
 
+
+                            <!-- Rebook Groomer Modal -->
+                            <div class="modal" id="rebook_groomer_modal">
+                                <div class="modal-content size rbm-modal-content">
+                                    <div class="rbm-modal">
+                                        <button class="rbm-close" type="button" data-modal-close aria-label="Close">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36" fill="none">
+                                                <circle cx="18" cy="18" r="17.5" stroke="#3B3731" />
+                                                <path d="M12.8 24.0008L24 12.8008M12.8 12.8008L24 24.0008" stroke="#3B3731" stroke-width="1.5" stroke-linecap="round" />
+                                            </svg>
+                                        </button>
+
+                                        <div class="rbm-header">
+                                            <h1>Rebook with Sarah's Grooming Studio</h1>
+                                            <p>Pick a new date for the same service</p>
+                                        </div>
+
+                                        <div class="rbm-body">
+                                            <div class="rbm-summary">
+                                                <div class="rbm-summary-top">
+                                                    <div class="rbm-summary-left">
+                                                        <div class="rbm-summary-avatar-wrap">
+                                                            <img src="<?= BASE_URL ?>assets/images/groomer-profile.png" alt="Sarah's Grooming Studio" class="rbm-summary-avatar">
+                                                            <div class="rbm-summary-badge" title="Verified">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="33" viewBox="0 0 30 33" fill="none" aria-hidden="true">
+                                                                    <ellipse cx="15.873" cy="16.5256" rx="9.3645" ry="8.81365" fill="white"></ellipse>
+                                                                    <path d="M15.44 0.185076C15.1841 0.0638192 14.9099 0 14.6235 0C14.3372 0 14.063 0.0638192 13.8071 0.185076L2.3337 5.28423C0.993208 5.87775 -0.00606541 7.26263 2.77146e-05 8.93469C0.0304934 15.2656 2.51649 26.8487 13.015 32.1138C14.0325 32.6244 15.2146 32.6244 16.2321 32.1138C26.7306 26.8487 29.2166 15.2656 29.247 8.93469C29.2531 7.26263 28.2539 5.87775 26.9134 5.28423L15.44 0.185076ZM8.82897 18.2651C9.12144 18.3416 9.43219 18.3799 9.74903 18.3799C11.8999 18.3799 13.6486 16.5483 13.6486 14.2955V10.2111H16.3418C17.0791 10.2111 17.7554 10.645 18.0844 11.3407L18.5231 12.2533H22.4227C22.9589 12.2533 23.3976 12.7128 23.3976 13.2744V15.3166C23.3976 18.1374 21.2163 20.4222 18.5231 20.4222H15.5984V23.6578C15.5984 24.1237 15.2389 24.5066 14.7881 24.5066C14.6784 24.5066 14.5687 24.4811 14.4712 24.4364L8.45729 21.7368C8.05514 21.5581 7.79923 21.1433 7.79923 20.6902C7.79923 20.5115 7.83579 20.3392 7.915 20.1796L8.82897 18.2651ZM8.77413 10.2111H11.6988V14.2955C11.6988 15.4251 10.8275 16.3377 9.74903 16.3377C8.67055 16.3377 7.79923 15.4251 7.79923 14.2955V11.2322C7.79923 10.6706 8.23794 10.2111 8.77413 10.2111ZM16.5733 13.2744C16.5733 13.0036 16.4706 12.7439 16.2878 12.5524C16.105 12.3609 15.857 12.2533 15.5984 12.2533C15.3399 12.2533 15.0919 12.3609 14.9091 12.5524C14.7262 12.7439 14.6235 13.0036 14.6235 13.2744C14.6235 13.5452 14.7262 13.8049 14.9091 13.9964C15.0919 14.1879 15.3399 14.2955 15.5984 14.2955C15.857 14.2955 16.105 14.1879 16.2878 13.9964C16.4706 13.8049 16.5733 13.5452 16.5733 13.2744Z" fill="#C9DDA0"></path>
+                                                                </svg>
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <p class="rbm-summary-studio">Sarah's Grooming Studio</p>
+                                                            <p class="rbm-summary-host">Sarah W.</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="rbm-summary-pet">
+                                                        <div class="rbm-summary-pet-avatars">
+                                                            <img src="<?= BASE_URL ?>assets/images/pet_details_1.png" alt="Bella">
+                                                            <img src="<?= BASE_URL ?>assets/images/pet_details_2.png" alt="Pet">
+                                                        </div>
+                                                        <span class="rbm-summary-pet-label">Bella <span class="rbm-summary-pet-extra">+1</span></span>
+                                                    </div>
+                                                </div>
+                                                <div class="rbm-summary-meta">
+                                                    <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="17" viewBox="0 0 16 17" fill="none"><path d="M4.94591 11.5544C6.23114 12.8397 9.35699 11.798 11.9274 9.22713C14.4983 6.65667 15.54 3.53082 14.2548 2.24559M8.72754 1.37259L9.30927 1.95473M6.6915 3.40904L7.27322 3.99077M4.9455 5.73636L5.52722 6.31809M4.36377 8.6454L4.9455 9.22713M11.9274 0.5L12.5092 1.08173M11.3457 3.99118L12.5092 5.15463M9.30968 6.02763L10.4731 7.19109M6.98236 7.77281L8.14581 8.93627" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round"/><path d="M4.94547 13.2998C5.42747 12.8178 5.42747 12.0364 4.94548 11.5544C4.46348 11.0724 3.68202 11.0724 3.20003 11.5544L0.872775 13.8816C0.390784 14.3636 0.390784 15.1451 0.872775 15.6271C1.35477 16.1091 2.13623 16.1091 2.61822 15.6271L4.94547 13.2998Z" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round"/></svg> Bath &amp; Brush</span>
+                                                    <span><svg xmlns="http://www.w3.org/2000/svg" width="12" height="16" viewBox="0 0 12 16" fill="none"><path d="M6 0.5C7.4694 0.5 8.87214 1.04525 9.90137 2.00586C10.9293 2.96529 11.4999 4.25871 11.5 5.59961C11.5 7.10011 10.6408 8.95946 9.51855 10.7236C8.41048 12.4655 7.10434 14.0263 6.32227 14.9082C6.14625 15.1067 5.85375 15.1067 5.67773 14.9082C4.89566 14.0263 3.58952 12.4655 2.48145 10.7236C1.35919 8.95946 0.5 7.10011 0.5 5.59961C0.500111 4.25871 1.07068 2.96529 2.09863 2.00586C3.12786 1.04525 4.53061 0.5 6 0.5ZM6 3.09961C5.30978 3.09961 4.64141 3.35564 4.14355 3.82031C3.64466 4.28597 3.35753 4.92517 3.35742 5.59961C3.35742 6.27422 3.64453 6.91413 4.14355 7.37988C4.64141 7.84453 5.30979 8.09961 6 8.09961C6.69022 8.09961 7.35859 7.84453 7.85645 7.37988C8.35534 6.91413 8.64247 6.27422 8.64258 5.59961C8.64258 4.92517 8.35534 4.28597 7.85645 3.82031C7.35859 3.35564 6.69022 3.09961 6 3.09961Z" stroke="#3B3731"/></svg> At your home</span>
+                                                </div>
+                                                <p class="rbm-summary-addons"><span class="rbm-summary-addons-label">Add-ons:</span> Flea &amp; Tick Treatment, Hypoallergenic Shampoo Upgrade, Anti-Itch Treatment</p>
+                                            </div>
+
+                                            <section class="rbm-slots-section">
+                                                <div class="rbm-slots-head">
+                                                    <h2 class="rbm-slots-title">Next available slots</h2>
+                                                    <a href="<?= BASE_URL ?>profiles/groomer/groomer_profile.php" class="rbm-profile-link">View profile <span aria-hidden="true">→</span></a>
+                                                </div>
+                                                <div class="rbm-slots" id="rbm-slots">
+                                                    <button type="button" class="rbm-slot selected" data-slot="Monday, 5 Jan 2025">
+                                                        <div class="rbm-slot-main">
+                                                            <p class="rbm-slot-date">Monday, 5 Jan 2025</p>
+                                                            <p class="rbm-slot-time">
+                                                                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="6" stroke="#9D9B98" stroke-width="1.5"/><path d="M8 4.5V8L10.5 10" stroke="#9D9B98" stroke-width="1.5" stroke-linecap="round"/></svg>
+                                                                14:30 - 15:30 <span class="rbm-slot-sep">•</span> 1 hour
+                                                            </p>
+                                                        </div>
+                                                        <span class="rbm-slot-badge">Available</span>
+                                                    </button>
+                                                    <button type="button" class="rbm-slot" data-slot="Tuesday, 10 Jan 2025">
+                                                        <div class="rbm-slot-main">
+                                                            <p class="rbm-slot-date">Tuesday, 10 Jan 2025</p>
+                                                            <p class="rbm-slot-time">
+                                                                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="6" stroke="#9D9B98" stroke-width="1.5"/><path d="M8 4.5V8L10.5 10" stroke="#9D9B98" stroke-width="1.5" stroke-linecap="round"/></svg>
+                                                                14:30 - 15:30 <span class="rbm-slot-sep">•</span> 1 hour
+                                                            </p>
+                                                        </div>
+                                                        <span class="rbm-slot-badge">Available</span>
+                                                    </button>
+                                                    <button type="button" class="rbm-slot" data-slot="Wednesday, 15 Jan 2025">
+                                                        <div class="rbm-slot-main">
+                                                            <p class="rbm-slot-date">Wednesday, 15 Jan 2025</p>
+                                                            <p class="rbm-slot-time">
+                                                                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="6" stroke="#9D9B98" stroke-width="1.5"/><path d="M8 4.5V8L10.5 10" stroke="#9D9B98" stroke-width="1.5" stroke-linecap="round"/></svg>
+                                                                14:30 - 15:30 <span class="rbm-slot-sep">•</span> 1 hour
+                                                            </p>
+                                                        </div>
+                                                        <span class="rbm-slot-badge">Available</span>
+                                                    </button>
+                                                </div>
+                                            </section>
+
+                                            <section class="rbm-card rbm-extras">
+                                                <?php renderExtrasAddons([], [
+                                                    'instance_id' => 'rebook-modal',
+                                                    'on_change_js' => 'handleRebookExtras',
+                                                    'default_selected' => [1, 2, 12],
+                                                ]); ?>
+                                            </section>
+
+                                            <div class="rbm-price-box">
+                                                <div class="rbm-price-row">
+                                                    <span>Service</span>
+                                                    <span id="rbm-service-total">£48.00</span>
+                                                </div>
+                                                <div class="rbm-price-row rbm-price-addons">
+                                                    <span>Add-ons (<span id="rbm-addons-count">3</span>)</span>
+                                                    <span id="rbm-addons-total">+ £44.00</span>
+                                                </div>
+                                                <div class="rbm-price-row rbm-price-total">
+                                                    <span>Total</span>
+                                                    <span id="rbm-grand-total">£92.00</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="rbm-footer">
+                                            <button type="button" class="rbm-btn-cancel" data-modal-close>Cancel</button>
+                                            <button type="button" class="rbm-btn-confirm">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                                    <path d="M2.23096 15.4951V12.6123H5.11378" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" />
+                                                    <path d="M15.3656 6.62252C15.6715 8.25452 15.4269 9.94189 14.6702 11.4199C13.9135 12.8978 12.6875 14.0827 11.1846 14.7887C9.68175 15.4946 7.98704 15.6817 6.3664 15.3204C4.74575 14.9592 3.2909 14.0701 2.23013 12.7927M0.628303 9.37748C0.322432 7.74548 0.567036 6.05811 1.32373 4.58014C2.08043 3.10218 3.3064 1.91725 4.80927 1.2113C6.31214 0.505355 8.00686 0.318331 9.6275 0.679579C11.2481 1.04083 12.703 1.9299 13.7638 3.2073" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" />
+                                                    <path d="M13.7624 0.504883V3.38771H10.8796" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" />
+                                                </svg>
+                                                Confirm Rebook
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
                             <!-- Change Groomer Booking Modal -->
                             <div class="modal" id="change_groomer_booking_modal">
@@ -2935,14 +3062,14 @@ include_once __DIR__ . '/../components/extras-addons.php';
                                         </div>
 
                                         <div class="bcm-footer">
-                                            <a href="<?= BASE_URL ?>profiles/groomer/groomer_profile.php" class="bcm-btn-rebook">
+                                            <button type="button" class="bcm-btn-rebook" data-modal-open="rebook_groomer_modal" data-close-parent-modal>
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
                                                     <path d="M2.23096 15.4951V12.6123H5.11378" stroke="#6FA0C3" stroke-linecap="round" stroke-linejoin="round" />
                                                     <path d="M15.3656 6.62252C15.6715 8.25452 15.4269 9.94189 14.6702 11.4199C13.9135 12.8978 12.6875 14.0827 11.1846 14.7887C9.68175 15.4946 7.98704 15.6817 6.3664 15.3204C4.74575 14.9592 3.2909 14.0701 2.23013 12.7927M0.628303 9.37748C0.322432 7.74548 0.567036 6.05811 1.32373 4.58014C2.08043 3.10218 3.3064 1.91725 4.80927 1.2113C6.31214 0.505355 8.00686 0.318331 9.6275 0.679579C11.2481 1.04083 12.703 1.9299 13.7638 3.2073" stroke="#6FA0C3" stroke-linecap="round" stroke-linejoin="round" />
                                                     <path d="M13.7627 0.504883V3.38771H10.8799" stroke="#6FA0C3" stroke-linecap="round" stroke-linejoin="round" />
                                                 </svg>
                                                 Rebook
-                                            </a>
+                                            </button>
                                             <button type="button" class="bcm-btn-primary" data-modal-close>Back to my bookings</button>
                                         </div>
                                     </div>
@@ -3022,7 +3149,7 @@ include_once __DIR__ . '/../components/extras-addons.php';
                                                     <path d="M13.7627 0.504883V3.38771H10.8799" stroke="#6FA0C3" stroke-linecap="round" stroke-linejoin="round" />
                                                 </svg>
                                                 Rebook
-                                            </a>
+                                            </button>
                                             <button type="button" class="bcm-btn-primary" data-modal-close>Back to my bookings</button>
                                         </div>
                                     </div>
@@ -4390,6 +4517,35 @@ include_once __DIR__ . '/../components/extras-addons.php';
             if (deleteBtn) deleteBtn.style.display = 'none';
         });
     }
+</script>
+<script>
+    // Rebook groomer modal
+    (function() {
+        const SERVICE_PRICE = 48;
+
+        window.handleRebookExtras = function(ids, total) {
+            const countEl = document.getElementById('rbm-addons-count');
+            const addonsEl = document.getElementById('rbm-addons-total');
+            const grandEl = document.getElementById('rbm-grand-total');
+            if (countEl) countEl.textContent = ids.length;
+            if (addonsEl) addonsEl.textContent = '+ £' + total.toFixed(2);
+            if (grandEl) grandEl.textContent = '£' + (SERVICE_PRICE + total).toFixed(2);
+        };
+
+        document.querySelectorAll('#rbm-slots .rbm-slot').forEach(function(slot) {
+            slot.addEventListener('click', function() {
+                document.querySelectorAll('#rbm-slots .rbm-slot').forEach(function(s) {
+                    s.classList.remove('selected');
+                });
+                slot.classList.add('selected');
+            });
+        });
+
+        const addonsRoot = document.getElementById('furs-addons-rebook-modal');
+        if (addonsRoot && addonsRoot.fursAddons) {
+            window.handleRebookExtras(addonsRoot.fursAddons.getSelected(), addonsRoot.fursAddons.getTotal());
+        }
+    })();
 </script>
 
 </html>
