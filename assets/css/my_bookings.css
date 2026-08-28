@@ -4259,6 +4259,92 @@ body {
     color: #A4C463;
 }
 
+#rebook_groomer_modal .rbm-extras-toggle,
+#rebook_space_modal .rbm-extras-toggle {
+    background: #fff;
+    overflow: hidden;
+}
+
+#rebook_groomer_modal .rbm-extras-toggle-btn,
+#rebook_space_modal .rbm-extras-toggle-btn {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    width: 100%;
+    border: none;
+    background: none;
+    cursor: pointer;
+    text-align: left;
+}
+
+#rebook_groomer_modal .rbm-extras-toggle-text,
+#rebook_space_modal .rbm-extras-toggle-text {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 0;
+}
+
+#rebook_groomer_modal .rbm-extras-toggle-heading,
+#rebook_space_modal .rbm-extras-toggle-heading {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 4px;
+}
+
+#rebook_groomer_modal .rbm-extras-toggle-title,
+#rebook_space_modal .rbm-extras-toggle-title {
+    color: #3B3731;
+    font-family: Lato, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+#rebook_groomer_modal .rbm-extras-toggle-count,
+#rebook_space_modal .rbm-extras-toggle-count {
+    color: #9D9B98;
+    font-family: Lato, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    text-transform: none;
+}
+
+#rebook_groomer_modal .rbm-extras-toggle-desc,
+#rebook_space_modal .rbm-extras-toggle-desc {
+    color: #9D9B98;
+    font-family: Lato, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+#rebook_groomer_modal .rbm-extras-toggle-chevron,
+#rebook_space_modal .rbm-extras-toggle-chevron {
+    flex-shrink: 0;
+    margin-top: 2px;
+    line-height: 0;
+    transition: transform 0.2s ease;
+}
+
+#rebook_groomer_modal .rbm-extras-toggle-btn[aria-expanded="true"] .rbm-extras-toggle-chevron,
+#rebook_space_modal .rbm-extras-toggle-btn[aria-expanded="true"] .rbm-extras-toggle-chevron {
+    transform: rotate(180deg);
+}
+
+#rebook_groomer_modal .rbm-extras-toggle-panel, #rebook_space_modal .rbm-extras-toggle-panel {
+    background: #F7F4EC;
+    padding: 20px 18px 18px;
+    border-radius: 10px;
+    margin: 20px 0 0 0;
+}
+
+#rebook_groomer_modal .rbm-extras-toggle-panel .furs-addons-root h1,
+#rebook_space_modal .rbm-extras-toggle-panel .furs-addons-root h1 {
+    display: none;
+}
+
 #rebook_groomer_modal .rbm-extras .furs-addons-root ,
 #rebook_space_modal .rbm-extras .furs-addons-root {
     margin-bottom: 0;

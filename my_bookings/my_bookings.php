@@ -2433,12 +2433,30 @@ include_once __DIR__ . '/../components/extras-addons.php';
                                                 </div>
                                             </section>
 
-                                            <section class="rbm-card rbm-extras">
-                                                <?php renderExtrasAddons([], [
-                                                    'instance_id' => 'rebook-modal',
-                                                    'on_change_js' => 'handleRebookExtras',
-                                                    'default_selected' => [1, 2, 12],
-                                                ]); ?>
+                                            <section class="rbm-extras-toggle" data-extras-toggle>
+                                                <button type="button" class="rbm-extras-toggle-btn" aria-expanded="false">
+                                                    <span class="rbm-extras-toggle-text">
+                                                        <span class="rbm-extras-toggle-heading">
+                                                            <span class="rbm-extras-toggle-title">Extras &amp; Add-ons</span>
+                                                            <span class="rbm-extras-toggle-count" id="rbm-extras-selected-count">(3 Selected)</span>
+                                                        </span>
+                                                        <span class="rbm-extras-toggle-desc">Tap to add or remove — from your last booking, your previous add-ons are carried over.</span>
+                                                    </span>
+                                                    <span class="rbm-extras-toggle-chevron" aria-hidden="true">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="8" viewBox="0 0 14 8" fill="none">
+                                                            <path d="M1 1.5L7 6.5L13 1.5" stroke="#3B3731" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                                        </svg>
+                                                    </span>
+                                                </button>
+                                                <div class="rbm-extras-toggle-panel" hidden>
+                                                    <div class="rbm-extras rbm-extras--groomer">
+                                                        <?php renderExtrasAddons([], [
+                                                            'instance_id' => 'rebook-modal',
+                                                            'on_change_js' => 'handleRebookExtras',
+                                                            'default_selected' => [1, 2, 12],
+                                                        ]); ?>
+                                                    </div>
+                                                </div>
                                             </section>
 
                                             <div class="rbm-price-box">
@@ -2561,16 +2579,34 @@ include_once __DIR__ . '/../components/extras-addons.php';
                                                 </div>
                                             </section>
 
-                                            <section class="rbm-card rbm-extras rbm-extras--space">
-                                                <?php renderExtrasAddons([
-                                                    ['id' => 1, 'name' => 'Storage Locker', 'price' => 5, 'col' => 'left'],
-                                                    ['id' => 2, 'name' => 'Deep Clean', 'price' => 10, 'col' => 'left'],
-                                                    ['id' => 3, 'name' => 'After-hours access', 'price' => 20, 'col' => 'right'],
-                                                ], [
-                                                    'instance_id' => 'rebook-space-modal',
-                                                    'on_change_js' => 'handleRebookSpaceExtras',
-                                                    'default_selected' => [2],
-                                                ]); ?>
+                                            <section class="rbm-extras-toggle" data-extras-toggle>
+                                                <button type="button" class="rbm-extras-toggle-btn" aria-expanded="false">
+                                                    <span class="rbm-extras-toggle-text">
+                                                        <span class="rbm-extras-toggle-heading">
+                                                            <span class="rbm-extras-toggle-title">Extras &amp; Add-ons</span>
+                                                            <span class="rbm-extras-toggle-count" id="rbm-space-extras-selected-count">(1 Selected)</span>
+                                                        </span>
+                                                        <span class="rbm-extras-toggle-desc">Tap to add or remove — from your last booking, your previous add-ons are carried over.</span>
+                                                    </span>
+                                                    <span class="rbm-extras-toggle-chevron" aria-hidden="true">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="8" viewBox="0 0 14 8" fill="none">
+                                                            <path d="M1 1.5L7 6.5L13 1.5" stroke="#3B3731" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                                        </svg>
+                                                    </span>
+                                                </button>
+                                                <div class="rbm-extras-toggle-panel" hidden>
+                                                    <div class="rbm-extras rbm-extras--space">
+                                                        <?php renderExtrasAddons([
+                                                            ['id' => 1, 'name' => 'Storage Locker', 'price' => 5, 'col' => 'left'],
+                                                            ['id' => 2, 'name' => 'Deep Clean', 'price' => 10, 'col' => 'left'],
+                                                            ['id' => 3, 'name' => 'After-hours access', 'price' => 20, 'col' => 'right'],
+                                                        ], [
+                                                            'instance_id' => 'rebook-space-modal',
+                                                            'on_change_js' => 'handleRebookSpaceExtras',
+                                                            'default_selected' => [2],
+                                                        ]); ?>
+                                                    </div>
+                                                </div>
                                             </section>
 
                                             <div class="rbm-price-box">
@@ -4680,18 +4716,34 @@ include_once __DIR__ . '/../components/extras-addons.php';
         const groomerService = 48;
         window.handleRebookExtras = function(ids, total) {
             const countEl = document.getElementById('rbm-addons-count');
+            const selectedEl = document.getElementById('rbm-extras-selected-count');
             const addonsEl = document.getElementById('rbm-addons-total');
             const grandEl = document.getElementById('rbm-grand-total');
             if (countEl) countEl.textContent = ids.length;
+            if (selectedEl) selectedEl.textContent = '(' + ids.length + ' Selected)';
             if (addonsEl) addonsEl.textContent = '+ £' + total.toFixed(2);
             if (grandEl) grandEl.textContent = '£' + (groomerService + total).toFixed(2);
         };
 
         const spaceService = 48;
         window.handleRebookSpaceExtras = function(ids, total) {
+            const selectedEl = document.getElementById('rbm-space-extras-selected-count');
             const grandEl = document.getElementById('rbm-space-grand-total');
+            if (selectedEl) selectedEl.textContent = '(' + ids.length + ' Selected)';
             if (grandEl) grandEl.textContent = '£' + (spaceService + total).toFixed(2);
         };
+
+        document.querySelectorAll('[data-extras-toggle]').forEach(function(section) {
+            const btn = section.querySelector('.rbm-extras-toggle-btn');
+            const panel = section.querySelector('.rbm-extras-toggle-panel');
+            if (!btn || !panel) return;
+
+            btn.addEventListener('click', function() {
+                const isOpen = btn.getAttribute('aria-expanded') === 'true';
+                btn.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+                panel.hidden = isOpen;
+            });
+        });
 
         const groomerAddons = document.getElementById('furs-addons-rebook-modal');
         if (groomerAddons && groomerAddons.fursAddons) {
