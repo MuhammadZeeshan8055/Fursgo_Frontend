@@ -662,6 +662,9 @@ body {
     cursor: pointer;
     text-decoration-line: underline;
     text-underline-offset: 3px;
+    background: none;
+    border: none;
+    padding: 0;
 }
 
 @media (max-width: 991px) {
@@ -1664,6 +1667,10 @@ body {
     text-decoration: underline;
     text-underline-offset: 4px;
     white-space: nowrap;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
 }
 
 #view_booking_groom_modal .bd-footer-actions,
@@ -2627,7 +2634,7 @@ body {
 #change_groomer_booking_modal .cbm-extras .options-col:first-child,
 #change_space_booking_modal .cbm-extras .options-col:first-child {
     padding-right: 28px;
-    border-right: 1px solid #EAE8E5;
+    border-right: 1px solid #DEDEDE;
 }
 
 #change_groomer_booking_modal .cbm-extras .options-col:last-child,
@@ -2782,7 +2789,7 @@ body {
 /* Price + alert */
 #change_groomer_booking_modal .cbm-price-box,
 #change_space_booking_modal .cbm-price-box {
-    border: 1px solid #EAE8E5;
+    border: 1px solid #DEDEDE;
     border-radius: 14px;
     overflow: hidden;
     background: #fff;
@@ -2798,7 +2805,7 @@ body {
     font-family: Lato, sans-serif;
     font-size: 16px;
     font-weight: 400;
-    border-bottom: 1px solid #EAE8E5;
+    border-bottom: 1px solid #DEDEDE;
 }
 
 #change_groomer_booking_modal .cbm-price-row:last-child,
@@ -3085,7 +3092,7 @@ body {
 
 #groomer_booking_updated_modal .bum-card,
 #space_booking_updated_modal .bum-card {
-    border: 1px solid #EAE8E5;
+    border: 1px solid #DEDEDE;
     border-radius: 14px;
     padding: 16px;
     margin-bottom: 24px;
@@ -3267,3 +3274,622 @@ body {
 }
 
 /* booking updated modal css ends */
+
+/* cancel booking modal css starts */
+
+#cancel_groomer_booking_modal .modal-content.size.cnl-modal-content,
+#cancel_space_booking_modal .modal-content.size.cnl-modal-content {
+    width: 640px;
+    max-width: calc(100vw - 32px);
+    height: auto;
+    margin-bottom: 5%;
+    padding: 0;
+    overflow: visible;
+    background: transparent;
+    box-shadow: none;
+}
+
+#cancel_groomer_booking_modal .cnl-modal,
+#cancel_space_booking_modal .cnl-modal {
+    position: relative;
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid #CBDCE8;
+    background: #FDFCF8;
+    padding: 36px 36px 28px;
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.12);
+}
+
+#cancel_groomer_booking_modal .cnl-close,
+#cancel_space_booking_modal .cnl-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    line-height: 0;
+}
+
+#cancel_groomer_booking_modal .cnl-title,
+#cancel_space_booking_modal .cnl-title {
+    margin: 0 0 6px;
+    color: #3B3731;
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 1.3;
+    padding-right: 40px;
+}
+
+#cancel_groomer_booking_modal .cnl-subtitle,
+#cancel_space_booking_modal .cnl-subtitle {
+    margin: 0 0 24px;
+    color: #9D9B98;
+    font-family: Lato, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+#cancel_groomer_booking_modal .cnl-card,
+#cancel_space_booking_modal .cnl-card {
+    border: 1px solid #DEDEDE;
+    border-radius: 10px;
+    background: #fff;
+    padding: 18px;
+    margin-bottom: 16px;
+}
+
+#cancel_groomer_booking_modal .cnl-card-top,
+#cancel_space_booking_modal .cnl-card-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 14px;
+}
+
+#cancel_groomer_booking_modal .cnl-provider,
+#cancel_space_booking_modal .cnl-provider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+}
+
+#cancel_groomer_booking_modal .cnl-provider img,
+#cancel_space_booking_modal .cnl-provider img {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+#cancel_groomer_booking_modal .cnl-provider-name,
+#cancel_space_booking_modal .cnl-provider-name {
+    margin: 0;
+    color: #3B3731;
+    font-family: Lato, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+#cancel_groomer_booking_modal .cnl-provider-sub,
+#cancel_space_booking_modal .cnl-provider-sub {
+    margin: 2px 0 0;
+    color: #9D9B98;
+    font-family: Lato, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+#cancel_groomer_booking_modal .cnl-price-block,
+#cancel_space_booking_modal .cnl-price-block {
+    text-align: right;
+    flex-shrink: 0;
+}
+
+#cancel_groomer_booking_modal .cnl-date,
+#cancel_space_booking_modal .cnl-date {
+    margin: 0;
+    color: #3B3731;
+    font-family: Lato, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+#cancel_groomer_booking_modal .cnl-price,
+#cancel_space_booking_modal .cnl-price {
+    margin: 2px 0 0;
+    color: #3B3731;
+    font-family: Lato, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+#cancel_groomer_booking_modal .cnl-meta,
+#cancel_space_booking_modal .cnl-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 16px;
+    color: #3B3731;
+    font-family: Lato, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    margin-bottom: 14px;
+}
+
+#cancel_groomer_booking_modal .cnl-meta span,
+#cancel_space_booking_modal .cnl-meta span {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+#cancel_groomer_booking_modal .cnl-pet,
+#cancel_space_booking_modal .cnl-pet {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 14px;
+    padding: 6px 12px 6px 6px;
+    border-radius: 100px;
+    border: 1px solid #EFEFEF;
+    background: #F9F9F9;
+    color: #3B3731;
+    font-family: Lato, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+#cancel_groomer_booking_modal .cnl-pet img,
+#cancel_space_booking_modal .cnl-pet img {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+#cancel_groomer_booking_modal .cnl-refund,
+#cancel_space_booking_modal .cnl-refund {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 14px 16px;
+    border-radius: 10px;
+    background: #F2F6E6;
+}
+
+#cancel_groomer_booking_modal .cnl-refund svg,
+#cancel_space_booking_modal .cnl-refund svg {
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+#cancel_groomer_booking_modal .cnl-refund p,
+#cancel_space_booking_modal .cnl-refund p {
+    margin: 0;
+    color: #99BA54;
+    font-family: Lato, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+#cancel_groomer_booking_modal .cnl-policy,
+#cancel_space_booking_modal .cnl-policy {
+    border-radius: 10px;
+    background: #FFF1F1;
+    padding: 16px 18px;
+    margin-bottom: 20px;
+    color: #FF6E6E;
+}
+
+#cancel_groomer_booking_modal .cnl-policy-title,
+#cancel_space_booking_modal .cnl-policy-title {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0 0 10px;
+    color: #FF6E6E;
+    font-family: Lato, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+#cancel_groomer_booking_modal .cnl-policy-title span,
+#cancel_space_booking_modal .cnl-policy-title span {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+#cancel_groomer_booking_modal .cnl-policy ul,
+#cancel_space_booking_modal .cnl-policy ul {
+    margin: 0;
+    padding-left: 28px;
+    list-style: disc;
+    color: #FF6E6E;
+    font-family: Lato, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: normal;
+}
+
+#cancel_groomer_booking_modal .cnl-policy li + li,
+#cancel_space_booking_modal .cnl-policy li + li {
+    margin-top: 6px;
+}
+
+#cancel_groomer_booking_modal .cnl-reschedule,
+#cancel_space_booking_modal .cnl-reschedule {
+    margin: 0 0 24px;
+    text-align: center;
+    color: #9D9B98;
+    font-family: Lato, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+#cancel_groomer_booking_modal .cnl-reschedule-link,
+#cancel_space_booking_modal .cnl-reschedule-link {
+    display: inline;
+    margin-left: 4px;
+    padding: 0;
+    border: none;
+    background: none;
+    color: #6FA0C3;
+    font-family: Lato, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    cursor: pointer;
+}
+
+#cancel_groomer_booking_modal .cnl-footer,
+#cancel_space_booking_modal .cnl-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding-top: 20px;
+    border-top: 1px solid #DEDEDE;
+}
+
+#cancel_groomer_booking_modal .cnl-btn-keep,
+#cancel_space_booking_modal .cnl-btn-keep {
+    padding: 12px 22px;
+    border-radius: 100px;
+    border: 1px solid #D4D4D4;
+    background: #fff;
+    color: #3B3731;
+    font-family: Lato, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+#cancel_groomer_booking_modal .cnl-btn-cancel,
+#cancel_space_booking_modal .cnl-btn-cancel {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 22px;
+    border-radius: 100px;
+    border: none;
+    background: #FF6E6E;
+    color: #fff;
+    font-family: Lato, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    #cancel_groomer_booking_modal .cnl-modal,
+    #cancel_space_booking_modal .cnl-modal {
+        padding: 28px 20px 20px;
+    }
+
+    #cancel_groomer_booking_modal .cnl-title,
+    #cancel_space_booking_modal .cnl-title {
+        font-size: 24px;
+    }
+
+    #cancel_groomer_booking_modal .cnl-card-top,
+    #cancel_space_booking_modal .cnl-card-top {
+        flex-direction: column;
+    }
+
+    #cancel_groomer_booking_modal .cnl-price-block,
+    #cancel_space_booking_modal .cnl-price-block {
+        text-align: left;
+    }
+
+    #cancel_groomer_booking_modal .cnl-footer,
+    #cancel_space_booking_modal .cnl-footer {
+        flex-direction: column-reverse;
+        align-items: stretch;
+    }
+
+    #cancel_groomer_booking_modal .cnl-btn-keep,
+    #cancel_space_booking_modal .cnl-btn-keep,
+    #cancel_groomer_booking_modal .cnl-btn-cancel,
+    #cancel_space_booking_modal .cnl-btn-cancel {
+        text-align: center;
+        justify-content: center;
+    }
+}
+
+/* cancel booking modal css ends */
+
+/* booking cancelled modal css starts */
+
+#groomer_booking_cancelled_modal .modal-content.size.bcm-modal-content,
+#space_booking_cancelled_modal .modal-content.size.bcm-modal-content {
+    width: 640px;
+    max-width: calc(100vw - 32px);
+    height: auto;
+    margin-bottom: 5%;
+    padding: 0;
+    overflow: visible;
+    background: transparent;
+    box-shadow: none;
+}
+
+#groomer_booking_cancelled_modal .bcm-modal,
+#space_booking_cancelled_modal .bcm-modal {
+    position: relative;
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid #FF6E6E;
+    background: #FDFCF8;
+    padding: 36px 36px 28px;
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.12);
+}
+
+#groomer_booking_cancelled_modal .bcm-close,
+#space_booking_cancelled_modal .bcm-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    line-height: 0;
+}
+
+#groomer_booking_cancelled_modal .bcm-icon,
+#space_booking_cancelled_modal .bcm-icon {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+#groomer_booking_cancelled_modal .bcm-title,
+#space_booking_cancelled_modal .bcm-title {
+    margin: 0 0 12px;
+    text-align: center;
+    color: #3B3731;
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 25px;
+}
+
+#groomer_booking_cancelled_modal .bcm-title em,
+#space_booking_cancelled_modal .bcm-title em {
+    font-style: italic;
+    font-weight: 600;
+}
+
+#groomer_booking_cancelled_modal .bcm-desc,
+#space_booking_cancelled_modal .bcm-desc {
+    margin: 0 auto 24px;
+    max-width: 460px;
+    text-align: center;
+    color: #9D9B98;
+    font-family: Lato, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+#groomer_booking_cancelled_modal .bcm-card,
+#space_booking_cancelled_modal .bcm-card {
+    border: 1px solid #DEDEDE;
+    border-radius: 10px;
+    background: #fff;
+    padding: 16px;
+    margin-bottom: 16px;
+}
+
+#groomer_booking_cancelled_modal .bcm-card-label,
+#space_booking_cancelled_modal .bcm-card-label {
+    margin: 0 0 10px;
+    color: #C9C9C9;
+    font-family: Lato, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: normal;
+    text-transform: uppercase;
+}
+
+#groomer_booking_cancelled_modal .bcm-card-inner,
+#space_booking_cancelled_modal .bcm-card-inner {
+    border-radius: 10px;
+    background: #FFF1F1;
+    padding: 16px 18px;
+}
+
+#groomer_booking_cancelled_modal .bcm-card-top,
+#space_booking_cancelled_modal .bcm-card-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 14px;
+}
+
+#groomer_booking_cancelled_modal .bcm-provider-name,
+#space_booking_cancelled_modal .bcm-provider-name {
+    margin: 0;
+    color: #FF6E6E;
+    font-family: Lato, sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: normal;
+}
+
+#groomer_booking_cancelled_modal .bcm-provider-sub,
+#space_booking_cancelled_modal .bcm-provider-sub {
+    margin: 2px 0 0;
+    color: #9D9B98;
+    font-family: Lato, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+#groomer_booking_cancelled_modal .bcm-price,
+#space_booking_cancelled_modal .bcm-price {
+    margin: 0;
+    color: #FF6E6E;
+    font-family: Lato, sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: normal;
+    white-space: nowrap;
+    text-decoration: line-through;
+}
+
+#groomer_booking_cancelled_modal .bcm-meta,
+#space_booking_cancelled_modal .bcm-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 16px;
+    color: #3B3731;
+    font-family: Lato, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    font-style: italic;
+}
+
+#groomer_booking_cancelled_modal .bcm-meta span,
+#space_booking_cancelled_modal .bcm-meta span {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: line-through;
+}
+
+#groomer_booking_cancelled_modal .bcm-meta svg [stroke],
+#space_booking_cancelled_modal .bcm-meta svg [stroke] {
+    stroke: #3B3731;
+}
+
+#groomer_booking_cancelled_modal .bcm-meta svg [fill]:not([fill="none"]),
+#space_booking_cancelled_modal .bcm-meta svg [fill]:not([fill="none"]) {
+    fill: #3B3731;
+}
+
+#groomer_booking_cancelled_modal .bcm-refund,
+#space_booking_cancelled_modal .bcm-refund {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 14px 16px;
+    border-radius: 10px;
+    background: #F2F6E6;
+    margin-bottom: 24px;
+}
+
+#groomer_booking_cancelled_modal .bcm-refund svg,
+#space_booking_cancelled_modal .bcm-refund svg {
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+#groomer_booking_cancelled_modal .bcm-refund p,
+#space_booking_cancelled_modal .bcm-refund p {
+    margin: 0;
+    color: #5C6B3A;
+    font-family: Lato, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+#groomer_booking_cancelled_modal .bcm-footer,
+#space_booking_cancelled_modal .bcm-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+#groomer_booking_cancelled_modal .bcm-btn-rebook,
+#space_booking_cancelled_modal .bcm-btn-rebook {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 18px;
+    border-radius: 999px;
+    border: 1px solid #6FA0C3;
+    background: #fff;
+    color: #6FA0C3;
+    font-family: Lato, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+#groomer_booking_cancelled_modal .bcm-btn-primary,
+#space_booking_cancelled_modal .bcm-btn-primary {
+    padding: 12px 22px;
+    border-radius: 999px;
+    border: none;
+    background: #3B3731;
+    color: #fff;
+    font-family: Lato, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    #groomer_booking_cancelled_modal .bcm-modal,
+    #space_booking_cancelled_modal .bcm-modal {
+        padding: 28px 20px 20px;
+    }
+
+    #groomer_booking_cancelled_modal .bcm-title,
+    #space_booking_cancelled_modal .bcm-title {
+        font-size: 24px;
+        padding-right: 24px;
+    }
+
+    #groomer_booking_cancelled_modal .bcm-card-top,
+    #space_booking_cancelled_modal .bcm-card-top {
+        flex-direction: column;
+    }
+
+    #groomer_booking_cancelled_modal .bcm-footer,
+    #space_booking_cancelled_modal .bcm-footer {
+        flex-direction: column-reverse;
+        align-items: stretch;
+    }
+
+    #groomer_booking_cancelled_modal .bcm-btn-rebook,
+    #space_booking_cancelled_modal .bcm-btn-rebook,
+    #groomer_booking_cancelled_modal .bcm-btn-primary,
+    #space_booking_cancelled_modal .bcm-btn-primary {
+        justify-content: center;
+        text-align: center;
+    }
+}
+
+/* booking cancelled modal css ends */
