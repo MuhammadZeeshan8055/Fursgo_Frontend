@@ -285,7 +285,7 @@ include_once __DIR__ . '/../components/extras-addons.php';
     </style>
 </head>
 
-<body class="status-cancel">
+<body class="status-cancel my-bookings-page">
 
     <?php include '../components/header.php' ?>
 

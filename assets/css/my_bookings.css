@@ -2,6 +2,15 @@ body {
     background: #FDFCF8;
 }
 
+body.my-bookings-page header {
+    background-color: #FDFCF8;
+    transition: background-color 0.3s ease;
+}
+
+body.my-bookings-page header.scrolled {
+    background-color: #fff;
+}
+
 .top-head.d-flex.align-items-center.justify-content-center {
     padding: 25px 50px;
     border-radius: 10px;
