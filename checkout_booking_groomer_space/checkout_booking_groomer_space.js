@@ -30,6 +30,8 @@
     PROMO25: 3,
   };
 
+  const SPACE_BOOKING_NAME = "Half-day";
+
   const els = {
     stepItems: document.querySelectorAll(".cbg-step-item"),
     stepPanels: document.querySelectorAll(".cbg-step-panel"),
@@ -45,11 +47,19 @@
       selectExisting: document.getElementById("cbgPetSelectExisting"),
     },
     summaryGroomerService: document.getElementById("cbgSummaryGroomerService"),
+    summaryGroomerServiceName: document.getElementById("cbgSummaryGroomerServiceName"),
+    summaryGroomerServiceItemPrice: document.getElementById("cbgSummaryGroomerServiceItemPrice"),
     summaryGroomerExtras: document.getElementById("cbgSummaryGroomerExtras"),
-    summaryGroomerExtrasLine: document.getElementById("cbgSummaryGroomerExtrasLine"),
+    summaryGroomerExtrasBadge: document.getElementById("cbgSummaryGroomerExtrasBadge"),
+    summaryGroomerExtrasList: document.getElementById("cbgSummaryGroomerExtrasList"),
+    summaryGroomerExtrasAccordion: document.getElementById("cbgSummaryGroomerExtrasAccordion"),
     summarySpaceService: document.getElementById("cbgSummarySpaceService"),
+    summarySpaceServiceName: document.getElementById("cbgSummarySpaceServiceName"),
+    summarySpaceServiceItemPrice: document.getElementById("cbgSummarySpaceServiceItemPrice"),
     summarySpaceExtras: document.getElementById("cbgSummarySpaceExtras"),
-    summarySpaceExtrasLine: document.getElementById("cbgSummarySpaceExtrasLine"),
+    summarySpaceExtrasBadge: document.getElementById("cbgSummarySpaceExtrasBadge"),
+    summarySpaceExtrasList: document.getElementById("cbgSummarySpaceExtrasList"),
+    summarySpaceExtrasAccordion: document.getElementById("cbgSummarySpaceExtrasAccordion"),
     summaryTotal: document.getElementById("cbgSummaryTotal"),
   };
 
@@ -94,60 +104,93 @@
     );
   }
 
+  function toggleSummaryAccordion(accordion, show) {
+    if (!accordion) return;
+    const divider = accordion.previousElementSibling;
+    accordion.style.display = show ? "" : "none";
+    if (divider?.classList.contains("cbg-summary-divider")) {
+      divider.style.display = show ? "" : "none";
+    }
+  }
+
   function updateSummary() {
     const groomerExtrasTotal = getGroomerExtrasTotal();
     const groomerExtrasCount = getGroomerExtrasCount();
     const spaceExtrasTotal = getSpaceExtrasTotal();
+    const spaceExtrasCount = selectedSpaceExtraId ? 1 : 0;
+    const groomerServicePriceText = "£" + groomerService.price.toFixed(2);
+    const spaceServicePriceText = "£" + spaceService.price.toFixed(2);
     const total = getPayableTotal();
 
     if (els.summaryGroomerService) {
-      els.summaryGroomerService.textContent =
-        "£" + groomerService.price.toFixed(2);
+      els.summaryGroomerService.textContent = groomerServicePriceText;
     }
-    if (els.summaryGroomerExtrasLine) {
-      els.summaryGroomerExtrasLine.style.display =
-        groomerExtrasCount > 0 ? "flex" : "none";
+    if (els.summaryGroomerServiceName) {
+      els.summaryGroomerServiceName.textContent = groomerService.name;
+    }
+    if (els.summaryGroomerServiceItemPrice) {
+      els.summaryGroomerServiceItemPrice.textContent = groomerServicePriceText;
+    }
+    toggleSummaryAccordion(
+      els.summaryGroomerExtrasAccordion,
+      groomerExtrasCount > 0,
+    );
+    if (els.summaryGroomerExtrasBadge) {
+      els.summaryGroomerExtrasBadge.textContent = String(groomerExtrasCount);
+      els.summaryGroomerExtrasBadge.style.display =
+        groomerExtrasCount > 0 ? "" : "none";
     }
     if (els.summaryGroomerExtras) {
       els.summaryGroomerExtras.textContent =
         "£" + groomerExtrasTotal.toFixed(2);
-      const label = document.getElementById("cbgSummaryGroomerExtrasLabel");
-      if (label) {
-        label.innerHTML =
-          groomerExtrasCount > 0
-            ? "Extra's & Add-Ons (<span style=\"color:#3b3731 !important\"> " +
-              groomerExtrasCount +
-              "  </span>)"
-            : "Extra's & Add-Ons";
-      }
+    }
+    if (els.summaryGroomerExtrasList) {
+      els.summaryGroomerExtrasList.innerHTML = getGroomerAddons()
+        .map(
+          (addon) =>
+            `<li><span>${addon.name}</span><span>£${addon.price.toFixed(2)}</span></li>`,
+        )
+        .join("");
     }
 
     if (els.summarySpaceService) {
-      els.summarySpaceService.textContent =
-        "£" + spaceService.price.toFixed(2);
+      els.summarySpaceService.textContent = spaceServicePriceText;
     }
-    if (els.summarySpaceExtrasLine) {
-      const spaceExtrasCount = selectedSpaceExtraId ? 1 : 0;
-      els.summarySpaceExtrasLine.style.display =
-        spaceExtrasCount > 0 ? "flex" : "none";
+    if (els.summarySpaceServiceName) {
+      els.summarySpaceServiceName.textContent = SPACE_BOOKING_NAME;
+    }
+    if (els.summarySpaceServiceItemPrice) {
+      els.summarySpaceServiceItemPrice.textContent = spaceServicePriceText;
+    }
+    toggleSummaryAccordion(
+      els.summarySpaceExtrasAccordion,
+      spaceExtrasCount > 0,
+    );
+    if (els.summarySpaceExtrasBadge) {
+      els.summarySpaceExtrasBadge.textContent = String(spaceExtrasCount);
+      els.summarySpaceExtrasBadge.style.display =
+        spaceExtrasCount > 0 ? "" : "none";
     }
     if (els.summarySpaceExtras) {
       els.summarySpaceExtras.textContent = "£" + spaceExtrasTotal.toFixed(2);
-      const spaceLabel = document.getElementById("cbgSummarySpaceExtrasLabel");
-      if (spaceLabel) {
-        const spaceExtrasCount = selectedSpaceExtraId ? 1 : 0;
-        spaceLabel.innerHTML =
-          spaceExtrasCount > 0
-            ? "Extra's & Add-Ons (<span style=\"color:#3b3731 !important\"> " +
-              spaceExtrasCount +
-              "  </span>)"
-            : "Extra's & Add-Ons";
-      }
+    }
+    if (els.summarySpaceExtrasList) {
+      const extra = getSelectedSpaceExtra();
+      els.summarySpaceExtrasList.innerHTML = extra
+        ? (() => {
+            const label = extra.unit
+              ? `${extra.name} ${extra.unit}`
+              : extra.name;
+            return `<li><span>${label}</span><span>£${extra.price.toFixed(2)}</span></li>`;
+          })()
+        : "";
     }
 
+    const promoDivider = document.getElementById("cbgSummaryPromoDivider");
     const promoLine = document.getElementById("cbgSummaryPromoLine");
     const promoAmount = document.getElementById("cbgSummaryPromo");
     const promoLabel = document.getElementById("cbgSummaryPromoLabel");
+    if (promoDivider) promoDivider.hidden = !appliedPromo;
     if (promoLine) promoLine.style.display = appliedPromo ? "flex" : "none";
     if (promoAmount) promoAmount.textContent = "-£" + promoDiscount.toFixed(2);
     if (promoLabel && appliedPromo) {
@@ -938,6 +981,12 @@
       head.addEventListener("click", () => {
         const accordion = head.closest(".cbg-review-accordion");
         accordion?.classList.toggle("open");
+      });
+    });
+
+    document.querySelectorAll(".cbg-summary-accordion-head").forEach((head) => {
+      head.addEventListener("click", () => {
+        head.closest(".cbg-summary-accordion")?.classList.toggle("open");
       });
     });
   }

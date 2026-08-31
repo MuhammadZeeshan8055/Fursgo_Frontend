@@ -8,7 +8,7 @@ $groomerImage = BASE_URL . 'assets/images/card1.png';
 $spaceImage = BASE_URL . 'assets/images/booking-space-card-image.svg';
 ?>
 <!DOCTYPE html>
-    <html lang="en">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -959,6 +959,7 @@ $spaceImage = BASE_URL . 'assets/images/booking-space-card-image.svg';
                                         <div class="cbg-summary">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="17" viewBox="0 0 16 17" fill="none">
                                                 <path d="M5.11811 11.8247C6.42024 13.1268 9.58719 12.0714 12.1914 9.46677C14.7961 6.86255 15.8515 3.69563 14.5494 2.39352M8.94947 1.50905L9.53884 2.09884M6.88665 3.57226L7.47603 4.16163M5.11769 5.93015L5.70707 6.51951M4.52832 8.8774L5.11769 9.46677M12.1914 0.625L12.7808 1.21437M11.6021 4.16204L12.7808 5.34078M9.53926 6.22525L10.718 7.40398M7.18134 7.99335L8.36009 9.17209" stroke="#FFC97A" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" />
+                                                <path d="M5.11759 13.5932C5.60592 13.1048 5.60592 12.3131 5.11759 11.8248C4.62927 11.3365 3.83753 11.3365 3.3492 11.8248L0.991347 14.1826C0.503019 14.6709 0.503019 15.4627 0.991347 15.951C1.47967 16.4393 2.27141 16.4393 2.75974 15.951L5.11759 13.5932Z" stroke="#FFC97A" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" />
                                             </svg>
                                             Full Groom
                                         </div>
@@ -966,6 +967,7 @@ $spaceImage = BASE_URL . 'assets/images/booking-space-card-image.svg';
                                             <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" viewBox="0 0 17 16" fill="none">
                                                 <path d="M0.625 7.44553C0.625 4.73816 0.625 3.38411 1.504 2.5434C2.383 1.70268 3.79675 1.70197 6.625 1.70197H9.625C12.4532 1.70197 13.8677 1.70197 14.746 2.5434C15.6242 3.38483 15.625 4.73816 15.625 7.44553V8.88142C15.625 11.5888 15.625 12.9428 14.746 13.7836C13.867 14.6243 12.4532 14.625 9.625 14.625H6.625C3.79675 14.625 2.38225 14.625 1.504 13.7836C0.62575 12.9421 0.625 11.5888 0.625 8.88142V7.44553Z" stroke="#FFC97A" stroke-width="1.25" />
                                                 <path d="M4.375 1.70192V0.625M11.875 1.70192V0.625M1 5.29165H15.25" stroke="#FFC97A" stroke-width="1.25" stroke-linecap="round" />
+                                                <path d="M12.625 11.0353C12.625 11.2257 12.546 11.4083 12.4053 11.5429C12.2647 11.6776 12.0739 11.7532 11.875 11.7532C11.6761 11.7532 11.4853 11.6776 11.3447 11.5429C11.204 11.4083 11.125 11.2257 11.125 11.0353C11.125 10.8448 11.204 10.6622 11.3447 10.5276C11.4853 10.393 11.6761 10.3173 11.875 10.3173C12.0739 10.3173 12.2647 10.393 12.4053 10.5276C12.546 10.6622 12.625 10.8448 12.625 11.0353ZM12.625 8.16347C12.625 8.35388 12.546 8.5365 12.4053 8.67114C12.2647 8.80578 12.0739 8.88142 11.875 8.88142C11.6761 8.88142 11.4853 8.80578 11.3447 8.67114C11.204 8.5365 11.125 8.35388 11.125 8.16347C11.125 7.97306 11.204 7.79045 11.3447 7.65581C11.4853 7.52117 11.6761 7.44553 11.875 7.44553C12.0739 7.44553 12.2647 7.52117 12.4053 7.65581C12.546 7.79045 12.625 7.97306 12.625 8.16347ZM8.875 11.0353C8.875 11.2257 8.79598 11.4083 8.65533 11.5429C8.51468 11.6776 8.32391 11.7532 8.125 11.7532C7.92609 11.7532 7.73532 11.6776 7.59467 11.5429C7.45402 11.4083 7.375 11.2257 7.375 11.0353C7.375 10.8448 7.45402 10.6622 7.59467 10.5276C7.73532 10.393 7.92609 10.3173 8.125 10.3173C8.32391 10.3173 8.51468 10.393 8.65533 10.5276C8.79598 10.6622 8.875 10.8448 8.875 11.0353ZM8.875 8.16347C8.875 8.35388 8.79598 8.5365 8.65533 8.67114C8.51468 8.80578 8.32391 8.88142 8.125 8.88142C7.92609 8.88142 7.73532 8.80578 7.59467 8.67114C7.45402 8.5365 7.375 8.35388 7.375 8.16347C7.375 7.97306 7.45402 7.79045 7.59467 7.65581C7.73532 7.52117 7.92609 7.44553 8.125 7.44553C8.32391 7.44553 8.51468 7.52117 8.65533 7.65581C8.79598 7.79045 8.875 7.97306 8.875 8.16347ZM5.125 11.0353C5.125 11.2257 5.04598 11.4083 4.90533 11.5429C4.76468 11.6776 4.57391 11.7532 4.375 11.7532C4.17609 11.7532 3.98532 11.6776 3.84467 11.5429C3.70402 11.4083 3.625 11.2257 3.625 11.0353C3.625 10.8448 3.70402 10.6622 3.84467 10.5276C3.98532 10.393 4.17609 10.3173 4.375 10.3173C4.57391 10.3173 4.76468 10.393 4.90533 10.5276C5.04598 10.6622 5.125 10.8448 5.125 11.0353ZM5.125 8.16347C5.125 8.35388 5.04598 8.5365 4.90533 8.67114C4.76468 8.80578 4.57391 8.88142 4.375 8.88142C4.17609 8.88142 3.98532 8.80578 3.84467 8.67114C3.70402 8.5365 3.625 8.35388 3.625 8.16347C3.625 7.97306 3.70402 7.79045 3.84467 7.65581C3.98532 7.52117 4.17609 7.44553 4.375 7.44553C4.57391 7.44553 4.76468 7.52117 4.90533 7.65581C5.04598 7.79045 5.125 7.97306 5.125 8.16347Z" fill="#FFC97A" />
                                             </svg>
                                             18 Dec <span> (14:30–15:30) </span>
                                         </div>
@@ -1013,33 +1015,106 @@ $spaceImage = BASE_URL . 'assets/images/booking-space-card-image.svg';
                             </div>
                         </div>
 
-                        <div class="cbg-summary-divider"></div>
+                        <div class="cbg-summary-sections">
+                            <div class="cbg-summary-accordion cbg-summary-accordion--groomer open" id="cbgSummaryGroomerServiceAccordion">
+                                <button type="button" class="cbg-summary-accordion-head">
+                                    <span class="cbg-summary-accordion-title">
+                                        <span class="cbg-summary-dot" aria-hidden="true"></span>
+                                        Service - Groomer
+                                    </span>
+                                    <span class="cbg-summary-accordion-right">
+                                        <span id="cbgSummaryGroomerService" class="cbg-summary-accordion-price">£48.00</span>
+                                        <svg class="cbg-summary-chevron" xmlns="http://www.w3.org/2000/svg" width="14" height="8" viewBox="0 0 14 8" fill="none" aria-hidden="true">
+                                            <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+                                    </span>
+                                </button>
+                                <div class="cbg-summary-accordion-body">
+                                    <ul class="cbg-summary-item-list">
+                                        <li>
+                                            <span id="cbgSummaryGroomerServiceName">Full Groom</span>
+                                            <span id="cbgSummaryGroomerServiceItemPrice">£48.00</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
 
-                        <div class="cbgs-summary-line cbgs-summary-line--groomer">
-                            <span><span class="cbgs-summary-dot cbgs-summary-dot--groomer" aria-hidden="true"></span>Service - Groomer</span>
-                            <span id="cbgSummaryGroomerService" class="font-color">£48.00</span>
-                        </div>
-                        <div class="cbgs-summary-line cbgs-summary-line--groomer" id="cbgSummaryGroomerExtrasLine">
-                            <span><span class="cbgs-summary-dot cbgs-summary-dot--groomer" aria-hidden="true"></span><span id="cbgSummaryGroomerExtrasLabel">Extra's &amp; Add-Ons (<span style="color:#3b3731 !important"> 4 </span>)</span></span>
-                            <span id="cbgSummaryGroomerExtras" class="font-color">£33.00</span>
-                        </div>
-                        <div class="cbgs-summary-line cbgs-summary-line--space">
-                            <span><span class="cbgs-summary-dot cbgs-summary-dot--space" aria-hidden="true"></span>Service - Space</span>
-                            <span id="cbgSummarySpaceService" class="font-color">£60.00</span>
-                        </div>
-                        <div class="cbgs-summary-line cbgs-summary-line--space" id="cbgSummarySpaceExtrasLine">
-                            <span><span class="cbgs-summary-dot cbgs-summary-dot--space" aria-hidden="true"></span><span id="cbgSummarySpaceExtrasLabel">Extra's &amp; Add-Ons (<span style="color:#3b3731 !important"> 1 </span>)</span></span>
-                            <span id="cbgSummarySpaceExtras" class="font-color">£5.00</span>
-                        </div>
-                        <div class="cbg-summary-line" id="cbgSummaryPromoLine" hidden>
-                            <span id="cbgSummaryPromoLabel">Promo (PROMO25)</span>
-                            <span id="cbgSummaryPromo" class="font-color cbg-promo-discount">-£3.00</span>
+                            <div class="cbg-summary-divider" id="cbgSummaryGroomerExtrasDivider"></div>
+
+                            <div class="cbg-summary-accordion cbg-summary-accordion--groomer open" id="cbgSummaryGroomerExtrasAccordion">
+                                <button type="button" class="cbg-summary-accordion-head">
+                                    <span class="cbg-summary-accordion-title">
+                                        <span class="cbg-summary-dot" aria-hidden="true"></span>
+                                        Add-Ons
+                                        <span class="cbg-summary-badge" id="cbgSummaryGroomerExtrasBadge">0</span>
+                                    </span>
+                                    <span class="cbg-summary-accordion-right">
+                                        <span id="cbgSummaryGroomerExtras" class="cbg-summary-accordion-price">£0.00</span>
+                                        <svg class="cbg-summary-chevron" xmlns="http://www.w3.org/2000/svg" width="14" height="8" viewBox="0 0 14 8" fill="none" aria-hidden="true">
+                                            <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+                                    </span>
+                                </button>
+                                <div class="cbg-summary-accordion-body">
+                                    <ul class="cbg-summary-item-list" id="cbgSummaryGroomerExtrasList"></ul>
+                                </div>
+                            </div>
+
+                            <div class="cbg-summary-divider"></div>
+
+                            <div class="cbg-summary-accordion cbg-summary-accordion--space open" id="cbgSummarySpaceServiceAccordion">
+                                <button type="button" class="cbg-summary-accordion-head">
+                                    <span class="cbg-summary-accordion-title">
+                                        <span class="cbg-summary-dot" aria-hidden="true"></span>
+                                        Service
+                                    </span>
+                                    <span class="cbg-summary-accordion-right">
+                                        <span id="cbgSummarySpaceService" class="cbg-summary-accordion-price">£60.00</span>
+                                        <svg class="cbg-summary-chevron" xmlns="http://www.w3.org/2000/svg" width="14" height="8" viewBox="0 0 14 8" fill="none" aria-hidden="true">
+                                            <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+                                    </span>
+                                </button>
+                                <div class="cbg-summary-accordion-body">
+                                    <ul class="cbg-summary-item-list">
+                                        <li>
+                                            <span id="cbgSummarySpaceServiceName">Half-day</span>
+                                            <span id="cbgSummarySpaceServiceItemPrice">£60.00</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="cbg-summary-divider" id="cbgSummarySpaceExtrasDivider"></div>
+
+                            <div class="cbg-summary-accordion cbg-summary-accordion--space open" id="cbgSummarySpaceExtrasAccordion">
+                                <button type="button" class="cbg-summary-accordion-head">
+                                    <span class="cbg-summary-accordion-title">
+                                        <span class="cbg-summary-dot" aria-hidden="true"></span>
+                                        Add-Ons
+                                        <span class="cbg-summary-badge" id="cbgSummarySpaceExtrasBadge">0</span>
+                                    </span>
+                                    <span class="cbg-summary-accordion-right">
+                                        <span id="cbgSummarySpaceExtras" class="cbg-summary-accordion-price">£0.00</span>
+                                        <svg class="cbg-summary-chevron" xmlns="http://www.w3.org/2000/svg" width="14" height="8" viewBox="0 0 14 8" fill="none" aria-hidden="true">
+                                            <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+                                    </span>
+                                </button>
+                                <div class="cbg-summary-accordion-body">
+                                    <ul class="cbg-summary-item-list" id="cbgSummarySpaceExtrasList"></ul>
+                                </div>
+                            </div>
+
+                            <div class="cbg-summary-divider" id="cbgSummaryPromoDivider" hidden></div>
+                            <div class="cbg-summary-line cbg-summary-promo" id="cbgSummaryPromoLine" hidden>
+                                <span id="cbgSummaryPromoLabel">Promo (PROMO25)</span>
+                                <span id="cbgSummaryPromo" class="cbg-promo-discount">-£3.00</span>
+                            </div>
                         </div>
 
-                        <div class="cbg-summary-divider"></div>
-
-                        <div class="cbg-summary-total">
-                            <p>Total:</p>
+                        <div class="cbg-summary-total cbgs-summary-total">
+                            <p>Total</p>
                             <span id="cbgSummaryTotal">£146.00</span>
                         </div>
                     </div>
