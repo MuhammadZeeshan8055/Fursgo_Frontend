@@ -518,7 +518,8 @@ body.cbg-page {
 }
 
 .cbg-pet-card.selected {
-  border-color: #ffc97a;
+  border-color: #FFC97A;
+  background: #FFFDF8;
 }
 
 .cbg-pet-card .cbg-pet-radio {
@@ -1418,7 +1419,7 @@ body.cbg-page {
 }
 
 .cbg-promo-discount {
-  color: #9bba5a !important;
+  color: #9D9B98 !important;
 }
 
 .cbg-promo-pill {
@@ -1427,11 +1428,11 @@ body.cbg-page {
   gap: 10px;
   padding: 6px 12px;
   border-radius: 22px;
-  background: #eff6e0;
+  background: #EFF6E0;
   font-family: Lato, sans-serif;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 600;
-  color: #9bba5a;
+  color: #9BBA5A;
 }
 
 .cbg-promo-pill-remove {
@@ -1809,7 +1810,7 @@ body.cbg-page {
 }
 
 .cbg-summary-padding.groomer-bg {
-  background: #FFF8EE;
+  background: #FFFCF8;
 }
 
 .cbg-summary-padding.space-bg {
@@ -1883,7 +1884,7 @@ body.cbg-page {
   display: flex;
   justify-content: space-between;
   font-family: Lato, sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 600;
   color: #9d9b98;
   margin-bottom: 8px;
@@ -1920,6 +1921,7 @@ body.cbg-page {
   font-size: 18px;
   font-weight: 400;
   color: #3b3731;
+  justify-content: center;
 }
 
 .cbg-need-help a {

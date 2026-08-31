@@ -899,38 +899,61 @@ $studioImage = BASE_URL . 'assets/images/card1.png';
                             </div>
                         </div>
 
-                        <div class="cbg-summary-divider"></div>
-
-                        <div class="cbg-summary-line">
-                            <div>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10" fill="none">
-                                    <circle cx="5" cy="5" r="5" fill="#FFC97A" />
-                                </svg>
-                                &nbsp;&nbsp;
-                                <span>Service</span>
+                        <div class="cbg-summary-sections">
+                            <div class="cbg-summary-accordion open" id="cbgSummaryServiceAccordion">
+                                <button type="button" class="cbg-summary-accordion-head">
+                                    <span class="cbg-summary-accordion-title">
+                                        <span class="cbg-summary-dot" aria-hidden="true"></span>
+                                        Service
+                                    </span>
+                                    <span class="cbg-summary-accordion-right">
+                                        <span id="cbgSummaryService" class="cbg-summary-accordion-price">£40.00</span>
+                                        <svg class="cbg-summary-chevron" xmlns="http://www.w3.org/2000/svg" width="14" height="8" viewBox="0 0 14 8" fill="none" aria-hidden="true">
+                                            <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+                                    </span>
+                                </button>
+                                <div class="cbg-summary-accordion-body">
+                                    <ul class="cbg-summary-item-list">
+                                        <li>
+                                            <span id="cbgSummaryServiceName">Full Groom</span>
+                                            <span id="cbgSummaryServiceItemPrice">£40.00</span>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
-                            <span id="cbgSummaryService" class="font-color">£40.00</span>
-                        </div>
-                        <div class="cbg-summary-line" id="cbgSummaryExtrasLine">
-                            <div>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10" fill="none">
-                                    <circle cx="5" cy="5" r="5" fill="#FFC97A" />
-                                </svg>
-                                &nbsp;&nbsp;
-                                <span id="cbgSummaryExtrasLabel">Extras & Add-Ons (4)</span>
+
+                            <div class="cbg-summary-divider"></div>
+
+                            <div class="cbg-summary-accordion open" id="cbgSummaryExtrasAccordion">
+                                <button type="button" class="cbg-summary-accordion-head">
+                                    <span class="cbg-summary-accordion-title">
+                                        <span class="cbg-summary-dot" aria-hidden="true"></span>
+                                        Add-Ons
+                                        <span class="cbg-summary-badge" id="cbgSummaryExtrasBadge">0</span>
+                                    </span>
+                                    <span class="cbg-summary-accordion-right">
+                                        <span id="cbgSummaryExtras" class="cbg-summary-accordion-price">£0.00</span>
+                                        <svg class="cbg-summary-chevron" xmlns="http://www.w3.org/2000/svg" width="14" height="8" viewBox="0 0 14 8" fill="none" aria-hidden="true">
+                                            <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+                                    </span>
+                                </button>
+                                <div class="cbg-summary-accordion-body">
+                                    <ul class="cbg-summary-item-list" id="cbgSummaryExtrasList"></ul>
+                                </div>
                             </div>
-                            <span id="cbgSummaryExtras" class="font-color">£36.00</span>
-                        </div>
-                        <div class="cbg-summary-line" id="cbgSummaryPromoLine" hidden>
-                            <span id="cbgSummaryPromoLabel">Promo (PROMO25)</span>
-                            <span id="cbgSummaryPromo" class="font-color cbg-promo-discount">-£3.00</span>
+
+                            <div class="cbg-summary-divider" id="cbgSummaryPromoDivider" hidden></div>
+                            <div class="cbg-summary-line cbg-summary-promo" id="cbgSummaryPromoLine" hidden>
+                                <span id="cbgSummaryPromoLabel">Promo (PROMO25)</span>
+                                <span id="cbgSummaryPromo" class="cbg-promo-discount">-£3.00</span>
+                            </div>
                         </div>
 
-                        <div class="cbg-summary-divider"></div>
-
-                        <div class="cbg-summary-total">
-                            <p>Total:</p>
-                            <span id="cbgSummaryTotal">£76.00</span>
+                        <div class="cbg-summary-total groomer-bg">
+                            <p>Total</p>
+                            <span id="cbgSummaryTotal">£40.00</span>
                         </div>
                     </div>
 

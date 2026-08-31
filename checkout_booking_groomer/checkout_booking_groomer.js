@@ -36,8 +36,11 @@
     },
     summaryService: document.getElementById("cbgSummaryService"),
     summaryServiceName: document.getElementById("cbgSummaryServiceName"),
+    summaryServiceItemPrice: document.getElementById("cbgSummaryServiceItemPrice"),
     summaryExtras: document.getElementById("cbgSummaryExtras"),
-    summaryExtrasLine: document.getElementById("cbgSummaryExtrasLine"),
+    summaryExtrasBadge: document.getElementById("cbgSummaryExtrasBadge"),
+    summaryExtrasList: document.getElementById("cbgSummaryExtrasList"),
+    summaryExtrasAccordion: document.getElementById("cbgSummaryExtrasAccordion"),
     summaryTotal: document.getElementById("cbgSummaryTotal"),
   };
 
@@ -59,29 +62,52 @@
   function updateSummary() {
     const extrasTotal = getAddonsTotal();
     const extrasCount = getAddonsCount();
+    const servicePriceText = "£" + selectedService.price.toFixed(2);
     const total = Math.max(
       0,
       selectedService.price + extrasTotal - promoDiscount,
     );
 
     if (els.summaryService) {
-      els.summaryService.textContent = "£" + selectedService.price.toFixed(2);
+      els.summaryService.textContent = servicePriceText;
     }
     if (els.summaryServiceName) {
       els.summaryServiceName.textContent = selectedService.name;
     }
-    if (els.summaryExtrasLine) {
-      els.summaryExtrasLine.style.display = extrasCount > 0 ? "flex" : "none";
+    if (els.summaryServiceItemPrice) {
+      els.summaryServiceItemPrice.textContent = servicePriceText;
+    }
+    if (els.summaryExtrasAccordion) {
+      const showExtras = extrasCount > 0;
+      const divider = els.summaryExtrasAccordion.previousElementSibling;
+      els.summaryExtrasAccordion.style.display = showExtras ? "" : "none";
+      if (divider?.classList.contains("cbg-summary-divider")) {
+        divider.style.display = showExtras ? "" : "none";
+      }
+    }
+    if (els.summaryExtrasBadge) {
+      els.summaryExtrasBadge.textContent = String(extrasCount);
+      els.summaryExtrasBadge.style.display = extrasCount > 0 ? "" : "none";
     }
     if (els.summaryExtras) {
       els.summaryExtras.textContent = "£" + extrasTotal.toFixed(2);
-      const label = document.getElementById("cbgSummaryExtrasLabel");
-      if (label) label.textContent = "Extras & Add-Ons (" + extrasCount + ")";
+    }
+    if (els.summaryExtrasList) {
+      const api = getAddonsApi();
+      const addons = api ? api.getAddons() : [];
+      els.summaryExtrasList.innerHTML = addons
+        .map(
+          (addon) =>
+            `<li><span>${addon.name}</span><span>£${addon.price.toFixed(2)}</span></li>`,
+        )
+        .join("");
     }
 
+    const promoDivider = document.getElementById("cbgSummaryPromoDivider");
     const promoLine = document.getElementById("cbgSummaryPromoLine");
     const promoAmount = document.getElementById("cbgSummaryPromo");
     const promoLabel = document.getElementById("cbgSummaryPromoLabel");
+    if (promoDivider) promoDivider.hidden = !appliedPromo;
     if (promoLine) promoLine.style.display = appliedPromo ? "flex" : "none";
     if (promoAmount) promoAmount.textContent = "-£" + promoDiscount.toFixed(2);
     if (promoLabel && appliedPromo)
@@ -914,6 +940,12 @@
       head.addEventListener("click", () => {
         const accordion = head.closest(".cbg-review-accordion");
         accordion?.classList.toggle("open");
+      });
+    });
+
+    document.querySelectorAll(".cbg-summary-accordion-head").forEach((head) => {
+      head.addEventListener("click", () => {
+        head.closest(".cbg-summary-accordion")?.classList.toggle("open");
       });
     });
   }
