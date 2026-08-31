@@ -31,10 +31,6 @@
         <path d="M0.75 4.75L4.25 8.25L11.25 0.75" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
     </svg>`;
 
-    const lockedSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="21" viewBox="0 0 16 21" fill="none">
-        <path d="M2 21C1.45 21 0.979333 20.8043 0.588 20.413C0.196666 20.0217 0.000666667 19.5507 0 19V9C0 8.45 0.196 7.97933 0.588 7.588C0.98 7.19667 1.45067 7.00067 2 7H3V5C3 3.61667 3.48767 2.43767 4.463 1.463C5.43833 0.488334 6.61733 0.000667349 8 6.82594e-07C9.38267 -0.000665984 10.562 0.487001 11.538 1.463C12.514 2.439 13.0013 3.618 13 5V7H14C14.55 7 15.021 7.196 15.413 7.588C15.805 7.98 16.0007 8.45067 16 9V19C16 19.55 15.8043 20.021 15.413 20.413C15.0217 20.805 14.5507 21.0007 14 21H2ZM2 19H14V9H2V19ZM8 16C8.55 16 9.021 15.8043 9.413 15.413C9.805 15.0217 10.0007 14.5507 10 14C9.99933 13.4493 9.80367 12.9787 9.413 12.588C9.02233 12.1973 8.55133 12.0013 8 12C7.44867 11.9987 6.978 12.1947 6.588 12.588C6.198 12.9813 6.002 13.452 6 14C5.998 14.548 6.194 15.019 6.588 15.413C6.982 15.807 7.45267 16.0027 8 16ZM5 7H11V5C11 4.16667 10.7083 3.45833 10.125 2.875C9.54167 2.29167 8.83333 2 8 2C7.16667 2 6.45833 2.29167 5.875 2.875C5.29167 3.45833 5 4.16667 5 5V7Z" fill="#D4D4D4" />
-    </svg>`;
-
     const sendSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
         <path d="M18.2448 0.0763204C19.2868 -0.287756 20.2878 0.713198 19.9237 1.75518L13.8471 19.118C13.4522 20.2441 11.8831 20.3077 11.399 19.2175L8.46685 12.6211L12.5938 8.49316C12.7297 8.34735 12.8036 8.15449 12.8001 7.95522C12.7966 7.75595 12.7159 7.56583 12.575 7.4249C12.434 7.28398 12.2439 7.20325 12.0446 7.19974C11.8454 7.19622 11.6525 7.27019 11.5067 7.40605L7.3787 11.5329L0.782123 8.60084C-0.308075 8.11575 -0.243464 6.54765 0.881605 6.15281L18.2448 0.0763204Z" fill="white" />
     </svg>`;
@@ -107,17 +103,14 @@
         }
 
         if (activeFilter === 'active-bookings') {
-            return conversation.locked !== true;
+            return true;
         }
 
         return true;
     }
 
     function sortConversations(list) {
-        const byActivity = (a, b) => (b.lastActivityAt || 0) - (a.lastActivityAt || 0);
-        const open = list.filter((conversation) => !conversation.locked).sort(byActivity);
-        const locked = list.filter((conversation) => conversation.locked).sort(byActivity);
-        return [...open, ...locked];
+        return [...list].sort((a, b) => (b.lastActivityAt || 0) - (a.lastActivityAt || 0));
     }
 
     function getVisibleConversations(tabId) {
@@ -166,8 +159,7 @@
     }
 
     function renderChatListCard(conversation) {
-        const { list, locked } = conversation;
-        const shouldLookLocked = locked && list.lockedAppearance !== false;
+        const { list } = conversation;
         const countMarkup = list.count
             ? `<p class="messages-count light-color-font">${list.count}</p>`
             : '';
@@ -175,7 +167,7 @@
 
         return `
             ${list.dividerBefore ? '<div class="section-divider mt-2 mb-2"></div>' : ''}
-            <div class="chat-card${shouldLookLocked ? ' locked' : ''}${list.unread ? ' unread' : ''} cursor d-flex align-items-center gap-20${marginClass}" data-conversation-id="${conversation.id}">
+            <div class="chat-card${list.unread ? ' unread' : ''} cursor d-flex align-items-center gap-20${marginClass}" data-conversation-id="${conversation.id}">
                 <div class="profile-pic">
                     <div class="profile-image-wrapper">
                         <img src="${list.image}" class="rounded-image" alt="">
@@ -307,7 +299,7 @@
     }
 
     function renderMessages(chat) {
-        messagesRoot.classList.toggle('locked', chat.locked);
+        messagesRoot.classList.remove('locked');
         messagesRoot.innerHTML = `${chat.messages.map((message) => `
             <div class="message ${message.type}">
                 <div class="bubble">
@@ -396,25 +388,12 @@
         chatBox.innerHTML = `
             <div class="preview-row" id="previewRow"></div>
             <div class="message-row">
-                <div class="message-input${chat.locked ? ' locked' : ''}">
-                    ${chat.locked ? `
-                        <div class="textarea-wrapper">
-                            <p class="normal-font-bold">Chat Unavailable</p><br>
-                            <span class="normal-font-weight">This booking has been completed, and the 3-day messaging window has now passed.</span>
-                        </div>
-                    ` : `
-                        <textarea id="message" placeholder="Write a message ..." maxlength="3000"></textarea>
-                    `}
+                <div class="message-input">
+                    <textarea id="message" placeholder="Write a message ..." maxlength="3000"></textarea>
                 </div>
-                ${chat.locked
-                    ? lockedSvg
-                    : `<button class="send-btn" id="sendBtn">${sendSvg}</button>`
-                }
+                <button class="send-btn" id="sendBtn">${sendSvg}</button>
             </div>
-            ${chat.locked
-                ? attachmentActions.replaceAll('class="action dark-color-font"', 'class="action dark-color-font muted-color"')
-                : attachmentActions
-            }
+            ${attachmentActions}
         `;
 
         footerNote.textContent = chat.footerNote;
@@ -477,8 +456,7 @@
 
         const isSameChat = activeConversationId === conversationId;
         const screenDetail = {
-            ...conversation.detail,
-            locked: conversation.locked
+            ...conversation.detail
         };
 
         activeConversationId = conversationId;

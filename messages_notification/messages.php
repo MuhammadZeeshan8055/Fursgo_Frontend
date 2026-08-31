@@ -234,7 +234,7 @@
 
                                             </div>
                                             <div class="section-divider mt-2 mb-2"></div>
-                                            <div class="chat-card locked cursor d-flex align-items-center gap-20">
+                                            <div class="chat-card cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
                                                     <div class="profile-image-wrapper">
@@ -269,7 +269,7 @@
 
                                             </div>
                                             <div class="section-divider mt-2 mb-2"></div>
-                                            <div class="chat-card locked cursor d-flex align-items-center gap-20">
+                                            <div class="chat-card cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
                                                     <div class="profile-image-wrapper">
@@ -298,7 +298,7 @@
 
                                             </div>
                                             <div class="section-divider mt-2 mb-2"></div>
-                                            <div class="chat-card locked cursor d-flex align-items-center gap-20">
+                                            <div class="chat-card cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
                                                     <div class="profile-image-wrapper">
@@ -333,7 +333,7 @@
 
                                             </div>
                                             <div class="section-divider mt-2 mb-2"></div>
-                                            <div class="chat-card locked cursor d-flex align-items-center gap-20">
+                                            <div class="chat-card cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
                                                     <div class="profile-image-wrapper">
@@ -362,7 +362,7 @@
 
                                             </div>
                                             <div class="section-divider mt-2 mb-2"></div>
-                                            <div class="chat-card locked cursor d-flex align-items-center gap-20">
+                                            <div class="chat-card cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
                                                     <div class="profile-image-wrapper">
@@ -397,7 +397,7 @@
 
                                             </div>
                                             <div class="section-divider mt-2 mb-2"></div>
-                                            <div class="chat-card locked cursor d-flex align-items-center gap-20">
+                                            <div class="chat-card cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
                                                     <div class="profile-image-wrapper">
@@ -426,7 +426,7 @@
 
                                             </div>
                                             <div class="section-divider mt-2 mb-2"></div>
-                                            <div class="chat-card locked cursor d-flex align-items-center gap-20">
+                                            <div class="chat-card cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
                                                     <div class="profile-image-wrapper">
@@ -461,7 +461,7 @@
 
                                             </div>
                                             <div class="section-divider mt-2 mb-2"></div>
-                                            <div class="chat-card locked cursor d-flex align-items-center gap-20">
+                                            <div class="chat-card cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
                                                     <div class="profile-image-wrapper">
@@ -490,7 +490,7 @@
 
                                             </div>
                                             <div class="section-divider mt-2 mb-2"></div>
-                                            <div class="chat-card locked cursor d-flex align-items-center gap-20">
+                                            <div class="chat-card cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
                                                     <div class="profile-image-wrapper">
@@ -525,7 +525,7 @@
 
                                             </div>
                                             <div class="section-divider mt-2 mb-2"></div>
-                                            <div class="chat-card locked cursor d-flex align-items-center gap-20">
+                                            <div class="chat-card cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
                                                     <div class="profile-image-wrapper">
@@ -554,7 +554,7 @@
 
                                             </div>
                                             <div class="section-divider mt-2 mb-2"></div>
-                                            <div class="chat-card locked cursor d-flex align-items-center gap-20">
+                                            <div class="chat-card cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
                                                     <div class="profile-image-wrapper">
@@ -589,7 +589,7 @@
 
                                             </div>
                                             <div class="section-divider mt-2 mb-2"></div>
-                                            <div class="chat-card locked cursor d-flex align-items-center gap-20">
+                                            <div class="chat-card cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
                                                     <div class="profile-image-wrapper">
@@ -618,7 +618,7 @@
 
                                             </div>
                                             <div class="section-divider mt-2 mb-2"></div>
-                                            <div class="chat-card locked cursor d-flex align-items-center gap-20">
+                                            <div class="chat-card cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
                                                     <div class="profile-image-wrapper">
@@ -653,7 +653,7 @@
 
                                             </div>
                                             <div class="section-divider mt-2 mb-2"></div>
-                                            <div class="chat-card locked cursor d-flex align-items-center gap-20">
+                                            <div class="chat-card cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
                                                     <div class="profile-image-wrapper">
@@ -682,7 +682,7 @@
 
                                             </div>
                                             <div class="section-divider mt-2 mb-2"></div>
-                                            <div class="chat-card locked cursor d-flex align-items-center gap-20">
+                                            <div class="chat-card cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
                                                     <div class="profile-image-wrapper">
@@ -717,7 +717,7 @@
 
                                             </div>
                                             <div class="section-divider mt-2 mb-2"></div>
-                                            <div class="chat-card locked cursor d-flex align-items-center gap-20">
+                                            <div class="chat-card cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
                                                     <div class="profile-image-wrapper">
@@ -746,7 +746,7 @@
 
                                             </div>
                                             <div class="section-divider mt-2 mb-2"></div>
-                                            <div class="chat-card locked cursor d-flex align-items-center gap-20">
+                                            <div class="chat-card cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
                                                     <div class="profile-image-wrapper">
@@ -781,7 +781,7 @@
 
                                             </div>
                                             <div class="section-divider mt-2 mb-2"></div>
-                                            <div class="chat-card locked cursor d-flex align-items-center gap-20">
+                                            <div class="chat-card cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
                                                     <div class="profile-image-wrapper">
@@ -810,7 +810,7 @@
 
                                             </div>
                                             <div class="section-divider mt-2 mb-2"></div>
-                                            <div class="chat-card locked cursor d-flex align-items-center gap-20">
+                                            <div class="chat-card cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
                                                     <div class="profile-image-wrapper">
@@ -845,7 +845,7 @@
 
                                             </div>
                                             <div class="section-divider mt-2 mb-2"></div>
-                                            <div class="chat-card locked cursor d-flex align-items-center gap-20">
+                                            <div class="chat-card cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
                                                     <div class="profile-image-wrapper">
@@ -874,7 +874,7 @@
 
                                             </div>
                                             <div class="section-divider mt-2 mb-2"></div>
-                                            <div class="chat-card locked cursor d-flex align-items-center gap-20">
+                                            <div class="chat-card cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
                                                     <div class="profile-image-wrapper">
@@ -909,7 +909,7 @@
 
                                             </div>
                                             <div class="section-divider mt-2 mb-2"></div>
-                                            <div class="chat-card locked cursor d-flex align-items-center gap-20">
+                                            <div class="chat-card cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
                                                     <div class="profile-image-wrapper">
@@ -938,7 +938,7 @@
 
                                             </div>
                                             <div class="section-divider mt-2 mb-2"></div>
-                                            <div class="chat-card locked cursor d-flex align-items-center gap-20">
+                                            <div class="chat-card cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
                                                     <div class="profile-image-wrapper">
@@ -973,7 +973,7 @@
 
                                             </div>
                                             <div class="section-divider mt-2 mb-2"></div>
-                                            <div class="chat-card locked cursor d-flex align-items-center gap-20">
+                                            <div class="chat-card cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
                                                     <div class="profile-image-wrapper">
@@ -1002,7 +1002,7 @@
 
                                             </div>
                                             <div class="section-divider mt-2 mb-2"></div>
-                                            <div class="chat-card locked cursor d-flex align-items-center gap-20">
+                                            <div class="chat-card cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
                                                     <div class="profile-image-wrapper">
@@ -1037,7 +1037,7 @@
 
                                             </div>
                                             <div class="section-divider mt-2 mb-2"></div>
-                                            <div class="chat-card locked cursor d-flex align-items-center gap-20">
+                                            <div class="chat-card cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
                                                     <div class="profile-image-wrapper">
@@ -1066,7 +1066,7 @@
 
                                             </div>
                                             <div class="section-divider mt-2 mb-2"></div>
-                                            <div class="chat-card locked cursor d-flex align-items-center gap-20">
+                                            <div class="chat-card cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
                                                     <div class="profile-image-wrapper">
@@ -1101,7 +1101,7 @@
 
                                             </div>
                                             <div class="section-divider mt-2 mb-2"></div>
-                                            <div class="chat-card locked cursor d-flex align-items-center gap-20">
+                                            <div class="chat-card cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
                                                     <div class="profile-image-wrapper">
@@ -1130,7 +1130,7 @@
 
                                             </div>
                                             <div class="section-divider mt-2 mb-2"></div>
-                                            <div class="chat-card locked cursor d-flex align-items-center gap-20">
+                                            <div class="chat-card cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
                                                     <div class="profile-image-wrapper">
@@ -1165,7 +1165,7 @@
 
                                             </div>
                                             <div class="section-divider mt-2 mb-2"></div>
-                                            <div class="chat-card locked cursor d-flex align-items-center gap-20">
+                                            <div class="chat-card cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
                                                     <div class="profile-image-wrapper">
@@ -1194,7 +1194,7 @@
 
                                             </div>
                                             <div class="section-divider mt-2 mb-2"></div>
-                                            <div class="chat-card locked cursor d-flex align-items-center gap-20">
+                                            <div class="chat-card cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
                                                     <div class="profile-image-wrapper">
@@ -1229,7 +1229,7 @@
 
                                             </div>
                                             <div class="section-divider mt-2 mb-2"></div>
-                                            <div class="chat-card locked cursor d-flex align-items-center gap-20">
+                                            <div class="chat-card cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
                                                     <div class="profile-image-wrapper">
@@ -1258,7 +1258,7 @@
 
                                             </div>
                                             <div class="section-divider mt-2 mb-2"></div>
-                                            <div class="chat-card locked cursor d-flex align-items-center gap-20">
+                                            <div class="chat-card cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
                                                     <div class="profile-image-wrapper">
@@ -1293,7 +1293,7 @@
 
                                             </div>
                                             <div class="section-divider mt-2 mb-2"></div>
-                                            <div class="chat-card locked cursor d-flex align-items-center gap-20">
+                                            <div class="chat-card cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
                                                     <div class="profile-image-wrapper">
@@ -1322,7 +1322,7 @@
 
                                             </div>
                                             <div class="section-divider mt-2 mb-2"></div>
-                                            <div class="chat-card locked cursor d-flex align-items-center gap-20">
+                                            <div class="chat-card cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
                                                     <div class="profile-image-wrapper">
@@ -1357,7 +1357,7 @@
 
                                             </div>
                                             <div class="section-divider mt-2 mb-2"></div>
-                                            <div class="chat-card locked cursor d-flex align-items-center gap-20">
+                                            <div class="chat-card cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
                                                     <div class="profile-image-wrapper">
@@ -1386,7 +1386,7 @@
 
                                             </div>
                                             <div class="section-divider mt-2 mb-2"></div>
-                                            <div class="chat-card locked cursor d-flex align-items-center gap-20">
+                                            <div class="chat-card cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
                                                     <div class="profile-image-wrapper">
@@ -1421,7 +1421,7 @@
 
                                             </div>
                                             <div class="section-divider mt-2 mb-2"></div>
-                                            <div class="chat-card locked cursor d-flex align-items-center gap-20">
+                                            <div class="chat-card cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
                                                     <div class="profile-image-wrapper">
@@ -1450,7 +1450,7 @@
 
                                             </div>
                                             <div class="section-divider mt-2 mb-2"></div>
-                                            <div class="chat-card locked cursor d-flex align-items-center gap-20">
+                                            <div class="chat-card cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
                                                     <div class="profile-image-wrapper">
@@ -1485,7 +1485,7 @@
 
                                             </div>
                                             <div class="section-divider mt-2 mb-2"></div>
-                                            <div class="chat-card locked cursor d-flex align-items-center gap-20">
+                                            <div class="chat-card cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
                                                     <div class="profile-image-wrapper">
@@ -1514,7 +1514,7 @@
 
                                             </div>
                                             <div class="section-divider mt-2 mb-2"></div>
-                                            <div class="chat-card locked cursor d-flex align-items-center gap-20">
+                                            <div class="chat-card cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
                                                     <div class="profile-image-wrapper">
@@ -1549,7 +1549,7 @@
 
                                             </div>
                                             <div class="section-divider mt-2 mb-2"></div>
-                                            <div class="chat-card locked cursor d-flex align-items-center gap-20">
+                                            <div class="chat-card cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
                                                     <div class="profile-image-wrapper">
@@ -1578,7 +1578,7 @@
 
                                             </div>
                                             <div class="section-divider mt-2 mb-2"></div>
-                                            <div class="chat-card locked cursor d-flex align-items-center gap-20">
+                                            <div class="chat-card cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
                                                     <div class="profile-image-wrapper">
@@ -1613,7 +1613,7 @@
 
                                             </div>
                                             <div class="section-divider mt-2 mb-2"></div>
-                                            <div class="chat-card locked cursor d-flex align-items-center gap-20">
+                                            <div class="chat-card cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
                                                     <div class="profile-image-wrapper">
@@ -1789,7 +1789,7 @@
 
                                             </div>
                                             <div class="section-divider mt-2 mb-2"></div>
-                                            <div class="chat-card locked cursor d-flex align-items-center gap-20">
+                                            <div class="chat-card cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
                                                     <div class="profile-image-wrapper">
@@ -1824,7 +1824,7 @@
 
                                             </div>
                                             <div class="section-divider mt-2 mb-2"></div>
-                                            <div class="chat-card locked cursor d-flex align-items-center gap-20">
+                                            <div class="chat-card cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
                                                     <div class="profile-image-wrapper">
@@ -1853,7 +1853,7 @@
 
                                             </div>
                                             <div class="section-divider mt-2 mb-2"></div>
-                                            <div class="chat-card locked cursor d-flex align-items-center gap-20">
+                                            <div class="chat-card cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
                                                     <div class="profile-image-wrapper">
@@ -1888,7 +1888,7 @@
 
                                             </div>
                                             <div class="section-divider mt-2 mb-2"></div>
-                                            <div class="chat-card locked cursor d-flex align-items-center gap-20">
+                                            <div class="chat-card cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
                                                     <div class="profile-image-wrapper">
@@ -1917,7 +1917,7 @@
 
                                             </div>
                                             <div class="section-divider mt-2 mb-2"></div>
-                                            <div class="chat-card locked cursor d-flex align-items-center gap-20">
+                                            <div class="chat-card cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
                                                     <div class="profile-image-wrapper">
@@ -1952,7 +1952,7 @@
 
                                             </div>
                                             <div class="section-divider mt-2 mb-2"></div>
-                                            <div class="chat-card locked cursor d-flex align-items-center gap-20">
+                                            <div class="chat-card cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
                                                     <div class="profile-image-wrapper">
@@ -1981,7 +1981,7 @@
 
                                             </div>
                                             <div class="section-divider mt-2 mb-2"></div>
-                                            <div class="chat-card locked cursor d-flex align-items-center gap-20">
+                                            <div class="chat-card cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
                                                     <div class="profile-image-wrapper">
@@ -2016,7 +2016,7 @@
 
                                             </div>
                                             <div class="section-divider mt-2 mb-2"></div>
-                                            <div class="chat-card locked cursor d-flex align-items-center gap-20">
+                                            <div class="chat-card cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
                                                     <div class="profile-image-wrapper">
@@ -2045,7 +2045,7 @@
 
                                             </div>
                                             <div class="section-divider mt-2 mb-2"></div>
-                                            <div class="chat-card locked cursor d-flex align-items-center gap-20">
+                                            <div class="chat-card cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
                                                     <div class="profile-image-wrapper">
@@ -2080,7 +2080,7 @@
 
                                             </div>
                                             <div class="section-divider mt-2 mb-2"></div>
-                                            <div class="chat-card locked cursor d-flex align-items-center gap-20">
+                                            <div class="chat-card cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
                                                     <div class="profile-image-wrapper">
@@ -2109,7 +2109,7 @@
 
                                             </div>
                                             <div class="section-divider mt-2 mb-2"></div>
-                                            <div class="chat-card locked cursor d-flex align-items-center gap-20">
+                                            <div class="chat-card cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
                                                     <div class="profile-image-wrapper">
@@ -2144,7 +2144,7 @@
 
                                             </div>
                                             <div class="section-divider mt-2 mb-2"></div>
-                                            <div class="chat-card locked cursor d-flex align-items-center gap-20">
+                                            <div class="chat-card cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
                                                     <div class="profile-image-wrapper">
@@ -2173,7 +2173,7 @@
 
                                             </div>
                                             <div class="section-divider mt-2 mb-2"></div>
-                                            <div class="chat-card locked cursor d-flex align-items-center gap-20">
+                                            <div class="chat-card cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
                                                     <div class="profile-image-wrapper">
@@ -2208,7 +2208,7 @@
 
                                             </div>
                                             <div class="section-divider mt-2 mb-2"></div>
-                                            <div class="chat-card locked cursor d-flex align-items-center gap-20">
+                                            <div class="chat-card cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
                                                     <div class="profile-image-wrapper">
@@ -2237,7 +2237,7 @@
 
                                             </div>
                                             <div class="section-divider mt-2 mb-2"></div>
-                                            <div class="chat-card locked cursor d-flex align-items-center gap-20">
+                                            <div class="chat-card cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
                                                     <div class="profile-image-wrapper">
@@ -2272,7 +2272,7 @@
 
                                             </div>
                                             <div class="section-divider mt-2 mb-2"></div>
-                                            <div class="chat-card locked cursor d-flex align-items-center gap-20">
+                                            <div class="chat-card cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
                                                     <div class="profile-image-wrapper">
@@ -2301,7 +2301,7 @@
 
                                             </div>
                                             <div class="section-divider mt-2 mb-2"></div>
-                                            <div class="chat-card locked cursor d-flex align-items-center gap-20">
+                                            <div class="chat-card cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
                                                     <div class="profile-image-wrapper">
@@ -2336,7 +2336,7 @@
 
                                             </div>
                                             <div class="section-divider mt-2 mb-2"></div>
-                                            <div class="chat-card locked cursor d-flex align-items-center gap-20">
+                                            <div class="chat-card cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
                                                     <div class="profile-image-wrapper">
@@ -2365,7 +2365,7 @@
 
                                             </div>
                                             <div class="section-divider mt-2 mb-2"></div>
-                                            <div class="chat-card locked cursor d-flex align-items-center gap-20">
+                                            <div class="chat-card cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
                                                     <div class="profile-image-wrapper">
@@ -2400,7 +2400,7 @@
 
                                             </div>
                                             <div class="section-divider mt-2 mb-2"></div>
-                                            <div class="chat-card locked cursor d-flex align-items-center gap-20">
+                                            <div class="chat-card cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
                                                     <div class="profile-image-wrapper">
@@ -2429,7 +2429,7 @@
 
                                             </div>
                                             <div class="section-divider mt-2 mb-2"></div>
-                                            <div class="chat-card locked cursor d-flex align-items-center gap-20">
+                                            <div class="chat-card cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
                                                     <div class="profile-image-wrapper">
@@ -2464,7 +2464,7 @@
 
                                             </div>
                                             <div class="section-divider mt-2 mb-2"></div>
-                                            <div class="chat-card locked cursor d-flex align-items-center gap-20">
+                                            <div class="chat-card cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
                                                     <div class="profile-image-wrapper">
@@ -2493,7 +2493,7 @@
 
                                             </div>
                                             <div class="section-divider mt-2 mb-2"></div>
-                                            <div class="chat-card locked cursor d-flex align-items-center gap-20">
+                                            <div class="chat-card cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
                                                     <div class="profile-image-wrapper">
@@ -2528,7 +2528,7 @@
 
                                             </div>
                                             <div class="section-divider mt-2 mb-2"></div>
-                                            <div class="chat-card locked cursor d-flex align-items-center gap-20">
+                                            <div class="chat-card cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
                                                     <div class="profile-image-wrapper">
@@ -2557,7 +2557,7 @@
 
                                             </div>
                                             <div class="section-divider mt-2 mb-2"></div>
-                                            <div class="chat-card locked cursor d-flex align-items-center gap-20">
+                                            <div class="chat-card cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
                                                     <div class="profile-image-wrapper">
@@ -2592,7 +2592,7 @@
 
                                             </div>
                                             <div class="section-divider mt-2 mb-2"></div>
-                                            <div class="chat-card locked cursor d-flex align-items-center gap-20">
+                                            <div class="chat-card cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
                                                     <div class="profile-image-wrapper">
@@ -2621,7 +2621,7 @@
 
                                             </div>
                                             <div class="section-divider mt-2 mb-2"></div>
-                                            <div class="chat-card locked cursor d-flex align-items-center gap-20">
+                                            <div class="chat-card cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
                                                     <div class="profile-image-wrapper">
@@ -2656,7 +2656,7 @@
 
                                             </div>
                                             <div class="section-divider mt-2 mb-2"></div>
-                                            <div class="chat-card locked cursor d-flex align-items-center gap-20">
+                                            <div class="chat-card cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
                                                     <div class="profile-image-wrapper">
@@ -2685,7 +2685,7 @@
 
                                             </div>
                                             <div class="section-divider mt-2 mb-2"></div>
-                                            <div class="chat-card locked cursor d-flex align-items-center gap-20">
+                                            <div class="chat-card cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
                                                     <div class="profile-image-wrapper">
@@ -2720,7 +2720,7 @@
 
                                             </div>
                                             <div class="section-divider mt-2 mb-2"></div>
-                                            <div class="chat-card locked cursor d-flex align-items-center gap-20">
+                                            <div class="chat-card cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
                                                     <div class="profile-image-wrapper">
@@ -2749,7 +2749,7 @@
 
                                             </div>
                                             <div class="section-divider mt-2 mb-2"></div>
-                                            <div class="chat-card locked cursor d-flex align-items-center gap-20">
+                                            <div class="chat-card cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
                                                     <div class="profile-image-wrapper">
@@ -2784,7 +2784,7 @@
 
                                             </div>
                                             <div class="section-divider mt-2 mb-2"></div>
-                                            <div class="chat-card locked cursor d-flex align-items-center gap-20">
+                                            <div class="chat-card cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
                                                     <div class="profile-image-wrapper">
@@ -2813,7 +2813,7 @@
 
                                             </div>
                                             <div class="section-divider mt-2 mb-2"></div>
-                                            <div class="chat-card locked cursor d-flex align-items-center gap-20">
+                                            <div class="chat-card cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
                                                     <div class="profile-image-wrapper">
@@ -2848,7 +2848,7 @@
 
                                             </div>
                                             <div class="section-divider mt-2 mb-2"></div>
-                                            <div class="chat-card locked cursor d-flex align-items-center gap-20">
+                                            <div class="chat-card cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
                                                     <div class="profile-image-wrapper">
@@ -2877,7 +2877,7 @@
 
                                             </div>
                                             <div class="section-divider mt-2 mb-2"></div>
-                                            <div class="chat-card locked cursor d-flex align-items-center gap-20">
+                                            <div class="chat-card cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
                                                     <div class="profile-image-wrapper">
@@ -2912,7 +2912,7 @@
 
                                             </div>
                                             <div class="section-divider mt-2 mb-2"></div>
-                                            <div class="chat-card locked cursor d-flex align-items-center gap-20">
+                                            <div class="chat-card cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
                                                     <div class="profile-image-wrapper">
@@ -2941,7 +2941,7 @@
 
                                             </div>
                                             <div class="section-divider mt-2 mb-2"></div>
-                                            <div class="chat-card locked cursor d-flex align-items-center gap-20">
+                                            <div class="chat-card cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
                                                     <div class="profile-image-wrapper">
@@ -2976,7 +2976,7 @@
 
                                             </div>
                                             <div class="section-divider mt-2 mb-2"></div>
-                                            <div class="chat-card locked cursor d-flex align-items-center gap-20">
+                                            <div class="chat-card cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
                                                     <div class="profile-image-wrapper">
@@ -3005,7 +3005,7 @@
 
                                             </div>
                                             <div class="section-divider mt-2 mb-2"></div>
-                                            <div class="chat-card locked cursor d-flex align-items-center gap-20">
+                                            <div class="chat-card cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
                                                     <div class="profile-image-wrapper">
@@ -3040,7 +3040,7 @@
 
                                             </div>
                                             <div class="section-divider mt-2 mb-2"></div>
-                                            <div class="chat-card locked cursor d-flex align-items-center gap-20">
+                                            <div class="chat-card cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
                                                     <div class="profile-image-wrapper">
@@ -3069,7 +3069,7 @@
 
                                             </div>
                                             <div class="section-divider mt-2 mb-2"></div>
-                                            <div class="chat-card locked cursor d-flex align-items-center gap-20">
+                                            <div class="chat-card cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
                                                     <div class="profile-image-wrapper">
@@ -3104,7 +3104,7 @@
 
                                             </div>
                                             <div class="section-divider mt-2 mb-2"></div>
-                                            <div class="chat-card locked cursor d-flex align-items-center gap-20">
+                                            <div class="chat-card cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
                                                     <div class="profile-image-wrapper">
@@ -3133,7 +3133,7 @@
 
                                             </div>
                                             <div class="section-divider mt-2 mb-2"></div>
-                                            <div class="chat-card locked cursor d-flex align-items-center gap-20">
+                                            <div class="chat-card cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
                                                     <div class="profile-image-wrapper">
@@ -3168,7 +3168,7 @@
 
                                             </div>
                                             <div class="section-divider mt-2 mb-2"></div>
-                                            <div class="chat-card locked cursor d-flex align-items-center gap-20">
+                                            <div class="chat-card cursor d-flex align-items-center gap-20">
 
                                                 <div class="profile-pic">
                                                     <div class="profile-image-wrapper">
@@ -3602,7 +3602,7 @@
             {
                 id: 'paws-bubbles',
                 tab: 'groomer-messages',
-                locked: true,
+                locked: false,
                 archived: false,
                 lastActivityAt: 200,
                 list: {
@@ -3620,12 +3620,12 @@
                 detail: {
                     tag: 'Home Visits',
                     tagClass: '',
-                    availability: 'Unavailable',
-                    availabilityColor: '#D4D4D4',
+                    availability: 'Available',
+                    availabilityColor: '#C9DDA0',
                     bookingReference: 'FG-10294',
                     displayName: 'Paws & Bubbles',
                     subtitle: 'Hosted by Patrick B.',
-                    footerNote: '',
+                    footerNote: 'Chats remain open for 3 days after a booking ends.',
                     messages: [
                         { type: 'received', html: 'Hi Lorem! Thanks for booking 😊<br>I’m looking forward to meeting Bella tomorrow.', time: '12:30' },
                         { type: 'sent', html: 'Hi Patrick! Bella can be a bit nervous at first, but she usually settles quickly.', time: '12:35' },
@@ -3634,13 +3634,13 @@
                         { type: 'received', html: 'Got it, thank you! I’ll be gentle when trimming her nails.<br>I’ll arrive about 10 minutes early to set up.', time: '12:50' },
                         { type: 'sent', html: 'Perfect - there’s parking right outside the house.', time: 'Seen by Patrick B. at 12:55' }
                     ],
-                    quickReplies: []
+                    quickReplies: ['Thanks!', 'See you tomorrow!']
                 }
             },
             {
                 id: 'cathy-wags',
                 tab: 'groomer-messages',
-                locked: true,
+                locked: false,
                 archived: false,
                 lastActivityAt: 100,
                 list: {
@@ -3657,19 +3657,19 @@
                 },
                 detail: {
                     tag: 'Home Visits',
-                    tagClass: '',
-                    availability: 'Unavailable',
-                    availabilityColor: '#D4D4D4',
+                    tagClass: 'groomer',
+                    availability: 'Available',
+                    availabilityColor: '#C9DDA0',
                     bookingReference: 'FG-10408',
                     displayName: 'Cathy P.',
                     subtitle: 'Wags & Wheels',
-                    footerNote: '',
+                    footerNote: 'Chats remain open for 3 days after a booking ends.',
                     messages: [
                         { type: 'received', html: 'Is she comfortable with dryer noise after bath time?', time: '07/10' },
                         { type: 'sent', html: 'Yes, but she prefers the lower setting.', time: '07/10' },
                         { type: 'received', html: 'Perfect, thanks for letting me know.', time: '07/10' }
                     ],
-                    quickReplies: []
+                    quickReplies: ['Thanks!', 'Will do']
                 }
             },
             {
@@ -3743,7 +3743,7 @@
             {
                 id: 'paws-venue',
                 tab: 'space-messages',
-                locked: true,
+                locked: false,
                 archived: false,
                 lastActivityAt: 150,
                 list: {
@@ -3761,23 +3761,23 @@
                 detail: {
                     tag: 'Private Space',
                     tagClass: '',
-                    availability: 'Unavailable',
-                    availabilityColor: '#D4D4D4',
+                    availability: 'Available',
+                    availabilityColor: '#C9DDA0',
                     bookingReference: 'FG-20231',
                     displayName: 'Paws Venue',
                     subtitle: 'Hosted by Patrick B.',
-                    footerNote: '',
+                    footerNote: 'Chats remain open for 3 days after a booking ends.',
                     messages: [
                         { type: 'received', html: 'Thanks again for using our space last week.', time: '02/06' },
                         { type: 'sent', html: 'It worked really well for us.', time: '02/06' }
                     ],
-                    quickReplies: []
+                    quickReplies: ['Thanks!', 'Great to hear']
                 }
             },
             {
                 id: 'wheels-workshop',
                 tab: 'space-messages',
-                locked: true,
+                locked: false,
                 archived: false,
                 lastActivityAt: 50,
                 list: {
@@ -3794,18 +3794,18 @@
                 },
                 detail: {
                     tag: 'Workshop Space',
-                    tagClass: '',
-                    availability: 'Unavailable',
-                    availabilityColor: '#D4D4D4',
+                    tagClass: 'groomer',
+                    availability: 'Available',
+                    availabilityColor: '#C9DDA0',
                     bookingReference: 'FG-20244',
                     displayName: 'Wheels Workshop',
                     subtitle: 'Hosted by Cathy P.',
-                    footerNote: '',
+                    footerNote: 'Chats remain open for 3 days after a booking ends.',
                     messages: [
                         { type: 'received', html: 'Hope the setup worked well for your visit.', time: '07/10' },
                         { type: 'sent', html: 'It did, thank you again.', time: '07/10' }
                     ],
-                    quickReplies: []
+                    quickReplies: ['Thanks!', 'All good']
                 }
             }
         ];
