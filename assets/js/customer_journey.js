@@ -765,55 +765,88 @@ document.querySelectorAll('.dropdown').forEach(dropdown => {
 
 // tabs content view ends
 
-// custom select dropdown js  
+// Mini-search: close every dropdown, then open only what was clicked
+(function () {
+    const PET_MENUS = [
+        ['petTypeToggle', 'petTypeOptions'],
+        ['petSizeToggle', 'petSizeOptions'],
+        ['spaceTypeToggle', 'spaceTypeOptions'],
+        ['spaceSizeToggle', 'spaceSizeOptions'],
+    ];
 
-document.querySelectorAll('.service-type-select .custom-select').forEach(select => {
-    const trigger = select.querySelector('.service-type-select .custom-select .select-trigger');
-    const options = select.querySelectorAll('.service-type-select .custom-select .select-options li');
-    const datePopovers = document.querySelectorAll('.popover');
-    const text = select.querySelector('.selected-text');
-    const hiddenInput = select.querySelector('input[type="hidden"]');
+    function closeAll() {
+        document.querySelectorAll('.mini-search-widget .custom-select.open')
+            .forEach((el) => el.classList.remove('open'));
 
-    trigger.addEventListener('click', e => {
-        e.stopPropagation();
+        document.querySelectorAll('.mini-search-widget .popover')
+            .forEach((el) => { el.style.display = 'none'; });
 
-        datePopovers.forEach(popover => {
-            popover.style.display = 'none';
+        document.querySelectorAll('.mini-search-widget .field.date, .mini-search-widget .field.time')
+            .forEach((el) => {
+                el.classList.remove('focused');
+                el.querySelector('.input-row')?.setAttribute('aria-expanded', 'false');
+            });
+
+        PET_MENUS.forEach(([toggleId, menuId]) => {
+            const menu = document.getElementById(menuId);
+            const toggle = document.getElementById(toggleId);
+            if (menu) menu.style.display = 'none';
+            if (toggle) toggle.style.borderRadius = '10px';
         });
+    }
 
-        document.querySelectorAll('.custom-select').forEach(s => {
-            if (s !== select) {
-                s.classList.remove('open');
-                const t = s.querySelector('.select-trigger');
-                t.style.cssText = `
-                    border-bottom-left-radius: 12px;
-                    border-bottom-right-radius: 12px;
-                `;
+    // Pet type / size menus
+    PET_MENUS.forEach(([toggleId, menuId]) => {
+        const toggle = document.getElementById(toggleId);
+        const menu = document.getElementById(menuId);
+        if (!toggle || !menu) return;
+
+        toggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const wasOpen = menu.style.display === 'block';
+            closeAll();
+            if (!wasOpen) {
+                menu.style.display = 'block';
+                toggle.style.borderRadius = '10px 10px 0 0';
             }
         });
-
-        const isOpen = select.classList.toggle('open');
-
-        trigger.style.cssText = isOpen
-            ? `border-bottom-left-radius: 0; border-bottom-right-radius: 0;`
-            : `border-bottom-left-radius: 12px; border-bottom-right-radius: 12px;`;
     });
 
-    options.forEach(option => {
-        option.addEventListener('click', () => {
-            text.textContent = option.textContent;
-            hiddenInput.value = option.dataset.value;
+    // Service type dropdown
+    document.querySelectorAll('.service-type-select .custom-select').forEach((select) => {
+        const trigger = select.querySelector('.select-trigger');
+        const items = select.querySelectorAll('.select-options li');
+        const label = select.querySelector('.selected-text');
+        const input = select.querySelector('input[type="hidden"]');
+        if (!trigger) return;
 
-            select.classList.remove('open');
-            select.classList.add('has-value'); // add class to highlight border
+        trigger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const wasOpen = select.classList.contains('open');
+            closeAll();
+            if (!wasOpen) select.classList.add('open');
+        });
 
-            trigger.style.cssText = `
-                border-bottom-left-radius: 12px;
-                border-bottom-right-radius: 12px;
-            `;
+        items.forEach((item) => {
+            item.addEventListener('click', () => {
+                label.textContent = item.textContent;
+                input.value = item.dataset.value;
+                select.classList.remove('open');
+                select.classList.add('has-value');
+            });
         });
     });
-});
+
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.mini-search-widget')) closeAll();
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeAll();
+    });
+
+    window.closeMiniSearchDropdowns = closeAll;
+})();
 
 // date time picker js  
 
@@ -949,40 +982,41 @@ document.querySelectorAll('.service-type-select .custom-select').forEach(select 
 
         /* ---------------------- Popover ---------------------- */
         function closeAllPopovers() {
-            datePopover.style.display = 'none';
-            timePopover.style.display = 'none';
-            dateField.classList.remove('focused');
-            timeField.classList.remove('focused');
-            dateField.querySelector('.input-row').setAttribute('aria-expanded', 'false');
-            timeField.querySelector('.input-row').setAttribute('aria-expanded', 'false');
+            window.closeMiniSearchDropdowns?.();
         }
 
-        function openDatePopover() {
+        function toggleDatePopover() {
+            const wasOpen = datePopover.style.display === 'block';
             closeAllPopovers();
-            datePopover.style.display = 'block';
-            dateField.classList.add('focused');
-            dateField.querySelector('.input-row').setAttribute('aria-expanded', 'true');
+            if (!wasOpen) {
+                datePopover.style.display = 'block';
+                dateField.classList.add('focused');
+                dateField.querySelector('.input-row').setAttribute('aria-expanded', 'true');
+            }
         }
 
-        function openTimePopover() {
+        function toggleTimePopover() {
+            const wasOpen = timePopover.style.display === 'block';
             closeAllPopovers();
-            timePopover.style.display = 'block';
-            timeField.classList.add('focused');
-            timeField.querySelector('.input-row').setAttribute('aria-expanded', 'true');
+            if (!wasOpen) {
+                timePopover.style.display = 'block';
+                timeField.classList.add('focused');
+                timeField.querySelector('.input-row').setAttribute('aria-expanded', 'true');
 
-            const el = timeList.querySelector(`.time-item[data-time="${selectedTime}"]`);
-            if (el) el.scrollIntoView({ block: 'center' });
+                const el = timeList.querySelector(`.time-item[data-time="${selectedTime}"]`);
+                if (el) el.scrollIntoView({ block: 'center' });
+            }
         }
 
         /* ---------------------- Events ---------------------- */
         dateField.querySelector('.input-row').addEventListener('click', (e) => {
             e.stopPropagation();
-            datePopover.style.display === 'block' ? closeAllPopovers() : openDatePopover();
+            toggleDatePopover();
         });
 
         timeField.querySelector('.input-row').addEventListener('click', (e) => {
             e.stopPropagation();
-            timePopover.style.display === 'block' ? closeAllPopovers() : openTimePopover();
+            toggleTimePopover();
         });
 
         datePopover.addEventListener('click', (e) => e.stopPropagation());
@@ -1018,28 +1052,6 @@ document.querySelectorAll('.service-type-select .custom-select').forEach(select 
         init();
     });
 
-    document.addEventListener('click', (e) => {
-        if (!e.target.closest('.datetime-wrapper')) {
-            datetimeWrappers.forEach(wrapper => {
-                const datePopover = wrapper.querySelector('.date-popover');
-                const timePopover = wrapper.querySelector('.time-popover');
-                const dateField = wrapper.querySelector('.field.date');
-                const timeField = wrapper.querySelector('.field.time');
-
-                if (datePopover) datePopover.style.display = 'none';
-                if (timePopover) timePopover.style.display = 'none';
-                dateField?.classList.remove('focused');
-                timeField?.classList.remove('focused');
-            });
-        }
-    });
-
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-            document.querySelectorAll('.datetime-wrapper .popover').forEach(p => p.style.display = 'none');
-            document.querySelectorAll('.datetime-wrapper .field').forEach(f => f.classList.remove('focused'));
-        }
-    });
 })();
 
 
