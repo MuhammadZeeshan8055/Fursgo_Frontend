@@ -504,6 +504,8 @@
 <script>
     window.addEventListener('scroll', () => {
         const header = document.querySelector('header');
+        if (!header || document.querySelector('.sticky-search')) return;
+
         if (window.scrollY > 80) {
             header.classList.add('scrolled');
         } else if (window.scrollY < 20) {

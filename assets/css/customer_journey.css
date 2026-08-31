@@ -29,34 +29,42 @@ body:has(.find-space-search .find-groomer-space-text.active) {
 }
 
 /* search widget sticky css starts */
+/* On search results: site nav scrolls away; only the search bar stays sticky */
+body:has(.sticky-search) header {
+    position: relative;
+    top: auto;
+}
+
 .sticky-search {
     position: sticky;
-    /* Stick below the site <header> on every screen; JS sets --header-height */
-    top: -5px;
-    z-index: 999;
-    transition: all 0.3s ease;
+    top: 0;
+    z-index: 1001;
+    transition: background 0.3s ease;
     overflow: visible;
+    overflow-anchor: none;
 }
 
 .sticky-search.scrolled {
     background: #F7F4EC;
     border-radius: 0;
-    /* box-shadow: 0 8px 20px rgba(0,0,0,.1); */
     padding-top: 5px;
-    /* padding-bottom: 10px; */
-}
-.sticky-search.scrolled .find-groomer-search-content-area,
-.sticky-search.scrolled .find-space-search-content-area{
-    box-shadow: none;
+    padding-bottom: 5px;
 }
 
-/* 
-.sticky-search.scrolled .top-tabs.find-groomer-search{
+.sticky-search.scrolled .container {
+    margin-top: 0 !important;
+}
+
+.sticky-search.scrolled .find-groomer-search-content,
+.sticky-search.scrolled .find-space-search-content {
     display: none;
 }
-.sticky-search.scrolled .top-tabs.find-space-search{
-    display: none;
-} */
+
+.sticky-search.scrolled .find-groomer-search-content-area,
+.sticky-search.scrolled .find-space-search-content-area {
+    box-shadow: none;
+    border-radius: 0;
+}
 
 /* search widget sticky css  ends*/
 

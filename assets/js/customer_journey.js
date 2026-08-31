@@ -1368,36 +1368,78 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!stickyBar) return;
 
     const siteHeader = document.querySelector('header');
+    let cachedHeaderHeight = 0;
+    let isCompact = false;
+    let isAdjustingScroll = false;
+
+    function updateCachedHeaderHeight() {
+        cachedHeaderHeight = siteHeader ? siteHeader.offsetHeight : 0;
+    }
 
     function setStickyOffsets() {
-        const headerHeight = siteHeader ? siteHeader.offsetHeight : 0;
         document.documentElement.style.setProperty(
             '--header-height',
-            headerHeight + 'px'
+            cachedHeaderHeight + 'px'
         );
         document.documentElement.style.setProperty(
             '--sticky-search-offset',
-            (headerHeight + stickyBar.offsetHeight) + 'px'
+            (cachedHeaderHeight + stickyBar.offsetHeight) + 'px'
         );
     }
 
-    function onScroll() {
-        if (window.scrollY > 10) {
-            stickyBar.classList.add('scrolled');
-        } else {
-            stickyBar.classList.remove('scrolled');
+    function setCompact(nextCompact) {
+        if (nextCompact === isCompact) return;
+
+        const scrollBefore = window.scrollY;
+        const heightBefore = stickyBar.offsetHeight;
+
+        isCompact = nextCompact;
+        stickyBar.classList.toggle('scrolled', isCompact);
+
+        // Hiding tabs shrinks the bar and shifts scrollY — compensate so
+        // scrollbar dragging does not bounce around the compact threshold.
+        void stickyBar.offsetHeight;
+        const heightDelta = heightBefore - stickyBar.offsetHeight;
+
+        if (heightDelta !== 0) {
+            isAdjustingScroll = true;
+            window.scrollTo(0, scrollBefore - heightDelta);
+            requestAnimationFrame(() => {
+                isAdjustingScroll = false;
+            });
         }
+
         setStickyOffsets();
     }
 
-    setStickyOffsets();
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', setStickyOffsets);
+    function onScroll() {
+        if (isAdjustingScroll) return;
 
-    // Keep offsets in sync when header/search height changes (scroll shrink, pet dropdowns)
+        const enterAt = Math.max(cachedHeaderHeight + 30, 50);
+        const exitAt = Math.max(cachedHeaderHeight - 80, 0);
+
+        if (!isCompact && window.scrollY > enterAt) {
+            setCompact(true);
+        } else if (isCompact && window.scrollY < exitAt) {
+            setCompact(false);
+        }
+    }
+
+    function onResize() {
+        updateCachedHeaderHeight();
+        setStickyOffsets();
+        onScroll();
+    }
+
+    updateCachedHeaderHeight();
+    setStickyOffsets();
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onResize);
+
+    // Sync offsets when search bar height changes (pet dropdowns)
     if (typeof ResizeObserver !== 'undefined') {
         const ro = new ResizeObserver(setStickyOffsets);
         ro.observe(stickyBar);
-        if (siteHeader) ro.observe(siteHeader);
     }
 })();  
