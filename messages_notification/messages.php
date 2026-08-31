@@ -3619,7 +3619,7 @@
                 },
                 detail: {
                     tag: 'Home Visits',
-                    tagClass: '',
+                    tagClass: 'space',
                     availability: 'Available',
                     availabilityColor: '#C9DDA0',
                     bookingReference: 'FG-10294',
@@ -3760,7 +3760,7 @@
                 },
                 detail: {
                     tag: 'Private Space',
-                    tagClass: '',
+                    tagClass: 'space',
                     availability: 'Available',
                     availabilityColor: '#C9DDA0',
                     bookingReference: 'FG-20231',

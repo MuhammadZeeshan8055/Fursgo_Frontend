@@ -412,8 +412,10 @@
         headerRoot.querySelector('.rounded-image.large-size').src = list.image;
         headerRoot.querySelector('.profile-image-wrapper .top-left-svg').innerHTML = getBadgeSvg(list.badge);
         tag.textContent = detail.tag;
-        tag.classList.toggle('groomer', detail.tagClass === 'groomer');
-        tag.style.background = detail.tagClass === 'groomer' ? '' : '#D9D9D9';
+        const tagType = detail.tagClass || list.badge || 'groomer';
+        tag.classList.toggle('groomer', tagType === 'groomer');
+        tag.classList.toggle('space', tagType === 'space');
+        tag.style.removeProperty('background');
 
         statusText.textContent = detail.availability;
         statusText.style.color = detail.availabilityColor;
