@@ -134,12 +134,7 @@
                                         <div class="pet-type-wrapper wider">
                                             <p class="label">Pet Type</p>
 
-                                            <div class="pet-toggle" id="petTypeToggle" style="cursor:pointer;" onclick="
-                                            var opts = document.getElementById('petTypeOptions');
-                                            var isOpen = opts.style.display === 'block';
-                                            opts.style.display = isOpen ? 'none' : 'block';
-                                            document.getElementById('petTypeToggle').style.borderRadius = isOpen ? '10px' : '10px 10px 0px 0';
-                                        ">
+                                            <div class="pet-toggle" id="petTypeToggle" style="cursor:pointer;">
                                                 <button type="button" id="petTypeTriggerBtn" class="pet-option highlight search-custom-width" data-pet="other">
                                                     <span>Other</span>
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="16" viewBox="0 0 20 16" fill="none">
@@ -180,12 +175,7 @@
                                         <div class="pet-weight-wrapper wider">
                                             <p class="label">Pet Size</p>
 
-                                            <div class="weight-toggle flex-column" id="petSizeToggle" style="cursor:pointer;" onclick="
-                                            var opts = document.getElementById('petSizeOptions');
-                                            var isOpen = opts.style.display === 'block';
-                                            opts.style.display = isOpen ? 'none' : 'block';
-                                            document.getElementById('petSizeToggle').style.borderRadius = isOpen ? '10px' : '10px 10px 0px 0';
-                                        ">
+                                            <div class="weight-toggle flex-column" id="petSizeToggle" style="cursor:pointer;">
                                                 <button type="button" class="weight-option search-custom-large-btn-width large active" data-weight="large">
                                                     <span id="petSizeLabel">Large 19+ kg</span>
                                                 </button>
@@ -356,12 +346,7 @@
                                         <div class="pet-type-wrapper wider">
                                             <p class="label">Pet Type</p>
 
-                                            <div class="pet-toggle" id="spaceTypeToggle" style="cursor:pointer;" onclick="
-                                            var opts = document.getElementById('spaceTypeOptions');
-                                            var isOpen = opts.style.display === 'block';
-                                            opts.style.display = isOpen ? 'none' : 'block';
-                                            document.getElementById('spaceTypeToggle').style.borderRadius = isOpen ? '10px' : '10px 10px 0px 0';
-                                        ">
+                                            <div class="pet-toggle" id="spaceTypeToggle" style="cursor:pointer;">
                                                 <button type="button" id="spaceTypeTriggerBtn" class="pet-option highlight search-custom-width" data-pet="other">
                                                     <span>Other</span>
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="16" viewBox="0 0 20 16" fill="none">
@@ -402,12 +387,7 @@
                                         <div class="pet-weight-wrapper wider">
                                             <p class="label">Pet Size</p>
 
-                                            <div class="weight-toggle flex-column" id="spaceSizeToggle" style="cursor:pointer;" onclick="
-                                            var opts = document.getElementById('spaceSizeOptions');
-                                            var isOpen = opts.style.display === 'block';
-                                            opts.style.display = isOpen ? 'none' : 'block';
-                                            document.getElementById('spaceSizeToggle').style.borderRadius = isOpen ? '10px' : '10px 10px 0px 0';
-                                        ">
+                                            <div class="weight-toggle flex-column" id="spaceSizeToggle" style="cursor:pointer;">
                                                 <button type="button" class="weight-option search-custom-large-btn-width large active" data-weight="large">
                                                     <span id="spaceSizeLabel">Large 19+ kg</span>
                                                 </button>
