@@ -227,6 +227,8 @@ $studioImage = BASE_URL . 'assets/images/card1.png';
                                     data-breed="<?= htmlspecialchars($pet['breed']) ?>"
                                     data-birthday="<?= htmlspecialchars($pet['birthday']) ?>"
                                     data-sex="<?= htmlspecialchars($pet['sex']) ?>"
+                                    data-weight="<?= htmlspecialchars((string)($pet['weight'] ?? '4')) ?>"
+                                    data-image="<?= BASE_URL . htmlspecialchars($pet['image']) ?>"
                                     data-notes="<?= htmlspecialchars($petNotes) ?>">
                                     <div class="cbg-pet-radio" aria-hidden="true"><span class="cbg-pet-radio-inner"></span></div>
                                     <div class="cbg-pet-avatar">
@@ -358,7 +360,6 @@ $studioImage = BASE_URL . 'assets/images/card1.png';
                                             </svg>
                                             <span class="top-badge-sub-text">4.3 <span class="muted-color"> (20 reviews) </span></span>
                                         </div>
-                                        <p class="service-change-button">Change</p>
 
                                     </div>
                                 </div>
@@ -579,22 +580,13 @@ $studioImage = BASE_URL . 'assets/images/card1.png';
                                 <h3>Promo code</h3>
                             </div>
                             <div class="cbg-review-promo">
+                                <div class="cbg-review-promo-applied" id="cbgReviewPromoApplied" hidden></div>
                                 <div class="cbg-review-promo-entry" id="cbgReviewPromoEntry">
                                     <div class="cbg-review-promo-row">
                                         <input type="text" id="cbgPromoInput" class="cbg-text-input" placeholder="Enter promo code" autocomplete="off">
                                         <button type="button" class="cbg-review-promo-apply" id="cbgPromoApplyBtn">Apply</button>
                                     </div>
                                     <p class="cbg-review-promo-error" id="cbgPromoError" hidden>Code not valid, please try again.</p>
-                                </div>
-                                <div class="cbg-review-promo-applied" id="cbgReviewPromoApplied" hidden>
-                                    <div class="cbg-promo-pill">
-                                        <span id="cbgReviewPromoAppliedCode">PROMO25</span>
-                                        <button type="button" class="cbg-promo-pill-remove" id="cbgReviewRemovePromoBtn" aria-label="Remove promo code">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none" aria-hidden="true">
-                                                <path d="M0.5 7.5L7.5 0.5M0.5 0.5L7.5 7.5" stroke="#9D9B98" stroke-linecap="round" />
-                                            </svg>
-                                        </button>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -945,9 +937,24 @@ $studioImage = BASE_URL . 'assets/images/card1.png';
                             </div>
 
                             <div class="cbg-summary-divider" id="cbgSummaryPromoDivider" hidden></div>
-                            <div class="cbg-summary-line cbg-summary-promo" id="cbgSummaryPromoLine" hidden>
-                                <span id="cbgSummaryPromoLabel">Promo (PROMO25)</span>
-                                <span id="cbgSummaryPromo" class="cbg-promo-discount">-£3.00</span>
+
+                            <div class="cbg-summary-accordion open" id="cbgSummaryPromoAccordion" hidden>
+                                <button type="button" class="cbg-summary-accordion-head">
+                                    <span class="cbg-summary-accordion-title">
+                                        <span class="cbg-summary-dot" aria-hidden="true"></span>
+                                        Promo
+                                        <span class="cbg-summary-badge" id="cbgSummaryPromoBadge">0</span>
+                                    </span>
+                                    <span class="cbg-summary-accordion-right">
+                                        <span id="cbgSummaryPromo" class="cbg-summary-accordion-price cbg-promo-discount">-£0.00</span>
+                                        <svg class="cbg-summary-chevron" xmlns="http://www.w3.org/2000/svg" width="14" height="8" viewBox="0 0 14 8" fill="none" aria-hidden="true">
+                                            <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+                                    </span>
+                                </button>
+                                <div class="cbg-summary-accordion-body">
+                                    <ul class="cbg-summary-item-list" id="cbgSummaryPromoList"></ul>
+                                </div>
                             </div>
                         </div>
 

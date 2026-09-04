@@ -127,7 +127,7 @@ body.cbg-page {
 }
 
 .cbg-step-item.completed .cbg-step-label {
-  color: #3b3731;
+  /* color: #3b3731; */
   font-weight: 600;
 }
 
@@ -1094,7 +1094,7 @@ body.cbg-page {
   background: none;
   padding: 0;
   font-family: Lato, sans-serif;
-  font-size: 14px;
+  font-size: 18px;
   font-weight: 600;
   color: #FFC97A;
   cursor: pointer;
@@ -1141,7 +1141,7 @@ body.cbg-page {
   justify-content: space-between;
   gap: 16px;
   font-family: Lato, sans-serif;
-  font-size: 16px;
+  font-size: 18px;
   color: #3b3731;
 }
 
@@ -1159,8 +1159,20 @@ body.cbg-page {
   display: none;
 }
 
+.cbg-review-promo {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
 .cbg-review-promo-applied {
-  margin-top: 4px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.cbg-review-promo-applied[hidden] {
+  display: none;
 }
 
 .cbg-review-promo-row {

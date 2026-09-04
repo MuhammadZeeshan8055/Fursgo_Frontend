@@ -362,7 +362,6 @@ $studioImage = BASE_URL . 'assets/images/booking-space-card-image.svg';
                                             </svg>
                                             <span class="top-badge-sub-text">4.3 <span class="muted-color"> (20 reviews) </span></span>
                                         </div>
-                                        <p class="service-change-button">Change</p>
 
                                     </div>
                                 </div>
