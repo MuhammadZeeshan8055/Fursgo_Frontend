@@ -4,6 +4,11 @@ include '../function_helper.php';
 if (isset($_GET['search_results'])) {
     $search_results = $_GET['search_results'];
 }
+
+if (empty($search_results)) {
+    header('Location: ' . BASE_URL . 'support_and_assistance/help_and_support.php');
+    exit;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -44,6 +49,7 @@ if (isset($_GET['search_results'])) {
                                     <input
                                         type="text"
                                         placeholder="Search for topics like refunds, bookings, payments."
+                                        name="search_results"
                                         value="<?= $search_results ?>"
                                         class="normal-font-weight">
                                     <button class="search-btn">
@@ -70,24 +76,29 @@ if (isset($_GET['search_results'])) {
                         <div class="d-flex align-items-center mt-5">
                             <h1 class="large-font">Results</h1>
                         </div>
-                        <div class="bg-div d-flex flex-column gap-30 mt-5">
-                            <div>
-                                <p class="normal-font-bold">How do I book a grooming appointment?</p>
-                                <p class="simple-font mt-3">Booking through FursGo is straightforward. Simply choose your location, select the service you’re looking for, and pick a time...</p>
+                        <div class="bg-div result-item mt-5">
+                            <p class="normal-font-bold">How do I book a grooming appointment?</p>
+                            <div class="result-answer simple-font mt-3">
+                                <p>Booking through FursGo is straightforward. Simply choose your location, select the service you’re looking for, and pick a time.</p>
+                                <p class="mt-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                <p class="mt-3">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                <p class="mt-3">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
                             </div>
-                            <a href="" class="underline normal-font-bold">Read more</a>
+                            <button type="button" class="result-read-more underline normal-font-bold">Read more</button>
                         </div>
-                        <div class="no-bg bg-div d-flex flex-column gap-30 mt-5">
-                            <div>
-                                <p class="normal-font-bold">Can I reschedule or cancel a booking?</p>
-                                <p class="simple-font mt-3">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae.</p>
+                        <div class="bg-div result-item mt-5">
+                            <p class="normal-font-bold">Can I reschedule or cancel a booking?</p>
+                            <div class="result-answer simple-font mt-3">
+                                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae.</p>
                             </div>
+                            <button type="button" class="result-read-more underline normal-font-bold">Read more</button>
                         </div>
-                        <div class="no-bg bg-div d-flex flex-column gap-30 mt-5">
-                            <div>
-                                <p class="normal-font-bold">Where can I see my upcoming bookings?</p>
-                                <p class="simple-font mt-3">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae.</p>
+                        <div class="bg-div result-item mt-5">
+                            <p class="normal-font-bold">Where can I see my upcoming bookings?</p>
+                            <div class="result-answer simple-font mt-3">
+                                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae.</p>
                             </div>
+                            <button type="button" class="result-read-more underline normal-font-bold">Read more</button>
                         </div>
 
                         <div class="d-flex justify-content-center mt-5">
@@ -108,6 +119,59 @@ if (isset($_GET['search_results'])) {
 
         <?php include '../components/footer.php' ?>
         <script src="<?= BASE_URL ?>/assets/js/common.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                document.querySelectorAll('.result-item').forEach(function(item) {
+                    var answer = item.querySelector('.result-answer');
+                    var readMore = item.querySelector('.result-read-more');
+                    if (!answer || !readMore) return;
+
+                    answer.classList.add('is-collapsed');
+
+                    // Show Read more only when the answer overflows the collapsed preview
+                    if (answer.scrollHeight > answer.clientHeight + 1) {
+                        readMore.classList.add('is-visible');
+                    } else {
+                        answer.classList.remove('is-collapsed');
+                    }
+
+                    readMore.addEventListener('click', function() {
+                        answer.classList.remove('is-collapsed');
+                        readMore.classList.remove('is-visible');
+                    });
+                });
+            });
+        </script>
+
+        <script>
+            const fileInput = document.getElementById('fileInput');
+            const attachBtn = document.getElementById('attachBtn');
+            const fileItem = document.getElementById('fileItem');
+            const fileName = document.getElementById('fileName');
+            const fileSize = document.getElementById('fileSize');
+            const removeBtn = document.getElementById('removeBtn');
+
+            attachBtn.onclick = () => fileInput.click();
+
+            fileInput.onchange = () => {
+                const file = fileInput.files[0];
+                if (!file) return;
+
+                fileItem.style.display = 'flex';
+                fileName.textContent = file.name;
+                fileSize.textContent = `${Math.round(file.size / 1024)} KB • Uploading...`;
+
+                // Fake upload delay
+                setTimeout(() => {
+                    fileSize.textContent = `${Math.round(file.size / 1024)} KB of ${Math.round(file.size / 1024)} KB`;
+                }, 1500);
+            };
+
+            removeBtn.onclick = () => {
+                fileInput.value = '';
+                fileItem.style.display = 'none';
+            };
+        </script>
 
 </body>
 

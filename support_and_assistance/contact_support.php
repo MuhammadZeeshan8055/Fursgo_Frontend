@@ -99,14 +99,6 @@
                                                 </svg>
                                                 Attach
                                             </button>
-                                            <button id="uploadBtn">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
-                                                    <path d="M10.2778 0.5H1.72222C1.04721 0.5 0.5 1.04721 0.5 1.72222V10.2778C0.5 10.9528 1.04721 11.5 1.72222 11.5H10.2778C10.9528 11.5 11.5 10.9528 11.5 10.2778V1.72222C11.5 1.04721 10.9528 0.5 10.2778 0.5Z" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
-                                                    <path d="M4.16662 5.38976C4.84163 5.38976 5.38884 4.84255 5.38884 4.16753C5.38884 3.49252 4.84163 2.94531 4.16662 2.94531C3.4916 2.94531 2.9444 3.49252 2.9444 4.16753C2.9444 4.84255 3.4916 5.38976 4.16662 5.38976Z" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
-                                                    <path d="M11.5001 7.83358L9.61421 5.94769C9.38501 5.71856 9.07419 5.58984 8.7501 5.58984C8.42601 5.58984 8.11519 5.71856 7.88599 5.94769L2.33344 11.5002" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
-                                                </svg>
-                                                Upload
-                                            </button>
                                         </div>
 
                                         <input type="file" id="fileInput" hidden>

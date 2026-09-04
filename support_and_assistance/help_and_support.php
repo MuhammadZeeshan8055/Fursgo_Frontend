@@ -332,13 +332,12 @@
         <script>
             const fileInput = document.getElementById('fileInput');
             const attachBtn = document.getElementById('attachBtn');
-            const uploadBtn = document.getElementById('uploadBtn');
             const fileItem = document.getElementById('fileItem');
             const fileName = document.getElementById('fileName');
             const fileSize = document.getElementById('fileSize');
             const removeBtn = document.getElementById('removeBtn');
 
-            attachBtn.onclick = uploadBtn.onclick = () => fileInput.click();
+            attachBtn.onclick = () => fileInput.click();
 
             fileInput.onchange = () => {
                 const file = fileInput.files[0];
