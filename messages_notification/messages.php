@@ -22,6 +22,10 @@
             overflow: hidden;
         }
 
+        .messages-outer-div > .container > .row {
+            flex-wrap: nowrap;
+        }
+
         .messages-outer-div > .container {
             position: relative;
             z-index: 1;
@@ -44,6 +48,7 @@
             flex: 1 1 auto;
             max-width: none;
             width: auto;
+            min-width: 0;
         }
 
         .right-bg {

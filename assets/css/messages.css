@@ -24,15 +24,13 @@ nav,
 
 /* Messages outer div fills all space below navbar */
 .messages-outer-div {
-    flex: 1;
-    min-height: 0;
-    overflow: hidden;
     display: flex;
     flex-direction: column;
     border: 1px solid var(--border);
     border-right: none;
-    height: 90vh;
-    /* overflow: hidden; */
+    height: calc(100vh - 80px);
+    min-height: 520px;
+    overflow: hidden;
     margin: 0;
 }
 
@@ -43,9 +41,15 @@ nav,
     min-height: 0;
 }
 
+.messages-outer-div>.container>.row {
+    flex-wrap: nowrap;
+}
+
 .messages-outer-div .col-lg-4,
 .messages-outer-div .col-lg-8 {
     height: 100%;
+    min-width: 0;
+    min-height: 0;
     overflow: hidden;
 }
 
@@ -134,16 +138,17 @@ aside.sidebar {
     flex-direction: column;
 }
 
-.chat-list {
+.chat-list-wrapper {
     flex: 1;
     min-height: 0;
+    width: 100%;
     overflow-y: auto;
     overflow-x: hidden;
+    overscroll-behavior: contain;
 }
 
-.chat-list-wrapper {
-    overflow-y: auto;
-    width: 100%;
+.chat-list {
+    overflow: visible;
 }
 
 /* Chrome, Safari, Edge */
@@ -300,6 +305,8 @@ p.messages-count {
     background: var(--bg);
     height: 100%;
     width: 100%;
+    min-width: 0;
+    min-height: 0;
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -561,6 +568,7 @@ p.messages-count {
     flex: 1;
     min-height: 0;
     overflow-y: auto;
+    overscroll-behavior: contain;
     display: flex;
     flex-direction: column;
     gap: 16px;

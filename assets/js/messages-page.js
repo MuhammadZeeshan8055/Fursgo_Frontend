@@ -764,6 +764,34 @@
     });
   }
 
+  function keepWheelInside(scroller) {
+    if (!scroller) return;
+
+    scroller.addEventListener(
+      "wheel",
+      (event) => {
+        if (event.ctrlKey || event.metaKey) return;
+
+        const maxScroll = scroller.scrollHeight - scroller.clientHeight;
+        if (maxScroll <= 1) return;
+
+        let delta = event.deltaY;
+        if (event.deltaMode === 1) {
+          delta *= 16;
+        } else if (event.deltaMode === 2) {
+          delta *= scroller.clientHeight;
+        }
+
+        event.preventDefault();
+        scroller.scrollTop = Math.min(
+          maxScroll,
+          Math.max(0, scroller.scrollTop + delta),
+        );
+      },
+      { passive: false },
+    );
+  }
+
   function init() {
     updateSidebarMode();
     syncFilterButtons();
@@ -772,6 +800,7 @@
     bindMenus();
     bindFilters();
     bindTabThemeColors();
+    keepWheelInside(messagesRoot);
 
     const initialConversation = getVisibleConversations("groomer-messages")[0];
     if (initialConversation) {
