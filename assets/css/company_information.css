@@ -456,7 +456,12 @@ body {
     background: #FFF;
     padding: 30px 36px;
 }
-
+.chat-with-fursgo {
+    border-radius: 10px;
+    background: #F8F8F8;
+    box-shadow: 0 10px 20px 2px rgba(0, 0, 0, 0.05);
+    border: none;
+}
 .bg-div {
     padding: 30px;
 }
