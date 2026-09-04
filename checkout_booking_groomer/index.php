@@ -937,25 +937,7 @@ $studioImage = BASE_URL . 'assets/images/card1.png';
                             </div>
 
                             <div class="cbg-summary-divider" id="cbgSummaryPromoDivider" hidden></div>
-
-                            <div class="cbg-summary-accordion open" id="cbgSummaryPromoAccordion" hidden>
-                                <button type="button" class="cbg-summary-accordion-head">
-                                    <span class="cbg-summary-accordion-title">
-                                        <span class="cbg-summary-dot" aria-hidden="true"></span>
-                                        Promo
-                                        <span class="cbg-summary-badge" id="cbgSummaryPromoBadge">0</span>
-                                    </span>
-                                    <span class="cbg-summary-accordion-right">
-                                        <span id="cbgSummaryPromo" class="cbg-summary-accordion-price cbg-promo-discount">-£0.00</span>
-                                        <svg class="cbg-summary-chevron" xmlns="http://www.w3.org/2000/svg" width="14" height="8" viewBox="0 0 14 8" fill="none" aria-hidden="true">
-                                            <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                                        </svg>
-                                    </span>
-                                </button>
-                                <div class="cbg-summary-accordion-body">
-                                    <ul class="cbg-summary-item-list" id="cbgSummaryPromoList"></ul>
-                                </div>
-                            </div>
+                            <div class="cbg-summary-promos" id="cbgSummaryPromos" hidden></div>
                         </div>
 
                         <div class="cbg-summary-total groomer-bg">

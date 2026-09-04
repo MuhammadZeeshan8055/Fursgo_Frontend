@@ -127,6 +127,8 @@
   font-size: 10px;
   font-weight: 600;
   line-height: 1;
+  background: #FFF0ED;
+  color: #FFA899;
 }
 
 .cbg-page .cbg-summary-accordion-right {
@@ -188,9 +190,12 @@
   background: #f0eeeb;
 }
 
-.cbg-page .cbg-summary-promo {
-  margin-top: 12px;
-  padding: 0 0 4px;
+.cbg-page .cbg-summary-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #FFA899;
+  flex-shrink: 0;
 }
 
 .cbg-page .cbg-summary-total.cbgs-summary-total {

@@ -1430,10 +1430,6 @@ body.cbg-page {
   cursor: pointer;
 }
 
-.cbg-promo-discount {
-  color: #9D9B98 !important;
-}
-
 .cbg-promo-pill {
   display: inline-flex;
   align-items: center;
@@ -1900,6 +1896,27 @@ body.cbg-page {
   font-weight: 600;
   color: #9d9b98;
   margin-bottom: 8px;
+}
+
+.cbg-summary-promos {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 12px;
+  padding: 0 0 4px;
+}
+
+.cbg-summary-promos[hidden] {
+  display: none;
+}
+
+.cbg-summary-promos .cbg-summary-promo {
+  margin-bottom: 0;
+  font-weight: 400;
+}
+
+.cbg-summary-promos .cbg-promo-discount {
+  white-space: nowrap;
 }
 
 .cbg-summary-total {

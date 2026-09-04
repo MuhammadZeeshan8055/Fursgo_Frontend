@@ -311,14 +311,6 @@
     background: #f0eeeb;
 }
 
-.cbg-page .cbg-summary-accordion[hidden] {
-    display: none;
-}
-
-.cbg-page .cbg-summary-accordion-price.cbg-promo-discount {
-    color: #9d9b98;
-}
-
 .cbg-page .cbg-summary-total.space-bg {
     margin: 16px -30px 0;
     padding: 16px 30px;

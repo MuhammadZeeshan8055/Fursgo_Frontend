@@ -52,10 +52,7 @@
     summaryExtrasBadge: document.getElementById("cbgSummaryExtrasBadge"),
     summaryExtrasList: document.getElementById("cbgSummaryExtrasList"),
     summaryExtrasAccordion: document.getElementById("cbgSummaryExtrasAccordion"),
-    summaryPromo: document.getElementById("cbgSummaryPromo"),
-    summaryPromoBadge: document.getElementById("cbgSummaryPromoBadge"),
-    summaryPromoList: document.getElementById("cbgSummaryPromoList"),
-    summaryPromoAccordion: document.getElementById("cbgSummaryPromoAccordion"),
+    summaryPromos: document.getElementById("cbgSummaryPromos"),
     summaryPromoDivider: document.getElementById("cbgSummaryPromoDivider"),
     summaryTotal: document.getElementById("cbgSummaryTotal"),
   };
@@ -120,21 +117,16 @@
 
     const hasPromo = appliedPromos.length > 0;
     if (els.summaryPromoDivider) els.summaryPromoDivider.hidden = !hasPromo;
-    if (els.summaryPromoAccordion) els.summaryPromoAccordion.hidden = !hasPromo;
-    if (els.summaryPromoBadge) {
-      els.summaryPromoBadge.textContent = String(appliedPromos.length);
-      els.summaryPromoBadge.style.display = hasPromo ? "" : "none";
-    }
-    if (els.summaryPromo) {
-      els.summaryPromo.textContent = "-£" + promoDiscount.toFixed(2);
-    }
-    if (els.summaryPromoList) {
-      els.summaryPromoList.innerHTML = appliedPromos
+    if (els.summaryPromos) {
+      els.summaryPromos.hidden = !hasPromo;
+      els.summaryPromos.innerHTML = appliedPromos
         .map((code) => {
           const amount = VALID_PROMOS[code] || 0;
           return (
-            `<li><span>${escapeHtml(code)}</span>` +
-            `<span>-£${amount.toFixed(2)}</span></li>`
+            `<div class="cbg-summary-line cbg-summary-promo">` +
+            `<span>Promo (${escapeHtml(code)})</span>` +
+            `<span class="cbg-promo-discount">-£${amount.toFixed(2)}</span>` +
+            `</div>`
           );
         })
         .join("");
