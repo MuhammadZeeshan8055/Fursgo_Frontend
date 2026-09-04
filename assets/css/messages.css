@@ -93,6 +93,34 @@ aside.sidebar {
     visibility: hidden;
     opacity: 0;
     transition: opacity 0.2s ease;
+    z-index: 10;
+}
+
+.archived-chat {
+    display: flex;
+    flex-direction: column;
+    width: 170px;
+    height: auto;
+    padding: 0;
+    overflow: hidden;
+}
+
+.archived-chat .chat-menu-item {
+    padding: 12px 14px;
+    gap: 10px;
+}
+
+.archived-chat .chat-menu-item + .chat-menu-item {
+    border-top: 1px solid #D9D9D9;
+}
+
+.archived-chat .chat-menu-item .simple-font {
+    margin: 0;
+    white-space: nowrap;
+}
+
+.archived-chat .chat-menu-item svg {
+    flex-shrink: 0;
 }
 
 .archived.show,

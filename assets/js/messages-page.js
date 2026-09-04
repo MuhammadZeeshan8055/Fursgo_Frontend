@@ -126,6 +126,10 @@
 
   function getVisibleConversations(tabId) {
     const filtered = conversations.filter((conversation) => {
+      if (conversation.deleted) {
+        return false;
+      }
+
       const matchesTab = conversation.tab === tabId;
       const matchesArchiveState = showingArchived
         ? conversation.archived === true
@@ -317,6 +321,21 @@
     archiveActiveChat();
   }
 
+  function deleteActiveChat() {
+    const conversation = getConversationById(activeConversationId);
+    const menu = document.querySelector(".archived-chat");
+    menu?.classList.remove("show");
+
+    if (!conversation || conversation.deleted) {
+      return;
+    }
+
+    conversation.deleted = true;
+    conversation.archived = false;
+    renderChatLists();
+    refreshVisibleChat();
+  }
+
   function renderMessages(chat) {
     messagesRoot.classList.remove("locked");
     messagesRoot.innerHTML = `${chat.messages
@@ -401,7 +420,12 @@
 
                 const btn = document.createElement("span");
                 btn.className = "remove-btn";
-                btn.innerHTML = "&#x2715;";
+                btn.innerHTML = `
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                      <circle cx="8" cy="8" r="7.5" fill="white" stroke="#3B3731"/>
+                      <path d="M5.68878 10.6667L10.6666 5.68896M5.68878 5.68896L10.6666 10.6667" stroke="#3B3731" stroke-linecap="round"/>
+                    </svg>
+                `;
                 btn.addEventListener("click", () => item.remove());
 
                 item.appendChild(preview);
@@ -535,7 +559,10 @@
     const statusText = headerRoot.querySelector(".status-text");
     const statusDot = headerRoot.querySelector(".status-dot circle");
     const archiveMenuLabel = headerRoot.querySelector(
-      ".archived-chat .simple-font",
+      '.archived-chat [data-action="archive-chat"] .simple-font',
+    );
+    const blockMenuLabel = headerRoot.querySelector(
+      '.archived-chat [data-action="block-groomer"] .simple-font',
     );
     const profileLink = headerRoot.querySelector("[data-profile-link]");
     const bookingLink = headerRoot.querySelector("[data-booking-link]");
@@ -545,9 +572,7 @@
     // Space tab chats always use the space tag + house icon
     const isSpaceChat =
       conversation.tab === "space-messages" || list.badge === "space";
-    const iconType = isSpaceChat
-      ? "space"
-      : detail.bookingIcon || "groomer";
+    const iconType = isSpaceChat ? "space" : detail.bookingIcon || "groomer";
     const tagType = isSpaceChat
       ? "space"
       : detail.tagClass || list.badge || "groomer";
@@ -589,9 +614,9 @@
         `${config.baseUrl || ""}my_bookings/my_bookings.php`;
     }
 
-        if (bookingIcon) {
-            bookingIcon.innerHTML = getBookingIconSvg(iconType);
-        }
+    if (bookingIcon) {
+      bookingIcon.innerHTML = getBookingIconSvg(iconType);
+    }
 
     const chevronPath = headerRoot.querySelector(".booking-chevron path");
     if (chevronPath) {
@@ -615,6 +640,11 @@
       archiveMenuLabel.textContent = conversation.archived
         ? "Unarchive Chat"
         : "Archive Chat";
+    }
+
+    if (blockMenuLabel) {
+      blockMenuLabel.textContent =
+        list.badge === "space" ? "Block Space" : "Block Groomer";
     }
   }
 
@@ -701,6 +731,7 @@
 
     if (dotsBtn && archivedChat) {
       dotsBtn.addEventListener("click", (event) => {
+        if (event.target.closest(".chat-menu-item")) return;
         event.stopPropagation();
         archivedChat.classList.toggle("show");
       });
@@ -715,6 +746,20 @@
       event.stopPropagation();
       toggleArchiveActiveChat();
     });
+
+    archivedChat
+      ?.querySelector('[data-action="block-groomer"]')
+      ?.addEventListener("click", (event) => {
+        event.stopPropagation();
+        archivedChat.classList.remove("show");
+      });
+
+    archivedChat
+      ?.querySelector('[data-action="delete-chat"]')
+      ?.addEventListener("click", (event) => {
+        event.stopPropagation();
+        deleteActiveChat();
+      });
 
     exitArchivedBtn?.addEventListener("click", closeArchivedView);
 
