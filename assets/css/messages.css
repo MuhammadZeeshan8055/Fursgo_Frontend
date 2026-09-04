@@ -336,36 +336,207 @@ p.messages-count {
     }
 }
 
-.chat-header {
-    border-radius: 135px;
-    border: 1px solid rgba(255, 201, 122, 0.20);
-    background: #FFF;
-    box-shadow: 0 4px 20px 10px rgba(0, 0, 0, 0.05);
-    height: 100px;
-    padding: 15px;
+.chat-header-wrap {
     flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.chat-area .chat-header {
+    margin-left: -25px;
+    margin-right: -25px;
+    margin-top: -10px;
+    padding: 16px 25px;
+    flex-shrink: 0;
+    background: #F7F4EC;
+    color: #3B3731;
+    font-weight: 400;
+    font-size: inherit;
+    border-radius: 0;
+}
+
+.header-info {
+    min-width: 0;
+}
+
+.studio-row {
+    flex-wrap: wrap;
+}
+
+.studio-name {
+    font-family: Lato, sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.status-row {
+    min-width: 0;
+    gap: 6px;
+}
+
+.status-text {
+    margin: 0;
+    color: #B4D86B;
+    font-family: Lato, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.header-actions {
+    flex-shrink: 0;
+}
+
+.chat-area .chat-header .dots-svg {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #FFF;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.view-profile-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    border-radius: 100px;
+    border: 1px solid #F2F2F2;
+    background: #FFF;
+    color: #3B3731;
+    font-family: Lato, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: normal;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.chat-booking-card {
+    border-radius: 10px;
+    padding: 14px 16px;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.chat-booking-card--completed {
+    border: 1px solid #EBEBEB;
+    background: #F9F9F9;
+    box-shadow: none;
+}
+
+.chat-booking-card--completed:hover {
+    border-color: #EBEBEB;
+    background: #F9F9F9;
+    color: inherit;
+    text-decoration: none;
+}
+
+.chat-booking-card--active {
+    border: 1px solid #C9DDA0;
+    background: #F6FAEE;
+    box-shadow: 0 4px 13.1px 0 rgba(59, 55, 49, 0.10);
+}
+
+.chat-booking-card--active:hover {
+    border-color: #C9DDA0;
+    background: #F6FAEE;
+    color: inherit;
+    text-decoration: none;
+}
+
+.booking-service-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.chat-booking-card--completed .booking-service-icon {
+    background: #F3F3F3;
+}
+
+.chat-booking-card--active .booking-service-icon {
+    background: #D8E8B7;
+}
+
+.booking-title {
+    font-family: Lato, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.booking-meta {
+    font-family: Lato, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: normal;
+    margin-top: 4px;
+    color: #3B3731;
+}
+
+.booking-ref-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 15px 20px;
+    border-radius: 100px;
+    background: #FFF;
+}
+
+.chat-booking-card--completed .booking-ref {
+    font-family: Lato, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: normal;
+    color: #949494;
+}
+
+.chat-booking-card--active .booking-ref {
+    font-family: Lato, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: normal;
+    color: #A6BE75;
+}
+
+.booking-card-right {
+    flex-shrink: 0;
+}
+
+.chat-booking-card--active .booking-chevron path {
+    stroke: #C9DDA0;
 }
 
 .tag {
     border-radius: 100px;
-    border: 1px solid rgba(246, 168, 127, 0.15);
-    color: #fff;
+    color: #FFC97A;
     padding: 6px 10px;
     text-align: center;
     font-family: "Lato";
     font-size: 14px;
     font-style: normal;
-    font-weight: 400;
+    font-weight: 500;
     line-height: normal;
 }
 
 .tag.groomer {
-    background: var(--active-bg);
+    background: #FFFAF2;
+    color: #FFC97A;
 }
 
 .tag.space {
-    background: #FFA899;
-    border-color: rgba(255, 168, 153, 0.3);
+    background: #FFEEEB;
+    color: #FFA899;
 }
 
 .arrow-svg {

@@ -3209,52 +3209,77 @@
                     <div class="chat-area">
 
                         <div class="chat-width">
-                            <div class="chat-header d-flex align-items-center justify-content-between gap-10 mb-4 mt-4">
-                                <div class="d-flex align-items-center gap-20">
-                                    <div class="profile-image-wrapper">
-                                        <img src="<?= BASE_URL ?>/assets/images/groomer-profile.png" class="rounded-image large-size" alt="">
-                                        <div class="top-left-svg">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="21" height="23" viewBox="0 0 21 23" fill="none">
-                                                <ellipse cx="10.9241" cy="11.3744" rx="6.44549" ry="6.06626" fill="white" />
-                                                <path d="M10.6272 0.127384C10.4511 0.0439255 10.2623 0 10.0652 0C9.86812 0 9.6794 0.0439255 9.50326 0.127384L1.60626 3.63703C0.683615 4.04554 -0.00417476 4.99872 1.90757e-05 6.14957C0.0209883 10.507 1.73207 18.4795 8.95806 22.1033C9.65843 22.4547 10.472 22.4547 11.1724 22.1033C18.3984 18.4795 20.1095 10.507 20.1304 6.14957C20.1346 4.99872 19.4469 4.04554 18.5242 3.63703L10.6272 0.127384ZM6.07689 12.5715C6.2782 12.6242 6.49208 12.6505 6.71016 12.6505C8.19059 12.6505 9.39422 11.3899 9.39422 9.83931V7.02808H11.2479C11.7554 7.02808 12.2209 7.32677 12.4473 7.80556L12.7493 8.43369H15.4333C15.8024 8.43369 16.1044 8.74996 16.1044 9.1365V10.5421C16.1044 12.4836 14.603 14.0562 12.7493 14.0562H10.7362V16.2832C10.7362 16.6038 10.4888 16.8674 10.1785 16.8674C10.103 16.8674 10.0275 16.8498 9.96039 16.8191L5.82107 14.961C5.54428 14.838 5.36813 14.5525 5.36813 14.2406C5.36813 14.1177 5.3933 13.9991 5.44782 13.8892L6.07689 12.5715ZM6.03915 7.02808H8.05219V9.83931C8.05219 10.6168 7.45247 11.2449 6.71016 11.2449C5.96785 11.2449 5.36813 10.6168 5.36813 9.83931V7.73089C5.36813 7.34434 5.67009 7.02808 6.03915 7.02808ZM11.4073 9.1365C11.4073 8.9501 11.3366 8.77134 11.2107 8.63954C11.0849 8.50774 10.9142 8.43369 10.7362 8.43369C10.5583 8.43369 10.3876 8.50774 10.2618 8.63954C10.1359 8.77134 10.0652 8.9501 10.0652 9.1365C10.0652 9.3229 10.1359 9.50166 10.2618 9.63346C10.3876 9.76526 10.5583 9.83931 10.7362 9.83931C10.9142 9.83931 11.0849 9.76526 11.2107 9.63346C11.3366 9.50166 11.4073 9.3229 11.4073 9.1365Z" fill="#C9DDA0" />
-                                            </svg>
+                            <div class="chat-header-wrap">
+                                <div class="chat-header d-flex align-items-center justify-content-between gap-10">
+                                    <div class="d-flex align-items-center gap-20">
+                                        <div class="profile-image-wrapper">
+                                            <img src="<?= BASE_URL ?>/assets/images/groomer-profile.png" class="rounded-image large-size" alt="">
+                                            <div class="top-left-svg">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="21" height="23" viewBox="0 0 21 23" fill="none">
+                                                    <ellipse cx="10.9241" cy="11.3744" rx="6.44549" ry="6.06626" fill="white" />
+                                                    <path d="M10.6272 0.127384C10.4511 0.0439255 10.2623 0 10.0652 0C9.86812 0 9.6794 0.0439255 9.50326 0.127384L1.60626 3.63703C0.683615 4.04554 -0.00417476 4.99872 1.90757e-05 6.14957C0.0209883 10.507 1.73207 18.4795 8.95806 22.1033C9.65843 22.4547 10.472 22.4547 11.1724 22.1033C18.3984 18.4795 20.1095 10.507 20.1304 6.14957C20.1346 4.99872 19.4469 4.04554 18.5242 3.63703L10.6272 0.127384ZM6.07689 12.5715C6.2782 12.6242 6.49208 12.6505 6.71016 12.6505C8.19059 12.6505 9.39422 11.3899 9.39422 9.83931V7.02808H11.2479C11.7554 7.02808 12.2209 7.32677 12.4473 7.80556L12.7493 8.43369H15.4333C15.8024 8.43369 16.1044 8.74996 16.1044 9.1365V10.5421C16.1044 12.4836 14.603 14.0562 12.7493 14.0562H10.7362V16.2832C10.7362 16.6038 10.4888 16.8674 10.1785 16.8674C10.103 16.8674 10.0275 16.8498 9.96039 16.8191L5.82107 14.961C5.54428 14.838 5.36813 14.5525 5.36813 14.2406C5.36813 14.1177 5.3933 13.9991 5.44782 13.8892L6.07689 12.5715ZM6.03915 7.02808H8.05219V9.83931C8.05219 10.6168 7.45247 11.2449 6.71016 11.2449C5.96785 11.2449 5.36813 10.6168 5.36813 9.83931V7.73089C5.36813 7.34434 5.67009 7.02808 6.03915 7.02808ZM11.4073 9.1365C11.4073 8.9501 11.3366 8.77134 11.2107 8.63954C11.0849 8.50774 10.9142 8.43369 10.7362 8.43369C10.5583 8.43369 10.3876 8.50774 10.2618 8.63954C10.1359 8.77134 10.0652 8.9501 10.0652 9.1365C10.0652 9.3229 10.1359 9.50166 10.2618 9.63346C10.3876 9.76526 10.5583 9.83931 10.7362 9.83931C10.9142 9.83931 11.0849 9.76526 11.2107 9.63346C11.3366 9.50166 11.4073 9.3229 11.4073 9.1365Z" fill="#C9DDA0" />
+                                                </svg>
+                                            </div>
+                                        </div>
+                                        <div class="header-info d-flex flex-column">
+                                            <div class="studio-row d-flex align-items-center gap-10">
+                                                <div class="studio-name dark-color-font">Sarah’s Grooming Studio</div>
+                                                <div class="tag groomer">Home Visits</div>
+                                            </div>
+                                            <div class="status-row d-flex align-items-center">
+                                                <svg class="status-dot" xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10" fill="none">
+                                                    <circle cx="5" cy="5" r="5" fill="#C9DDA0" />
+                                                </svg>
+                                                <p class="status-text">Active now · Sarah W.</p>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="tag-and-name d-flex flex-column gap-10">
-                                        <div class=" d-flex align-items-center gap-10">
-                                            <div class="tag groomer">Home Visits</div>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10" fill="none">
-                                                <circle cx="5" cy="5" r="5" fill="#C9DDA0" />
+                                    <div class="header-actions d-flex align-items-center gap-10">
+                                        <div class="dots-svg cursor">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36" fill="none">
+                                                <rect width="36" height="36" rx="18" fill="white" />
+                                                <circle cx="12.4" cy="18.5" r="1.4" fill="#3B3731" />
+                                                <circle cx="18" cy="18.5" r="1.4" fill="#3B3731" />
+                                                <circle cx="23.6" cy="18.5" r="1.4" fill="#3B3731" />
                                             </svg>
-                                            <p class="light-color-font" style="color:#C9DDA0;">Available</p>
+                                            <div class="archived-chat d-flex align-items-center justify-content-between gap-25" data-action="archive-chat">
+                                                <p class="simple-font cursor">Archive Chat</p>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                                    <path d="M5.958 10.2838C6.3485 10.6742 6.9815 10.6742 7.372 10.2838L9.12598 8.53034C9.2889 8.36748 9.28892 8.10338 9.12603 7.94049C8.96316 7.77762 8.69909 7.77762 8.53622 7.94049L7.08156 9.39515V5.89603C7.08156 5.66596 6.89506 5.47946 6.665 5.47946C6.43494 5.47946 6.24844 5.66596 6.24844 5.89603V9.39515L4.79378 7.94049C4.63091 7.77762 4.36684 7.77762 4.20397 7.94049C4.04108 8.10338 4.0411 8.36748 4.20402 8.53034L5.958 10.2838ZM0.833125 3.17254V11.9845C0.833125 12.1339 0.881168 12.2567 0.977256 12.3527C1.07334 12.4488 1.19637 12.4969 1.34633 12.4969H11.9845C12.1339 12.4969 12.2567 12.4488 12.3527 12.3527C12.4488 12.2567 12.4969 12.1339 12.4969 11.9845V3.17254H0.833125ZM1.47463 13.33C1.10139 13.33 0.762309 13.1775 0.457385 12.8726C0.152462 12.5677 0 12.2289 0 11.8562V2.90427C0 2.74209 0.0258268 2.58935 0.0774806 2.44605C0.129134 2.30276 0.206893 2.17085 0.310756 2.05032L1.60876 0.492377C1.72929 0.32964 1.88009 0.206893 2.06115 0.124136C2.24222 0.0413787 2.43634 0 2.64351 0H10.6548C10.8615 0 11.0581 0.0413787 11.2447 0.124136C11.4313 0.206893 11.5849 0.329362 11.7054 0.491544L13.0192 2.08281C13.1231 2.20334 13.2009 2.33803 13.2525 2.48688C13.3042 2.63517 13.33 2.79069 13.33 2.95343V11.8554C13.33 12.2281 13.1775 12.5669 12.8726 12.8718C12.5677 13.1767 12.2289 13.3292 11.8562 13.3292L1.47463 13.33ZM1.14971 2.33942H12.1636L11.0556 1.00808C11.0017 0.954761 10.94 0.912272 10.8706 0.880613C10.8012 0.848954 10.729 0.833125 10.654 0.833125H2.65933C2.58491 0.833125 2.51271 0.849232 2.44272 0.881446C2.37274 0.91366 2.31164 0.956427 2.25943 1.00975L1.14971 2.33942Z" fill="#3B3731" />
+                                                </svg>
+                                            </div>
                                         </div>
-                                        <div class="name-studio">
-                                            <div class="dark-color-font">Sarah W.</div>
-                                            <div class="simple-light-font">Sarah’s Grooming Studio</div>
-                                        </div>
+                                        <a href="<?= BASE_URL ?>profiles/groomer/groomer_profile.php" class="view-profile-btn cursor" data-profile-link aria-label="View profile">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="13" viewBox="0 0 20 13" fill="none">
+                                                <path d="M10.0006 0.5C16.5005 0.5 19.5012 6.5 19.5012 6.5C19.5012 6.5 16.5005 12.5 10.0006 12.5C3.50073 12.5 0.5 6.5 0.5 6.5C0.5 6.5 3.50073 0.5 10.0006 0.5Z" stroke="#3B3731" stroke-linejoin="round" />
+                                                <path d="M12.8362 6.49977C12.8449 6.88906 12.7757 7.27617 12.6327 7.63837C12.4898 8.00057 12.2759 8.33055 12.0037 8.60895C11.7314 8.88736 11.4063 9.10856 11.0474 9.25958C10.6885 9.4106 10.303 9.4884 9.91362 9.4884C9.52423 9.4884 9.13877 9.4106 8.77986 9.25958C8.42095 9.10856 8.09582 8.88736 7.82358 8.60895C7.55134 8.33055 7.33745 8.00057 7.1945 7.63837C7.05154 7.27617 6.98238 6.88906 6.99109 6.49977C6.99109 5.72447 7.29907 4.98093 7.84729 4.43271C8.39551 3.88449 9.13905 3.57651 9.91435 3.57651C10.6896 3.57651 11.4332 3.88449 11.9814 4.43271C12.5296 4.98093 12.8376 5.72447 12.8376 6.49977H12.8362Z" stroke="#3B3731" stroke-linejoin="round" />
+                                            </svg>
+                                            View profile
+                                        </a>
                                     </div>
                                 </div>
-                                <div class="d-flex align-items-center gap-10">
-                                    <p class="simple-font">Booking reference: FG-10294</p>
-                                    <a href="<?= BASE_URL ?>profiles/groomer/groomer_profile.php" class="arrow-svg cursor" data-profile-link aria-label="View profile">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="13" viewBox="0 0 20 13" fill="none">
-                                            <path d="M19.4955 5.3238C19.8911 5.71559 19.8906 6.35506 19.4942 6.74615L14.4257 11.7478C14.0359 12.1325 13.4078 12.1274 13.0242 11.7365C12.8723 11.5866 12.8115 11.4367 12.8419 11.2868C12.8799 11.1368 12.9634 10.9944 13.0926 10.8595L16.3629 7.65481C16.5452 7.47489 16.7161 7.31372 16.8756 7.17129C17.0019 7.05853 16.9047 6.83297 16.7362 6.85003C16.5411 6.86979 16.3407 6.88693 16.135 6.90143C15.7172 6.93141 15.2842 6.94641 14.836 6.94641H0.916421C0.410296 6.94641 0 6.53611 0 6.02998C0 5.52386 0.410296 5.11356 0.916422 5.11356H14.836C15.2842 5.11356 15.721 5.12855 16.1464 5.15854C16.3491 5.17283 16.5466 5.18967 16.7389 5.20906C16.9098 5.22629 17.0063 5.00006 16.8756 4.88867C16.7161 4.74624 16.5452 4.58507 16.3629 4.40516L13.0698 1.17801C12.933 1.04308 12.8495 0.900646 12.8191 0.75072C12.7887 0.600795 12.8457 0.450869 12.99 0.300943C13.3781 -0.0943801 14.0165 -0.101805 14.4101 0.287996L19.4955 5.3238Z" fill="white" />
-                                        </svg>
-                                    </a>
-                                    <div class="dots-svg cursor">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="5" viewBox="0 0 25 5" fill="none">
-                                            <circle cx="2.5" cy="2.5" r="2.5" fill="#3B3731" />
-                                            <circle cx="12.5" cy="2.5" r="2.5" fill="#3B3731" />
-                                            <circle cx="22.5" cy="2.5" r="2.5" fill="#3B3731" />
-                                        </svg>
-                                        <div class="archived-chat d-flex align-items-center justify-content-between gap-25" data-action="archive-chat">
-                                            <p class="simple-font cursor">Archive Chat</p>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
-                                                <path d="M5.958 10.2838C6.3485 10.6742 6.9815 10.6742 7.372 10.2838L9.12598 8.53034C9.2889 8.36748 9.28892 8.10338 9.12603 7.94049C8.96316 7.77762 8.69909 7.77762 8.53622 7.94049L7.08156 9.39515V5.89603C7.08156 5.66596 6.89506 5.47946 6.665 5.47946C6.43494 5.47946 6.24844 5.66596 6.24844 5.89603V9.39515L4.79378 7.94049C4.63091 7.77762 4.36684 7.77762 4.20397 7.94049C4.04108 8.10338 4.0411 8.36748 4.20402 8.53034L5.958 10.2838ZM0.833125 3.17254V11.9845C0.833125 12.1339 0.881168 12.2567 0.977256 12.3527C1.07334 12.4488 1.19637 12.4969 1.34633 12.4969H11.9845C12.1339 12.4969 12.2567 12.4488 12.3527 12.3527C12.4488 12.2567 12.4969 12.1339 12.4969 11.9845V3.17254H0.833125ZM1.47463 13.33C1.10139 13.33 0.762309 13.1775 0.457385 12.8726C0.152462 12.5677 0 12.2289 0 11.8562V2.90427C0 2.74209 0.0258268 2.58935 0.0774806 2.44605C0.129134 2.30276 0.206893 2.17085 0.310756 2.05032L1.60876 0.492377C1.72929 0.32964 1.88009 0.206893 2.06115 0.124136C2.24222 0.0413787 2.43634 0 2.64351 0H10.6548C10.8615 0 11.0581 0.0413787 11.2447 0.124136C11.4313 0.206893 11.5849 0.329362 11.7054 0.491544L13.0192 2.08281C13.1231 2.20334 13.2009 2.33803 13.2525 2.48688C13.3042 2.63517 13.33 2.79069 13.33 2.95343V11.8554C13.33 12.2281 13.1775 12.5669 12.8726 12.8718C12.5677 13.1767 12.2289 13.3292 11.8562 13.3292L1.47463 13.33ZM1.14971 2.33942H12.1636L11.0556 1.00808C11.0017 0.954761 10.94 0.912272 10.8706 0.880613C10.8012 0.848954 10.729 0.833125 10.654 0.833125H2.65933C2.58491 0.833125 2.51271 0.849232 2.44272 0.881446C2.37274 0.91366 2.31164 0.956427 2.25943 1.00975L1.14971 2.33942Z" fill="#3B3731" />
+                                <a href="#" class="chat-booking-card chat-booking-card--completed d-flex align-items-center justify-content-between" data-booking-link>
+                                    <div class="d-flex align-items-center gap-15">
+                                        <div class="booking-service-icon" data-booking-icon aria-hidden="true">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="14" viewBox="0 0 16 14" fill="none">
+                                                <path d="M13.9835 12.9244V4.08978C13.9835 4.06858 13.9853 4.04781 13.9885 4.02748L11.5999 1.99057C11.092 1.55804 10.741 1.25993 10.4433 1.06558C10.1558 0.877974 9.96266 0.817957 9.77786 0.817957C9.59321 0.817957 9.40123 0.878193 9.11408 1.06558C8.81631 1.25996 8.46444 1.5578 7.9558 1.99057L5.56551 4.02748C5.5688 4.04789 5.57221 4.0685 5.57221 4.08978V12.9244C5.57185 13.1499 5.37987 13.3333 5.1431 13.3333C4.90649 13.3332 4.71435 13.1498 4.71399 12.9244V4.75278L4.27147 5.1314C4.0948 5.28195 3.82264 5.26623 3.66467 5.09785C3.50733 4.92958 3.52206 4.67157 3.6982 4.52113L7.38254 1.3819H7.38421C7.87584 0.963595 8.27397 0.622591 8.62797 0.391405C8.99267 0.153336 9.35472 2.39994e-07 9.77786 0C10.2009 0 10.5629 0.153326 10.9277 0.391405C11.282 0.622647 11.6818 0.96344 12.1732 1.3819L15.8575 4.52113C16.0337 4.67157 16.0484 4.92958 15.891 5.09785C15.7331 5.26623 15.4609 5.28195 15.2843 5.1314L14.8417 4.75278V12.9244C14.8414 13.1498 14.6492 13.3332 14.4126 13.3333C14.1758 13.3333 13.9839 13.1499 13.9835 12.9244Z" fill="#3B3731" />
+                                                <path d="M1.94577 7.11203C1.94577 6.80354 1.85803 6.53885 1.73317 6.36015C1.60827 6.18157 1.46316 6.10651 1.33331 6.10651C1.20354 6.10662 1.05827 6.1817 0.933461 6.36015C0.808711 6.53885 0.720863 6.8037 0.720863 7.11203C0.720977 7.42046 0.808557 7.68532 0.933461 7.8639C1.05825 8.04226 1.20357 8.11593 1.33331 8.11604C1.46306 8.11604 1.60833 8.04218 1.73317 7.8639C1.85807 7.68532 1.94565 7.42046 1.94577 7.11203ZM2.66663 7.11203C2.66652 7.57155 2.53753 8.00267 2.31042 8.32741C2.08311 8.65242 1.74093 8.88905 1.33331 8.88905C0.925982 8.88894 0.584878 8.65215 0.357616 8.32741C0.130484 8.00266 0.000113694 7.57158 0 7.11203C0 6.65226 0.130384 6.22003 0.357616 5.89514C0.584878 5.5705 0.926063 5.33361 1.33331 5.3335C1.74087 5.3335 2.08311 5.5702 2.31042 5.89514C2.53765 6.22003 2.66663 6.65226 2.66663 7.11203Z" fill="#3B3731" />
+                                                <path d="M0.889038 12.9164V8.4164C0.889038 8.18629 1.08802 7.99976 1.33348 7.99976C1.57893 7.99976 1.77791 8.18629 1.77791 8.4164V12.9164C1.77773 13.1464 1.57882 13.3331 1.33348 13.3331C1.08814 13.3331 0.889225 13.1464 0.889038 12.9164Z" fill="#3B3731" />
+                                                <path d="M11.3683 9.93476C11.3683 9.57184 11.3667 9.34142 11.3436 9.17254C11.3222 9.01599 11.2894 8.97526 11.2696 8.95569C11.2498 8.93619 11.2086 8.90237 11.0492 8.88125C10.8775 8.85852 10.6421 8.85859 10.2729 8.85859H9.51631C9.14706 8.85859 8.91175 8.85852 8.74001 8.88125C8.58055 8.90237 8.53944 8.93619 8.51962 8.95569C8.49978 8.97526 8.46701 9.016 8.44561 9.17254C8.42252 9.34142 8.42094 9.57184 8.42094 9.93476V12.5046H11.3683V9.93476ZM10.6528 5.79191C10.885 5.79209 11.0735 5.9778 11.0739 6.2062C11.0739 6.43489 10.8852 6.62031 10.6528 6.62048H9.13639C8.904 6.62031 8.71534 6.43489 8.71534 6.2062C8.71569 5.9778 8.90422 5.79209 9.13639 5.79191H10.6528ZM10.6528 3.55542L10.7367 3.56351C10.9289 3.60188 11.0739 3.76926 11.0739 3.96971C11.0739 4.17015 10.9289 4.33753 10.7367 4.3759L10.6528 4.38399H9.13639C8.904 4.38382 8.71534 4.1984 8.71534 3.96971C8.71534 3.74101 8.904 3.55559 9.13639 3.55542H10.6528ZM12.2104 12.5046H15.5787C15.8113 12.5046 15.9998 12.6901 15.9998 12.9189C15.9994 13.1474 15.811 13.3332 15.5787 13.3332H0.421047C0.188728 13.3332 0.000354627 13.1474 0 12.9189C0 12.6901 0.188509 12.5046 0.421047 12.5046H7.57884V9.93476C7.57884 9.59543 7.57778 9.29932 7.61009 9.0625C7.64413 8.81351 7.72212 8.56883 7.92423 8.36987C8.12647 8.17088 8.37505 8.09428 8.62817 8.06077C8.86906 8.02891 9.17099 8.03002 9.51631 8.03002H10.2729C10.6182 8.03002 10.9201 8.02891 11.161 8.06077C11.4142 8.09428 11.6627 8.17088 11.865 8.36987C12.0671 8.56883 12.1451 8.81351 12.1791 9.0625C12.2114 9.29932 12.2104 9.59543 12.2104 9.93476V12.5046Z" fill="#3B3731" />
                                             </svg>
                                         </div>
+                                        <div class="booking-card-text">
+                                            <div class="booking-title">Bath &amp; Brush · Bella</div>
+                                            <div class="booking-meta">Past booking · 7 Oct · Completed</div>
+                                        </div>
                                     </div>
-                                </div>
+                                    <div class="booking-card-right d-flex align-items-center gap-10">
+                                        <span class="booking-ref-pill"><span class="booking-ref">FG-10456</span></span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="8" height="14" viewBox="0 0 8 14" fill="none">
+                                            <path d="M0.75 12.3967L6.62263 6.52404L0.848583 0.749996" stroke="#A6BE75" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+                                    </div>
+                                </a>
                             </div>
                             <div class="messages mt-5">
                                 <div class="message received">
@@ -3375,9 +3400,11 @@
                                 }
 
                                 .preview-item .remove-btn:hover {
-                                    background: var(--active-bg);;
+                                    background: var(--active-bg);
+                                    ;
                                     color: #fff;
-                                    border-color: var(--active-bg);;
+                                    border-color: var(--active-bg);
+                                    ;
                                 }
                             </style>
                             <div class="chat-wrapper mb-5">
@@ -3455,8 +3482,7 @@
 
         // Single source of truth for the page data. In the future this array can
         // come straight from PHP/DB without changing the rendering logic.
-        const conversations = [
-            {
+        const conversations = [{
                 id: 'garden-grooming-spot',
                 tab: 'groomer-messages',
                 locked: false,
@@ -3476,17 +3502,33 @@
                 },
                 detail: {
                     tag: 'Mobile Studio',
-                    tagClass: 'groomer',
+                    tagClass: 'space',
                     availability: 'Available',
                     availabilityColor: '#C9DDA0',
                     bookingReference: 'FG-10218',
+                    bookingState: 'active',
+                    bookingService: 'Half-Day (4 hours)',
+                    petName: 'Milo',
+                    bookingSchedule: 'Thu, 21 Dec · 10:00–14:00 · Victoria Embankment',
+                    bookingIcon: 'space',
                     displayName: 'The Garden Grooming Spot',
                     subtitle: 'Hosted by Chloe D.',
                     footerNote: 'Chats remain open for 3 days after a booking ends.',
-                    messages: [
-                        { type: 'received', html: 'Hi! Just a quick reminder about tomorrow\'s appointment for Milo.', time: '10:00' },
-                        { type: 'sent', html: 'Thanks Chloe, we\'ll be ready for you.', time: '10:05' },
-                        { type: 'received', html: 'Perfect. Please keep him inside if it\'s raining when I arrive.', time: '10:06' }
+                    messages: [{
+                            type: 'received',
+                            html: 'Hi! Just a quick reminder about tomorrow\'s appointment for Milo.',
+                            time: '10:00'
+                        },
+                        {
+                            type: 'sent',
+                            html: 'Thanks Chloe, we\'ll be ready for you.',
+                            time: '10:05'
+                        },
+                        {
+                            type: 'received',
+                            html: 'Perfect. Please keep him inside if it\'s raining when I arrive.',
+                            time: '10:06'
+                        }
                     ],
                     quickReplies: ['Thanks!', 'See you tomorrow!']
                 }
@@ -3514,18 +3556,51 @@
                     tagClass: 'groomer',
                     availability: 'Available',
                     availabilityColor: '#C9DDA0',
-                    bookingReference: 'FG-10294',
+                    bookingReference: 'FG-10456',
+                    bookingState: 'completed',
                     displayName: 'Sarah W.',
                     subtitle: 'Sarah’s Grooming Studio',
+                    bookingService: 'Bath & Brush',
+                    petName: 'Bella',
+                    bookingType: 'Past booking',
+                    bookingDate: '7 Oct',
+                    bookingStatus: 'Completed',
                     footerNote: 'Chats remain open for 3 days after a booking ends.',
-                    messages: [
-                        { type: 'received', html: 'Hi Lorem! Thanks for booking 😊<br>I’m looking forward to meeting Bella tomorrow.', time: '12:30' },
-                        { type: 'sent', html: 'Hi Sarah! Thanks so much - Bella can be a bit nervous at first, but she usually settles quickly.', time: '12:35' },
-                        { type: 'received', html: 'That’s no problem at all. I’ll take things slow with her.<br>Does she have any sensitivities I should be aware of?', time: '12:40' },
-                        { type: 'sent', html: 'She’s a little sensitive around her paws, but otherwise she’s fine.', time: '12:45' },
-                        { type: 'received', html: 'Got it, thank you! I’ll be gentle when trimming her nails.<br>I’ll arrive about 10 minutes early to set up.', time: '12:50' },
-                        { type: 'sent', html: 'Perfect - there’s parking right outside the house.', time: 'Seen by Sarah W. at 12:55' },
-                        { type: 'typing', html: 'Sarah W is typing ...', time: '12:56' }
+                    messages: [{
+                            type: 'received',
+                            html: 'Hi Lorem! Thanks for booking 😊<br>I’m looking forward to meeting Bella tomorrow.',
+                            time: '12:30'
+                        },
+                        {
+                            type: 'sent',
+                            html: 'Hi Sarah! Thanks so much - Bella can be a bit nervous at first, but she usually settles quickly.',
+                            time: '12:35'
+                        },
+                        {
+                            type: 'received',
+                            html: 'That’s no problem at all. I’ll take things slow with her.<br>Does she have any sensitivities I should be aware of?',
+                            time: '12:40'
+                        },
+                        {
+                            type: 'sent',
+                            html: 'She’s a little sensitive around her paws, but otherwise she’s fine.',
+                            time: '12:45'
+                        },
+                        {
+                            type: 'received',
+                            html: 'Got it, thank you! I’ll be gentle when trimming her nails.<br>I’ll arrive about 10 minutes early to set up.',
+                            time: '12:50'
+                        },
+                        {
+                            type: 'sent',
+                            html: 'Perfect - there’s parking right outside the house.',
+                            time: 'Seen by Sarah W. at 12:55'
+                        },
+                        {
+                            type: 'typing',
+                            html: 'Sarah W is typing ...',
+                            time: '12:56'
+                        }
                     ],
                     quickReplies: ['Thank you!', 'See you soon!']
                 }
@@ -3549,18 +3624,33 @@
                     dividerBefore: false
                 },
                 detail: {
-                    tag: 'Studio Visit',
-                    tagClass: 'groomer',
+                    tag: 'Garden/Shed',
+                    tagClass: 'space',
                     availability: 'Available',
                     availabilityColor: '#C9DDA0',
-                    bookingReference: 'FG-10311',
+                    bookingReference: 'FG-10456',
+                    bookingState: 'active',
+                    bookingService: 'Half-Day (4 hours)',
+                    bookingSchedule: 'Thu, 21 Dec · 10:00–14:00 · Victoria Embankment',
+                    bookingIcon: 'space',
                     displayName: 'Furs & Co. Studio',
                     subtitle: 'Hosted by Dev É.',
                     footerNote: 'Chats remain open for 3 days after a booking ends.',
-                    messages: [
-                        { type: 'received', html: 'Just confirming our booking for Friday morning.', time: '08:30' },
-                        { type: 'sent', html: 'Yes, Friday morning still works for us.', time: '08:34' },
-                        { type: 'received', html: 'Amazing. Please arrive 5 minutes early so we can check in your pet.', time: '08:36' }
+                    messages: [{
+                            type: 'received',
+                            html: 'Just confirming our booking for Friday morning.',
+                            time: '08:30'
+                        },
+                        {
+                            type: 'sent',
+                            html: 'Yes, Friday morning still works for us.',
+                            time: '08:34'
+                        },
+                        {
+                            type: 'received',
+                            html: 'Amazing. Please arrive 5 minutes early so we can check in your pet.',
+                            time: '08:36'
+                        }
                     ],
                     quickReplies: ['Sounds good', 'We’ll be there']
                 }
@@ -3589,12 +3679,22 @@
                     availability: 'Available',
                     availabilityColor: '#C9DDA0',
                     bookingReference: 'FG-10342',
+                    bookingState: 'active',
+                    bookingService: 'Day Care Session',
+                    bookingSchedule: 'Thu · 14:00–17:00 · FluffLab Studio',
                     displayName: 'Katie Z.',
                     subtitle: 'FluffLab',
                     footerNote: 'Chats remain open for 3 days after a booking ends.',
-                    messages: [
-                        { type: 'received', html: 'Your booking is confirmed for Thursday afternoon.', time: 'Thurs' },
-                        { type: 'sent', html: 'Perfect, thank you!', time: 'Thurs' }
+                    messages: [{
+                            type: 'received',
+                            html: 'Your booking is confirmed for Thursday afternoon.',
+                            time: 'Thurs'
+                        },
+                        {
+                            type: 'sent',
+                            html: 'Perfect, thank you!',
+                            time: 'Thurs'
+                        }
                     ],
                     quickReplies: ['Thank you!', 'See you then']
                 }
@@ -3623,16 +3723,42 @@
                     availability: 'Available',
                     availabilityColor: '#C9DDA0',
                     bookingReference: 'FG-10294',
+                    bookingState: 'active',
+                    bookingService: 'Bath & Brush',
+                    bookingSchedule: 'Tomorrow · 09:30 · Home visit',
                     displayName: 'Paws & Bubbles',
                     subtitle: 'Hosted by Patrick B.',
                     footerNote: 'Chats remain open for 3 days after a booking ends.',
-                    messages: [
-                        { type: 'received', html: 'Hi Lorem! Thanks for booking 😊<br>I’m looking forward to meeting Bella tomorrow.', time: '12:30' },
-                        { type: 'sent', html: 'Hi Patrick! Bella can be a bit nervous at first, but she usually settles quickly.', time: '12:35' },
-                        { type: 'received', html: 'That’s no problem at all. I’ll take things slow with her.<br>Does she have any sensitivities I should be aware of?', time: '12:40' },
-                        { type: 'sent', html: 'She’s a little sensitive around her paws, but otherwise she’s fine.', time: '12:45' },
-                        { type: 'received', html: 'Got it, thank you! I’ll be gentle when trimming her nails.<br>I’ll arrive about 10 minutes early to set up.', time: '12:50' },
-                        { type: 'sent', html: 'Perfect - there’s parking right outside the house.', time: 'Seen by Patrick B. at 12:55' }
+                    messages: [{
+                            type: 'received',
+                            html: 'Hi Lorem! Thanks for booking 😊<br>I’m looking forward to meeting Bella tomorrow.',
+                            time: '12:30'
+                        },
+                        {
+                            type: 'sent',
+                            html: 'Hi Patrick! Bella can be a bit nervous at first, but she usually settles quickly.',
+                            time: '12:35'
+                        },
+                        {
+                            type: 'received',
+                            html: 'That’s no problem at all. I’ll take things slow with her.<br>Does she have any sensitivities I should be aware of?',
+                            time: '12:40'
+                        },
+                        {
+                            type: 'sent',
+                            html: 'She’s a little sensitive around her paws, but otherwise she’s fine.',
+                            time: '12:45'
+                        },
+                        {
+                            type: 'received',
+                            html: 'Got it, thank you! I’ll be gentle when trimming her nails.<br>I’ll arrive about 10 minutes early to set up.',
+                            time: '12:50'
+                        },
+                        {
+                            type: 'sent',
+                            html: 'Perfect - there’s parking right outside the house.',
+                            time: 'Seen by Patrick B. at 12:55'
+                        }
                     ],
                     quickReplies: ['Thanks!', 'See you tomorrow!']
                 }
@@ -3664,10 +3790,21 @@
                     displayName: 'Cathy P.',
                     subtitle: 'Wags & Wheels',
                     footerNote: 'Chats remain open for 3 days after a booking ends.',
-                    messages: [
-                        { type: 'received', html: 'Is she comfortable with dryer noise after bath time?', time: '07/10' },
-                        { type: 'sent', html: 'Yes, but she prefers the lower setting.', time: '07/10' },
-                        { type: 'received', html: 'Perfect, thanks for letting me know.', time: '07/10' }
+                    messages: [{
+                            type: 'received',
+                            html: 'Is she comfortable with dryer noise after bath time?',
+                            time: '07/10'
+                        },
+                        {
+                            type: 'sent',
+                            html: 'Yes, but she prefers the lower setting.',
+                            time: '07/10'
+                        },
+                        {
+                            type: 'received',
+                            html: 'Perfect, thanks for letting me know.',
+                            time: '07/10'
+                        }
                     ],
                     quickReplies: ['Thanks!', 'Will do']
                 }
@@ -3692,16 +3829,27 @@
                 },
                 detail: {
                     tag: 'Private Space',
-                    tagClass: 'groomer',
+                    tagClass: 'space',
                     availability: 'Available',
                     availabilityColor: '#C9DDA0',
                     bookingReference: 'FG-20115',
+                    bookingState: 'active',
+                    bookingService: 'Half-Day (4 hours)',
+                    bookingSchedule: 'Tue, 12 Nov · 10:00–14:00 · Garden Loft',
+                    bookingIcon: 'space',
                     displayName: 'The Garden Loft',
                     subtitle: 'Hosted by Chloe D.',
                     footerNote: 'Chats remain open for 3 days after a booking ends.',
-                    messages: [
-                        { type: 'received', html: 'Your booking space is ready for next Tuesday.', time: '09:15' },
-                        { type: 'sent', html: 'Perfect, thank you.', time: '09:18' }
+                    messages: [{
+                            type: 'received',
+                            html: 'Your booking space is ready for next Tuesday.',
+                            time: '09:15'
+                        },
+                        {
+                            type: 'sent',
+                            html: 'Perfect, thank you.',
+                            time: '09:18'
+                        }
                     ],
                     quickReplies: ['Thank you!', 'See you then']
                 }
@@ -3726,16 +3874,27 @@
                 },
                 detail: {
                     tag: 'Indoor Space',
-                    tagClass: 'groomer',
+                    tagClass: 'space',
                     availability: 'Available',
                     availabilityColor: '#C9DDA0',
                     bookingReference: 'FG-20188',
+                    bookingState: 'active',
+                    bookingService: 'Full-Day (8 hours)',
+                    bookingSchedule: 'Fri, 15 Nov · 09:00–17:00 · Studio Suite',
+                    bookingIcon: 'space',
                     displayName: 'Studio Suite',
                     subtitle: 'Hosted by Dev É.',
                     footerNote: 'Chats remain open for 3 days after a booking ends.',
-                    messages: [
-                        { type: 'received', html: 'Parking instructions for your booking are attached.', time: '11:05' },
-                        { type: 'sent', html: 'Great, I’ve got them.', time: '11:12' }
+                    messages: [{
+                            type: 'received',
+                            html: 'Parking instructions for your booking are attached.',
+                            time: '11:05'
+                        },
+                        {
+                            type: 'sent',
+                            html: 'Great, I’ve got them.',
+                            time: '11:12'
+                        }
                     ],
                     quickReplies: ['Thanks!', 'All set']
                 }
@@ -3764,12 +3923,25 @@
                     availability: 'Available',
                     availabilityColor: '#C9DDA0',
                     bookingReference: 'FG-20231',
+                    bookingState: 'completed',
+                    bookingService: 'Half-Day (4 hours)',
+                    bookingType: 'Past booking',
+                    bookingDate: '2 Jun',
+                    bookingStatus: 'Completed',
+                    bookingIcon: 'space',
                     displayName: 'Paws Venue',
                     subtitle: 'Hosted by Patrick B.',
                     footerNote: 'Chats remain open for 3 days after a booking ends.',
-                    messages: [
-                        { type: 'received', html: 'Thanks again for using our space last week.', time: '02/06' },
-                        { type: 'sent', html: 'It worked really well for us.', time: '02/06' }
+                    messages: [{
+                            type: 'received',
+                            html: 'Thanks again for using our space last week.',
+                            time: '02/06'
+                        },
+                        {
+                            type: 'sent',
+                            html: 'It worked really well for us.',
+                            time: '02/06'
+                        }
                     ],
                     quickReplies: ['Thanks!', 'Great to hear']
                 }
@@ -3787,23 +3959,34 @@
                     time: '07/10',
                     count: 0,
                     image: `${baseUrl}/assets/images/card4.png`,
-                    badge: 'groomer',
+                    badge: 'space',
                     unread: false,
                     cardClass: '',
                     dividerBefore: true
                 },
                 detail: {
                     tag: 'Workshop Space',
-                    tagClass: 'groomer',
+                    tagClass: 'space',
                     availability: 'Available',
                     availabilityColor: '#C9DDA0',
                     bookingReference: 'FG-20244',
+                    bookingState: 'active',
+                    bookingService: 'Half-Day (4 hours)',
+                    bookingSchedule: 'Thu, 21 Dec · 10:00–14:00 · Victoria Embankment',
+                    bookingIcon: 'space',
                     displayName: 'Wheels Workshop',
                     subtitle: 'Hosted by Cathy P.',
                     footerNote: 'Chats remain open for 3 days after a booking ends.',
-                    messages: [
-                        { type: 'received', html: 'Hope the setup worked well for your visit.', time: '07/10' },
-                        { type: 'sent', html: 'It did, thank you again.', time: '07/10' }
+                    messages: [{
+                            type: 'received',
+                            html: 'Hope the setup worked well for your visit.',
+                            time: '07/10'
+                        },
+                        {
+                            type: 'sent',
+                            html: 'It did, thank you again.',
+                            time: '07/10'
+                        }
                     ],
                     quickReplies: ['Thanks!', 'All good']
                 }
