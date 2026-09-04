@@ -7,15 +7,16 @@
   let currentStep = 0;
   let petSubView = "choice";
   let selectedPetId = null;
+  let editingPetId = null;
   let newPetData = null;
   let selectedService = { name: "Half-day", price: SERVICE_PRICE };
   let petBreedsData = {};
   let addressMode = "home"; // 'home' | 'different'
   let addressEditing = false;
-  let appliedPromo = null;
+  let appliedPromos = [];
   let promoDiscount = 0;
   let selectedPayMethod = null;
-  let selectedExtraId = "1";
+  let selectedExtraIds = ["1"];
 
   const SPACE_EXTRAS = {
     "1": { id: "1", name: "Storage Locker", price: 5, unit: "/ day" },
@@ -25,6 +26,9 @@
 
   const VALID_PROMOS = {
     PROMO25: 3,
+    PROMO22: 5,
+    PROMO23: 1,
+    PROMO26: 1,
   };
 
   const els = {
@@ -48,26 +52,26 @@
     summaryExtrasBadge: document.getElementById("cbgSummaryExtrasBadge"),
     summaryExtrasList: document.getElementById("cbgSummaryExtrasList"),
     summaryExtrasAccordion: document.getElementById("cbgSummaryExtrasAccordion"),
+    summaryPromo: document.getElementById("cbgSummaryPromo"),
+    summaryPromoBadge: document.getElementById("cbgSummaryPromoBadge"),
+    summaryPromoList: document.getElementById("cbgSummaryPromoList"),
+    summaryPromoAccordion: document.getElementById("cbgSummaryPromoAccordion"),
+    summaryPromoDivider: document.getElementById("cbgSummaryPromoDivider"),
     summaryTotal: document.getElementById("cbgSummaryTotal"),
   };
 
-  function getSelectedExtra() {
-    if (!selectedExtraId) return null;
-    return SPACE_EXTRAS[selectedExtraId] || null;
+  function getSelectedAddons() {
+    return selectedExtraIds
+      .map((id) => SPACE_EXTRAS[id])
+      .filter(Boolean);
   }
 
   function getAddonsTotal() {
-    const extra = getSelectedExtra();
-    return extra ? extra.price : 0;
+    return getSelectedAddons().reduce((sum, extra) => sum + extra.price, 0);
   }
 
   function getAddonsCount() {
-    return selectedExtraId ? 1 : 0;
-  }
-
-  function getSelectedAddons() {
-    const extra = getSelectedExtra();
-    return extra ? [extra] : [];
+    return selectedExtraIds.length;
   }
 
   function updateSummary() {
@@ -114,15 +118,27 @@
         .join("");
     }
 
-    const promoDivider = document.getElementById("cbgSummaryPromoDivider");
-    const promoLine = document.getElementById("cbgSummaryPromoLine");
-    const promoAmount = document.getElementById("cbgSummaryPromo");
-    const promoLabel = document.getElementById("cbgSummaryPromoLabel");
-    if (promoDivider) promoDivider.hidden = !appliedPromo;
-    if (promoLine) promoLine.style.display = appliedPromo ? "flex" : "none";
-    if (promoAmount) promoAmount.textContent = "-£" + promoDiscount.toFixed(2);
-    if (promoLabel && appliedPromo)
-      promoLabel.textContent = "Promo (" + appliedPromo + ")";
+    const hasPromo = appliedPromos.length > 0;
+    if (els.summaryPromoDivider) els.summaryPromoDivider.hidden = !hasPromo;
+    if (els.summaryPromoAccordion) els.summaryPromoAccordion.hidden = !hasPromo;
+    if (els.summaryPromoBadge) {
+      els.summaryPromoBadge.textContent = String(appliedPromos.length);
+      els.summaryPromoBadge.style.display = hasPromo ? "" : "none";
+    }
+    if (els.summaryPromo) {
+      els.summaryPromo.textContent = "-£" + promoDiscount.toFixed(2);
+    }
+    if (els.summaryPromoList) {
+      els.summaryPromoList.innerHTML = appliedPromos
+        .map((code) => {
+          const amount = VALID_PROMOS[code] || 0;
+          return (
+            `<li><span>${escapeHtml(code)}</span>` +
+            `<span>-£${amount.toFixed(2)}</span></li>`
+          );
+        })
+        .join("");
+    }
 
     if (els.summaryTotal) {
       els.summaryTotal.textContent = "£" + total.toFixed(2);
@@ -149,27 +165,36 @@
 
   function updateSpaceExtrasUI() {
     const tagsEl = document.getElementById("cbsExtrasTags");
-    const extra = getSelectedExtra();
+    const addons = getSelectedAddons();
 
     document.querySelectorAll(".cbs-extra-option").forEach((btn) => {
       btn.classList.toggle(
         "selected",
-        btn.dataset.extraId === selectedExtraId,
+        selectedExtraIds.includes(btn.dataset.extraId),
       );
     });
 
     if (tagsEl) {
-      if (extra) {
+      if (addons.length) {
         tagsEl.hidden = false;
-        tagsEl.innerHTML =
-          '<span class="cbs-extras-tag">' +
-          escapeHtml(extra.name) +
-          '<button type="button" class="cbs-extras-tag-remove" id="cbsExtrasTagRemove" aria-label="Remove ' +
-          escapeHtml(extra.name) +
-          '">&times;</button></span>';
-        document
-          .getElementById("cbsExtrasTagRemove")
-          ?.addEventListener("click", clearSelectedExtra);
+        tagsEl.innerHTML = addons
+          .map((extra) => {
+            const label = extra.unit
+              ? extra.name + " " + extra.unit
+              : extra.name + " (£" + extra.price + ")";
+            return (
+              '<span class="cbs-extras-tag" data-extra-id="' +
+              escapeHtml(extra.id) +
+              '">' +
+              escapeHtml(label) +
+              '<button type="button" class="cbs-extras-tag-remove" data-remove-extra="' +
+              escapeHtml(extra.id) +
+              '" aria-label="Remove ' +
+              escapeHtml(extra.name) +
+              '">&times;</button></span>'
+            );
+          })
+          .join("");
       } else {
         tagsEl.hidden = true;
         tagsEl.innerHTML = "";
@@ -180,23 +205,35 @@
     updateSummary();
   }
 
-  function clearSelectedExtra(e) {
-    e?.stopPropagation();
-    selectedExtraId = null;
+  function removeSelectedExtra(id) {
+    selectedExtraIds = selectedExtraIds.filter((extraId) => extraId !== id);
     updateSpaceExtrasUI();
   }
 
-  function selectExtra(id) {
-    selectedExtraId = id;
+  function toggleExtra(id) {
+    if (!id || !SPACE_EXTRAS[id]) return;
+    if (selectedExtraIds.includes(id)) {
+      selectedExtraIds = selectedExtraIds.filter((extraId) => extraId !== id);
+    } else {
+      selectedExtraIds = selectedExtraIds.concat(id);
+    }
     updateSpaceExtrasUI();
   }
 
   function setupSpaceExtras() {
     document.querySelectorAll(".cbs-extra-option").forEach((btn) => {
       btn.addEventListener("click", () => {
-        selectExtra(btn.dataset.extraId);
+        toggleExtra(btn.dataset.extraId);
       });
     });
+    document
+      .getElementById("cbsExtrasTags")
+      ?.addEventListener("click", (e) => {
+        const btn = e.target.closest("[data-remove-extra]");
+        if (!btn) return;
+        e.stopPropagation();
+        removeSelectedExtra(btn.getAttribute("data-remove-extra"));
+      });
     updateSpaceExtrasUI();
   }
 
@@ -336,16 +373,97 @@
     const birthday = document.querySelector(
       '#cbgPetAddNew input[name="birthday"]',
     ).value;
-    const type = getSelectedPetType();
+    let type = getSelectedPetType();
     const breed = document.getElementById("cbgPetBreed").value;
     const sex =
       document.querySelector('#cbgPetAddNew input[name="sex"]:checked')
         ?.value || "";
     const weight = document.getElementById("cbgPetWeight").value;
     const notes = document.getElementById("cbgPetNotes").value.trim();
+    const image = document.getElementById("cbgPetPhotoPreview")?.src || "";
 
-    newPetData = { name, birthday, type, breed, sex, weight, notes };
-    selectedPetId = null;
+    if (editingPetId != null && type === "Other") {
+      const card = document.querySelector(
+        '.cbg-pet-card[data-pet-id="' + editingPetId + '"]',
+      );
+      const originalType = card?.dataset.type || "";
+      if (originalType && !/^(cat|dog)$/i.test(originalType)) {
+        type = originalType;
+      }
+    }
+
+    newPetData = { name, birthday, type, breed, sex, weight, notes, image };
+
+    if (editingPetId != null) {
+      syncEditedPetCard(editingPetId, newPetData);
+      selectedPetId = editingPetId;
+    } else {
+      selectedPetId = null;
+    }
+    editingPetId = null;
+  }
+
+  function formatBirthdayDisplay(value) {
+    if (!value) return "—";
+    if (/^\d{2}\/\d{2}\/\d{4}$/.test(value)) return value;
+    const iso = parseBirthdayToISO(value);
+    if (!iso) return value;
+    const parts = iso.split("-");
+    return parts[2] + "/" + parts[1] + "/" + parts[0];
+  }
+
+  function syncEditedPetCard(petId, data) {
+    const card = document.querySelector(
+      '.cbg-pet-card[data-pet-id="' + petId + '"]',
+    );
+    if (!card || !data) return;
+
+    const birthdayDisplay = formatBirthdayDisplay(data.birthday);
+    card.dataset.name = data.name || "";
+    card.dataset.type = data.type || "";
+    card.dataset.breed = data.breed || "";
+    card.dataset.birthday = birthdayDisplay;
+    card.dataset.sex = data.sex || "";
+    card.dataset.weight = data.weight || "4";
+    card.dataset.notes = data.notes || "";
+    if (data.image) card.dataset.image = data.image;
+
+    const avatar = card.querySelector(".cbg-pet-avatar img");
+    if (avatar && data.image) {
+      avatar.src = data.image;
+      avatar.alt = data.name || "";
+    }
+
+    const cols = card.querySelectorAll(".cbg-pet-col");
+    if (cols[0]) {
+      const nameLabel = cols[0].querySelector(".cbg-pet-col-label");
+      const typeValue = cols[0].querySelector(".cbg-pet-col-value");
+      if (nameLabel) {
+        const icon = nameLabel.querySelector("svg");
+        nameLabel.textContent = "";
+        if (icon) nameLabel.appendChild(icon);
+        nameLabel.append(" " + (data.name || ""));
+      }
+      if (typeValue) {
+        typeValue.textContent =
+          (data.type || "") + " • " + (data.breed || "");
+      }
+    }
+    if (cols[1]) {
+      const birthdayValue = cols[1].querySelector(".cbg-pet-col-value");
+      if (birthdayValue) birthdayValue.textContent = birthdayDisplay;
+    }
+    if (cols[2]) {
+      const sexValue = cols[2].querySelector(".cbg-pet-col-value");
+      if (sexValue) sexValue.textContent = data.sex || "";
+    }
+    if (cols[3]) {
+      const notesValue = cols[3].querySelector(".cbg-pet-col-value");
+      if (notesValue) {
+        notesValue.textContent = data.notes || "—";
+        notesValue.title = data.notes || "";
+      }
+    }
   }
 
   function goForward(context) {
@@ -422,9 +540,9 @@
     if (extrasEl) extrasEl.textContent = "£" + extrasTotal.toFixed(2);
     if (extrasLine)
       extrasLine.style.display = extrasTotal > 0 ? "flex" : "none";
-    if (promoLine) promoLine.hidden = !appliedPromo;
-    if (promoLabel && appliedPromo)
-      promoLabel.textContent = "Promo (" + appliedPromo + ")";
+    if (promoLine) promoLine.hidden = appliedPromos.length === 0;
+    if (promoLabel && appliedPromos.length)
+      promoLabel.textContent = "Promo (" + appliedPromos.join(", ") + ")";
     if (promoAmount) promoAmount.textContent = "-£" + promoDiscount.toFixed(2);
     if (totalEl) totalEl.textContent = "£" + total.toFixed(2);
   }
@@ -436,22 +554,37 @@
     input?.classList.toggle("is-error", show);
   }
 
-  function updatePromoUI() {
-    const hasPromo = !!appliedPromo;
+  function getPromoDiscountTotal() {
+    return appliedPromos.reduce(
+      (sum, code) => sum + (VALID_PROMOS[code] || 0),
+      0,
+    );
+  }
 
-    document
-      .getElementById("cbgReviewPromoEntry")
-      ?.classList.toggle("is-hidden", hasPromo);
+  function updatePromoUI() {
+    const hasPromo = appliedPromos.length > 0;
     const reviewApplied = document.getElementById("cbgReviewPromoApplied");
-    if (reviewApplied) reviewApplied.hidden = !hasPromo;
+
+    if (reviewApplied) {
+      reviewApplied.hidden = !hasPromo;
+      reviewApplied.innerHTML = appliedPromos
+        .map(
+          (code) =>
+            `<div class="cbg-promo-pill" data-promo-code="${escapeHtml(code)}">` +
+            `<span>${escapeHtml(code)}</span>` +
+            `<button type="button" class="cbg-promo-pill-remove" data-remove-promo="${escapeHtml(code)}" aria-label="Remove promo code ${escapeHtml(code)}">` +
+            `<svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none" aria-hidden="true">` +
+            `<path d="M0.5 7.5L7.5 0.5M0.5 0.5L7.5 7.5" stroke="#9D9B98" stroke-linecap="round" />` +
+            `</svg></button></div>`,
+        )
+        .join("");
+    }
 
     const sidebarPromo = document.getElementById("cbgSidebarPromo");
     if (sidebarPromo) sidebarPromo.hidden = !hasPromo;
 
-    ["cbgReviewPromoAppliedCode", "cbgSidebarPromoCode"].forEach((id) => {
-      const el = document.getElementById(id);
-      if (el) el.textContent = appliedPromo || "";
-    });
+    const sidebarCode = document.getElementById("cbgSidebarPromoCode");
+    if (sidebarCode) sidebarCode.textContent = appliedPromos.join(", ");
   }
 
   function applyPromoCode() {
@@ -469,22 +602,29 @@
       return;
     }
 
-    appliedPromo = code;
-    promoDiscount = discount;
+    if (appliedPromos.includes(code)) {
+      setPromoError(false);
+      if (input) input.value = "";
+      return;
+    }
+
+    appliedPromos.push(code);
+    promoDiscount = getPromoDiscountTotal();
     setPromoError(false);
-    if (input) input.value = code;
+    if (input) input.value = "";
 
     updatePromoUI();
     updateSummary();
   }
 
-  function removePromoCode() {
-    appliedPromo = null;
-    promoDiscount = 0;
+  function removePromoCode(code) {
+    if (code) {
+      appliedPromos = appliedPromos.filter((c) => c !== code);
+    } else {
+      appliedPromos = [];
+    }
+    promoDiscount = getPromoDiscountTotal();
 
-    const input = document.getElementById("cbgPromoInput");
-
-    if (input) input.value = "";
     setPromoError(false);
     updatePromoUI();
     updateSummary();
@@ -665,23 +805,210 @@
     return div.innerHTML;
   }
 
-  function populateBreeds(petType) {
+  function populateBreeds(petType, preferredBreed) {
     const select = document.getElementById("cbgPetBreed");
     if (!select || !petBreedsData.petTypes) return;
 
     const typeData = petBreedsData.petTypes.find((t) => t.name === petType);
     select.innerHTML = '<option value="">Select a Breed</option>';
 
-    if (typeData && typeData.breeds) {
-      typeData.breeds.forEach((breed) => {
-        const opt = document.createElement("option");
-        opt.value = breed;
-        opt.textContent = breed;
-        select.appendChild(opt);
-      });
+    const breeds = typeData && typeData.breeds ? [...typeData.breeds] : [];
+    if (preferredBreed && !breeds.includes(preferredBreed)) {
+      breeds.unshift(preferredBreed);
+    }
+
+    breeds.forEach((breed) => {
+      const opt = document.createElement("option");
+      opt.value = breed;
+      opt.textContent = breed;
+      select.appendChild(opt);
+    });
+
+    if (preferredBreed) {
+      select.value = preferredBreed;
     }
 
     if (select._fursDD) select._fursDD.refresh();
+  }
+
+  function getBreedSourceType(petType) {
+    const normalized = (petType || "").trim();
+    if (!normalized) return "Other";
+    if (/^(cat|dog)$/i.test(normalized)) {
+      return normalized.charAt(0).toUpperCase() + normalized.slice(1).toLowerCase();
+    }
+    if (
+      petBreedsData.petTypes &&
+      petBreedsData.petTypes.some((t) => t.name === normalized)
+    ) {
+      return normalized;
+    }
+    return "Other";
+  }
+
+  function getTogglePetKey(petType) {
+    const lower = (petType || "").toLowerCase();
+    if (lower === "cat") return "cat";
+    if (lower === "dog") return "dog";
+    return "other";
+  }
+
+  function parseBirthdayToISO(value) {
+    if (!value) return "";
+    if (/^\d{4}-\d{2}-\d{2}$/.test(value)) return value;
+    const match = String(value).match(/(\d{2})\/(\d{2})\/(\d{4})/);
+    if (!match) return "";
+    return match[3] + "-" + match[2] + "-" + match[1];
+  }
+
+  function setBirthdayField(isoDate) {
+    const hidden = document.querySelector('#cbgPetAddNew input[name="birthday"]');
+    if (!hidden) return;
+
+    const uid = hidden.id.replace("bc-input-", "");
+    const display = document.getElementById("bc-display-" + uid);
+    const trigger = document.getElementById("bc-trigger-" + uid);
+
+    if (isoDate) {
+      hidden.value = isoDate;
+      const parts = isoDate.split("-");
+      if (display && parts.length === 3) {
+        display.textContent = parts[2] + " / " + parts[1] + " / " + parts[0];
+      }
+      trigger?.classList.remove("bc-empty");
+    } else {
+      hidden.value = "";
+      if (display) {
+        display.textContent = trigger?.dataset.placeholder || "dd / mm / yyyy";
+      }
+      trigger?.classList.add("bc-empty");
+    }
+
+    hidden.dispatchEvent(new Event("change", { bubbles: true }));
+  }
+
+  function setPetPhotoPreview(src) {
+    const preview = document.getElementById("cbgPetPhotoPreview");
+    const placeholder = document.getElementById("cbgPetPhotoPlaceholder");
+    const input = document.getElementById("cbgPetPhotoInput");
+    if (!preview || !placeholder) return;
+
+    if (src) {
+      preview.src = src;
+      preview.style.display = "block";
+      placeholder.style.display = "none";
+    } else {
+      preview.src = "";
+      preview.style.display = "none";
+      placeholder.style.display = "";
+    }
+    if (input) input.value = "";
+  }
+
+  function resetPetForm() {
+    editingPetId = null;
+
+    const name = document.getElementById("cbgPetName");
+    if (name) name.value = "";
+
+    document.getElementById("cbgPetNameWrap")?.classList.remove("valid");
+    setBirthdayField("");
+    setPetPhotoPreview("");
+
+    document
+      .querySelectorAll("#cbgPetAddNew .pet-option")
+      .forEach((btn) => btn.classList.remove("highlight"));
+    document
+      .querySelector('#cbgPetAddNew .pet-option[data-pet="other"]')
+      ?.classList.add("highlight");
+    populateBreeds("Other");
+
+    document
+      .querySelectorAll('#cbgPetAddNew input[name="sex"]')
+      .forEach((r) => {
+        r.checked = false;
+      });
+
+    const weight = document.getElementById("cbgPetWeight");
+    if (weight) weight.value = "4";
+
+    const notes = document.getElementById("cbgPetNotes");
+    if (notes) notes.value = "";
+
+    updateContinueState();
+  }
+
+  function populatePetForm(data) {
+    if (!data) return;
+
+    const name = document.getElementById("cbgPetName");
+    if (name) name.value = data.name || "";
+    document
+      .getElementById("cbgPetNameWrap")
+      ?.classList.toggle("valid", !!(data.name || "").trim());
+
+    setBirthdayField(parseBirthdayToISO(data.birthday || ""));
+    setPetPhotoPreview(data.image || "");
+
+    const toggleKey = getTogglePetKey(data.type);
+    document
+      .querySelectorAll("#cbgPetAddNew .pet-option")
+      .forEach((btn) => {
+        btn.classList.toggle("highlight", btn.dataset.pet === toggleKey);
+      });
+
+    const breedSource = getBreedSourceType(data.type);
+    populateBreeds(breedSource, data.breed || "");
+
+    document
+      .querySelectorAll('#cbgPetAddNew input[name="sex"]')
+      .forEach((r) => {
+        r.checked =
+          (r.value || "").toLowerCase() === (data.sex || "").toLowerCase();
+      });
+
+    const weight = document.getElementById("cbgPetWeight");
+    if (weight) weight.value = data.weight || "4";
+
+    const notes = document.getElementById("cbgPetNotes");
+    if (notes) notes.value = data.notes || "";
+
+    updateContinueState();
+  }
+
+  function openEditPet(card) {
+    if (!card) return;
+
+    editingPetId = card.dataset.petId || null;
+    selectedPetId = card.dataset.petId || null;
+    document
+      .querySelectorAll(".cbg-pet-card")
+      .forEach((c) => c.classList.remove("selected"));
+    card.classList.add("selected");
+
+    populatePetForm({
+      name: card.dataset.name || "",
+      type: card.dataset.type || "",
+      breed: card.dataset.breed || "",
+      birthday: card.dataset.birthday || "",
+      sex: card.dataset.sex || "",
+      weight: card.dataset.weight || "4",
+      notes: card.dataset.notes || "",
+      image: card.dataset.image || card.querySelector("img")?.src || "",
+    });
+
+    showPetSubView("addNew");
+  }
+
+  function openAddNewPet() {
+    resetPetForm();
+    showPetSubView("addNew");
+  }
+
+  function leavePetForm() {
+    const returnView = editingPetId != null ? "selectExisting" : "choice";
+    resetPetForm();
+    showPetSubView(returnView);
   }
 
   async function loadPetBreeds() {
@@ -781,6 +1108,12 @@
         card.classList.add("selected");
         selectedPetId = card.dataset.petId;
         updateContinueState();
+      });
+
+      card.querySelector(".btn-edit")?.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        openEditPet(card);
       });
     });
   }
@@ -938,11 +1271,15 @@
       .getElementById("cbgPromoInput")
       ?.addEventListener("input", () => setPromoError(false));
     document
-      .getElementById("cbgRemovePromoBtn")
-      ?.addEventListener("click", removePromoCode);
+      .getElementById("cbgReviewPromoApplied")
+      ?.addEventListener("click", (e) => {
+        const btn = e.target.closest("[data-remove-promo]");
+        if (!btn) return;
+        removePromoCode(btn.getAttribute("data-remove-promo"));
+      });
     document
-      .getElementById("cbgReviewRemovePromoBtn")
-      ?.addEventListener("click", removePromoCode);
+      .getElementById("cbgRemovePromoBtn")
+      ?.addEventListener("click", () => removePromoCode());
 
     document
       .getElementById("cbgReviewTerms")
@@ -981,13 +1318,13 @@
 
     document
       .getElementById("cbgAddNewPetBtn")
-      ?.addEventListener("click", () => showPetSubView("addNew"));
+      ?.addEventListener("click", openAddNewPet);
     document
       .getElementById("cbgSelectExistingBtn")
       ?.addEventListener("click", () => showPetSubView("selectExisting"));
     document
       .getElementById("cbgPetAddNewBackBtn")
-      ?.addEventListener("click", () => showPetSubView("choice"));
+      ?.addEventListener("click", leavePetForm);
     document
       .getElementById("cbgPetSelectExistingBackBtn")
       ?.addEventListener("click", () => showPetSubView("choice"));

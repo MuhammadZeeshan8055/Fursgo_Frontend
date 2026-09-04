@@ -985,7 +985,7 @@ body.cbg-page {
   border: 1px solid #d4d4d4;
   font-family: Lato, sans-serif;
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 500;
   color: #9d9b98;
   cursor: pointer;
   border-radius: 96px;
@@ -1348,8 +1348,8 @@ body.cbg-page {
 }
 
 .cbg-review-price-line span:last-child {
-  color: #3b3731;
-  font-weight: 500;
+  color: #7E7D7B;
+  font-weight: 600;
 }
 
 .cbg-review-promo-line span:last-child {
@@ -1364,8 +1364,8 @@ body.cbg-page {
   padding-top: 8px;
   border-top: 1px solid #d4d4d4;
   font-family: "Playfair Display", serif;
-  font-size: 24px;
-  font-weight: 800;
+  font-size: 28px;
+  font-weight: 600;
   color: #3b3731;
 }
 
