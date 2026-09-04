@@ -13,27 +13,41 @@
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/media_query.css">
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/messages.css">
     <style>
+        /*
+          Left stays aligned with header .container
+          Right stretches to the screen edge
+        */
         .messages-outer-div {
             position: relative;
-            /* min-height: 100vh; */
+            overflow: hidden;
         }
 
-        /* this is the trick */
-        .right-bg {
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 50%;
-            /* matches col-lg-8 */
-            height: 100%;
-            background: var(--bg);
-            z-index: 0;
-        }
-
-        /* keep content above background */
-        .container {
+        .messages-outer-div > .container {
             position: relative;
             z-index: 1;
+            max-width: none;
+            margin-left: max(0px, calc((100vw - 1320px) / 2));
+            margin-right: 0;
+            width: calc(100vw - max(0px, calc((100vw - 1320px) / 2)));
+            padding-left: 0.75rem;
+            padding-right: 0;
+        }
+
+        /* Keep sidebar width steady; chat takes the rest */
+        .messages-outer-div .col-lg-4 {
+            flex: 0 0 380px;
+            max-width: 380px;
+            width: 380px;
+        }
+
+        .messages-outer-div .col-lg-8 {
+            flex: 1 1 auto;
+            max-width: none;
+            width: auto;
+        }
+
+        .right-bg {
+            display: none;
         }
     </style>
 </head>
