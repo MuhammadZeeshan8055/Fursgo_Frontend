@@ -2958,7 +2958,7 @@ include_once __DIR__ . '/../components/extras-addons.php';
                                                 </div>
                                                 <div class="cbm-price-row cbm-price-addons">
                                                     <span>Add-ons</span>
-                                                    <span id="cbm-addons-delta">+£0.00</span>
+                                                    <span id="cbm-addons-delta">£44.00</span>
                                                 </div>
                                                 <div class="cbm-price-row cbm-price-updated">
                                                     <span>Updated total</span>
@@ -2966,11 +2966,19 @@ include_once __DIR__ . '/../components/extras-addons.php';
                                                 </div>
                                             </div>
 
-                                            <div class="cbm-alert" id="cbm-alert" style="display:none;">
+                                            <div class="cbm-alert cbm-alert--charge" id="cbm-alert-charge" style="display:none;">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
                                                     <path d="M6.625 9.025H6.6298M6.625 4.225V7.225M12.625 6.625C12.625 3.3112 9.9388 0.625 6.625 0.625C3.3112 0.625 0.625 3.3112 0.625 6.625C0.625 9.9388 3.3112 12.625 6.625 12.625C9.9388 12.625 12.625 9.9388 12.625 6.625Z" stroke="#FF6E6E" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
                                                 </svg>
-                                                <span id="cbm-alert-text"></span>
+                                                <span id="cbm-alert-charge-text"></span>
+                                            </div>
+
+                                            <div class="cbm-alert cbm-alert--refund" id="cbm-alert-refund" style="display:none;">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 13 13" fill="none">
+                                                    <path d="M6.25 11.75C9.275 11.75 11.75 9.275 11.75 6.25C11.75 3.225 9.275 0.75 6.25 0.75C3.225 0.75 0.75 3.225 0.75 6.25C0.75 9.275 3.225 11.75 6.25 11.75Z" stroke="#6FA0C3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                                    <path d="M3.9126 6.25023L5.4691 7.80673L8.5876 4.69373" stroke="#6FA0C3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                                </svg>
+                                                <span id="cbm-alert-refund-text"></span>
                                             </div>
                                         </div>
 
@@ -3744,8 +3752,8 @@ include_once __DIR__ . '/../components/extras-addons.php';
                                                 <div class="rvw-upload-grid">
                                                     <?php for ($p = 1; $p <= 4; $p++) : ?>
                                                         <div class="upload-box" data-index="<?= $p ?>">
-                                                            <svg class="upload-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 14 14" fill="none">
-                                                                <path d="M7 10.3163C6.72386 10.3163 6.5 10.0924 6.5 9.81626V1.66626L4.52903 3.63722C4.33115 3.8351 4.00998 3.83398 3.81349 3.63471C3.61896 3.43744 3.62005 3.12016 3.81593 2.92422L6.55492 0.184464C6.80072 -0.0614062 7.19931 -0.0614344 7.44514 0.184402L10.185 2.92425C10.3809 3.1202 10.3822 3.43753 10.1877 3.63499C9.99116 3.83461 9.66959 3.83585 9.47149 3.63775L7.5 1.66626V9.81626C7.5 10.0924 7.27614 10.3163 7 10.3163ZM1.616 13.7393C1.15533 13.7393 0.771 13.5853 0.463 13.2773C0.155 12.9693 0.000666667 12.5846 0 12.1233V10.2003C0 9.92412 0.223858 9.70026 0.5 9.70026C0.776142 9.70026 1 9.92412 1 10.2003V12.1233C1 12.2773 1.064 12.4186 1.192 12.5473C1.32 12.6759 1.461 12.7399 1.615 12.7393H12.385C12.5383 12.7393 12.6793 12.6753 12.808 12.5473C12.9367 12.4193 13.0007 12.2779 13 12.1233V10.2003C13 9.92412 13.2239 9.70026 13.5 9.70026C13.7761 9.70026 14 9.92412 14 10.2003V12.1233C14 12.5839 13.846 12.9683 13.538 13.2763C13.23 13.5843 12.8453 13.7386 12.384 13.7393H1.616Z" fill="#9D9B98" />
+                                                            <svg class="upload-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                                                                <path d="M7 10.3163C6.72386 10.3163 6.5 10.0924 6.5 9.81626V1.66626L4.52903 3.63722C4.33115 3.8351 4.00998 3.83398 3.81349 3.63471C3.61896 3.43744 3.62005 3.12016 3.81593 2.92422L6.55492 0.184464C6.80072 -0.0614062 7.19931 -0.0614344 7.44514 0.184402L10.185 2.92425C10.3809 3.1202 10.3822 3.43753 10.1877 3.63499C9.99116 3.83461 9.66959 3.83585 9.47149 3.63775L7.5 1.66626V9.81626C7.5 10.0924 7.27614 10.3163 7 10.3163ZM1.616 13.7393C1.15533 13.7393 0.771 13.5853 0.463 13.2773C0.155 12.9693 0.000666667 12.5846 0 12.1233V10.2003C0 9.92412 0.223858 9.70026 0.5 9.70026C0.776142 9.70026 1 9.92412 1 10.2003V12.1233C1 12.2773 1.064 12.4186 1.192 12.5473C1.32 12.6759 1.461 12.7399 1.615 12.7393H12.385C12.5383 12.7393 12.6793 12.6753 12.808 12.5473C12.9367 12.4193 13.0007 12.2779 13 12.1233V10.2003C13 9.92412 13.2239 9.70026 13.5 9.70026C13.7761 9.70026 14 9.92412 14 10.2003V12.1233C14 12.5839 13.846 12.9683 13.538 13.2763C13.23 13.5843 12.8453 13.7386 12.384 13.7393H1.616Z" fill="currentColor" />
                                                             </svg>
                                                             <div class="preview-container" style="display:none;"></div>
                                                             <input class="file-input" type="file" name="photo<?= $p ?>" id="file-<?= $p ?>" accept="image/*" style="display:none" aria-label="Upload photo <?= $p ?>">
@@ -4163,15 +4171,22 @@ include_once __DIR__ . '/../components/extras-addons.php';
             setHint();
         </script>
         <script>
-            document.querySelectorAll('.upload-box').forEach(box => {
+            document.querySelectorAll('#review-modal .upload-box').forEach(box => {
                 const input = box.querySelector('.file-input');
                 const btn = box.querySelector('.upload-btn');
                 const placeholder = box.querySelector('.upload-icon');
                 const previewContainer = box.querySelector('.preview-container');
                 const deleteBtn = box.querySelector('.delete-btn');
 
-                // open file picker
-                btn.addEventListener('click', () => input.click());
+                function openPicker() {
+                    if (box.classList.contains('has-preview')) return;
+                    input.click();
+                }
+
+                box.addEventListener('click', function(e) {
+                    if (e.target.closest('.delete-btn')) return;
+                    openPicker();
+                });
 
                 input.addEventListener('change', (e) => {
                     const file = e.target.files[0];
@@ -4179,23 +4194,23 @@ include_once __DIR__ . '/../components/extras-addons.php';
 
                     const url = URL.createObjectURL(file);
 
-                    // hide UI
                     placeholder.style.display = 'none';
                     btn.style.display = 'none';
 
-                    // show preview
-                    previewContainer.innerHTML = `<img src="${url}" />`;
+                    previewContainer.innerHTML = `<img src="${url}" alt="" />`;
                     previewContainer.style.display = 'block';
+                    box.classList.add('has-preview');
 
-                    deleteBtn.style.display = 'block';
+                    deleteBtn.style.display = 'flex';
                 });
 
-                // delete / reset
-                deleteBtn.addEventListener('click', () => {
+                deleteBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
                     input.value = '';
 
                     previewContainer.innerHTML = '';
                     previewContainer.style.display = 'none';
+                    box.classList.remove('has-preview');
 
                     placeholder.style.display = 'block';
                     btn.style.display = 'flex';
@@ -4336,18 +4351,27 @@ include_once __DIR__ . '/../components/extras-addons.php';
 
         function updatePrices() {
             const extrasTotal = currentExtrasTotal || 0;
-            const updated = ORIGINAL.totalPaid + extrasTotal;
+            const serviceOnly = ORIGINAL.totalPaid - ORIGINAL.originalExtrasTotal;
+            const updated = serviceOnly + extrasTotal;
+            const delta = updated - ORIGINAL.totalPaid;
 
             document.getElementById('cbm-addons-delta').textContent = '£' + extrasTotal.toFixed(2);
             document.getElementById('cbm-updated-total').textContent = '£' + updated.toFixed(2);
 
-            const alertEl = document.getElementById('cbm-alert');
-            const alertText = document.getElementById('cbm-alert-text');
-            if (extrasTotal > 0) {
-                alertEl.style.display = 'flex';
-                alertText.textContent = "You'll be charged an additional £" + extrasTotal.toFixed(2) + ' when you confirm.';
-            } else {
-                alertEl.style.display = 'none';
+            const chargeEl = document.getElementById('cbm-alert-charge');
+            const chargeText = document.getElementById('cbm-alert-charge-text');
+            const refundEl = document.getElementById('cbm-alert-refund');
+            const refundText = document.getElementById('cbm-alert-refund-text');
+
+            chargeEl.style.display = 'none';
+            refundEl.style.display = 'none';
+
+            if (delta > 0) {
+                chargeEl.style.display = 'flex';
+                chargeText.textContent = "You'll be charged an additional £" + delta.toFixed(2) + ' when you confirm.';
+            } else if (delta < 0) {
+                refundEl.style.display = 'flex';
+                refundText.textContent = "You'll receive a £" + Math.abs(delta).toFixed(2) + ' refund. Refunds processed in 3-5 days.';
             }
 
             updateConfirm();
@@ -4738,6 +4762,7 @@ include_once __DIR__ . '/../components/extras-addons.php';
                 previewContainer.style.display = 'none';
             }
 
+            box.classList.remove('has-preview');
             if (placeholder) placeholder.style.display = 'block';
             if (btn) btn.style.display = 'flex';
             if (deleteBtn) deleteBtn.style.display = 'none';

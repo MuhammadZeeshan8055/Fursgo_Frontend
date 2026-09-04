@@ -1266,7 +1266,7 @@ body.my-bookings-page header.scrolled {
     resize: none;
     font-family: Lato, sans-serif;
     font-size: 14px;
-    color: #D4D4D4;
+    color: #3B3731;
     background: #fff;
     outline: none;
     transition: border 0.2s ease;
@@ -1308,27 +1308,83 @@ body.my-bookings-page header.scrolled {
     background-color: #FAFAFA;
     border-radius: 10px;
     border: none;
-    background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='10' ry='10' stroke='%23D0D0D0' stroke-width='1.5' stroke-dasharray='8%2c 6' stroke-dashoffset='0' stroke-linecap='round'/%3e%3c/svg%3e");
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    color: #9D9B98;
+    transition: color 0.15s ease, background-color 0.15s ease;
+    box-sizing: border-box;
+    width: 127.478px;
+    height: 127.478px;
+    aspect-ratio: 1/1;
 }
 
-#review-modal .upload-box:has(.preview-container[style*="block"]) {
-    background-image: none;
+/* Match first reference: longer dashes, fewer per side */
+#review-modal .upload-box::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 10px;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='10' ry='10' stroke='%23D0D0D0' stroke-width='1.5' stroke-dasharray='6%2c 4' stroke-linecap='round'/%3e%3c/svg%3e");
+}
+
+#review-modal .upload-box:hover {
+    color: #FFC97A;
+    background-color: #FAFAFA;
+}
+
+#review-modal .upload-box:hover::before {
+    background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='10' ry='10' stroke='%23FFC97A' stroke-width='1.5' stroke-dasharray='6%2c 4' stroke-linecap='round'/%3e%3c/svg%3e");
+}
+
+#review-modal .upload-box:hover .upload-icon path {
+    fill: currentColor;
+}
+
+#review-modal .upload-box:hover .upload-btn {
+    color: currentColor;
+}
+
+#review-modal .upload-box.has-preview {
+    cursor: default;
+    background-color: transparent;
+}
+
+#review-modal .upload-box.has-preview::before,
+#review-modal .upload-box.has-preview:hover::before {
+    display: none;
+}
+
+#review-modal .upload-box.has-preview:hover {
+    color: #9D9B98;
+    background-color: transparent;
+}
+
+#review-modal .upload-icon {
+    display: block;
+    flex-shrink: 0;
+}
+
+#review-modal .upload-icon path {
+    fill: currentColor;
+    transition: fill 0.15s ease;
 }
 
 #review-modal .upload-btn {
     background: none;
     border: none;
     cursor: pointer;
-    margin-top: 8px;
-    color: #9D9B98;
+    margin-top: 0;
+    color: inherit;
     font-family: Lato, sans-serif;
     font-size: 12px;
     font-weight: 600;
     padding: 0;
+    pointer-events: none;
 }
 
 #review-modal .preview-container {
@@ -3541,11 +3597,13 @@ body.my-bookings-page header.scrolled {
     border-color: #D8E8B7;
 }
 
+#change_groomer_booking_modal .cbm-alert--refund,
 #change_space_booking_modal .cbm-alert--refund {
     background: rgba(203, 220, 232, 0.30);
     color: #6FA0C3;
 }
 
+#change_groomer_booking_modal .cbm-alert--refund svg path,
 #change_space_booking_modal .cbm-alert--refund svg path {
     stroke: #6FA0C3;
 }
