@@ -39,8 +39,8 @@
 
         /* Keep sidebar width steady; chat takes the rest */
         .messages-outer-div .col-lg-4 {
-            flex: 0 0 380px;
-            max-width: 380px;
+            flex: 0 0 450px;
+            max-width: 450px;
             width: 380px;
         }
 
@@ -111,7 +111,7 @@
                                 </div>
 
                                 <div data-tab-content="groomer-messages" class="tabcontent">
-                                    <div class="filters d-flex align-items-center justify-content-center mt-4 gap-10">
+                                    <div class="filters d-flex align-items-center mt-4 gap-10">
                                         <div class="filter cursor d-flex align-items-center gap-10" data-filter="unread">
                                             Unread
                                         </div>
@@ -1666,7 +1666,7 @@
                                     </div>
                                 </div>
                                 <div data-tab-content="space-messages" class="tabcontent" style="display: none;">
-                                    <div class="filters d-flex align-items-center justify-content-center mt-4 gap-10">
+                                    <div class="filters d-flex align-items-center mt-4 gap-10">
                                         <div class="filter cursor d-flex align-items-center gap-10" data-filter="unread">
                                             Unread
                                         </div>

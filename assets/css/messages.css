@@ -71,7 +71,7 @@ aside.sidebar {
     height: 100%;
     display: flex;
     flex-direction: column;
-    padding: 0px 25px 0 0px;
+    padding: 0px 35px 0 0px;
 }
 
 .settings-archived,
@@ -149,6 +149,7 @@ aside.sidebar {
 
 .chat-list {
     overflow: visible;
+    margin-right: 10%;
 }
 
 /* Chrome, Safari, Edge */
