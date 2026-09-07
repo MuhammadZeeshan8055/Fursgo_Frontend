@@ -53,8 +53,12 @@
         }
 
         .unlink-account-pill .social-icons {
-            width: 32px;
-            height: 32px;
+            width: 34px;
+            height: 34px;
+            border-radius: 50px;
+            border: 1px solid #385C8E;
+            background: #FFF;
+            padding: 6px;
         }
 
         .link-permissions-list {
@@ -136,6 +140,33 @@
             background: #C9DDA0;
             width: 79px;
             height: 36px;
+        }
+
+        .modal-buttons .update-btn.link-incomplete-done-btn {
+            background: #3B3731;
+            width: 100%;
+            max-width: 185px;
+        }
+
+        .link-incomplete-content {
+            text-align: center;
+            padding: 10px 10px 0;
+        }
+
+        .link-incomplete-icon {
+            margin: 0 auto 16px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .link-incomplete-content .fs-18-pf-display-700 {
+            margin-bottom: 12px;
+        }
+
+        .link-incomplete-content .link-incomplete-message {
+            max-width: 340px;
+            margin: 0 auto;
+            line-height: 1.45;
         }
     </style>
 
@@ -2198,7 +2229,7 @@
                                                 <div class="col-lg-12">
                                                     <div class="d-flex align-items-center justify-content-between">
                                                         <h3 class="fs-18-pf-display-700 mb-0" id="link_account_title">Link your Facebook account</h3>
-                                                        <svg class="cursor" data-modal-close xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                                        <svg class="cursor" id="linkAccountCloseBtn" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                                                             <circle cx="10" cy="10" r="9.5" transform="matrix(-1 0 0 1 20 0)" fill="#F3F3F3" stroke="#E8E8E8" />
                                                             <path d="M13.1465 13.24L10.0001 10.0936L13.0937 6.99999" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
                                                             <path d="M7.09375 13.24L10.2402 10.0936L7.14657 6.99999" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
@@ -2229,7 +2260,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="modal-buttons d-flex justify-content-between align-items-center mt-4">
-                                                    <button type="button" class="close-btn fs-16-400 text-light cursor" data-modal-close>Cancel</button>
+                                                    <button type="button" class="close-btn fs-16-400 text-light cursor" id="linkAccountCancelBtn">Cancel</button>
                                                     <button type="button" class="update-btn fs-16-600 text-center cursor link-continue-btn" id="linkAccountContinueBtn">Continue</button>
                                                 </div>
                                             </div>
@@ -2272,6 +2303,32 @@
                                                 </div>
                                                 <div class="modal-buttons d-flex justify-content-center align-items-center mt-4">
                                                     <button type="button" class="update-btn fs-16-600 text-center cursor linked-done-btn" id="accountLinkedDoneBtn">Done</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Linking didn't finish Modal -->
+                                <div class="modal" id="link_incomplete_modal">
+                                    <div class="modal-content size">
+                                        <div class="container">
+                                            <div class="row mt-2">
+                                                <div class="col-lg-12">
+                                                    <div class="link-incomplete-content">
+                                                        <div class="link-incomplete-icon">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 44 44" fill="none">
+                                                                <path d="M22 30H22.016M22 14V24M42 22C42 10.954 33.046 2 22 2C10.954 2 2 10.954 2 22C2 33.046 10.954 42 22 42C33.046 42 42 33.046 42 22Z" stroke="#FF6E6E" stroke-width="4" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                                                            </svg>
+                                                        </div>
+                                                        <h3 class="fs-18-pf-display-700">Linking didn't finish</h3>
+                                                        <p class="fs-12-400-f-color text-light link-incomplete-message" id="link_incomplete_message">
+                                                            You cancelled before finishing, or LinkedIn didn't respond. Nothing was linked — you can try again anytime.
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-buttons d-flex justify-content-center align-items-center mt-4">
+                                                    <button type="button" class="update-btn fs-16-600 text-center cursor link-incomplete-done-btn" id="linkIncompleteDoneBtn">Done</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -2383,6 +2440,43 @@
                                             if (typeof window.syncBodyScrollLock === 'function') {
                                                 window.syncBodyScrollLock();
                                             }
+                                        });
+
+                                        function openLinkIncompleteModal() {
+                                            const linkModal = document.getElementById('link_account_modal');
+                                            const incompleteModal = document.getElementById('link_incomplete_modal');
+
+                                            document.getElementById('link_incomplete_message').textContent =
+                                                'You cancelled before finishing, or ' + pendingProvider +
+                                                " didn't respond. Nothing was linked — you can try again anytime.";
+
+                                            if (linkModal) linkModal.style.display = 'none';
+                                            if (incompleteModal) incompleteModal.style.display = 'flex';
+                                            if (typeof window.syncBodyScrollLock === 'function') {
+                                                window.syncBodyScrollLock();
+                                            }
+                                        }
+
+                                        document.getElementById('linkAccountCancelBtn').addEventListener('click', function(e) {
+                                            e.preventDefault();
+                                            openLinkIncompleteModal();
+                                        });
+
+                                        document.getElementById('linkAccountCloseBtn').addEventListener('click', function(e) {
+                                            e.preventDefault();
+                                            openLinkIncompleteModal();
+                                        });
+
+                                        document.getElementById('linkIncompleteDoneBtn').addEventListener('click', function(e) {
+                                            e.preventDefault();
+                                            pendingLinkCard = null;
+
+                                            const incompleteModal = document.getElementById('link_incomplete_modal');
+                                            if (incompleteModal) incompleteModal.style.display = 'none';
+                                            if (typeof window.syncBodyScrollLock === 'function') {
+                                                window.syncBodyScrollLock();
+                                            }
+                                            setAccountTabActive();
                                         });
 
                                         document.getElementById('accountLinkedDoneBtn').addEventListener('click', function(e) {
