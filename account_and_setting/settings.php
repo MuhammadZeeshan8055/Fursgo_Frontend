@@ -134,7 +134,8 @@
 
         .modal-buttons .update-btn.linked-done-btn {
             background: #C9DDA0;
-            width: 100%;
+            width: 79px;
+            height: 36px;
         }
     </style>
 
@@ -2055,27 +2056,32 @@
                                     </div>
                                 </div>
 
-                                <div class="account-linking-card connected d-flex align-items-center justify-content-between mt-4">
+                                <div class="account-linking-card connected d-flex align-items-center justify-content-between mt-4"
+                                    data-provider="Facebook"
+                                    data-connect-label="Connect your Facebook Account"
+                                    data-connected-label="Facebook Connected"
+                                    data-icon="<?= BASE_URL ?>/assets/images/social_media/facebook.png">
                                     <div class="image-text d-flex align-items-center gap-10">
                                         <div class="border-and-bg" style="border: none;">
                                             <img src="<?= BASE_URL ?>/assets/images/social_media/facebook.png" class="social-icons" alt="">
                                         </div>
                                         <div>
-                                            <p class="fs-16-600">Facebook Connected</p>
+                                            <p class="fs-16-600 account-linking-title">Facebook Connected</p>
                                         </div>
                                     </div>
-                                    <div>
-                                        <a href="#" class="small-link-tag button-background-color cursor" data-modal-open="unlink_facebook_modal">Unlink</a>
+                                    <div class="account-linking-action">
+                                        <a href="#" class="small-link-tag button-background-color cursor unlink-account-trigger"
+                                            data-modal-open="unlink_account_modal">Unlink</a>
                                     </div>
                                 </div>
 
-                                <div class="modal" id="unlink_facebook_modal">
+                                <div class="modal" id="unlink_account_modal">
                                     <div class="modal-content size">
                                         <div class="container">
                                             <div class="row mt-2">
                                                 <div class="col-lg-12">
                                                     <div class="d-flex align-items-center justify-content-between">
-                                                        <h3 class="fs-18-pf-display-700 mb-0">Unlink Facebook?</h3>
+                                                        <h3 class="fs-18-pf-display-700 mb-0" id="unlink_account_title">Unlink Facebook?</h3>
                                                         <svg class="cursor" data-modal-close xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                                                             <circle cx="10" cy="10" r="9.5" transform="matrix(-1 0 0 1 20 0)" fill="#F3F3F3" stroke="#E8E8E8" />
                                                             <path d="M13.1465 13.24L10.0001 10.0936L13.0937 6.99999" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
@@ -2085,38 +2091,47 @@
                                                 </div>
                                                 <div class="col-lg-12">
                                                     <div class="unlink-account-pill d-flex align-items-center gap-10 mt-4">
-                                                        <img src="<?= BASE_URL ?>/assets/images/social_media/facebook.png" class="social-icons" alt="Facebook">
+                                                        <img id="unlink_account_icon" src="<?= BASE_URL ?>/assets/images/social_media/facebook.png" class="social-icons" alt="">
                                                         <div>
                                                             <p class="fs-12-400-f-color mb-0">Verity Eve</p>
                                                             <p class="fs-12-400-f-color text-light mb-0">veve@gmail.com</p>
                                                         </div>
                                                     </div>
-                                                    <span class="fs-12-400-f-color text-light d-block mt-4">You won't be able to sign in with Facebook anymore. You can re-link it anytime from Account Linking.</span>
+                                                    <span class="fs-12-400-f-color text-light d-block mt-4" id="unlink_account_message">You won't be able to sign in with Facebook anymore. You can re-link it anytime from Account Linking.</span>
                                                 </div>
                                                 <div class="modal-buttons d-flex justify-content-between align-items-center mt-4">
                                                     <button type="button" class="close-btn fs-16-400 text-light cursor" data-modal-close>Cancel</button>
-                                                    <button type="button" class="update-btn fs-16-600 text-center cursor" style="background-color:#FF6E6E" data-modal-close>Unlink</button>
+                                                    <button type="button" class="update-btn fs-16-600 text-center cursor" style="background-color:#FF6E6E" id="unlinkAccountConfirmBtn">Unlink</button>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="account-linking-card connected d-flex align-items-center justify-content-between mt-4">
+                                <div class="account-linking-card connected d-flex align-items-center justify-content-between mt-4"
+                                    data-provider="Google"
+                                    data-connect-label="Connect your Google Account"
+                                    data-connected-label="Google Connected"
+                                    data-icon="<?= BASE_URL ?>/assets/images/social_media/google.png">
                                     <div class="image-text d-flex align-items-center gap-10">
                                         <div class="border-and-bg">
                                             <img src="<?= BASE_URL ?>/assets/images/social_media/google.png" class="social-icons" alt="">
                                         </div>
                                         <div>
-                                            <p class="fs-16-600">Connect your Google Account</p>
+                                            <p class="fs-16-600 account-linking-title">Google Connected</p>
                                         </div>
                                     </div>
-                                    <div>
-                                        <a href="" class="small-link-tag button-background-color">Unlink</a>
+                                    <div class="account-linking-action">
+                                        <a href="#" class="small-link-tag button-background-color cursor unlink-account-trigger"
+                                            data-modal-open="unlink_account_modal">Unlink</a>
                                     </div>
                                 </div>
 
-                                <div class="account-linking-card d-flex align-items-center justify-content-between mt-4" data-provider="linkedin">
+                                <div class="account-linking-card d-flex align-items-center justify-content-between mt-4"
+                                    data-provider="LinkedIn"
+                                    data-connect-label="Connect your LinkedIn Account"
+                                    data-connected-label="LinkedIn Connected"
+                                    data-icon="<?= BASE_URL ?>/assets/images/social_media/linkedin.png">
                                     <div class="image-text d-flex align-items-center gap-10">
                                         <div class="border-and-bg">
                                             <img src="<?= BASE_URL ?>/assets/images/social_media/linkedin.png" class="social-icons" alt="">
@@ -2133,7 +2148,11 @@
                                     </div>
                                 </div>
 
-                                <div class="account-linking-card d-flex align-items-center justify-content-between mt-4" data-provider="x">
+                                <div class="account-linking-card d-flex align-items-center justify-content-between mt-4"
+                                    data-provider="X"
+                                    data-connect-label="Connect your X Account"
+                                    data-connected-label="X Connected"
+                                    data-icon="<?= BASE_URL ?>/assets/images/social_media/twitter.png">
                                     <div class="image-text d-flex align-items-center gap-10">
                                         <div class="border-and-bg">
                                             <img src="<?= BASE_URL ?>/assets/images/social_media/twitter.png" class="social-icons" alt="">
@@ -2150,7 +2169,11 @@
                                     </div>
                                 </div>
 
-                                <div class="account-linking-card d-flex align-items-center justify-content-between mt-4" data-provider="apple">
+                                <div class="account-linking-card d-flex align-items-center justify-content-between mt-4"
+                                    data-provider="Apple"
+                                    data-connect-label="Connect your Apple Account"
+                                    data-connected-label="Apple Connected"
+                                    data-icon="<?= BASE_URL ?>/assets/images/social_media/apple.png">
                                     <div class="image-text d-flex align-items-center gap-10">
                                         <div class="border-and-bg">
                                             <img src="<?= BASE_URL ?>/assets/images/social_media/apple.png" class="social-icons" alt="">
@@ -2240,9 +2263,9 @@
                                                             </div>
                                                         </div>
                                                         <div class="linked-account-status">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="10" viewBox="0 0 12 10" fill="none">
-  <path d="M0.75 6.20455L3.25 8.75L10.75 0.75" stroke="#A2C35D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="10" viewBox="0 0 12 10" fill="none">
+                                                                <path d="M0.75 6.20455L3.25 8.75L10.75 0.75" stroke="#A2C35D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                                            </svg>
                                                             Connected
                                                         </div>
                                                     </div>
@@ -2258,21 +2281,92 @@
                                 <script>
                                     (function() {
                                         let pendingLinkCard = null;
+                                        let pendingUnlinkCard = null;
                                         let pendingProvider = 'Facebook';
                                         let pendingConnectedLabel = 'Facebook Connected';
 
-                                        document.querySelectorAll('.link-account-trigger').forEach(function(btn) {
-                                            btn.addEventListener('click', function(e) {
-                                                e.preventDefault();
+                                        function setAccountTabActive() {
+                                            const accountTab = document.querySelector('[data-tab="account_linking"]');
+                                            const accountPanel = document.getElementById('account_linking');
+                                            if (!accountTab || !accountPanel) return;
 
-                                                pendingLinkCard = this.closest('.account-linking-card');
-                                                pendingProvider = this.dataset.provider || 'Facebook';
-                                                pendingConnectedLabel = this.dataset.connectedLabel || (pendingProvider + ' Connected');
+                                            document.querySelectorAll('.tab-btn').forEach(function(t) {
+                                                t.classList.remove('active');
+                                            });
+                                            document.querySelectorAll('.tab-panel').forEach(function(p) {
+                                                p.classList.remove('active');
+                                            });
+                                            accountTab.classList.add('active');
+                                            accountPanel.classList.add('active');
+                                        }
+
+                                        function markCardConnected(card, provider, connectedLabel) {
+                                            card.classList.add('connected');
+
+                                            const title = card.querySelector('.account-linking-title');
+                                            if (title) title.textContent = connectedLabel;
+
+                                            const actionWrap = card.querySelector('.account-linking-action');
+                                            if (actionWrap) {
+                                                actionWrap.innerHTML =
+                                                    '<a href="#" class="small-link-tag button-background-color cursor unlink-account-trigger" data-modal-open="unlink_account_modal">Unlink</a>';
+                                            }
+                                        }
+
+                                        function markCardDisconnected(card) {
+                                            const provider = card.dataset.provider || 'Account';
+                                            const connectLabel = card.dataset.connectLabel || ('Connect your ' + provider + ' Account');
+                                            const connectedLabel = card.dataset.connectedLabel || (provider + ' Connected');
+
+                                            card.classList.remove('connected');
+
+                                            const title = card.querySelector('.account-linking-title');
+                                            if (title) title.textContent = connectLabel;
+
+                                            const actionWrap = card.querySelector('.account-linking-action');
+                                            if (actionWrap) {
+                                                actionWrap.innerHTML =
+                                                    '<a href="#" class="small-link-tag link-background-color cursor link-account-trigger" ' +
+                                                    'data-modal-open="link_account_modal" ' +
+                                                    'data-provider="' + provider + '" ' +
+                                                    'data-connected-label="' + connectedLabel + '">Link</a>';
+                                            }
+                                        }
+
+                                        // Use delegation so Link/Unlink still work after cards are swapped
+                                        document.getElementById('account_linking').addEventListener('click', function(e) {
+                                            const linkBtn = e.target.closest('.link-account-trigger');
+                                            if (linkBtn) {
+                                                e.preventDefault();
+                                                pendingLinkCard = linkBtn.closest('.account-linking-card');
+                                                pendingProvider = linkBtn.dataset.provider || pendingLinkCard.dataset.provider || 'Facebook';
+                                                pendingConnectedLabel = linkBtn.dataset.connectedLabel ||
+                                                    pendingLinkCard.dataset.connectedLabel ||
+                                                    (pendingProvider + ' Connected');
 
                                                 document.getElementById('link_account_title').textContent = 'Link your ' + pendingProvider + ' account';
                                                 document.getElementById('link_account_privacy').textContent =
                                                     "FursGo never posts to " + pendingProvider + " and can't see your password.";
-                                            });
+                                                return;
+                                            }
+
+                                            const unlinkBtn = e.target.closest('.unlink-account-trigger');
+                                            if (unlinkBtn) {
+                                                e.preventDefault();
+                                                pendingUnlinkCard = unlinkBtn.closest('.account-linking-card');
+                                                const provider = pendingUnlinkCard.dataset.provider || 'Account';
+                                                const icon = pendingUnlinkCard.dataset.icon || '';
+
+                                                document.getElementById('unlink_account_title').textContent = 'Unlink ' + provider + '?';
+                                                document.getElementById('unlink_account_message').textContent =
+                                                    "You won't be able to sign in with " + provider + " anymore. You can re-link it anytime from Account Linking.";
+
+                                                const iconEl = document.getElementById('unlink_account_icon');
+                                                if (iconEl && icon) {
+                                                    iconEl.src = icon;
+                                                    iconEl.alt = provider;
+                                                }
+                                            }
                                         });
 
                                         document.getElementById('linkAccountContinueBtn').addEventListener('click', function(e) {
@@ -2295,17 +2389,7 @@
                                             e.preventDefault();
 
                                             if (pendingLinkCard) {
-                                                pendingLinkCard.classList.add('connected');
-
-                                                const title = pendingLinkCard.querySelector('.account-linking-title');
-                                                if (title) title.textContent = pendingConnectedLabel;
-
-                                                const actionWrap = pendingLinkCard.querySelector('.account-linking-action');
-                                                if (actionWrap) {
-                                                    actionWrap.innerHTML =
-                                                        '<a href="#" class="small-link-tag button-background-color cursor">Unlink</a>';
-                                                }
-
+                                                markCardConnected(pendingLinkCard, pendingProvider, pendingConnectedLabel);
                                                 pendingLinkCard = null;
                                             }
 
@@ -2314,19 +2398,23 @@
                                             if (typeof window.syncBodyScrollLock === 'function') {
                                                 window.syncBodyScrollLock();
                                             }
+                                            setAccountTabActive();
+                                        });
 
-                                            const accountTab = document.querySelector('[data-tab="account_linking"]');
-                                            const accountPanel = document.getElementById('account_linking');
-                                            if (accountTab && accountPanel) {
-                                                document.querySelectorAll('.tab-btn').forEach(function(t) {
-                                                    t.classList.remove('active');
-                                                });
-                                                document.querySelectorAll('.tab-panel').forEach(function(p) {
-                                                    p.classList.remove('active');
-                                                });
-                                                accountTab.classList.add('active');
-                                                accountPanel.classList.add('active');
+                                        document.getElementById('unlinkAccountConfirmBtn').addEventListener('click', function(e) {
+                                            e.preventDefault();
+
+                                            if (pendingUnlinkCard) {
+                                                markCardDisconnected(pendingUnlinkCard);
+                                                pendingUnlinkCard = null;
                                             }
+
+                                            const unlinkModal = document.getElementById('unlink_account_modal');
+                                            if (unlinkModal) unlinkModal.style.display = 'none';
+                                            if (typeof window.syncBodyScrollLock === 'function') {
+                                                window.syncBodyScrollLock();
+                                            }
+                                            setAccountTabActive();
                                         });
                                     })();
                                 </script>
