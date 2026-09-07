@@ -1850,6 +1850,8 @@
                             </div>
 
                             <script>
+                                let pendingUnblockCard = null;
+
                                 document.querySelectorAll('.unblock-trigger').forEach(btn => {
 
                                     btn.addEventListener('click', function() {
@@ -1857,6 +1859,8 @@
                                         const name = this.dataset.name;
                                         const subname = this.dataset.subname;
                                         const image = this.dataset.image;
+
+                                        pendingUnblockCard = this.closest('.block-user-card');
 
                                         // Title
                                         document.getElementById('unblock_name').textContent = name;
@@ -1871,6 +1875,11 @@
                                 });
 
                                 document.getElementById('unblockConfirmBtn').addEventListener('click', function() {
+                                    if (pendingUnblockCard) {
+                                        pendingUnblockCard.remove();
+                                        pendingUnblockCard = null;
+                                    }
+
                                     const modal = document.getElementById('unblock_users_account_modal');
                                     if (modal) {
                                         modal.style.display = 'none';
@@ -1888,6 +1897,12 @@
                                         privacyTab.classList.add('active');
                                         privacyPanel.classList.add('active');
                                     }
+                                });
+
+                                document.querySelectorAll('#unblock_users_account_modal [data-modal-close]').forEach(btn => {
+                                    btn.addEventListener('click', function() {
+                                        pendingUnblockCard = null;
+                                    });
                                 });
                             </script>
 
