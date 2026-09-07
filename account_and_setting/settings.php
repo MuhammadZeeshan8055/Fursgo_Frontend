@@ -1869,6 +1869,26 @@
                                     });
 
                                 });
+
+                                document.getElementById('unblockConfirmBtn').addEventListener('click', function() {
+                                    const modal = document.getElementById('unblock_users_account_modal');
+                                    if (modal) {
+                                        modal.style.display = 'none';
+                                        if (typeof window.syncBodyScrollLock === 'function') {
+                                            window.syncBodyScrollLock();
+                                        }
+                                    }
+
+                                    // Stay on Privacy & Permissions
+                                    const privacyTab = document.querySelector('[data-tab="privacy_and_permissions"]');
+                                    const privacyPanel = document.getElementById('privacy_and_permissions');
+                                    if (privacyTab && privacyPanel) {
+                                        document.querySelectorAll('.tab-btn').forEach(t => t.classList.remove('active'));
+                                        document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+                                        privacyTab.classList.add('active');
+                                        privacyPanel.classList.add('active');
+                                    }
+                                });
                             </script>
 
                             <!-- UnBlocked Users Modal  -->
