@@ -116,6 +116,7 @@
     document.addEventListener('click', function(e) {
         const openTrigger = e.target.closest('[data-modal-open]');
         if (openTrigger) {
+            e.preventDefault();
             const modal = document.getElementById(openTrigger.dataset.modalOpen);
             if (modal) {
                 modal.style.display = 'flex';
@@ -124,6 +125,7 @@
         }
 
         if (e.target.closest('[data-modal-close]')) {
+            e.preventDefault();
             const modal = e.target.closest('.modal');
             if (modal) {
                 modal.style.display = 'none';
@@ -132,6 +134,7 @@
         }
 
         if (e.target.closest('[data-modal-submit-close]')) {
+            e.preventDefault();
             const modal = e.target.closest('.modal');
             if (modal) {
                 modal.style.display = 'none';

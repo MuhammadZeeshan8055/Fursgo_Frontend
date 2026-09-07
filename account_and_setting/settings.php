@@ -16,7 +16,7 @@
 
     <style>
         .modal {
-            backdrop-filter: blur(1px);
+            backdrop-filter: blur(0px);
             align-items: center;
 
         }
@@ -55,6 +55,86 @@
         .unlink-account-pill .social-icons {
             width: 32px;
             height: 32px;
+        }
+
+        .link-permissions-list {
+            border-radius: 12px;
+            border: 1px solid #E2E2E2;
+            background: #FFF;
+            overflow: hidden;
+        }
+
+        .link-permissions-list .link-permission-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 16px;
+        }
+
+        .link-permissions-list .link-permission-item+.link-permission-item {
+            border-top: 1px solid #EFEFEF;
+        }
+
+        .link-privacy-note {
+            display: flex;
+            align-items: flex-start;
+            margin-top: 16px;
+            color: #9D9B98;
+            font-family: Lato;
+            font-size: 12px;
+            font-weight: 400;
+            line-height: 1.4;
+        }
+
+        .link-privacy-note svg {
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        .linked-account-card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 14px 16px;
+            border-radius: 50px;
+            border: 1px solid #A2C35D;
+            background: #FFF;
+        }
+
+        .linked-account-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #2F3A8F;
+            color: #FFF;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-family: Lato;
+            font-size: 14px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .linked-account-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #A2C35D;
+            font-family: Lato;
+            font-size: 12px;
+            font-weight: 400;
+            white-space: nowrap;
+        }
+
+        .modal-buttons .update-btn.link-continue-btn {
+            background: #3B3731;
+        }
+
+        .modal-buttons .update-btn.linked-done-btn {
+            background: #C9DDA0;
+            width: 100%;
         }
     </style>
 
@@ -2036,47 +2116,220 @@
                                     </div>
                                 </div>
 
-                                <div class="account-linking-card d-flex align-items-center justify-content-between mt-4">
+                                <div class="account-linking-card d-flex align-items-center justify-content-between mt-4" data-provider="linkedin">
                                     <div class="image-text d-flex align-items-center gap-10">
                                         <div class="border-and-bg">
                                             <img src="<?= BASE_URL ?>/assets/images/social_media/linkedin.png" class="social-icons" alt="">
                                         </div>
                                         <div>
-                                            <p class="fs-16-600">Connect your LinkedIn Account</p>
+                                            <p class="fs-16-600 account-linking-title">Connect your LinkedIn Account</p>
                                         </div>
                                     </div>
-                                    <div>
-                                        <a href="" class="small-link-tag link-background-color">Link</a>
+                                    <div class="account-linking-action">
+                                        <a href="#" class="small-link-tag link-background-color cursor link-account-trigger"
+                                            data-modal-open="link_account_modal"
+                                            data-provider="LinkedIn"
+                                            data-connected-label="LinkedIn Connected">Link</a>
                                     </div>
                                 </div>
 
-                                <div class="account-linking-card d-flex align-items-center justify-content-between mt-4">
+                                <div class="account-linking-card d-flex align-items-center justify-content-between mt-4" data-provider="x">
                                     <div class="image-text d-flex align-items-center gap-10">
                                         <div class="border-and-bg">
                                             <img src="<?= BASE_URL ?>/assets/images/social_media/twitter.png" class="social-icons" alt="">
                                         </div>
                                         <div>
-                                            <p class="fs-16-600">Connect your X Account</p>
+                                            <p class="fs-16-600 account-linking-title">Connect your X Account</p>
                                         </div>
                                     </div>
-                                    <div>
-                                        <a href="" class="small-link-tag link-background-color">Link</a>
+                                    <div class="account-linking-action">
+                                        <a href="#" class="small-link-tag link-background-color cursor link-account-trigger"
+                                            data-modal-open="link_account_modal"
+                                            data-provider="X"
+                                            data-connected-label="X Connected">Link</a>
                                     </div>
                                 </div>
 
-                                <div class="account-linking-card d-flex align-items-center justify-content-between mt-4">
+                                <div class="account-linking-card d-flex align-items-center justify-content-between mt-4" data-provider="apple">
                                     <div class="image-text d-flex align-items-center gap-10">
                                         <div class="border-and-bg">
                                             <img src="<?= BASE_URL ?>/assets/images/social_media/apple.png" class="social-icons" alt="">
                                         </div>
                                         <div>
-                                            <p class="fs-16-600">Connect your Apple Account</p>
+                                            <p class="fs-16-600 account-linking-title">Connect your Apple Account</p>
                                         </div>
                                     </div>
-                                    <div>
-                                        <a href="" class="small-link-tag link-background-color">Link</a>
+                                    <div class="account-linking-action">
+                                        <a href="#" class="small-link-tag link-background-color cursor link-account-trigger"
+                                            data-modal-open="link_account_modal"
+                                            data-provider="Apple"
+                                            data-connected-label="Apple Connected">Link</a>
                                     </div>
                                 </div>
+
+                                <!-- Link Account Modal -->
+                                <div class="modal" id="link_account_modal">
+                                    <div class="modal-content size">
+                                        <div class="container">
+                                            <div class="row mt-2">
+                                                <div class="col-lg-12">
+                                                    <div class="d-flex align-items-center justify-content-between">
+                                                        <h3 class="fs-18-pf-display-700 mb-0" id="link_account_title">Link your Facebook account</h3>
+                                                        <svg class="cursor" data-modal-close xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                                            <circle cx="10" cy="10" r="9.5" transform="matrix(-1 0 0 1 20 0)" fill="#F3F3F3" stroke="#E8E8E8" />
+                                                            <path d="M13.1465 13.24L10.0001 10.0936L13.0937 6.99999" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                                                            <path d="M7.09375 13.24L10.2402 10.0936L7.14657 6.99999" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12 mt-4">
+                                                    <p class="fs-12-400-f-color text-light mb-3">FursGo will be able to:</p>
+                                                    <div class="link-permissions-list">
+                                                        <div class="link-permission-item">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="10" viewBox="0 0 12 10" fill="none">
+                                                                <path d="M0.75 6.20455L3.25 8.75L10.75 0.75" stroke="#A2C35D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                                            </svg>
+                                                            <span class="fs-12-400-f-color">See your name and profile photo</span>
+                                                        </div>
+                                                        <div class="link-permission-item">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="10" viewBox="0 0 12 10" fill="none">
+                                                                <path d="M0.75 6.20455L3.25 8.75L10.75 0.75" stroke="#A2C35D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                                            </svg>
+                                                            <span class="fs-12-400-f-color">Use your email address to sign you in</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="link-privacy-note">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 15 16" fill="none">
+                                                            <path d="M2.61765 3.5V2.40909C2.61765 0.903091 3.20071 0.5 4.5 0.5C5.79929 0.5 6.38235 0.903091 6.38235 2.40909V3.5M0.5 7.75455V5.24545C0.5 4.63455 0.5 4.32909 0.602588 4.09618C0.692741 3.89072 0.836725 3.72364 1.01388 3.61891C1.21529 3.50055 1.47882 3.50055 2.00588 3.50055H6.99412C7.52118 3.50055 7.78471 3.50055 7.98612 3.61891C8.1632 3.7235 8.30718 3.89038 8.39741 4.09564C8.5 4.32909 8.5 4.63455 8.5 5.24545V7.75455C8.5 8.36545 8.5 8.67091 8.39741 8.90436C8.30718 9.10962 8.1632 9.2765 7.98612 9.38109C7.78471 9.5 7.52118 9.5 6.99412 9.5H2.00588C1.47882 9.5 1.21529 9.5 1.01388 9.38109C0.836797 9.2765 0.692821 9.10962 0.602588 8.90436C0.5 8.67146 0.5 8.366 0.5 7.75455Z" stroke="#9D9B98" stroke-linecap="round" stroke-linejoin="round" />
+                                                        </svg>
+                                                        <span id="link_account_privacy">FursGo never posts to Facebook and can't see your password.</span>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-buttons d-flex justify-content-between align-items-center mt-4">
+                                                    <button type="button" class="close-btn fs-16-400 text-light cursor" data-modal-close>Cancel</button>
+                                                    <button type="button" class="update-btn fs-16-600 text-center cursor link-continue-btn" id="linkAccountContinueBtn">Continue</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Account Linked Success Modal -->
+                                <div class="modal" id="account_linked_modal">
+                                    <div class="modal-content size">
+                                        <div class="container">
+                                            <div class="row mt-2">
+                                                <div class="col-lg-12">
+                                                    <div class="d-flex align-items-center justify-content-between">
+                                                        <h3 class="fs-18-pf-display-700 mb-0" id="account_linked_title">Facebook linked</h3>
+                                                        <svg class="cursor" data-modal-close xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                                            <circle cx="10" cy="10" r="9.5" transform="matrix(-1 0 0 1 20 0)" fill="#F3F3F3" stroke="#E8E8E8" />
+                                                            <path d="M13.1465 13.24L10.0001 10.0936L13.0937 6.99999" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                                                            <path d="M7.09375 13.24L10.2402 10.0936L7.14657 6.99999" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12 mt-3">
+                                                    <p class="fs-12-400-f-color text-light mb-3" id="account_linked_subtitle">You can now sign in to FursGo with Facebook.</p>
+                                                    <div class="linked-account-card">
+                                                        <div class="d-flex align-items-center gap-10">
+                                                            <div class="linked-account-avatar">VE</div>
+                                                            <div>
+                                                                <p class="fs-14-600-f-color mb-0">Verity Eve</p>
+                                                                <p class="fs-12-400-f-color text-light mb-0">veve@gmail.com</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="linked-account-status">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="10" viewBox="0 0 12 10" fill="none">
+  <path d="M0.75 6.20455L3.25 8.75L10.75 0.75" stroke="#A2C35D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+                                                            Connected
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-buttons d-flex justify-content-center align-items-center mt-4">
+                                                    <button type="button" class="update-btn fs-16-600 text-center cursor linked-done-btn" id="accountLinkedDoneBtn">Done</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <script>
+                                    (function() {
+                                        let pendingLinkCard = null;
+                                        let pendingProvider = 'Facebook';
+                                        let pendingConnectedLabel = 'Facebook Connected';
+
+                                        document.querySelectorAll('.link-account-trigger').forEach(function(btn) {
+                                            btn.addEventListener('click', function(e) {
+                                                e.preventDefault();
+
+                                                pendingLinkCard = this.closest('.account-linking-card');
+                                                pendingProvider = this.dataset.provider || 'Facebook';
+                                                pendingConnectedLabel = this.dataset.connectedLabel || (pendingProvider + ' Connected');
+
+                                                document.getElementById('link_account_title').textContent = 'Link your ' + pendingProvider + ' account';
+                                                document.getElementById('link_account_privacy').textContent =
+                                                    "FursGo never posts to " + pendingProvider + " and can't see your password.";
+                                            });
+                                        });
+
+                                        document.getElementById('linkAccountContinueBtn').addEventListener('click', function(e) {
+                                            e.preventDefault();
+                                            const linkModal = document.getElementById('link_account_modal');
+                                            const linkedModal = document.getElementById('account_linked_modal');
+
+                                            document.getElementById('account_linked_title').textContent = pendingProvider + ' linked';
+                                            document.getElementById('account_linked_subtitle').textContent =
+                                                'You can now sign in to FursGo with ' + pendingProvider + '.';
+
+                                            if (linkModal) linkModal.style.display = 'none';
+                                            if (linkedModal) linkedModal.style.display = 'flex';
+                                            if (typeof window.syncBodyScrollLock === 'function') {
+                                                window.syncBodyScrollLock();
+                                            }
+                                        });
+
+                                        document.getElementById('accountLinkedDoneBtn').addEventListener('click', function(e) {
+                                            e.preventDefault();
+
+                                            if (pendingLinkCard) {
+                                                pendingLinkCard.classList.add('connected');
+
+                                                const title = pendingLinkCard.querySelector('.account-linking-title');
+                                                if (title) title.textContent = pendingConnectedLabel;
+
+                                                const actionWrap = pendingLinkCard.querySelector('.account-linking-action');
+                                                if (actionWrap) {
+                                                    actionWrap.innerHTML =
+                                                        '<a href="#" class="small-link-tag button-background-color cursor">Unlink</a>';
+                                                }
+
+                                                pendingLinkCard = null;
+                                            }
+
+                                            const linkedModal = document.getElementById('account_linked_modal');
+                                            if (linkedModal) linkedModal.style.display = 'none';
+                                            if (typeof window.syncBodyScrollLock === 'function') {
+                                                window.syncBodyScrollLock();
+                                            }
+
+                                            const accountTab = document.querySelector('[data-tab="account_linking"]');
+                                            const accountPanel = document.getElementById('account_linking');
+                                            if (accountTab && accountPanel) {
+                                                document.querySelectorAll('.tab-btn').forEach(function(t) {
+                                                    t.classList.remove('active');
+                                                });
+                                                document.querySelectorAll('.tab-panel').forEach(function(p) {
+                                                    p.classList.remove('active');
+                                                });
+                                                accountTab.classList.add('active');
+                                                accountPanel.classList.add('active');
+                                            }
+                                        });
+                                    })();
+                                </script>
 
                             </div>
 
