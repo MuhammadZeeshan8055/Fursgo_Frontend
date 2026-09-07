@@ -142,8 +142,8 @@
                                     <div class="custom-select">
                                         <div class="select-trigger full-width">
                                             <span class="selected-text">English (United Kingdom)</span>
-                                            <svg width="16" height="16" viewBox="0 0 24 24">
-                                                <path d="M6 9l6 6 6-6" fill="none" stroke="#666" stroke-width="2"></path>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="8" viewBox="0 0 15 8" fill="none">
+                                                <path d="M13.5105 0.5L6.95017 7.06033L0.499971 0.610127" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
                                             </svg>
                                         </div>
 
@@ -160,8 +160,8 @@
                                     <div class="custom-select">
                                         <div class="select-trigger full-width">
                                             <span class="selected-text">Europe/London</span>
-                                            <svg width="16" height="16" viewBox="0 0 24 24">
-                                                <path d="M6 9l6 6 6-6" fill="none" stroke="#666" stroke-width="2"></path>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="8" viewBox="0 0 15 8" fill="none">
+                                                <path d="M13.5105 0.5L6.95017 7.06033L0.499971 0.610127" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
                                             </svg>
                                         </div>
 
@@ -178,8 +178,8 @@
                                     <div class="custom-select">
                                         <div class="select-trigger full-width">
                                             <span class="selected-text">£ - GBP</span>
-                                            <svg width="16" height="16" viewBox="0 0 24 24">
-                                                <path d="M6 9l6 6 6-6" fill="none" stroke="#666" stroke-width="2"></path>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="8" viewBox="0 0 15 8" fill="none">
+                                                <path d="M13.5105 0.5L6.95017 7.06033L0.499971 0.610127" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
                                             </svg>
                                         </div>
 
@@ -383,7 +383,7 @@
                                                             }
 
                                                             .form-field label {
-                                                                font-size: 12px;
+                                                                font-size: 18px;
                                                             }
 
                                                             .update-btn {
@@ -489,7 +489,6 @@
                                                 data-modal-open="device_sign_out_modal">Sign out</a>
 
                                         </div>
-                                        <div class="section-divider" style="background-color: #E2E2E2"></div>
                                         <div class="logged-devices d-flex align-items-center justify-content-between mt-3">
                                             <div class="d-flex align-items-center gap-20">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="21" height="17" viewBox="0 0 21 17" fill="none">
@@ -503,7 +502,6 @@
                                                 data-last-active="28/08/2025, 18:52 GMT"
                                                 data-modal-open="device_sign_out_modal">Sign out</a>
                                         </div>
-                                        <div class="section-divider" style="background-color: #E2E2E2"></div>
                                         <div class="logged-devices d-flex align-items-center justify-content-between mt-3">
                                             <div class="d-flex align-items-center gap-20">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="23" height="26" viewBox="0 0 23 26" fill="none">
@@ -517,7 +515,6 @@
                                                 data-last-active="28/08/2025, 18:52 GMT"
                                                 data-modal-open="device_sign_out_modal">Sign out</a>
                                         </div>
-                                        <div class="section-divider" style="background-color: #E2E2E2"></div>
                                     </div>
                                 </div>
 
@@ -729,55 +726,62 @@
 
                                 <h1 class="large-font">Payments</h1>
 
-                                <p class="normal-font-bold mt-5">Saved payment methods</p>
+                                <div class="card-div mt-4">
 
-                                <div class="card-edit-details cursor d-flex align-items-center justify-content-between mt-4">
-                                    <div class="card-details active d-flex align-items-center justify-content-between gap-20">
+                                    <p class="fs-18-600">Saved payment methods</p>
+
+                                    <div class="card-details active cursor d-flex align-items-center justify-content-between mt-4">
                                         <div class="d-flex align-items-center gap-10">
-                                            <div style="width: 62px;">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="62" height="20" viewBox="0 0 62 20" fill="none">
-                                                    <path d="M32.0649 6.39377C32.0295 9.17985 34.5505 10.7345 36.4495 11.6589C38.4005 12.6073 39.0559 13.2155 39.0481 14.0637C39.0336 15.3617 37.4918 15.9346 36.0491 15.9568C33.5321 15.9958 32.0685 15.278 30.9051 14.7351L29.9983 18.9735C31.1657 19.5108 33.3272 19.9794 35.5686 20C40.8301 20 44.2724 17.4055 44.291 13.3829C44.3116 8.27769 37.222 7.99511 37.2705 5.71321C37.2872 5.02129 37.9481 4.28292 39.3964 4.09518C40.1133 4.00034 42.0922 3.92776 44.3358 4.95984L45.2164 0.859098C44.0098 0.420235 42.4591 0 40.5284 0C35.5761 0 32.093 2.6298 32.0649 6.39377ZM53.678 0.35322C52.7172 0.35322 51.9076 0.91305 51.5462 1.77215L44.0304 19.6988H49.2881L50.3343 16.8104H56.7591L57.366 19.6988H62L57.9562 0.35322H53.678ZM54.4135 5.57918L55.9308 12.8437H51.7753L54.4135 5.57918ZM25.6903 0.353462L21.546 19.6986H26.5561L30.6985 0.352978L25.6903 0.353462ZM18.2786 0.353462L13.0638 13.5206L10.9544 2.32472C10.7069 1.0749 9.7294 0.35322 8.64391 0.35322H0.119398L0 0.914984C1.75005 1.29433 3.73841 1.90618 4.94305 2.56084C5.68027 2.96076 5.89048 3.31035 6.13267 4.26066L10.128 19.6988H15.4225L23.5397 0.35322L18.2786 0.353462Z" fill="url(#paint0_linear_5_657)" />
-                                                    <defs>
-                                                        <linearGradient id="paint0_linear_5_657" x1="2850.39" y1="60.12" x2="2908.22" y2="-1993.91" gradientUnits="userSpaceOnUse">
-                                                            <stop stop-color="#222357" />
-                                                            <stop offset="1" stop-color="#254AA5" />
-                                                        </linearGradient>
-                                                    </defs>
+                                            <div>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="65" height="34" viewBox="0 0 65 34" fill="none">
+                                                    <rect width="65" height="34" rx="5" fill="#222357" />
+                                                    <path transform="translate(-25 -21)" d="M58.2042 35.4756C58.1808 37.4259 59.8479 38.5142 61.1037 39.1612C62.3939 39.8251 62.8273 40.2509 62.8222 40.8446C62.8125 41.7532 61.793 42.1542 60.8389 42.1698C59.1744 42.1971 58.2066 41.6946 57.4372 41.3146L56.8376 44.2814C57.6095 44.6576 59.0389 44.9856 60.5212 45C64.0006 45 66.2769 43.1839 66.2892 40.3681C66.3028 36.7944 61.6146 36.5966 61.6466 34.9992C61.6577 34.5149 62.0947 33.998 63.0525 33.8666C63.5265 33.8002 64.8352 33.7494 66.3188 34.4719L66.9012 31.6014C66.1033 31.2942 65.0778 31 63.801 31C60.5262 31 58.2228 32.8409 58.2042 35.4756ZM72.4967 31.2473C71.8614 31.2473 71.326 31.6391 71.087 32.2405L66.1169 44.7892H69.5937L70.2856 42.7673H74.5342L74.9356 44.7892H78L75.3259 31.2473H72.4967ZM72.9831 34.9054L73.9865 39.9906H71.2385L72.9831 34.9054ZM53.9887 31.2474L51.2481 44.789H54.5613L57.3006 31.2471L53.9887 31.2474ZM49.0875 31.2474L45.639 40.4644L44.244 32.6273C44.0803 31.7524 43.434 31.2473 42.7161 31.2473H37.079L37 31.6405C38.1573 31.906 39.4722 32.3343 40.2688 32.7926C40.7563 33.0725 40.8953 33.3172 41.0555 33.9825L43.6976 44.7892H47.1988L52.5665 31.2473L49.0875 31.2474Z" fill="white" />
                                                 </svg>
                                             </div>
-                                            <p class="dark-color-font">Visa ending in 7890 | <span class="simple-light-font"> Exp. date 06/27</span></p>
-                                        </div>
-                                        <button class="dark-color-font default-selection">Default</button>
-                                    </div>
-                                    <a class="small-link-tag"
-                                        data-modal-open="payment_modal"
-                                        data-mode="edit"
-                                        data-card="visa"
-                                        data-last4="7890"
-                                        data-exp="06/27">Edit</a>
-                                </div>
-                                <div class="card-edit-details cursor d-flex align-items-center justify-content-between mt-4">
-                                    <div class="card-details d-flex align-items-center justify-content-between gap-20">
-                                        <div class="d-flex align-items-center gap-10">
-                                            <div style="width: 62px;">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="33" height="20" viewBox="0 0 33 20" fill="none">
-                                                    <path d="M11.7742 2.13867H20.501V17.8609H11.7742V2.13867Z" fill="#FF5F00" />
-                                                    <path d="M12.3284 10C12.3284 6.8056 13.8243 3.97221 16.1237 2.13884C14.4339 0.805527 12.3007 0 9.97359 0C4.46029 0 0 4.47216 0 10C0 15.5278 4.46029 20 9.97347 20C12.3006 20 14.4338 19.1945 16.1237 17.861C13.8243 16.0555 12.3284 13.1944 12.3284 10Z" fill="#EB001B" />
-                                                    <path d="M32.2751 10C32.2751 15.5277 27.8148 20 22.3017 20C19.9745 20 17.8414 19.1945 16.1514 17.861C18.4786 16.0278 19.9469 13.1944 19.9469 10C19.9469 6.8056 18.4508 3.97221 16.1514 2.13884C17.8412 0.805527 19.9745 0 22.3017 0C27.8148 0 32.2751 4.49999 32.2751 10Z" fill="#F79E1B" />
-                                                </svg>
+                                            <div class="d-flex flex-column gap-5">
+                                                <p class="dark-color-font">Visa ending in 7890 &nbsp; <span class="default-selection cursor">Default</span> </p>
+                                                <p class="simple-light-font"> Exp. date 06/27</p>
                                             </div>
-                                            <p class="dark-color-font">Mastercard ending in 4589 | <span class="simple-light-font"> Exp. date 07/30</span></p>
                                         </div>
+
+                                        <a class="small-link-tag"
+                                            data-modal-open="payment_modal"
+                                            data-mode="edit"
+                                            data-card="visa"
+                                            data-last4="7890"
+                                            data-exp="06/27">Edit</a>
                                     </div>
-                                    <a class="small-link-tag"
-                                        data-modal-open="payment_modal"
-                                        data-mode="edit"
-                                        data-card="mastercard"
-                                        data-last4="4589"
-                                        data-exp="07/30">Edit</a>
+
+                                    <div class="card-details cursor d-flex align-items-center justify-content-between mt-4">
+                                        <div class="d-flex align-items-center justify-content-between gap-20">
+                                            <div class="d-flex align-items-center gap-10">
+                                                <div>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="65" height="34" viewBox="0 0 65 34" fill="none">
+                                                        <rect width="65" height="34" rx="5" fill="#3B3731" />
+                                                        <path d="M27.7742 9.13867H36.501V24.8609H27.7742V9.13867Z" fill="#FF5F00" />
+                                                        <path d="M28.3284 17C28.3284 13.8056 29.8243 10.9722 32.1237 9.13884C30.4339 7.80553 28.3007 7 25.9736 7C20.4603 7 16 11.4722 16 17C16 22.5278 20.4603 27 25.9735 27C28.3006 27 30.4338 26.1945 32.1237 24.861C29.8243 23.0555 28.3284 20.1944 28.3284 17Z" fill="#EB001B" />
+                                                        <path d="M48.2751 17C48.2751 22.5277 43.8148 27 38.3017 27C35.9745 27 33.8414 26.1945 32.1514 24.861C34.4786 23.0278 35.9469 20.1944 35.9469 17C35.9469 13.8056 34.4508 10.9722 32.1514 9.13884C33.8412 7.80553 35.9745 7 38.3017 7C43.8148 7 48.2751 11.5 48.2751 17Z" fill="#F79E1B" />
+                                                    </svg>
+                                                </div>
+                                                <div class="d-flex flex-column gap-5">
+                                                    <p class="dark-color-font">Mastercard ending in 4589</p>
+                                                    <p class="simple-light-font"> Exp. date 07/30</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <a class="small-link-tag"
+                                            data-modal-open="payment_modal"
+                                            data-mode="edit"
+                                            data-card="mastercard"
+                                            data-last4="4589"
+                                            data-exp="07/30"> <span class="fs-16-600 text-f-color">Set as default</span> &nbsp;&nbsp;&nbsp; Edit</a>
+                                    </div>
+
+                                    <button class="add-payment-btn mt-4" data-modal-open="payment_modal">+ Add payment method</button>
+
                                 </div>
 
-                                <button class="btn-custom btn-active-bg mt-4" data-modal-open="payment_modal">+ Add payment method</button>
+
 
                                 <!-- Add Payment Method Modal  -->
 
@@ -794,25 +798,12 @@
                                                     </svg>
                                                 </div>
                                                 <span id="subtitle" class="fs-12-400-f-color text-light mt-1 mb-1">Card details are stored securely and never shown in full.</span>
-                                                <div id="edit_card" class="mt-3" style="display:none; margin-left: 10px; width: auto;align-items:center; gap:14px; background:#fff; border:1px solid #e5e7eb; border-radius:10px; padding:20px 18px;">
-                                                    <div id="edit_card_icon">
-
-
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="62" height="20" viewBox="0 0 62 20" fill="none">
-                                                            <path d="M32.0649 6.39377C32.0295 9.17985 34.5505 10.7345 36.4495 11.6589C38.4005 12.6073 39.0559 13.2155 39.0481 14.0637C39.0336 15.3617 37.4918 15.9346 36.0491 15.9568C33.5321 15.9958 32.0685 15.278 30.9051 14.7351L29.9983 18.9735C31.1657 19.5108 33.3272 19.9794 35.5686 20C40.8301 20 44.2724 17.4055 44.291 13.3829C44.3116 8.27769 37.222 7.99511 37.2705 5.71321C37.2872 5.02129 37.9481 4.28292 39.3964 4.09518C40.1133 4.00034 42.0922 3.92776 44.3358 4.95984L45.2164 0.859098C44.0098 0.420235 42.4591 0 40.5284 0C35.5761 0 32.093 2.6298 32.0649 6.39377ZM53.678 0.35322C52.7172 0.35322 51.9076 0.91305 51.5462 1.77215L44.0304 19.6988H49.2881L50.3343 16.8104H56.7591L57.366 19.6988H62L57.9562 0.35322H53.678ZM54.4135 5.57918L55.9308 12.8437H51.7753L54.4135 5.57918ZM25.6903 0.353462L21.546 19.6986H26.5561L30.6985 0.352978L25.6903 0.353462ZM18.2786 0.353462L13.0638 13.5206L10.9544 2.32472C10.7069 1.0749 9.7294 0.35322 8.64391 0.35322H0.119398L0 0.914984C1.75005 1.29433 3.73841 1.90618 4.94305 2.56084C5.68027 2.96076 5.89048 3.31035 6.13267 4.26066L10.128 19.6988H15.4225L23.5397 0.35322L18.2786 0.353462Z" fill="url(#paint0_linear_5_657)"></path>
-                                                            <defs>
-                                                                <linearGradient id="paint0_linear_5_657" x1="2850.39" y1="60.12" x2="2908.22" y2="-1993.91" gradientUnits="userSpaceOnUse">
-                                                                    <stop stop-color="#222357"></stop>
-                                                                    <stop offset="1" stop-color="#254AA5"></stop>
-                                                                </linearGradient>
-                                                            </defs>
-                                                        </svg>
+                                                <div id="edit_card" class="mt-3" style="display:none; margin-left: 10px; width: 360px;align-items:center; gap:14px; background:#fff; border:1px solid #e5e7eb; border-radius:10px; padding:20px 18px;">
+                                                    <div id="edit_card_icon"></div>
+                                                    <div class="d-flex flex-column gap-5">
+                                                        <p id="edit_card_text" class="dark-color-font">Visa ending in 7890</p>
+                                                        <p id="edit_card_exp" class="simple-light-font">Exp. date 06/27</p>
                                                     </div>
-
-
-                                                    <span id="edit_card_text" class="fs-14-600-f-color">Visa ending in 7890</span>
-                                                    <span style="color:#3b3731; font-size:14px;">|</span>
-                                                    <span id="edit_card_exp" class="fs-14-400-f-color text-light">Exp. date 06/27</span>
                                                 </div>
                                                 <!-- <div class="col-lg-3">
                                                     <div class="d-flex align-items-center justify-content-end cursor modal-cross mt-3">
@@ -951,19 +942,15 @@
                                                             const edit_card = modal.querySelector('#edit_card');
                                                             const remove_card = modal.querySelector('#remove_card');
 
-                                                            const visaSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="62" height="20" viewBox="0 0 62 20" fill="none">
-                                                        <path d="M32.0649 6.39377C32.0295 9.17985 34.5505 10.7345 36.4495 11.6589C38.4005 12.6073 39.0559 13.2155 39.0481 14.0637C39.0336 15.3617 37.4918 15.9346 36.0491 15.9568C33.5321 15.9958 32.0685 15.278 30.9051 14.7351L29.9983 18.9735C31.1657 19.5108 33.3272 19.9794 35.5686 20C40.8301 20 44.2724 17.4055 44.291 13.3829C44.3116 8.27769 37.222 7.99511 37.2705 5.71321C37.2872 5.02129 37.9481 4.28292 39.3964 4.09518C40.1133 4.00034 42.0922 3.92776 44.3358 4.95984L45.2164 0.859098C44.0098 0.420235 42.4591 0 40.5284 0C35.5761 0 32.093 2.6298 32.0649 6.39377ZM53.678 0.35322C52.7172 0.35322 51.9076 0.91305 51.5462 1.77215L44.0304 19.6988H49.2881L50.3343 16.8104H56.7591L57.366 19.6988H62L57.9562 0.35322H53.678ZM54.4135 5.57918L55.9308 12.8437H51.7753L54.4135 5.57918ZM25.6903 0.353462L21.546 19.6986H26.5561L30.6985 0.352978L25.6903 0.353462ZM18.2786 0.353462L13.0638 13.5206L10.9544 2.32472C10.7069 1.0749 9.7294 0.35322 8.64391 0.35322H0.119398L0 0.914984C1.75005 1.29433 3.73841 1.90618 4.94305 2.56084C5.68027 2.96076 5.89048 3.31035 6.13267 4.26066L10.128 19.6988H15.4225L23.5397 0.35322L18.2786 0.353462Z" fill="url(#paint0_linear_5_657)"></path>
-                                                        <defs>
-                                                            <linearGradient id="paint0_linear_5_657" x1="2850.39" y1="60.12" x2="2908.22" y2="-1993.91" gradientUnits="userSpaceOnUse">
-                                                                <stop stop-color="#222357"></stop>
-                                                                <stop offset="1" stop-color="#254AA5"></stop>
-                                                            </linearGradient>
-                                                        </defs>
-                                                    </svg>`;
-                                                            const mastercardSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="33" height="20" viewBox="0 0 33 20" fill="none">
-                                                    <path d="M11.7742 2.13867H20.501V17.8609H11.7742V2.13867Z" fill="#FF5F00"></path>
-                                                    <path d="M12.3284 10C12.3284 6.8056 13.8243 3.97221 16.1237 2.13884C14.4339 0.805527 12.3007 0 9.97359 0C4.46029 0 0 4.47216 0 10C0 15.5278 4.46029 20 9.97347 20C12.3006 20 14.4338 19.1945 16.1237 17.861C13.8243 16.0555 12.3284 13.1944 12.3284 10Z" fill="#EB001B"></path>
-                                                    <path d="M32.2751 10C32.2751 15.5277 27.8148 20 22.3017 20C19.9745 20 17.8414 19.1945 16.1514 17.861C18.4786 16.0278 19.9469 13.1944 19.9469 10C19.9469 6.8056 18.4508 3.97221 16.1514 2.13884C17.8412 0.805527 19.9745 0 22.3017 0C27.8148 0 32.2751 4.49999 32.2751 10Z" fill="#F79E1B"></path>
+                                                            const visaSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="65" height="34" viewBox="0 0 65 34" fill="none">
+                                                    <rect width="65" height="34" rx="5" fill="#222357" />
+                                                    <path transform="translate(-25 -21)" d="M58.2042 35.4756C58.1808 37.4259 59.8479 38.5142 61.1037 39.1612C62.3939 39.8251 62.8273 40.2509 62.8222 40.8446C62.8125 41.7532 61.793 42.1542 60.8389 42.1698C59.1744 42.1971 58.2066 41.6946 57.4372 41.3146L56.8376 44.2814C57.6095 44.6576 59.0389 44.9856 60.5212 45C64.0006 45 66.2769 43.1839 66.2892 40.3681C66.3028 36.7944 61.6146 36.5966 61.6466 34.9992C61.6577 34.5149 62.0947 33.998 63.0525 33.8666C63.5265 33.8002 64.8352 33.7494 66.3188 34.4719L66.9012 31.6014C66.1033 31.2942 65.0778 31 63.801 31C60.5262 31 58.2228 32.8409 58.2042 35.4756ZM72.4967 31.2473C71.8614 31.2473 71.326 31.6391 71.087 32.2405L66.1169 44.7892H69.5937L70.2856 42.7673H74.5342L74.9356 44.7892H78L75.3259 31.2473H72.4967ZM72.9831 34.9054L73.9865 39.9906H71.2385L72.9831 34.9054ZM53.9887 31.2474L51.2481 44.789H54.5613L57.3006 31.2471L53.9887 31.2474ZM49.0875 31.2474L45.639 40.4644L44.244 32.6273C44.0803 31.7524 43.434 31.2473 42.7161 31.2473H37.079L37 31.6405C38.1573 31.906 39.4722 32.3343 40.2688 32.7926C40.7563 33.0725 40.8953 33.3172 41.0555 33.9825L43.6976 44.7892H47.1988L52.5665 31.2473L49.0875 31.2474Z" fill="white" />
+                                                </svg>`;
+                                                            const mastercardSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="65" height="34" viewBox="0 0 65 34" fill="none">
+                                                    <rect width="65" height="34" rx="5" fill="#3B3731" />
+                                                    <path d="M27.7742 9.13867H36.501V24.8609H27.7742V9.13867Z" fill="#FF5F00" />
+                                                    <path d="M28.3284 17C28.3284 13.8056 29.8243 10.9722 32.1237 9.13884C30.4339 7.80553 28.3007 7 25.9736 7C20.4603 7 16 11.4722 16 17C16 22.5278 20.4603 27 25.9735 27C28.3006 27 30.4338 26.1945 32.1237 24.861C29.8243 23.0555 28.3284 20.1944 28.3284 17Z" fill="#EB001B" />
+                                                    <path d="M48.2751 17C48.2751 22.5277 43.8148 27 38.3017 27C35.9745 27 33.8414 26.1945 32.1514 24.861C34.4786 23.0278 35.9469 20.1944 35.9469 17C35.9469 13.8056 34.4508 10.9722 32.1514 9.13884C33.8412 7.80553 35.9745 7 38.3017 7C43.8148 7 48.2751 11.5 48.2751 17Z" fill="#F79E1B" />
                                                 </svg>`;
 
                                                             if (mode === 'edit') {
@@ -977,8 +964,10 @@
                                                                 remove_card.style.display = 'block';
                                                                 edit_card.style.display = 'inline-flex';
 
+                                                                const cardLabel = this.dataset.card.charAt(0).toUpperCase() + this.dataset.card.slice(1);
+
                                                                 document.getElementById('edit_card_text').textContent =
-                                                                    `${this.dataset.card.charAt(0).toUpperCase() + this.dataset.card.slice(1)} ending in ${this.dataset.last4}`;
+                                                                    `${cardLabel} ending in ${this.dataset.last4}`;
 
                                                                 document.getElementById('edit_card_exp').textContent =
                                                                     `Exp. date ${this.dataset.exp}`;
@@ -987,6 +976,10 @@
                                                                     this.dataset.card === 'mastercard' ?
                                                                     mastercardSvg :
                                                                     visaSvg;
+
+                                                                remove_card.dataset.card = this.dataset.card;
+                                                                remove_card.dataset.last4 = this.dataset.last4;
+                                                                remove_card.dataset.exp = this.dataset.exp;
                                                             } else {
                                                                 title.textContent = 'Add payment method';
                                                                 submitBtn.textContent = '+ Add payment';
@@ -1048,19 +1041,12 @@
                                                 </div>
                                                 <h1 class="fs-18-pf-display-700 mt-4">Remove this card?</h1>
                                                 <span class="fs-12-400-f-color text-light mt-2 mb-1">You'll need another payment method before your next booking.</span>
-                                                <div id="edit_card" class="mt-3" style="margin-left: 10px; width: 360px;align-items:center; gap:14px; background:#fff; border:1px solid #e5e7eb; border-radius:10px; padding:20px 18px;">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="62" height="20" viewBox="0 0 62 20" fill="none">
-                                                        <path d="M32.0649 6.39377C32.0295 9.17985 34.5505 10.7345 36.4495 11.6589C38.4005 12.6073 39.0559 13.2155 39.0481 14.0637C39.0336 15.3617 37.4918 15.9346 36.0491 15.9568C33.5321 15.9958 32.0685 15.278 30.9051 14.7351L29.9983 18.9735C31.1657 19.5108 33.3272 19.9794 35.5686 20C40.8301 20 44.2724 17.4055 44.291 13.3829C44.3116 8.27769 37.222 7.99511 37.2705 5.71321C37.2872 5.02129 37.9481 4.28292 39.3964 4.09518C40.1133 4.00034 42.0922 3.92776 44.3358 4.95984L45.2164 0.859098C44.0098 0.420235 42.4591 0 40.5284 0C35.5761 0 32.093 2.6298 32.0649 6.39377ZM53.678 0.35322C52.7172 0.35322 51.9076 0.91305 51.5462 1.77215L44.0304 19.6988H49.2881L50.3343 16.8104H56.7591L57.366 19.6988H62L57.9562 0.35322H53.678ZM54.4135 5.57918L55.9308 12.8437H51.7753L54.4135 5.57918ZM25.6903 0.353462L21.546 19.6986H26.5561L30.6985 0.352978L25.6903 0.353462ZM18.2786 0.353462L13.0638 13.5206L10.9544 2.32472C10.7069 1.0749 9.7294 0.35322 8.64391 0.35322H0.119398L0 0.914984C1.75005 1.29433 3.73841 1.90618 4.94305 2.56084C5.68027 2.96076 5.89048 3.31035 6.13267 4.26066L10.128 19.6988H15.4225L23.5397 0.35322L18.2786 0.353462Z" fill="url(#paint0_linear_5_657)"></path>
-                                                        <defs>
-                                                            <linearGradient id="paint0_linear_5_657" x1="2850.39" y1="60.12" x2="2908.22" y2="-1993.91" gradientUnits="userSpaceOnUse">
-                                                                <stop stop-color="#222357"></stop>
-                                                                <stop offset="1" stop-color="#254AA5"></stop>
-                                                            </linearGradient>
-                                                        </defs>
-                                                    </svg>
-                                                    <del><span class="fs-14-600-f-color">Visa ending in 7890</span></del>
-                                                    <span style="color:#3b3731; font-size:14px;">|</span>
-                                                    <span class="fs-14-400-f-color text-light"><del>Exp. date 06/27</del></span>
+                                                <div id="remove_card_preview" class="mt-3 d-flex align-items-center" style="margin-left: 10px; width: 360px;align-items:center; gap:14px; background:#fff; border:1px solid #e5e7eb; border-radius:10px; padding:20px 18px;">
+                                                    <div id="remove_card_icon"></div>
+                                                    <div class="d-flex flex-column gap-5">
+                                                        <p class="dark-color-font"><del id="remove_card_text">Visa ending in 7890</del></p>
+                                                        <p class="simple-light-font"><del id="remove_card_exp">Exp. date 06/27</del></p>
+                                                    </div>
                                                 </div>
 
                                                 <div class="modal-buttons d-flex justify-content-between align-items-center mt-4">
@@ -1094,9 +1080,9 @@
 
                                                     <div class="d-flex flex-column align-items-center gap-5 justify-content-center">
                                                         <h2 class="fs-18-pf-display-700">Card removed</h2>
-                                                        <span class="fs-12-400-f-color text-light text-center">Visa ending in 7890 is no longer saved <br> to your account.</span>
+                                                        <span id="card_removed_text" class="fs-12-400-f-color text-light text-center">Visa ending in 7890 is no longer saved <br> to your account.</span>
 
-                                                        <button class="update-btn fs-16-600 btn-active-bg text-center cursor mt-4" style="background: #3B3731;" data-modal-close>Return to homepage</button>
+                                                        <button class="update-btn fs-16-600 btn-active-bg text-center cursor mt-4" style="background: #3B3731;" data-modal-close>Return to payments</button>
                                                     </div>
 
                                                 </div>
@@ -1590,20 +1576,22 @@
 
                                 <h1 class="large-font">Privacy & Permissions</h1>
 
-                                <div class="toggle-button-content d-flex align-items-center justify-content-between mt-5">
-                                    <div class="d-flex flex-column gap-25">
-                                        <p class="bold-font">Profile Visibility</p>
-                                        <p style="color: #9D9B98">Your profile is visible to groomers you interact with.</p>
-                                    </div>
-                                    <div>
-                                        <div class="toggle-switch on" id="toggle">
-                                            <div class="toggle-circle">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" viewBox="0 0 27 27" fill="none">
-                                                    <path d="M13.3333 0C6 0 0 6 0 13.3333C0 20.6667 6 26.6667 13.3333 26.6667C20.6667 26.6667 26.6667 20.6667 26.6667 13.3333C26.6667 6 20.6667 0 13.3333 0ZM11.2222 19.4444C10.9154 19.7513 10.4179 19.7513 10.1111 19.4444L4.94065 14.274C4.42115 13.7545 4.42115 12.9122 4.94066 12.3927C5.45965 11.8737 6.30093 11.8731 6.82065 12.3914L10.6667 16.2267L19.84 7.05334C20.3623 6.53105 21.2095 6.53255 21.73 7.05668C22.2478 7.5782 22.2463 8.42032 21.7267 8.94001L11.2222 19.4444Z" fill="white" />
-                                                </svg>
-                                            </div>
+                                <div class="profile-option mt-5">
+                                    <div class="toggle-button-content d-flex align-items-center justify-content-between">
+                                        <div class="d-flex flex-column gap-25">
+                                            <p class="bold-font">Profile Visibility</p>
+                                            <p style="color: #9D9B98">Your profile is visible to groomers you interact with.</p>
                                         </div>
+                                        <div>
+                                            <div class="toggle-switch on" id="toggle">
+                                                <div class="toggle-circle">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" viewBox="0 0 27 27" fill="none">
+                                                        <path d="M13.3333 0C6 0 0 6 0 13.3333C0 20.6667 6 26.6667 13.3333 26.6667C20.6667 26.6667 26.6667 20.6667 26.6667 13.3333C26.6667 6 20.6667 0 13.3333 0ZM11.2222 19.4444C10.9154 19.7513 10.4179 19.7513 10.1111 19.4444L4.94065 14.274C4.42115 13.7545 4.42115 12.9122 4.94066 12.3927C5.45965 11.8737 6.30093 11.8731 6.82065 12.3914L10.6667 16.2267L19.84 7.05334C20.3623 6.53105 21.2095 6.53255 21.73 7.05668C22.2478 7.5782 22.2463 8.42032 21.7267 8.94001L11.2222 19.4444Z" fill="white" />
+                                                    </svg>
+                                                </div>
+                                            </div>
 
+                                        </div>
                                     </div>
                                 </div>
 
@@ -1709,98 +1697,100 @@
                                     </div>
                                 </div>
 
-                                <div class="section-divider mt-5" style="background-color: #E2E2E2"></div>
+                                <div class="block-users-div mt-5 mb-5">
 
-                                <div class="toggle-button-content d-flex align-items-center justify-content-between mt-5 mb-5">
-                                    <div class="d-flex flex-column gap-25">
-                                        <p class="bold-font">Blocked Users</p>
-                                        <p style="color: #9D9B98">You can block groomers/hosts or customers anytime from their profiles.</p>
-                                    </div>
-                                </div>
-
-                                <div class="block-user-card d-flex align-items-center justify-content-between mt-4">
-                                    <div class="image-text d-flex align-items-center gap-10">
-                                        <img src="<?= BASE_URL ?>/assets/images/block_user_1.png" class="rounded-circle" alt="">
-                                        <div>
-                                            <p class="dark-color-font">The Garden Grooming Spot</p>
-                                            <span class="light-color-font">Chloe D.</span>
+                                    <div class="toggle-button-content d-flex align-items-center justify-content-between">
+                                        <div class="d-flex flex-column gap-25">
+                                            <p class="bold-font">Blocked Users</p>
+                                            <p style="color: #9D9B98">You can block groomers/hosts or customers anytime from their profiles.</p>
                                         </div>
                                     </div>
-                                    <div>
-                                        <a class="small-link-tag cursor unblock-trigger"
-                                            data-modal-open="unblock_users_account_modal"
-                                            data-name="The Garden Grooming Spot"
-                                            data-subname="Chloe D."
-                                            data-image="<?= BASE_URL ?>/assets/images/block_user_1.png">Unblock</a>
-                                    </div>
-                                </div>
 
-                                <div class="block-user-card d-flex align-items-center justify-content-between mt-4">
-                                    <div class="image-text d-flex align-items-center gap-10">
-                                        <img src="<?= BASE_URL ?>/assets/images/block_user_2.png" class="rounded-circle" alt="">
+                                    <div class="block-user-card d-flex align-items-center justify-content-between mt-4">
+                                        <div class="image-text d-flex align-items-center gap-10">
+                                            <img src="<?= BASE_URL ?>/assets/images/block_user_1.png" class="rounded-circle" alt="">
+                                            <div>
+                                                <p class="dark-color-font">The Garden Grooming Spot</p>
+                                                <span class="light-color-font">Chloe D.</span>
+                                            </div>
+                                        </div>
                                         <div>
-                                            <p class="dark-color-font">Sarah W.</p>
-                                            <span class="light-color-font">Sarah’s Grooming Studio</span>
+                                            <a class="small-link-tag cursor unblock-trigger"
+                                                data-modal-open="unblock_users_account_modal"
+                                                data-name="The Garden Grooming Spot"
+                                                data-subname="Chloe D."
+                                                data-image="<?= BASE_URL ?>/assets/images/block_user_1.png">Unblock</a>
                                         </div>
                                     </div>
-                                    <div>
-                                        <a class="small-link-tag cursor unblock-trigger"
-                                            data-modal-open="unblock_users_account_modal"
-                                            data-name="Sarah W."
-                                            data-subname="Sarah’s Grooming Studio"
-                                            data-image="<?= BASE_URL ?>/assets/images/block_user_2.png">Unblock</a>
-                                    </div>
-                                </div>
 
-                                <div class="block-user-card d-flex align-items-center justify-content-between mt-4">
-                                    <div class="image-text d-flex align-items-center gap-10">
-                                        <img src="<?= BASE_URL ?>/assets/images/block_user_3.png" class="rounded-circle" alt="">
+                                    <div class="block-user-card d-flex align-items-center justify-content-between mt-4">
+                                        <div class="image-text d-flex align-items-center gap-10">
+                                            <img src="<?= BASE_URL ?>/assets/images/block_user_2.png" class="rounded-circle" alt="">
+                                            <div>
+                                                <p class="dark-color-font">Sarah W.</p>
+                                                <span class="light-color-font">Sarah’s Grooming Studio</span>
+                                            </div>
+                                        </div>
                                         <div>
-                                            <p class="dark-color-font">Furs & Co. Studio</p>
-                                            <span class="light-color-font">Hosted by Dev É.</span>
+                                            <a class="small-link-tag cursor unblock-trigger"
+                                                data-modal-open="unblock_users_account_modal"
+                                                data-name="Sarah W."
+                                                data-subname="Sarah’s Grooming Studio"
+                                                data-image="<?= BASE_URL ?>/assets/images/block_user_2.png">Unblock</a>
                                         </div>
                                     </div>
-                                    <div>
-                                        <a class="small-link-tag cursor unblock-trigger"
-                                            data-modal-open="unblock_users_account_modal"
-                                            data-name="Furs & Co. Studio."
-                                            data-subname="Hosted by Dev É."
-                                            data-image="<?= BASE_URL ?>/assets/images/block_user_3.png">Unblock</a>
-                                    </div>
-                                </div>
 
-                                <div class="block-user-card d-flex align-items-center justify-content-between mt-4">
-                                    <div class="image-text d-flex align-items-center gap-10">
-                                        <img src="<?= BASE_URL ?>/assets/images/block_user_4.png" class="rounded-circle" alt="">
+                                    <div class="block-user-card d-flex align-items-center justify-content-between mt-4">
+                                        <div class="image-text d-flex align-items-center gap-10">
+                                            <img src="<?= BASE_URL ?>/assets/images/block_user_3.png" class="rounded-circle" alt="">
+                                            <div>
+                                                <p class="dark-color-font">Furs & Co. Studio</p>
+                                                <span class="light-color-font">Hosted by Dev É.</span>
+                                            </div>
+                                        </div>
                                         <div>
-                                            <p class="dark-color-font">Katie Z.</p>
-                                            <span class="light-color-font">Includes other accounts they may have or create.</span>
+                                            <a class="small-link-tag cursor unblock-trigger"
+                                                data-modal-open="unblock_users_account_modal"
+                                                data-name="Furs & Co. Studio."
+                                                data-subname="Hosted by Dev É."
+                                                data-image="<?= BASE_URL ?>/assets/images/block_user_3.png">Unblock</a>
                                         </div>
                                     </div>
-                                    <div>
-                                        <a class="small-link-tag cursor unblock-trigger"
-                                            data-modal-open="unblock_users_account_modal"
-                                            data-name="Katie Z."
-                                            data-subname="Includes other accounts they may have or create."
-                                            data-image="<?= BASE_URL ?>/assets/images/block_user_4.png">Unblock</a>
-                                    </div>
-                                </div>
 
-                                <div class="block-user-card d-flex align-items-center justify-content-between mt-4">
-                                    <div class="image-text d-flex align-items-center gap-10">
-                                        <img src="<?= BASE_URL ?>/assets/images/block_user_5.png" class="rounded-circle" alt="">
+                                    <div class="block-user-card d-flex align-items-center justify-content-between mt-4">
+                                        <div class="image-text d-flex align-items-center gap-10">
+                                            <img src="<?= BASE_URL ?>/assets/images/block_user_4.png" class="rounded-circle" alt="">
+                                            <div>
+                                                <p class="dark-color-font">Katie Z.</p>
+                                                <span class="light-color-font">Includes other accounts they may have or create.</span>
+                                            </div>
+                                        </div>
                                         <div>
-                                            <p class="dark-color-font">Lorem Ipsum</p>
-                                            <span class="light-color-font">Includes other accounts they may have or create.</span>
+                                            <a class="small-link-tag cursor unblock-trigger"
+                                                data-modal-open="unblock_users_account_modal"
+                                                data-name="Katie Z."
+                                                data-subname="Includes other accounts they may have or create."
+                                                data-image="<?= BASE_URL ?>/assets/images/block_user_4.png">Unblock</a>
                                         </div>
                                     </div>
-                                    <div>
-                                        <a class="small-link-tag cursor unblock-trigger"
-                                            data-modal-open="unblock_users_account_modal"
-                                            data-name="Lorem Ipsum."
-                                            data-subname="Includes other accounts they may have or create."
-                                            data-image="<?= BASE_URL ?>/assets/images/block_user_5.png">Unblock</a>
+
+                                    <div class="block-user-card d-flex align-items-center justify-content-between mt-4">
+                                        <div class="image-text d-flex align-items-center gap-10">
+                                            <img src="<?= BASE_URL ?>/assets/images/block_user_5.png" class="rounded-circle" alt="">
+                                            <div>
+                                                <p class="dark-color-font">Lorem Ipsum</p>
+                                                <span class="light-color-font">Includes other accounts they may have or create.</span>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <a class="small-link-tag cursor unblock-trigger"
+                                                data-modal-open="unblock_users_account_modal"
+                                                data-name="Lorem Ipsum."
+                                                data-subname="Includes other accounts they may have or create."
+                                                data-image="<?= BASE_URL ?>/assets/images/block_user_5.png">Unblock</a>
+                                        </div>
                                     </div>
+
                                 </div>
 
                             </div>
@@ -1809,21 +1799,27 @@
 
                             <div class="modal" id="unblock_users_account_modal">
                                 <div class="modal-content size">
-                                    <div class="container">
-                                        <div class="row mt-2">
-                                            <!-- <div class="col-lg-1"></div> -->
-                                            <div class="col-lg-12">
-                                                <div class="d-flex align-items-center justify-content-between">
-                                                    <h4 class="fs-18-pf-display-700">Unblock <span id="unblock_name">Provider</span></h4>
-                                                    <svg class="cursor" data-modal-close xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                                        <circle cx="10" cy="10" r="9.5" transform="matrix(-1 0 0 1 20 0)" fill="#F3F3F3" stroke="#E8E8E8" />
-                                                        <path d="M13.1465 13.24L10.0001 10.0936L13.0937 6.99999" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
-                                                        <path d="M7.09375 13.24L10.2402 10.0936L7.14657 6.99999" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
-                                                    </svg>
-                                                </div>
+                                    <div class="row mt-2">
+                                        <!-- <div class="col-lg-1"></div> -->
+                                        <div class="col-lg-12">
+                                            <div class="d-flex align-items-center justify-content-between" style="padding:5px 20px;">
+                                                <h4 class="fs-18-400">Unblock <span id="unblock_name">Provider</span></h4>
+                                                <svg class="cursor" data-modal-close xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                                    <circle cx="10" cy="10" r="9.5" transform="matrix(-1 0 0 1 20 0)" fill="#F3F3F3" stroke="#E8E8E8" />
+                                                    <path d="M13.1465 13.24L10.0001 10.0936L13.0937 6.99999" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                                                    <path d="M7.09375 13.24L10.2402 10.0936L7.14657 6.99999" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                                                </svg>
                                             </div>
-                                            <div class="col-lg-12">
-                                                <div class="mt-3" style="display:inline-flex; align-items:center; gap:12px; border:1px solid #E2E2E2; border-radius:10px; padding:12px 16px; min-width:100%;">
+                                        </div>
+                                        <div class="col-lg-12">
+
+                                            <div style="padding:5px 20px;">
+
+                                                <p class="fs-12-400-f-color mt-4">
+                                                    You are about to unblock the following provider. You will be able to book with this provider again immediately.
+                                                </p>
+
+                                                <div class="mt-3" style="display:inline-flex; align-items:center; gap:12px;min-width:100%;border-radius: 5px;border: 1px solid #FFF;background: #FFF;padding:10px;">
 
                                                     <div style="width:44px; height:44px; border-radius:50%; overflow:hidden; flex-shrink:0;">
                                                         <img id="unblock_image" src="" style="width:100%; height:100%; object-fit:cover;">
@@ -1835,16 +1831,21 @@
                                                     </div>
 
                                                 </div>
-                                                <br>
-                                                <p class="fs-12-400-f-color text-light mt-3" id="unblock_description"></p>
 
                                             </div>
-                                            <div class="modal-buttons d-flex justify-content-between align-items-center mt-4">
-                                                <button type="button" class="close-btn fs-16-400 text-light cursor" data-modal-close>Cancel</button>
-                                                <button class="update-btn fs-16-600 btn-active-bg text-center cursor" id="unblockConfirmBtn" style="background-color:#3B3731">Unblock</button>
+
+                                            <div class="section-divider"></div>
+
+                                            <div class="modal-buttons d-flex justify-content-end align-items-center gap-10 mt-3" style="padding:0 20px 20px 20px;">
+                                                <button type="button" class="modal-footer-btn close-btn fs-16-400 cursor" data-modal-close>Cancel - keep blocked</button>
+                                                <button type="button" class="modal-footer-btn update-btn fs-16-600 text-center cursor" id="unblockConfirmBtn">Yes, unblock provider</button>
                                             </div>
+
                                         </div>
+
+
                                     </div>
+
                                 </div>
                             </div>
 
@@ -1864,10 +1865,6 @@
                                         document.getElementById('unblock_name_main').textContent = name;
                                         document.getElementById('unblock_subname').textContent = subname;
                                         document.getElementById('unblock_image').src = image;
-
-                                        // Description
-                                        document.getElementById('unblock_description').textContent =
-                                            `${name} will be able to message you and book your services again.`;
 
                                     });
 
@@ -2242,6 +2239,31 @@
         });
 
         document.getElementById('remove_card').addEventListener('click', function() {
+            const card = this.dataset.card || 'visa';
+            const last4 = this.dataset.last4 || '7890';
+            const exp = this.dataset.exp || '06/27';
+            const cardLabel = card.charAt(0).toUpperCase() + card.slice(1);
+
+            const visaSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="65" height="34" viewBox="0 0 65 34" fill="none">
+                <rect width="65" height="34" rx="5" fill="#222357" />
+                <path transform="translate(-25 -21)" d="M58.2042 35.4756C58.1808 37.4259 59.8479 38.5142 61.1037 39.1612C62.3939 39.8251 62.8273 40.2509 62.8222 40.8446C62.8125 41.7532 61.793 42.1542 60.8389 42.1698C59.1744 42.1971 58.2066 41.6946 57.4372 41.3146L56.8376 44.2814C57.6095 44.6576 59.0389 44.9856 60.5212 45C64.0006 45 66.2769 43.1839 66.2892 40.3681C66.3028 36.7944 61.6146 36.5966 61.6466 34.9992C61.6577 34.5149 62.0947 33.998 63.0525 33.8666C63.5265 33.8002 64.8352 33.7494 66.3188 34.4719L66.9012 31.6014C66.1033 31.2942 65.0778 31 63.801 31C60.5262 31 58.2228 32.8409 58.2042 35.4756ZM72.4967 31.2473C71.8614 31.2473 71.326 31.6391 71.087 32.2405L66.1169 44.7892H69.5937L70.2856 42.7673H74.5342L74.9356 44.7892H78L75.3259 31.2473H72.4967ZM72.9831 34.9054L73.9865 39.9906H71.2385L72.9831 34.9054ZM53.9887 31.2474L51.2481 44.789H54.5613L57.3006 31.2471L53.9887 31.2474ZM49.0875 31.2474L45.639 40.4644L44.244 32.6273C44.0803 31.7524 43.434 31.2473 42.7161 31.2473H37.079L37 31.6405C38.1573 31.906 39.4722 32.3343 40.2688 32.7926C40.7563 33.0725 40.8953 33.3172 41.0555 33.9825L43.6976 44.7892H47.1988L52.5665 31.2473L49.0875 31.2474Z" fill="white" />
+            </svg>`;
+            const mastercardSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="65" height="34" viewBox="0 0 65 34" fill="none">
+                <rect width="65" height="34" rx="5" fill="#3B3731" />
+                <path d="M27.7742 9.13867H36.501V24.8609H27.7742V9.13867Z" fill="#FF5F00" />
+                <path d="M28.3284 17C28.3284 13.8056 29.8243 10.9722 32.1237 9.13884C30.4339 7.80553 28.3007 7 25.9736 7C20.4603 7 16 11.4722 16 17C16 22.5278 20.4603 27 25.9735 27C28.3006 27 30.4338 26.1945 32.1237 24.861C29.8243 23.0555 28.3284 20.1944 28.3284 17Z" fill="#EB001B" />
+                <path d="M48.2751 17C48.2751 22.5277 43.8148 27 38.3017 27C35.9745 27 33.8414 26.1945 32.1514 24.861C34.4786 23.0278 35.9469 20.1944 35.9469 17C35.9469 13.8056 34.4508 10.9722 32.1514 9.13884C33.8412 7.80553 35.9745 7 38.3017 7C43.8148 7 48.2751 11.5 48.2751 17Z" fill="#F79E1B" />
+            </svg>`;
+
+            document.getElementById('remove_card_icon').innerHTML =
+                card === 'mastercard' ? mastercardSvg : visaSvg;
+            document.getElementById('remove_card_text').textContent =
+                `${cardLabel} ending in ${last4}`;
+            document.getElementById('remove_card_exp').textContent =
+                `Exp. date ${exp}`;
+            document.getElementById('card_removed_text').innerHTML =
+                `${cardLabel} ending in ${last4} is no longer saved <br> to your account.`;
+
             document.getElementById('payment_modal').style.display = 'none';
             document.getElementById('remove_card_alert_modal').style.display = 'flex';
         });
@@ -2252,10 +2274,9 @@
         });
 
         document.addEventListener('click', function(e) {
-            const circle = e.target.closest('.toggle-circle');
-            if (!circle) return;
+            const toggle = e.target.closest('.toggle-switch');
+            if (!toggle) return;
 
-            const toggle = circle.closest('.toggle-switch');
             toggle.classList.toggle('on');
         });
     </script>
