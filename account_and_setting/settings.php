@@ -48,8 +48,8 @@
         .unlink-account-pill {
             padding: 12px 20px;
             border-radius: 50px;
-            background: #F3F0E8;
-            border: 1px solid #E8E4DC;
+            background: #FFF;
+            border: 1px solid #E2E2E2;
         }
 
         .unlink-account-pill .social-icons {
@@ -1975,17 +1975,17 @@
                                     </div>
                                 </div>
 
-                                <div class="account-linking-card d-flex align-items-center justify-content-between mt-4">
+                                <div class="account-linking-card connected d-flex align-items-center justify-content-between mt-4">
                                     <div class="image-text d-flex align-items-center gap-10">
                                         <div class="border-and-bg" style="border: none;">
                                             <img src="<?= BASE_URL ?>/assets/images/social_media/facebook.png" class="social-icons" alt="">
                                         </div>
                                         <div>
-                                            <p style="color:#9D9B98">Facebook Connected</p>
+                                            <p class="fs-16-600">Facebook Connected</p>
                                         </div>
                                     </div>
                                     <div>
-                                        <a href="#" class="small-link-tag cursor" data-modal-open="unlink_facebook_modal">Unlink</a>
+                                        <a href="#" class="small-link-tag button-background-color cursor" data-modal-open="unlink_facebook_modal">Unlink</a>
                                     </div>
                                 </div>
 
@@ -2007,8 +2007,8 @@
                                                     <div class="unlink-account-pill d-flex align-items-center gap-10 mt-4">
                                                         <img src="<?= BASE_URL ?>/assets/images/social_media/facebook.png" class="social-icons" alt="Facebook">
                                                         <div>
-                                                            <p class="normal-font-bold mb-0">Facebook</p>
-                                                            <p class="fs-12-400-f-color text-light mb-0">username@example.com</p>
+                                                            <p class="fs-12-400-f-color mb-0">Verity Eve</p>
+                                                            <p class="fs-12-400-f-color text-light mb-0">veve@gmail.com</p>
                                                         </div>
                                                     </div>
                                                     <span class="fs-12-400-f-color text-light d-block mt-4">You won't be able to sign in with Facebook anymore. You can re-link it anytime from Account Linking.</span>
@@ -2022,21 +2022,19 @@
                                     </div>
                                 </div>
 
-                                <div class="account-linking-card d-flex align-items-center justify-content-between mt-4">
+                                <div class="account-linking-card connected d-flex align-items-center justify-content-between mt-4">
                                     <div class="image-text d-flex align-items-center gap-10">
                                         <div class="border-and-bg">
                                             <img src="<?= BASE_URL ?>/assets/images/social_media/google.png" class="social-icons" alt="">
                                         </div>
                                         <div>
-                                            <p>Connect your Google Account</p>
+                                            <p class="fs-16-600">Connect your Google Account</p>
                                         </div>
                                     </div>
                                     <div>
-                                        <a href="" class="small-link-tag">Unlink</a>
+                                        <a href="" class="small-link-tag button-background-color">Unlink</a>
                                     </div>
                                 </div>
-
-                                <div class="section-divider mt-4" style="background-color: #E2E2E2"></div>
 
                                 <div class="account-linking-card d-flex align-items-center justify-content-between mt-4">
                                     <div class="image-text d-flex align-items-center gap-10">
@@ -2044,15 +2042,13 @@
                                             <img src="<?= BASE_URL ?>/assets/images/social_media/linkedin.png" class="social-icons" alt="">
                                         </div>
                                         <div>
-                                            <p>Connect your LinkedIn Account</p>
+                                            <p class="fs-16-600">Connect your LinkedIn Account</p>
                                         </div>
                                     </div>
                                     <div>
-                                        <a href="" class="small-link-tag">Unlink</a>
+                                        <a href="" class="small-link-tag link-background-color">Link</a>
                                     </div>
                                 </div>
-
-                                <div class="section-divider mt-4" style="background-color: #E2E2E2"></div>
 
                                 <div class="account-linking-card d-flex align-items-center justify-content-between mt-4">
                                     <div class="image-text d-flex align-items-center gap-10">
@@ -2060,15 +2056,13 @@
                                             <img src="<?= BASE_URL ?>/assets/images/social_media/twitter.png" class="social-icons" alt="">
                                         </div>
                                         <div>
-                                            <p>Connect your X Account</p>
+                                            <p class="fs-16-600">Connect your X Account</p>
                                         </div>
                                     </div>
                                     <div>
-                                        <a href="" class="small-link-tag">Unlink</a>
+                                        <a href="" class="small-link-tag link-background-color">Link</a>
                                     </div>
                                 </div>
-
-                                <div class="section-divider mt-4" style="background-color: #E2E2E2"></div>
 
                                 <div class="account-linking-card d-flex align-items-center justify-content-between mt-4">
                                     <div class="image-text d-flex align-items-center gap-10">
@@ -2076,15 +2070,13 @@
                                             <img src="<?= BASE_URL ?>/assets/images/social_media/apple.png" class="social-icons" alt="">
                                         </div>
                                         <div>
-                                            <p>Connect your Apple Account</p>
+                                            <p class="fs-16-600">Connect your Apple Account</p>
                                         </div>
                                     </div>
                                     <div>
-                                        <a href="" class="small-link-tag">Unlink</a>
+                                        <a href="" class="small-link-tag link-background-color">Link</a>
                                     </div>
                                 </div>
-
-                                <div class="section-divider mt-4" style="background-color: #E2E2E2"></div>
 
                             </div>
 
