@@ -1,6 +1,7 @@
 // modal js starts
 (function() {
     let savedScrollY = 0;
+    let scrollLocked = false;
 
     function isModalOpen(modal) {
         return window.getComputedStyle(modal).display !== 'none';
@@ -10,27 +11,94 @@
         return Array.from(document.querySelectorAll('.modal')).some(isModalOpen);
     }
 
+    function isScrollableModalTarget(target) {
+        const modal = target && target.closest ? target.closest('.modal') : null;
+        if (!modal) return false;
+
+        let node = target;
+        while (node && node !== modal.parentElement) {
+            if (node === document.body || node === document.documentElement) break;
+            if (node instanceof HTMLElement) {
+                const style = window.getComputedStyle(node);
+                const canScrollY = /(auto|scroll)/.test(style.overflowY);
+                if (canScrollY && node.scrollHeight > node.clientHeight + 1) {
+                    return true;
+                }
+            }
+            if (node === modal) break;
+            node = node.parentElement;
+        }
+        return false;
+    }
+
+    function onLockedScroll() {
+        if (!scrollLocked) return;
+        if (window.scrollY !== savedScrollY) {
+            window.scrollTo(0, savedScrollY);
+        }
+    }
+
+    function onLockedWheel(e) {
+        if (!scrollLocked) return;
+        if (isScrollableModalTarget(e.target)) return;
+        e.preventDefault();
+    }
+
+    function onLockedTouchMove(e) {
+        if (!scrollLocked) return;
+        if (isScrollableModalTarget(e.target)) return;
+        e.preventDefault();
+    }
+
+    function onLockedKeyDown(e) {
+        if (!scrollLocked) return;
+
+        const keys = ['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Home', 'End', ' '];
+        if (!keys.includes(e.key)) return;
+
+        const tag = (e.target && e.target.tagName) ? e.target.tagName.toLowerCase() : '';
+        if (tag === 'input' || tag === 'textarea' || tag === 'select' || (e.target && e.target.isContentEditable)) {
+            return;
+        }
+        if (isScrollableModalTarget(e.target)) return;
+
+        e.preventDefault();
+    }
+
+    function addScrollLockListeners() {
+        window.addEventListener('scroll', onLockedScroll, { passive: false });
+        window.addEventListener('wheel', onLockedWheel, { passive: false });
+        window.addEventListener('touchmove', onLockedTouchMove, { passive: false });
+        window.addEventListener('keydown', onLockedKeyDown, { passive: false });
+    }
+
+    function removeScrollLockListeners() {
+        window.removeEventListener('scroll', onLockedScroll, { passive: false });
+        window.removeEventListener('wheel', onLockedWheel, { passive: false });
+        window.removeEventListener('touchmove', onLockedTouchMove, { passive: false });
+        window.removeEventListener('keydown', onLockedKeyDown, { passive: false });
+    }
+
     function syncBodyScrollLock() {
         if (hasOpenModal()) {
-            if (document.body.classList.contains('modal-scroll-lock')) return;
+            if (scrollLocked) return;
 
-            savedScrollY = window.scrollY;
-            const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+            savedScrollY = window.scrollY || window.pageYOffset;
+            scrollLocked = true;
 
             document.documentElement.classList.add('modal-scroll-lock');
             document.body.classList.add('modal-scroll-lock');
-
-            if (scrollbarWidth > 0) {
-                document.body.style.paddingRight = scrollbarWidth + 'px';
-            }
+            addScrollLockListeners();
+            window.scrollTo(0, savedScrollY);
             return;
         }
 
-        if (!document.body.classList.contains('modal-scroll-lock')) return;
+        if (!scrollLocked) return;
 
+        scrollLocked = false;
         document.documentElement.classList.remove('modal-scroll-lock');
         document.body.classList.remove('modal-scroll-lock');
-        document.body.style.paddingRight = '';
+        removeScrollLockListeners();
         window.scrollTo(0, savedScrollY);
     }
 

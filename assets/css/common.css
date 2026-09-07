@@ -1679,10 +1679,11 @@ input::placeholder {
   cursor: pointer;
 }
 
-/* modal css */
+/* modal css
+   Do NOT use overflow:hidden on html/body — it breaks position:sticky
+   (settings sidebar) and freezes those elements on browser zoom. */
 html.modal-scroll-lock,
 body.modal-scroll-lock {
-  overflow: hidden;
   overscroll-behavior: none;
 }
 
