@@ -191,6 +191,11 @@
             font-weight: 600;
             line-height: normal;
         }
+
+        #confirm_deactive_account_modal .form-field label,
+        #confirm_delete_data_modal .form-field label {
+            font-size: 12px;
+        }
     </style>
 
 </head>
@@ -334,7 +339,7 @@
 
 
                                 <div class="toggle-button-content d-flex align-items-center justify-content-between mt-5">
-                                    <div class="d-flex flex-column gap-25">
+                                    <div class="d-flex flex-column gap-20">
                                         <p class="bold-font">Booking Updates</p>
                                         <p style="color: #9D9B98">Notify me when a booking is confirmed or changed.</p>
                                     </div>
@@ -351,7 +356,7 @@
                                 </div>
 
                                 <div class="toggle-button-content d-flex align-items-center justify-content-between mt-5">
-                                    <div class="d-flex flex-column gap-25">
+                                    <div class="d-flex flex-column gap-20">
                                         <p class="bold-font">Groomer Messages Zone</p>
                                         <p style="color: #9D9B98">Get alerts when groomers send you a message.</p>
                                     </div>
@@ -368,7 +373,7 @@
                                 </div>
 
                                 <div class="toggle-button-content d-flex align-items-center justify-content-between mt-5">
-                                    <div class="d-flex flex-column gap-25">
+                                    <div class="d-flex flex-column gap-20">
                                         <p class="bold-font">Space Owners Messages Zone</p>
                                         <p style="color: #9D9B98">Get alerts when space owners send you a message.</p>
                                     </div>
@@ -385,7 +390,7 @@
                                 </div>
 
                                 <div class="toggle-button-content d-flex align-items-center justify-content-between mt-5">
-                                    <div class="d-flex flex-column gap-25">
+                                    <div class="d-flex flex-column gap-20">
                                         <p class="bold-font">Promotions & Offers</p>
                                         <p style="color: #9D9B98">Receive special deals and exclusive discounts.</p>
                                     </div>
@@ -402,7 +407,7 @@
                                 </div>
 
                                 <div class="toggle-button-content d-flex align-items-center justify-content-between mt-5">
-                                    <div class="d-flex flex-column gap-25">
+                                    <div class="d-flex flex-column gap-20">
                                         <p class="bold-font">Reminder Alerts</p>
                                         <p style="color: #9D9B98">Send reminders 24 hours before my booking.</p>
                                     </div>
@@ -668,29 +673,27 @@
 
                                 <div class="modal" id="device_sign_out_modal">
                                     <div class="modal-content size">
-                                        <div class="container">
-                                            <div class="row mt-2">
-                                                <!-- <div class="col-lg-1"></div> -->
-                                                <div class="col-lg-12">
-                                                    <div class="d-flex align-items-center justify-content-between">
-                                                        <svg class="mt-4" xmlns="http://www.w3.org/2000/svg" width="16" height="20" viewBox="0 0 16 20" fill="none">
-                                                            <path d="M0 10C0 10.1326 0.0526785 10.2598 0.146447 10.3536C0.240215 10.4473 0.367392 10.5 0.5 10.5H9.293L6.646 13.146C6.59951 13.1924 6.56262 13.2475 6.53744 13.3082C6.51225 13.3689 6.49927 13.4339 6.49922 13.4996C6.49913 13.6323 6.55175 13.7596 6.6455 13.8535C6.73925 13.9474 6.86646 14.0002 6.99915 14.0003C7.13183 14.0004 7.25911 13.9478 7.353 13.854L10.853 10.354C10.9467 10.2602 10.9994 10.1331 10.9994 10.0005C10.9994 9.86792 10.9467 9.74076 10.853 9.647L7.353 6.147C7.2587 6.05592 7.1324 6.00552 7.0013 6.00666C6.8702 6.0078 6.74479 6.06039 6.65209 6.15309C6.55939 6.24579 6.5068 6.3712 6.50566 6.5023C6.50452 6.6334 6.55492 6.7597 6.646 6.854L9.293 9.5H0.5C0.367392 9.5 0.240215 9.55268 0.146447 9.64645C0.0526785 9.74021 0 9.86739 0 10ZM13.5 0H2.5C1.83696 0 1.20107 0.263392 0.732233 0.732233C0.263392 1.20107 0 1.83696 0 2.5V6.5C0 6.63261 0.0526785 6.75979 0.146447 6.85355C0.240215 6.94732 0.367392 7 0.5 7C0.632608 7 0.759785 6.94732 0.853553 6.85355C0.947321 6.75979 1 6.63261 1 6.5V2.5C1 2.10218 1.15804 1.72064 1.43934 1.43934C1.72064 1.15804 2.10218 1 2.5 1H13.5C13.8978 1 14.2794 1.15804 14.5607 1.43934C14.842 1.72064 15 2.10218 15 2.5V17.5C15 17.8978 14.842 18.2794 14.5607 18.5607C14.2794 18.842 13.8978 19 13.5 19H2.5C2.10218 19 1.72064 18.842 1.43934 18.5607C1.15804 18.2794 1 17.8978 1 17.5V13.5C1 13.3674 0.947321 13.2402 0.853553 13.1464C0.759785 13.0527 0.632608 13 0.5 13C0.367392 13 0.240215 13.0527 0.146447 13.1464C0.0526785 13.2402 0 13.3674 0 13.5V17.5C0 18.163 0.263392 18.7989 0.732233 19.2678C1.20107 19.7366 1.83696 20 2.5 20H13.5C14.163 20 14.7989 19.7366 15.2678 19.2678C15.7366 18.7989 16 18.163 16 17.5V2.5C16 1.83696 15.7366 1.20107 15.2678 0.732233C14.7989 0.263392 14.163 0 13.5 0Z" fill="black" />
-                                                        </svg>
-                                                        <svg class="cursor" data-modal-close xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                                            <circle cx="10" cy="10" r="9.5" transform="matrix(-1 0 0 1 20 0)" fill="#F3F3F3" stroke="#E8E8E8" />
-                                                            <path d="M13.1465 13.24L10.0001 10.0936L13.0937 6.99999" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
-                                                            <path d="M7.09375 13.24L10.2402 10.0936L7.14657 6.99999" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
-                                                        </svg>
-                                                    </div>
+                                        <div class="row mt-2">
+                                            <!-- <div class="col-lg-1"></div> -->
+                                            <div class="col-lg-12">
+                                                <div class="d-flex align-items-center justify-content-between">
+                                                    <svg class="mt-4" xmlns="http://www.w3.org/2000/svg" width="16" height="20" viewBox="0 0 16 20" fill="none">
+                                                        <path d="M0 10C0 10.1326 0.0526785 10.2598 0.146447 10.3536C0.240215 10.4473 0.367392 10.5 0.5 10.5H9.293L6.646 13.146C6.59951 13.1924 6.56262 13.2475 6.53744 13.3082C6.51225 13.3689 6.49927 13.4339 6.49922 13.4996C6.49913 13.6323 6.55175 13.7596 6.6455 13.8535C6.73925 13.9474 6.86646 14.0002 6.99915 14.0003C7.13183 14.0004 7.25911 13.9478 7.353 13.854L10.853 10.354C10.9467 10.2602 10.9994 10.1331 10.9994 10.0005C10.9994 9.86792 10.9467 9.74076 10.853 9.647L7.353 6.147C7.2587 6.05592 7.1324 6.00552 7.0013 6.00666C6.8702 6.0078 6.74479 6.06039 6.65209 6.15309C6.55939 6.24579 6.5068 6.3712 6.50566 6.5023C6.50452 6.6334 6.55492 6.7597 6.646 6.854L9.293 9.5H0.5C0.367392 9.5 0.240215 9.55268 0.146447 9.64645C0.0526785 9.74021 0 9.86739 0 10ZM13.5 0H2.5C1.83696 0 1.20107 0.263392 0.732233 0.732233C0.263392 1.20107 0 1.83696 0 2.5V6.5C0 6.63261 0.0526785 6.75979 0.146447 6.85355C0.240215 6.94732 0.367392 7 0.5 7C0.632608 7 0.759785 6.94732 0.853553 6.85355C0.947321 6.75979 1 6.63261 1 6.5V2.5C1 2.10218 1.15804 1.72064 1.43934 1.43934C1.72064 1.15804 2.10218 1 2.5 1H13.5C13.8978 1 14.2794 1.15804 14.5607 1.43934C14.842 1.72064 15 2.10218 15 2.5V17.5C15 17.8978 14.842 18.2794 14.5607 18.5607C14.2794 18.842 13.8978 19 13.5 19H2.5C2.10218 19 1.72064 18.842 1.43934 18.5607C1.15804 18.2794 1 17.8978 1 17.5V13.5C1 13.3674 0.947321 13.2402 0.853553 13.1464C0.759785 13.0527 0.632608 13 0.5 13C0.367392 13 0.240215 13.0527 0.146447 13.1464C0.0526785 13.2402 0 13.3674 0 13.5V17.5C0 18.163 0.263392 18.7989 0.732233 19.2678C1.20107 19.7366 1.83696 20 2.5 20H13.5C14.163 20 14.7989 19.7366 15.2678 19.2678C15.7366 18.7989 16 18.163 16 17.5V2.5C16 1.83696 15.7366 1.20107 15.2678 0.732233C14.7989 0.263392 14.163 0 13.5 0Z" fill="black" />
+                                                    </svg>
+                                                    <svg class="cursor" data-modal-close xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                                        <circle cx="10" cy="10" r="9.5" transform="matrix(-1 0 0 1 20 0)" fill="#F3F3F3" stroke="#E8E8E8" />
+                                                        <path d="M13.1465 13.24L10.0001 10.0936L13.0937 6.99999" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                                                        <path d="M7.09375 13.24L10.2402 10.0936L7.14657 6.99999" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                                                    </svg>
                                                 </div>
-                                                <div class="col-lg-12">
-                                                    <h3 id="signout-title" class="fs-18-pf-display-700 mt-4 mb-2">Sign out of iPhone?</h3>
-                                                    <span id="signout-description" class="fs-12-400-f-color text-light">This ends your session on iPhone. Last active 28/08/2025, 18:52 GMT — you'll need to sign in again on that device.</span>
-                                                </div>
-                                                <div class="modal-buttons d-flex justify-content-between align-items-center mt-4">
-                                                    <button type="button" class="close-btn fs-16-400 text-light cursor" data-modal-close>Cancel</button>
-                                                    <button class="update-btn fs-16-600 btn-active-bg text-center cursor" data-modal-close>Sign Out</button>
-                                                </div>
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <h3 id="signout-title" class="fs-18-pf-display-700 mt-4 mb-2">Sign out of iPhone?</h3>
+                                                <span id="signout-description" class="fs-12-400-f-color text-light">This ends your session on iPhone. Last active 28/08/2025, 18:52 GMT — you'll need to sign in again on that device.</span>
+                                            </div>
+                                            <div class="modal-buttons d-flex justify-content-between align-items-center mt-4">
+                                                <button type="button" class="close-btn fs-16-400 text-light cursor" data-modal-close>Cancel</button>
+                                                <button class="update-btn fs-16-600 btn-active-bg text-center cursor" data-modal-close>Sign Out</button>
                                             </div>
                                         </div>
                                     </div>
@@ -875,6 +878,8 @@
 
                                     <p class="fs-18-600">Saved payment methods</p>
 
+                                    <p class="fs-18-400 muted-color mt-3">Your default card is charged automatically for new bookings.</span>
+
                                     <div class="card-details active cursor d-flex align-items-center justify-content-between mt-4">
                                         <div class="d-flex align-items-center gap-10">
                                             <div>
@@ -942,7 +947,7 @@
                                                 </svg>
                                             </div>
                                             <span id="subtitle" class="fs-12-400-f-color text-light mt-1 mb-1">Card details are stored securely and never shown in full.</span>
-                                            <div id="edit_card" class="mt-3" style="display:none; margin-left: 10px; width: 360px;align-items:center; gap:14px; background:#fff; border:1px solid #e5e7eb; border-radius:10px; padding:20px 18px;">
+                                            <div id="edit_card" class="mt-3" style="display:none; margin-left: 10px; width: 410px;align-items:center; gap:14px; background:#fff; border:1px solid #e5e7eb; border-radius:10px; padding:20px 18px;">
                                                 <div id="edit_card_icon"></div>
                                                 <div class="d-flex flex-column gap-5">
                                                     <p id="edit_card_text" class="dark-color-font">Visa ending in 7890</p>
@@ -1001,6 +1006,12 @@
                                                             gap: 10px;
                                                             cursor: pointer;
                                                             user-select: none;
+                                                            color: #3B3731;
+                                                            font-family: Lato;
+                                                            font-size: 14px;
+                                                            font-style: normal;
+                                                            font-weight: 400;
+                                                            line-height: normal;
                                                         }
 
                                                         .custom-radio-label input[type="checkbox"] {
@@ -1057,7 +1068,7 @@
                                                         }
                                                     </style>
 
-                                                    <label class="custom-radio-label fs-14-400-f-color mt-5">
+                                                    <label class="custom-radio-label fs-14-400-f-color mt-4">
                                                         <input type="checkbox" name="payment_default">
                                                         <span class="custom-radio-circle"></span>
                                                         Set as default payment method
@@ -1183,7 +1194,7 @@
                                             </div>
                                             <h1 class="fs-18-pf-display-700 mt-4">Remove this card?</h1>
                                             <span class="fs-12-400-f-color text-light mt-2 mb-1">You'll need another payment method before your next booking.</span>
-                                            <div id="remove_card_preview" class="mt-3 d-flex align-items-center" style="margin-left: 10px; width: 360px;align-items:center; gap:14px; background:#fff; border:1px solid #e5e7eb; border-radius:10px; padding:20px 18px;">
+                                            <div id="remove_card_preview" class="mt-3 d-flex align-items-center" style="margin-left: 10px; width: 410px;align-items:center; gap:14px; background:#fff; border:1px solid #e5e7eb; border-radius:10px; padding:20px 18px;">
                                                 <div id="remove_card_icon"></div>
                                                 <div class="d-flex flex-column gap-5">
                                                     <p class="dark-color-font"><del id="remove_card_text">Visa ending in 7890</del></p>
@@ -2004,45 +2015,45 @@
                                 <!-- Link Account Modal -->
                                 <div class="modal" id="link_account_modal">
                                     <div class="modal-content size">
-                                            <div class="row mt-2">
-                                                <div class="col-lg-12">
-                                                    <div class="d-flex align-items-center justify-content-between">
-                                                        <h3 class="fs-18-pf-display-700 mb-0" id="link_account_title">Link your Facebook account</h3>
-                                                        <svg class="cursor" id="linkAccountCloseBtn" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                                            <circle cx="10" cy="10" r="9.5" transform="matrix(-1 0 0 1 20 0)" fill="#F3F3F3" stroke="#E8E8E8" />
-                                                            <path d="M13.1465 13.24L10.0001 10.0936L13.0937 6.99999" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
-                                                            <path d="M7.09375 13.24L10.2402 10.0936L7.14657 6.99999" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
-                                                        </svg>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-12 mt-4">
-                                                    <p class="fs-12-400-f-color text-light mb-3">FursGo will be able to:</p>
-                                                    <div class="link-permissions-list">
-                                                        <div class="link-permission-item">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="10" viewBox="0 0 12 10" fill="none">
-                                                                <path d="M0.75 6.20455L3.25 8.75L10.75 0.75" stroke="#A2C35D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                                                            </svg>
-                                                            <span class="fs-12-400-f-color">See your name and profile photo</span>
-                                                        </div>
-                                                        <div class="link-permission-item">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="10" viewBox="0 0 12 10" fill="none">
-                                                                <path d="M0.75 6.20455L3.25 8.75L10.75 0.75" stroke="#A2C35D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                                                            </svg>
-                                                            <span class="fs-12-400-f-color">Use your email address to sign you in</span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="link-privacy-note">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 15 16" fill="none">
-                                                            <path d="M2.61765 3.5V2.40909C2.61765 0.903091 3.20071 0.5 4.5 0.5C5.79929 0.5 6.38235 0.903091 6.38235 2.40909V3.5M0.5 7.75455V5.24545C0.5 4.63455 0.5 4.32909 0.602588 4.09618C0.692741 3.89072 0.836725 3.72364 1.01388 3.61891C1.21529 3.50055 1.47882 3.50055 2.00588 3.50055H6.99412C7.52118 3.50055 7.78471 3.50055 7.98612 3.61891C8.1632 3.7235 8.30718 3.89038 8.39741 4.09564C8.5 4.32909 8.5 4.63455 8.5 5.24545V7.75455C8.5 8.36545 8.5 8.67091 8.39741 8.90436C8.30718 9.10962 8.1632 9.2765 7.98612 9.38109C7.78471 9.5 7.52118 9.5 6.99412 9.5H2.00588C1.47882 9.5 1.21529 9.5 1.01388 9.38109C0.836797 9.2765 0.692821 9.10962 0.602588 8.90436C0.5 8.67146 0.5 8.366 0.5 7.75455Z" stroke="#9D9B98" stroke-linecap="round" stroke-linejoin="round" />
-                                                        </svg>
-                                                        <span id="link_account_privacy">FursGo never posts to Facebook and can't see your password.</span>
-                                                    </div>
-                                                </div>
-                                                <div class="modal-buttons d-flex justify-content-between align-items-center mt-4">
-                                                    <button type="button" class="close-btn fs-16-400 text-light cursor" id="linkAccountCancelBtn">Cancel</button>
-                                                    <button type="button" class="update-btn fs-16-600 text-center cursor link-continue-btn" id="linkAccountContinueBtn">Continue</button>
+                                        <div class="row mt-2">
+                                            <div class="col-lg-12">
+                                                <div class="d-flex align-items-center justify-content-between">
+                                                    <h3 class="fs-18-pf-display-700 mb-0" id="link_account_title">Link your Facebook account</h3>
+                                                    <svg class="cursor" id="linkAccountCloseBtn" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                                        <circle cx="10" cy="10" r="9.5" transform="matrix(-1 0 0 1 20 0)" fill="#F3F3F3" stroke="#E8E8E8" />
+                                                        <path d="M13.1465 13.24L10.0001 10.0936L13.0937 6.99999" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                                                        <path d="M7.09375 13.24L10.2402 10.0936L7.14657 6.99999" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                                                    </svg>
                                                 </div>
                                             </div>
+                                            <div class="col-lg-12 mt-4">
+                                                <p class="fs-12-400-f-color text-light mb-3">FursGo will be able to:</p>
+                                                <div class="link-permissions-list">
+                                                    <div class="link-permission-item">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="10" viewBox="0 0 12 10" fill="none">
+                                                            <path d="M0.75 6.20455L3.25 8.75L10.75 0.75" stroke="#A2C35D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                                        </svg>
+                                                        <span class="fs-12-400-f-color">See your name and profile photo</span>
+                                                    </div>
+                                                    <div class="link-permission-item">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="10" viewBox="0 0 12 10" fill="none">
+                                                            <path d="M0.75 6.20455L3.25 8.75L10.75 0.75" stroke="#A2C35D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                                        </svg>
+                                                        <span class="fs-12-400-f-color">Use your email address to sign you in</span>
+                                                    </div>
+                                                </div>
+                                                <div class="link-privacy-note">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 15 16" fill="none">
+                                                        <path d="M2.61765 3.5V2.40909C2.61765 0.903091 3.20071 0.5 4.5 0.5C5.79929 0.5 6.38235 0.903091 6.38235 2.40909V3.5M0.5 7.75455V5.24545C0.5 4.63455 0.5 4.32909 0.602588 4.09618C0.692741 3.89072 0.836725 3.72364 1.01388 3.61891C1.21529 3.50055 1.47882 3.50055 2.00588 3.50055H6.99412C7.52118 3.50055 7.78471 3.50055 7.98612 3.61891C8.1632 3.7235 8.30718 3.89038 8.39741 4.09564C8.5 4.32909 8.5 4.63455 8.5 5.24545V7.75455C8.5 8.36545 8.5 8.67091 8.39741 8.90436C8.30718 9.10962 8.1632 9.2765 7.98612 9.38109C7.78471 9.5 7.52118 9.5 6.99412 9.5H2.00588C1.47882 9.5 1.21529 9.5 1.01388 9.38109C0.836797 9.2765 0.692821 9.10962 0.602588 8.90436C0.5 8.67146 0.5 8.366 0.5 7.75455Z" stroke="#9D9B98" stroke-linecap="round" stroke-linejoin="round" />
+                                                    </svg>
+                                                    <span id="link_account_privacy">FursGo never posts to Facebook and can't see your password.</span>
+                                                </div>
+                                            </div>
+                                            <div class="modal-buttons d-flex justify-content-between align-items-center mt-4">
+                                                <button type="button" class="close-btn fs-16-400 text-light cursor" id="linkAccountCancelBtn">Cancel</button>
+                                                <button type="button" class="update-btn fs-16-600 text-center cursor link-continue-btn" id="linkAccountContinueBtn">Continue</button>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
 
