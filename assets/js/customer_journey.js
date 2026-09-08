@@ -1308,7 +1308,14 @@ document.addEventListener('click', e => {
 
     const modalId = openBtn.dataset.modalOpen;
     const modal = document.getElementById(modalId);
-    if (modal) modal.style.display = 'flex';
+    if (!modal) return;
+
+    modal.style.display = 'flex';
+
+    // Recalculate bubble position once the modal has real width
+    modal.querySelectorAll('.range-slider input[type="range"]').forEach(range => {
+        range.dispatchEvent(new Event('input', { bubbles: true }));
+    });
 });
 
 // Close modal (close button or backdrop)
@@ -1354,19 +1361,32 @@ document.addEventListener('DOMContentLoaded', () => {
         const range = slider.querySelector('input[type="range"]');
         const output = slider.querySelector('.output');
         const inclRange = slider.querySelector('.incl-range');
-        const max = range.max;
+        const maxPrice = slider.querySelector('.max-price');
+        const min = Number(range.min) || 0;
+        const max = Number(range.max);
 
         function updateView() {
-            const value = range.value;
-            const percent = (value / max) * 100;
+            const value = Number(range.value);
+            const ratio = max === min ? 0 : (value - min) / (max - min);
+
+            // Thumb travels inset by half its size; center the bubble on the real thumb.
+            const thumbWidth = parseFloat(getComputedStyle(range).getPropertyValue('--range-thumb-size')) || 24;
+            const trackWidth = range.offsetWidth || slider.offsetWidth;
+            const thumbCenter = ratio * (trackWidth - thumbWidth) + thumbWidth / 2;
+            const percent = trackWidth ? (thumbCenter / trackWidth) * 100 : ratio * 100;
 
             output.textContent = '£' + value;
             output.style.left = percent + '%';
             inclRange.style.width = percent + '%';
+
+            if (maxPrice) {
+                maxPrice.style.visibility = value >= max ? 'hidden' : 'visible';
+            }
         }
 
         updateView();
         range.addEventListener('input', updateView);
+        window.addEventListener('resize', updateView);
     });
 
 });
