@@ -163,6 +163,8 @@ body {
   align-self: flex-start;
   height: fit-content;
   z-index: 5;
+  /* Keep sticky column width stable while active font-weight changes */
+  flex-shrink: 0;
 }
 
 .tab-btn {
@@ -174,11 +176,18 @@ body {
   text-align: left;
   transition: background 0.3s;
   padding: 20px 30px;
+  box-sizing: border-box;
 }
 
 .tab-btn.active {
   border-radius: 96px;
   background: #f8f8f8;
+}
+
+.tabs .tab-btn svg {
+  flex-shrink: 0;
+  width: 17px;
+  height: 17px;
 }
 
 .help-tabs.active {

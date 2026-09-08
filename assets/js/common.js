@@ -186,7 +186,7 @@ document.addEventListener('click', function (e) {
         targetPanel.classList.add('active');
     }
 
-    if (noScroll) requestAnimationFrame(() => window.scrollTo({ top: scrollY, behavior: 'instant' })); // 👈
+    if (noScroll) requestAnimationFrame(() => window.scrollTo({ top: scrollY, behavior: 'auto' })); // 👈
 });
 
 // tab js ends
@@ -275,11 +275,16 @@ document.addEventListener('click', (e) => {
 // tab content scroll js
 document.querySelectorAll('.tab-btn').forEach(btn => {
     btn.addEventListener('click', function () {
+        // [data-tabs] is handled by the delegated tab switcher above.
+        // Scrolling here makes sticky sidebars jump when cycling tabs.
+        if (this.closest('[data-tabs]')) return;
+
         document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
         document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
 
         this.classList.add('active');
         const target = document.getElementById(this.dataset.tab);
+        if (!target) return;
         target.classList.add('active');
 
         // Offset scroll by header height
