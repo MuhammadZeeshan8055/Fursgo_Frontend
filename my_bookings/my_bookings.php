@@ -2195,7 +2195,14 @@ include_once __DIR__ . '/../components/extras-addons.php';
                                         <div class="mb-card__footer">
                                             <div class="mb-card__footer-left">
                                                 <button type="button" class="mb-btn" data-modal-open="view_booking_space_completed_modal">View details</button>
-                                                <button type="button" class="mb-btn mb-btn--blue" data-modal-open="rebook_space_modal">Rebook</button>
+                                                <button type="button" class="mb-btn mb-btn--blue" data-modal-open="rebook_space_modal">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                                        <path d="M2.2312 15.4953V12.6124H5.11403" stroke="#6FA0C3" stroke-linecap="round" stroke-linejoin="round" />
+                                                        <path d="M15.3656 6.62252C15.6715 8.25452 15.4269 9.94189 14.6702 11.4199C13.9135 12.8978 12.6875 14.0827 11.1846 14.7887C9.68175 15.4946 7.98704 15.6817 6.3664 15.3204C4.74575 14.9592 3.2909 14.0701 2.23013 12.7927M0.628303 9.37748C0.322432 7.74548 0.567036 6.05811 1.32373 4.58014C2.08043 3.10218 3.3064 1.91725 4.80927 1.2113C6.31214 0.505355 8.00686 0.318331 9.6275 0.679579C11.2481 1.04083 12.703 1.9299 13.7638 3.2073" stroke="#6FA0C3" stroke-linecap="round" stroke-linejoin="round" />
+                                                        <path d="M13.7626 0.504883V3.38771H10.8798" stroke="#6FA0C3" stroke-linecap="round" stroke-linejoin="round" />
+                                                    </svg>
+                                                    Rebook
+                                                </button>
                                             </div>
                                             <span class="mb-btn mb-btn--muted">Reviewed</span>
                                         </div>
@@ -2491,7 +2498,7 @@ include_once __DIR__ . '/../components/extras-addons.php';
                                             </section>
 
                                             <section class="rbm-extras-toggle" data-extras-toggle>
-                                                <button type="button" class="rbm-extras-toggle-btn" aria-expanded="false">
+                                                <button type="button" class="rbm-extras-toggle-btn" aria-expanded="true">
                                                     <span class="rbm-extras-toggle-text">
                                                         <span class="rbm-extras-toggle-heading">
                                                             <span class="rbm-extras-toggle-title">Extras &amp; Add-ons</span>
@@ -2505,7 +2512,7 @@ include_once __DIR__ . '/../components/extras-addons.php';
                                                         </svg>
                                                     </span>
                                                 </button>
-                                                <div class="rbm-extras-toggle-panel" hidden>
+                                                <div class="rbm-extras-toggle-panel">
                                                     <div class="rbm-extras rbm-extras--groomer">
                                                         <?php renderExtrasAddons([], [
                                                             'instance_id' => 'rebook-modal',
@@ -2651,7 +2658,7 @@ include_once __DIR__ . '/../components/extras-addons.php';
                                             </section>
 
                                             <section class="rbm-extras-toggle" data-extras-toggle>
-                                                <button type="button" class="rbm-extras-toggle-btn" aria-expanded="false">
+                                                <button type="button" class="rbm-extras-toggle-btn" aria-expanded="true">
                                                     <span class="rbm-extras-toggle-text">
                                                         <span class="rbm-extras-toggle-heading">
                                                             <span class="rbm-extras-toggle-title">Extras &amp; Add-ons</span>
@@ -2665,7 +2672,7 @@ include_once __DIR__ . '/../components/extras-addons.php';
                                                         </svg>
                                                     </span>
                                                 </button>
-                                                <div class="rbm-extras-toggle-panel" hidden>
+                                                <div class="rbm-extras-toggle-panel">
                                                     <div class="rbm-extras rbm-extras--space">
                                                         <?php renderExtrasAddons([
                                                             ['id' => 1, 'name' => 'Storage Locker', 'price' => 5, 'col' => 'left'],

@@ -2370,8 +2370,8 @@ body.my-bookings-page header.scrolled {
 }
 
 #view_booking_groom_completed_modal .bd-footer--completed {
-    background: #FDFCF8;
-    border-top: 1px solid #E8E6E1;
+    background: #EDF1F4;
+    border-top: 1px solid #CBDCE8;
 }
 
 #view_booking_groom_completed_modal .bd-btn-review {
@@ -2964,8 +2964,8 @@ body.my-bookings-page header.scrolled {
 
 #view_booking_space_completed_modal .bd-footer--completed,
 #view_booking_space_cancelled_modal .bd-footer--completed {
-    background: #FDFCF8;
-    border-top: 1px solid #E8E6E1;
+    background: #EDF1F4;
+    border-top: 1px solid #CBDCE8;
 }
 
 #view_booking_space_completed_modal .bd-btn-reviewed,
@@ -4959,7 +4959,6 @@ body.my-bookings-page header.scrolled {
 
 #rebook_groomer_modal .rbm-extras-toggle,
 #rebook_space_modal .rbm-extras-toggle {
-    background: #fff;
     overflow: hidden;
 }
 
