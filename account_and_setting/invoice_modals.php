@@ -83,11 +83,11 @@ HTML;
                 </div>
 
                 <div class="invoice-detail-list">
-                    <div class="invoice-detail-row"><span>Groomer</span><strong>Sarah W.</strong></div>
-                    <div class="invoice-detail-row"><span>Service type</span><strong>Home visit</strong></div>
-                    <div class="invoice-detail-row"><span>Time</span><strong>10:00 – 11:30</strong></div>
-                    <div class="invoice-detail-row"><span>Location</span><strong>At your home</strong></div>
-                    <div class="invoice-detail-row"><span>Pet</span><strong>Bella · Rabbit</strong></div>
+                    <div class="invoice-detail-row"><span>Groomer</span><span class="text-f-color">Sarah W.</strong></div>
+                    <div class="invoice-detail-row"><span>Service type</span><span class="text-f-color">Home visit</strong></div>
+                    <div class="invoice-detail-row"><span>Time</span><span class="text-f-color">10:00 – 11:30</strong></div>
+                    <div class="invoice-detail-row"><span>Location</span><span class="text-f-color">At your home</strong></div>
+                    <div class="invoice-detail-row"><span>Pet</span><span class="text-f-color">Bella · Rabbit</strong></div>
                 </div>
 
                 <div class="invoice-price-block invoice-price-block--divided">
@@ -108,7 +108,7 @@ HTML;
             <div class="invoice-footer-line"><span>Groomer subtotal</span><span>£78.00</span></div>
             <div class="invoice-total-paid">
                 <span>Total paid</span>
-                <strong>£158.00</strong>
+                <span class="text-f-color">£158.00</strong>
             </div>
         </div>
     </div>
@@ -120,8 +120,66 @@ HTML;
             <div class="invoice-modal-brand"><?= $invoiceBrandSvg ?></div>
             <?= $invoiceCloseBtn ?>
         </div>
-        <div class="invoice-modal-body">
-            <p class="invoice-placeholder-note">Spaces invoice design coming next.</p>
+
+        <div class="invoice-modal-body mt-4">
+            <div class="invoice-meta-row">
+                <p class="invoice-meta-ref">FG-10280 · Issued 10 Nov 2025</p>
+                <p class="invoice-meta-status paid"><span class="dot"></span> Paid</p>
+            </div>
+
+            <div class="invoice-bill-row">
+                <div>
+                    <p class="invoice-label">Billed to</p>
+                    <p class="invoice-value">Verity Eve</p>
+                </div>
+                <div class="text-end">
+                    <p class="invoice-label">Booking date</p>
+                    <p class="invoice-value">Mon, 10 Nov 2025</p>
+                </div>
+            </div>
+
+            <div class="invoice-section-card invoice-section-card--plain">
+                <div class="invoice-provider-head">
+                    <div class="invoice-provider-left">
+                        <div class="invoice-provider-icon"><?= $spaceShieldIcon ?></div>
+                        <div>
+                            <p class="invoice-provider-name">Paws'n'Co. Studio</p>
+                            <p class="invoice-provider-sub">Hosted by Dev E.</p>
+                        </div>
+                    </div>
+                    <span class="invoice-type-pill space">Space Host</span>
+                </div>
+
+                <div class="invoice-detail-list">
+                    <div class="invoice-detail-row"><span>Space Host</span><span class="text-f-color">Dev E.</strong></div>
+                    <div class="invoice-detail-row"><span>Service type</span><span class="text-f-color">Half-Day</strong></div>
+                    <div class="invoice-detail-row"><span>Time</span><span class="text-f-color">10:00 – 14:00</strong></div>
+                    <div class="invoice-detail-row"><span>Location</span><span class="text-f-color">Victoria Embankment</strong></div>
+                </div>
+
+                <div class="invoice-price-block invoice-price-block--divided">
+                    <p class="invoice-block-title">Service</p>
+                    <div class="invoice-line"><span>Garden / Shed – Half-day</span><span class="text-f-color">£72.00</span></div>
+                </div>
+
+                <div class="invoice-price-block">
+                    <p class="invoice-block-title">Extras &amp; Add-ons</p>
+                    <div class="invoice-line"><span>Storage Locker</span><span class="text-f-color">£5.00</span></div>
+                </div>
+
+                <div class="invoice-subtotal-row dashed">
+                    <span>Space subtotal</span>
+                    <span class="text-f-color">£77.00</strong>
+                </div>
+            </div>
+        </div>
+
+        <div class="invoice-total-footer">
+            <div class="invoice-footer-line"><span>Space subtotal</span><span>£78.00</span></div>
+            <div class="invoice-total-paid">
+                <span>Total paid</span>
+                <span class="text-f-color">£158.00</strong>
+            </div>
         </div>
     </div>
 </div>
@@ -163,11 +221,11 @@ HTML;
                 </div>
 
                 <div class="invoice-detail-list">
-                    <div class="invoice-detail-row"><span>Groomer</span><strong>Sarah W.</strong></div>
-                    <div class="invoice-detail-row"><span>Service type</span><strong>Home visit</strong></div>
-                    <div class="invoice-detail-row"><span>Time</span><strong>10:00 – 11:30</strong></div>
-                    <div class="invoice-detail-row"><span>Location</span><strong>At your home</strong></div>
-                    <div class="invoice-detail-row"><span>Pet</span><strong>Bella - Rabbit</strong></div>
+                    <div class="invoice-detail-row"><span>Groomer</span><span class="text-f-color">Sarah W.</strong></div>
+                    <div class="invoice-detail-row"><span>Service type</span><span class="text-f-color">Home visit</strong></div>
+                    <div class="invoice-detail-row"><span>Time</span><span class="text-f-color">10:00 – 11:30</strong></div>
+                    <div class="invoice-detail-row"><span>Location</span><span class="text-f-color">At your home</strong></div>
+                    <div class="invoice-detail-row"><span>Pet</span><span class="text-f-color">Bella - Rabbit</strong></div>
                 </div>
 
                 <div class="invoice-price-block invoice-price-block--divided">
@@ -184,7 +242,7 @@ HTML;
 
                 <div class="invoice-subtotal-row dashed">
                     <span>Groomer subtotal</span>
-                    <strong>£78.00</strong>
+                    <span class="text-f-color">£78.00</strong>
                 </div>
             </div>
 
@@ -201,10 +259,10 @@ HTML;
                 </div>
 
                 <div class="invoice-detail-list">
-                    <div class="invoice-detail-row"><span>Space Host</span><strong>Dev E.</strong></div>
-                    <div class="invoice-detail-row"><span>Service type</span><strong>Half-Day</strong></div>
-                    <div class="invoice-detail-row"><span>Time</span><strong>10:00 – 14:00</strong></div>
-                    <div class="invoice-detail-row"><span>Location</span><strong>Victoria Embankment</strong></div>
+                    <div class="invoice-detail-row"><span>Space Host</span><span class="text-f-color">Dev E.</strong></div>
+                    <div class="invoice-detail-row"><span>Service type</span><span class="text-f-color">Half-Day</strong></div>
+                    <div class="invoice-detail-row"><span>Time</span><span class="text-f-color">10:00 – 14:00</strong></div>
+                    <div class="invoice-detail-row"><span>Location</span><span class="text-f-color">Victoria Embankment</strong></div>
                 </div>
 
                 <div class="invoice-price-block invoice-price-block--divided">
@@ -219,7 +277,7 @@ HTML;
 
                 <div class="invoice-subtotal-row dashed">
                     <span>Space subtotal</span>
-                    <strong>£77.00</strong>
+                    <span class="text-f-color">£77.00</strong>
                 </div>
             </div>
         </div>
@@ -229,7 +287,7 @@ HTML;
             <div class="invoice-footer-line"><span>Space subtotal</span><span>£77.00</span></div>
             <div class="invoice-total-paid">
                 <span>Total paid</span>
-                <strong>£158.00</strong>
+                <span class="text-f-color">£158.00</strong>
             </div>
         </div>
     </div>
