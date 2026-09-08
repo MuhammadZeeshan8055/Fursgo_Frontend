@@ -540,8 +540,8 @@ $studioImage = BASE_URL . 'assets/images/booking-space-card-image.svg';
                             <div class="cbg-review-accordion open">
                                 <button type="button" class="cbg-review-accordion-head">
                                     <span>Cancellation Policy</span>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="10" viewBox="0 0 16 10" fill="none" aria-hidden="true">
-                                        <path d="M14.5 1.5L8 8L1.5 1.5" stroke="#3B3731" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="19" height="11" viewBox="0 0 19 11" fill="none" aria-hidden="true">
+                                        <path d="M17.8281 1L9.34284 9.48528L1 1.14244" stroke="#D4D4D4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                     </svg>
                                 </button>
                                 <div class="cbg-review-accordion-body">
@@ -556,8 +556,8 @@ $studioImage = BASE_URL . 'assets/images/booking-space-card-image.svg';
                             <div class="cbg-review-accordion">
                                 <button type="button" class="cbg-review-accordion-head">
                                     <span>Safety Policy</span>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="10" viewBox="0 0 16 10" fill="none" aria-hidden="true">
-                                        <path d="M14.5 1.5L8 8L1.5 1.5" stroke="#3B3731" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="19" height="11" viewBox="0 0 19 11" fill="none" aria-hidden="true">
+                                        <path d="M17.8281 1L9.34284 9.48528L1 1.14244" stroke="#D4D4D4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                     </svg>
                                 </button>
                                 <div class="cbg-review-accordion-body">
@@ -570,8 +570,8 @@ $studioImage = BASE_URL . 'assets/images/booking-space-card-image.svg';
                             <div class="cbg-review-accordion">
                                 <button type="button" class="cbg-review-accordion-head">
                                     <span>Payment &amp; Fees</span>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="10" viewBox="0 0 16 10" fill="none" aria-hidden="true">
-                                        <path d="M14.5 1.5L8 8L1.5 1.5" stroke="#3B3731" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="19" height="11" viewBox="0 0 19 11" fill="none" aria-hidden="true">
+                                        <path d="M17.8281 1L9.34284 9.48528L1 1.14244" stroke="#D4D4D4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                     </svg>
                                 </button>
                                 <div class="cbg-review-accordion-body">

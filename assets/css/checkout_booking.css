@@ -818,7 +818,8 @@ body.cbg-page {
   background: #EAE8E5;
 }
 
-.selected-furs-addons-tags{
+.selected-furs-addons-tags,
+.cbs-extras-tags{
   display: none !important;
 }
 
