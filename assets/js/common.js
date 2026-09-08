@@ -171,8 +171,8 @@ document.addEventListener('click', function (e) {
         panels = document.querySelectorAll('.tab-panel');
     }
 
-    const noScroll = wrapper.hasAttribute('data-tabs-no-scroll'); // 👈
-    const scrollY = noScroll ? window.scrollY : null;             // 👈
+    const noScroll = wrapper.hasAttribute('data-tabs-no-scroll');
+    const scrollY = noScroll ? window.scrollY : null;
 
     // reset
     tabs.forEach(t => t.classList.remove('active'));
@@ -186,7 +186,20 @@ document.addEventListener('click', function (e) {
         targetPanel.classList.add('active');
     }
 
-    if (noScroll) requestAnimationFrame(() => window.scrollTo({ top: scrollY, behavior: 'auto' })); // 👈
+    if (noScroll) {
+        requestAnimationFrame(() => window.scrollTo({ top: scrollY, behavior: 'auto' }));
+        return;
+    }
+
+    // Show the new tab content from the top (below sticky header)
+    if (targetPanel) {
+        requestAnimationFrame(() => {
+            const header = document.querySelector('header');
+            const headerHeight = header ? header.offsetHeight : 0;
+            const top = targetPanel.getBoundingClientRect().top + window.scrollY - headerHeight - 20;
+            window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
+        });
+    }
 });
 
 // tab js ends

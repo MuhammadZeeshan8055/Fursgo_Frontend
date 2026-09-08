@@ -186,7 +186,7 @@
                             <h1 class="large-font">Settings</h1>
                         </div>
                     </div>
-                    <div class="tabs-wrapper mb-5 mt-5" data-tabs data-tabs-no-scroll>
+                    <div class="tabs-wrapper mb-5 mt-5" data-tabs>
                         <div class="tabs mt-5">
                             <button class="tab-btn normal-font-weight d-flex align-items-center gap-10 active" data-tab="general">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="17" height="18" viewBox="0 0 17 18" fill="none">
