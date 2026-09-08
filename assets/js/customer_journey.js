@@ -537,6 +537,15 @@ document.addEventListener('DOMContentLoaded', function () {
             buttons.forEach(b => {
                 b.classList.toggle('active', b.dataset.tab === tabName);
             });
+
+            // Refresh groomer/space result count for the visible view
+            var main = tabSection.closest('.main-tab-content');
+            if (main && main.id === 'groomer' && typeof filterByVenue === 'function') {
+                filterByVenue('groomer-venue[]');
+            }
+            if (main && main.id === 'space' && typeof filterByVenue === 'function') {
+                filterByVenue('space-venue[]');
+            }
         }
 
         buttons.forEach(button => {
@@ -564,61 +573,577 @@ toggleBtn.addEventListener('click', () => {
     toggleBtn.innerHTML = menu.classList.contains('active') ? 'âœ–' : '&#9776;';
 });
 
-// sort and venue selection starts
+// =========================================================
+// SIMPLE FILTER + SORT (easy to read)
+//
+// Important HTML ids / classes used here:
+//   document.getElementById('groomer')              -> groomer results area
+//   document.getElementById('space')                -> space results area
+//   document.getElementById('groomerSelectedSection')-> left pills for groomer
+//   document.getElementById('spaceSelectedSection') -> left pills for space
+//   document.querySelector('.sort-by')              -> Sort button
+//   document.querySelector('.sort-by-filter')       -> Sort dropdown menu
+//   document.querySelector('.venue-selection')      -> Venue button
+//   document.querySelector('.venue-list')           -> Venue dropdown menu
+//   document.querySelectorAll('.card')              -> result cards
+//   document.querySelectorAll('.selected-item')     -> pills on the left
+// =========================================================
 
 function closeAllVenueSortDropdowns() {
-    document.querySelectorAll('.sort-by-filter, .venue-list').forEach(el => {
-        el.style.display = 'none';
-    });
+    var menus = document.querySelectorAll('.sort-by-filter, .venue-list');
+    var i;
+    for (i = 0; i < menus.length; i++) {
+        menus[i].style.display = 'none';
+    }
 }
 
-// loop through all venu-sorting-section blocks (groomer + space)
-document.querySelectorAll('.venu-sorting-section').forEach(container => {
-    const sortBy = container.querySelector('.sort-by');
-    const sortByFilter = container.querySelector('.sort-by-filter');
-    const venueSelection = container.querySelector('.venue-selection');
-    const venueList = container.querySelector('.venue-list');
+// Which big results area? #groomer or #space
+function getResultsArea(inputName) {
+    if (inputName.indexOf('groomer') === 0) {
+        return document.getElementById('groomer');
+    }
+    if (inputName.indexOf('space') === 0) {
+        return document.getElementById('space');
+    }
+    return null;
+}
 
-    if (!sortBy || !sortByFilter || !venueSelection || !venueList) return;
+// Which left pill box?
+function getPillBox(inputName) {
+    if (inputName.indexOf('groomer') === 0) {
+        return document.getElementById('groomerSelectedSection');
+    }
+    if (inputName.indexOf('space') === 0) {
+        return document.getElementById('spaceSelectedSection');
+    }
+    return null;
+}
 
-    sortBy.addEventListener('click', (e) => {
-        // Keep open while interacting with options; only toggle via the Sort trigger
-        if (e.target.closest('.sort-by-filter')) return;
+// Text next to checkbox/radio, example: "Salons" or "Lowest price"
+function getOptionLabel(input) {
+    var label = input.closest('label');
+    if (!label) return input.value;
 
-        const isOpen = sortByFilter.style.display === 'block';
-        closeAllVenueSortDropdowns();
-        sortByFilter.style.display = isOpen ? 'none' : 'block';
-    });
+    var optionText = label.querySelector('.option-text');
+    if (!optionText) return input.value;
 
-    venueSelection.addEventListener('click', (e) => {
-        // Keep open while toggling venue checkboxes
-        if (e.target.closest('.venue-list')) return;
+    var copy = optionText.cloneNode(true);
+    var tooltips = copy.querySelectorAll('.tooltip');
+    var t;
+    for (t = 0; t < tooltips.length; t++) {
+        tooltips[t].remove();
+    }
+    return copy.textContent.replace(/\s+/g, ' ').trim() || input.value;
+}
 
-        const isOpen = venueList.style.display === 'block';
-        closeAllVenueSortDropdowns();
-        venueList.style.display = isOpen ? 'none' : 'block';
-    });
+function getCrossIcon() {
+    var cross = document.querySelector('.selected-item .cross');
+    if (cross) {
+        return cross.getAttribute('src');
+    }
+    return (window.BASE_URL || '') + '/assets/icons/cross.svg';
+}
 
-    // Close sort after an option is selected
-    sortByFilter.querySelectorAll('input[type="radio"]').forEach(radio => {
-        radio.addEventListener('change', () => {
-            sortByFilter.style.display = 'none';
+// Card sits inside Bootstrap column (.col-lg-3 or .col-lg-6)
+// We hide/move the COLUMN so no empty hole stays in the row
+function getCardColumn(card) {
+    var col = card.closest('.col-lg-3, .col-lg-4, .col-lg-6');
+
+    // Map column, or unknown -> hide the card itself
+    if (!col || col.classList.contains('map-col')) {
+        return card;
+    }
+
+    // If many cards share one column (map list), hide only this card
+    var cardsInCol = col.querySelectorAll('.card');
+    if (cardsInCol.length > 1) {
+        return card;
+    }
+
+    return col;
+}
+
+// Only the open view: Calendar / Map / List
+function getActivePanel(area) {
+    if (!area) return null;
+
+    var panels = area.querySelectorAll('.tabcontent');
+    var i;
+    for (i = 0; i < panels.length; i++) {
+        // active panel is the one NOT hidden
+        if (panels[i].style.display !== 'none') {
+            return panels[i];
+        }
+    }
+
+    // fallback: first panel
+    if (panels.length) return panels[0];
+    return area;
+}
+
+function getResultCards(root) {
+    var list = [];
+    if (!root) return list;
+
+    var cards = root.querySelectorAll('.card');
+    var i;
+    for (i = 0; i < cards.length; i++) {
+        var card = cards[i];
+        // skip map popup / map-col only cards when not needed
+        if (card.closest('.map-col')) continue;
+        // must have a price
+        if (!card.querySelector('.price')) continue;
+        list.push(card);
+    }
+    return list;
+}
+
+// After hide/show: put visible columns first (no empty holes)
+function packVisibleColumns(panel) {
+    if (!panel) return;
+
+    var rows = panel.querySelectorAll('.row');
+    var r;
+    for (r = 0; r < rows.length; r++) {
+        var row = rows[r];
+        var cols = row.querySelectorAll(':scope > .col-lg-3, :scope > .col-lg-4, :scope > .col-lg-6');
+        if (!cols.length) continue;
+
+        var loadMore = row.querySelector(':scope > .col-lg-12');
+        var visible = [];
+        var hidden = [];
+        var i;
+
+        for (i = 0; i < cols.length; i++) {
+            if (cols[i].classList.contains('map-col')) continue;
+            if (cols[i].style.display === 'none') {
+                hidden.push(cols[i]);
+            } else {
+                visible.push(cols[i]);
+            }
+        }
+
+        // visible first, then hidden
+        for (i = 0; i < visible.length; i++) {
+            if (loadMore) row.insertBefore(visible[i], loadMore);
+            else row.appendChild(visible[i]);
+        }
+        for (i = 0; i < hidden.length; i++) {
+            if (loadMore) row.insertBefore(hidden[i], loadMore);
+            else row.appendChild(hidden[i]);
+        }
+    }
+}
+
+function cleanText(text) {
+    return String(text || '')
+        .toLowerCase()
+        .replace(/['’]/g, "'")
+        .replace(/\s+/g, ' ')
+        .trim();
+}
+
+function textsMatch(a, b) {
+    var x = cleanText(a);
+    var y = cleanText(b);
+    if (x === y) return true;
+    if (x.indexOf(y) !== -1) return true;
+    if (y.indexOf(x) !== -1) return true;
+    return false;
+}
+
+// Create one pill in the left box
+function addPill(input) {
+    var box = getPillBox(input.name);
+    if (!box) return;
+
+    var pills = box.querySelectorAll('.selected-item');
+    var i;
+
+    // Sort is radio -> only one pill allowed
+    if (input.type === 'radio') {
+        for (i = 0; i < pills.length; i++) {
+            if (pills[i].getAttribute('data-group') === input.name) {
+                pills[i].remove();
+            }
+        }
+    } else {
+        // Venue checkbox -> do not duplicate
+        for (i = 0; i < pills.length; i++) {
+            if (
+                pills[i].getAttribute('data-group') === input.name &&
+                pills[i].getAttribute('data-value') === input.value
+            ) {
+                return;
+            }
+        }
+    }
+
+    var pill = document.createElement('div');
+    pill.className = 'selected-item cursor d-flex align-items-center gap-10';
+    pill.setAttribute('data-group', input.name);
+    pill.setAttribute('data-value', input.value);
+    pill.setAttribute('data-dynamic', 'true');
+    pill.innerHTML =
+        '<p>' + getOptionLabel(input) + '</p>' +
+        '<img src="' + getCrossIcon() + '" class="cross svg" alt="remove">';
+
+    box.appendChild(pill);
+}
+
+// Remove matching pill
+function removePill(input) {
+    var box = getPillBox(input.name);
+    if (!box) return;
+
+    var pills = box.querySelectorAll('.selected-item');
+    var i;
+    for (i = 0; i < pills.length; i++) {
+        if (
+            pills[i].getAttribute('data-group') === input.name &&
+            pills[i].getAttribute('data-value') === input.value
+        ) {
+            pills[i].remove();
+            return;
+        }
+    }
+}
+
+// ---------- Open / close Venue + Sort dropdowns ----------
+var sections = document.querySelectorAll('.venu-sorting-section');
+var s;
+for (s = 0; s < sections.length; s++) {
+    (function (container) {
+        var sortBy = container.querySelector('.sort-by');
+        var sortMenu = container.querySelector('.sort-by-filter');
+        var venueBy = container.querySelector('.venue-selection');
+        var venueMenu = container.querySelector('.venue-list');
+
+        if (!sortBy || !sortMenu || !venueBy || !venueMenu) return;
+
+        sortBy.addEventListener('click', function (e) {
+            // clicking inside open menu should not toggle closed via button logic
+            if (e.target.closest('.sort-by-filter')) return;
+
+            var isOpen = sortMenu.style.display === 'block';
+            closeAllVenueSortDropdowns();
+            sortMenu.style.display = isOpen ? 'none' : 'block';
         });
-    });
-});
 
-// Close venue/sort when clicking anywhere else on the page
-// (capture so it still runs even if other controls stopPropagation)
-document.addEventListener('click', (e) => {
+        venueBy.addEventListener('click', function (e) {
+            if (e.target.closest('.venue-list')) return;
+
+            var isOpen = venueMenu.style.display === 'block';
+            closeAllVenueSortDropdowns();
+            venueMenu.style.display = isOpen ? 'none' : 'block';
+        });
+    })(sections[s]);
+}
+
+// Click outside -> close menus
+document.addEventListener('click', function (e) {
     if (e.target.closest('.venue-selection, .sort-by')) return;
     closeAllVenueSortDropdowns();
 }, true);
 
-document.addEventListener('keydown', (e) => {
+document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') closeAllVenueSortDropdowns();
 });
 
-// sort and venue selection ends
+// ---------- Demo values on static cards (so filter/sort is visible) ----------
+function prepareDemoCards(area) {
+    if (!area) return;
+
+    // prepare ALL views (calendar + list + map list), each separately
+    var panels = area.querySelectorAll('.tabcontent');
+    var p;
+    if (!panels.length) {
+        prepareDemoCardsInRoot(area, area.id);
+        return;
+    }
+    for (p = 0; p < panels.length; p++) {
+        prepareDemoCardsInRoot(panels[p], area.id);
+    }
+}
+
+function prepareDemoCardsInRoot(root, areaId) {
+    var cards = getResultCards(root);
+    var i;
+
+    var groomerTags = [
+        ['Home Visit', 'Mobile Station'],
+        ['Salons'],
+        ["Groomer's studio"],
+        ['Visiting Groomers'],
+        ['Mobile Station'],
+        ["Groomer's studio", 'Home Visit']
+    ];
+    var spaceTags = [
+        ['Salon'],
+        ['Garden / Shed'],
+        ['Private rooms'],
+        ['Mobile station'],
+        ['Others'],
+        ['Salon', 'Private rooms']
+    ];
+
+    for (i = 0; i < cards.length; i++) {
+        var card = cards[i];
+        if (card.getAttribute('data-ready') === '1') continue;
+
+        card.setAttribute('data-ready', '1');
+        card.setAttribute('data-order', String(i));
+        card.setAttribute('data-price', String(30 + i * 7));
+        card.setAttribute('data-distance', String((1 + i * 0.6).toFixed(1)));
+        card.setAttribute('data-soonest', String(i));
+
+        var priceEl = card.querySelector('.price span');
+        var distEl = card.querySelector('.distance span');
+        if (priceEl) priceEl.textContent = '£' + card.getAttribute('data-price');
+        if (distEl) distEl.textContent = card.getAttribute('data-distance') + ' mi';
+
+        var tagList = (areaId === 'space') ? spaceTags : groomerTags;
+        var pick = tagList[i % tagList.length];
+        var wrap = card.querySelector('.tags');
+        if (wrap) {
+            var html = '';
+            var j;
+            for (j = 0; j < pick.length; j++) {
+                html += '<div class="tag">' + pick[j] + '</div>';
+            }
+            wrap.innerHTML = html;
+            card.setAttribute('data-venues', pick.join('|'));
+        }
+    }
+}
+
+// ---------- VENUE FILTER: show/hide cards ----------
+function filterByVenue(inputName) {
+    var area = getResultsArea(inputName);
+    if (!area) return;
+
+    // All checked venue checkboxes
+    var checkedInputs = document.querySelectorAll('input[name="' + inputName + '"]:checked');
+    var selected = [];
+    var i;
+    for (i = 0; i < checkedInputs.length; i++) {
+        selected.push(checkedInputs[i].value);
+    }
+
+    // Filter every view panel, but count only the active one
+    var panels = area.querySelectorAll('.tabcontent');
+    if (!panels.length) {
+        applyVenueFilterToRoot(area, selected);
+        packVisibleColumns(area);
+        return;
+    }
+
+    for (i = 0; i < panels.length; i++) {
+        applyVenueFilterToRoot(panels[i], selected);
+        packVisibleColumns(panels[i]);
+    }
+
+    var active = getActivePanel(area);
+    var activeCards = getResultCards(active);
+    var visibleCount = 0;
+    for (i = 0; i < activeCards.length; i++) {
+        var col = getCardColumn(activeCards[i]);
+        if (col.style.display !== 'none') visibleCount++;
+    }
+
+    var countBox = area.querySelector('.heading-count .count');
+    if (countBox) {
+        countBox.textContent = String(visibleCount);
+    }
+}
+
+function applyVenueFilterToRoot(root, selected) {
+    var cards = getResultCards(root);
+    var i;
+
+    for (i = 0; i < cards.length; i++) {
+        var card = cards[i];
+        var col = getCardColumn(card);
+
+        var tags = [];
+        var saved = card.getAttribute('data-venues') || '';
+        if (saved) {
+            tags = saved.split('|');
+        }
+        var tagEls = card.querySelectorAll('.tag');
+        var t;
+        for (t = 0; t < tagEls.length; t++) {
+            tags.push(tagEls[t].textContent.trim());
+        }
+
+        var show = false;
+        if (selected.length === 0) {
+            show = true;
+        } else {
+            var s;
+            for (s = 0; s < selected.length; s++) {
+                var k;
+                for (k = 0; k < tags.length; k++) {
+                    if (textsMatch(selected[s], tags[k])) {
+                        show = true;
+                        break;
+                    }
+                }
+                if (show) break;
+            }
+        }
+
+        col.style.display = show ? '' : 'none';
+    }
+}
+
+// ---------- SORT: reorder cards ----------
+function sortResults(radio) {
+    var area = getResultsArea(radio.name);
+    if (!area) return;
+
+    var panels = area.querySelectorAll('.tabcontent');
+    var i;
+    if (!panels.length) {
+        sortResultsInRoot(area, radio.value);
+        return;
+    }
+    for (i = 0; i < panels.length; i++) {
+        sortResultsInRoot(panels[i], radio.value);
+    }
+}
+
+function sortResultsInRoot(root, mode) {
+    var cards = getResultCards(root);
+
+    cards.sort(function (a, b) {
+        if (mode === 'distance') {
+            return Number(a.getAttribute('data-distance')) - Number(b.getAttribute('data-distance'));
+        }
+        if (mode === 'lowest_price') {
+            return Number(a.getAttribute('data-price')) - Number(b.getAttribute('data-price'));
+        }
+        if (mode === 'soonest_available') {
+            return Number(a.getAttribute('data-soonest')) - Number(b.getAttribute('data-soonest'));
+        }
+        return Number(a.getAttribute('data-order')) - Number(b.getAttribute('data-order'));
+    });
+
+    var i;
+    for (i = 0; i < cards.length; i++) {
+        var col = getCardColumn(cards[i]);
+        var parent = col.parentNode;
+        if (!parent) continue;
+
+        var loadMore = parent.querySelector(':scope > .col-lg-12');
+        if (loadMore) {
+            parent.insertBefore(col, loadMore);
+        } else {
+            parent.appendChild(col);
+        }
+    }
+
+    packVisibleColumns(root);
+}
+
+function resetSort(groupName) {
+    var def = document.querySelector('input[name="' + groupName + '"][value="default"]');
+    if (!def) return;
+    def.checked = true;
+    sortResults(def);
+    addPill(def);
+}
+
+// ---------- Start everything when page is ready ----------
+document.addEventListener('DOMContentLoaded', function () {
+    var groomerArea = document.getElementById('groomer');
+    var spaceArea = document.getElementById('space');
+
+    prepareDemoCards(groomerArea);
+    prepareDemoCards(spaceArea);
+
+    // Venue checkboxes
+    var venueInputs = document.querySelectorAll(
+        'input[name="groomer-venue[]"], input[name="space-venue[]"]'
+    );
+    var i;
+    for (i = 0; i < venueInputs.length; i++) {
+        (function (input) {
+            if (input.checked) {
+                addPill(input);
+            }
+            input.addEventListener('change', function () {
+                if (input.checked) {
+                    addPill(input);
+                } else {
+                    removePill(input);
+                }
+                filterByVenue(input.name);
+            });
+        })(venueInputs[i]);
+    }
+
+    // Sort radios
+    var sortInputs = document.querySelectorAll(
+        'input[name="groomer-sort"], input[name="space-sort"]'
+    );
+    for (i = 0; i < sortInputs.length; i++) {
+        (function (radio) {
+            if (radio.checked) {
+                addPill(radio);
+            }
+            radio.addEventListener('change', function () {
+                if (!radio.checked) return;
+
+                var menu = radio.closest('.sort-by-filter');
+                if (menu) menu.style.display = 'none';
+
+                addPill(radio);
+                sortResults(radio);
+            });
+        })(sortInputs[i]);
+    }
+
+    filterByVenue('groomer-venue[]');
+    filterByVenue('space-venue[]');
+});
+
+// Click X on a pill
+document.addEventListener('click', function (e) {
+    var pill = e.target.closest('.selected-item');
+    if (!pill) return;
+
+    var group = pill.getAttribute('data-group');
+    var value = pill.getAttribute('data-value');
+
+    // Venue pill
+    if (group === 'groomer-venue[]' || group === 'space-venue[]') {
+        e.preventDefault();
+        e.stopPropagation();
+
+        var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        var i;
+        for (i = 0; i < checkboxes.length; i++) {
+            if (checkboxes[i].name === group && checkboxes[i].value === value) {
+                checkboxes[i].checked = false;
+                break;
+            }
+        }
+
+        pill.remove();
+        filterByVenue(group);
+        return;
+    }
+
+    // Sort pill -> back to Recommended
+    if (group === 'groomer-sort' || group === 'space-sort') {
+        e.preventDefault();
+        e.stopPropagation();
+        resetSort(group);
+    }
+});
+
+// venue filter ends
 
 
 
@@ -730,6 +1255,11 @@ document.querySelectorAll('.tabs').forEach(tabSection => {
         buttons.forEach(b => {
             b.classList.toggle('active', b.dataset.tab === tabName);
         });
+
+        // Refresh visible count for the open Calendar/Map/List view
+        var main = tabSection.closest('.main-tab-content');
+        if (main && main.id === 'groomer') filterByVenue('groomer-venue[]');
+        if (main && main.id === 'space') filterByVenue('space-venue[]');
     }
 
     buttons.forEach(button => {

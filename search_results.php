@@ -118,6 +118,7 @@
     <!-- footer -->
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>window.BASE_URL = "<?= rtrim(BASE_URL, '/') ?>";</script>
     <script src="<?= BASE_URL ?>/assets/js/customer_journey.js"></script>
     <script>
         // Groomer Module and Space Module
@@ -130,50 +131,35 @@
         const groomSelectedSection = document.querySelector('#groomerSelectedSection');
         const spaceSelectedSection = document.querySelector('#spaceSelectedSection');
 
-
-        // ================================
-        // GLOBAL CLICK: REMOVE ANY PILL
-        // ================================
+        // Remove modal filter pills only (venue pills handled in customer_journey.js)
         document.addEventListener('click', (e) => {
-
             const pill = e.target.closest('.selected-item');
             if (!pill) return;
 
-            const value = pill.dataset.value;
+            const group = pill.dataset.group;
+            if (group === 'groomer-venue[]' || group === 'space-venue[]') return;
+            if (group === 'groomer-sort' || group === 'space-sort') return;
 
+            const value = pill.dataset.value;
             pill.remove();
 
-            document
-                .querySelectorAll(`input[type="checkbox"][value="${value}"]`)
-                .forEach(input => input.checked = false);
+            if (value) {
+                document
+                    .querySelectorAll(`input[type="checkbox"][value="${CSS.escape(value)}"]`)
+                    .forEach(input => { input.checked = false; });
+            }
         });
 
-
-        // ================================
-        // APPLY GROOM FILTERS
-        // ================================
         groomApplyBtn.addEventListener('click', () => {
-
             syncModalToPills('#groomModal', groomSelectedSection);
-
             groomModal.style.display = 'none';
         });
 
-
-        // ================================
-        // APPLY SPACE FILTERS (NOW ADDED)
-        // ================================
         spaceApplyBtn.addEventListener('click', () => {
-
             syncModalToPills('#spaceModal', spaceSelectedSection);
-
             spaceModal.style.display = 'none';
         });
 
-
-        // ================================
-        // CORE SYNC FUNCTION (SINGLE VERSION)
-        // ================================
         function syncModalToPills(modalSelector, targetBox) {
             const checkboxes = [...document.querySelectorAll(
                 `${modalSelector} .filter-options-section input[type="checkbox"]`
@@ -182,8 +168,10 @@
             const modalGroups = new Set(checkboxes.map(input => input.name));
             const modalValues = new Set(checkboxes.map(input => input.value));
 
-            // Remove pills that came from this modal (clear + apply → empty list)
             targetBox.querySelectorAll('.selected-item').forEach(el => {
+                if (el.dataset.group === 'groomer-venue[]' || el.dataset.group === 'space-venue[]') return;
+                if (el.dataset.group === 'groomer-sort' || el.dataset.group === 'space-sort') return;
+
                 if (el.dataset.dynamic === 'true') {
                     el.remove();
                     return;
@@ -202,153 +190,22 @@
             });
         }
 
-
-        // ================================
-        // CREATE PILL (modal filters only)
-        // ================================
         function createModalPill(input, box) {
             const value = input.value;
-
-            if (box.querySelector(`.selected-item[data-value="${CSS.escape(value)}"]`)) return;
+            if ([...box.querySelectorAll('.selected-item')].some(el => el.dataset.value === value)) return;
 
             const div = document.createElement('div');
             div.className = 'selected-item cursor d-flex align-items-center gap-10';
             div.dataset.value = value;
             div.dataset.group = input.name;
             div.dataset.dynamic = 'true';
-
             div.innerHTML = `
-        <p>${value}</p>
-        <img src="<?= BASE_URL ?>/assets/icons/cross.svg" class="cross svg" alt="remove">
-    `;
-
+                <p>${value}</p>
+                <img src="<?= BASE_URL ?>/assets/icons/cross.svg" class="cross svg" alt="remove">
+            `;
             box.appendChild(div);
         }
     </script>
-
-
-    <!-- adding pills for groomer and space filters (checkboxes + radios) -->
-
-    <script>
-        const groomBox = document.querySelector('#groomerSelectedSection');
-        const spaceBox = document.querySelector('#spaceSelectedSection');
-
-        // ================================
-        // INIT INPUTS → CREATE PILLS
-        // ================================
-        document.querySelectorAll(
-            'input[name="groomer-venue[]"], input[name="space-venue[]"], input[name="groomer-sort"], input[name="space-sort"]'
-        ).forEach(input => {
-
-            const box = getBox(input);
-
-            // initial state
-            if (input.checked) {
-                createPill(input, box);
-            }
-
-            input.addEventListener('change', () => {
-
-                const box = getBox(input);
-
-                // RADIO: clear same group pills
-                if (input.type === 'radio') {
-                    box.querySelectorAll(`[data-group="${input.name}"]`)
-                        .forEach(el => el.remove());
-                }
-
-                if (input.checked) {
-                    createPill(input, box);
-                } else {
-                    removePill(input, box);
-                }
-            });
-        });
-
-
-        // ================================
-        // GLOBAL CLICK (STATIC + DYNAMIC)
-        // ================================
-        document.addEventListener('click', (e) => {
-
-            const pill = e.target.closest('.selected-item');
-            if (!pill) return;
-
-            const value = pill.dataset.value;
-            const group = pill.dataset.group;
-
-            // remove UI
-            pill.remove();
-
-            // sync input if exists
-            if (value && group) {
-                const input = document.querySelector(
-                    `[name="${group}"][value="${value}"]`
-                );
-
-                if (input) input.checked = false;
-            }
-        });
-
-
-        // ================================
-        // GET CONTAINER
-        // ================================
-        function getBox(input) {
-            if (input.name === 'groomer-venue[]' || input.name === 'groomer-sort') {
-                return groomBox;
-            }
-            return spaceBox;
-        }
-
-
-        // ================================
-        // CREATE PILL
-        // ================================
-        function createPill(input, box) {
-
-            const value = input.value;
-
-            if (box.querySelector(`[data-value="${value}"]`)) return;
-
-            const text = input.closest('label')
-                .querySelector('.option-text')
-                .innerText.trim();
-
-            const div = document.createElement('div');
-            div.className = 'selected-item cursor d-flex align-items-center gap-10';
-
-            div.dataset.value = value;
-            div.dataset.group = input.name;
-
-            div.innerHTML = `
-        <p>${text}</p>
-        <img src="<?= BASE_URL ?>/assets/icons/cross.svg" class="cross svg" alt="">
-    `;
-
-            box.appendChild(div);
-        }
-
-
-        // ================================
-        // REMOVE PILL (when input unchecked)
-        // ================================
-        function removePill(input, box) {
-
-            const el = box.querySelector(
-                `.selected-item[data-value="${input.value}"][data-group="${input.name}"]`
-            );
-
-            if (el) el.remove();
-        }
-    </script>
-
-    <!-- adding pills for groomer and space filters (checkboxes + radios) ends -->
-
-
-</body>
-
-</html>
 
 </body>
 

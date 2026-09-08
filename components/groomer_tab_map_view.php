@@ -137,7 +137,7 @@
                         <svg xmlns="http://www.w3.org/2000/svg" width="270" height="246"
                             viewBox="0 0 170 246">
                             <defs>
-                                <clipPath id="cardClip-map-1">
+                                <clipPath id="cardClip-map-2">
                                     <path
                                         d="M165 0C167.761 2.57702e-06 170 2.23858 170 5V241C170 243.761 167.761 246 165 246H5C2.23858 246 0 243.761 0 241V37C0 34.2386 2.23858 32 5 32H27C29.7614 32 32 29.7614 32 27V5C32 2.23858 34.2386 0 37 0H165Z" />
                                 </clipPath>
@@ -146,7 +146,7 @@
                             <!-- Image with clip path -->
                             <image href="<?= BASE_URL ?>/assets/images/card2.png"
                                 preserveAspectRatio="xMidYMid slice"
-                                clip-path="url(#cardClip-map-1)" />
+                                clip-path="url(#cardClip-map-2)" />
                         </svg>
                     </div>
                     <div class="right">
@@ -256,7 +256,7 @@
                         <svg xmlns="http://www.w3.org/2000/svg" width="270" height="246"
                             viewBox="0 0 170 246">
                             <defs>
-                                <clipPath id="cardClip-map-1">
+                                <clipPath id="cardClip-map-3">
                                     <path
                                         d="M165 0C167.761 2.57702e-06 170 2.23858 170 5V241C170 243.761 167.761 246 165 246H5C2.23858 246 0 243.761 0 241V37C0 34.2386 2.23858 32 5 32H27C29.7614 32 32 29.7614 32 27V5C32 2.23858 34.2386 0 37 0H165Z" />
                                 </clipPath>
@@ -265,7 +265,7 @@
                             <!-- Image with clip path -->
                             <image href="<?= BASE_URL ?>/assets/images/card3.png"
                                 preserveAspectRatio="xMidYMid slice"
-                                clip-path="url(#cardClip-map-1)" />
+                                clip-path="url(#cardClip-map-3)" />
                         </svg>
                     </div>
                     <div class="right">

@@ -1,15 +1,7 @@
 <div class="col-lg-12 section-gap">
     <div class="selection-box d-flex justify-content-between">
         <div class="selected-item-section d-flex align-items-center flex-wrap" id="spaceSelectedSection" style="width: 100%; max-width: 75%;">
-            <div class="selected-item cursor d-flex align-items-center">
-                <img src="<?= BASE_URL ?>/assets/icons/fire.svg" class="svg" alt="">
-                <p>Top Rated</p>
-                <img src="<?= BASE_URL ?>/assets/icons/cross.svg" class="cross svg" alt="">
-            </div>
-            <div class="selected-item cursor d-flex align-items-center">
-                <p>Garden / Shed</p>
-                <img src="<?= BASE_URL ?>/assets/icons/cross.svg" class="cross svg" alt="">
-            </div>
+            <!-- Venue / filter pills appear here when selected -->
         </div>
         <div class="venu-sorting-section d-flex">
             <div class="venue-selection">
@@ -69,7 +61,7 @@
                             <li>
                                 <label>
                                     <span class="option-text">Recommended (default)</span>
-                                    <input type="radio" name="space-sort" value="default"> <span class="check-circle"></span>
+                                    <input type="radio" name="space-sort" value="default" checked> <span class="check-circle"></span>
                                 </label>
                             </li>
                             <li>
