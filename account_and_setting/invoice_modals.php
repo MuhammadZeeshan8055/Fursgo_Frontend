@@ -65,7 +65,7 @@ HTML;
                     <p class="invoice-value">Verity Eve</p>
                 </div>
                 <div class="text-end">
-                    <p class="invoice-label">Booking date</p>
+                    <p class="invoice-label text-right">Booking date</p>
                     <p class="invoice-value">Mon, 10 Nov 2025</p>
                 </div>
             </div>
@@ -133,7 +133,7 @@ HTML;
                     <p class="invoice-value">Verity Eve</p>
                 </div>
                 <div class="text-end">
-                    <p class="invoice-label">Booking date</p>
+                    <p class="invoice-label text-right">Booking date</p>
                     <p class="invoice-value">Mon, 10 Nov 2025</p>
                 </div>
             </div>
@@ -203,7 +203,7 @@ HTML;
                     <p class="invoice-value">Verity Eve</p>
                 </div>
                 <div class="text-end">
-                    <p class="invoice-label">Booking date</p>
+                    <p class="invoice-label text-right">Booking date</p>
                     <p class="invoice-value">Mon, 10 Nov 2025</p>
                 </div>
             </div>

@@ -356,6 +356,10 @@
   text-align: center;
 }
 
+.text-right {
+  text-align: right;
+}
+
 @media (max-width: 425px) {
     .col-xs {
         flex: 1 0 0%
