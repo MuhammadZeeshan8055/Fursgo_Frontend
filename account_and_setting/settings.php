@@ -1286,233 +1286,147 @@
                                     });
                                 </script>
 
-                                <p class="bold-font mt-5">Payment History</p>
+                                <div class="payment-history">
+                                    <p class="fs-18-600 mt-5">Payment History <span class="payment-history-count">(24)</span></p>
 
-                                <table class="custom-table text-center mt-4">
-                                    <thead class="simple-font" style="color: #000;">
-                                        <tr>
-                                            <th scope="col">Date</th>
-                                            <th scope="col">Space</th>
-                                            <th scope="col">Service Type</th>
-                                            <th scope="col">Pet</th>
-                                            <th scope="col">Amount</th>
-                                            <th scope="col">View</th>
-                                            <th scope="col">Download</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody class="simple-font">
-                                        <tr>
-                                            <td>06/11/25</td>
-                                            <td>Home visits</td>
-                                            <td><span class="dark-color-font">Full Groom</span>
-                                                <br>
-                                                Claire Smith
-                                            </td>
-                                            <td><span class="dark-color-font">Bella</span>
-                                                <br>
-                                                Rabbit
-                                            </td>
-                                            <td>£76.00</td>
-                                            <td><svg data-modal-open="invoice_modal" class="cursor" xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
-                                                    <path d="M9.49609 15C11.4291 15 12.9961 13.433 12.9961 11.5C12.9961 9.567 11.4291 8 9.49609 8C7.5631 8 5.99609 9.567 5.99609 11.5C5.99609 13.433 7.5631 15 9.49609 15Z" stroke="black" />
-                                                    <path d="M18.4961 11.5C18.4961 11.5 17.4961 3.5 9.49609 3.5C1.49609 3.5 0.496094 11.5 0.496094 11.5" stroke="black" />
-                                                </svg></td>
-                                            <td><svg data-modal-open="invoice_modal" class="cursor" xmlns="http://www.w3.org/2000/svg" width="16" height="19" viewBox="0 0 16 19" fill="none">
-                                                    <path d="M0.5 15.5V17C0.5 17.3978 0.643751 17.7794 0.899456 18.0607C1.15516 18.342 1.50207 18.5 1.86372 18.5H14.1365C14.4982 18.5 14.8451 18.342 15.1008 18.0607C15.3565 17.7794 15.5 17.3978 15.5 17V15.5" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
-                                                    <path d="M8 0.5V12.875M12.0909 8.75L8 13.25L3.90909 8.75" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
-                                                </svg></td>
-                                        </tr>
-                                        <tr>
-                                            <td>06/11/25</td>
-                                            <td>Garden/ Shed</td>
-                                            <td><span class="dark-color-font">Nail Trim</span>
-                                                <br>
-                                                Dev Emile
-                                            </td>
-                                            <td><span class="dark-color-font">Louis</span>
-                                                <br>
-                                                Dog
-                                            </td>
-                                            <td>£24.00</td>
-                                            <td><svg data-modal-open="invoice_modal" class="cursor" xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
-                                                    <path d="M9.49609 15C11.4291 15 12.9961 13.433 12.9961 11.5C12.9961 9.567 11.4291 8 9.49609 8C7.5631 8 5.99609 9.567 5.99609 11.5C5.99609 13.433 7.5631 15 9.49609 15Z" stroke="black" />
-                                                    <path d="M18.4961 11.5C18.4961 11.5 17.4961 3.5 9.49609 3.5C1.49609 3.5 0.496094 11.5 0.496094 11.5" stroke="black" />
-                                                </svg></td>
-                                            <td><svg data-modal-open="invoice_modal" class="cursor" xmlns="http://www.w3.org/2000/svg" width="16" height="19" viewBox="0 0 16 19" fill="none">
-                                                    <path d="M0.5 15.5V17C0.5 17.3978 0.643751 17.7794 0.899456 18.0607C1.15516 18.342 1.50207 18.5 1.86372 18.5H14.1365C14.4982 18.5 14.8451 18.342 15.1008 18.0607C15.3565 17.7794 15.5 17.3978 15.5 17V15.5" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
-                                                    <path d="M8 0.5V12.875M12.0909 8.75L8 13.25L3.90909 8.75" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
-                                                </svg></td>
-                                        </tr>
-                                        <tr>
-                                            <td>06/11/25</td>
-                                            <td>Home visits</td>
-                                            <td><span class="dark-color-font">Full Groom</span>
-                                                <br>
-                                                Claire Smith
-                                            </td>
-                                            <td><span class="dark-color-font">Bella</span>
-                                                <br>
-                                                Rabbit
-                                            </td>
-                                            <td>£76.00</td>
-                                            <td><svg data-modal-open="invoice_modal" class="cursor" xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
-                                                    <path d="M9.49609 15C11.4291 15 12.9961 13.433 12.9961 11.5C12.9961 9.567 11.4291 8 9.49609 8C7.5631 8 5.99609 9.567 5.99609 11.5C5.99609 13.433 7.5631 15 9.49609 15Z" stroke="black" />
-                                                    <path d="M18.4961 11.5C18.4961 11.5 17.4961 3.5 9.49609 3.5C1.49609 3.5 0.496094 11.5 0.496094 11.5" stroke="black" />
-                                                </svg></td>
-                                            <td><svg data-modal-open="invoice_modal" class="cursor" xmlns="http://www.w3.org/2000/svg" width="16" height="19" viewBox="0 0 16 19" fill="none">
-                                                    <path d="M0.5 15.5V17C0.5 17.3978 0.643751 17.7794 0.899456 18.0607C1.15516 18.342 1.50207 18.5 1.86372 18.5H14.1365C14.4982 18.5 14.8451 18.342 15.1008 18.0607C15.3565 17.7794 15.5 17.3978 15.5 17V15.5" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
-                                                    <path d="M8 0.5V12.875M12.0909 8.75L8 13.25L3.90909 8.75" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
-                                                </svg></td>
-                                        </tr>
-                                        <tr>
-                                            <td>06/11/25</td>
-                                            <td>Garden/ Shed</td>
-                                            <td><span class="dark-color-font">Nail Trim</span>
-                                                <br>
-                                                Dev Emile
-                                            </td>
-                                            <td><span class="dark-color-font">Louis</span>
-                                                <br>
-                                                Dog
-                                            </td>
-                                            <td>£24.00</td>
-                                            <td><svg data-modal-open="invoice_modal" class="cursor" xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
-                                                    <path d="M9.49609 15C11.4291 15 12.9961 13.433 12.9961 11.5C12.9961 9.567 11.4291 8 9.49609 8C7.5631 8 5.99609 9.567 5.99609 11.5C5.99609 13.433 7.5631 15 9.49609 15Z" stroke="black" />
-                                                    <path d="M18.4961 11.5C18.4961 11.5 17.4961 3.5 9.49609 3.5C1.49609 3.5 0.496094 11.5 0.496094 11.5" stroke="black" />
-                                                </svg></td>
-                                            <td><svg data-modal-open="invoice_modal" class="cursor" xmlns="http://www.w3.org/2000/svg" width="16" height="19" viewBox="0 0 16 19" fill="none">
-                                                    <path d="M0.5 15.5V17C0.5 17.3978 0.643751 17.7794 0.899456 18.0607C1.15516 18.342 1.50207 18.5 1.86372 18.5H14.1365C14.4982 18.5 14.8451 18.342 15.1008 18.0607C15.3565 17.7794 15.5 17.3978 15.5 17V15.5" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
-                                                    <path d="M8 0.5V12.875M12.0909 8.75L8 13.25L3.90909 8.75" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
-                                                </svg></td>
-                                        </tr>
-                                        <tr>
-                                            <td>06/11/25</td>
-                                            <td>Home visits</td>
-                                            <td><span class="dark-color-font">Full Groom</span>
-                                                <br>
-                                                Claire Smith
-                                            </td>
-                                            <td><span class="dark-color-font">Bella</span>
-                                                <br>
-                                                Rabbit
-                                            </td>
-                                            <td>£76.00</td>
-                                            <td><svg data-modal-open="invoice_modal" class="cursor" xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
-                                                    <path d="M9.49609 15C11.4291 15 12.9961 13.433 12.9961 11.5C12.9961 9.567 11.4291 8 9.49609 8C7.5631 8 5.99609 9.567 5.99609 11.5C5.99609 13.433 7.5631 15 9.49609 15Z" stroke="black" />
-                                                    <path d="M18.4961 11.5C18.4961 11.5 17.4961 3.5 9.49609 3.5C1.49609 3.5 0.496094 11.5 0.496094 11.5" stroke="black" />
-                                                </svg></td>
-                                            <td><svg data-modal-open="invoice_modal" class="cursor" xmlns="http://www.w3.org/2000/svg" width="16" height="19" viewBox="0 0 16 19" fill="none">
-                                                    <path d="M0.5 15.5V17C0.5 17.3978 0.643751 17.7794 0.899456 18.0607C1.15516 18.342 1.50207 18.5 1.86372 18.5H14.1365C14.4982 18.5 14.8451 18.342 15.1008 18.0607C15.3565 17.7794 15.5 17.3978 15.5 17V15.5" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
-                                                    <path d="M8 0.5V12.875M12.0909 8.75L8 13.25L3.90909 8.75" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
-                                                </svg></td>
-                                        </tr>
-                                        <tr>
-                                            <td>06/11/25</td>
-                                            <td>Garden/ Shed</td>
-                                            <td><span class="dark-color-font">Nail Trim</span>
-                                                <br>
-                                                Dev Emile
-                                            </td>
-                                            <td><span class="dark-color-font">Louis</span>
-                                                <br>
-                                                Dog
-                                            </td>
-                                            <td>£24.00</td>
-                                            <td><svg data-modal-open="invoice_modal" class="cursor" xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
-                                                    <path d="M9.49609 15C11.4291 15 12.9961 13.433 12.9961 11.5C12.9961 9.567 11.4291 8 9.49609 8C7.5631 8 5.99609 9.567 5.99609 11.5C5.99609 13.433 7.5631 15 9.49609 15Z" stroke="black" />
-                                                    <path d="M18.4961 11.5C18.4961 11.5 17.4961 3.5 9.49609 3.5C1.49609 3.5 0.496094 11.5 0.496094 11.5" stroke="black" />
-                                                </svg></td>
-                                            <td><svg data-modal-open="invoice_modal" class="cursor" xmlns="http://www.w3.org/2000/svg" width="16" height="19" viewBox="0 0 16 19" fill="none">
-                                                    <path d="M0.5 15.5V17C0.5 17.3978 0.643751 17.7794 0.899456 18.0607C1.15516 18.342 1.50207 18.5 1.86372 18.5H14.1365C14.4982 18.5 14.8451 18.342 15.1008 18.0607C15.3565 17.7794 15.5 17.3978 15.5 17V15.5" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
-                                                    <path d="M8 0.5V12.875M12.0909 8.75L8 13.25L3.90909 8.75" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
-                                                </svg></td>
-                                        </tr>
-                                        <tr>
-                                            <td>06/11/25</td>
-                                            <td>Home visits</td>
-                                            <td><span class="dark-color-font">Full Groom</span>
-                                                <br>
-                                                Claire Smith
-                                            </td>
-                                            <td><span class="dark-color-font">Bella</span>
-                                                <br>
-                                                Rabbit
-                                            </td>
-                                            <td>£76.00</td>
-                                            <td><svg data-modal-open="invoice_modal" class="cursor" xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
-                                                    <path d="M9.49609 15C11.4291 15 12.9961 13.433 12.9961 11.5C12.9961 9.567 11.4291 8 9.49609 8C7.5631 8 5.99609 9.567 5.99609 11.5C5.99609 13.433 7.5631 15 9.49609 15Z" stroke="black" />
-                                                    <path d="M18.4961 11.5C18.4961 11.5 17.4961 3.5 9.49609 3.5C1.49609 3.5 0.496094 11.5 0.496094 11.5" stroke="black" />
-                                                </svg></td>
-                                            <td><svg data-modal-open="invoice_modal" class="cursor" xmlns="http://www.w3.org/2000/svg" width="16" height="19" viewBox="0 0 16 19" fill="none">
-                                                    <path d="M0.5 15.5V17C0.5 17.3978 0.643751 17.7794 0.899456 18.0607C1.15516 18.342 1.50207 18.5 1.86372 18.5H14.1365C14.4982 18.5 14.8451 18.342 15.1008 18.0607C15.3565 17.7794 15.5 17.3978 15.5 17V15.5" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
-                                                    <path d="M8 0.5V12.875M12.0909 8.75L8 13.25L3.90909 8.75" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
-                                                </svg></td>
-                                        </tr>
-                                        <tr>
-                                            <td>06/11/25</td>
-                                            <td>Garden/ Shed</td>
-                                            <td><span class="dark-color-font">Nail Trim</span>
-                                                <br>
-                                                Dev Emile
-                                            </td>
-                                            <td><span class="dark-color-font">Louis</span>
-                                                <br>
-                                                Dog
-                                            </td>
-                                            <td>£24.00</td>
-                                            <td><svg data-modal-open="invoice_modal" class="cursor" xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
-                                                    <path d="M9.49609 15C11.4291 15 12.9961 13.433 12.9961 11.5C12.9961 9.567 11.4291 8 9.49609 8C7.5631 8 5.99609 9.567 5.99609 11.5C5.99609 13.433 7.5631 15 9.49609 15Z" stroke="black" />
-                                                    <path d="M18.4961 11.5C18.4961 11.5 17.4961 3.5 9.49609 3.5C1.49609 3.5 0.496094 11.5 0.496094 11.5" stroke="black" />
-                                                </svg></td>
-                                            <td><svg data-modal-open="invoice_modal" class="cursor" xmlns="http://www.w3.org/2000/svg" width="16" height="19" viewBox="0 0 16 19" fill="none">
-                                                    <path d="M0.5 15.5V17C0.5 17.3978 0.643751 17.7794 0.899456 18.0607C1.15516 18.342 1.50207 18.5 1.86372 18.5H14.1365C14.4982 18.5 14.8451 18.342 15.1008 18.0607C15.3565 17.7794 15.5 17.3978 15.5 17V15.5" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
-                                                    <path d="M8 0.5V12.875M12.0909 8.75L8 13.25L3.90909 8.75" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
-                                                </svg></td>
-                                        </tr>
-                                        <tr>
-                                            <td>06/11/25</td>
-                                            <td>Home visits</td>
-                                            <td><span class="dark-color-font">Full Groom</span>
-                                                <br>
-                                                Claire Smith
-                                            </td>
-                                            <td><span class="dark-color-font">Bella</span>
-                                                <br>
-                                                Rabbit
-                                            </td>
-                                            <td>£76.00</td>
-                                            <td><svg data-modal-open="invoice_modal" class="cursor" xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
-                                                    <path d="M9.49609 15C11.4291 15 12.9961 13.433 12.9961 11.5C12.9961 9.567 11.4291 8 9.49609 8C7.5631 8 5.99609 9.567 5.99609 11.5C5.99609 13.433 7.5631 15 9.49609 15Z" stroke="black" />
-                                                    <path d="M18.4961 11.5C18.4961 11.5 17.4961 3.5 9.49609 3.5C1.49609 3.5 0.496094 11.5 0.496094 11.5" stroke="black" />
-                                                </svg></td>
-                                            <td><svg data-modal-open="invoice_modal" class="cursor" xmlns="http://www.w3.org/2000/svg" width="16" height="19" viewBox="0 0 16 19" fill="none">
-                                                    <path d="M0.5 15.5V17C0.5 17.3978 0.643751 17.7794 0.899456 18.0607C1.15516 18.342 1.50207 18.5 1.86372 18.5H14.1365C14.4982 18.5 14.8451 18.342 15.1008 18.0607C15.3565 17.7794 15.5 17.3978 15.5 17V15.5" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
-                                                    <path d="M8 0.5V12.875M12.0909 8.75L8 13.25L3.90909 8.75" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
-                                                </svg></td>
-                                        </tr>
-                                        <tr>
-                                            <td>06/11/25</td>
-                                            <td>Garden/ Shed</td>
-                                            <td><span class="dark-color-font">Nail Trim</span>
-                                                <br>
-                                                Dev Emile
-                                            </td>
-                                            <td><span class="dark-color-font">Louis</span>
-                                                <br>
-                                                Dog
-                                            </td>
-                                            <td>£24.00</td>
-                                            <td><svg data-modal-open="invoice_modal" class="cursor" xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
-                                                    <path d="M9.49609 15C11.4291 15 12.9961 13.433 12.9961 11.5C12.9961 9.567 11.4291 8 9.49609 8C7.5631 8 5.99609 9.567 5.99609 11.5C5.99609 13.433 7.5631 15 9.49609 15Z" stroke="black" />
-                                                    <path d="M18.4961 11.5C18.4961 11.5 17.4961 3.5 9.49609 3.5C1.49609 3.5 0.496094 11.5 0.496094 11.5" stroke="black" />
-                                                </svg></td>
-                                            <td><svg data-modal-open="invoice_modal" class="cursor" xmlns="http://www.w3.org/2000/svg" width="16" height="19" viewBox="0 0 16 19" fill="none">
-                                                    <path d="M0.5 15.5V17C0.5 17.3978 0.643751 17.7794 0.899456 18.0607C1.15516 18.342 1.50207 18.5 1.86372 18.5H14.1365C14.4982 18.5 14.8451 18.342 15.1008 18.0607C15.3565 17.7794 15.5 17.3978 15.5 17V15.5" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
-                                                    <path d="M8 0.5V12.875M12.0909 8.75L8 13.25L3.90909 8.75" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
-                                                </svg></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                    <div class="payment-history-filters">
+                                        <button type="button" class="payment-filter-pill active" data-filter="all">All</button>
+                                        <button type="button" class="payment-filter-pill" data-filter="grooming">Grooming</button>
+                                        <button type="button" class="payment-filter-pill" data-filter="spaces">Spaces</button>
+                                    </div>
+
+                                    <?php
+                                    $paymentHistory = [
+                                        [
+                                            'month' => 'JUNE 2025',
+                                            'items' => [
+                                                ['name' => 'Furs & Co. Studio', 'date' => '11 Jun 2025', 'ref' => 'FG-10294', 'status' => 'Paid', 'amount' => '£75.00', 'type' => 'spaces'],
+                                                ['name' => "Paws'n'Tails & Sarah's Grooming Studio", 'date' => '11 Jun 2025', 'ref' => 'FG-10294', 'status' => 'Refunded', 'amount' => '£75.00', 'type' => 'grooming spaces'],
+                                                ['name' => "Sarah's Grooming Studio", 'date' => '11 Jun 2025', 'ref' => 'FG-10294', 'status' => 'Pending', 'amount' => '£75.00', 'type' => 'grooming'],
+                                                ['name' => "Sarah's Grooming Studio", 'date' => '11 Jun 2025', 'ref' => 'FG-10294', 'status' => 'Failed', 'amount' => '£75.00', 'type' => 'grooming'],
+                                                ['name' => "Sarah's Grooming Studio", 'date' => '11 Jun 2025', 'ref' => 'FG-10294', 'status' => 'Paid', 'amount' => '£75.00', 'type' => 'grooming'],
+                                            ],
+                                        ],
+                                        [
+                                            'month' => 'MAY 2025',
+                                            'items' => [
+                                                ['name' => "Sarah's Grooming Studio", 'date' => '11 Jun 2025', 'ref' => 'FG-10294', 'status' => 'Paid', 'amount' => '£75.00', 'type' => 'grooming'],
+                                                ['name' => 'Furs & Co. Studio', 'date' => '11 Jun 2025', 'ref' => 'FG-10294', 'status' => 'Paid', 'amount' => '£75.00', 'type' => 'spaces'],
+                                                ['name' => "Sarah's Grooming Studio", 'date' => '11 Jun 2025', 'ref' => 'FG-10294', 'status' => 'Paid', 'amount' => '£75.00', 'type' => 'grooming'],
+                                            ],
+                                        ],
+                                        [
+                                            'month' => 'FEB 2024',
+                                            'items' => [
+                                                ['name' => "Sarah's Grooming Studio", 'date' => '11 Jun 2025', 'ref' => 'FG-10294', 'status' => 'Paid', 'amount' => '£75.00', 'type' => 'grooming'],
+                                                ['name' => "Sarah's Grooming Studio", 'date' => '11 Jun 2025', 'ref' => 'FG-10294', 'status' => 'Paid', 'amount' => '£75.00', 'type' => 'grooming'],
+                                            ],
+                                        ],
+                                    ];
+                                    ?>
+
+                                    <div class="payment-history-list">
+                                        <?php foreach ($paymentHistory as $group): ?>
+                                            <div class="payment-history-group">
+                                                <p class="payment-history-month"><?= htmlspecialchars($group['month']) ?></p>
+                                                <?php foreach ($group['items'] as $item):
+                                                    $statusClass = strtolower($item['status']);
+                                                    $showSpaceIcon = strpos($item['type'], 'spaces') !== false;
+                                                    $showGroomerIcon = strpos($item['type'], 'grooming') !== false;
+                                                    $isCombinedIcon = $showSpaceIcon && $showGroomerIcon;
+                                                ?>
+                                                    <div class="payment-row mt-3" data-type="<?= htmlspecialchars($item['type']) ?>" data-modal-open="invoice_modal">
+                                                        <div class="payment-row-icon<?= $isCombinedIcon ? ' payment-row-icon--combined' : '' ?>">
+                                                            <?php if ($isCombinedIcon): ?>
+                                                                <span class="payment-badge payment-badge--space" aria-hidden="true">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="9 9 18 19" fill="none">
+                                                                        <path d="M18.3308 9.10679C18.1762 9.03682 18.0105 9 17.8374 9C17.6643 9 17.4986 9.03682 17.344 9.10679L10.4103 12.0489C9.60022 12.3913 8.99633 13.1904 9.00002 14.1551C9.01843 17.8079 10.5208 24.4912 16.8653 27.5291C17.4802 27.8236 18.1946 27.8236 18.8095 27.5291C25.154 24.4912 26.6564 17.8079 26.6748 14.1551C26.6785 13.1904 26.0746 12.3913 25.2645 12.0489L18.3308 9.10679Z" fill="#CBDCE8" />
+                                                                        <path d="M22.6358 14.1133L18.8479 18.1379L22.6358 14.1133ZM17.1652 17.9414C15.9909 18.3922 15.052 18.315 14.1131 17.9428C14.3498 20.9935 15.7722 22.1663 17.6685 22.636C17.6685 22.636 19.097 21.6256 19.303 19.2302C19.3252 18.9708 19.3361 18.8415 19.2826 18.6952C19.2286 18.5489 19.1226 18.4442 18.9109 18.2345C18.5624 17.8898 18.3887 17.7174 18.1818 17.6739C17.9748 17.6313 17.705 17.7345 17.1652 17.9414Z" fill="#CBDCE8" />
+                                                                        <path d="M22.6358 14.1133L18.8479 18.1379M17.1652 17.9414C15.9909 18.3922 15.052 18.315 14.1131 17.9428C14.3498 20.9935 15.7722 22.1663 17.6685 22.636C17.6685 22.636 19.097 21.6256 19.303 19.2302C19.3252 18.9708 19.3361 18.8415 19.2826 18.6952C19.2286 18.5489 19.1226 18.4442 18.9109 18.2345C18.5624 17.8898 18.3887 17.7174 18.1818 17.6739C17.9748 17.6313 17.705 17.7345 17.1652 17.9414Z" stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+                                                                        <path d="M14.8235 20.4806C14.8235 20.4806 16.0072 20.7097 17.1909 19.7959L14.8235 20.4806Z" fill="#CBDCE8" />
+                                                                        <path d="M14.8235 20.4806C14.8235 20.4806 16.0072 20.7097 17.1909 19.7959" stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+                                                                        <path d="M16.7169 16.1251C16.7169 16.282 16.6546 16.4326 16.5436 16.5436C16.4326 16.6546 16.282 16.7169 16.1251 16.7169C15.9681 16.7169 15.8175 16.6546 15.7066 16.5436C15.5956 16.4326 15.5332 16.282 15.5332 16.1251C15.5332 15.9681 15.5956 15.8175 15.7066 15.7066C15.8175 15.5956 15.9681 15.5332 16.1251 15.5332C16.282 15.5332 16.4326 15.5956 16.5436 15.7066C16.6546 15.8175 16.7169 15.9681 16.7169 16.1251Z" fill="#CBDCE8" stroke="white" />
+                                                                        <path d="M17.9006 14.5874V14.6348V14.5874Z" fill="#CBDCE8" />
+                                                                        <path d="M17.9006 14.5874V14.6348" stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+                                                                    </svg>
+                                                                </span>
+                                                                <span class="payment-badge payment-badge--groomer" aria-hidden="true">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="9 9 18 19" fill="none">
+                                                                        <ellipse cx="18.9076" cy="18.535" rx="5.40322" ry="5.08531" fill="white" />
+                                                                        <path d="M18.6587 9.10679C18.5111 9.03682 18.3529 9 18.1876 9C18.0224 9 17.8642 9.03682 17.7165 9.10679L11.0965 12.0489C10.3231 12.3913 9.7465 13.1904 9.75002 14.1551C9.76759 17.8079 11.202 24.4912 17.2595 27.5291C17.8466 27.8236 18.5286 27.8236 19.1158 27.5291C25.1733 24.4912 26.6077 17.8079 26.6252 14.1551C26.6287 13.1904 26.0522 12.3913 25.2787 12.0489L18.6587 9.10679ZM14.8442 19.5386C15.013 19.5828 15.1923 19.6049 15.3751 19.6049C16.6161 19.6049 17.6251 18.5481 17.6251 17.2482V14.8916H19.179C19.6044 14.8916 19.9947 15.142 20.1845 15.5434L20.4377 16.0699H22.6877C22.9971 16.0699 23.2502 16.335 23.2502 16.6591V17.8374C23.2502 19.4649 21.9916 20.7832 20.4377 20.7832H18.7501V22.6501C18.7501 22.9189 18.5427 23.1398 18.2825 23.1398C18.2193 23.1398 18.156 23.1251 18.0997 23.0993L14.6298 21.5417C14.3977 21.4386 14.2501 21.1993 14.2501 20.9378C14.2501 20.8347 14.2712 20.7353 14.3169 20.6433L14.8442 19.5386ZM14.8126 14.8916H16.5001V17.2482C16.5001 17.9 15.9974 18.4265 15.3751 18.4265C14.7528 18.4265 14.2501 17.9 14.2501 17.2482V15.4808C14.2501 15.1567 14.5032 14.8916 14.8126 14.8916ZM19.3126 16.6591C19.3126 16.5028 19.2534 16.353 19.1479 16.2425C19.0424 16.132 18.8993 16.0699 18.7501 16.0699C18.6009 16.0699 18.4579 16.132 18.3524 16.2425C18.2469 16.353 18.1876 16.5028 18.1876 16.6591C18.1876 16.8153 18.2469 16.9652 18.3524 17.0757C18.4579 17.1862 18.6009 17.2482 18.7501 17.2482C18.8993 17.2482 19.0424 17.1862 19.1479 17.0757C19.2534 16.9652 19.3126 16.8153 19.3126 16.6591Z" fill="#C9DDA0" />
+                                                                    </svg>
+                                                                </span>
+                                                            <?php elseif ($showSpaceIcon): ?>
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+                                                                    <circle cx="18" cy="18" r="18" fill="white" />
+                                                                    <path d="M18.3308 9.10679C18.1762 9.03682 18.0105 9 17.8374 9C17.6643 9 17.4986 9.03682 17.344 9.10679L10.4103 12.0489C9.60022 12.3913 8.99633 13.1904 9.00002 14.1551C9.01843 17.8079 10.5208 24.4912 16.8653 27.5291C17.4802 27.8236 18.1946 27.8236 18.8095 27.5291C25.154 24.4912 26.6564 17.8079 26.6748 14.1551C26.6785 13.1904 26.0746 12.3913 25.2645 12.0489L18.3308 9.10679Z" fill="#CBDCE8" />
+                                                                    <path d="M22.6358 14.1133L18.8479 18.1379L22.6358 14.1133ZM17.1652 17.9414C15.9909 18.3922 15.052 18.315 14.1131 17.9428C14.3498 20.9935 15.7722 22.1663 17.6685 22.636C17.6685 22.636 19.097 21.6256 19.303 19.2302C19.3252 18.9708 19.3361 18.8415 19.2826 18.6952C19.2286 18.5489 19.1226 18.4442 18.9109 18.2345C18.5624 17.8898 18.3887 17.7174 18.1818 17.6739C17.9748 17.6313 17.705 17.7345 17.1652 17.9414Z" fill="#CBDCE8" />
+                                                                    <path d="M22.6358 14.1133L18.8479 18.1379M17.1652 17.9414C15.9909 18.3922 15.052 18.315 14.1131 17.9428C14.3498 20.9935 15.7722 22.1663 17.6685 22.636C17.6685 22.636 19.097 21.6256 19.303 19.2302C19.3252 18.9708 19.3361 18.8415 19.2826 18.6952C19.2286 18.5489 19.1226 18.4442 18.9109 18.2345C18.5624 17.8898 18.3887 17.7174 18.1818 17.6739C17.9748 17.6313 17.705 17.7345 17.1652 17.9414Z" stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+                                                                    <path d="M14.8235 20.4806C14.8235 20.4806 16.0072 20.7097 17.1909 19.7959L14.8235 20.4806Z" fill="#CBDCE8" />
+                                                                    <path d="M14.8235 20.4806C14.8235 20.4806 16.0072 20.7097 17.1909 19.7959" stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+                                                                    <path d="M16.7169 16.1251C16.7169 16.282 16.6546 16.4326 16.5436 16.5436C16.4326 16.6546 16.282 16.7169 16.1251 16.7169C15.9681 16.7169 15.8175 16.6546 15.7066 16.5436C15.5956 16.4326 15.5332 16.282 15.5332 16.1251C15.5332 15.9681 15.5956 15.8175 15.7066 15.7066C15.8175 15.5956 15.9681 15.5332 16.1251 15.5332C16.282 15.5332 16.4326 15.5956 16.5436 15.7066C16.6546 15.8175 16.7169 15.9681 16.7169 16.1251Z" fill="#CBDCE8" stroke="white" />
+                                                                    <path d="M17.9006 14.5874V14.6348V14.5874Z" fill="#CBDCE8" />
+                                                                    <path d="M17.9006 14.5874V14.6348" stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+                                                                </svg>
+                                                            <?php elseif ($showGroomerIcon): ?>
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+                                                                    <circle cx="18" cy="18" r="18" fill="white" />
+                                                                    <ellipse cx="18.9076" cy="18.535" rx="5.40322" ry="5.08531" fill="white" />
+                                                                    <path d="M18.6587 9.10679C18.5111 9.03682 18.3529 9 18.1876 9C18.0224 9 17.8642 9.03682 17.7165 9.10679L11.0965 12.0489C10.3231 12.3913 9.7465 13.1904 9.75002 14.1551C9.76759 17.8079 11.202 24.4912 17.2595 27.5291C17.8466 27.8236 18.5286 27.8236 19.1158 27.5291C25.1733 24.4912 26.6077 17.8079 26.6252 14.1551C26.6287 13.1904 26.0522 12.3913 25.2787 12.0489L18.6587 9.10679ZM14.8442 19.5386C15.013 19.5828 15.1923 19.6049 15.3751 19.6049C16.6161 19.6049 17.6251 18.5481 17.6251 17.2482V14.8916H19.179C19.6044 14.8916 19.9947 15.142 20.1845 15.5434L20.4377 16.0699H22.6877C22.9971 16.0699 23.2502 16.335 23.2502 16.6591V17.8374C23.2502 19.4649 21.9916 20.7832 20.4377 20.7832H18.7501V22.6501C18.7501 22.9189 18.5427 23.1398 18.2825 23.1398C18.2193 23.1398 18.156 23.1251 18.0997 23.0993L14.6298 21.5417C14.3977 21.4386 14.2501 21.1993 14.2501 20.9378C14.2501 20.8347 14.2712 20.7353 14.3169 20.6433L14.8442 19.5386ZM14.8126 14.8916H16.5001V17.2482C16.5001 17.9 15.9974 18.4265 15.3751 18.4265C14.7528 18.4265 14.2501 17.9 14.2501 17.2482V15.4808C14.2501 15.1567 14.5032 14.8916 14.8126 14.8916ZM19.3126 16.6591C19.3126 16.5028 19.2534 16.353 19.1479 16.2425C19.0424 16.132 18.8993 16.0699 18.7501 16.0699C18.6009 16.0699 18.4579 16.132 18.3524 16.2425C18.2469 16.353 18.1876 16.5028 18.1876 16.6591C18.1876 16.8153 18.2469 16.9652 18.3524 17.0757C18.4579 17.1862 18.6009 17.2482 18.7501 17.2482C18.8993 17.2482 19.0424 17.1862 19.1479 17.0757C19.2534 16.9652 19.3126 16.8153 19.3126 16.6591Z" fill="#C9DDA0" />
+                                                                </svg>
+                                                            <?php endif; ?>
+                                                        </div>
+                                                        <div class="payment-row-info">
+                                                            <p class="payment-row-name"><?= htmlspecialchars($item['name']) ?></p>
+                                                            <p class="payment-row-meta"><?= htmlspecialchars($item['date']) ?> - <?= htmlspecialchars($item['ref']) ?></p>
+                                                        </div>
+                                                        <div class="payment-row-status <?= $statusClass ?>">
+                                                            <span class="dot"></span>
+                                                            <?= htmlspecialchars($item['status']) ?>
+                                                        </div>
+                                                        <p class="payment-row-amount"><?= htmlspecialchars($item['amount']) ?></p>
+                                                        <div class="payment-row-download" aria-hidden="true">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+                                                                <rect x="0.5" y="0.5" width="31" height="31" rx="9.5" fill="white" stroke="#F0F0F0" />
+                                                                <path d="M10 20.5V21.75C10 22.0815 10.1197 22.3995 10.3328 22.6339C10.5459 22.8683 10.835 23 11.1364 23H21.3636C21.665 23 21.9541 22.8683 22.1672 22.6339C22.3803 22.3995 22.5 22.0815 22.5 21.75V20.5" stroke="#9D9B98" stroke-linecap="round" stroke-linejoin="round" />
+                                                                <path d="M16.2499 8V18.3125M19.659 14.875L16.2499 18.625L12.8408 14.875" stroke="#9D9B98" stroke-linecap="round" stroke-linejoin="round" />
+                                                            </svg>
+                                                        </div>
+                                                    </div>
+                                                <?php endforeach; ?>
+                                            </div>
+                                        <?php endforeach; ?>
+                                    </div>
+                                </div>
+
+                                <script>
+                                    (function() {
+                                        const filters = document.querySelectorAll('.payment-filter-pill');
+                                        const rows = document.querySelectorAll('.payment-row');
+                                        const groups = document.querySelectorAll('.payment-history-group');
+
+                                        filters.forEach(function(btn) {
+                                            btn.addEventListener('click', function() {
+                                                const filter = btn.getAttribute('data-filter');
+
+                                                filters.forEach(function(item) {
+                                                    item.classList.toggle('active', item === btn);
+                                                });
+
+                                                rows.forEach(function(row) {
+                                                    const types = (row.getAttribute('data-type') || '').split(' ');
+                                                    const show = filter === 'all' || types.indexOf(filter) !== -1;
+                                                    row.hidden = !show;
+                                                });
+
+                                                groups.forEach(function(group) {
+                                                    const visible = group.querySelector('.payment-row:not([hidden])');
+                                                    group.hidden = !visible;
+                                                });
+                                            });
+                                        });
+                                    })();
+                                </script>
 
                                 <!-- Modal  -->
 
