@@ -1729,14 +1729,17 @@ body.modal-scroll-lock {
 
 /* modal css  */
 
-.join-heading {
+/* Beat .cbg-page h1 on checkout pages (footer is inside body.cbg-page) */
+h1.join-heading,
+.cbg-page h1.join-heading {
   color: var(--font-color);
-  font-family: "Playfair Display";
+  font-family: "Playfair Display", serif;
   font-size: clamp(30px, 5vw, 56px);
   font-style: normal;
   font-weight: 900;
   line-height: normal;
   width: clamp(300px, 60vw, 611px);
+  margin-bottom: 0;
 }
 
 .join-buttons {

@@ -3197,7 +3197,7 @@
             continueBtn.addEventListener('click', function() {
                 if (!groomerSelected) {
                     //redirect to checkout page
-                    window.location.href = "<?= BASE_URL ?>booking-groomer/";
+                    window.location.href = "<?= BASE_URL ?>checkout_booking_space/";
                 } else {
                     closeModal(spacePromptModal);
                     openModal(bookSpaceModal);

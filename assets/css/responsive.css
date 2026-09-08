@@ -1386,16 +1386,6 @@ ul.fursgo-locations li {
     margin-top: 2%;
 }
 
-.join-heading {
-    color: var(--font-color);
-    font-family: "Playfair Display";
-    font-size: clamp(30px, 5vw, 56px);
-    font-style: normal;
-    font-weight: 900;
-    line-height: normal;
-    width: clamp(300px, 60vw, 611px);
-}
-
 .join-buttons {
     display: flex;
     gap: 25px;

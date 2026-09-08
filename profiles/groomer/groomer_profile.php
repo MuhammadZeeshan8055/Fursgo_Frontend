@@ -3409,7 +3409,7 @@
                 }
                 // If "Home"
                 else {
-                    window.location.href = "<?= BASE_URL ?>booking-groomer/";
+                    window.location.href = "<?= BASE_URL ?>checkout_booking_groomer/";
                 }
             });
 

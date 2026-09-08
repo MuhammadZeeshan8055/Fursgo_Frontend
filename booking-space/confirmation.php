@@ -268,14 +268,13 @@
 
         /* Map */
         .conf-map {
-            width: 560px;
+            width: 100%;
             height: 242.162px;
             aspect-ratio: 37/16;
             margin: 0 auto 1.5rem auto;
         }
 
         .conf-map img {
-            width: 560px;
             height: 242.162px;
             aspect-ratio: 37/16;
             object-fit: cover;
