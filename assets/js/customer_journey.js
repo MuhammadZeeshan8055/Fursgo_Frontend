@@ -1899,15 +1899,15 @@ document.addEventListener('DOMContentLoaded', () => {
             const value = Number(range.value);
             const ratio = max === min ? 0 : (value - min) / (max - min);
 
-            // Thumb travels inset by half its size; center the bubble on the real thumb.
+            // Same thumb math in Chrome + Firefox (thumb is inset by half its size)
             const thumbWidth = parseFloat(getComputedStyle(range).getPropertyValue('--range-thumb-size')) || 24;
             const trackWidth = range.offsetWidth || slider.offsetWidth;
-            const thumbCenter = ratio * (trackWidth - thumbWidth) + thumbWidth / 2;
-            const percent = trackWidth ? (thumbCenter / trackWidth) * 100 : ratio * 100;
+            const thumbCenterPx = ratio * (trackWidth - thumbWidth) + thumbWidth / 2;
 
             output.textContent = '£' + value;
-            output.style.left = percent + '%';
-            inclRange.style.width = percent + '%';
+            // px + translateX(-50%) keeps bubble centered on thumb in both browsers
+            output.style.left = thumbCenterPx + 'px';
+            inclRange.style.width = thumbCenterPx + 'px';
 
             if (maxPrice) {
                 maxPrice.style.visibility = value >= max ? 'hidden' : 'visible';
@@ -1916,6 +1916,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         updateView();
         range.addEventListener('input', updateView);
+        range.addEventListener('change', updateView); // Firefox also fires change
         window.addEventListener('resize', updateView);
     });
 

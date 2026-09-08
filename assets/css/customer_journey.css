@@ -225,15 +225,19 @@ body:has(.sticky-search) header {
     height: 35px;
 }
 
+/* Custom track lines (same in Chrome + Firefox) */
 .full-range,
 .incl-range {
     position: absolute;
-    top: 17px;
+    /* Align with thumb center: input top 7px + half of 24px thumb = 19px → track center */
+    top: 18px;
     left: 0;
     height: 2px;
     width: 100%;
     background: #D4D4D4;
     border-radius: 3px;
+    pointer-events: none;
+    z-index: 1;
 }
 
 .incl-range {
@@ -244,7 +248,7 @@ body:has(.sticky-search) header {
 span.output {
     border-radius: 100px;
     border: 1px solid var(--mode-color);
-    background: linear-gradient(0deg, var(--mode-color) 0%, var(--mode-color) 100%), #D9D9D9;
+    background: var(--mode-color);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -254,7 +258,6 @@ span.output {
     font-style: normal;
     font-weight: 500;
     line-height: normal;
-    bottom: 33px;
     z-index: 100;
     white-space: nowrap;
     box-sizing: border-box;
@@ -262,7 +265,7 @@ span.output {
 
 .output {
     position: absolute;
-    bottom: 75%;
+    bottom: 100%;
     left: 0;
     transform: translateX(-50%);
     width: auto;
@@ -278,42 +281,62 @@ span.output {
     -webkit-appearance: none;
     appearance: none;
     position: absolute;
-    top: 15px;
+    top: 7px; /* keeps thumb centered on the custom track in Firefox + Chrome */
+    left: 0;
     width: 100%;
-    background: none;
+    height: 24px;
+    margin: 0;
+    padding: 0;
+    background: transparent;
     outline: none;
+    border: none;
     z-index: 2;
     --range-thumb-size: 24px;
 }
 
-input[type=range]::-webkit-slider-runnable-track {
-    height: 5px;
-    background: transparent;
+/* Remove Firefox default dotted outline */
+.range-slider input[type=range]::-moz-focus-outer {
+    border: 0;
 }
 
-input[type=range]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: var(--range-thumb-size);
-    height: var(--range-thumb-size);
-    aspect-ratio: 1 / 1;
-    border-radius: 100px;
-    border: 4px solid var(--mode-color);
-    background: #fff;
-    cursor: pointer;
-    margin-top: -9px;
-}
-
-input[type=range]::-moz-range-track {
-    height: 5px;
+/* Chrome / Edge / Safari track — transparent (we draw .full-range / .incl-range) */
+.range-slider input[type=range]::-webkit-slider-runnable-track {
+    height: 2px;
     background: transparent;
     border: none;
 }
 
-input[type=range]::-moz-range-thumb {
+.range-slider input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
     width: var(--range-thumb-size);
     height: var(--range-thumb-size);
-    border-radius: 100px;
+    border-radius: 50%;
+    border: 4px solid var(--mode-color);
+    background: #fff;
+    cursor: pointer;
+    /* Center 24px thumb on 2px track inside the input */
+    margin-top: -11px;
+    box-sizing: border-box;
+}
+
+/* Firefox track + progress — transparent so no thick native bar */
+.range-slider input[type=range]::-moz-range-track {
+    height: 2px;
+    background: transparent;
+    border: none;
+}
+
+.range-slider input[type=range]::-moz-range-progress {
+    height: 2px;
+    background: transparent;
+    border: none;
+}
+
+.range-slider input[type=range]::-moz-range-thumb {
+    width: var(--range-thumb-size);
+    height: var(--range-thumb-size);
+    border-radius: 50%;
     border: 4px solid var(--mode-color);
     background: #fff;
     cursor: pointer;
