@@ -168,6 +168,29 @@
             margin: 0 auto;
             line-height: 1.45;
         }
+
+        .download-account-data.small-link-tag,
+        .delete-account-data.small-link-tag {
+            color: #3B3731;
+            text-align: center;
+            font-family: Lato;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+            text-underline-offset: 4px;
+            text-decoration: underline;
+        }
+
+        .updated-password.link-tag {
+            color: #3B3731;
+            text-align: center;
+            font-family: Lato;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+        }
     </style>
 
 </head>
@@ -405,7 +428,7 @@
 
                                     <div class="d-flex align-items-center justify-content-between gap-25">
                                         <p style="color: #9D9B98">Last updated 2 days ago.</p>
-                                        <a class="link-tag cursor" data-modal-open="update_password_modal">Update Password</a>
+                                        <a class="updated-password link-tag cursor" data-modal-open="update_password_modal">Update Password</a>
                                     </div>
                                 </div>
 
@@ -414,114 +437,124 @@
 
                                 <div class="modal" id="update_password_modal">
                                     <div class="modal-content size">
-                                        <div class="container">
-                                            <div class="row">
-                                                <div class="d-flex align-items-center justify-content-between mt-2">
-                                                    <h1 class="fs-18-pf-display-700">Update password</h1>
-                                                    <svg class="cursor" data-modal-close xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                                        <circle cx="10" cy="10" r="9.5" transform="matrix(-1 0 0 1 20 0)" fill="#F3F3F3" stroke="#E8E8E8" />
-                                                        <path d="M13.1465 13.24L10.0001 10.0936L13.0937 6.99999" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
-                                                        <path d="M7.09375 13.24L10.2402 10.0936L7.14657 6.99999" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                                        <div class="row">
+                                            <div class="d-flex align-items-center justify-content-between mt-2">
+                                                <h1 class="fs-18-pf-display-700">Update password</h1>
+                                                <svg class="cursor" data-modal-close xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                                    <circle cx="10" cy="10" r="9.5" transform="matrix(-1 0 0 1 20 0)" fill="#F3F3F3" stroke="#E8E8E8" />
+                                                    <path d="M13.1465 13.24L10.0001 10.0936L13.0937 6.99999" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                                                    <path d="M7.09375 13.24L10.2402 10.0936L7.14657 6.99999" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                                                </svg>
+                                            </div>
+                                            <span class="fs-12-400-f-color text-light mt-1 mb-1">Choose a new password to keep your account secure.</span>
+                                            <!-- <div class="col-lg-3">
+                                                <div class="d-flex align-items-center justify-content-end cursor modal-cross mt-3">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36" fill="none">
+                                                        <circle cx="18" cy="18" r="17.5" stroke="#3B3731" />
+                                                        <path d="M12.8 24.0008L24 12.8008M12.8 12.8008L24 24.0008" stroke="#3B3731" stroke-width="1.5" stroke-linecap="round" />
                                                     </svg>
                                                 </div>
-                                                <span class="fs-12-400-f-color text-light mt-1 mb-1">Choose a new password to keep your account secure.</span>
-                                                <!-- <div class="col-lg-3">
-                                                    <div class="d-flex align-items-center justify-content-end cursor modal-cross mt-3">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36" fill="none">
-                                                            <circle cx="18" cy="18" r="17.5" stroke="#3B3731" />
-                                                            <path d="M12.8 24.0008L24 12.8008M12.8 12.8008L24 24.0008" stroke="#3B3731" stroke-width="1.5" stroke-linecap="round" />
-                                                        </svg>
+                                            </div> -->
+                                            <div class="col-lg-12">
+                                                <form id="updatePasswordForm">
+                                                    <div class="form-field mt-4">
+                                                        <label class="fs-12-600-f-color">Current password</label>
+                                                        <div class="input-wrapper">
+                                                            <input type="password" id="current_password" value="12345678">
+                                                        </div>
                                                     </div>
-                                                </div> -->
-                                                <div class="col-lg-12">
-                                                    <form id="updatePasswordForm">
-                                                        <div class="form-field mt-5">
-                                                            <label class="fs-12-600-f-color">Current password</label>
-                                                            <div class="input-wrapper">
-                                                                <input type="password" id="current_password" value="12345678">
-                                                            </div>
+
+                                                    <div class="form-field mt-4">
+                                                        <label class="fs-12-600-f-color">New password</label>
+                                                        <div class="input-wrapper">
+                                                            <input type="password" id="new_password" value="12345678">
                                                         </div>
+                                                    </div>
 
-                                                        <div class="form-field mt-4">
-                                                            <label class="fs-12-600-f-color">New password</label>
-                                                            <div class="input-wrapper">
-                                                                <input type="password" id="new_password" value="12345678">
-                                                            </div>
+                                                    <div class="password-requirements mt-4">
+                                                        <h4 class="fs-12-600-f-color">Password requirements</h4>
+                                                        <ul>
+                                                            <li>At least 8 characters</li>
+                                                            <li>Includes a capital letter</li>
+                                                            <li>Includes a number or symbol</li>
+                                                        </ul>
+                                                    </div>
+                                                    <style>
+                                                        #current_password {
+                                                            color: #9D9B98;
+                                                        }
+
+                                                        .password-requirements ul {
+                                                            margin: 0;
+                                                            padding-left: 18px;
+                                                            list-style: disc;
+                                                        }
+
+                                                        .password-requirements li {
+                                                            color: #9D9B98;
+                                                            font-family: Lato;
+                                                            font-size: 12px;
+                                                            font-style: normal;
+                                                            font-weight: 400;
+                                                            line-height: normal;
+                                                        }
+
+                                                        .close-btn {
+                                                            width: 170px;
+                                                            height: 36px;
+                                                            border-radius: 96px;
+                                                            border: 1px solid #E2E2E2;
+                                                            background: #FFF;
+                                                        }
+
+                                                        .form-field input {
+                                                            padding: 10px 44px 10px 14px;
+                                                        }
+
+                                                        .form-field .input-wrapper {
+                                                            width: 100%;
+                                                            height: 36px;
+                                                        }
+
+                                                        #update_password_modal .form-field label {
+                                                            font-size: 12px;
+                                                        }
+
+                                                        .deactivate.small-link-tag {
+                                                            color: #3B3731;
+                                                            text-align: center;
+                                                            font-family: Lato;
+                                                            font-size: 16px;
+                                                            font-style: normal;
+                                                            font-weight: 600;
+                                                            line-height: normal;
+                                                            text-underline-offset: 4px;
+                                                            text-decoration: underline;
+                                                        }
+
+                                                        .update-btn {
+                                                            color: #FFF;
+                                                            width: 170px;
+                                                            height: 36px;
+                                                            border-radius: 75px;
+                                                            background: #FFC97A;
+                                                            border: none;
+                                                        }
+                                                    </style>
+                                                    <div class="form-field mt-4">
+                                                        <label class="fs-12-600-f-color">Confirm password</label>
+                                                        <div class="input-wrapper">
+                                                            <input type="password" id="owner_name" value="12345678">
                                                         </div>
-
-                                                        <div class="password-requirements mt-4">
-                                                            <h4 class="fs-12-600-f-color">Password requirements</h4>
-                                                            <ul>
-                                                                <li>At least 8 characters</li>
-                                                                <li>Includes a capital letter</li>
-                                                                <li>Includes a number or symbol</li>
-                                                            </ul>
-                                                        </div>
-                                                        <style>
-                                                            #current_password {
-                                                                color: #9D9B98;
-                                                            }
-
-                                                            .password-requirements ul {
-                                                                margin: 0;
-                                                                padding-left: 18px;
-                                                                list-style: disc;
-                                                            }
-
-                                                            .password-requirements li {
-                                                                color: #9D9B98;
-                                                                font-family: Lato;
-                                                                font-size: 12px;
-                                                                font-style: normal;
-                                                                font-weight: 400;
-                                                                line-height: normal;
-                                                            }
-
-                                                            .close-btn {
-                                                                width: 170px;
-                                                                height: 36px;
-                                                                border-radius: 96px;
-                                                                border: 1px solid #E2E2E2;
-                                                                background: #FFF;
-                                                            }
-
-                                                            .form-field input {
-                                                                padding: 10px 44px 10px 14px;
-                                                            }
-
-                                                            .form-field .input-wrapper {
-                                                                width: 360px;
-                                                                height: 36px;
-                                                            }
-
-                                                            .form-field label {
-                                                                font-size: 18px;
-                                                            }
-
-                                                            .update-btn {
-                                                                color: #FFF;
-                                                                width: 170px;
-                                                                height: 36px;
-                                                                border-radius: 75px;
-                                                                background: #FFC97A;
-                                                                border: none;
-                                                            }
-                                                        </style>
-                                                        <div class="form-field mt-4">
-                                                            <label class="fs-12-600-f-color">Confirm password</label>
-                                                            <div class="input-wrapper">
-                                                                <input type="password" id="owner_name" value="12345678">
-                                                            </div>
-                                                        </div>
-                                                        <div class="modal-buttons d-flex justify-content-between align-items-center mt-5">
-                                                            <button type="button" class="close-btn fs-16-400 text-light cursor" data-modal-close>Cancel</button>
-                                                            <button id="submitRequestBtn" class="update-btn fs-16-600 btn-active-bg text-center cursor">Update Password</button>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                                <div class="col-lg-2"></div>
-
+                                                    </div>
+                                                    <div class="modal-buttons d-flex justify-content-between align-items-center mt-5">
+                                                        <button type="button" class="close-btn fs-16-400 text-light cursor" data-modal-close>Cancel</button>
+                                                        <button id="submitRequestBtn" class="update-btn fs-16-600 btn-active-bg text-center cursor">Update Password</button>
+                                                    </div>
+                                                </form>
                                             </div>
+                                            <div class="col-lg-2"></div>
+
                                         </div>
                                     </div>
                                 </div>
@@ -687,7 +720,7 @@
 
                                     <div class="d-flex align-items-center justify-content-between gap-25">
                                         <p style="color: #9D9B98">This action will permanently delete your account.</p>
-                                        <a data-modal-open="deactivate_account_modal" class="small-link-tag cursor">Deactivate Account</a>
+                                        <a data-modal-open="deactivate_account_modal" class="deactivate small-link-tag cursor">Deactivate Account</a>
                                     </div>
                                 </div>
 
@@ -899,235 +932,233 @@
 
                                 <div class="modal" id="payment_modal">
                                     <div class="modal-content size">
-                                        <div class="container">
-                                            <div class="row">
-                                                <div class="d-flex align-items-center justify-content-between mt-2">
-                                                    <h1 class="fs-18-pf-display-700 modal-title">Add payment method</h1>
-                                                    <svg class="cursor" data-modal-close xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                                        <circle cx="10" cy="10" r="9.5" transform="matrix(-1 0 0 1 20 0)" fill="#F3F3F3" stroke="#E8E8E8" />
-                                                        <path d="M13.1465 13.24L10.0001 10.0936L13.0937 6.99999" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
-                                                        <path d="M7.09375 13.24L10.2402 10.0936L7.14657 6.99999" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                                        <div class="row">
+                                            <div class="d-flex align-items-center justify-content-between mt-2">
+                                                <h1 class="fs-18-pf-display-700 modal-title">Add payment method</h1>
+                                                <svg class="cursor" data-modal-close xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                                    <circle cx="10" cy="10" r="9.5" transform="matrix(-1 0 0 1 20 0)" fill="#F3F3F3" stroke="#E8E8E8" />
+                                                    <path d="M13.1465 13.24L10.0001 10.0936L13.0937 6.99999" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                                                    <path d="M7.09375 13.24L10.2402 10.0936L7.14657 6.99999" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                                                </svg>
+                                            </div>
+                                            <span id="subtitle" class="fs-12-400-f-color text-light mt-1 mb-1">Card details are stored securely and never shown in full.</span>
+                                            <div id="edit_card" class="mt-3" style="display:none; margin-left: 10px; width: 360px;align-items:center; gap:14px; background:#fff; border:1px solid #e5e7eb; border-radius:10px; padding:20px 18px;">
+                                                <div id="edit_card_icon"></div>
+                                                <div class="d-flex flex-column gap-5">
+                                                    <p id="edit_card_text" class="dark-color-font">Visa ending in 7890</p>
+                                                    <p id="edit_card_exp" class="simple-light-font">Exp. date 06/27</p>
+                                                </div>
+                                            </div>
+                                            <!-- <div class="col-lg-3">
+                                                <div class="d-flex align-items-center justify-content-end cursor modal-cross mt-3">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36" fill="none">
+                                                        <circle cx="18" cy="18" r="17.5" stroke="#3B3731" />
+                                                        <path d="M12.8 24.0008L24 12.8008M12.8 12.8008L24 24.0008" stroke="#3B3731" stroke-width="1.5" stroke-linecap="round" />
                                                     </svg>
                                                 </div>
-                                                <span id="subtitle" class="fs-12-400-f-color text-light mt-1 mb-1">Card details are stored securely and never shown in full.</span>
-                                                <div id="edit_card" class="mt-3" style="display:none; margin-left: 10px; width: 360px;align-items:center; gap:14px; background:#fff; border:1px solid #e5e7eb; border-radius:10px; padding:20px 18px;">
-                                                    <div id="edit_card_icon"></div>
-                                                    <div class="d-flex flex-column gap-5">
-                                                        <p id="edit_card_text" class="dark-color-font">Visa ending in 7890</p>
-                                                        <p id="edit_card_exp" class="simple-light-font">Exp. date 06/27</p>
+                                            </div> -->
+                                            <div class="col-lg-12">
+                                                <form id="add_payment_form">
+                                                    <div class="row">
+                                                        <div class="col-lg-12">
+                                                            <div class="form-field mt-4">
+                                                                <label class="fs-12-600-f-color">Card number</label>
+                                                                <div class="input-wrapper">
+                                                                    <input type="text" id="card_number" placeholder="0000 0000 0000 0000" maxlength="19" inputmode="numeric">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-lg-6">
+                                                            <div class="form-field mt-4">
+                                                                <label class="fs-12-600-f-color">Expiry</label>
+                                                                <div class="input-wrapper w-auto">
+                                                                    <input type="text" id="expiry" placeholder="MM/YY" maxlength="5" inputmode="numeric">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <div class="form-field mt-4">
+                                                                <label class="fs-12-600-f-color">CVC</label>
+                                                                <div class="input-wrapper w-auto">
+                                                                    <input type="password" id="cvc" placeholder="123" maxlength="4" inputmode="numeric">
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <!-- <div class="col-lg-3">
-                                                    <div class="d-flex align-items-center justify-content-end cursor modal-cross mt-3">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36" fill="none">
-                                                            <circle cx="18" cy="18" r="17.5" stroke="#3B3731" />
-                                                            <path d="M12.8 24.0008L24 12.8008M12.8 12.8008L24 24.0008" stroke="#3B3731" stroke-width="1.5" stroke-linecap="round" />
-                                                        </svg>
+
+                                                    <div class="form-field mt-4">
+                                                        <label class="fs-12-600-f-color">Name on card</label>
+                                                        <div class="input-wrapper">
+                                                            <input type="text" id="card_name" value="John Doe">
+                                                        </div>
                                                     </div>
-                                                </div> -->
-                                                <div class="col-lg-12">
-                                                    <form id="add_payment_form">
-                                                        <div class="row">
-                                                            <div class="col-lg-12">
-                                                                <div class="form-field mt-4">
-                                                                    <label class="fs-12-600-f-color">Card number</label>
-                                                                    <div class="input-wrapper">
-                                                                        <input type="text" id="card_number" placeholder="0000 0000 0000 0000" maxlength="19" inputmode="numeric">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
 
-                                                            <div class="col-lg-6">
-                                                                <div class="form-field mt-4">
-                                                                    <label class="fs-12-600-f-color">Expiry</label>
-                                                                    <div class="input-wrapper w-auto">
-                                                                        <input type="text" id="expiry" placeholder="MM/YY" maxlength="5" inputmode="numeric">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-lg-6">
-                                                                <div class="form-field mt-4">
-                                                                    <label class="fs-12-600-f-color">CVC</label>
-                                                                    <div class="input-wrapper w-auto">
-                                                                        <input type="password" id="cvc" placeholder="123" maxlength="4" inputmode="numeric">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                                                    <style>
+                                                        .custom-radio-label {
+                                                            display: inline-flex;
+                                                            align-items: center;
+                                                            gap: 10px;
+                                                            cursor: pointer;
+                                                            user-select: none;
+                                                        }
 
-                                                        <div class="form-field mt-4">
-                                                            <label class="fs-12-600-f-color">Name on card</label>
-                                                            <div class="input-wrapper">
-                                                                <input type="text" id="card_name" value="John Doe">
-                                                            </div>
-                                                        </div>
+                                                        .custom-radio-label input[type="checkbox"] {
+                                                            display: none;
+                                                        }
 
-                                                        <style>
-                                                            .custom-radio-label {
-                                                                display: inline-flex;
-                                                                align-items: center;
-                                                                gap: 10px;
-                                                                cursor: pointer;
-                                                                user-select: none;
-                                                            }
+                                                        .custom-radio-circle {
+                                                            width: 22px;
+                                                            height: 22px;
+                                                            border-radius: 50%;
+                                                            border: 1px solid #FFD88C;
+                                                            flex-shrink: 0;
+                                                            transition: border-color 0.15s;
+                                                            position: relative;
+                                                        }
 
-                                                            .custom-radio-label input[type="checkbox"] {
-                                                                display: none;
-                                                            }
+                                                        .custom-radio-circle::after {
+                                                            content: '';
+                                                            width: 13px;
+                                                            height: 13px;
+                                                            border-radius: 50%;
+                                                            background: #FFD88C;
+                                                            opacity: 0;
+                                                            transition: opacity 0.15s;
+                                                            position: absolute;
+                                                            top: 50%;
+                                                            left: 50%;
+                                                            transform: translate(-50%, -50%);
+                                                        }
 
-                                                            .custom-radio-circle {
-                                                                width: 22px;
-                                                                height: 22px;
-                                                                border-radius: 50%;
-                                                                border: 1px solid #FFD88C;
-                                                                flex-shrink: 0;
-                                                                transition: border-color 0.15s;
-                                                                position: relative;
-                                                            }
+                                                        .custom-radio-label input[type="checkbox"]:checked+.custom-radio-circle {
+                                                            border-color: #FFD88C;
+                                                            background: #FFF;
+                                                        }
 
-                                                            .custom-radio-circle::after {
-                                                                content: '';
-                                                                width: 13px;
-                                                                height: 13px;
-                                                                border-radius: 50%;
-                                                                background: #FFD88C;
-                                                                opacity: 0;
-                                                                transition: opacity 0.15s;
-                                                                position: absolute;
-                                                                top: 50%;
-                                                                left: 50%;
-                                                                transform: translate(-50%, -50%);
-                                                            }
+                                                        .custom-radio-label input[type="checkbox"]:checked+.custom-radio-circle::after {
+                                                            opacity: 1;
+                                                        }
 
-                                                            .custom-radio-label input[type="checkbox"]:checked+.custom-radio-circle {
-                                                                border-color: #FFD88C;
-                                                                background: #FFF;
-                                                            }
+                                                        #remove_card {
+                                                            color: #FF6E6E;
+                                                            font-family: Lato;
+                                                            font-size: 14px;
+                                                            font-style: normal;
+                                                            font-weight: 700;
+                                                            line-height: normal;
+                                                            text-decoration-line: underline;
+                                                            text-decoration-style: solid;
+                                                            text-decoration-skip-ink: auto;
+                                                            text-decoration-thickness: auto;
+                                                            text-underline-offset: 4px;
+                                                            text-underline-position: from-font;
+                                                            display: block;
+                                                        }
+                                                    </style>
 
-                                                            .custom-radio-label input[type="checkbox"]:checked+.custom-radio-circle::after {
-                                                                opacity: 1;
-                                                            }
+                                                    <label class="custom-radio-label fs-14-400-f-color mt-5">
+                                                        <input type="checkbox" name="payment_default">
+                                                        <span class="custom-radio-circle"></span>
+                                                        Set as default payment method
+                                                    </label>
 
-                                                            #remove_card {
-                                                                color: #FF6E6E;
-                                                                font-family: Lato;
-                                                                font-size: 14px;
-                                                                font-style: normal;
-                                                                font-weight: 700;
-                                                                line-height: normal;
-                                                                text-decoration-line: underline;
-                                                                text-decoration-style: solid;
-                                                                text-decoration-skip-ink: auto;
-                                                                text-decoration-thickness: auto;
-                                                                text-underline-offset: 4px;
-                                                                text-underline-position: from-font;
-                                                                display: block;
-                                                            }
-                                                        </style>
+                                                    <span id="remove_card" class="mt-3 mb-5 cursor">Remove card</span>
 
-                                                        <label class="custom-radio-label fs-14-400-f-color mt-5">
-                                                            <input type="checkbox" name="payment_default">
-                                                            <span class="custom-radio-circle"></span>
-                                                            Set as default payment method
-                                                        </label>
+                                                    <div class="modal-buttons d-flex justify-content-between align-items-center mt-4">
+                                                        <button type="button" class="close-btn fs-16-400 text-light cursor" data-modal-close>Cancel</button>
+                                                        <button id="add_payment_btn" class="update-btn fs-16-600 btn-active-bg text-center cursor" style="background-color: #C9DDA0">+ Add payment</button>
+                                                    </div>
+                                                </form>
+                                            </div>
 
-                                                        <span id="remove_card" class="mt-3 mb-5 cursor">Remove card</span>
+                                            <script>
+                                                document.querySelectorAll('[data-modal-open="payment_modal"]').forEach(btn => {
+                                                    btn.addEventListener('click', function() {
 
-                                                        <div class="modal-buttons d-flex justify-content-between align-items-center mt-4">
-                                                            <button type="button" class="close-btn fs-16-400 text-light cursor" data-modal-close>Cancel</button>
-                                                            <button id="add_payment_btn" class="update-btn fs-16-600 btn-active-bg text-center cursor" style="background-color: #C9DDA0">+ Add payment</button>
-                                                        </div>
-                                                    </form>
-                                                </div>
+                                                        const modal = document.getElementById('payment_modal');
 
-                                                <script>
-                                                    document.querySelectorAll('[data-modal-open="payment_modal"]').forEach(btn => {
-                                                        btn.addEventListener('click', function() {
+                                                        const mode = this.dataset.mode;
 
-                                                            const modal = document.getElementById('payment_modal');
+                                                        const title = modal.querySelector('.modal-title');
+                                                        const submitBtn = modal.querySelector('#add_payment_btn');
+                                                        const subtitle = modal.querySelector('#subtitle');
+                                                        const edit_card = modal.querySelector('#edit_card');
+                                                        const remove_card = modal.querySelector('#remove_card');
 
-                                                            const mode = this.dataset.mode;
+                                                        const visaSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="65" height="34" viewBox="0 0 65 34" fill="none">
+                                                <rect width="65" height="34" rx="5" fill="#222357" />
+                                                <path transform="translate(-25 -21)" d="M58.2042 35.4756C58.1808 37.4259 59.8479 38.5142 61.1037 39.1612C62.3939 39.8251 62.8273 40.2509 62.8222 40.8446C62.8125 41.7532 61.793 42.1542 60.8389 42.1698C59.1744 42.1971 58.2066 41.6946 57.4372 41.3146L56.8376 44.2814C57.6095 44.6576 59.0389 44.9856 60.5212 45C64.0006 45 66.2769 43.1839 66.2892 40.3681C66.3028 36.7944 61.6146 36.5966 61.6466 34.9992C61.6577 34.5149 62.0947 33.998 63.0525 33.8666C63.5265 33.8002 64.8352 33.7494 66.3188 34.4719L66.9012 31.6014C66.1033 31.2942 65.0778 31 63.801 31C60.5262 31 58.2228 32.8409 58.2042 35.4756ZM72.4967 31.2473C71.8614 31.2473 71.326 31.6391 71.087 32.2405L66.1169 44.7892H69.5937L70.2856 42.7673H74.5342L74.9356 44.7892H78L75.3259 31.2473H72.4967ZM72.9831 34.9054L73.9865 39.9906H71.2385L72.9831 34.9054ZM53.9887 31.2474L51.2481 44.789H54.5613L57.3006 31.2471L53.9887 31.2474ZM49.0875 31.2474L45.639 40.4644L44.244 32.6273C44.0803 31.7524 43.434 31.2473 42.7161 31.2473H37.079L37 31.6405C38.1573 31.906 39.4722 32.3343 40.2688 32.7926C40.7563 33.0725 40.8953 33.3172 41.0555 33.9825L43.6976 44.7892H47.1988L52.5665 31.2473L49.0875 31.2474Z" fill="white" />
+                                            </svg>`;
+                                                        const mastercardSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="65" height="34" viewBox="0 0 65 34" fill="none">
+                                                <rect width="65" height="34" rx="5" fill="#3B3731" />
+                                                <path d="M27.7742 9.13867H36.501V24.8609H27.7742V9.13867Z" fill="#FF5F00" />
+                                                <path d="M28.3284 17C28.3284 13.8056 29.8243 10.9722 32.1237 9.13884C30.4339 7.80553 28.3007 7 25.9736 7C20.4603 7 16 11.4722 16 17C16 22.5278 20.4603 27 25.9735 27C28.3006 27 30.4338 26.1945 32.1237 24.861C29.8243 23.0555 28.3284 20.1944 28.3284 17Z" fill="#EB001B" />
+                                                <path d="M48.2751 17C48.2751 22.5277 43.8148 27 38.3017 27C35.9745 27 33.8414 26.1945 32.1514 24.861C34.4786 23.0278 35.9469 20.1944 35.9469 17C35.9469 13.8056 34.4508 10.9722 32.1514 9.13884C33.8412 7.80553 35.9745 7 38.3017 7C43.8148 7 48.2751 11.5 48.2751 17Z" fill="#F79E1B" />
+                                            </svg>`;
 
-                                                            const title = modal.querySelector('.modal-title');
-                                                            const submitBtn = modal.querySelector('#add_payment_btn');
-                                                            const subtitle = modal.querySelector('#subtitle');
-                                                            const edit_card = modal.querySelector('#edit_card');
-                                                            const remove_card = modal.querySelector('#remove_card');
+                                                        if (mode === 'edit') {
 
-                                                            const visaSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="65" height="34" viewBox="0 0 65 34" fill="none">
-                                                    <rect width="65" height="34" rx="5" fill="#222357" />
-                                                    <path transform="translate(-25 -21)" d="M58.2042 35.4756C58.1808 37.4259 59.8479 38.5142 61.1037 39.1612C62.3939 39.8251 62.8273 40.2509 62.8222 40.8446C62.8125 41.7532 61.793 42.1542 60.8389 42.1698C59.1744 42.1971 58.2066 41.6946 57.4372 41.3146L56.8376 44.2814C57.6095 44.6576 59.0389 44.9856 60.5212 45C64.0006 45 66.2769 43.1839 66.2892 40.3681C66.3028 36.7944 61.6146 36.5966 61.6466 34.9992C61.6577 34.5149 62.0947 33.998 63.0525 33.8666C63.5265 33.8002 64.8352 33.7494 66.3188 34.4719L66.9012 31.6014C66.1033 31.2942 65.0778 31 63.801 31C60.5262 31 58.2228 32.8409 58.2042 35.4756ZM72.4967 31.2473C71.8614 31.2473 71.326 31.6391 71.087 32.2405L66.1169 44.7892H69.5937L70.2856 42.7673H74.5342L74.9356 44.7892H78L75.3259 31.2473H72.4967ZM72.9831 34.9054L73.9865 39.9906H71.2385L72.9831 34.9054ZM53.9887 31.2474L51.2481 44.789H54.5613L57.3006 31.2471L53.9887 31.2474ZM49.0875 31.2474L45.639 40.4644L44.244 32.6273C44.0803 31.7524 43.434 31.2473 42.7161 31.2473H37.079L37 31.6405C38.1573 31.906 39.4722 32.3343 40.2688 32.7926C40.7563 33.0725 40.8953 33.3172 41.0555 33.9825L43.6976 44.7892H47.1988L52.5665 31.2473L49.0875 31.2474Z" fill="white" />
-                                                </svg>`;
-                                                            const mastercardSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="65" height="34" viewBox="0 0 65 34" fill="none">
-                                                    <rect width="65" height="34" rx="5" fill="#3B3731" />
-                                                    <path d="M27.7742 9.13867H36.501V24.8609H27.7742V9.13867Z" fill="#FF5F00" />
-                                                    <path d="M28.3284 17C28.3284 13.8056 29.8243 10.9722 32.1237 9.13884C30.4339 7.80553 28.3007 7 25.9736 7C20.4603 7 16 11.4722 16 17C16 22.5278 20.4603 27 25.9735 27C28.3006 27 30.4338 26.1945 32.1237 24.861C29.8243 23.0555 28.3284 20.1944 28.3284 17Z" fill="#EB001B" />
-                                                    <path d="M48.2751 17C48.2751 22.5277 43.8148 27 38.3017 27C35.9745 27 33.8414 26.1945 32.1514 24.861C34.4786 23.0278 35.9469 20.1944 35.9469 17C35.9469 13.8056 34.4508 10.9722 32.1514 9.13884C33.8412 7.80553 35.9745 7 38.3017 7C43.8148 7 48.2751 11.5 48.2751 17Z" fill="#F79E1B" />
-                                                </svg>`;
+                                                            title.textContent = 'Edit payment method';
+                                                            submitBtn.textContent = 'Save changes';
 
-                                                            if (mode === 'edit') {
+                                                            document.getElementById('card_name').value = 'John Doe';
+                                                            document.getElementById('expiry').value = this.dataset.exp;
+                                                            subtitle.style.display = 'none';
+                                                            remove_card.style.display = 'block';
+                                                            edit_card.style.display = 'inline-flex';
 
-                                                                title.textContent = 'Edit payment method';
-                                                                submitBtn.textContent = 'Save changes';
+                                                            const cardLabel = this.dataset.card.charAt(0).toUpperCase() + this.dataset.card.slice(1);
 
-                                                                document.getElementById('card_name').value = 'John Doe';
-                                                                document.getElementById('expiry').value = this.dataset.exp;
-                                                                subtitle.style.display = 'none';
-                                                                remove_card.style.display = 'block';
-                                                                edit_card.style.display = 'inline-flex';
+                                                            document.getElementById('edit_card_text').textContent =
+                                                                `${cardLabel} ending in ${this.dataset.last4}`;
 
-                                                                const cardLabel = this.dataset.card.charAt(0).toUpperCase() + this.dataset.card.slice(1);
+                                                            document.getElementById('edit_card_exp').textContent =
+                                                                `Exp. date ${this.dataset.exp}`;
 
-                                                                document.getElementById('edit_card_text').textContent =
-                                                                    `${cardLabel} ending in ${this.dataset.last4}`;
+                                                            document.getElementById('edit_card_icon').innerHTML =
+                                                                this.dataset.card === 'mastercard' ?
+                                                                mastercardSvg :
+                                                                visaSvg;
 
-                                                                document.getElementById('edit_card_exp').textContent =
-                                                                    `Exp. date ${this.dataset.exp}`;
-
-                                                                document.getElementById('edit_card_icon').innerHTML =
-                                                                    this.dataset.card === 'mastercard' ?
-                                                                    mastercardSvg :
-                                                                    visaSvg;
-
-                                                                remove_card.dataset.card = this.dataset.card;
-                                                                remove_card.dataset.last4 = this.dataset.last4;
-                                                                remove_card.dataset.exp = this.dataset.exp;
-                                                            } else {
-                                                                title.textContent = 'Add payment method';
-                                                                submitBtn.textContent = '+ Add payment';
-
-                                                                document.getElementById('add_payment_form').reset();
-                                                                edit_card.style.display = 'none';
-                                                                subtitle.style.display = 'block';
-                                                                remove_card.style.display = 'none';
-
-                                                            }
-                                                        });
-                                                    });
-
-                                                    // Card number: groups of 4 digits separated by spaces
-                                                    document.getElementById('card_number').addEventListener('input', function(e) {
-                                                        let value = this.value.replace(/\D/g, '').slice(0, 16);
-                                                        this.value = value.match(/.{1,4}/g)?.join(' ') || value;
-                                                    });
-
-                                                    // Expiry: auto-insert slash after MM
-                                                    document.getElementById('expiry').addEventListener('input', function(e) {
-                                                        let value = this.value.replace(/\D/g, '').slice(0, 4);
-                                                        if (value.length >= 3) {
-                                                            this.value = value.slice(0, 2) + '/' + value.slice(2);
+                                                            remove_card.dataset.card = this.dataset.card;
+                                                            remove_card.dataset.last4 = this.dataset.last4;
+                                                            remove_card.dataset.exp = this.dataset.exp;
                                                         } else {
-                                                            this.value = value;
+                                                            title.textContent = 'Add payment method';
+                                                            submitBtn.textContent = '+ Add payment';
+
+                                                            document.getElementById('add_payment_form').reset();
+                                                            edit_card.style.display = 'none';
+                                                            subtitle.style.display = 'block';
+                                                            remove_card.style.display = 'none';
+
                                                         }
                                                     });
+                                                });
 
-                                                    // CVC: numbers only, max 3
-                                                    document.getElementById('cvc').addEventListener('input', function(e) {
-                                                        this.value = this.value.replace(/\D/g, '').slice(0, 3);
-                                                    });
-                                                </script>
+                                                // Card number: groups of 4 digits separated by spaces
+                                                document.getElementById('card_number').addEventListener('input', function(e) {
+                                                    let value = this.value.replace(/\D/g, '').slice(0, 16);
+                                                    this.value = value.match(/.{1,4}/g)?.join(' ') || value;
+                                                });
 
-                                            </div>
+                                                // Expiry: auto-insert slash after MM
+                                                document.getElementById('expiry').addEventListener('input', function(e) {
+                                                    let value = this.value.replace(/\D/g, '').slice(0, 4);
+                                                    if (value.length >= 3) {
+                                                        this.value = value.slice(0, 2) + '/' + value.slice(2);
+                                                    } else {
+                                                        this.value = value;
+                                                    }
+                                                });
+
+                                                // CVC: numbers only, max 3
+                                                document.getElementById('cvc').addEventListener('input', function(e) {
+                                                    this.value = this.value.replace(/\D/g, '').slice(0, 3);
+                                                });
+                                            </script>
+
                                         </div>
                                     </div>
                                 </div>
@@ -1139,34 +1170,32 @@
 
                                 <div class="modal" id="remove_card_alert_modal">
                                     <div class="modal-content size">
-                                        <div class="container">
-                                            <div class="row">
-                                                <div class="d-flex align-items-center justify-content-between mt-2">
-                                                    <svg class="mt-4" xmlns="http://www.w3.org/2000/svg" width="18" height="20" viewBox="0 0 18 20" fill="none">
-                                                        <path d="M3.36343 20C2.78743 20 2.29714 19.8005 1.89257 19.4014C1.488 19.0023 1.28571 18.5191 1.28571 17.9518V2.24477H0V0.976538H5.14286V0H12.8571V0.976538H18V2.24477H16.7143V17.9518C16.7143 18.5352 16.5163 19.0226 16.1203 19.4141C15.7243 19.8055 15.2297 20.0008 14.6366 20H3.36343ZM15.4286 2.24477H2.57143V17.9518C2.57143 18.1792 2.64557 18.3661 2.79386 18.5124C2.94214 18.6586 3.132 18.7318 3.36343 18.7318H14.6379C14.835 18.7318 15.0163 18.6506 15.1817 18.4883C15.3471 18.3259 15.4294 18.1467 15.4286 17.9505V2.24477ZM6.18171 16.1953H7.46743V4.78123H6.18171V16.1953ZM10.5326 16.1953H11.8183V4.78123H10.5326V16.1953Z" fill="#FF6E6E" />
-                                                    </svg>
-                                                    <svg class="cursor" data-modal-close xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                                        <circle cx="10" cy="10" r="9.5" transform="matrix(-1 0 0 1 20 0)" fill="#F3F3F3" stroke="#E8E8E8" />
-                                                        <path d="M13.1465 13.24L10.0001 10.0936L13.0937 6.99999" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
-                                                        <path d="M7.09375 13.24L10.2402 10.0936L7.14657 6.99999" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
-                                                    </svg>
-                                                </div>
-                                                <h1 class="fs-18-pf-display-700 mt-4">Remove this card?</h1>
-                                                <span class="fs-12-400-f-color text-light mt-2 mb-1">You'll need another payment method before your next booking.</span>
-                                                <div id="remove_card_preview" class="mt-3 d-flex align-items-center" style="margin-left: 10px; width: 360px;align-items:center; gap:14px; background:#fff; border:1px solid #e5e7eb; border-radius:10px; padding:20px 18px;">
-                                                    <div id="remove_card_icon"></div>
-                                                    <div class="d-flex flex-column gap-5">
-                                                        <p class="dark-color-font"><del id="remove_card_text">Visa ending in 7890</del></p>
-                                                        <p class="simple-light-font"><del id="remove_card_exp">Exp. date 06/27</del></p>
-                                                    </div>
-                                                </div>
-
-                                                <div class="modal-buttons d-flex justify-content-between align-items-center mt-4">
-                                                    <button type="button" class="close-btn fs-16-400 text-light cursor" data-modal-close>Cancel</button>
-                                                    <button class="update-btn fs-16-600 btn-active-bg text-center cursor" id="confirm_remove_card" style="background-color:#FF6E6E">Remove card</button>
-                                                </div>
-
+                                        <div class="row">
+                                            <div class="d-flex align-items-center justify-content-between mt-2">
+                                                <svg class="mt-4" xmlns="http://www.w3.org/2000/svg" width="18" height="20" viewBox="0 0 18 20" fill="none">
+                                                    <path d="M3.36343 20C2.78743 20 2.29714 19.8005 1.89257 19.4014C1.488 19.0023 1.28571 18.5191 1.28571 17.9518V2.24477H0V0.976538H5.14286V0H12.8571V0.976538H18V2.24477H16.7143V17.9518C16.7143 18.5352 16.5163 19.0226 16.1203 19.4141C15.7243 19.8055 15.2297 20.0008 14.6366 20H3.36343ZM15.4286 2.24477H2.57143V17.9518C2.57143 18.1792 2.64557 18.3661 2.79386 18.5124C2.94214 18.6586 3.132 18.7318 3.36343 18.7318H14.6379C14.835 18.7318 15.0163 18.6506 15.1817 18.4883C15.3471 18.3259 15.4294 18.1467 15.4286 17.9505V2.24477ZM6.18171 16.1953H7.46743V4.78123H6.18171V16.1953ZM10.5326 16.1953H11.8183V4.78123H10.5326V16.1953Z" fill="#FF6E6E" />
+                                                </svg>
+                                                <svg class="cursor" data-modal-close xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                                    <circle cx="10" cy="10" r="9.5" transform="matrix(-1 0 0 1 20 0)" fill="#F3F3F3" stroke="#E8E8E8" />
+                                                    <path d="M13.1465 13.24L10.0001 10.0936L13.0937 6.99999" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                                                    <path d="M7.09375 13.24L10.2402 10.0936L7.14657 6.99999" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                                                </svg>
                                             </div>
+                                            <h1 class="fs-18-pf-display-700 mt-4">Remove this card?</h1>
+                                            <span class="fs-12-400-f-color text-light mt-2 mb-1">You'll need another payment method before your next booking.</span>
+                                            <div id="remove_card_preview" class="mt-3 d-flex align-items-center" style="margin-left: 10px; width: 360px;align-items:center; gap:14px; background:#fff; border:1px solid #e5e7eb; border-radius:10px; padding:20px 18px;">
+                                                <div id="remove_card_icon"></div>
+                                                <div class="d-flex flex-column gap-5">
+                                                    <p class="dark-color-font"><del id="remove_card_text">Visa ending in 7890</del></p>
+                                                    <p class="simple-light-font"><del id="remove_card_exp">Exp. date 06/27</del></p>
+                                                </div>
+                                            </div>
+
+                                            <div class="modal-buttons d-flex justify-content-between align-items-center mt-4">
+                                                <button type="button" class="close-btn fs-16-400 text-light cursor" data-modal-close>Cancel</button>
+                                                <button class="update-btn fs-16-600 btn-active-bg text-center cursor" id="confirm_remove_card" style="background-color:#FF6E6E">Remove card</button>
+                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
@@ -1861,32 +1890,30 @@
 
                                 <div class="modal" id="unlink_account_modal">
                                     <div class="modal-content size">
-                                        <div class="container">
-                                            <div class="row mt-2">
-                                                <div class="col-lg-12">
-                                                    <div class="d-flex align-items-center justify-content-between">
-                                                        <h3 class="fs-18-pf-display-700 mb-0" id="unlink_account_title">Unlink Facebook?</h3>
-                                                        <svg class="cursor" data-modal-close xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                                            <circle cx="10" cy="10" r="9.5" transform="matrix(-1 0 0 1 20 0)" fill="#F3F3F3" stroke="#E8E8E8" />
-                                                            <path d="M13.1465 13.24L10.0001 10.0936L13.0937 6.99999" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
-                                                            <path d="M7.09375 13.24L10.2402 10.0936L7.14657 6.99999" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
-                                                        </svg>
+                                        <div class="row mt-2">
+                                            <div class="col-lg-12">
+                                                <div class="d-flex align-items-center justify-content-between">
+                                                    <h3 class="fs-18-pf-display-700 mb-0" id="unlink_account_title">Unlink Facebook?</h3>
+                                                    <svg class="cursor" data-modal-close xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                                        <circle cx="10" cy="10" r="9.5" transform="matrix(-1 0 0 1 20 0)" fill="#F3F3F3" stroke="#E8E8E8" />
+                                                        <path d="M13.1465 13.24L10.0001 10.0936L13.0937 6.99999" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                                                        <path d="M7.09375 13.24L10.2402 10.0936L7.14657 6.99999" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <div class="unlink-account-pill d-flex align-items-center gap-10 mt-4">
+                                                    <img id="unlink_account_icon" src="<?= BASE_URL ?>/assets/images/social_media/facebook.png" class="social-icons" alt="">
+                                                    <div>
+                                                        <p class="fs-12-400-f-color mb-0">Verity Eve</p>
+                                                        <p class="fs-12-400-f-color text-light mb-0">veve@gmail.com</p>
                                                     </div>
                                                 </div>
-                                                <div class="col-lg-12">
-                                                    <div class="unlink-account-pill d-flex align-items-center gap-10 mt-4">
-                                                        <img id="unlink_account_icon" src="<?= BASE_URL ?>/assets/images/social_media/facebook.png" class="social-icons" alt="">
-                                                        <div>
-                                                            <p class="fs-12-400-f-color mb-0">Verity Eve</p>
-                                                            <p class="fs-12-400-f-color text-light mb-0">veve@gmail.com</p>
-                                                        </div>
-                                                    </div>
-                                                    <span class="fs-12-400-f-color text-light d-block mt-4" id="unlink_account_message">You won't be able to sign in with Facebook anymore. You can re-link it anytime from Account Linking.</span>
-                                                </div>
-                                                <div class="modal-buttons d-flex justify-content-between align-items-center mt-4">
-                                                    <button type="button" class="close-btn fs-16-400 text-light cursor" data-modal-close>Cancel</button>
-                                                    <button type="button" class="update-btn fs-16-600 text-center cursor" style="background-color:#FF6E6E" id="unlinkAccountConfirmBtn">Unlink</button>
-                                                </div>
+                                                <span class="fs-12-400-f-color text-light d-block mt-4" id="unlink_account_message">You won't be able to sign in with Facebook anymore. You can re-link it anytime from Account Linking.</span>
+                                            </div>
+                                            <div class="modal-buttons d-flex justify-content-between align-items-center mt-4">
+                                                <button type="button" class="close-btn fs-16-400 text-light cursor" data-modal-close>Cancel</button>
+                                                <button type="button" class="update-btn fs-16-600 text-center cursor" style="background-color:#FF6E6E" id="unlinkAccountConfirmBtn">Unlink</button>
                                             </div>
                                         </div>
                                     </div>
@@ -1977,7 +2004,6 @@
                                 <!-- Link Account Modal -->
                                 <div class="modal" id="link_account_modal">
                                     <div class="modal-content size">
-                                        <div class="container">
                                             <div class="row mt-2">
                                                 <div class="col-lg-12">
                                                     <div class="d-flex align-items-center justify-content-between">
@@ -2017,46 +2043,43 @@
                                                     <button type="button" class="update-btn fs-16-600 text-center cursor link-continue-btn" id="linkAccountContinueBtn">Continue</button>
                                                 </div>
                                             </div>
-                                        </div>
                                     </div>
                                 </div>
 
                                 <!-- Account Linked Success Modal -->
                                 <div class="modal" id="account_linked_modal">
                                     <div class="modal-content size">
-                                        <div class="container">
-                                            <div class="row mt-2">
-                                                <div class="col-lg-12">
-                                                    <div class="d-flex align-items-center justify-content-between">
-                                                        <h3 class="fs-18-pf-display-700 mb-0" id="account_linked_title">Facebook linked</h3>
-                                                        <svg class="cursor" data-modal-close xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                                            <circle cx="10" cy="10" r="9.5" transform="matrix(-1 0 0 1 20 0)" fill="#F3F3F3" stroke="#E8E8E8" />
-                                                            <path d="M13.1465 13.24L10.0001 10.0936L13.0937 6.99999" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
-                                                            <path d="M7.09375 13.24L10.2402 10.0936L7.14657 6.99999" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                                        <div class="row mt-2">
+                                            <div class="col-lg-12">
+                                                <div class="d-flex align-items-center justify-content-between">
+                                                    <h3 class="fs-18-pf-display-700 mb-0" id="account_linked_title">Facebook linked</h3>
+                                                    <svg class="cursor" data-modal-close xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                                        <circle cx="10" cy="10" r="9.5" transform="matrix(-1 0 0 1 20 0)" fill="#F3F3F3" stroke="#E8E8E8" />
+                                                        <path d="M13.1465 13.24L10.0001 10.0936L13.0937 6.99999" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                                                        <path d="M7.09375 13.24L10.2402 10.0936L7.14657 6.99999" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12 mt-3">
+                                                <p class="fs-12-400-f-color text-light mb-3" id="account_linked_subtitle">You can now sign in to FursGo with Facebook.</p>
+                                                <div class="linked-account-card">
+                                                    <div class="d-flex align-items-center gap-10">
+                                                        <div class="linked-account-avatar">VE</div>
+                                                        <div>
+                                                            <p class="fs-14-600-f-color mb-0">Verity Eve</p>
+                                                            <p class="fs-12-400-f-color text-light mb-0">veve@gmail.com</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="linked-account-status">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="10" viewBox="0 0 12 10" fill="none">
+                                                            <path d="M0.75 6.20455L3.25 8.75L10.75 0.75" stroke="#A2C35D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                                                         </svg>
+                                                        Connected
                                                     </div>
                                                 </div>
-                                                <div class="col-lg-12 mt-3">
-                                                    <p class="fs-12-400-f-color text-light mb-3" id="account_linked_subtitle">You can now sign in to FursGo with Facebook.</p>
-                                                    <div class="linked-account-card">
-                                                        <div class="d-flex align-items-center gap-10">
-                                                            <div class="linked-account-avatar">VE</div>
-                                                            <div>
-                                                                <p class="fs-14-600-f-color mb-0">Verity Eve</p>
-                                                                <p class="fs-12-400-f-color text-light mb-0">veve@gmail.com</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="linked-account-status">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="10" viewBox="0 0 12 10" fill="none">
-                                                                <path d="M0.75 6.20455L3.25 8.75L10.75 0.75" stroke="#A2C35D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                                                            </svg>
-                                                            Connected
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="modal-buttons d-flex justify-content-center align-items-center mt-4">
-                                                    <button type="button" class="update-btn fs-16-600 text-center cursor linked-done-btn" id="accountLinkedDoneBtn">Done</button>
-                                                </div>
+                                            </div>
+                                            <div class="modal-buttons d-flex justify-content-center align-items-center mt-4">
+                                                <button type="button" class="update-btn fs-16-600 text-center cursor linked-done-btn" id="accountLinkedDoneBtn">Done</button>
                                             </div>
                                         </div>
                                     </div>
@@ -2277,7 +2300,7 @@
 
                                     <div class="d-flex align-items-center justify-content-between gap-25">
                                         <p style="color: #9D9B98">Download a copy of your account data.</p>
-                                        <a href="" class="small-link-tag">Download Account Data</a>
+                                        <a href="" class="download-account-data small-link-tag">Download Account Data</a>
                                     </div>
                                 </div>
 
@@ -2286,7 +2309,7 @@
 
                                     <div class="d-flex align-items-center justify-content-between gap-25">
                                         <p style="color: #9D9B98">Remove all stored personal data.</p>
-                                        <a class="small-link-tag cursor" data-modal-open="delete_data_modal" id="deleteDataTrigger">
+                                        <a class="delete-account-data small-link-tag cursor" data-modal-open="delete_data_modal" id="deleteDataTrigger">
                                             Delete Personal Data
                                         </a>
                                     </div>
