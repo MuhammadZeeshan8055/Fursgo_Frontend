@@ -909,7 +909,7 @@
 
       if (btn && !btn.disabled) {
         window.location.href =
-          baseUrl + "booking-groomer/booking_groomer_confirmed.php";
+          baseUrl + "booking-groomer-and-space/confirmation.php";
       }
     });
 
