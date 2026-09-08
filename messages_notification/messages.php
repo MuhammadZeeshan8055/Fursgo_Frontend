@@ -48,7 +48,7 @@
     <div class="messages-outer-div">
 
         <!-- FULL WIDTH BACKGROUND LAYER -->
-        <div class="right-bg"></div>
+        <!-- <div class="right-bg"></div> -->
 
         <div class="container">
             <div class="row gx-0 ">

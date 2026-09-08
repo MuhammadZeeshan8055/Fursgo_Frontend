@@ -297,7 +297,7 @@ p.messages-count {
    ===================== */
 
 .chat-area {
-    background: var(--bg);
+    background: #FDFCF8;
     height: 100%;
     width: 100%;
     display: flex;
