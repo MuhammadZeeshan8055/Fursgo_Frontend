@@ -410,7 +410,14 @@ $studioImage = BASE_URL . 'assets/images/card1.png';
                                 <div class="cbg-address-panel active" id="cbgAddressHomePanel">
                                     <label class="cbg-field-label">Address</label>
                                     <div class="cbg-address-display">
-                                        <span id="cbgHomeAddressText">52 King's Road, London, SW3 4UD</span>
+                                        <span id="cbgHomeAddressText" class="d-flex align-items-center gap-10">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="15" viewBox="0 0 12 15" fill="none">
+                                                <path d="M5.7002 1C6.94664 1.00005 8.14206 1.49558 9.02344 2.37695C9.90474 3.25836 10.4004 4.45377 10.4004 5.7002C10.4003 7.61896 9.20857 9.44896 7.93066 10.8467C7.30061 11.5358 6.66886 12.0988 6.19434 12.4893C5.99863 12.6503 5.82978 12.7808 5.7002 12.8789C5.57053 12.7807 5.40101 12.6505 5.20508 12.4893C4.73057 12.0988 4.09876 11.5358 3.46875 10.8467C2.19094 9.449 1.00008 7.61882 1 5.7002C1 4.45368 1.49553 3.25837 2.37695 2.37695C3.25837 1.49553 4.45368 1 5.7002 1Z" stroke="#FFC97A" />
+                                                <path d="M10.9 5.7C10.9 9.925 5.7 13.5 5.7 13.5C5.7 13.5 0.5 9.925 0.5 5.7C0.5 4.32087 1.04786 2.99823 2.02304 2.02304C2.99823 1.04786 4.32087 0.5 5.7 0.5C7.07913 0.5 8.40177 1.04786 9.37696 2.02304C10.3521 2.99823 10.9 4.32087 10.9 5.7Z" stroke="#FFC97A" />
+                                                <path d="M7.65 5.7C7.65 6.21717 7.44455 6.71316 7.07886 7.07886C6.71316 7.44455 6.21717 7.65 5.7 7.65C5.18283 7.65 4.68684 7.44455 4.32114 7.07886C3.95545 6.71316 3.75 6.21717 3.75 5.7C3.75 5.18283 3.95545 4.68684 4.32114 4.32114C4.68684 3.95545 5.18283 3.75 5.7 3.75C6.21717 3.75 6.71316 3.95545 7.07886 4.32114C7.44455 4.68684 7.65 5.18283 7.65 5.7Z" stroke="#FFC97A" />
+                                            </svg>
+                                            12 King's Road, London, SW3 4UD
+                                        </span>
                                         <button type="button" class="cbg-text-btn" id="cbgEditHomeBtn">Edit</button>
                                     </div>
                                 </div>
@@ -595,8 +602,8 @@ $studioImage = BASE_URL . 'assets/images/card1.png';
                             <div class="cbg-review-accordion open">
                                 <button type="button" class="cbg-review-accordion-head">
                                     <span>Cancellation Policy</span>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="10" viewBox="0 0 16 10" fill="none" aria-hidden="true">
-                                        <path d="M14.5 1.5L8 8L1.5 1.5" stroke="#3B3731" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="19" height="11" viewBox="0 0 19 11" fill="none" aria-hidden="true">
+                                        <path d="M17.8281 1L9.34284 9.48528L1 1.14244" stroke="#D4D4D4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                     </svg>
                                 </button>
                                 <div class="cbg-review-accordion-body">
@@ -611,8 +618,8 @@ $studioImage = BASE_URL . 'assets/images/card1.png';
                             <div class="cbg-review-accordion">
                                 <button type="button" class="cbg-review-accordion-head">
                                     <span>Safety Policy</span>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="10" viewBox="0 0 16 10" fill="none" aria-hidden="true">
-                                        <path d="M14.5 1.5L8 8L1.5 1.5" stroke="#3B3731" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="19" height="11" viewBox="0 0 19 11" fill="none" aria-hidden="true">
+                                        <path d="M17.8281 1L9.34284 9.48528L1 1.14244" stroke="#D4D4D4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                     </svg>
                                 </button>
                                 <div class="cbg-review-accordion-body">
@@ -625,8 +632,8 @@ $studioImage = BASE_URL . 'assets/images/card1.png';
                             <div class="cbg-review-accordion">
                                 <button type="button" class="cbg-review-accordion-head">
                                     <span>Payment &amp; Fees</span>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="10" viewBox="0 0 16 10" fill="none" aria-hidden="true">
-                                        <path d="M14.5 1.5L8 8L1.5 1.5" stroke="#3B3731" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="19" height="11" viewBox="0 0 19 11" fill="none" aria-hidden="true">
+                                        <path d="M17.8281 1L9.34284 9.48528L1 1.14244" stroke="#D4D4D4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                     </svg>
                                 </button>
                                 <div class="cbg-review-accordion-body">
