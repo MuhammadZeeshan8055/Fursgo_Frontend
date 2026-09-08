@@ -24,13 +24,15 @@ nav,
 
 /* Messages outer div fills all space below navbar */
 .messages-outer-div {
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
     border: 1px solid var(--border);
     border-right: none;
-    height: calc(100vh - 80px);
-    min-height: 520px;
-    overflow: hidden;
+    height: 90vh;
+    /* overflow: hidden; */
     margin: 0;
 }
 
@@ -41,15 +43,9 @@ nav,
     min-height: 0;
 }
 
-.messages-outer-div>.container>.row {
-    flex-wrap: nowrap;
-}
-
 .messages-outer-div .col-lg-4,
 .messages-outer-div .col-lg-8 {
     height: 100%;
-    min-width: 0;
-    min-height: 0;
     overflow: hidden;
 }
 
@@ -66,12 +62,11 @@ aside.sidebar {
 }
 
 .sidebar-outer-div {
-    max-width: none;
-    width: 100%;
+    max-width: 380px;
     height: 100%;
     display: flex;
     flex-direction: column;
-    padding: 0px 35px 0 0px;
+    padding: 0 16px;
 }
 
 .settings-archived,
@@ -93,34 +88,6 @@ aside.sidebar {
     visibility: hidden;
     opacity: 0;
     transition: opacity 0.2s ease;
-    z-index: 10;
-}
-
-.archived-chat {
-    display: flex;
-    flex-direction: column;
-    width: 170px;
-    height: auto;
-    padding: 0;
-    overflow: hidden;
-}
-
-.archived-chat .chat-menu-item {
-    padding: 12px 14px;
-    gap: 10px;
-}
-
-.archived-chat .chat-menu-item + .chat-menu-item {
-    border-top: 1px solid #D9D9D9;
-}
-
-.archived-chat .chat-menu-item .simple-font {
-    margin: 0;
-    white-space: nowrap;
-}
-
-.archived-chat .chat-menu-item svg {
-    flex-shrink: 0;
 }
 
 .archived.show,
@@ -166,18 +133,17 @@ aside.sidebar {
     flex-direction: column;
 }
 
-.chat-list-wrapper {
+.chat-list {
     flex: 1;
     min-height: 0;
-    width: 100%;
     overflow-y: auto;
     overflow-x: hidden;
-    overscroll-behavior: contain;
 }
 
-.chat-list {
-    overflow: visible;
-    margin-right: 10%;
+.chat-list-wrapper {
+    overflow-y: auto;
+    padding-right: 27px;
+    width: 392px;
 }
 
 /* Chrome, Safari, Edge */
@@ -334,8 +300,6 @@ p.messages-count {
     background: var(--bg);
     height: 100%;
     width: 100%;
-    min-width: 0;
-    min-height: 0;
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -344,7 +308,7 @@ p.messages-count {
 
 .chat-width {
     width: 100%;
-    max-width: none;
+    max-width: 865px;
     flex: 1;
     min-height: 0;
     display: flex;
@@ -597,13 +561,11 @@ p.messages-count {
     flex: 1;
     min-height: 0;
     overflow-y: auto;
-    overscroll-behavior: contain;
     display: flex;
     flex-direction: column;
     gap: 16px;
     padding-bottom: 2%;
-    /* Match header .container right edge */
-    padding-right: max(0px, calc((100vw - 1320px) / 2));
+
 }
 
 .messages::-webkit-scrollbar {
@@ -665,16 +627,8 @@ p.messages-count {
    ===================== */
 
 .chat-wrapper {
-    max-width: none;
-    width: 100%;
+    max-width: 900px;
     flex-shrink: 0;
-    /* Same right inset as .messages / header container */
-    padding-right: max(0px, calc((100vw - 1320px) / 2));
-    box-sizing: border-box;
-}
-
-.footer-note {
-    padding-right: max(0px, calc((100vw - 1320px) / 2));
 }
 
 .chat-box {
