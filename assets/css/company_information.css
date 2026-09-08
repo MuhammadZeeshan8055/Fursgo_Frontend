@@ -1328,6 +1328,11 @@ body.dark .toggle-wrap .label {
   padding: 18px 0 23px;
 }
 
+.invoice-section-card--plain {
+  border-top: none;
+  padding-top: 0;
+}
+
 .invoice-provider-head {
   align-items: center;
   background: #FDFCF8;
@@ -1336,7 +1341,7 @@ body.dark .toggle-wrap .label {
   gap: 12px;
   justify-content: space-between;
   margin-bottom: 25px;
-  padding: 10px 12px;
+  padding: 18px 12px;
 }
 
 .invoice-provider-left {
@@ -1422,6 +1427,12 @@ body.dark .toggle-wrap .label {
   margin-bottom: 12px;
 }
 
+.invoice-price-block--divided {
+  border-top: 1px solid #e2e2e2;
+  margin-top: 25px;
+  padding-top: 23px;
+}
+
 .invoice-block-title {
   color: #3b3731;
   font-family: Lato;
@@ -1494,11 +1505,30 @@ body.dark .toggle-wrap .label {
 
 .invoice-total-paid {
   align-items: center;
-  border-top: 1px solid #e2e2e2;
+  border-top: 1px solid #F0EAD9;
   display: flex;
   justify-content: space-between;
   margin-top: 25px;
   padding-top: 23px;
+  position: relative;
+}
+
+.invoice-total-paid.dashed {
+  border-top: none;
+}
+
+.invoice-total-paid.dashed::before {
+  background-image: repeating-linear-gradient(
+    to right,
+    #e2e2e2 0 8px,
+    transparent 8px 14px
+  );
+  content: "";
+  height: 1px;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 
 .invoice-total-paid span {
