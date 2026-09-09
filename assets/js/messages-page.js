@@ -8,7 +8,6 @@
   const headerRoot = document.querySelector(".chat-header-wrap");
   const messagesRoot = document.querySelector(".messages");
   const chatBox = document.querySelector(".chat-box");
-  const footerNote = document.querySelector(".footer-note");
   const chatPanel = document.querySelector(".chat-width");
   const sidebar = document.querySelector(".sidebar");
   const messagesTitle = document.querySelector(".messages-title");
@@ -23,7 +22,7 @@
     ),
   };
 
-  if (!headerRoot || !messagesRoot || !chatBox || !footerNote) {
+  if (!headerRoot || !messagesRoot || !chatBox) {
     return;
   }
 
@@ -246,7 +245,6 @@
     activeConversationId = null;
     messagesRoot.innerHTML = "";
     chatBox.innerHTML = "";
-    footerNote.style.display = "none";
   }
 
   function updateSidebarMode() {
@@ -441,7 +439,7 @@
     }
   }
 
-  function renderComposer(chat) {
+  function renderComposer() {
     chatBox.innerHTML = `
             <div class="preview-row" id="previewRow"></div>
             <div class="message-row">
@@ -453,8 +451,6 @@
             ${attachmentActions}
         `;
 
-    footerNote.textContent = chat.footerNote;
-    footerNote.style.display = chat.footerNote ? "block" : "none";
     bindComposerInteractions();
   }
 
@@ -684,7 +680,7 @@
 
     renderHeader(conversation);
     renderMessages(screenDetail);
-    renderComposer(screenDetail);
+    renderComposer();
 
     if (!isSameChat) {
       playChatBodyAnimation();

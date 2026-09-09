@@ -3458,10 +3458,6 @@
                                         </div>
                                     </div>
                                 </div>
-
-                                <div class="footer-note simple-light-font mt-4 mb-1">
-                                    Chats remain open for 3 days after a booking ends.
-                                </div>
                             </div>
                         </div>
 
@@ -3513,7 +3509,6 @@
                     bookingIcon: 'space',
                     displayName: 'The Garden Grooming Spot',
                     subtitle: 'Hosted by Chloe D.',
-                    footerNote: 'Chats remain open for 3 days after a booking ends.',
                     messages: [{
                             type: 'received',
                             html: 'Hi! Just a quick reminder about tomorrow\'s appointment for Milo.',
@@ -3565,7 +3560,6 @@
                     bookingType: 'Past booking',
                     bookingDate: '7 Oct',
                     bookingStatus: 'Completed',
-                    footerNote: 'Chats remain open for 3 days after a booking ends.',
                     messages: [{
                             type: 'received',
                             html: 'Hi Lorem! Thanks for booking 😊<br>I’m looking forward to meeting Bella tomorrow.',
@@ -3635,7 +3629,6 @@
                     bookingIcon: 'space',
                     displayName: 'Furs & Co. Studio',
                     subtitle: 'Hosted by Dev É.',
-                    footerNote: 'Chats remain open for 3 days after a booking ends.',
                     messages: [{
                             type: 'received',
                             html: 'Just confirming our booking for Friday morning.',
@@ -3684,7 +3677,6 @@
                     bookingSchedule: 'Thu · 14:00–17:00 · FluffLab Studio',
                     displayName: 'Katie Z.',
                     subtitle: 'FluffLab',
-                    footerNote: 'Chats remain open for 3 days after a booking ends.',
                     messages: [{
                             type: 'received',
                             html: 'Your booking is confirmed for Thursday afternoon.',
@@ -3728,7 +3720,6 @@
                     bookingSchedule: 'Tomorrow · 09:30 · Home visit',
                     displayName: 'Paws & Bubbles',
                     subtitle: 'Hosted by Patrick B.',
-                    footerNote: 'Chats remain open for 3 days after a booking ends.',
                     messages: [{
                             type: 'received',
                             html: 'Hi Lorem! Thanks for booking 😊<br>I’m looking forward to meeting Bella tomorrow.',
@@ -3789,7 +3780,6 @@
                     bookingReference: 'FG-10408',
                     displayName: 'Cathy P.',
                     subtitle: 'Wags & Wheels',
-                    footerNote: 'Chats remain open for 3 days after a booking ends.',
                     messages: [{
                             type: 'received',
                             html: 'Is she comfortable with dryer noise after bath time?',
@@ -3839,7 +3829,6 @@
                     bookingIcon: 'space',
                     displayName: 'The Garden Loft',
                     subtitle: 'Hosted by Chloe D.',
-                    footerNote: 'Chats remain open for 3 days after a booking ends.',
                     messages: [{
                             type: 'received',
                             html: 'Your booking space is ready for next Tuesday.',
@@ -3884,7 +3873,6 @@
                     bookingIcon: 'space',
                     displayName: 'Studio Suite',
                     subtitle: 'Hosted by Dev É.',
-                    footerNote: 'Chats remain open for 3 days after a booking ends.',
                     messages: [{
                             type: 'received',
                             html: 'Parking instructions for your booking are attached.',
@@ -3931,7 +3919,6 @@
                     bookingIcon: 'space',
                     displayName: 'Paws Venue',
                     subtitle: 'Hosted by Patrick B.',
-                    footerNote: 'Chats remain open for 3 days after a booking ends.',
                     messages: [{
                             type: 'received',
                             html: 'Thanks again for using our space last week.',
@@ -3976,7 +3963,6 @@
                     bookingIcon: 'space',
                     displayName: 'Wheels Workshop',
                     subtitle: 'Hosted by Cathy P.',
-                    footerNote: 'Chats remain open for 3 days after a booking ends.',
                     messages: [{
                             type: 'received',
                             html: 'Hope the setup worked well for your visit.',
