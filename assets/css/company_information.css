@@ -584,15 +584,20 @@ a.underline {
   border: 1px solid #ddd;
   border-radius: 10px;
   background: #fff;
+  overflow: hidden;
 }
 
 .upload-header {
   display: flex;
   gap: 15px;
   padding: 12px;
-  border-radius: 10px 10px 0 0;
+  border-radius: 10px;
   border: 1px solid #e2e2e2;
-  background: #f8f8f8;
+  background: #F8F8F8;
+}
+
+.upload-box.has-file .upload-header {
+  border-radius: 10px 10px 0 0;
 }
 
 .upload-header button {

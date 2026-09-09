@@ -336,6 +336,7 @@
             const fileName = document.getElementById('fileName');
             const fileSize = document.getElementById('fileSize');
             const removeBtn = document.getElementById('removeBtn');
+            const uploadBox = document.getElementById('uploadBox');
 
             attachBtn.onclick = () => fileInput.click();
 
@@ -343,6 +344,7 @@
                 const file = fileInput.files[0];
                 if (!file) return;
 
+                uploadBox.classList.add('has-file');
                 fileItem.style.display = 'flex';
                 fileName.textContent = file.name;
                 fileSize.textContent = `${Math.round(file.size / 1024)} KB • Uploading...`;
@@ -356,6 +358,7 @@
             removeBtn.onclick = () => {
                 fileInput.value = '';
                 fileItem.style.display = 'none';
+                uploadBox.classList.remove('has-file');
             };
         </script>
 
