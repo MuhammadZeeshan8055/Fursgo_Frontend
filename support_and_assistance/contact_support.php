@@ -245,38 +245,15 @@
                             <!-- <div class="col-lg-1"></div> -->
                             <div class="col-lg-12">
                                 <div class="d-flex justify-content-center">
-                                    <style>
-                                        .message-svg {
-                                            position: relative;
-                                            width: 75px;
-                                            height: 75px;
-                                        }
-
-                                        .message-svg svg:first-child {
-                                            position: absolute;
-                                            top: 0;
-                                            left: 0;
-                                        }
-
-                                        .message-icon {
-                                            position: absolute;
-                                            top: 50%;
-                                            left: 50%;
-                                            transform: translate(-50%, -50%);
-                                        }
-                                    </style>
-                                    <div class="message-svg">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="75" height="75" viewBox="0 0 75 75" fill="none">
-                                            <circle cx="37.5" cy="37.5" r="36.5" fill="#D8E8B7" stroke="#B5CA89" stroke-width="2" />
-                                        </svg>
-
-                                        <svg class="message-icon" xmlns="http://www.w3.org/2000/svg" width="30" height="22" viewBox="0 0 30 22" fill="none">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="75" height="75" viewBox="0 0 75 75" fill="none">
+                                        <circle cx="37.5" cy="37.5" r="36.5" fill="white" stroke="#B5CA89" stroke-width="2" />
+                                        <g transform="translate(22.5, 26.5)">
                                             <path d="M15.8413 18.143H13.1429H2C1.44771 18.143 1 17.6953 1 17.143V2C1 1.44771 1.44772 1 2 1H24.2858C24.838 1 25.2858 1.44772 25.2858 2V12.4287" stroke="#B5CA89" stroke-width="2" stroke-linecap="round" />
                                             <path d="M1.25 1.25L12.6178 8.24828C12.9397 8.44644 13.3459 8.44617 13.6675 8.24758L25 1.25" stroke="#B5CA89" stroke-width="2" />
                                             <path d="M19.5715 17.1426C19.0192 17.1426 18.5715 17.5903 18.5715 18.1426C18.5715 18.6949 19.0192 19.1426 19.5715 19.1426V18.1426V17.1426ZM19.5715 18.1426V19.1426L28.143 19.1426V18.1426V17.1426L19.5715 17.1426V18.1426Z" fill="#B5CA89" />
                                             <path d="M25.2856 15.2852L28.1428 18.1423L25.2856 20.9995" stroke="#B5CA89" stroke-width="2" stroke-linecap="round" />
-                                        </svg>
-                                    </div>
+                                        </g>
+                                    </svg>
 
                                     <div data-modal-submit-close class="position-absolute top-0 end-0">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36" fill="none">
