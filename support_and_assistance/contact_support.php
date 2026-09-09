@@ -246,7 +246,7 @@
                             <div class="col-lg-12">
                                 <div class="d-flex justify-content-center">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="75" height="75" viewBox="0 0 75 75" fill="none">
-                                        <circle cx="37.5" cy="37.5" r="36.5" fill="white" stroke="#B5CA89" stroke-width="2" />
+                                        <circle cx="37.5" cy="37.5" r="36.5" fill="#fff" stroke="#B5CA89" stroke-width="2" />
                                         <g transform="translate(22.5, 26.5)">
                                             <path d="M15.8413 18.143H13.1429H2C1.44771 18.143 1 17.6953 1 17.143V2C1 1.44771 1.44772 1 2 1H24.2858C24.838 1 25.2858 1.44772 25.2858 2V12.4287" stroke="#B5CA89" stroke-width="2" stroke-linecap="round" />
                                             <path d="M1.25 1.25L12.6178 8.24828C12.9397 8.44644 13.3459 8.44617 13.6675 8.24758L25 1.25" stroke="#B5CA89" stroke-width="2" />
