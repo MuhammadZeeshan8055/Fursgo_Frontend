@@ -329,39 +329,6 @@
         <?php include '../components/footer.php' ?>
         <script src="<?= BASE_URL ?>/assets/js/common.js"></script>
 
-        <script>
-            const fileInput = document.getElementById('fileInput');
-            const attachBtn = document.getElementById('attachBtn');
-            const fileItem = document.getElementById('fileItem');
-            const fileName = document.getElementById('fileName');
-            const fileSize = document.getElementById('fileSize');
-            const removeBtn = document.getElementById('removeBtn');
-            const uploadBox = document.getElementById('uploadBox');
-
-            attachBtn.onclick = () => fileInput.click();
-
-            fileInput.onchange = () => {
-                const file = fileInput.files[0];
-                if (!file) return;
-
-                uploadBox.classList.add('has-file');
-                fileItem.style.display = 'flex';
-                fileName.textContent = file.name;
-                fileSize.textContent = `${Math.round(file.size / 1024)} KB • Uploading...`;
-
-                // Fake upload delay
-                setTimeout(() => {
-                    fileSize.textContent = `${Math.round(file.size / 1024)} KB of ${Math.round(file.size / 1024)} KB`;
-                }, 1500);
-            };
-
-            removeBtn.onclick = () => {
-                fileInput.value = '';
-                fileItem.style.display = 'none';
-                uploadBox.classList.remove('has-file');
-            };
-        </script>
-
 </body>
 
 </html>

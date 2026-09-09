@@ -93,36 +93,40 @@
                                     <p class="normal-font-weight" style="color:#9D9B98">Upload screenshots or documents</p>
                                     <div class="upload-box mt-3" id="uploadBox">
                                         <div class="upload-header">
-                                            <button id="attachBtn">
+                                            <button type="button" id="attachBtn">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="11" height="12" viewBox="0 0 11 12" fill="none">
                                                     <path d="M10.5 6.04469L6.17551 10.5107C5.54818 11.1481 4.70239 11.5037 3.82235 11.5C2.94232 11.4963 2.09936 11.1336 1.47707 10.4909C0.854792 9.8483 0.503611 8.97775 0.500028 8.06891C0.496444 7.16008 0.840748 6.2866 1.45794 5.63874L5.78243 1.17272C5.98895 0.95944 6.23412 0.790259 6.50395 0.674834C6.77378 0.559409 7.06298 0.5 7.35504 0.5C7.64711 0.5 7.93631 0.559409 8.20614 0.674834C8.47597 0.790259 8.72114 0.95944 8.92766 1.17272C9.13418 1.386 9.298 1.63919 9.40977 1.91785C9.52153 2.19652 9.57906 2.49518 9.57906 2.7968C9.57906 3.09842 9.52153 3.39709 9.40977 3.67575C9.298 3.95441 9.13418 4.20761 8.92766 4.42089L4.60317 8.88691C4.3946 9.10231 4.1117 9.22333 3.81673 9.22333C3.52175 9.22333 3.23886 9.10231 3.03028 8.88691C2.8217 8.6715 2.70452 8.37935 2.70452 8.07472C2.70452 7.77009 2.8217 7.47794 3.03028 7.26254L6.96168 3.20304" stroke="#3B3731" stroke-linecap="round" />
                                                 </svg>
-                                                Add attachment
+                                                <span id="attachBtnText">Add attachment</span>
                                             </button>
                                         </div>
 
-                                        <input type="file" id="fileInput" hidden>
+                                        <input type="file" id="fileInput" hidden multiple>
 
-                                        <div class="file-item" id="fileItem">
-                                            <div class="file-left">
-                                                <div>
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="21" height="25" viewBox="0 0 21 25" fill="none">
-                                                        <path d="M5.04074 24.501H15.9593C17.1635 24.501 18.3185 24.0226 19.1701 23.1711C20.0216 22.3195 20.5 21.1646 20.5 19.9603V12.7859C20.5004 11.5818 20.0226 10.4268 19.1715 9.57499L11.4276 1.82979C11.0059 1.40815 10.5053 1.0737 9.95439 0.845536C9.40346 0.61737 8.81297 0.499957 8.21666 0.5H5.04074C3.83646 0.5 2.6815 0.978398 1.82995 1.82995C0.978398 2.6815 0.5 3.83646 0.5 5.04074V19.9603C0.5 21.1646 0.978398 22.3195 1.82995 23.1711C2.6815 24.0226 3.83646 24.501 5.04074 24.501Z" stroke="#9D9B98" stroke-linecap="round" stroke-linejoin="round" />
-                                                        <path d="M10.0952 0.966797V8.30982C10.0952 8.99798 10.3686 9.65795 10.8552 10.1446C11.3418 10.6312 12.0018 10.9045 12.6899 10.9045H20.0355" stroke="#9D9B98" stroke-linecap="round" stroke-linejoin="round" />
-                                                        <path d="M4.33759 18.3393V17.042M4.33759 17.042V14.4473H5.63494C5.97902 14.4473 6.30901 14.584 6.55231 14.8273C6.79561 15.0706 6.93229 15.4005 6.93229 15.7446C6.93229 16.0887 6.79561 16.4187 6.55231 16.662C6.30901 16.9053 5.97902 17.042 5.63494 17.042H4.33759ZM14.7164 18.3393V16.7176M14.7164 16.7176V14.4473H16.6624M14.7164 16.7176H16.6624M9.527 18.3393V14.4473H10.1757C10.6918 14.4473 11.1868 14.6523 11.5517 15.0172C11.9167 15.3822 12.1217 15.8772 12.1217 16.3933C12.1217 16.9094 11.9167 17.4044 11.5517 17.7693C11.1868 18.1343 10.6918 18.3393 10.1757 18.3393H9.527Z" stroke="#9D9B98" stroke-linecap="round" stroke-linejoin="round" />
+                                        <div class="file-list" id="fileList"></div>
+
+                                        <template id="fileItemTemplate">
+                                            <div class="file-item">
+                                                <div class="file-left">
+                                                    <div>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="21" height="25" viewBox="0 0 21 25" fill="none">
+                                                            <path d="M5.04074 24.501H15.9593C17.1635 24.501 18.3185 24.0226 19.1701 23.1711C20.0216 22.3195 20.5 21.1646 20.5 19.9603V12.7859C20.5004 11.5818 20.0226 10.4268 19.1715 9.57499L11.4276 1.82979C11.0059 1.40815 10.5053 1.0737 9.95439 0.845536C9.40346 0.61737 8.81297 0.499957 8.21666 0.5H5.04074C3.83646 0.5 2.6815 0.978398 1.82995 1.82995C0.978398 2.6815 0.5 3.83646 0.5 5.04074V19.9603C0.5 21.1646 0.978398 22.3195 1.82995 23.1711C2.6815 24.0226 3.83646 24.501 5.04074 24.501Z" stroke="#9D9B98" stroke-linecap="round" stroke-linejoin="round" />
+                                                            <path d="M10.0952 0.966797V8.30982C10.0952 8.99798 10.3686 9.65795 10.8552 10.1446C11.3418 10.6312 12.0018 10.9045 12.6899 10.9045H20.0355" stroke="#9D9B98" stroke-linecap="round" stroke-linejoin="round" />
+                                                            <path d="M4.33759 18.3393V17.042M4.33759 17.042V14.4473H5.63494C5.97902 14.4473 6.30901 14.584 6.55231 14.8273C6.79561 15.0706 6.93229 15.4005 6.93229 15.7446C6.93229 16.0887 6.79561 16.4187 6.55231 16.662C6.30901 16.9053 5.97902 17.042 5.63494 17.042H4.33759ZM14.7164 18.3393V16.7176M14.7164 16.7176V14.4473H16.6624M14.7164 16.7176H16.6624M9.527 18.3393V14.4473H10.1757C10.6918 14.4473 11.1868 14.6523 11.5517 15.0172C11.9167 15.3822 12.1217 15.8772 12.1217 16.3933C12.1217 16.9094 11.9167 17.4044 11.5517 17.7693C11.1868 18.1343 10.6918 18.3393 10.1757 18.3393H9.527Z" stroke="#9D9B98" stroke-linecap="round" stroke-linejoin="round" />
+                                                        </svg>
+                                                    </div>
+                                                    <div class="file-info">
+                                                        <div class="simple-font file-name"></div>
+                                                        <div class="file-size"></div>
+                                                    </div>
+                                                </div>
+                                                <button type="button" class="remove-btn">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
+                                                        <path d="M0.75 10.75L10.75 0.75M0.75 0.75L10.75 10.75" stroke="#3B3731" stroke-width="1.5" stroke-linecap="round" />
                                                     </svg>
-                                                </div>
-                                                <div class="file-info">
-                                                    <div class="simple-font" id="fileName"></div>
-                                                    <div class="file-size" id="fileSize"></div>
-                                                </div>
+                                                </button>
                                             </div>
-                                            <button class="remove-btn" id="removeBtn">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
-                                                    <path d="M0.75 10.75L10.75 0.75M0.75 0.75L10.75 10.75" stroke="#3B3731" stroke-width="1.5" stroke-linecap="round" />
-                                                </svg>
-                                            </button>
-                                        </div>
+                                        </template>
                                     </div>
                                 </div>
                                 <div class="modal-buttons d-flex justify-content-between align-items-center mt-5">
@@ -140,49 +144,94 @@
             <!-- Modal  -->
 
             <script>
-                document.getElementById('submitRequestBtn').addEventListener('click', function() {
+                (function() {
+                    const fileInput = document.getElementById('fileInput');
+                    const attachBtn = document.getElementById('attachBtn');
+                    const attachBtnText = document.getElementById('attachBtnText');
+                    const uploadBox = document.getElementById('uploadBox');
+                    const fileList = document.getElementById('fileList');
+                    const fileItemTemplate = document.getElementById('fileItemTemplate');
+                    let attachedFiles = [];
+                    let fileId = 0;
 
-                    const subject = document.querySelector('input[placeholder="A short summary of your issue."]');
-                    const bookingRef = document.querySelector('input[placeholder="Enter your booking ID"]');
-                    const description = document.querySelector('#bio');
-                    const category = document.querySelector('input[name="category"]');
-
-                    if (
-                        subject.value.trim() !== '' &&
-                        category.value.trim() !== '' &&
-                        description.value.trim() !== ''
-                    ) {
-
-                        // open success modal
-                        document.querySelector('[data-modal-open="request-submitted-modal"]').click();
-
-                        // open success modal
-                        document.getElementById('request-submitted-modal').style.display = 'flex';
-
-                        // hide request modal
-                        document.getElementById('request_modal').style.display = 'none';
-
-                        // Clear form fields
-                        subject.value = '';
-                        bookingRef.value = '';
-                        description.value = '';
-                        category.value = '';
-
-                        // Reset category dropdown text
-                        document.querySelector('.selected-text').textContent = 'Select Category';
-
-                        // Remove uploaded file (if any)
-                        document.getElementById('fileInput').value = '';
-                        document.getElementById('fileItem').style.display = 'none';
-                        document.getElementById('uploadBox').classList.remove('has-file');
-
-                        // Close modal (optional)
-                        document.getElementById('request_modal').classList.remove('active');
-
-                    } else {
-                        alert('Please fill all required fields.');
+                    function syncAttachState() {
+                        const hasFiles = attachedFiles.length > 0;
+                        uploadBox.classList.toggle('has-file', hasFiles);
+                        attachBtnText.textContent = hasFiles ? 'Attach' : 'Add attachment';
                     }
-                });
+
+                    function resetAttachments() {
+                        attachedFiles = [];
+                        fileList.innerHTML = '';
+                        fileInput.value = '';
+                        syncAttachState();
+                    }
+
+                    function addFile(file) {
+                        const id = 'file-' + (++fileId);
+                        attachedFiles.push({ id: id, file: file });
+
+                        const item = fileItemTemplate.content.firstElementChild.cloneNode(true);
+                        item.dataset.fileId = id;
+                        item.querySelector('.file-name').textContent = file.name;
+
+                        const sizeEl = item.querySelector('.file-size');
+                        const totalKb = Math.max(1, Math.round(file.size / 1024));
+                        sizeEl.textContent = Math.round(totalKb / 2) + ' KB of ' + totalKb + ' KB • Uploading...';
+
+                        setTimeout(function() {
+                            if (!item.isConnected) return;
+                            sizeEl.textContent = totalKb + ' KB of ' + totalKb + ' KB';
+                        }, 1500);
+
+                        item.querySelector('.remove-btn').addEventListener('click', function() {
+                            attachedFiles = attachedFiles.filter(function(entry) {
+                                return entry.id !== id;
+                            });
+                            item.remove();
+                            syncAttachState();
+                        });
+
+                        fileList.appendChild(item);
+                    }
+
+                    attachBtn.addEventListener('click', function() {
+                        fileInput.click();
+                    });
+
+                    fileInput.addEventListener('change', function() {
+                        Array.from(fileInput.files).forEach(addFile);
+                        fileInput.value = '';
+                        syncAttachState();
+                    });
+
+                    document.getElementById('submitRequestBtn').addEventListener('click', function() {
+                        const subject = document.querySelector('input[placeholder="A short summary of your issue."]');
+                        const bookingRef = document.querySelector('input[placeholder="Enter your booking ID"]');
+                        const description = document.querySelector('#bio');
+                        const category = document.querySelector('input[name="category"]');
+
+                        if (
+                            subject.value.trim() !== '' &&
+                            category.value.trim() !== '' &&
+                            description.value.trim() !== ''
+                        ) {
+                            document.querySelector('[data-modal-open="request-submitted-modal"]').click();
+                            document.getElementById('request-submitted-modal').style.display = 'flex';
+                            document.getElementById('request_modal').style.display = 'none';
+
+                            subject.value = '';
+                            bookingRef.value = '';
+                            description.value = '';
+                            category.value = '';
+                            document.querySelector('.selected-text').textContent = 'Select Category';
+                            resetAttachments();
+                            document.getElementById('request_modal').classList.remove('active');
+                        } else {
+                            alert('Please fill all required fields.');
+                        }
+                    });
+                })();
             </script>
 
             <button data-modal-open="request-submitted-modal" style="display:none">Request Submitted</button>

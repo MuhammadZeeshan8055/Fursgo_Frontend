@@ -591,13 +591,11 @@ a.underline {
   display: flex;
   gap: 15px;
   padding: 12px;
-  border-radius: 10px;
-  border: 1px solid #e2e2e2;
-  background: #F8F8F8;
+  background: #f8f8f8;
 }
 
 .upload-box.has-file .upload-header {
-  border-radius: 10px 10px 0 0;
+  border-bottom: 1px solid #e2e2e2;
 }
 
 .upload-header button {
@@ -611,10 +609,15 @@ a.underline {
 }
 
 .file-item {
-  display: none;
+  display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 14px;
+  background: #fff;
+}
+
+.file-item + .file-item {
+  border-top: 1px solid #e2e2e2;
 }
 
 .file-left {
