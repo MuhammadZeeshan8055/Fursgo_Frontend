@@ -370,6 +370,9 @@
             line-height: normal;
             border: none;
             cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .conf-msg-btn {
@@ -385,6 +388,9 @@
             line-height: normal;
             border-radius: 75px;
             border: 1px solid #3B3731;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
     </style>
 </head>
@@ -725,8 +731,8 @@
                     <li>You can manage or cancel your bookings from your account.</li>
                 </ul>
                 <div class="conf-btn-container">
-                    <button class="conf-msg-btn">Message Groomer</button>
-                    <button class="conf-view-btn">View Booking</button>
+                    <a href="<?= BASE_URL ?>messages_notification/messages.php" class="conf-msg-btn">Message Groomer</a>
+                    <a href="<?= BASE_URL ?>my_bookings/my_bookings.php" class="conf-view-btn">View Booking</a>
                 </div>
             </div>
 
