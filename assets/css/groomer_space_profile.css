@@ -537,8 +537,38 @@ h1 {
     box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.10);
 }
 
+body.groomer-profile .message-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border: none;
+    border-radius: 96px;
+    background: #FFF7F3;
+    box-shadow: 0 4px 4px 0 rgba(59, 55, 49, 0.10);
+    color: #FBAC83;
+}
+
+body.groomer-profile .message-btn svg {
+    flex-shrink: 0;
+}
+
 .service__header .responding-time {
     color: rgba(59, 55, 49, 0.50);
+    text-align: center;
+    font-family: Lato;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+body.groomer-profile .service__header .responding-time {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    color: #9D9B98;
     text-align: center;
     font-family: Lato;
     font-size: 14px;
