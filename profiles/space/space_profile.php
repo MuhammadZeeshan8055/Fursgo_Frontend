@@ -2304,7 +2304,7 @@
 
                     <div id="amenities" class="mt-5">
                         <h2 class="section-content-heading">Amenities Included</h2>
-                        <div class="amenities-options d-flex align-items-center mt-4 flex-wrap gap-30">
+                        <div class="amenities-options d-flex align-items-center mt-4 flex-wrap gap-10">
                             <div class="selected-item dark-bg">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="12" height="9" viewBox="0 0 12 9" fill="none">
                                     <path d="M0.75 4.75L4.25 8.25L11.25 0.75" stroke="#3B3731" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
