@@ -489,7 +489,7 @@ h1 {
 /* service card */
 
 .service-card {
-    padding: 25px;
+    padding: 12px;
     font-family: Lato;
     border-radius: 10px;
     border: 1px solid #D4D4D4;
@@ -577,12 +577,339 @@ body.groomer-profile .service__header .responding-time {
     line-height: normal;
 }
 
+body.groomer-profile .service__header {
+    padding-bottom: 24px;
+    border-bottom: 1px solid #E8E8E8;
+}
+
+body.groomer-profile .booking-starting-price {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+body.groomer-profile .booking-starting-price__amount {
+    color: #3B3731;
+    font-family: "Playfair Display", serif;
+    font-size: 26px;
+    font-weight: 900;
+    line-height: 1;
+}
+
+body.groomer-profile .booking-starting-price__label {
+    color: #9D9B98;
+    font-family: Lato, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+body.groomer-profile .booking-step__label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    color: #3B3731;
+    font-family: Lato, sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+
+}
+
+body.groomer-profile .booking-step__num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #FBAC83;
+    color: #FFF;
+    font-family: Lato, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+/* Booking sidebar selects — override shared .custom-select conflicts */
+body.groomer-profile #booking-sidebar .booking-step .custom-select {
+    width: 100%;
+    max-width: 100%;
+}
+
+body.groomer-profile #booking-sidebar .booking-step .custom-select .select-trigger {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    gap: 12px;
+    border: 1px solid #D4D4D4;
+    border-radius: 12px;
+    padding: 14px 16px;
+    background: #FFF;
+    box-sizing: border-box;
+}
+
+body.groomer-profile #booking-sidebar .booking-step .custom-select.open .select-trigger,
+body.groomer-profile #booking-sidebar .booking-step .custom-select.has-value .select-trigger {
+    border-color: #D4D4D4;
+}
+
+body.groomer-profile #booking-sidebar .booking-step .custom-select .select-trigger .selected-text {
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: left;
+    color: #9D9B98 !important;
+    font-family: Lato, sans-serif !important;
+    font-size: 18px !important;
+    font-weight: 400 !important;
+    line-height: normal;
+}
+
+body.groomer-profile #booking-sidebar .booking-step .custom-select.has-value .select-trigger .selected-text {
+    color: #3B3731 !important;
+    font-weight: 600 !important;
+}
+
+body.groomer-profile #booking-sidebar .booking-step .select-trigger-meta {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+    flex: 0 0 auto !important;
+    margin-left: auto;
+}
+
+body.groomer-profile #booking-sidebar .booking-step .select-trigger-meta .selected-price {
+    color: #9D9B98 !important;
+    font-family: Lato, sans-serif !important;
+    font-size: 18px !important;
+    font-weight: 600 !important;
+    line-height: normal;
+    white-space: nowrap;
+}
+
+body.groomer-profile #booking-sidebar .booking-step .select-trigger-meta .selected-price:empty {
+    display: none;
+}
+
+body.groomer-profile #booking-sidebar .booking-step .select-trigger-meta svg {
+    flex-shrink: 0;
+}
+
+body.groomer-profile #booking-sidebar .booking-step .select-trigger-meta svg path {
+    stroke: #9D9B98;
+}
+
+body.groomer-profile #booking-sidebar .booking-step .select-options li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+body.groomer-profile #booking-sidebar .booking-step .option-label {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #3B3731;
+    font-weight: 500;
+}
+
+body.groomer-profile #booking-sidebar .booking-step .option-price {
+    flex-shrink: 0;
+    color: #9D9B98;
+    font-weight: 400;
+}
+
+body.groomer-profile #booking-sidebar .booking-step .service-selected-options {
+    gap: 8px;
+}
+
+body.groomer-profile #booking-sidebar .booking-step .service-selected-options:empty {
+    display: none;
+    margin: 0 !important;
+}
+
+body.groomer-profile #booking-sidebar .calendar-header {
+    background: #FFF;
+    border: 1px solid #D4D4D4;
+    border-radius: 100px;
+    padding: 6px 8px;
+    margin-bottom: 0;
+}
+
+body.groomer-profile #booking-sidebar .calendar-header span {
+    font-size: 16px;
+}
+
+body.groomer-profile #booking-sidebar .nav-btn {
+    background: transparent;
+}
+
+body.groomer-profile #booking-sidebar .weekdays {
+    font-size: 16px;
+    font-weight: 600;
+    color: #9D9B98;
+    margin-bottom: 0;
+}
+
+body.groomer-profile #booking-sidebar .dates {
+    gap: 8px;
+}
+
+body.groomer-profile #booking-sidebar .date {
+    height: 38px;
+    border-radius: 10px;
+    background: #F7F7F7;
+    color: #3B3731;
+    font-weight: 600;
+    border: none;
+    box-shadow: none;
+}
+
+body.groomer-profile #booking-sidebar .date.available {
+    background: #E9F3D9;
+}
+
+body.groomer-profile #booking-sidebar .date.selected {
+    background: #FBAC83;
+    color: #FFF;
+    border: none;
+    box-shadow: 0 4px 8px 0 rgba(251, 172, 131, 0.45);
+}
+
+body.groomer-profile #booking-sidebar .booking-times {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+}
+
+body.groomer-profile #booking-sidebar .booking-times .time {
+    width: 100%;
+    margin: 0;
+    padding: 12px 8px;
+    border-radius: 12px;
+    border: 1px solid #D4D4D4;
+    background: #FFF;
+    color: #3B3731;
+    font-family: Lato, sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    box-shadow: none;
+}
+
+body.groomer-profile #booking-sidebar .booking-times .time.selected {
+    border-color: #FBAC83;
+    background: #FFF7F3;
+    color: #FBAC83;
+    box-shadow: none;
+}
+
+body.groomer-profile #booking-sidebar .booking-summary {
+    margin-left: -12px;
+    margin-right: -12px;
+    margin-bottom: -12px;
+    padding: 24px 15px 20px;
+    background: #F7F4EC;
+    border-radius: 0 0 10px 10px;
+}
+
+body.groomer-profile #booking-sidebar .booking-summary__heading {
+    margin: 0 0 8px;
+    color: #3B3731;
+    font-family: Lato, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+body.groomer-profile #booking-sidebar .booking-summary__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 6px;
+    color: #9D9B98;
+    font-family: Lato, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+body.groomer-profile #booking-sidebar .booking-summary__divider {
+    height: 1px;
+    margin: 16px 0;
+    background: #E5E1DA;
+}
+
+body.groomer-profile #booking-sidebar .booking-summary__total {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+body.groomer-profile #booking-sidebar .booking-summary__total > span:first-child {
+    color: #3B3731;
+    font-family: Lato, sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: capitalize;
+}
+
+body.groomer-profile #booking-sidebar .booking-summary__total-amount {
+    color: #3B3731;
+    font-family: "Playfair Display", serif;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+body.groomer-profile #booking-sidebar .booking-summary .book-btn-div {
+    width: 100%;
+}
+
+body.groomer-profile #booking-sidebar .booking-summary .book-btn {
+    width: 100%;
+    margin-top: 8px;
+    padding: 14px 20px;
+    border-radius: 96px;
+    background: #FFC97A;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+body.groomer-profile #booking-sidebar .booking-cancel-note {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    margin: 14px 0 0;
+    color: #9D9B98;
+    font-family: Lato, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+body.groomer-profile #booking-sidebar .booking-cancel-note svg {
+    flex-shrink: 0;
+}
+
 .service__availability span {
     color: #9D9B98;
     text-align: right;
     font-family: Lato;
     font-size: 14px;
-    font-weight: 500;
+    font-weight: 400;
 }
 
 .custom-select .select-trigger span {
@@ -935,6 +1262,46 @@ html {
     font-style: normal;
     font-weight: 500;
     line-height: normal;
+}
+
+/* Multiselect pills in booking sidebar / service selects */
+.service-selected-options .selected-item {
+    background: var(--pill-bg, #FFF);
+    color: var(--pill-color, var(--groomer-color));
+    border: 1px solid var(--pill-border, var(--groomer-color));
+    box-shadow: 0 4px 5px 0 rgba(59, 55, 49, 0.10);
+    padding: 8px 14px;
+    cursor: pointer;
+}
+
+.service-selected-options .selected-item p {
+    margin: 0;
+    color: inherit;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.service-selected-options .selected-item svg {
+    flex-shrink: 0;
+    pointer-events: none;
+}
+
+.service-selected-options .selected-item svg path {
+    stroke: currentColor;
+}
+
+.service-selected-options .selected-item--accent {
+    --pill-bg: #FFFAF2;
+    --pill-color: #FBAC83;
+    --pill-border: #FBAC83;
+    box-shadow: none;
+}
+
+.service-selected-options .selected-item--muted {
+    --pill-bg: #FFF;
+    --pill-color: #9D9B98;
+    --pill-border: #D4D4D4;
+    box-shadow: none;
 }
 
 .selected-item.dark-bg {

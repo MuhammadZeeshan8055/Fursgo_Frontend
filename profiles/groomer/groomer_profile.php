@@ -175,12 +175,6 @@
             margin: 0;
         }
 
-        .service-selected-options .selected-item,
-        .service-selected-options .selected-item p {
-            color: #FFF !important;
-        }
-
-
         /* mid section css Ends */
 
 
@@ -2571,168 +2565,200 @@
                 <div id="booking-sidebar" class="service-card mt-4 mb-5">
                     <div class="service__header">
                         <div class="message-btn-div d-flex justify-content-center">
-                            <button class="message-btn">
+                            <button type="button" class="message-btn mt-3">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="19" height="16" viewBox="0 0 19 16" fill="none">
-                                    <path d="M0.75 7.75C0.75 4.45038 0.75 2.80012 1.7755 1.7755C2.801 0.750875 4.45038 0.75 7.75 0.75H11.25C14.5496 0.75 16.1999 0.75 17.2245 1.7755C18.2491 2.801 18.25 4.45038 18.25 7.75C18.25 11.0496 18.25 12.6999 17.2245 13.7245C16.199 14.7491 14.5496 14.75 11.25 14.75H7.75C4.45038 14.75 2.80012 14.75 1.7755 13.7245C0.750875 12.699 0.75 11.0496 0.75 7.75Z" stroke="#FBAC83" stroke-width="1.5"/>
-                                    <path d="M4.25 4.25L6.13913 5.825C7.7465 7.16375 8.54975 7.83313 9.5 7.83313C10.4502 7.83313 11.2544 7.16375 12.8609 5.82412L14.75 4.25" stroke="#FBAC83" stroke-width="1.5" stroke-linecap="round"/>
+                                    <path d="M0.75 7.75C0.75 4.45038 0.75 2.80012 1.7755 1.7755C2.801 0.750875 4.45038 0.75 7.75 0.75H11.25C14.5496 0.75 16.1999 0.75 17.2245 1.7755C18.2491 2.801 18.25 4.45038 18.25 7.75C18.25 11.0496 18.25 12.6999 17.2245 13.7245C16.199 14.7491 14.5496 14.75 11.25 14.75H7.75C4.45038 14.75 2.80012 14.75 1.7755 13.7245C0.750875 12.699 0.75 11.0496 0.75 7.75Z" stroke="#FBAC83" stroke-width="1.5" />
+                                    <path d="M4.25 4.25L6.13913 5.825C7.7465 7.16375 8.54975 7.83313 9.5 7.83313C10.4502 7.83313 11.2544 7.16375 12.8609 5.82412L14.75 4.25" stroke="#FBAC83" stroke-width="1.5" stroke-linecap="round" />
                                 </svg>
                                 Message Groomer
                             </button>
                         </div>
-                        <p class="responding-time text-center mt-4">
+                        <p class="responding-time text-center mt-3">
                             <svg xmlns="http://www.w3.org/2000/svg" width="13" height="9" viewBox="0 0 13 9" fill="none">
                                 <path d="M0.5 4.5L4.5 8.5L12.5 0.5" stroke="#9D9B98" stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
                             Typically responds within 1 hour.
                         </p>
                     </div>
-                    <div class="service__availability mt-5">
-                        <div class="service-type-select mt-4">
-                            <p class="label">Service Type</p>
-                            <div class="custom-select" data-multiselect data-color="#FFF" data-bg="#C9DDA0" data-border="#BACF8E">
-                                <div class="select-trigger w-auto">
+
+                    <div class="service__availability mt-4">
+                        <div class="booking-starting-price">
+                            <span class="booking-starting-price__amount">£10</span>
+                            <span class="booking-starting-price__label">starting price</span>
+                        </div>
+
+                        <div class="service-type-select booking-step mt-4">
+                            <p class="booking-step__label">
+                                <span class="booking-step__num">1</span>
+                                Choose a service type
+                            </p>
+                            <div class="custom-select" data-multiselect data-pill="accent" data-placeholder="Select services">
+                                <div class="select-trigger">
                                     <span class="selected-text">Select services</span>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="8" viewBox="0 0 15 8" fill="none">
-                                        <path d="M13.8737 0.5L7.13022 7.24344L0.499976 0.613201" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
-                                    </svg>
+                                    <span class="select-trigger-meta">
+                                        <span class="selected-price"></span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="8" viewBox="0 0 15 8" fill="none">
+                                            <path d="M13.8737 0.5L7.13022 7.24344L0.499976 0.613201" stroke="#9D9B98" stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+                                    </span>
                                 </div>
                                 <ul class="select-options">
-                                    <li data-value="full-groom">Full groom</li>
-                                    <li data-value="face-trim">Face Trim Only</li>
-                                    <li data-value="tail-trim">Tail Trim Only</li>
-                                    <li data-value="bath-brush">Bath & Brush</li>
-                                    <li data-value="nail-trim">Nail Trim</li>
+                                    <li data-value="full-groom" data-label="Full Groom" data-price="£45" data-amount="45">
+                                        <span class="option-label">Full Groom</span>
+                                        <span class="option-price">£45</span>
+                                    </li>
+                                    <li data-value="face-trim" data-label="Face Trim Only" data-price="£25" data-amount="25">
+                                        <span class="option-label">Face Trim Only</span>
+                                        <span class="option-price">£25</span>
+                                    </li>
+                                    <li data-value="tail-trim" data-label="Tail Trim Only" data-price="£20" data-amount="20">
+                                        <span class="option-label">Tail Trim Only</span>
+                                        <span class="option-price">£20</span>
+                                    </li>
+                                    <li data-value="bath-brush" data-label="Bath &amp; Brush" data-price="£30" data-amount="30">
+                                        <span class="option-label">Bath &amp; Brush</span>
+                                        <span class="option-price">£30</span>
+                                    </li>
                                 </ul>
                                 <input type="hidden" name="serviceType">
                             </div>
                             <div class="service-selected-options d-flex align-items-center flex-wrap gap-10 mt-4"></div>
                         </div>
 
-                        <div class="service-type-select mt-4">
-                            <p class="label">Extra's & Add-ons</p>
-                            <div class="custom-select" data-multiselect data-color="#FFF" data-bg="#C9DDA0" data-border="#BACF8E">
-                                <div class="select-trigger w-auto">
+                        <div class="service-type-select booking-step mt-5">
+                            <p class="booking-step__label">
+                                <span class="booking-step__num">2</span>
+                                Add-ons <span class="booking-step__optional">(optional)</span>
+                            </p>
+                            <div class="custom-select" data-multiselect data-pill="muted" data-placeholder="Select add-ons">
+                                <div class="select-trigger">
                                     <span class="selected-text">Select add-ons</span>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="8" viewBox="0 0 15 8" fill="none">
-                                        <path d="M13.8737 0.5L7.13022 7.24344L0.499976 0.613201" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
-                                    </svg>
+                                    <span class="select-trigger-meta">
+                                        <span class="selected-price"></span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="8" viewBox="0 0 15 8" fill="none">
+                                            <path d="M13.8737 0.5L7.13022 7.24344L0.499976 0.613201" stroke="#9D9B98" stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+                                    </span>
                                 </div>
                                 <ul class="select-options">
-                                    <li data-value="hypoallergenic-shampoo-upgrade">Hypoallergenic Shampoo Upgrade</li>
-                                    <li data-value="flea-tick-treatment">Flea & Tick Treatment</li>
-                                    <li data-value="hypoallergenic-shampoo">Hypoallergenic Shampoo</li>
+                                    <li data-value="hypoallergenic-shampoo-upgrade" data-label="Hypoallergenic Shampoo Upgrade" data-price="+£10" data-amount="10">
+                                        <span class="option-label">Hypoallergenic Shampoo Upgrade</span>
+                                        <span class="option-price">+£10</span>
+                                    </li>
+                                    <li data-value="flea-tick-treatment" data-label="Flea &amp; Tick Treatment" data-price="+£10" data-amount="10">
+                                        <span class="option-label">Flea &amp; Tick Treatment</span>
+                                        <span class="option-price">+£10</span>
+                                    </li>
+                                    <li data-value="nail-trim" data-label="Nail Trim" data-price="+£5" data-amount="5">
+                                        <span class="option-label">Nail Trim</span>
+                                        <span class="option-price">+£5</span>
+                                    </li>
+                                    <li data-value="hypoallergenic-shampoo" data-label="Hypoallergenic Shampoo" data-price="+£6" data-amount="6">
+                                        <span class="option-label">Hypoallergenic Shampoo</span>
+                                        <span class="option-price">+£6</span>
+                                    </li>
                                 </ul>
                                 <input type="hidden" name="extrasAddons">
                             </div>
-                            <div class="service-selected-options d-flex align-items-center flex-wrap gap-10 mt-4"></div>
+                            <div class="service-selected-options d-flex align-items-center flex-wrap gap-10 mt-3"></div>
                         </div>
 
+                        <div class="booking-step mt-5">
+                            <p class="booking-step__label">
+                                <span class="booking-step__num">3</span>
+                                Pick a date
+                            </p>
+                            <div class="calendar">
+                                <div class="calendar-header">
+                                    <button type="button" class="nav-btn" aria-label="Previous month">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="7" height="11" viewBox="0 0 7 11" fill="none">
+                                            <path d="M5.53426 10.484L0.499999 5.44975L5.44975 0.500005" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+                                    </button>
+                                    <span>October 2025</span>
+                                    <button type="button" class="nav-btn" aria-label="Next month">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="7" height="11" viewBox="0 0 7 11" fill="none">
+                                            <path d="M0.5 10.484L5.53426 5.44975L0.58451 0.500005" stroke="#3B3731" stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+                                    </button>
+                                </div>
 
-                        <div class="calendar mt-4">
-                            <div class="calendar-header">
-                                <button class="nav-btn">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="7" height="11" viewBox="0 0 7 11" fill="none">
-                                        <path d="M5.53426 10.484L0.499999 5.44975L5.44975 0.500005" stroke="#3B3731" stroke-linecap="round"
-                                            stroke-linejoin="round" />
-                                    </svg>
-                                </button>
-                                <span>October 2025</span>
-                                <button class="nav-btn">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="7" height="11" viewBox="0 0 7 11" fill="none">
-                                        <path d="M0.5 10.484L5.53426 5.44975L0.58451 0.500005" stroke="#3B3731" stroke-linecap="round"
-                                            stroke-linejoin="round" />
-                                    </svg>
-                                </button>
+                                <div class="weekdays mt-3">
+                                    <div>M</div>
+                                    <div>T</div>
+                                    <div>W</div>
+                                    <div>T</div>
+                                    <div>F</div>
+                                    <div>S</div>
+                                    <div>S</div>
+                                </div>
+
+                                <div class="dates mt-3"></div>
+                            </div>
+                        </div>
+
+                        <div class="booking-step mt-5">
+                            <p class="booking-step__label">
+                                <span class="booking-step__num">4</span>
+                                Pick a time
+                            </p>
+                            <div class="times booking-times">
+                                <button type="button" class="time selected" data-time="09:00">09:00</button>
+                                <button type="button" class="time" data-time="11:00">11:00</button>
+                                <button type="button" class="time" data-time="12:00">12:00</button>
+                                <button type="button" class="time" data-time="16:00">16:00</button>
+                                <button type="button" class="time" data-time="17:30">17:30</button>
+                                <button type="button" class="time" data-time="18:00">18:00</button>
+                                <button type="button" class="time" data-time="19:00">19:00</button>
+                                <button type="button" class="time" data-time="19:45">19:45</button>
+                            </div>
+                        </div>
+
+                        <div class="booking-summary mt-4">
+                            <div class="booking-summary__section">
+                                <p class="booking-summary__heading">Service</p>
+                                <div class="booking-summary__row">
+                                    <span>Full Groom</span>
+                                    <span>£48.00</span>
+                                </div>
                             </div>
 
-                            <div class="weekdays mt-4">
-                                <div>M</div>
-                                <div>T</div>
-                                <div>W</div>
-                                <div>T</div>
-                                <div>F</div>
-                                <div>S</div>
-                                <div>S</div>
+                            <div class="booking-summary__section mt-3">
+                                <p class="booking-summary__heading">Add-Ons (3)</p>
+                                <div class="booking-summary__row">
+                                    <span>Nail Grinding</span>
+                                    <span>+£25.00</span>
+                                </div>
+                                <div class="booking-summary__row">
+                                    <span>Fast-Dry</span>
+                                    <span>+£8.00</span>
+                                </div>
+                                <div class="booking-summary__row">
+                                    <span>Hypoallergenic Shampoo</span>
+                                    <span>+£20.00</span>
+                                </div>
                             </div>
 
-                            <div class="dates mt-4">
-                                <div></div>
-                                <div></div>
-                                <div class="date">1</div>
-                                <div class="date">2</div>
-                                <div class="date">3</div>
-                                <div class="date">4</div>
+                            <div class="booking-summary__divider"></div>
 
-                                <div class="date">5</div>
-                                <div class="date">6</div>
-                                <div class="date">7</div>
-                                <div class="date">8</div>
-                                <div class="date">9</div>
-                                <div class="date">10</div>
-                                <div class="date">11</div>
-
-                                <div class="date">12</div>
-                                <div class="date">13</div>
-                                <div class="date selected">14</div>
-                                <div class="date">15</div>
-                                <div class="date">16</div>
-                                <div class="date">17</div>
-                                <div class="date">18</div>
-
-                                <div class="date">19</div>
-                                <div class="date">20</div>
-                                <div class="date">21</div>
-                                <div class="date">22</div>
-                                <div class="date">23</div>
-                                <div class="date">24</div>
-                                <div class="date">25</div>
-
-                                <div class="date">26</div>
-                                <div class="date">27</div>
-                                <div class="date">28</div>
-                                <div class="date">29</div>
-                                <div class="date">30</div>
-                                <div class="date">31</div>
+                            <div class="booking-summary__total">
+                                <span>Total</span>
+                                <span class="booking-summary__total-amount">£76.00</span>
                             </div>
 
-                            <div class="availability mt-4">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
-                                    <path
-                                        d="M9 0C4.05 0 0 4.05 0 9C0 13.95 4.05 18 9 18C13.95 18 18 13.95 18 9C18 4.05 13.95 0 9 0ZM7.2 13.5L2.7 9L3.969 7.731L7.2 10.953L14.031 4.122L15.3 5.4L7.2 13.5Z"
-                                        fill="#D8E8B7" />
+                            <div class="book-btn-div mt-3">
+                                <button type="button" class="book-btn booking-cta-btn" data-modal-open="groomer_prompt">Book for Oct 14, 09:00</button>
+                            </div>
+
+                            <p class="booking-cancel-note">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10" fill="none">
+                                    <path d="M3.125 5L4.375 6.25L6.875 3.75" stroke="#9D9B98" stroke-linecap="round" stroke-linejoin="round" />
+                                    <circle cx="5" cy="5" r="4.5" stroke="#9D9B98" />
                                 </svg>
-                                Availability
-                            </div>
-
-                            <div class="times mt-4">
-                                <div class="time">09:00 AM</div>
-                                <div class="time">11:00 AM</div>
-                                <div class="time selected">12:00 PM</div>
-                                <div class="time">16:00 PM</div>
-                                <div class="time">20:00 PM</div>
-                            </div>
-
-                            <div class="book-btn-div mt-4">
-                                <button class="book-btn" data-modal-open="groomer_prompt">Book now</button>
-                            </div>
-                            <div class="last-booked">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
-                                    <path
-                                        d="M6.06678 12C5.22451 12 4.43583 11.8435 3.70074 11.5305C2.96564 11.2175 2.32358 10.789 1.77453 10.245C1.22549 9.701 0.79222 9.066 0.474725 8.34001C0.158242 7.61251 0 6.83251 0 6.00001C0 5.16801 0.158242 4.38801 0.474725 3.66001C0.791209 2.93201 1.22448 2.29702 1.77453 1.75502C2.32459 1.21302 2.96666 0.784518 3.70074 0.469518C4.43482 0.154519 5.2235 -0.00198107 6.06678 1.89274e-05C6.93736 1.89274e-05 7.76674 0.178019 8.55492 0.534018C9.34309 0.889518 10.0302 1.38552 10.6161 2.02202V0.606018C10.6161 0.499518 10.6525 0.410268 10.7253 0.338269C10.7981 0.266269 10.8884 0.230519 10.996 0.231019C11.1037 0.231519 11.1937 0.267269 11.266 0.338269C11.3383 0.409268 11.3745 0.498518 11.3745 0.606018V2.74051C11.3745 2.91201 11.3158 3.05576 11.1985 3.17176C11.0812 3.28776 10.9359 3.34601 10.7625 3.34651H8.60421C8.49653 3.34651 8.40628 3.31026 8.33348 3.23776C8.26118 3.16626 8.22504 3.07726 8.22504 2.97076C8.22504 2.86426 8.26118 2.77526 8.33348 2.70376C8.40578 2.63227 8.49602 2.59627 8.60421 2.59577H10.1057C9.57793 2.02077 8.96872 1.56952 8.27812 1.24202C7.58853 0.914018 6.85142 0.750018 6.06678 0.750018C4.5875 0.750018 3.33294 1.25952 2.3031 2.27852C1.27327 3.29751 0.758095 4.53801 0.757589 6.00001C0.757084 7.46201 1.27225 8.70275 2.3031 9.72225C3.33395 10.7418 4.58826 11.251 6.06602 11.25C7.31578 11.25 8.4217 10.8625 9.38379 10.0875C10.3459 9.31251 10.9644 8.32901 11.2395 7.13701C11.2733 7.02301 11.331 6.93551 11.4124 6.87451C11.4943 6.81251 11.5891 6.78926 11.6968 6.80476C11.8115 6.81976 11.8957 6.87426 11.9493 6.96826C12.0029 7.06226 12.014 7.16451 11.9826 7.27501C11.694 8.65701 10.9998 9.79 9.90023 10.674C8.80062 11.558 7.52331 12 6.06678 12ZM6.4452 5.84401L8.72024 8.09401C8.79102 8.16401 8.82893 8.25001 8.83399 8.35201C8.83905 8.45451 8.80113 8.54551 8.72024 8.62501C8.63935 8.70501 8.54986 8.74501 8.45178 8.74501C8.3537 8.74501 8.26447 8.70501 8.18409 8.62501L5.87113 6.33751C5.8049 6.27251 5.75763 6.20401 5.72932 6.13201C5.701 6.06001 5.68685 5.98576 5.68685 5.90926V2.62502C5.68685 2.51852 5.72325 2.42952 5.79605 2.35802C5.86885 2.28602 5.95909 2.25002 6.06678 2.25002C6.17447 2.25002 6.26446 2.28602 6.33675 2.35802C6.40905 2.43002 6.4452 2.51902 6.4452 2.62502V5.84401Z"
-                                        fill="#9D9B98" />
-                                </svg> Last booked 2 days ago
-                            </div>
-
-                            <div class="note mt-4">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="120" height="100" viewBox="0 0 48 48" fill="none">
-                                    <path
-                                        d="M24 4.8C34.5864 4.8 43.2 13.4136 43.2 24C43.2 34.5864 34.5864 43.2 24 43.2C13.4136 43.2 4.8 34.5864 4.8 24C4.8 13.4136 13.4136 4.8 24 4.8ZM24 0C10.7448 0 0 10.7448 0 24C0 37.2552 10.7448 48 24 48C37.2552 48 48 37.2552 48 24C48 10.7448 37.2552 0 24 0ZM26.4 31.2H21.6V36H26.4V31.2ZM21.6 26.4H26.4L27.6 12H20.4L21.6 26.4Z"
-                                        fill="#FFC97A" />
-                                </svg> Free cancellations up to 24 hours before appointment. Tools sanitised after every pet.
-                            </div>
+                                Free cancellation up to 24 hours before appointment
+                            </p>
                         </div>
                     </div>
-
                 </div>
             </div>
 

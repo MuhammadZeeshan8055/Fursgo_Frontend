@@ -5,11 +5,14 @@ const monthNames = [
 ];
 
 let currentDate = new Date(2025, 9); // October 2025
+let selectedDay = 14;
 
+const bookingSidebar = document.getElementById('booking-sidebar');
 const headerTitle = document.querySelector('.calendar-header span');
 const datesContainer = document.querySelector('.dates');
 const prevBtn = document.querySelector('.nav-btn:first-child');
 const nextBtn = document.querySelector('.nav-btn:last-child');
+const bookingCtaBtn = document.querySelector('.booking-cta-btn');
 
 // Example available dates (can come from backend later)
 const availableDates = [
@@ -23,7 +26,30 @@ const availableDates = [
     "2025-10-30"
 ];
 
+function getSelectedTimeLabel() {
+    const selectedTime = document.querySelector('#booking-sidebar .time.selected, .times .time.selected');
+    return selectedTime?.dataset.time || selectedTime?.textContent.trim() || '';
+}
+
+function updateBookingCta() {
+    if (!bookingCtaBtn) return;
+
+    const monthShort = monthNames[currentDate.getMonth()].slice(0, 3);
+    const timeLabel = getSelectedTimeLabel();
+    const dayLabel = selectedDay ? String(selectedDay) : '';
+
+    if (dayLabel && timeLabel) {
+        bookingCtaBtn.textContent = `Book for ${monthShort} ${dayLabel}, ${timeLabel}`;
+    } else if (dayLabel) {
+        bookingCtaBtn.textContent = `Book for ${monthShort} ${dayLabel}`;
+    } else {
+        bookingCtaBtn.textContent = 'Book now';
+    }
+}
+
 function renderCalendar() {
+    if (!datesContainer || !headerTitle) return;
+
     datesContainer.innerHTML = '';
 
     const year = currentDate.getFullYear();
@@ -48,31 +74,47 @@ function renderCalendar() {
         if (availableDates.includes(dateKey)) {
             dateDiv.classList.add('available');
 
+            if (selectedDay === day) {
+                dateDiv.classList.add('selected');
+            }
+
             dateDiv.addEventListener('click', () => {
                 document.querySelectorAll('.date').forEach(d => d.classList.remove('selected'));
                 dateDiv.classList.add('selected');
+                selectedDay = day;
+                updateBookingCta();
             });
         }
 
         datesContainer.appendChild(dateDiv);
     }
+
+    updateBookingCta();
 }
 
-prevBtn.addEventListener('click', () => {
-    currentDate.setMonth(currentDate.getMonth() - 1);
-    renderCalendar();
-});
+if (prevBtn) {
+    prevBtn.addEventListener('click', () => {
+        currentDate.setMonth(currentDate.getMonth() - 1);
+        selectedDay = null;
+        renderCalendar();
+    });
+}
 
-nextBtn.addEventListener('click', () => {
-    currentDate.setMonth(currentDate.getMonth() + 1);
-    renderCalendar();
-});
+if (nextBtn) {
+    nextBtn.addEventListener('click', () => {
+        currentDate.setMonth(currentDate.getMonth() + 1);
+        selectedDay = null;
+        renderCalendar();
+    });
+}
 
 // Time selection (unchanged)
 document.querySelectorAll('.time').forEach(time => {
     time.addEventListener('click', () => {
-        document.querySelectorAll('.time').forEach(t => t.classList.remove('selected'));
+        const scope = time.closest('.times') || document;
+        scope.querySelectorAll('.time').forEach(t => t.classList.remove('selected'));
         time.classList.add('selected');
+        updateBookingCta();
     });
 });
 
@@ -381,24 +423,38 @@ document.querySelectorAll('.custom-select[data-multiselect]').forEach(select => 
         .querySelector('.service-selected-options');
 
     const selectedText = select.querySelector('.selected-text');
+    const selectedPrice = select.querySelector('.selected-price');
     const color = select.dataset.color || '#FBAC83';
+    const placeholder = select.dataset.placeholder || 'Select add-ons';
 
     const selected = new Set();
+
+    function getOptionLabel(option) {
+        return option.dataset.label
+            || option.querySelector('.option-label')?.textContent.trim()
+            || option.textContent.trim();
+    }
+
+    function getOptionPrice(option) {
+        return option?.dataset.price || '';
+    }
 
     // ✅ update selected text
     function updateSelectedText() {
         if (selected.size === 0) {
-            selectedText.textContent = select.dataset.placeholder || 'Select add-ons';
+            selectedText.textContent = placeholder;
+            if (selectedPrice) selectedPrice.textContent = '';
             return;
         }
 
         const last = [...selected].pop();
 
-        const label = select.querySelector(
+        const option = select.querySelector(
             `li[data-value="${CSS.escape(last)}"]`
-        )?.textContent.trim();
+        );
 
-        selectedText.textContent = label || 'Select add-ons';
+        selectedText.textContent = getOptionLabel(option) || placeholder;
+        if (selectedPrice) selectedPrice.textContent = getOptionPrice(option);
     }
 
     // Open / close
@@ -409,9 +465,8 @@ document.querySelectorAll('.custom-select[data-multiselect]').forEach(select => 
         select.classList.toggle('open');
 
         const isOpen = select.classList.contains('open');
-        trigger.style.cssText = isOpen
-            ? 'border-bottom-left-radius:0;border-bottom-right-radius:0;'
-            : 'border-bottom-left-radius:12px;border-bottom-right-radius:12px;';
+        trigger.style.borderBottomLeftRadius = isOpen ? '0' : '12px';
+        trigger.style.borderBottomRightRadius = isOpen ? '0' : '12px';
     });
 
     // Option click
@@ -420,7 +475,8 @@ document.querySelectorAll('.custom-select[data-multiselect]').forEach(select => 
             e.stopPropagation();
 
             const val = option.dataset.value;
-            const label = option.textContent.trim();
+            const label = getOptionLabel(option);
+            const price = getOptionPrice(option);
 
             if (selected.has(val)) {
                 selected.delete(val);
@@ -429,13 +485,13 @@ document.querySelectorAll('.custom-select[data-multiselect]').forEach(select => 
             } else {
                 selected.add(val);
                 option.classList.add('selected');
-                createPill(val, label);
+                createPill(val, label, price);
             }
 
             select.classList.remove('open');
 
-            trigger.style.cssText =
-                'border-bottom-left-radius:12px;border-bottom-right-radius:12px;';
+            trigger.style.borderBottomLeftRadius = '12px';
+            trigger.style.borderBottomRightRadius = '12px';
 
             select.classList.toggle('has-value', selected.size > 0);
 
@@ -445,30 +501,28 @@ document.querySelectorAll('.custom-select[data-multiselect]').forEach(select => 
         });
     });
 
-    function createPill(val, label) {
+    function createPill(val, label, price = '') {
         const pill = document.createElement('div');
-        pill.className = 'selected-item d-flex align-items-center gap-10';
+        const variant = select.dataset.pill || 'custom';
+        pill.className = `selected-item selected-item--${variant} d-flex align-items-center gap-10`;
         pill.dataset.value = val;
 
-        const bg = select.dataset.bg || 'none';
-        const borderColor = select.dataset.border || color;
+        // Dynamic theme only when no preset variant (e.g. space profile)
+        if (variant === 'custom') {
+            const bg = select.dataset.bg || 'transparent';
+            const borderColor = select.dataset.border || color;
+            pill.style.setProperty('--pill-bg', bg);
+            pill.style.setProperty('--pill-color', color);
+            pill.style.setProperty('--pill-border', borderColor);
+        }
 
-        pill.style.cssText = `
-        background:${bg};
-        color:${color};
-        border:1px solid ${borderColor};
-        border-radius:100px;
-        cursor:pointer;
-        box-shadow: 0 4px 5px 0 rgba(59, 55, 49, 0.10);
-    `;
+        const pillLabel = price ? `${label} ${price}` : label;
 
         pill.innerHTML = `
-        <p style="color:${color};margin:0;">${label}</p>
-        <svg style="flex-shrink:0;pointer-events:none;"
-            xmlns="http://www.w3.org/2000/svg"
-            width="9" height="9" viewBox="0 0 9 9" fill="none">
+        <p>${pillLabel}</p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="9" height="9" viewBox="0 0 9 9" fill="none">
             <path d="M0.5 7.57L7.572 0.5M0.5 0.5L7.572 7.57"
-                stroke="${color}" stroke-linecap="round"/>
+                stroke="currentColor" stroke-linecap="round"/>
         </svg>
     `;
 
