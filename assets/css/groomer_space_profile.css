@@ -5,6 +5,12 @@
     --card-bg: #fff;
     --groomer-color: #FBAC83;
 
+    /* Profile redesign accents (groomer defaults) */
+    --profile-accent: #FBAC83;
+    --profile-accent-soft: #FFF7F3;
+    --service-pill-bg: #FFFAF2;
+    --service-pill-color: #FBAC83;
+
     /* card colors */
     --card-bg: #e9f3d9;
     --card-border: #e0efdb;
@@ -12,9 +18,16 @@
     --radius: 10px;
 }
 
+body.groomer-profile {
+    --profile-accent: #FBAC83;
+    --profile-accent-soft: #FFF7F3;
+}
+
 body.space-profile {
     --groomer-color: #FFA899;
     --active-bg: #FFA899;
+    --profile-accent: #FFA899;
+    --profile-accent-soft: #FFF7F5;
 }
 
 .fs-16 {
@@ -547,16 +560,8 @@ body.space-profile .message-btn {
     border-radius: 96px;
     box-shadow: 0 4px 4px 0 rgba(59, 55, 49, 0.10);
     text-decoration: none;
-}
-
-body.groomer-profile .message-btn {
-    background: #FFF7F3;
-    color: #FBAC83;
-}
-
-body.space-profile .message-btn {
-    background: #FFF7F5;
-    color: #FFA899;
+    background: var(--profile-accent-soft);
+    color: var(--profile-accent);
 }
 
 body.groomer-profile .message-btn svg,
@@ -646,19 +651,12 @@ body.space-profile .booking-step__num {
     width: 22px;
     height: 22px;
     border-radius: 50%;
+    background: var(--profile-accent);
     color: #FFF;
     font-family: Lato, sans-serif;
     font-size: 12px;
     font-weight: 700;
     flex-shrink: 0;
-}
-
-body.groomer-profile .booking-step__num {
-    background: #FBAC83;
-}
-
-body.space-profile .booking-step__num {
-    background: #FFA899;
 }
 
 /* Booking sidebar selects — override shared .custom-select conflicts */
@@ -783,11 +781,12 @@ body.space-profile #booking-sidebar .booking-step .service-selected-options:empt
     margin: 0 !important;
 }
 
+body.groomer-profile #booking-sidebar .service-selected-options .selected-item--accent,
 body.space-profile #booking-sidebar .service-selected-options .selected-item--accent {
     border-radius: 100px;
-    border: 1px solid #FBAC83;
-    background: #FFFAF2;
-    color: #FBAC83;
+    border: 1px solid var(--service-pill-color);
+    background: var(--service-pill-bg);
+    color: var(--service-pill-color);
     box-shadow: none;
 }
 
@@ -796,14 +795,6 @@ body.space-profile #booking-sidebar .service-selected-options .selected-item--mu
     border-radius: 32px;
     background: transparent;
     color: #9D9B98;
-    box-shadow: none;
-}
-
-body.groomer-profile #booking-sidebar .service-selected-options .selected-item--accent {
-    border-radius: 100px;
-    border: 1px solid #FBAC83;
-    background: #FFFAF2;
-    color: #FBAC83;
     box-shadow: none;
 }
 
@@ -855,19 +846,12 @@ body.space-profile #booking-sidebar .date.available {
     background: #E9F3D9;
 }
 
-body.groomer-profile #booking-sidebar .date.selected {
-    color: #FFF;
-    border-radius: 10px;
-    border: 1px solid #FBAC83;
-    background: #FBAC83;
-    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.20);
-}
-
+body.groomer-profile #booking-sidebar .date.selected,
 body.space-profile #booking-sidebar .date.selected {
     color: #FFF;
     border-radius: 10px;
-    border: 1px solid #FFA899;
-    background: #FFA899;
+    border: 1px solid var(--profile-accent);
+    background: var(--profile-accent);
     box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.20);
 }
 
@@ -893,17 +877,11 @@ body.space-profile #booking-sidebar .booking-times .time {
     box-shadow: none;
 }
 
-body.groomer-profile #booking-sidebar .booking-times .time.selected {
-    border-color: #FBAC83;
-    background: #FFF7F3;
-    color: #FBAC83;
-    box-shadow: none;
-}
-
+body.groomer-profile #booking-sidebar .booking-times .time.selected,
 body.space-profile #booking-sidebar .booking-times .time.selected {
-    border-color: #FFA899;
-    background: #FFF7F5;
-    color: #FFA899;
+    border-color: var(--profile-accent);
+    background: var(--profile-accent-soft);
+    color: var(--profile-accent);
     box-shadow: none;
 }
 
@@ -1833,8 +1811,8 @@ body.space-profile .reviews-read-more {
 body.space-profile #before_you_book .add-on-services .selected-item {
     border: none;
     border-radius: 32px;
-    background: #FFF7F5;
-    color: #FFA899;
+    background: var(--profile-accent-soft);
+    color: var(--profile-accent);
     text-align: center;
     font-family: Lato, sans-serif;
     font-size: 14px;
@@ -1871,9 +1849,9 @@ body.space-profile #before_you_book .add-on-services .selected-item {
 }
 
 .service-selected-options .selected-item--accent {
-    --pill-bg: #FFFAF2;
-    --pill-color: #FBAC83;
-    --pill-border: #FBAC83;
+    --pill-bg: var(--service-pill-bg);
+    --pill-color: var(--service-pill-color);
+    --pill-border: var(--service-pill-color);
     border-radius: 100px;
     box-shadow: none;
 }
@@ -2094,109 +2072,6 @@ body.space-profile .location-privacy-note svg {
     body.space-profile .location-privacy-note {
         font-size: 14px;
     }
-}
-
-
-/* card for space full day / half day  */
-.timeslot-card {
-    width: 100%;
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    border-radius: var(--radius);
-    padding: 18px 22px;
-    display: none;
-}
-
-.timeslot-card h3 {
-    margin: 0 0 14px;
-    color: #3B3731;
-    font-family: Lato;
-    font-size: 16px;
-    font-weight: 600;
-}
-
-.grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 18px;
-}
-
-.timeslot-card .label {
-    color: #9C9790;
-    font-family: Lato;
-    font-size: 16px;
-    font-weight: 600;
-}
-
-.time-box {
-    position: relative;
-}
-
-.card-time {
-    height: 54px;
-    border-radius: 10px;
-    border: 1px solid var(--border);
-    background: #fff;
-    padding: 0 14px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-}
-
-.card-time.end {
-    border-radius: 10px;
-    background: rgba(216, 232, 183, 0.75);
-}
-
-
-.timeslot-card #startText,
-.timeslot-card #endText {
-    color: #3B3731;
-    font-family: Lato;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-}
-
-.caret {
-    font-size: 12px;
-    color: #6b6f66;
-}
-
-/* Dropdown */
-.time.dropdown {
-    position: absolute;
-    top: 62px;
-    left: 0;
-    right: 0;
-    background: #fff;
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    max-height: 220px;
-    overflow: auto;
-    box-shadow: 0 8px 18px rgba(0, 0, 0, .08);
-    display: none;
-    z-index: 10;
-}
-
-.time.dropdown.open {
-    display: block;
-}
-
-.time.dropdown li {
-    list-style: none;
-    padding: 12px 8px;
-    font-size: 14px;
-    cursor: pointer;
-    color: black;
-}
-
-.time.dropdown li:hover {
-    background: #eef7ed;
 }
 
 
