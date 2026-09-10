@@ -2413,7 +2413,7 @@
                             </svg>
                             &nbsp;
                             &nbsp;
-                            <p>Works with dogs & cats up to 35kg</p>
+                            <p>Suitable for all breeds and coat types</p>
                         </div>
                         <div class="preferences-list d-flex align-items-center mt-4">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
