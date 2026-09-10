@@ -2570,34 +2570,15 @@
             <div class="col-lg-4">
                 <div id="booking-sidebar" class="service-card mt-4 mb-5">
                     <div class="service__header">
-                        <div class="d-flex align-items-center gap-20">
-                            <div class="avatar-wrap d-flex align-items-center">
-                                <img class="avatar" src="<?= BASE_URL ?>/assets/images/groomer-profile.png" alt="Sarah's avatar">
-                            </div>
-                            <div>
-                                <h2 class="section-heading">Sarah W.</h2>
-                                <span class="section-heading-span fs-16">Sarah’s Grooming Studio</span>
-                                <div class="tags-row mt-3">
-                                    <span class="pill serive-card">
-                                        Home Visit
-                                    </span>
-                                    <span class="pill serive-card">
-                                        Mobile Station
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="personal-info d-flex align-items-center flex-wrap mt-4">
-                            <span class="listing-option">ID-Verified</span>
-                            <span class="listing-option">5+ years of experience</span>
-                            <span class="listing-option">City & Guilds Certified</span>
-                            <span class="listing-option">Insured</span>
-                            <span class="listing-option">Animal-handling certified</span>
-                        </div>
-                        <div class="message-btn-div d-flex justify-content-center mt-4">
+                        <div class="message-btn-div d-flex justify-content-center">
                             <button class="message-btn">Message Groomer</button>
                         </div>
-                        <p class="responding-time text-center mt-2">Typically responds within 1 hour.</p>
+                        <p class="responding-time text-center mt-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="9" viewBox="0 0 13 9" fill="none">
+                                <path d="M0.5 4.5L4.5 8.5L12.5 0.5" stroke="#9D9B98" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                            Typically responds within 1 hour.
+                        </p>
                     </div>
                     <div class="service__availability mt-5">
                         <h2 class="section-heading mb-2">Availability</h2>

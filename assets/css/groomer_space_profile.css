@@ -521,33 +521,6 @@ h1 {
     font-size: 18px;
 }
 
-
-.personal-info {
-    gap: 12px;
-
-}
-
-.listing-option {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    color: #3B3731;
-    font-family: Lato;
-    font-size: 16px;
-    font-weight: 400;
-    opacity: 0.75;
-}
-
-.listing-option::before {
-    content: "";
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    margin-right: 5px;
-    background: url('/projects/fursgo_old/assets/icons/check-icon.svg') no-repeat center center;
-    background-size: contain;
-}
-
 .message-btn {
     padding: 14px 50px;
     cursor: pointer;
