@@ -2592,7 +2592,7 @@
                                 <span class="booking-step__num">1</span>
                                 Choose a service type
                             </p>
-                            <div class="custom-select" data-multiselect data-pill="accent" data-placeholder="Select services">
+                            <div class="custom-select" data-multiselect data-pill="accent" data-summary="service" data-placeholder="Select services">
                                 <div class="select-trigger">
                                     <span class="selected-text">Select services</span>
                                     <span class="select-trigger-meta">
@@ -2630,7 +2630,7 @@
                                 <span class="booking-step__num">2</span>
                                 Add-ons <span class="booking-step__optional">(optional)</span>
                             </p>
-                            <div class="custom-select" data-multiselect data-pill="muted" data-placeholder="Select add-ons">
+                            <div class="custom-select" data-multiselect data-pill="muted" data-summary="addons" data-placeholder="Select add-ons">
                                 <div class="select-trigger">
                                     <span class="selected-text">Select add-ons</span>
                                     <span class="select-trigger-meta">
@@ -2715,35 +2715,21 @@
                         </div>
 
                         <div class="booking-summary mt-4">
-                            <div class="booking-summary__section">
+                            <div class="booking-summary__section" data-summary-section="service" hidden>
                                 <p class="booking-summary__heading">Service</p>
-                                <div class="booking-summary__row">
-                                    <span>Full Groom</span>
-                                    <span>£48.00</span>
-                                </div>
+                                <div class="booking-summary__rows" data-summary-rows="service"></div>
                             </div>
 
-                            <div class="booking-summary__section mt-3">
-                                <p class="booking-summary__heading">Add-Ons (3)</p>
-                                <div class="booking-summary__row">
-                                    <span>Nail Grinding</span>
-                                    <span>+£25.00</span>
-                                </div>
-                                <div class="booking-summary__row">
-                                    <span>Fast-Dry</span>
-                                    <span>+£8.00</span>
-                                </div>
-                                <div class="booking-summary__row">
-                                    <span>Hypoallergenic Shampoo</span>
-                                    <span>+£20.00</span>
-                                </div>
+                            <div class="booking-summary__section mt-3" data-summary-section="addons" hidden>
+                                <p class="booking-summary__heading" data-summary-addons-heading>Add-Ons (0)</p>
+                                <div class="booking-summary__rows" data-summary-rows="addons"></div>
                             </div>
 
                             <div class="booking-summary__divider"></div>
 
                             <div class="booking-summary__total">
                                 <span>Total</span>
-                                <span class="booking-summary__total-amount">£76.00</span>
+                                <span class="booking-summary__total-amount" data-summary-total>£0.00</span>
                             </div>
 
                             <div class="book-btn-div mt-3">

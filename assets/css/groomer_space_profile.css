@@ -821,6 +821,14 @@ body.groomer-profile #booking-sidebar .booking-summary {
     border-radius: 0 0 10px 10px;
 }
 
+body.groomer-profile #booking-sidebar .booking-summary__section[hidden] {
+    display: none !important;
+}
+
+body.groomer-profile #booking-sidebar .booking-summary__section[hidden] + .booking-summary__section {
+    margin-top: 0 !important;
+}
+
 body.groomer-profile #booking-sidebar .booking-summary__heading {
     margin: 0 0 8px;
     color: #3B3731;

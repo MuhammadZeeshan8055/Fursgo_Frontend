@@ -47,6 +47,71 @@ function updateBookingCta() {
     }
 }
 
+function formatBookingMoney(amount, { plus = false } = {}) {
+    const value = Number(amount) || 0;
+    const formatted = `£${value.toFixed(2)}`;
+    return plus ? `+${formatted}` : formatted;
+}
+
+function getBookingSummaryItems(summaryKey) {
+    const select = document.querySelector(`#booking-sidebar .custom-select[data-summary="${summaryKey}"]`);
+    if (!select) return [];
+
+    return [...select.querySelectorAll('.select-options li.selected')].map(option => ({
+        value: option.dataset.value,
+        label: option.dataset.label
+            || option.querySelector('.option-label')?.textContent.trim()
+            || option.textContent.trim(),
+        amount: Number(option.dataset.amount) || 0,
+    }));
+}
+
+function updateBookingSummary() {
+    const summary = document.querySelector('#booking-sidebar .booking-summary');
+    if (!summary) return;
+
+    const serviceSection = summary.querySelector('[data-summary-section="service"]');
+    const addonsSection = summary.querySelector('[data-summary-section="addons"]');
+    const serviceRows = summary.querySelector('[data-summary-rows="service"]');
+    const addonsRows = summary.querySelector('[data-summary-rows="addons"]');
+    const addonsHeading = summary.querySelector('[data-summary-addons-heading]');
+    const totalEl = summary.querySelector('[data-summary-total]');
+
+    const services = getBookingSummaryItems('service');
+    const addons = getBookingSummaryItems('addons');
+
+    if (serviceRows) {
+        serviceRows.innerHTML = services.map(item => `
+            <div class="booking-summary__row" data-value="${item.value}">
+                <span>${item.label}</span>
+                <span>${formatBookingMoney(item.amount)}</span>
+            </div>
+        `).join('');
+    }
+
+    if (addonsRows) {
+        addonsRows.innerHTML = addons.map(item => `
+            <div class="booking-summary__row" data-value="${item.value}">
+                <span>${item.label}</span>
+                <span>${formatBookingMoney(item.amount, { plus: true })}</span>
+            </div>
+        `).join('');
+    }
+
+    if (serviceSection) serviceSection.hidden = services.length === 0;
+    if (addonsSection) addonsSection.hidden = addons.length === 0;
+
+    if (addonsHeading) {
+        addonsHeading.textContent = `Add-Ons (${addons.length})`;
+    }
+
+    const total = [...services, ...addons].reduce((sum, item) => sum + item.amount, 0);
+    if (totalEl) totalEl.textContent = formatBookingMoney(total);
+}
+
+window.updateBookingSummary = updateBookingSummary;
+updateBookingSummary();
+
 function renderCalendar() {
     if (!datesContainer || !headerTitle) return;
 
@@ -498,6 +563,9 @@ document.querySelectorAll('.custom-select[data-multiselect]').forEach(select => 
             hiddenInput.value = [...selected].join(',');
 
             updateSelectedText(); // ✅ ADDED
+            if (select.closest('#booking-sidebar') && typeof window.updateBookingSummary === 'function') {
+                window.updateBookingSummary();
+            }
         });
     });
 
@@ -539,6 +607,9 @@ document.querySelectorAll('.custom-select[data-multiselect]').forEach(select => 
             hiddenInput.value = [...selected].join(',');
 
             updateSelectedText();
+            if (select.closest('#booking-sidebar') && typeof window.updateBookingSummary === 'function') {
+                window.updateBookingSummary();
+            }
         });
 
         pillContainer.appendChild(pill);
