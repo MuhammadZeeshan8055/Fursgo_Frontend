@@ -537,19 +537,30 @@ h1 {
     box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.10);
 }
 
-body.groomer-profile .message-btn {
+body.groomer-profile .message-btn,
+body.space-profile .message-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
     border: none;
     border-radius: 96px;
-    background: #FFF7F3;
     box-shadow: 0 4px 4px 0 rgba(59, 55, 49, 0.10);
+    text-decoration: none;
+}
+
+body.groomer-profile .message-btn {
+    background: #FFF7F3;
     color: #FBAC83;
 }
 
-body.groomer-profile .message-btn svg {
+body.space-profile .message-btn {
+    background: #FFF7F5;
+    color: #FFA899;
+}
+
+body.groomer-profile .message-btn svg,
+body.space-profile .message-btn svg {
     flex-shrink: 0;
 }
 
@@ -563,7 +574,8 @@ body.groomer-profile .message-btn svg {
     line-height: normal;
 }
 
-body.groomer-profile .service__header .responding-time {
+body.groomer-profile .service__header .responding-time,
+body.space-profile .service__header .responding-time {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -577,19 +589,22 @@ body.groomer-profile .service__header .responding-time {
     line-height: normal;
 }
 
-body.groomer-profile .service__header {
+body.groomer-profile .service__header,
+body.space-profile .service__header {
     padding-bottom: 24px;
     border-bottom: 1px solid #E8E8E8;
 }
 
-body.groomer-profile .booking-starting-price {
+body.groomer-profile .booking-starting-price,
+body.space-profile .booking-starting-price {
     display: flex;
     align-items: baseline;
     gap: 8px;
     margin-bottom: 8px;
 }
 
-body.groomer-profile .booking-starting-price__amount {
+body.groomer-profile .booking-starting-price__amount,
+body.space-profile .booking-starting-price__amount {
     color: #3B3731;
     font-family: "Playfair Display", serif;
     font-size: 26px;
@@ -597,14 +612,16 @@ body.groomer-profile .booking-starting-price__amount {
     line-height: 1;
 }
 
-body.groomer-profile .booking-starting-price__label {
+body.groomer-profile .booking-starting-price__label,
+body.space-profile .booking-starting-price__label {
     color: #9D9B98;
     font-family: Lato, sans-serif;
     font-size: 14px;
     font-weight: 400;
 }
 
-body.groomer-profile .booking-step__label {
+body.groomer-profile .booking-step__label,
+body.space-profile .booking-step__label {
     display: flex;
     align-items: center;
     gap: 10px;
@@ -613,17 +630,22 @@ body.groomer-profile .booking-step__label {
     font-family: Lato, sans-serif;
     font-size: 18px;
     font-weight: 600;
-
 }
 
-body.groomer-profile .booking-step__num {
+body.groomer-profile .booking-step__optional,
+body.space-profile .booking-step__optional {
+    color: #9D9B98;
+    font-weight: 400;
+}
+
+body.groomer-profile .booking-step__num,
+body.space-profile .booking-step__num {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     width: 22px;
     height: 22px;
     border-radius: 50%;
-    background: #FBAC83;
     color: #FFF;
     font-family: Lato, sans-serif;
     font-size: 12px;
@@ -631,13 +653,23 @@ body.groomer-profile .booking-step__num {
     flex-shrink: 0;
 }
 
+body.groomer-profile .booking-step__num {
+    background: #FBAC83;
+}
+
+body.space-profile .booking-step__num {
+    background: #FFA899;
+}
+
 /* Booking sidebar selects — override shared .custom-select conflicts */
-body.groomer-profile #booking-sidebar .booking-step .custom-select {
+body.groomer-profile #booking-sidebar .booking-step .custom-select,
+body.space-profile #booking-sidebar .booking-step .custom-select {
     width: 100%;
     max-width: 100%;
 }
 
-body.groomer-profile #booking-sidebar .booking-step .custom-select .select-trigger {
+body.groomer-profile #booking-sidebar .booking-step .custom-select .select-trigger,
+body.space-profile #booking-sidebar .booking-step .custom-select .select-trigger {
     display: flex !important;
     align-items: center !important;
     justify-content: space-between !important;
@@ -652,11 +684,14 @@ body.groomer-profile #booking-sidebar .booking-step .custom-select .select-trigg
 }
 
 body.groomer-profile #booking-sidebar .booking-step .custom-select.open .select-trigger,
-body.groomer-profile #booking-sidebar .booking-step .custom-select.has-value .select-trigger {
+body.groomer-profile #booking-sidebar .booking-step .custom-select.has-value .select-trigger,
+body.space-profile #booking-sidebar .booking-step .custom-select.open .select-trigger,
+body.space-profile #booking-sidebar .booking-step .custom-select.has-value .select-trigger {
     border-color: #D4D4D4;
 }
 
-body.groomer-profile #booking-sidebar .booking-step .custom-select .select-trigger .selected-text {
+body.groomer-profile #booking-sidebar .booking-step .custom-select .select-trigger .selected-text,
+body.space-profile #booking-sidebar .booking-step .custom-select .select-trigger .selected-text {
     flex: 1 1 auto !important;
     min-width: 0 !important;
     max-width: 100%;
@@ -671,12 +706,14 @@ body.groomer-profile #booking-sidebar .booking-step .custom-select .select-trigg
     line-height: normal;
 }
 
-body.groomer-profile #booking-sidebar .booking-step .custom-select.has-value .select-trigger .selected-text {
+body.groomer-profile #booking-sidebar .booking-step .custom-select.has-value .select-trigger .selected-text,
+body.space-profile #booking-sidebar .booking-step .custom-select.has-value .select-trigger .selected-text {
     color: #3B3731 !important;
     font-weight: 600 !important;
 }
 
-body.groomer-profile #booking-sidebar .booking-step .select-trigger-meta {
+body.groomer-profile #booking-sidebar .booking-step .select-trigger-meta,
+body.space-profile #booking-sidebar .booking-step .select-trigger-meta {
     display: inline-flex !important;
     align-items: center;
     justify-content: flex-end;
@@ -685,7 +722,8 @@ body.groomer-profile #booking-sidebar .booking-step .select-trigger-meta {
     margin-left: auto;
 }
 
-body.groomer-profile #booking-sidebar .booking-step .select-trigger-meta .selected-price {
+body.groomer-profile #booking-sidebar .booking-step .select-trigger-meta .selected-price,
+body.space-profile #booking-sidebar .booking-step .select-trigger-meta .selected-price {
     color: #9D9B98 !important;
     font-family: Lato, sans-serif !important;
     font-size: 18px !important;
@@ -694,26 +732,31 @@ body.groomer-profile #booking-sidebar .booking-step .select-trigger-meta .select
     white-space: nowrap;
 }
 
-body.groomer-profile #booking-sidebar .booking-step .select-trigger-meta .selected-price:empty {
+body.groomer-profile #booking-sidebar .booking-step .select-trigger-meta .selected-price:empty,
+body.space-profile #booking-sidebar .booking-step .select-trigger-meta .selected-price:empty {
     display: none;
 }
 
-body.groomer-profile #booking-sidebar .booking-step .select-trigger-meta svg {
+body.groomer-profile #booking-sidebar .booking-step .select-trigger-meta svg,
+body.space-profile #booking-sidebar .booking-step .select-trigger-meta svg {
     flex-shrink: 0;
 }
 
-body.groomer-profile #booking-sidebar .booking-step .select-trigger-meta svg path {
+body.groomer-profile #booking-sidebar .booking-step .select-trigger-meta svg path,
+body.space-profile #booking-sidebar .booking-step .select-trigger-meta svg path {
     stroke: #9D9B98;
 }
 
-body.groomer-profile #booking-sidebar .booking-step .select-options li {
+body.groomer-profile #booking-sidebar .booking-step .select-options li,
+body.space-profile #booking-sidebar .booking-step .select-options li {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 12px;
 }
 
-body.groomer-profile #booking-sidebar .booking-step .option-label {
+body.groomer-profile #booking-sidebar .booking-step .option-label,
+body.space-profile #booking-sidebar .booking-step .option-label {
     min-width: 0;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -722,22 +765,50 @@ body.groomer-profile #booking-sidebar .booking-step .option-label {
     font-weight: 500;
 }
 
-body.groomer-profile #booking-sidebar .booking-step .option-price {
+body.groomer-profile #booking-sidebar .booking-step .option-price,
+body.space-profile #booking-sidebar .booking-step .option-price {
     flex-shrink: 0;
     color: #9D9B98;
     font-weight: 400;
 }
 
-body.groomer-profile #booking-sidebar .booking-step .service-selected-options {
+body.groomer-profile #booking-sidebar .booking-step .service-selected-options,
+body.space-profile #booking-sidebar .booking-step .service-selected-options {
     gap: 8px;
 }
 
-body.groomer-profile #booking-sidebar .booking-step .service-selected-options:empty {
+body.groomer-profile #booking-sidebar .booking-step .service-selected-options:empty,
+body.space-profile #booking-sidebar .booking-step .service-selected-options:empty {
     display: none;
     margin: 0 !important;
 }
 
-body.groomer-profile #booking-sidebar .calendar-header {
+body.space-profile #booking-sidebar .service-selected-options .selected-item--accent {
+    border-radius: 100px;
+    border: 1px solid #FBAC83;
+    background: #FFFAF2;
+    color: #FBAC83;
+    box-shadow: none;
+}
+
+body.space-profile #booking-sidebar .service-selected-options .selected-item--muted {
+    border: 1px solid #D4D4D4;
+    border-radius: 32px;
+    background: transparent;
+    color: #9D9B98;
+    box-shadow: none;
+}
+
+body.groomer-profile #booking-sidebar .service-selected-options .selected-item--accent {
+    border-radius: 100px;
+    border: 1px solid #FBAC83;
+    background: #FFFAF2;
+    color: #FBAC83;
+    box-shadow: none;
+}
+
+body.groomer-profile #booking-sidebar .calendar-header,
+body.space-profile #booking-sidebar .calendar-header {
     background: #FFF;
     border: 1px solid #D4D4D4;
     border-radius: 100px;
@@ -745,26 +816,31 @@ body.groomer-profile #booking-sidebar .calendar-header {
     margin-bottom: 0;
 }
 
-body.groomer-profile #booking-sidebar .calendar-header span {
+body.groomer-profile #booking-sidebar .calendar-header span,
+body.space-profile #booking-sidebar .calendar-header span {
     font-size: 16px;
 }
 
-body.groomer-profile #booking-sidebar .nav-btn {
+body.groomer-profile #booking-sidebar .nav-btn,
+body.space-profile #booking-sidebar .nav-btn {
     background: transparent;
 }
 
-body.groomer-profile #booking-sidebar .weekdays {
+body.groomer-profile #booking-sidebar .weekdays,
+body.space-profile #booking-sidebar .weekdays {
     font-size: 16px;
     font-weight: 600;
     color: #9D9B98;
     margin-bottom: 0;
 }
 
-body.groomer-profile #booking-sidebar .dates {
+body.groomer-profile #booking-sidebar .dates,
+body.space-profile #booking-sidebar .dates {
     gap: 8px;
 }
 
-body.groomer-profile #booking-sidebar .date {
+body.groomer-profile #booking-sidebar .date,
+body.space-profile #booking-sidebar .date {
     height: 38px;
     border-radius: 10px;
     background: #F7F7F7;
@@ -774,7 +850,8 @@ body.groomer-profile #booking-sidebar .date {
     box-shadow: none;
 }
 
-body.groomer-profile #booking-sidebar .date.available {
+body.groomer-profile #booking-sidebar .date.available,
+body.space-profile #booking-sidebar .date.available {
     background: #E9F3D9;
 }
 
@@ -786,13 +863,23 @@ body.groomer-profile #booking-sidebar .date.selected {
     box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.20);
 }
 
-body.groomer-profile #booking-sidebar .booking-times {
+body.space-profile #booking-sidebar .date.selected {
+    color: #FFF;
+    border-radius: 10px;
+    border: 1px solid #FFA899;
+    background: #FFA899;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.20);
+}
+
+body.groomer-profile #booking-sidebar .booking-times,
+body.space-profile #booking-sidebar .booking-times {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 10px;
 }
 
-body.groomer-profile #booking-sidebar .booking-times .time {
+body.groomer-profile #booking-sidebar .booking-times .time,
+body.space-profile #booking-sidebar .booking-times .time {
     width: 100%;
     margin: 0;
     padding: 12px 8px;
@@ -813,7 +900,41 @@ body.groomer-profile #booking-sidebar .booking-times .time.selected {
     box-shadow: none;
 }
 
-body.groomer-profile #booking-sidebar .booking-summary {
+body.space-profile #booking-sidebar .booking-times .time.selected {
+    border-color: #FFA899;
+    background: #FFF7F5;
+    color: #FFA899;
+    box-shadow: none;
+}
+
+body.space-profile #booking-sidebar .booking-step .availability {
+    margin-top: 0;
+}
+
+body.space-profile #booking-sidebar .booking-step__label-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+body.space-profile #booking-sidebar .booking-step__label-row .booking-step__label {
+    margin-bottom: 0;
+}
+
+body.space-profile #booking-sidebar .booking-step__time-range {
+    flex-shrink: 0;
+    color: #9D9B98;
+    font-family: Lato, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: normal;
+    white-space: nowrap;
+}
+
+body.groomer-profile #booking-sidebar .booking-summary,
+body.space-profile #booking-sidebar .booking-summary {
     margin-left: -12px;
     margin-right: -12px;
     margin-bottom: -12px;
@@ -822,15 +943,18 @@ body.groomer-profile #booking-sidebar .booking-summary {
     border-radius: 0 0 10px 10px;
 }
 
-body.groomer-profile #booking-sidebar .booking-summary__section[hidden] {
+body.groomer-profile #booking-sidebar .booking-summary__section[hidden],
+body.space-profile #booking-sidebar .booking-summary__section[hidden] {
     display: none !important;
 }
 
-body.groomer-profile #booking-sidebar .booking-summary__section[hidden] + .booking-summary__section {
+body.groomer-profile #booking-sidebar .booking-summary__section[hidden] + .booking-summary__section,
+body.space-profile #booking-sidebar .booking-summary__section[hidden] + .booking-summary__section {
     margin-top: 0 !important;
 }
 
-body.groomer-profile #booking-sidebar .booking-summary__heading {
+body.groomer-profile #booking-sidebar .booking-summary__heading,
+body.space-profile #booking-sidebar .booking-summary__heading {
     margin: 0 0 8px;
     color: #3B3731;
     font-family: Lato, sans-serif;
@@ -838,7 +962,8 @@ body.groomer-profile #booking-sidebar .booking-summary__heading {
     font-weight: 600;
 }
 
-body.groomer-profile #booking-sidebar .booking-summary__row {
+body.groomer-profile #booking-sidebar .booking-summary__row,
+body.space-profile #booking-sidebar .booking-summary__row {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -850,20 +975,23 @@ body.groomer-profile #booking-sidebar .booking-summary__row {
     font-weight: 400;
 }
 
-body.groomer-profile #booking-sidebar .booking-summary__divider {
+body.groomer-profile #booking-sidebar .booking-summary__divider,
+body.space-profile #booking-sidebar .booking-summary__divider {
     height: 1px;
     margin: 16px 0;
     background: #E5E1DA;
 }
 
-body.groomer-profile #booking-sidebar .booking-summary__total {
+body.groomer-profile #booking-sidebar .booking-summary__total,
+body.space-profile #booking-sidebar .booking-summary__total {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 12px;
 }
 
-body.groomer-profile #booking-sidebar .booking-summary__total > span:first-child {
+body.groomer-profile #booking-sidebar .booking-summary__total > span:first-child,
+body.space-profile #booking-sidebar .booking-summary__total > span:first-child {
     color: #3B3731;
     font-family: Lato, sans-serif;
     font-size: 14px;
@@ -873,7 +1001,8 @@ body.groomer-profile #booking-sidebar .booking-summary__total > span:first-child
     text-transform: capitalize;
 }
 
-body.groomer-profile #booking-sidebar .booking-summary__total-amount {
+body.groomer-profile #booking-sidebar .booking-summary__total-amount,
+body.space-profile #booking-sidebar .booking-summary__total-amount {
     color: #3B3731;
     font-family: "Playfair Display", serif;
     font-size: 28px;
@@ -882,11 +1011,13 @@ body.groomer-profile #booking-sidebar .booking-summary__total-amount {
     line-height: normal;
 }
 
-body.groomer-profile #booking-sidebar .booking-summary .book-btn-div {
+body.groomer-profile #booking-sidebar .booking-summary .book-btn-div,
+body.space-profile #booking-sidebar .booking-summary .book-btn-div {
     width: 100%;
 }
 
-body.groomer-profile #booking-sidebar .booking-summary .book-btn {
+body.groomer-profile #booking-sidebar .booking-summary .book-btn,
+body.space-profile #booking-sidebar .booking-summary .book-btn {
     width: 100%;
     margin-top: 8px;
     padding: 14px 20px;
@@ -896,9 +1027,10 @@ body.groomer-profile #booking-sidebar .booking-summary .book-btn {
     font-weight: 700;
 }
 
-body.groomer-profile #booking-sidebar .booking-cancel-note {
+body.groomer-profile #booking-sidebar .booking-cancel-note,
+body.space-profile #booking-sidebar .booking-cancel-note {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     gap: 5px;
     margin: 14px 0 0;
@@ -907,10 +1039,13 @@ body.groomer-profile #booking-sidebar .booking-cancel-note {
     font-size: 14px;
     font-weight: 500;
     line-height: 1.4;
+    text-align: center;
 }
 
-body.groomer-profile #booking-sidebar .booking-cancel-note svg {
+body.groomer-profile #booking-sidebar .booking-cancel-note svg,
+body.space-profile #booking-sidebar .booking-cancel-note svg {
     flex-shrink: 0;
+    margin-top: 2px;
 }
 
 .service__availability span {
@@ -1122,12 +1257,14 @@ body.groomer-profile #booking-sidebar .booking-cancel-note svg {
     line-height: normal;
 }
 
-body.groomer-profile .about-studio__title {
+body.groomer-profile .about-studio__title,
+body.space-profile .about-studio__title {
     margin: 0;
     font-weight: 600;
 }
 
-body.groomer-profile .about-studio__tagline {
+body.groomer-profile .about-studio__tagline,
+body.space-profile .about-studio__tagline {
     color: #9D9B98;
     font-family: Lato, sans-serif;
     font-size: 18px;
@@ -1135,18 +1272,21 @@ body.groomer-profile .about-studio__tagline {
     line-height: normal;
 }
 
-body.groomer-profile .about-studio__socials {
+body.groomer-profile .about-studio__socials,
+body.space-profile .about-studio__socials {
     display: flex;
     align-items: center;
     gap: 16px;
     margin-top: 16px;
 }
 
-body.groomer-profile .about-studio__socials svg {
+body.groomer-profile .about-studio__socials svg,
+body.space-profile .about-studio__socials svg {
     display: block;
 }
 
-body.groomer-profile .about-studio__bio {
+body.groomer-profile .about-studio__bio,
+body.space-profile .about-studio__bio {
     margin: 20px 0 0;
     max-width: 720px;
     color: #3B3731;
@@ -1156,7 +1296,8 @@ body.groomer-profile .about-studio__bio {
     line-height: 1.6;
 }
 
-body.groomer-profile .about-studio__badges {
+body.groomer-profile .about-studio__badges,
+body.space-profile .about-studio__badges {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -1164,7 +1305,8 @@ body.groomer-profile .about-studio__badges {
     margin-top: 20px;
 }
 
-body.groomer-profile .about-studio__badge {
+body.groomer-profile .about-studio__badge,
+body.space-profile .about-studio__badge {
     display: inline-flex;
     align-items: center;
     gap: 8px;
@@ -1175,7 +1317,8 @@ body.groomer-profile .about-studio__badge {
     line-height: normal;
 }
 
-body.groomer-profile .about-studio__badge svg {
+body.groomer-profile .about-studio__badge svg,
+body.space-profile .about-studio__badge svg {
     flex-shrink: 0;
 }
 
@@ -1202,7 +1345,8 @@ body.groomer-profile .about-studio__badge svg {
     top: 85px;
 }
 
-body.groomer-profile .tab-go-to-section {
+body.groomer-profile .tab-go-to-section,
+body.space-profile .tab-go-to-section {
     width: fit-content;
     max-width: 100%;
     margin-left: auto;
@@ -1338,27 +1482,45 @@ html {
     gap: 10px;
 }
 
-body.groomer-profile .addons-list {
+body.groomer-profile .addons-list,
+body.space-profile .addons-list {
     border: 1px solid #E8E8E8;
     border-radius: 16px;
     background: #FFF;
     overflow: hidden;
 }
 
-body.groomer-profile .addons-list__row {
+body.groomer-profile .addons-list__row,
+body.space-profile .addons-list__row {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 16px;
-    padding: 16px 20px;
+    padding: 18px 22px;
     border-bottom: 1px solid #EFEFEF;
 }
 
-body.groomer-profile .addons-list__row:last-child {
+body.groomer-profile .addons-list__row:last-child,
+body.space-profile .addons-list__row:last-child {
     border-bottom: none;
 }
 
-body.groomer-profile .addons-list__name {
+body.groomer-profile .addons-list__left,
+body.space-profile .addons-list__left {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+}
+
+body.groomer-profile .addons-list__left svg,
+body.space-profile .addons-list__left svg {
+    flex-shrink: 0;
+    display: block;
+}
+
+body.groomer-profile .addons-list__name,
+body.space-profile .addons-list__name {
     color: #3B3731;
     font-family: Lato, sans-serif;
     font-size: 16px;
@@ -1366,7 +1528,8 @@ body.groomer-profile .addons-list__name {
     line-height: normal;
 }
 
-body.groomer-profile .addons-list__price {
+body.groomer-profile .addons-list__price,
+body.space-profile .addons-list__price {
     flex-shrink: 0;
     color: #9D9B98;
     font-family: Lato, sans-serif;
@@ -1376,11 +1539,13 @@ body.groomer-profile .addons-list__price {
 }
 
 /* Reviews (groomer profile) */
-body.groomer-profile #reviews .section-content-heading {
+body.groomer-profile #reviews .section-content-heading,
+body.space-profile #reviews .section-content-heading {
     margin-bottom: 20px;
 }
 
-body.groomer-profile .reviews-summary {
+body.groomer-profile .reviews-summary,
+body.space-profile .reviews-summary {
     display: flex;
     align-items: center;
     width: 100%;
@@ -1391,14 +1556,16 @@ body.groomer-profile .reviews-summary {
     box-sizing: border-box;
 }
 
-body.groomer-profile .reviews-summary-inner {
+body.groomer-profile .reviews-summary-inner,
+body.space-profile .reviews-summary-inner {
     display: inline-flex;
     flex-direction: row;
     align-items: center;
     gap: 12px;
 }
 
-body.groomer-profile .reviews-summary-score {
+body.groomer-profile .reviews-summary-score,
+body.space-profile .reviews-summary-score {
     display: block;
     flex-shrink: 0;
     margin: 0;
@@ -1411,7 +1578,8 @@ body.groomer-profile .reviews-summary-score {
     letter-spacing: -0.02em;
 }
 
-body.groomer-profile .reviews-summary-meta {
+body.groomer-profile .reviews-summary-meta,
+body.space-profile .reviews-summary-meta {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -1420,7 +1588,9 @@ body.groomer-profile .reviews-summary-meta {
 }
 
 body.groomer-profile .reviews-summary-stars,
-body.groomer-profile .review-stars {
+body.groomer-profile .review-stars,
+body.space-profile .reviews-summary-stars,
+body.space-profile .review-stars {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
@@ -1430,14 +1600,17 @@ body.groomer-profile .review-stars {
 }
 
 body.groomer-profile .reviews-summary-stars .review-star,
-body.groomer-profile .review-stars .review-star {
+body.groomer-profile .review-stars .review-star,
+body.space-profile .reviews-summary-stars .review-star,
+body.space-profile .review-stars .review-star {
     display: block;
     width: 14px;
     height: 14px;
     flex-shrink: 0;
 }
 
-body.groomer-profile .reviews-summary-count {
+body.groomer-profile .reviews-summary-count,
+body.space-profile .reviews-summary-count {
     margin: 0;
     padding: 0;
     color: #9D9B98;
@@ -1447,13 +1620,15 @@ body.groomer-profile .reviews-summary-count {
     line-height: 1.2;
 }
 
-body.groomer-profile .reviews-grid {
+body.groomer-profile .reviews-grid,
+body.space-profile .reviews-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 25px;
 }
 
-body.groomer-profile #reviews .review-card {
+body.groomer-profile #reviews .review-card,
+body.space-profile #reviews .review-card {
     display: flex;
     flex-direction: column;
     width: auto;
@@ -1465,14 +1640,16 @@ body.groomer-profile #reviews .review-card {
     box-sizing: border-box;
 }
 
-body.groomer-profile .review-card-header {
+body.groomer-profile .review-card-header,
+body.space-profile .review-card-header {
     display: flex;
     align-items: center;
     gap: 14px;
     margin-bottom: 18px;
 }
 
-body.groomer-profile #reviews .avatar {
+body.groomer-profile #reviews .avatar,
+body.space-profile #reviews .avatar {
     width: 40px;
     height: 40px;
     aspect-ratio: 1 / 1;
@@ -1489,35 +1666,43 @@ body.groomer-profile #reviews .avatar {
     object-fit: unset;
 }
 
-body.groomer-profile #reviews .avatar--amber {
+body.groomer-profile #reviews .avatar--amber,
+body.space-profile #reviews .avatar--amber {
     background: #FFC97A;
 }
 
-body.groomer-profile #reviews .avatar--coral {
+body.groomer-profile #reviews .avatar--coral,
+body.space-profile #reviews .avatar--coral {
     background: #FFA899;
 }
 
-body.groomer-profile #reviews .avatar--blue {
+body.groomer-profile #reviews .avatar--blue,
+body.space-profile #reviews .avatar--blue {
     background: #CBDCE8;
 }
 
-body.groomer-profile #reviews .avatar--sage {
+body.groomer-profile #reviews .avatar--sage,
+body.space-profile #reviews .avatar--sage {
     background: #FFC97A;
 }
 
-body.groomer-profile #reviews .avatar--lilac {
+body.groomer-profile #reviews .avatar--lilac,
+body.space-profile #reviews .avatar--lilac {
     background: #FFA899;
 }
 
-body.groomer-profile #reviews .avatar--peach {
+body.groomer-profile #reviews .avatar--peach,
+body.space-profile #reviews .avatar--peach {
     background: #CBDCE8;
 }
 
-body.groomer-profile .review-user {
+body.groomer-profile .review-user,
+body.space-profile .review-user {
     min-width: 0;
 }
 
-body.groomer-profile .review-name {
+body.groomer-profile .review-name,
+body.space-profile .review-name {
     margin: 0;
     color: #3B3731;
     font-family: Lato, sans-serif;
@@ -1526,7 +1711,8 @@ body.groomer-profile .review-name {
     line-height: 1.35;
 }
 
-body.groomer-profile #reviews .review-date {
+body.groomer-profile #reviews .review-date,
+body.space-profile #reviews .review-date {
     margin: 4px 0 0;
     color: #9D9B98;
     font-family: Lato, sans-serif;
@@ -1535,7 +1721,8 @@ body.groomer-profile #reviews .review-date {
     line-height: 1.35;
 }
 
-body.groomer-profile #reviews .review-text {
+body.groomer-profile #reviews .review-text,
+body.space-profile #reviews .review-text {
     flex: 1;
     margin: 0 0 22px;
     color: #3B3731;
@@ -1549,7 +1736,8 @@ body.groomer-profile #reviews .review-text {
     overflow: hidden;
 }
 
-body.groomer-profile .reviews-footer {
+body.groomer-profile .reviews-footer,
+body.space-profile .reviews-footer {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -1557,18 +1745,21 @@ body.groomer-profile .reviews-footer {
     margin-top: 20px;
 }
 
-body.groomer-profile .reviews-verified {
+body.groomer-profile .reviews-verified,
+body.space-profile .reviews-verified {
     display: flex;
     align-items: center;
     gap: 8px;
     min-width: 0;
 }
 
-body.groomer-profile .reviews-verified svg {
+body.groomer-profile .reviews-verified svg,
+body.space-profile .reviews-verified svg {
     flex-shrink: 0;
 }
 
-body.groomer-profile .reviews-verified p {
+body.groomer-profile .reviews-verified p,
+body.space-profile .reviews-verified p {
     margin: 0;
     color: #3B3731;
     font-family: Lato, sans-serif;
@@ -1577,7 +1768,8 @@ body.groomer-profile .reviews-verified p {
     line-height: normal;
 }
 
-body.groomer-profile .reviews-read-more {
+body.groomer-profile .reviews-read-more,
+body.space-profile .reviews-read-more {
     flex-shrink: 0;
     color: #3B3731;
     font-family: Lato, sans-serif;
@@ -1589,29 +1781,35 @@ body.groomer-profile .reviews-read-more {
 }
 
 @media (max-width: 991px) {
-    body.groomer-profile .reviews-grid {
+    body.groomer-profile .reviews-grid,
+    body.space-profile .reviews-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }
 
 @media (max-width: 576px) {
-    body.groomer-profile .reviews-summary {
+    body.groomer-profile .reviews-summary,
+    body.space-profile .reviews-summary {
         padding: 14px 16px;
     }
 
-    body.groomer-profile .reviews-summary-inner {
+    body.groomer-profile .reviews-summary-inner,
+    body.space-profile .reviews-summary-inner {
         gap: 10px;
     }
 
-    body.groomer-profile .reviews-summary-score {
+    body.groomer-profile .reviews-summary-score,
+    body.space-profile .reviews-summary-score {
         font-size: 40px;
     }
 
-    body.groomer-profile .reviews-grid {
+    body.groomer-profile .reviews-grid,
+    body.space-profile .reviews-grid {
         grid-template-columns: 1fr;
     }
 
-    body.groomer-profile .reviews-footer {
+    body.groomer-profile .reviews-footer,
+    body.space-profile .reviews-footer {
         flex-direction: column;
         align-items: flex-start;
     }
@@ -1629,6 +1827,21 @@ body.groomer-profile .reviews-read-more {
     font-style: normal;
     font-weight: 500;
     line-height: normal;
+}
+
+/* Space profile — Service Suitability pills */
+body.space-profile #before_you_book .add-on-services .selected-item {
+    border: none;
+    border-radius: 32px;
+    background: #FFF7F5;
+    color: #FFA899;
+    text-align: center;
+    font-family: Lato, sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    padding: 10px 18px;
 }
 
 /* Multiselect pills in booking sidebar / service selects */
@@ -1661,6 +1874,7 @@ body.groomer-profile .reviews-read-more {
     --pill-bg: #FFFAF2;
     --pill-color: #FBAC83;
     --pill-border: #FBAC83;
+    border-radius: 100px;
     box-shadow: none;
 }
 
@@ -1780,12 +1994,14 @@ body.groomer-profile .reviews-read-more {
     line-height: normal;
 }
 
-/* Location (groomer profile) */
-body.groomer-profile .map-location-section {
+/* Location (groomer + space profiles) */
+body.groomer-profile .map-location-section,
+body.space-profile .map-location-section {
     margin-top: 16px;
 }
 
-body.groomer-profile .location-badge {
+body.groomer-profile .location-badge,
+body.space-profile .location-badge {
     position: absolute;
     top: 25px;
     left: 0;
@@ -1796,12 +2012,14 @@ body.groomer-profile .location-badge {
     pointer-events: none;
 }
 
-body.groomer-profile .location-badge svg {
+body.groomer-profile .location-badge svg,
+body.space-profile .location-badge svg {
     flex-shrink: 0;
     display: block;
 }
 
-body.groomer-profile .location-badge p {
+body.groomer-profile .location-badge p,
+body.space-profile .location-badge p {
     margin: 0;
     color: #9D9B98;
     font-family: Lato, sans-serif;
@@ -1816,12 +2034,14 @@ body.groomer-profile .map-location-section .inverted-radius {
     --y: 42px;
 }
 
-body.groomer-profile .map-location-section .inverted-radius #map {
+body.groomer-profile .map-location-section .inverted-radius #map,
+body.space-profile .map-location-section .inverted-radius #map {
     width: 100%;
     height: 400px;
 }
 
-body.groomer-profile .location-privacy-note {
+body.groomer-profile .location-privacy-note,
+body.space-profile .location-privacy-note {
     display: flex;
     align-items: center;
     gap: 8px;
@@ -1833,7 +2053,8 @@ body.groomer-profile .location-privacy-note {
     line-height: 1.3;
 }
 
-body.groomer-profile .location-privacy-note svg {
+body.groomer-profile .location-privacy-note svg,
+body.space-profile .location-privacy-note svg {
     flex-shrink: 0;
     display: block;
 }
@@ -1846,20 +2067,31 @@ body.groomer-profile .location-privacy-note svg {
         height: 280px;
     }
 
-    body.groomer-profile .map-location-section .inverted-radius #map {
+    body.space-profile .map-location-section .inverted-radius {
+        --x: 240px;
+        --y: 38px;
+        aspect-ratio: auto;
         height: 280px;
     }
 
-    body.groomer-profile .location-badge {
+    body.groomer-profile .map-location-section .inverted-radius #map,
+    body.space-profile .map-location-section .inverted-radius #map {
+        height: 280px;
+    }
+
+    body.groomer-profile .location-badge,
+    body.space-profile .location-badge {
         top: 18px;
         gap: 8px;
     }
 
-    body.groomer-profile .location-badge p {
+    body.groomer-profile .location-badge p,
+    body.space-profile .location-badge p {
         font-size: 14px;
     }
 
-    body.groomer-profile .location-privacy-note {
+    body.groomer-profile .location-privacy-note,
+    body.space-profile .location-privacy-note {
         font-size: 14px;
     }
 }

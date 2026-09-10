@@ -26,9 +26,60 @@ const availableDates = [
     "2025-10-30"
 ];
 
-function getSelectedTimeLabel() {
+function parseTimeParts(value) {
+    const match = String(value || '').trim().match(/^(\d{1,2}):(\d{2})/);
+    if (!match) return null;
+    return { hours: Number(match[1]), minutes: Number(match[2]) };
+}
+
+function formatTime24({ hours, minutes }) {
+    return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}`;
+}
+
+function formatTimeAmPm({ hours, minutes }) {
+    const suffix = hours >= 12 ? 'PM' : 'AM';
+    const hour12 = hours % 12 === 0 ? 12 : hours % 12;
+    return `${String(hour12).padStart(2, '0')}:${String(minutes).padStart(2, '0')} ${suffix}`;
+}
+
+function addOneHour(parts) {
+    const total = parts.hours * 60 + parts.minutes + 60;
+    return {
+        hours: Math.floor(total / 60) % 24,
+        minutes: total % 60,
+    };
+}
+
+function getSelectedSlotTimes() {
     const selectedTime = document.querySelector('#booking-sidebar .time.selected, .times .time.selected');
-    return selectedTime?.dataset.time || selectedTime?.textContent.trim() || '';
+    const raw = selectedTime?.dataset.time || selectedTime?.textContent.trim() || '';
+    const start = parseTimeParts(raw);
+    if (!start) return null;
+    return { start, end: addOneHour(start) };
+}
+
+function getSelectedTimeLabel() {
+    const slot = getSelectedSlotTimes();
+    if (!slot) return '';
+
+    if (document.querySelector('[data-selected-time-range]')) {
+        return `${formatTime24(slot.start)}-${formatTime24(slot.end)}`;
+    }
+
+    return formatTime24(slot.start);
+}
+
+function updateSelectedTimeRangeDisplay() {
+    const rangeEl = document.querySelector('[data-selected-time-range]');
+    if (!rangeEl) return;
+
+    const slot = getSelectedSlotTimes();
+    if (!slot) {
+        rangeEl.textContent = '';
+        return;
+    }
+
+    rangeEl.textContent = `${formatTimeAmPm(slot.start)} - ${formatTimeAmPm(slot.end)}`;
 }
 
 function updateBookingCta() {
@@ -37,6 +88,8 @@ function updateBookingCta() {
     const monthShort = monthNames[currentDate.getMonth()].slice(0, 3);
     const timeLabel = getSelectedTimeLabel();
     const dayLabel = selectedDay ? String(selectedDay) : '';
+
+    updateSelectedTimeRangeDisplay();
 
     if (dayLabel && timeLabel) {
         bookingCtaBtn.textContent = `Book for ${monthShort} ${dayLabel}, ${timeLabel}`;
@@ -81,12 +134,16 @@ function updateBookingSummary() {
     const addons = getBookingSummaryItems('addons');
 
     if (serviceRows) {
-        serviceRows.innerHTML = services.map(item => `
+        const timeRange = getSelectedTimeLabel();
+        serviceRows.innerHTML = services.map(item => {
+            const label = timeRange ? `${item.label} (${timeRange})` : item.label;
+            return `
             <div class="booking-summary__row" data-value="${item.value}">
-                <span>${item.label}</span>
+                <span>${label}</span>
                 <span>${formatBookingMoney(item.amount)}</span>
             </div>
-        `).join('');
+        `;
+        }).join('');
     }
 
     if (addonsRows) {
@@ -110,6 +167,7 @@ function updateBookingSummary() {
 }
 
 window.updateBookingSummary = updateBookingSummary;
+window.updateBookingCta = updateBookingCta;
 updateBookingSummary();
 
 function renderCalendar() {
@@ -180,6 +238,9 @@ document.querySelectorAll('.time').forEach(time => {
         scope.querySelectorAll('.time').forEach(t => t.classList.remove('selected'));
         time.classList.add('selected');
         updateBookingCta();
+        if (typeof window.updateBookingSummary === 'function') {
+            window.updateBookingSummary();
+        }
     });
 });
 

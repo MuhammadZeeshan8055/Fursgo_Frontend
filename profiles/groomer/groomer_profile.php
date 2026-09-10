@@ -2566,13 +2566,13 @@
                 <div id="booking-sidebar" class="service-card mt-4 mb-5">
                     <div class="service__header">
                         <div class="message-btn-div d-flex justify-content-center">
-                            <button type="button" class="message-btn mt-3">
+                            <a href="<?= BASE_URL ?>messages_notification/messages.php" class="message-btn mt-3">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="19" height="16" viewBox="0 0 19 16" fill="none">
                                     <path d="M0.75 7.75C0.75 4.45038 0.75 2.80012 1.7755 1.7755C2.801 0.750875 4.45038 0.75 7.75 0.75H11.25C14.5496 0.75 16.1999 0.75 17.2245 1.7755C18.2491 2.801 18.25 4.45038 18.25 7.75C18.25 11.0496 18.25 12.6999 17.2245 13.7245C16.199 14.7491 14.5496 14.75 11.25 14.75H7.75C4.45038 14.75 2.80012 14.75 1.7755 13.7245C0.750875 12.699 0.75 11.0496 0.75 7.75Z" stroke="#FBAC83" stroke-width="1.5" />
                                     <path d="M4.25 4.25L6.13913 5.825C7.7465 7.16375 8.54975 7.83313 9.5 7.83313C10.4502 7.83313 11.2544 7.16375 12.8609 5.82412L14.75 4.25" stroke="#FBAC83" stroke-width="1.5" stroke-linecap="round" />
                                 </svg>
                                 Message Groomer
-                            </button>
+                            </a>
                         </div>
                         <p class="responding-time text-center mt-3">
                             <svg xmlns="http://www.w3.org/2000/svg" width="13" height="9" viewBox="0 0 13 9" fill="none">
