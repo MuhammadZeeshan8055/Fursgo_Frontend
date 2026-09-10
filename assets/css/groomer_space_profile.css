@@ -1109,8 +1109,74 @@ body.groomer-profile #booking-sidebar .booking-cancel-note svg {
 .section-content-heading {
     font-family: "Playfair Display";
     color: #3B3731;
-    font-size: 28px;
-    font-weight: 900;
+    font-size: 26px;
+    font-weight: 700;
+}
+
+.section-sub-content-heading{
+    color: #3B3731;
+    font-family: "Playfair Display";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+body.groomer-profile .about-studio__title {
+    margin: 0;
+    font-weight: 600;
+}
+
+body.groomer-profile .about-studio__tagline {
+    color: #9D9B98;
+    font-family: Lato, sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: normal;
+}
+
+body.groomer-profile .about-studio__socials {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 16px;
+}
+
+body.groomer-profile .about-studio__socials svg {
+    display: block;
+}
+
+body.groomer-profile .about-studio__bio {
+    margin: 20px 0 0;
+    max-width: 720px;
+    color: #3B3731;
+    font-family: Lato, sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.6;
+}
+
+body.groomer-profile .about-studio__badges {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px 20px;
+    margin-top: 20px;
+}
+
+body.groomer-profile .about-studio__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #9D9B98;
+    font-family: Lato, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: normal;
+}
+
+body.groomer-profile .about-studio__badge svg {
+    flex-shrink: 0;
 }
 
 .avatar-wrap.d-flex {
@@ -1134,6 +1200,19 @@ body.groomer-profile #booking-sidebar .booking-cancel-note svg {
     background: #fff;
     position: sticky;
     top: 85px;
+}
+
+body.groomer-profile .tab-go-to-section {
+    width: fit-content;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+    gap: 4px;
+}
+
+body.groomer-profile .tab-go-to-section a.active {
+    background: #FFC97A;
 }
 
 html {
@@ -1259,6 +1338,285 @@ html {
     gap: 10px;
 }
 
+body.groomer-profile .addons-list {
+    border: 1px solid #E8E8E8;
+    border-radius: 16px;
+    background: #FFF;
+    overflow: hidden;
+}
+
+body.groomer-profile .addons-list__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 16px 20px;
+    border-bottom: 1px solid #EFEFEF;
+}
+
+body.groomer-profile .addons-list__row:last-child {
+    border-bottom: none;
+}
+
+body.groomer-profile .addons-list__name {
+    color: #3B3731;
+    font-family: Lato, sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: normal;
+}
+
+body.groomer-profile .addons-list__price {
+    flex-shrink: 0;
+    color: #9D9B98;
+    font-family: Lato, sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: normal;
+}
+
+/* Reviews (groomer profile) */
+body.groomer-profile #reviews .section-content-heading {
+    margin-bottom: 20px;
+}
+
+body.groomer-profile .reviews-summary {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 24px 22px;
+    margin-bottom: 24px;
+    border-radius: 12px;
+    background: rgba(59, 55, 49, 0.025);
+    box-sizing: border-box;
+}
+
+body.groomer-profile .reviews-summary-inner {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+}
+
+body.groomer-profile .reviews-summary-score {
+    display: block;
+    flex-shrink: 0;
+    margin: 0;
+    padding: 0;
+    color: #3B3731;
+    font-family: "Playfair Display", serif;
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 0.9;
+    letter-spacing: -0.02em;
+}
+
+body.groomer-profile .reviews-summary-meta {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2px;
+    min-width: 0;
+}
+
+body.groomer-profile .reviews-summary-stars,
+body.groomer-profile .review-stars {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 3px;
+    line-height: 0;
+}
+
+body.groomer-profile .reviews-summary-stars .review-star,
+body.groomer-profile .review-stars .review-star {
+    display: block;
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+}
+
+body.groomer-profile .reviews-summary-count {
+    margin: 0;
+    padding: 0;
+    color: #9D9B98;
+    font-family: Lato, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.2;
+}
+
+body.groomer-profile .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 25px;
+}
+
+body.groomer-profile #reviews .review-card {
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    min-width: 0;
+    padding: 18px 18px;
+    border: 1px solid #F7F4EC;
+    border-radius: 12px;
+    background: #FFF;
+    box-sizing: border-box;
+}
+
+body.groomer-profile .review-card-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 18px;
+}
+
+body.groomer-profile #reviews .avatar {
+    width: 40px;
+    height: 40px;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #fff;
+    font-family: Lato, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1;
+    object-fit: unset;
+}
+
+body.groomer-profile #reviews .avatar--amber {
+    background: #FFC97A;
+}
+
+body.groomer-profile #reviews .avatar--coral {
+    background: #FFA899;
+}
+
+body.groomer-profile #reviews .avatar--blue {
+    background: #CBDCE8;
+}
+
+body.groomer-profile #reviews .avatar--sage {
+    background: #FFC97A;
+}
+
+body.groomer-profile #reviews .avatar--lilac {
+    background: #FFA899;
+}
+
+body.groomer-profile #reviews .avatar--peach {
+    background: #CBDCE8;
+}
+
+body.groomer-profile .review-user {
+    min-width: 0;
+}
+
+body.groomer-profile .review-name {
+    margin: 0;
+    color: #3B3731;
+    font-family: Lato, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.35;
+}
+
+body.groomer-profile #reviews .review-date {
+    margin: 4px 0 0;
+    color: #9D9B98;
+    font-family: Lato, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.35;
+}
+
+body.groomer-profile #reviews .review-text {
+    flex: 1;
+    margin: 0 0 22px;
+    color: #3B3731;
+    font-family: Lato, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.6;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+}
+
+body.groomer-profile .reviews-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: 20px;
+}
+
+body.groomer-profile .reviews-verified {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+}
+
+body.groomer-profile .reviews-verified svg {
+    flex-shrink: 0;
+}
+
+body.groomer-profile .reviews-verified p {
+    margin: 0;
+    color: #3B3731;
+    font-family: Lato, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: normal;
+}
+
+body.groomer-profile .reviews-read-more {
+    flex-shrink: 0;
+    color: #3B3731;
+    font-family: Lato, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: normal;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+@media (max-width: 991px) {
+    body.groomer-profile .reviews-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 576px) {
+    body.groomer-profile .reviews-summary {
+        padding: 14px 16px;
+    }
+
+    body.groomer-profile .reviews-summary-inner {
+        gap: 10px;
+    }
+
+    body.groomer-profile .reviews-summary-score {
+        font-size: 40px;
+    }
+
+    body.groomer-profile .reviews-grid {
+        grid-template-columns: 1fr;
+    }
+
+    body.groomer-profile .reviews-footer {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
 .selected-item {
     border-radius: 100px;
     border: 1px solid var(--groomer-color);
@@ -1330,10 +1688,11 @@ html {
 }
 
 .review-card {
-    background: #ffffff;
-    border-radius: 14px;
-    padding: 24px 26px 26px;
+    padding: 14px 26px 14px;
     width: 245px;
+    border-radius: 10px;
+    border: 1px solid #F7F4EC;
+    background: #FFF;
 }
 
 /* Header: avatar + name/date */
@@ -1413,13 +1772,96 @@ html {
 .location-svg-text {
     position: absolute;
     top: 25px;
-    left: 30px;
     color: #3B3731;
     font-family: Lato;
     font-size: 16px;
     font-style: normal;
-    font-weight: 600;
+    font-weight: 400;
     line-height: normal;
+}
+
+/* Location (groomer profile) */
+body.groomer-profile .map-location-section {
+    margin-top: 16px;
+}
+
+body.groomer-profile .location-badge {
+    position: absolute;
+    top: 25px;
+    left: 0;
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    pointer-events: none;
+}
+
+body.groomer-profile .location-badge svg {
+    flex-shrink: 0;
+    display: block;
+}
+
+body.groomer-profile .location-badge p {
+    margin: 0;
+    color: #9D9B98;
+    font-family: Lato, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.2;
+    white-space: nowrap;
+}
+
+body.groomer-profile .map-location-section .inverted-radius {
+    --x: 200px;
+    --y: 42px;
+}
+
+body.groomer-profile .map-location-section .inverted-radius #map {
+    width: 100%;
+    height: 400px;
+}
+
+body.groomer-profile .location-privacy-note {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 14px 0 0;
+    color: #3B3731;
+    font-family: Lato, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.3;
+}
+
+body.groomer-profile .location-privacy-note svg {
+    flex-shrink: 0;
+    display: block;
+}
+
+@media (max-width: 576px) {
+    body.groomer-profile .map-location-section .inverted-radius {
+        --x: 170px;
+        --y: 38px;
+        aspect-ratio: auto;
+        height: 280px;
+    }
+
+    body.groomer-profile .map-location-section .inverted-radius #map {
+        height: 280px;
+    }
+
+    body.groomer-profile .location-badge {
+        top: 18px;
+        gap: 8px;
+    }
+
+    body.groomer-profile .location-badge p {
+        font-size: 14px;
+    }
+
+    body.groomer-profile .location-privacy-note {
+        font-size: 14px;
+    }
 }
 
 
