@@ -779,10 +779,11 @@ body.groomer-profile #booking-sidebar .date.available {
 }
 
 body.groomer-profile #booking-sidebar .date.selected {
-    background: #FBAC83;
     color: #FFF;
-    border: none;
-    box-shadow: 0 4px 8px 0 rgba(251, 172, 131, 0.45);
+    border-radius: 10px;
+    border: 1px solid #FBAC83;
+    background: #FBAC83;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.20);
 }
 
 body.groomer-profile #booking-sidebar .booking-times {
