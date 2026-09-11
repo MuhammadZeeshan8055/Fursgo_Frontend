@@ -726,11 +726,16 @@ body {
   }
 
   .mp-form-top {
-    flex-direction: column;
+    grid-template-columns: 1fr;
+    justify-items: center;
   }
 
   .mp-form-avatar {
-    align-self: center;
+    width: 100%;
+  }
+
+  .mp-form-names {
+    width: 100%;
   }
 
   .mp-form-grid {
@@ -783,6 +788,10 @@ body {
   cursor: pointer;
 }
 
+.mp-edit-btn[hidden] {
+  display: none !important;
+}
+
 .mp-edit-btn:hover {
   background: #fafafa;
 }
@@ -804,7 +813,7 @@ body {
   gap: 36px;
   padding: 28px;
   border-radius: 18px;
-  background: #f5f4f2;
+  background: #FAFAFA;
 }
 
 .mp-shell__content {
@@ -825,7 +834,7 @@ body {
   margin: 0 0 14px;
   font-family: Lato, sans-serif;
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 600;
   color: #3b3731;
 }
 
@@ -865,7 +874,8 @@ body {
   gap: 7px;
   margin-bottom: 4px;
   font-family: Lato, sans-serif;
-  font-size: 13px;
+  font-size: 16px;
+  font-weight: 400;
   color: #9a958e;
 }
 
@@ -876,46 +886,54 @@ body {
 .mp-field__value {
   margin: 0;
   font-family: Lato, sans-serif;
-  font-size: 15px;
-  font-weight: 500;
+  font-size: 16px;
+  font-weight: 400;
   color: #3b3731;
 }
 
 .mp-about {
   margin: 0;
   font-family: Lato, sans-serif;
-  font-size: 15px;
+  font-size: 16px;
+  font-weight: 400;
   line-height: 1.65;
   color: #6b6660;
 }
 
-/* Edit form */
+/* Edit form — top: photo | names; bottom: full-width fields */
 .mp-form {
-  padding: 28px;
+  padding: 28px 32px;
   border-radius: 16px;
-  background: #f5f4f2;
+  background: #FAFAFA;
 }
 
 .mp-form-top {
-  display: flex;
-  align-items: flex-start;
-  gap: 28px;
-  margin-bottom: 22px;
+  display: grid;
+  grid-template-columns: minmax(240px, 1fr) minmax(220px, 0.75fr);
+  gap: 24px 40px;
+  align-items: center;
+  margin-bottom: 28px;
 }
 
 .mp-form-avatar {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
-  flex-shrink: 0;
+  justify-content: center;
+  gap: 14px;
+  width: 100%;
+}
+
+.mp-form-avatar .mp-avatar-lg {
+  width: 180px;
+  height: 180px;
 }
 
 .mp-upload-btn {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 9px 16px;
+  padding: 10px 18px;
   border-radius: 999px;
   border: 1px solid #d9d5cf;
   background: #fff;
@@ -927,21 +945,26 @@ body {
 }
 
 .mp-upload-btn:hover {
-  background: #fafafa;
+  background: #fff;
+  border-color: #c9c4bc;
 }
 
 .mp-form-names {
-  flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  justify-content: center;
+  gap: 18px;
   min-width: 0;
+  width: 100%;
+  max-width: 340px;
+  justify-self: start;
 }
 
 .mp-form-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 16px;
+  gap: 18px 20px;
+  width: 100%;
 }
 
 .mp-input--full {
@@ -952,7 +975,7 @@ body {
   display: block;
   margin-bottom: 6px;
   font-family: Lato, sans-serif;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 600;
   color: #3b3731;
 }
@@ -967,6 +990,7 @@ body {
   color: #3b3731;
   font-family: Lato, sans-serif;
   font-size: 15px;
+  font-weight: 400;
   outline: none;
   box-sizing: border-box;
 }
@@ -978,7 +1002,7 @@ body {
 
 .mp-input textarea {
   resize: vertical;
-  min-height: 110px;
+  min-height: 120px;
   line-height: 1.5;
 }
 
@@ -986,26 +1010,26 @@ body {
   display: flex;
   justify-content: flex-end;
   gap: 12px;
-  margin-top: 22px;
+  margin-top: 24px;
 }
 
 .mp-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 130px;
+  min-width: 82px;
   padding: 11px 22px;
   border-radius: 999px;
   font-family: Lato, sans-serif;
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 500;
   cursor: pointer;
   border: 1px solid transparent;
 }
 
 .mp-btn--ghost {
   background: #fff;
-  border-color: #d9d5cf;
+  border-color: #F2F2F2;
   color: #3b3731;
 }
 
@@ -1219,6 +1243,19 @@ body {
   box-sizing: border-box;
 }
 
+.pet-card[data-pet-id="bella"],
+.pet-card[data-pet-id="milo"] {
+  background: #FFF8EB;
+}
+
+.pet-card[data-pet-id="surf"] {
+  background-color: #f0f7f9;
+}
+
+.pet-card[data-pet-id="louis"] {
+  background-color: #fdf2f0;
+}
+
 .pet-card.is-confirming {
   overflow: hidden;
 }
@@ -1327,8 +1364,8 @@ body {
 .pet-card__name {
   margin: 0;
   font-family: "Playfair Display", serif;
-  font-size: 22px;
-  font-weight: 700;
+  font-size: 18px;
+  font-weight: 600;
   line-height: 1.15;
   color: #3b3731;
 }
@@ -1336,8 +1373,9 @@ body {
 .pet-card__breed {
   margin: 4px 0 12px;
   font-family: Lato, sans-serif;
-  font-size: 13px;
-  color: #9a958e;
+  font-size: 16px;
+  font-weight: 400;
+  color: #9D9B98;
 }
 
 .pet-card__meta {
@@ -1383,15 +1421,15 @@ body {
 }
 
 .pet-card__confirm--archive {
-  background: #f7fbfe;
+  background: #FAFCFD;
 }
 
 .pet-card__confirm--restore {
-  background: #f7fbfe;
+  background: #FAFCFD;
 }
 
 .pet-card__confirm--delete {
-  background: #fff7f7;
+  background: #FFF1F1;
 }
 
 .pet-card__confirm svg {
