@@ -22,9 +22,7 @@ function rev_stars($filled = 4)
 $revEditIcon = '<svg width="14" height="14" viewBox="0 0 16 15" fill="none" aria-hidden="true"><path d="M10.2 2.38L12.85 4.98M8.44 14.5H15.5M1.38 11.04L.5 14.5l3.53-.87L14.25 3.6a1.88 1.88 0 0 0 0-2.45L14.1 1.01a1.88 1.88 0 0 0-2.5 0L1.38 11.04z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 $revTrashIcon = '<svg width="13" height="14" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M1.5 3.5h11M5 3.5V2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v1.5M11.5 3.5l-.7 9.2a1.5 1.5 0 0 1-1.5 1.3H4.7a1.5 1.5 0 0 1-1.5-1.3L2.5 3.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>';
 $revWarnIcon = '<svg width="22" height="20" viewBox="0 0 24 22" fill="none" aria-hidden="true"><path d="M10.3 2.9 1.8 17.5a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 2.9a2 2 0 0 0-3.4 0z" stroke="#FF8E8E" stroke-width="1.5"/><path d="M12 8v5M12 16.5h.01" stroke="#FF8E8E" stroke-width="1.8" stroke-linecap="round"/></svg>';
-$revChevron = '<svg xmlns="http://www.w3.org/2000/svg" width="13" height="7" viewBox="0 0 13 7" fill="none">
-  <path d="M11.9102 0.5L6.15672 6.25344L0.499867 0.596581" stroke="#9D9B98" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>';
+$revChevron = '<svg xmlns="http://www.w3.org/2000/svg" width="13" height="7" viewBox="0 0 13 7" fill="none" aria-hidden="true"><path d="M11.9102 0.5L6.15672 6.25344L0.499867 0.596581" stroke="#FBAC83" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 
 $revShieldGreen = '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="20" viewBox="0 0 18 20" fill="none" aria-hidden="true"><ellipse cx="9.36358" cy="9.74945" rx="5.52471" ry="5.19965" fill="white"/><path d="M9.10904 0.109186C8.95806 0.0376504 8.7963 0 8.62734 0C8.45839 0 8.29663 0.0376504 8.14565 0.109186L1.37679 3.11745C0.585956 3.4676 -0.00357837 4.28462 1.63506e-05 5.27106C0.01799 9.00598 1.48464 15.8395 7.67834 18.9457C8.27866 19.2469 8.97603 19.2469 9.57635 18.9457C15.7701 15.8395 17.2367 9.00598 17.2547 5.27106C17.2583 4.28462 16.6687 3.4676 15.8779 3.11745L9.10904 0.109186ZM5.20877 10.7755C5.38131 10.8207 5.56464 10.8433 5.75157 10.8433C7.0205 10.8433 8.05219 9.76275 8.05219 8.43369V6.02407H9.64106C10.076 6.02407 10.475 6.28009 10.6691 6.69048L10.928 7.22888H13.2286C13.5449 7.22888 13.8037 7.49996 13.8037 7.83128V9.0361C13.8037 10.7002 12.5168 12.0481 10.928 12.0481H9.2025V13.957C9.2025 14.2319 8.99041 14.4578 8.7244 14.4578C8.6597 14.4578 8.59499 14.4427 8.53748 14.4163L4.98949 12.8237C4.75224 12.7183 4.60126 12.4736 4.60126 12.2063C4.60126 12.1008 4.62283 11.9992 4.66956 11.9051L5.20877 10.7755ZM5.17641 6.02407H6.90188V8.43369C6.90188 9.1001 6.38783 9.6385 5.75157 9.6385C5.1153 9.6385 4.60126 9.1001 4.60126 8.43369V6.62647C4.60126 6.29515 4.86008 6.02407 5.17641 6.02407ZM9.77765 7.83128C9.77765 7.67152 9.71706 7.51829 9.6092 7.40532C9.50133 7.29235 9.35504 7.22888 9.2025 7.22888C9.04996 7.22888 8.90367 7.29235 8.7958 7.40532C8.68794 7.51829 8.62734 7.67152 8.62734 7.83128C8.62734 7.99105 8.68794 8.14428 8.7958 8.25725C8.90367 8.37022 9.04996 8.43369 9.2025 8.43369C9.35504 8.43369 9.50133 8.37022 9.6092 8.25725C9.71706 8.14428 9.77765 7.99105 9.77765 7.83128Z" fill="#C9DDA0"/></svg>';
 $revShieldBlue = '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="20" viewBox="0 0 18 20" fill="none" aria-hidden="true"><ellipse cx="9.36358" cy="9.74945" rx="5.52471" ry="5.19965" fill="white"/><path d="M9.10904 0.109186C8.95806 0.0376504 8.7963 0 8.62734 0C8.45839 0 8.29663 0.0376504 8.14565 0.109186L1.37679 3.11745C0.585956 3.4676 -0.00357837 4.28462 1.63506e-05 5.27106C0.01799 9.00598 1.48464 15.8395 7.67834 18.9457C8.27866 19.2469 8.97603 19.2469 9.57635 18.9457C15.7701 15.8395 17.2367 9.00598 17.2547 5.27106C17.2583 4.28462 16.6687 3.4676 15.8779 3.11745L9.10904 0.109186ZM5.20877 10.7755C5.38131 10.8207 5.56464 10.8433 5.75157 10.8433C7.0205 10.8433 8.05219 9.76275 8.05219 8.43369V6.02407H9.64106C10.076 6.02407 10.475 6.28009 10.6691 6.69048L10.928 7.22888H13.2286C13.5449 7.22888 13.8037 7.49996 13.8037 7.83128V9.0361C13.8037 10.7002 12.5168 12.0481 10.928 12.0481H9.2025V13.957C9.2025 14.2319 8.99041 14.4578 8.7244 14.4578C8.6597 14.4578 8.59499 14.4427 8.53748 14.4163L4.98949 12.8237C4.75224 12.7183 4.60126 12.4736 4.60126 12.2063C4.60126 12.1008 4.62283 11.9992 4.66956 11.9051L5.20877 10.7755ZM5.17641 6.02407H6.90188V8.43369C6.90188 9.1001 6.38783 9.6385 5.75157 9.6385C5.1153 9.6385 4.60126 9.1001 4.60126 8.43369V6.62647C4.60126 6.29515 4.86008 6.02407 5.17641 6.02407ZM9.77765 7.83128C9.77765 7.67152 9.71706 7.51829 9.6092 7.40532C9.50133 7.29235 9.35504 7.22888 9.2025 7.22888C9.04996 7.22888 8.90367 7.29235 8.7958 7.40532C8.68794 7.51829 8.62734 7.67152 8.62734 7.83128C8.62734 7.99105 8.68794 8.14428 8.7958 8.25725C8.90367 8.37022 9.04996 8.43369 9.2025 8.43369C9.35504 8.43369 9.50133 8.37022 9.6092 8.25725C9.71706 8.14428 9.77765 7.99105 9.77765 7.83128Z" fill="#CBDCE8"/></svg>';
@@ -50,16 +48,135 @@ $revMenuDots = '<svg width="21" height="5" viewBox="0 0 25 5" fill="none" aria-h
         </div>
 
         <div class="rev-filters">
-            <div class="rev-filter-tags" id="rev-filter-tags">
-                <button type="button" class="rev-filter-tag" data-rev-clear-tag data-rev-tag-label>
-                    Garden / Shed
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="rev-filter-pills">
-                <button type="button" class="rev-filter-pill" data-rev-filter="groomer">Groomer Venue <?= $revChevron ?></button>
-                <button type="button" class="rev-filter-pill" data-rev-filter="space">Space Venue <?= $revChevron ?></button>
-                <button type="button" class="rev-filter-pill" data-rev-filter="sort">Sort <?= $revChevron ?></button>
+            <div class="rev-filter-tags" id="rev-filter-tags"></div>
+            <div class="rev-filter-pills" id="rev-filter-pills">
+                <div class="rev-filter-dd" data-rev-dd="groomer">
+                    <button type="button" class="rev-filter-pill" data-rev-filter="groomer" aria-expanded="false" aria-haspopup="listbox">
+                        Groomer Venue <?= $revChevron ?>
+                    </button>
+                    <div class="rev-filter-menu" hidden>
+                        <ul class="rev-filter-menu__list" role="listbox">
+                            <li>
+                                <label>
+                                    <span class="rev-filter-menu__text">Salons</span>
+                                    <input type="checkbox" name="rev-groomer-venue[]" value="Salons" data-rev-filter-option="groomer">
+                                    <span class="rev-filter-menu__check" aria-hidden="true"></span>
+                                </label>
+                            </li>
+                            <li>
+                                <label>
+                                    <span class="rev-filter-menu__text">Groomer's studio</span>
+                                    <input type="checkbox" name="rev-groomer-venue[]" value="Groomer's studio" data-rev-filter-option="groomer">
+                                    <span class="rev-filter-menu__check" aria-hidden="true"></span>
+                                </label>
+                            </li>
+                            <li>
+                                <label>
+                                    <span class="rev-filter-menu__text">Homevisit</span>
+                                    <input type="checkbox" name="rev-groomer-venue[]" value="Homevisit" data-rev-filter-option="groomer">
+                                    <span class="rev-filter-menu__check" aria-hidden="true"></span>
+                                </label>
+                            </li>
+                            <li>
+                                <label>
+                                    <span class="rev-filter-menu__text">Visiting Groomers</span>
+                                    <input type="checkbox" name="rev-groomer-venue[]" value="Visiting Groomers" data-rev-filter-option="groomer">
+                                    <span class="rev-filter-menu__check" aria-hidden="true"></span>
+                                </label>
+                            </li>
+                            <li>
+                                <label>
+                                    <span class="rev-filter-menu__text">Mobile Station</span>
+                                    <input type="checkbox" name="rev-groomer-venue[]" value="Mobile Station" data-rev-filter-option="groomer">
+                                    <span class="rev-filter-menu__check" aria-hidden="true"></span>
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="rev-filter-dd" data-rev-dd="space">
+                    <button type="button" class="rev-filter-pill" data-rev-filter="space" aria-expanded="false" aria-haspopup="listbox">
+                        Space Venue <?= $revChevron ?>
+                    </button>
+                    <div class="rev-filter-menu" hidden>
+                        <ul class="rev-filter-menu__list" role="listbox">
+                            <li>
+                                <label>
+                                    <span class="rev-filter-menu__text">Private rooms</span>
+                                    <input type="checkbox" name="rev-space-venue[]" value="Private rooms" data-rev-filter-option="space">
+                                    <span class="rev-filter-menu__check" aria-hidden="true"></span>
+                                </label>
+                            </li>
+                            <li>
+                                <label>
+                                    <span class="rev-filter-menu__text">Salon</span>
+                                    <input type="checkbox" name="rev-space-venue[]" value="Salon" data-rev-filter-option="space">
+                                    <span class="rev-filter-menu__check" aria-hidden="true"></span>
+                                </label>
+                            </li>
+                            <li>
+                                <label>
+                                    <span class="rev-filter-menu__text">Mobile station</span>
+                                    <input type="checkbox" name="rev-space-venue[]" value="Mobile station" data-rev-filter-option="space">
+                                    <span class="rev-filter-menu__check" aria-hidden="true"></span>
+                                </label>
+                            </li>
+                            <li>
+                                <label>
+                                    <span class="rev-filter-menu__text">Garden / Shed</span>
+                                    <input type="checkbox" name="rev-space-venue[]" value="Garden / Shed" data-rev-filter-option="space">
+                                    <span class="rev-filter-menu__check" aria-hidden="true"></span>
+                                </label>
+                            </li>
+                            <li>
+                                <label>
+                                    <span class="rev-filter-menu__text">Others</span>
+                                    <input type="checkbox" name="rev-space-venue[]" value="Others" data-rev-filter-option="space">
+                                    <span class="rev-filter-menu__check" aria-hidden="true"></span>
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="rev-filter-dd" data-rev-dd="sort">
+                    <button type="button" class="rev-filter-pill" data-rev-filter="sort" aria-expanded="false" aria-haspopup="listbox">
+                        Sort <?= $revChevron ?>
+                    </button>
+                    <div class="rev-filter-menu" hidden>
+                        <ul class="rev-filter-menu__list" role="listbox">
+                            <li>
+                                <label>
+                                    <span class="rev-filter-menu__text">Recommended (default)</span>
+                                    <input type="radio" name="rev-sort" value="Recommended (default)" data-rev-filter-option="sort" checked>
+                                    <span class="rev-filter-menu__check" aria-hidden="true"></span>
+                                </label>
+                            </li>
+                            <li>
+                                <label>
+                                    <span class="rev-filter-menu__text">Distance</span>
+                                    <input type="radio" name="rev-sort" value="Distance" data-rev-filter-option="sort">
+                                    <span class="rev-filter-menu__check" aria-hidden="true"></span>
+                                </label>
+                            </li>
+                            <li>
+                                <label>
+                                    <span class="rev-filter-menu__text">Lowest price</span>
+                                    <input type="radio" name="rev-sort" value="Lowest price" data-rev-filter-option="sort">
+                                    <span class="rev-filter-menu__check" aria-hidden="true"></span>
+                                </label>
+                            </li>
+                            <li>
+                                <label>
+                                    <span class="rev-filter-menu__text">Soonest available</span>
+                                    <input type="radio" name="rev-sort" value="Soonest available" data-rev-filter-option="sort">
+                                    <span class="rev-filter-menu__check" aria-hidden="true"></span>
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

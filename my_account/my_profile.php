@@ -1065,7 +1065,7 @@
     <script src="<?= BASE_URL ?>/my_account/my_pets.js?v=6"></script>
     <script src="<?= BASE_URL ?>/my_account/my_pets_form.js?v=6"></script>
     <script src="<?= BASE_URL ?>/my_account/my_favourites.js?v=3"></script>
-    <script src="<?= BASE_URL ?>/my_account/my_reviews.js?v=3"></script>
+    <script src="<?= BASE_URL ?>/my_account/my_reviews.js?v=4"></script>
     <script src="<?= BASE_URL ?>/my_account/my_rewards.js?v=1"></script>
 
 </body>

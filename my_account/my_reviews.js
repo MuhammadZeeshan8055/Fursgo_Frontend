@@ -8,27 +8,48 @@
     const tabs = root.querySelectorAll('.rev-tab');
     const panels = root.querySelectorAll('[data-rev-panel]');
     const filterTags = document.getElementById('rev-filter-tags');
+    const filterPills = document.getElementById('rev-filter-pills');
 
     const titles = {
         written: 'Reviews Written',
         received: 'Reviews Received'
     };
 
-    const filterLabels = {
-        written: 'Garden / Shed',
-        received: 'Salon'
-    };
-
     function activePanel() {
         return root.querySelector('[data-rev-panel]:not([hidden])');
     }
 
-    function updateFilterTag(id) {
-        const tag = root.querySelector('[data-rev-tag-label]');
-        if (!tag) return;
-        const label = filterLabels[id] || filterLabels.written;
-        tag.innerHTML = label + ' <span aria-hidden="true">&times;</span>';
-        tag.hidden = false;
+    function closeFilterMenus(except) {
+        root.querySelectorAll('.rev-filter-dd').forEach(function (dd) {
+            if (dd === except) return;
+            const menu = dd.querySelector('.rev-filter-menu');
+            const btn = dd.querySelector('.rev-filter-pill');
+            if (menu) menu.hidden = true;
+            if (btn) {
+                btn.classList.remove('is-open');
+                btn.setAttribute('aria-expanded', 'false');
+            }
+        });
+    }
+
+    function syncFilterTags() {
+        if (!filterTags) return;
+        filterTags.innerHTML = '';
+
+        const checked = root.querySelectorAll('[data-rev-filter-option]:checked');
+        checked.forEach(function (input) {
+            // Don't show the default sort as a pill
+            if (input.name === 'rev-sort' && input.value === 'Recommended (default)') return;
+
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'rev-filter-tag';
+            btn.setAttribute('data-rev-clear-tag', '');
+            btn.setAttribute('data-rev-tag-value', input.value);
+            btn.setAttribute('data-rev-tag-name', input.name);
+            btn.innerHTML = input.value + ' <span aria-hidden="true">&times;</span>';
+            filterTags.appendChild(btn);
+        });
     }
 
     function closeMenus(except) {
@@ -86,7 +107,7 @@
 
         if (titleEl) titleEl.textContent = titles[id] || titles.written;
         if (searchInput) searchInput.value = '';
-        updateFilterTag(id);
+        closeFilterMenus();
 
         root.querySelectorAll('.rev-card').forEach(resetCard);
         applySearch();
@@ -102,12 +123,63 @@
         searchInput.addEventListener('input', applySearch);
     }
 
+    if (filterPills) {
+        filterPills.addEventListener('click', function (e) {
+            const btn = e.target.closest('[data-rev-filter]');
+            if (!btn) return;
+            if (e.target.closest('.rev-filter-menu')) return;
+
+            e.preventDefault();
+            const dd = btn.closest('.rev-filter-dd');
+            const menu = dd && dd.querySelector('.rev-filter-menu');
+            if (!menu) return;
+
+            const willOpen = menu.hidden;
+            closeFilterMenus();
+            if (willOpen) {
+                menu.hidden = false;
+                btn.classList.add('is-open');
+                btn.setAttribute('aria-expanded', 'true');
+            }
+        });
+
+        filterPills.addEventListener('change', function (e) {
+            const input = e.target.closest('[data-rev-filter-option]');
+            if (!input) return;
+            syncFilterTags();
+        });
+    }
+
     if (filterTags) {
         filterTags.addEventListener('click', function (e) {
             const btn = e.target.closest('[data-rev-clear-tag]');
-            if (btn) btn.remove();
+            if (!btn) return;
+
+            const name = btn.getAttribute('data-rev-tag-name');
+            const value = btn.getAttribute('data-rev-tag-value');
+            const input = root.querySelector(
+                '[data-rev-filter-option][name="' + name + '"][value="' + CSS.escape(value) + '"]'
+            );
+
+            if (input) {
+                if (input.type === 'radio') {
+                    const def = root.querySelector('[data-rev-filter-option][name="' + name + '"][value="Recommended (default)"]');
+                    if (def) def.checked = true;
+                    else input.checked = false;
+                } else {
+                    input.checked = false;
+                }
+            }
+
+            syncFilterTags();
         });
     }
+
+    document.addEventListener('click', function (e) {
+        if (!e.target.closest('.rev-filter-dd')) {
+            closeFilterMenus();
+        }
+    });
 
     root.addEventListener('click', function (e) {
         const menuBtn = e.target.closest('[data-rev-menu]');
@@ -116,6 +188,7 @@
             const dropdown = menuBtn.parentElement.querySelector('.rev-card__dropdown');
             const open = dropdown && !dropdown.hidden;
             closeMenus();
+            closeFilterMenus();
             if (dropdown && !open) dropdown.hidden = false;
             return;
         }
@@ -203,4 +276,6 @@
             btn.disabled = true;
         });
     });
+
+    syncFilterTags();
 })();
