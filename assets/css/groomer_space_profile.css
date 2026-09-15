@@ -102,7 +102,6 @@ h1 {
 }
 
 .owner {
-    color: var(--muted);
     font-family: Lato;
     font-size: 18px;
     font-style: normal;
@@ -160,13 +159,12 @@ h1 {
 }
 
 .pill.toprated {
-    background: #FFA899;
+    background: #FFC97A;
     color: #FFF
 }
 
-.pill.security-verified {
-    background: #D5E5B5;
-    color: #FFF;
+.pill.garden-shed {
+    background: #FFA899;
     color: #FFF;
     font-family: Lato;
     font-size: 14px;
@@ -370,6 +368,7 @@ h1 {
 .meta-stats {
     display: flex;
     align-items: center;
+    justify-content: end;
     gap: 12px;
     color: #3B3731;
     font-family: Lato;
@@ -381,7 +380,8 @@ h1 {
 
 .block-btn-div {
     position: absolute;
-    bottom: -50px;
+    bottom: 0px;
+    right: -58%;
     display: none;
 }
 
