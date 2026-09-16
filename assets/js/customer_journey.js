@@ -710,6 +710,7 @@ function packVisibleColumns(panel) {
         if (!cols.length) continue;
 
         var loadMore = row.querySelector(':scope > .col-lg-12');
+        var mapCol = row.querySelector(':scope > .map-col');
         var visible = [];
         var hidden = [];
         var i;
@@ -723,15 +724,20 @@ function packVisibleColumns(panel) {
             }
         }
 
-        // visible first, then hidden
+        // Anchor before load-more / map so the map stays on the right
+        var insertBefore = loadMore || mapCol || null;
+
         for (i = 0; i < visible.length; i++) {
-            if (loadMore) row.insertBefore(visible[i], loadMore);
+            if (insertBefore) row.insertBefore(visible[i], insertBefore);
             else row.appendChild(visible[i]);
         }
         for (i = 0; i < hidden.length; i++) {
-            if (loadMore) row.insertBefore(hidden[i], loadMore);
+            if (insertBefore) row.insertBefore(hidden[i], insertBefore);
             else row.appendChild(hidden[i]);
         }
+
+        // Keep map column last in map views
+        if (mapCol) row.appendChild(mapCol);
     }
 }
 

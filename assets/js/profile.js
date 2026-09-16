@@ -417,12 +417,81 @@ function copyLink() {
 
 const selectedSection = document.getElementById('groomerSelectedSection');
 
-selectedSection.addEventListener('click', e => {
-    const pill = e.target.closest('.selected-item');
-    if (!pill) return;
+if (selectedSection) {
+    selectedSection.addEventListener('click', e => {
+        const pill = e.target.closest('.selected-item');
+        if (!pill) return;
 
-    removePill(pill.dataset.value);
-});
+        removePill(pill.dataset.value);
+    });
+}
+
+function initPartnerBookingModal() {
+    const modal = document.getElementById('groomer_book_space');
+    if (!modal) return;
+
+    const checkoutUrl = modal.dataset.partnerCheckout || '';
+    const cards = modal.querySelectorAll('.space-cards');
+    const continueBtns = modal.querySelectorAll('.modal-footer-btn.apply');
+    let selectedCard = null;
+
+    cards.forEach(card => card.classList.remove('active'));
+
+    function setContinueEnabled(enabled) {
+        continueBtns.forEach(btn => {
+            btn.disabled = !enabled;
+            btn.classList.toggle('is-disabled', !enabled);
+        });
+    }
+
+    function selectCard(card) {
+        cards.forEach(c => c.classList.remove('selected'));
+        card.classList.add('selected');
+        selectedCard = card;
+        setContinueEnabled(true);
+    }
+
+    function resetSelection() {
+        cards.forEach(c => c.classList.remove('selected'));
+        selectedCard = null;
+        setContinueEnabled(false);
+    }
+
+    cards.forEach(card => {
+        card.addEventListener('click', e => {
+            if (e.target.closest('.icons, .first-icon, .second-icon, .third-icon')) return;
+
+            const slot = e.target.closest('.slot');
+            if (slot) {
+                e.stopPropagation();
+                card.querySelectorAll('.slot').forEach(s => s.classList.remove('highlight'));
+                slot.classList.add('highlight');
+                selectCard(card);
+                return;
+            }
+
+            selectCard(card);
+        });
+    });
+
+    continueBtns.forEach(btn => {
+        btn.addEventListener('click', e => {
+            if (!selectedCard || !checkoutUrl) return;
+            e.preventDefault();
+            window.location.href = checkoutUrl;
+        });
+    });
+
+    modal.querySelectorAll('[data-modal-close]').forEach(btn => {
+        btn.addEventListener('click', resetSelection);
+    });
+
+    document.getElementById('goBack')?.addEventListener('click', resetSelection);
+
+    resetSelection();
+}
+
+document.addEventListener('DOMContentLoaded', initPartnerBookingModal);
 
 /* -------------------------
    CREATE PILL
@@ -685,19 +754,101 @@ document.querySelectorAll('.custom-select[data-multiselect]').forEach(select => 
     }
 });
 
+// custom select single-select (booking service type — highlight in trigger, no pills)
+document.querySelectorAll('.custom-select[data-singleselect]').forEach(select => {
+    const trigger = select.querySelector('.select-trigger');
+    const optionItems = select.querySelectorAll('.select-options li');
+    const hiddenInput = select.querySelector('input[type="hidden"]');
+    const selectedText = select.querySelector('.selected-text');
+    const selectedPrice = select.querySelector('.selected-price');
+    const placeholder = select.dataset.placeholder || 'Select';
+
+    function getOptionLabel(option) {
+        return option.dataset.label
+            || option.querySelector('.option-label')?.textContent.trim()
+            || option.textContent.trim();
+    }
+
+    function getOptionPrice(option) {
+        return option?.dataset.price || '';
+    }
+
+    function setSelection(option) {
+        optionItems.forEach(item => item.classList.remove('selected'));
+
+        if (!option) {
+            if (selectedText) selectedText.textContent = placeholder;
+            if (selectedPrice) selectedPrice.textContent = '';
+            if (hiddenInput) hiddenInput.value = '';
+            select.classList.remove('has-value');
+            return;
+        }
+
+        option.classList.add('selected');
+        if (selectedText) selectedText.textContent = getOptionLabel(option);
+        if (selectedPrice) selectedPrice.textContent = getOptionPrice(option);
+        if (hiddenInput) hiddenInput.value = option.dataset.value || '';
+        select.classList.add('has-value');
+    }
+
+    trigger?.addEventListener('click', e => {
+        e.stopPropagation();
+        closeOthers(select);
+
+        select.classList.toggle('open');
+        const isOpen = select.classList.contains('open');
+        trigger.style.borderBottomLeftRadius = isOpen ? '0' : '12px';
+        trigger.style.borderBottomRightRadius = isOpen ? '0' : '12px';
+    });
+
+    optionItems.forEach(option => {
+        option.addEventListener('click', e => {
+            e.stopPropagation();
+
+            const alreadySelected = option.classList.contains('selected');
+            setSelection(alreadySelected ? null : option);
+
+            select.classList.remove('open');
+            trigger.style.borderBottomLeftRadius = '12px';
+            trigger.style.borderBottomRightRadius = '12px';
+
+            if (select.closest('#booking-sidebar') && typeof window.updateBookingSummary === 'function') {
+                window.updateBookingSummary();
+            }
+        });
+    });
+});
+
 function closeOthers(current) {
     document.querySelectorAll('.custom-select:not([data-multiselect])').forEach(s => {
         if (s === current) return;
         s.classList.remove('open');
+        const t = s.querySelector('.select-trigger');
+        if (t) {
+            t.style.borderBottomLeftRadius = '12px';
+            t.style.borderBottomRightRadius = '12px';
+        }
+    });
+    document.querySelectorAll('.custom-select[data-multiselect]').forEach(s => {
+        if (s === current) return;
+        s.classList.remove('open');
+        const t = s.querySelector('.select-trigger');
+        if (t) {
+            t.style.borderBottomLeftRadius = '12px';
+            t.style.borderBottomRightRadius = '12px';
+        }
     });
 }
 
 document.addEventListener('click', () => {
-    document.querySelectorAll('.custom-select:not([data-multiselect]').forEach(s => {
+    document.querySelectorAll('.custom-select[data-multiselect], .custom-select[data-singleselect]').forEach(s => {
         if (!s.classList.contains('open')) return;
 
         s.classList.remove('open');
-        s.querySelector('.select-trigger').style.cssText =
-            'border-bottom-left-radius:12px;border-bottom-right-radius:12px;';
+        const trigger = s.querySelector('.select-trigger');
+        if (trigger) {
+            trigger.style.borderBottomLeftRadius = '12px';
+            trigger.style.borderBottomRightRadius = '12px';
+        }
     });
 });

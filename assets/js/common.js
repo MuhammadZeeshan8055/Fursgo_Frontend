@@ -227,7 +227,7 @@ for (i = 0; i < acc.length; i++) {
 
 // custom select dropdown js  
 
-document.querySelectorAll('.custom-select:not([data-multiselect])').forEach(select => {
+document.querySelectorAll('.custom-select:not([data-multiselect]):not([data-singleselect])').forEach(select => {
     const trigger = select.querySelector('.select-trigger');
     const options = select.querySelectorAll('.select-options li');
     const datePopovers = document.querySelectorAll('.popover');
@@ -241,7 +241,7 @@ document.querySelectorAll('.custom-select:not([data-multiselect])').forEach(sele
             popover.style.display = 'none';
         });
 
-        document.querySelectorAll('.custom-select:not([data-multiselect])').forEach(s => {
+        document.querySelectorAll('.custom-select:not([data-multiselect]):not([data-singleselect])').forEach(s => {
             if (s !== select) {
                 s.classList.remove('open');
                 const t = s.querySelector('.select-trigger');
@@ -277,7 +277,7 @@ document.querySelectorAll('.custom-select:not([data-multiselect])').forEach(sele
 
 // Remove 'has-value' if clicked outside and no value
 document.addEventListener('click', (e) => {
-    document.querySelectorAll('.custom-select:not([data-multiselect])').forEach(select => {
+    document.querySelectorAll('.custom-select:not([data-multiselect]):not([data-singleselect])').forEach(select => {
         if (!select.contains(e.target) && !select.querySelector('input[type="hidden"]').value) {
             select.classList.remove('has-value');
         }

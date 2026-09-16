@@ -804,7 +804,7 @@
 
         <!-- Modal 1 -->
 
-        <div class="modal" id="groomer_book_space">
+        <div class="modal" id="groomer_book_space" data-partner-checkout="<?= BASE_URL ?>checkout_booking_groomer/">
             <div class="modal-content">
                 <div class="d-flex align-items-center justify-content-between">
                     <button type="button" class="btn-custom btn-no-bg text-center" id="goBack" fdprocessedid="y45oyo" style="display: inline;">Go Back</button>

@@ -820,13 +820,13 @@
 
         <!-- Modal 1 -->
 
-        <div class="modal" id="groomer_book_space">
+        <div class="modal" id="groomer_book_space" data-partner-checkout="<?= BASE_URL ?>checkout_booking_space/">
             <div class="modal-content">
                 <div class="d-flex align-items-center justify-content-between">
                     <button type="button" class="btn-custom btn-no-bg text-center" id="goBack" fdprocessedid="y45oyo" style="display: inline;">Go Back</button>
                     <div>
                         <h1 class="large-font line-default">Book a Groomer for Your Space</h1>
-                        <p class="normal-light-color text-center">Please select a space.</p>
+                        <p class="normal-light-color text-center">Please select a groomer.</p>
                     </div>
                     <svg data-modal-close class="cursor" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36" fill="none">
                         <circle cx="18" cy="18" r="17.5" stroke="#3B3731" />
@@ -2669,7 +2669,7 @@
                                 <span class="booking-step__num">1</span>
                                 Choose a service type
                             </p>
-                            <div class="custom-select" data-multiselect data-pill="accent" data-summary="service" data-placeholder="Select service type">
+                            <div class="custom-select" data-singleselect data-summary="service" data-placeholder="Select service type">
                                 <div class="select-trigger">
                                     <span class="selected-text">Select service type</span>
                                     <span class="select-trigger-meta">
@@ -2695,7 +2695,6 @@
                                 </ul>
                                 <input type="hidden" name="serviceType">
                             </div>
-                            <div class="service-selected-options d-flex align-items-center flex-wrap gap-10 mt-4"></div>
                         </div>
 
                         <div class="service-type-select booking-step mt-5">
@@ -2855,82 +2854,87 @@
                             </p>
                         </div>
 
-                        <!-- Modal  -->
-
-                        <!-- SPACE PROMPT MODAL -->
-                        <div class="modal" id="space_prompt">
-                            <div class="modal-content">
-                                <div class="groomer-cross-svg cursor d-flex justify-content-end" data-modal-close>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36" fill="none">
-                                        <circle cx="18" cy="18" r="17.5" stroke="#3B3731" />
-                                        <path d="M12.8 23.9998L24 12.7998M12.8 12.7998L24 23.9998" stroke="#3B3731" stroke-width="1.5" stroke-linecap="round" />
-                                    </svg>
-                                </div>
-                                <div class="d-flex flex-column align-items-center justify-content-center">
-                                    <div class="svg-wrapper">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="76" height="50" viewBox="0 0 76 50" fill="none">
-                                            <rect x="11.8813" width="50.0001" height="17.8218" rx="8.91091" fill="#FFC97A" />
-                                            <rect y="17.3271" width="50.0001" height="17.3268" rx="8.66339" fill="#FFC97A" />
-                                            <rect x="25.2476" y="32.1782" width="50.0001" height="17.8218" rx="8.91091" fill="#FFC97A" />
-                                        </svg>
-                                        <svg class="space-modal-svg" xmlns="http://www.w3.org/2000/svg" width="74" height="52" viewBox="0 0 74 52" fill="none">
-                                            <path d="M27.5 27.5448C24.2602 27.5448 21.4854 26.3909 19.1754 24.0831C16.8654 21.7754 15.7117 19.0045 15.7143 15.7705C15.7169 12.5365 16.8706 9.76298 19.1754 7.44998C21.4801 5.13699 24.255 3.98703 27.5 4.00011C30.745 4.01319 33.5199 5.16446 35.8246 7.45391C38.1294 9.74335 39.2831 12.5169 39.2857 15.7744C39.2883 19.032 38.1346 21.8029 35.8246 24.0871C33.5146 26.3713 30.7398 27.5212 27.5 27.5448ZM0 47.9261V45.5712C0 43.9045 0.480596 42.3726 1.44179 40.9753C2.40298 39.5781 3.66536 38.4883 5.22893 37.706C8.75417 36.0445 12.3815 34.7415 16.1111 33.7969C19.8406 32.8524 23.6421 32.3788 27.5157 32.3762C31.3893 32.3736 35.1856 32.8471 38.9046 33.7969C42.6237 34.7467 46.2458 36.0498 49.7711 37.706C51.3346 38.4857 52.597 39.5755 53.5582 40.9753C54.5194 42.3752 55 43.9058 55 45.5673V47.9222C55 49.0734 54.6085 50.0415 53.8254 50.8265C53.0423 51.6088 52.0732 52 50.9182 52H4.08571C2.93071 52 1.96167 51.6075 1.17857 50.8226C0.392858 50.0402 0 49.0774 0 47.9261ZM27.5 23.62C29.6607 23.62 31.5111 22.8508 33.0511 21.3123C34.5911 19.7737 35.3598 17.9265 35.3571 15.7705C35.3545 13.6145 34.5858 11.7659 33.0511 10.2248C31.5163 8.68367 29.666 7.91572 27.5 7.92095C25.334 7.92619 23.485 8.69413 21.9529 10.2248C20.4207 11.7555 19.6507 13.604 19.6429 15.7705C19.635 17.937 20.405 19.7842 21.9529 21.3123C23.5007 22.8403 25.3498 23.6096 27.5 23.62ZM40.9475 38.3654V48.0752H51.0714V45.5359C51.0714 44.5652 50.7571 43.7109 50.1286 42.973C49.5 42.2352 48.7562 41.6255 47.8971 41.1441C46.7788 40.5685 45.6369 40.0569 44.4714 39.6095C43.306 39.1621 42.1313 38.7474 40.9475 38.3654ZM17.9811 37.3645V42.1881H37.0189V37.3606C35.458 36.9995 33.8774 36.7327 32.2771 36.56C30.6795 36.3873 29.0819 36.3009 27.4843 36.3009C25.8814 36.3009 24.2877 36.3873 22.7032 36.56C21.1187 36.7327 19.5446 37.0009 17.9811 37.3645ZM3.92857 48.0752H14.0525V38.3654C12.8687 38.7448 11.694 39.1595 10.5286 39.6095C9.36309 40.0596 8.22119 40.5711 7.10286 41.1441C6.24643 41.6229 5.50393 42.2326 4.87536 42.973C4.24417 43.7109 3.92857 44.5652 3.92857 45.5359V48.0752Z" fill="#3B3731" />
-                                            <path d="M69.5056 12.1945L65.0523 10.0763C64.2465 9.69593 63.7499 10.8177 64.5276 11.1796L68.9809 13.2977L68.7116 13.8639L64.2583 11.7457C63.4612 11.3586 62.9642 12.4795 63.7335 12.849L68.1868 14.9672L67.9116 15.5457L63.4584 13.4276C62.6582 13.047 62.1615 14.1672 62.9336 14.5308L67.3869 16.649L67.1246 17.2003L62.6713 15.0822C61.8853 14.7148 61.3714 15.8283 62.1404 16.1985L66.5937 18.3166L66.3309 18.8692L61.8776 16.751C61.0952 16.376 60.5661 17.4801 61.3528 17.8543L65.8061 19.9724L65.5439 20.5238L61.0906 18.4056C60.3059 18.0353 59.7763 19.1406 60.5655 19.5095L65.0188 21.6277L64.7501 22.1926L60.2968 20.0745C59.5164 19.6953 58.9873 20.7994 59.7721 21.1777L64.2253 23.2959L63.9637 23.8461L59.5104 21.7279C58.7271 21.3546 58.2129 22.4687 58.9853 22.8318L63.4386 24.9499L58.3291 35.6923C57.5531 37.3304 60.2599 38.5816 61.0321 36.9779L72.9891 11.8391C73.3371 11.0877 73.1217 9.82603 72.0289 9.3026L66.6396 6.73924C65.8346 6.35709 65.338 7.47884 66.1148 7.84252L70.5616 9.97428L70.3 10.5244L65.8467 8.40629C65.045 8.02061 64.5486 9.14176 65.3216 9.51016L69.7749 11.6283L69.5056 12.1945ZM55.6875 28.9757C56.5938 27.0637 55.4263 23.9884 52.2306 24.1005L55.7067 16.7922L59.7823 3.9506C59.8993 3.61529 59.6423 3.4009 59.4481 3.30202C59.2425 3.21075 58.8 3.09238 58.6041 3.39021L51.222 14.6591L47.7459 21.9674C45.8163 19.4175 42.7569 20.4983 41.8606 22.381C41.0644 24.0566 41.8066 26.0969 43.6985 26.9917C45.6006 27.9015 47.7039 27.0108 48.4217 25.5017L52.0326 17.91L52.6732 18.2147L49.0624 25.8064C48.2587 27.4959 49.0811 29.4206 50.6181 30.2489C50.1512 31.1628 49.85 32.6401 50.217 33.4573C50.6471 34.4163 51.8817 34.0388 51.8335 33.2302C51.7762 32.4718 51.6098 31.9595 52.5007 30.7867C53.8667 30.8416 55.1109 30.1813 55.6875 28.9757ZM44.4989 25.4972C44.0669 25.2917 43.7279 24.9362 43.5566 24.5089C43.3853 24.0815 43.3957 23.6173 43.5854 23.2184C43.7751 22.8195 44.1287 22.5185 44.5683 22.3818C45.008 22.245 45.4977 22.2836 45.9297 22.4891C46.8154 22.9162 47.2188 23.9328 46.8316 24.7635C46.6414 25.1594 46.29 25.4583 45.8535 25.5957C45.4169 25.733 44.9302 25.6976 44.4989 25.4972ZM50.705 26.6059C50.8953 26.2097 51.2468 25.9105 51.6836 25.7729C52.1204 25.6353 52.6074 25.6704 53.0392 25.8706C53.4672 26.079 53.8019 26.4346 53.9707 26.8603C54.1395 27.286 54.1289 27.7476 53.9411 28.145C53.7516 28.5416 53.4003 28.8411 52.9635 28.9785C52.5266 29.1159 52.0396 29.0801 51.6084 28.8788C51.1805 28.6707 50.8458 28.3155 50.6768 27.8901C50.5077 27.4647 50.5178 27.0033 50.705 26.6059Z" fill="#3B3731" />
-                                        </svg>
-                                    </div>
-                                    <h1 class="large-font text-center mt-3" style="line-height: normal;">Do you have a groomer?</h1>
-                                    <p class="normal-light-color">Tell us how you’d like to continue.</p>
-                                </div>
-
-                                <div class="d-flex flex-column align-items-center justify-content-center">
-                                    <div class="groomer-find-card cursor d-flex flex-column justify-content-center mt-4">
-                                        <p class="medium-font-m-bold">Find a groomer for me</p>
-                                        <p class="normal-light-color-font">We’ll match you with a trusted professional.</p>
-                                    </div>
-
-                                    <div class="service-type-select mt-4" id="find-groomer-for-me" style="display:none;">
-                                        <p class="label">Main Service Type</p>
-                                        <div class="custom-select">
-                                            <div class="select-trigger full-width">
-                                                <span class="selected-text">Full Grooming, Pet Spa ...</span>
-                                                <svg width="16" height="16" viewBox="0 0 24 24">
-                                                    <path d="M6 9l6 6 6-6" fill="none" stroke="#666" stroke-width="2" />
-                                                </svg>
-                                            </div>
-
-                                            <ul class="select-options">
-                                                <li data-value="full-groom">Full Groom</li>
-                                                <li data-value="bath-and-brush" class="disabled">Bath & Brush</li>
-                                                <li data-value="medicated-bath">Medicated / Sensitive Skin Bath</li>
-                                                <li data-value="ear-cleaning">Ear Cleaning</li>
-                                                <li data-value="deshedding" class="disabled">Deshedding</li>
-                                            </ul>
-
-                                            <input type="hidden" name="main_service">
-                                        </div>
-                                    </div>
-
-                                    <div class="space-find-card dont-need-groomer cursor d-flex flex-column justify-content-center mt-4">
-                                        <p class="medium-font-m-bold">I don’t need a groomer</p>
-                                        <p class="normal-light-color-font">Continue with booking this space only.</p>
-                                    </div>
-                                </div>
-
-                                <div class="modal-footer d-flex align-items-center justify-content-center mt-4 gap-10">
-                                    <!-- <button type="button" class="modal-footer-btn" data-modal-close>Go Back</button> -->
-                                    <button type="button" class="modal-footer-btn apply">Continue</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Modal  -->
-
                     </div>
 
                 </div>
             </div>
         </div>
 
+    </div>
+
+    <!-- SPACE PROMPT MODAL -->
+    <div class="modal" id="space_prompt">
+        <div class="modal-content">
+            <div class="groomer-cross-svg cursor d-flex justify-content-end" data-modal-close>
+                <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36" fill="none">
+                    <circle cx="18" cy="18" r="17.5" stroke="#3B3731" />
+                    <path d="M12.8 23.9998L24 12.7998M12.8 12.7998L24 23.9998" stroke="#3B3731" stroke-width="1.5" stroke-linecap="round" />
+                </svg>
+            </div>
+            <div class="d-flex flex-column align-items-center justify-content-center">
+                <div class="svg-wrapper">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="76" height="50" viewBox="0 0 76 50" fill="none">
+                        <rect x="11.8813" width="50.0001" height="17.8218" rx="8.91091" fill="#FFC97A" />
+                        <rect y="17.3271" width="50.0001" height="17.3268" rx="8.66339" fill="#FFC97A" />
+                        <rect x="25.2476" y="32.1782" width="50.0001" height="17.8218" rx="8.91091" fill="#FFC97A" />
+                    </svg>
+                    <svg class="space-modal-svg" xmlns="http://www.w3.org/2000/svg" width="74" height="52" viewBox="0 0 74 52" fill="none">
+                        <path d="M27.5 27.5448C24.2602 27.5448 21.4854 26.3909 19.1754 24.0831C16.8654 21.7754 15.7117 19.0045 15.7143 15.7705C15.7169 12.5365 16.8706 9.76298 19.1754 7.44998C21.4801 5.13699 24.255 3.98703 27.5 4.00011C30.745 4.01319 33.5199 5.16446 35.8246 7.45391C38.1294 9.74335 39.2831 12.5169 39.2857 15.7744C39.2883 19.032 38.1346 21.8029 35.8246 24.0871C33.5146 26.3713 30.7398 27.5212 27.5 27.5448ZM0 47.9261V45.5712C0 43.9045 0.480596 42.3726 1.44179 40.9753C2.40298 39.5781 3.66536 38.4883 5.22893 37.706C8.75417 36.0445 12.3815 34.7415 16.1111 33.7969C19.8406 32.8524 23.6421 32.3788 27.5157 32.3762C31.3893 32.3736 35.1856 32.8471 38.9046 33.7969C42.6237 34.7467 46.2458 36.0498 49.7711 37.706C51.3346 38.4857 52.597 39.5755 53.5582 40.9753C54.5194 42.3752 55 43.9058 55 45.5673V47.9222C55 49.0734 54.6085 50.0415 53.8254 50.8265C53.0423 51.6088 52.0732 52 50.9182 52H4.08571C2.93071 52 1.96167 51.6075 1.17857 50.8226C0.392858 50.0402 0 49.0774 0 47.9261ZM27.5 23.62C29.6607 23.62 31.5111 22.8508 33.0511 21.3123C34.5911 19.7737 35.3598 17.9265 35.3571 15.7705C35.3545 13.6145 34.5858 11.7659 33.0511 10.2248C31.5163 8.68367 29.666 7.91572 27.5 7.92095C25.334 7.92619 23.485 8.69413 21.9529 10.2248C20.4207 11.7555 19.6507 13.604 19.6429 15.7705C19.635 17.937 20.405 19.7842 21.9529 21.3123C23.5007 22.8403 25.3498 23.6096 27.5 23.62ZM40.9475 38.3654V48.0752H51.0714V45.5359C51.0714 44.5652 50.7571 43.7109 50.1286 42.973C49.5 42.2352 48.7562 41.6255 47.8971 41.1441C46.7788 40.5685 45.6369 40.0569 44.4714 39.6095C43.306 39.1621 42.1313 38.7474 40.9475 38.3654ZM17.9811 37.3645V42.1881H37.0189V37.3606C35.458 36.9995 33.8774 36.7327 32.2771 36.56C30.6795 36.3873 29.0819 36.3009 27.4843 36.3009C25.8814 36.3009 24.2877 36.3873 22.7032 36.56C21.1187 36.7327 19.5446 37.0009 17.9811 37.3645ZM3.92857 48.0752H14.0525V38.3654C12.8687 38.7448 11.694 39.1595 10.5286 39.6095C9.36309 40.0596 8.22119 40.5711 7.10286 41.1441C6.24643 41.6229 5.50393 42.2326 4.87536 42.973C4.24417 43.7109 3.92857 44.5652 3.92857 45.5359V48.0752Z" fill="#3B3731" />
+                        <path d="M69.5056 12.1945L65.0523 10.0763C64.2465 9.69593 63.7499 10.8177 64.5276 11.1796L68.9809 13.2977L68.7116 13.8639L64.2583 11.7457C63.4612 11.3586 62.9642 12.4795 63.7335 12.849L68.1868 14.9672L67.9116 15.5457L63.4584 13.4276C62.6582 13.047 62.1615 14.1672 62.9336 14.5308L67.3869 16.649L67.1246 17.2003L62.6713 15.0822C61.8853 14.7148 61.3714 15.8283 62.1404 16.1985L66.5937 18.3166L66.3309 18.8692L61.8776 16.751C61.0952 16.376 60.5661 17.4801 61.3528 17.8543L65.8061 19.9724L65.5439 20.5238L61.0906 18.4056C60.3059 18.0353 59.7763 19.1406 60.5655 19.5095L65.0188 21.6277L64.7501 22.1926L60.2968 20.0745C59.5164 19.6953 58.9873 20.7994 59.7721 21.1777L64.2253 23.2959L63.9637 23.8461L59.5104 21.7279C58.7271 21.3546 58.2129 22.4687 58.9853 22.8318L63.4386 24.9499L58.3291 35.6923C57.5531 37.3304 60.2599 38.5816 61.0321 36.9779L72.9891 11.8391C73.3371 11.0877 73.1217 9.82603 72.0289 9.3026L66.6396 6.73924C65.8346 6.35709 65.338 7.47884 66.1148 7.84252L70.5616 9.97428L70.3 10.5244L65.8467 8.40629C65.045 8.02061 64.5486 9.14176 65.3216 9.51016L69.7749 11.6283L69.5056 12.1945ZM55.6875 28.9757C56.5938 27.0637 55.4263 23.9884 52.2306 24.1005L55.7067 16.7922L59.7823 3.9506C59.8993 3.61529 59.6423 3.4009 59.4481 3.30202C59.2425 3.21075 58.8 3.09238 58.6041 3.39021L51.222 14.6591L47.7459 21.9674C45.8163 19.4175 42.7569 20.4983 41.8606 22.381C41.0644 24.0566 41.8066 26.0969 43.6985 26.9917C45.6006 27.9015 47.7039 27.0108 48.4217 25.5017L52.0326 17.91L52.6732 18.2147L49.0624 25.8064C48.2587 27.4959 49.0811 29.4206 50.6181 30.2489C50.1512 31.1628 49.85 32.6401 50.217 33.4573C50.6471 34.4163 51.8817 34.0388 51.8335 33.2302C51.7762 32.4718 51.6098 31.9595 52.5007 30.7867C53.8667 30.8416 55.1109 30.1813 55.6875 28.9757ZM44.4989 25.4972C44.0669 25.2917 43.7279 24.9362 43.5566 24.5089C43.3853 24.0815 43.3957 23.6173 43.5854 23.2184C43.7751 22.8195 44.1287 22.5185 44.5683 22.3818C45.008 22.245 45.4977 22.2836 45.9297 22.4891C46.8154 22.9162 47.2188 23.9328 46.8316 24.7635C46.6414 25.1594 46.29 25.4583 45.8535 25.5957C45.4169 25.733 44.9302 25.6976 44.4989 25.4972ZM50.705 26.6059C50.8953 26.2097 51.2468 25.9105 51.6836 25.7729C52.1204 25.6353 52.6074 25.6704 53.0392 25.8706C53.4672 26.079 53.8019 26.4346 53.9707 26.8603C54.1395 27.286 54.1289 27.7476 53.9411 28.145C53.7516 28.5416 53.4003 28.8411 52.9635 28.9785C52.5266 29.1159 52.0396 29.0801 51.6084 28.8788C51.1805 28.6707 50.8458 28.3155 50.6768 27.8901C50.5077 27.4647 50.5178 27.0033 50.705 26.6059Z" fill="#3B3731" />
+                    </svg>
+                </div>
+                <h1 class="large-font text-center mt-3" style="line-height: normal;">Do you have a groomer?</h1>
+                <p class="normal-light-color">Tell us how you’d like to continue.</p>
+            </div>
+
+            <div class="d-flex flex-column align-items-center justify-content-center">
+                <div class="groomer-find-card cursor d-flex flex-column justify-content-center mt-4">
+                    <p class="medium-font-m-bold">Find a groomer for me</p>
+                    <p class="normal-light-color-font">We’ll match you with a trusted professional.</p>
+                </div>
+
+                <div class="service-type-select mt-4" id="find-groomer-for-me" style="display:none;">
+                    <p class="label">Main Service Type</p>
+                    <div class="custom-select">
+                        <div class="select-trigger full-width">
+                            <span class="selected-text">Full Grooming, Pet Spa ...</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24">
+                                <path d="M6 9l6 6 6-6" fill="none" stroke="#666" stroke-width="2" />
+                            </svg>
+                        </div>
+
+                        <ul class="select-options">
+                            <li data-value="full-groom">Full Groom</li>
+                            <li data-value="bath-and-brush" class="disabled">
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <span>Bath & Brush</span>
+                                    <span class="disabled-text">Not available at this space</span>
+                                </div>
+                            </li>
+                            <li data-value="medicated-bath">Medicated / Sensitive Skin Bath</li>
+                            <li data-value="ear-cleaning">Ear Cleaning</li>
+                            <li data-value="deshedding" class="disabled">
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <span>Deshedding</span>
+                                    <span class="disabled-text">Not available at this space</span>
+                                </div>
+                            </li>
+                        </ul>
+
+                        <input type="hidden" name="main_service">
+                    </div>
+                </div>
+
+                <div class="space-find-card dont-need-groomer cursor d-flex flex-column justify-content-center mt-4">
+                    <p class="medium-font-m-bold">I don’t need a groomer</p>
+                    <p class="normal-light-color-font">Continue with booking this space only.</p>
+                </div>
+            </div>
+
+            <div class="modal-footer d-flex align-items-center justify-content-center mt-4 gap-10">
+                <button type="button" class="modal-footer-btn apply">Continue</button>
+            </div>
+        </div>
     </div>
 
     <?php include '../../components/footer.php' ?>

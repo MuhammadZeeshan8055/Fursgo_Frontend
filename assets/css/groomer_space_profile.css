@@ -386,6 +386,10 @@ h1 {
     display: none;
 }
 
+body.space-profile .block-btn-div {
+    right: -64%;
+}
+
 .block-btn {
     width: max-content;
     white-space: nowrap;
@@ -506,7 +510,9 @@ h1 {
     padding: 12px;
     font-family: Lato;
     border-radius: 10px;
-    border: 1px solid #D4D4D4;
+    border: 1px solid #DEDEDE;
+    background-color: #ffff;
+    box-shadow: 0 0 20px 5px rgba(59, 55, 49, 0.03);
 }
 
 .section-heading {
@@ -658,6 +664,41 @@ body.space-profile .booking-step__num {
     font-size: 12px;
     font-weight: 700;
     flex-shrink: 0;
+}
+
+/* Sticky booking sidebar — follow page scroll, design unchanged */
+@media (min-width: 992px) {
+    body.groomer-profile .row > .col-lg-4:has(#booking-sidebar),
+    body.space-profile .row > .col-lg-4:has(#booking-sidebar) {
+        align-self: flex-start;
+        position: sticky;
+        top: 65px;
+        z-index: 20;
+    }
+
+    body.groomer-profile #booking-sidebar,
+    body.space-profile #booking-sidebar {
+        max-height: calc(100vh - 80px);
+        overflow-x: hidden;
+        overflow-y: auto;
+        overscroll-behavior: contain;
+        padding-bottom: 0;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+
+    body.groomer-profile #booking-sidebar::-webkit-scrollbar,
+    body.space-profile #booking-sidebar::-webkit-scrollbar {
+        display: none;
+        width: 0;
+        height: 0;
+    }
+
+    body.groomer-profile #booking-sidebar .booking-summary,
+    body.space-profile #booking-sidebar .booking-summary {
+        margin-bottom: 0;
+        padding-bottom: 28px;
+    }
 }
 
 /* Booking sidebar selects — override shared .custom-select conflicts */
@@ -917,7 +958,7 @@ body.space-profile #booking-sidebar .booking-summary {
     margin-left: -12px;
     margin-right: -12px;
     margin-bottom: -12px;
-    padding: 24px 15px 20px;
+    padding: 24px 15px 28px;
     background: #F7F4EC;
     border-radius: 0 0 10px 10px;
 }
@@ -1031,7 +1072,7 @@ body.space-profile #booking-sidebar .booking-cancel-note svg {
     color: #9D9B98;
     text-align: right;
     font-family: Lato;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 400;
 }
 
@@ -2165,6 +2206,28 @@ body.space-profile .location-privacy-note svg {
     height: 48px;
 }
 
+.modal-footer .modal-footer-btn.apply:disabled,
+.modal-footer .modal-footer-btn.apply.is-disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+#groomer_book_space .space-cards.selected {
+    border-color: #FFC97A;
+    box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.15);
+}
+
+#groomer_book_space .space-cards {
+    cursor: pointer;
+}
+
+body.groomer-profile #groomer_prompt,
+body.groomer-profile #groomer_book_space,
+body.space-profile #space_prompt,
+body.space-profile #groomer_book_space {
+    z-index: 10001;
+}
+
 /* for space modal */
 .svg-wrapper {
     position: relative;
@@ -2188,10 +2251,15 @@ body.space-profile .location-privacy-note svg {
     width: 550px;
 }
 
+.select-options li {
+    color: #3B3731 !important;
+}
+
 .select-options li.disabled {
     cursor: not-allowed !important;
     pointer-events: none !important;
     background: #F7F7F7;
+    color: rgba(59, 55, 49, 0.25) !important;
 }
 
 /* modals css  */
