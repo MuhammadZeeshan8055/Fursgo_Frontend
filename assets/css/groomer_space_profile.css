@@ -674,15 +674,15 @@ body.space-profile .booking-step__num {
         position: sticky;
         top: 65px;
         z-index: 20;
+        margin-bottom: 24px;
     }
 
     body.groomer-profile #booking-sidebar,
     body.space-profile #booking-sidebar {
-        max-height: calc(100vh - 80px);
+        max-height: calc(100vh - 120px);
         overflow-x: hidden;
         overflow-y: auto;
         overscroll-behavior: contain;
-        padding-bottom: 0;
         scrollbar-width: none;
         -ms-overflow-style: none;
     }
@@ -692,12 +692,6 @@ body.space-profile .booking-step__num {
         display: none;
         width: 0;
         height: 0;
-    }
-
-    body.groomer-profile #booking-sidebar .booking-summary,
-    body.space-profile #booking-sidebar .booking-summary {
-        margin-bottom: 0;
-        padding-bottom: 28px;
     }
 }
 
@@ -953,11 +947,16 @@ body.space-profile #booking-sidebar .booking-step__time-range {
     white-space: nowrap;
 }
 
+body.groomer-profile #booking-sidebar.service-card,
+body.space-profile #booking-sidebar.service-card {
+    padding-bottom: 0;
+}
+
 body.groomer-profile #booking-sidebar .booking-summary,
 body.space-profile #booking-sidebar .booking-summary {
     margin-left: -12px;
     margin-right: -12px;
-    margin-bottom: -12px;
+    margin-bottom: 0;
     padding: 24px 15px 28px;
     background: #F7F4EC;
     border-radius: 0 0 10px 10px;
@@ -1054,6 +1053,7 @@ body.space-profile #booking-sidebar .booking-cancel-note {
     justify-content: center;
     gap: 5px;
     margin: 14px 0 0;
+    padding-bottom: 4px;
     color: #9D9B98;
     font-family: Lato, sans-serif;
     font-size: 14px;

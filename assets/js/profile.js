@@ -494,6 +494,280 @@ function initPartnerBookingModal() {
 document.addEventListener('DOMContentLoaded', initPartnerBookingModal);
 
 /* -------------------------
+   Partner modal map (same as search_results)
+--------------------------*/
+function getAssetBaseUrl() {
+    if (window.BASE_URL) return String(window.BASE_URL).replace(/\/?$/, '/');
+    return '/';
+}
+
+function partnerModalTooltipImage(imageUrl, clipId) {
+    return `
+    <svg xmlns="http://www.w3.org/2000/svg" width="41" height="60" viewBox="0 0 41 60" style="display:block;">
+        <defs>
+            <clipPath id="${clipId}">
+                <path d="M41 58C41 59.1046 40.1046 60 39 60H2C0.895431 60 0 59.1046 0 58V14C0 12.8954 0.895431 12 2 12H10C11.1046 12 12 11.1046 12 10V2C12 0.895431 12.8954 0 14 0H39C40.1046 0 41 0.895431 41 2V58Z"/>
+            </clipPath>
+        </defs>
+        <image href="${imageUrl}" width="41" height="60" preserveAspectRatio="xMidYMid slice" clip-path="url(#${clipId})" />
+    </svg>`;
+}
+
+function partnerModalBadgeSvg(color) {
+    return `
+    <svg xmlns="http://www.w3.org/2000/svg" width="8" height="11" viewBox="0 0 21 22" fill="none">
+        <rect x="4.14746" y="4.14746" width="12.443" height="13.8256" rx="3" fill="white" />
+        <path d="M10.9482 0.125295C10.7667 0.043205 10.5723 0 10.3692 0C10.1662 0 9.97174 0.043205 9.79028 0.125295L1.65477 3.57738C0.704262 3.97918 -0.00430085 4.91673 1.96518e-05 6.0487C0.0216222 10.3346 1.78439 18.1764 9.22861 21.7408C9.95014 22.0864 10.7883 22.0864 11.5098 21.7408C18.9541 18.1764 20.7168 10.3346 20.7384 6.0487C20.7428 4.91673 20.0342 3.97918 19.0837 3.57738L10.9482 0.125295ZM6.26043 12.3653C6.46781 12.4171 6.68816 12.443 6.91282 12.443C8.43796 12.443 9.67795 11.2031 9.67795 9.67793V6.9128H11.5876C12.1104 6.9128 12.59 7.2066 12.8233 7.67753L13.1343 8.29537H15.8995C16.2797 8.29537 16.5907 8.60644 16.5907 8.98665V10.3692C16.5907 12.2789 15.044 13.8256 13.1343 13.8256H11.0605V16.0161C11.0605 16.3315 10.8056 16.5907 10.4859 16.5907C10.4081 16.5907 10.3303 16.5734 10.2612 16.5432L5.99688 14.7156C5.71172 14.5947 5.53026 14.3138 5.53026 14.0071C5.53026 13.8861 5.55619 13.7694 5.61235 13.6614L6.26043 12.3653ZM6.22154 6.9128H8.29538V9.67793C8.29538 10.4427 7.67755 11.0605 6.91282 11.0605C6.1481 11.0605 5.53026 10.4427 5.53026 9.67793V7.60408C5.53026 7.22388 5.84134 6.9128 6.22154 6.9128ZM11.7518 8.98665C11.7518 8.80331 11.679 8.62748 11.5493 8.49784C11.4197 8.3682 11.2438 8.29537 11.0605 8.29537C10.8772 8.29537 10.7013 8.3682 10.5717 8.49784C10.4421 8.62748 10.3692 8.80331 10.3692 8.98665C10.3692 9.16998 10.4421 9.34581 10.5717 9.47545C10.7013 9.60509 10.8772 9.67793 11.0605 9.67793C11.2438 9.67793 11.4197 9.60509 11.5493 9.47545C11.679 9.34581 11.7518 9.16998 11.7518 8.98665Z" fill="${color}" />
+    </svg>`;
+}
+
+function buildPartnerModalPopup(loc, index, type) {
+    const base = getAssetBaseUrl();
+    const imageUrl = loc.image.startsWith('http') ? loc.image : base + loc.image.replace(/^\//, '');
+    const badgeColor = type === 'space' ? '#CBDCE8' : '#C9DDA0';
+    const subtitle = type === 'space'
+        ? `<h2 class="name" style="margin:0;font-size:14px;font-weight:600;color:#3B3731;">Hosted by <span class="studio">${loc.name}</span></h2>`
+        : `<span class="studio">${loc.name}</span>`;
+
+    const locationSVG = `
+        <svg xmlns="http://www.w3.org/2000/svg" width="10" height="14" viewBox="0 0 10 14" fill="none" style="vertical-align:middle;margin-right:2px;">
+            <path d="M5 6.65C4.5264 6.65 4.0722 6.46563 3.73731 6.13744C3.40242 5.80925 3.21429 5.36413 3.21429 4.9C3.21429 4.43587 3.40242 3.99075 3.73731 3.66256C4.0722 3.33437 4.5264 3.15 5 3.15C5.4736 3.15 5.9278 3.33437 6.26269 3.66256C6.59758 3.99075 6.78571 4.43587 6.78571 4.9C6.78571 5.12981 6.73953 5.35738 6.64979 5.5697C6.56004 5.78202 6.42851 5.97493 6.26269 6.13744C6.09687 6.29994 5.90002 6.42884 5.68336 6.51679C5.46671 6.60473 5.2345 6.65 5 6.65ZM5 0C3.67392 0 2.40215 0.516248 1.46447 1.43518C0.526784 2.3541 0 3.60044 0 4.9C0 8.575 5 14 5 14C5 14 10 8.575 10 4.9C10 3.60044 9.47322 2.3541 8.53553 1.43518C7.59785 0.516248 6.32608 0 5 0Z" fill="#FFC97A"/>
+        </svg>`;
+
+    const starSVG = `
+        <svg xmlns="http://www.w3.org/2000/svg" width="10" height="14" viewBox="0 0 14 14" fill="none" style="vertical-align:middle;margin-right:2px;">
+            <path d="M6.12956 0.660476C6.40354 -0.220161 7.59647 -0.220158 7.87045 0.660479L8.89548 3.95519C9.01801 4.34902 9.36942 4.61566 9.76593 4.61566H13.083C13.9696 4.61566 14.3383 5.80055 13.621 6.34481L10.9374 8.38106C10.6166 8.62446 10.4824 9.0559 10.6049 9.44973L11.63 12.7444C11.9039 13.6251 10.9388 14.3574 10.2215 13.8131L7.53797 11.7769C7.21719 11.5335 6.78282 11.5335 6.46204 11.7769L3.77846 13.8131C3.06117 14.3574 2.09607 13.6251 2.37005 12.7444L3.39508 9.44973C3.51761 9.0559 3.38338 8.62446 3.0626 8.38106L0.37903 6.34481C-0.338258 5.80055 0.0303816 4.61566 0.916998 4.61566H4.23408C4.63058 4.61566 4.98199 4.34902 5.10452 3.95519L6.12956 0.660476Z" fill="#FFC97A"/>
+        </svg>`;
+
+    return `
+        <div style="min-width:215px;position:relative;">
+            <div class="map-top-left-svg">${partnerModalBadgeSvg(badgeColor)}</div>
+            <div style="display:flex;gap:10px;align-items:center;">
+                <div>${partnerModalTooltipImage(imageUrl, `modal-clip-${type}-${index}`)}</div>
+                <div style="flex:1;">
+                    <h2 class="name" style="margin:0 0 0px;font-size:14px;font-weight:600;color:#3B3731;">${loc.loc_name}</h2>
+                    ${subtitle}
+                    <div class="map-meta d-flex align-items-center justify-content-between mt-2" style="font-size:14px;color:#3B3731;font-weight:500;line-height:1.4;">
+                        <span class="d-flex align-items-center">${locationSVG} ${loc.distance}</span>
+                        <span class="d-flex align-items-center">${starSVG} ${loc.rating} (${loc.reviews})</span>
+                    </div>
+                </div>
+            </div>
+        </div>`;
+}
+
+function enablePartnerModalMapCtrlZoom(map) {
+    map.scrollWheelZoom.disable();
+    const container = map.getContainer();
+    const wrapper = container.closest('.map-wrapper') || container.closest('.map-div') || container.parentElement;
+
+    if (wrapper && !wrapper.querySelector('.map-zoom-hint')) {
+        const hint = document.createElement('div');
+        hint.className = 'map-zoom-hint';
+        hint.setAttribute('aria-hidden', 'true');
+        hint.innerHTML = '<span class="map-zoom-hint__key">Ctrl</span> + scroll to zoom';
+        wrapper.appendChild(hint);
+    }
+
+    container.addEventListener('wheel', function (e) {
+        if (e.ctrlKey || e.metaKey) {
+            e.preventDefault();
+            map.scrollWheelZoom.enable();
+            clearTimeout(map._ctrlZoomTimeout);
+            map._ctrlZoomTimeout = setTimeout(() => map.scrollWheelZoom.disable(), 1000);
+        } else {
+            map.scrollWheelZoom.disable();
+        }
+    }, { passive: false });
+}
+
+window.initPartnerModalMap = function initPartnerModalMap() {
+    if (typeof L === 'undefined') return;
+
+    const mapEl = document.getElementById('modal-map');
+    if (!mapEl) return;
+
+    if (window.partnerModalMap) {
+        setTimeout(() => {
+            window.partnerModalMap.invalidateSize(true);
+        }, 80);
+        return;
+    }
+
+    const mapType = mapEl.dataset.mapType || (document.body.classList.contains('space-profile') ? 'groomer' : 'space');
+    const base = getAssetBaseUrl();
+
+    const groomerLocations = [
+        {
+            loc_name: "Sarah's Grooming Studio",
+            name: 'Sarah W.',
+            lat: 51.5033,
+            lng: -0.1147,
+            image: base + 'assets/images/card1.png',
+            distance: '2.5 mi',
+            rating: '4.3',
+            reviews: '20'
+        },
+        {
+            loc_name: 'Westminster Pet Spa',
+            name: 'Sarah W.',
+            lat: 51.4995,
+            lng: -0.1248,
+            image: base + 'assets/images/card2.png',
+            distance: '3.1 mi',
+            rating: '4.7',
+            reviews: '45'
+        },
+        {
+            loc_name: 'Sarah Grooming',
+            name: 'Sarah W.',
+            lat: 51.511227,
+            lng: -0.119470,
+            image: base + 'assets/images/card3.png',
+            distance: '1.8 mi',
+            rating: '4.5',
+            reviews: '32'
+        }
+    ];
+
+    const spaceLocations = [
+        {
+            loc_name: 'Furs & Co. Studio',
+            name: 'Dev É',
+            lat: 51.5074,
+            lng: -0.1657,
+            image: base + 'assets/images/space_card3.png',
+            distance: '2.5 mi',
+            rating: '4.3',
+            reviews: '20'
+        },
+        {
+            loc_name: 'Kensington Gardens',
+            name: 'Kensington Gardens',
+            lat: 51.5074,
+            lng: -0.1850,
+            image: base + 'assets/images/space_card1.png',
+            distance: '3.1 mi',
+            rating: '4.7',
+            reviews: '45'
+        },
+        {
+            loc_name: "Regent's Park",
+            name: "Regent's Park",
+            lat: 51.5313,
+            lng: -0.1568,
+            image: base + 'assets/images/space_card2.png',
+            distance: '1.8 mi',
+            rating: '4.5',
+            reviews: '32'
+        }
+    ];
+
+    const locations = mapType === 'space' ? spaceLocations : groomerLocations;
+
+    const map = L.map('modal-map', {
+        zoomControl: false,
+        attributionControl: false,
+        preferCanvas: true,
+        dragging: true,
+        scrollWheelZoom: false,
+        doubleClickZoom: true,
+        boxZoom: true,
+        keyboard: true,
+        touchZoom: true
+    });
+
+    L.control.zoom({
+        position: 'bottomright',
+        zoomInTitle: 'Zoom in',
+        zoomOutTitle: 'Zoom out'
+    }).addTo(map);
+
+    enablePartnerModalMapCtrlZoom(map);
+
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', {
+        subdomains: 'abcd',
+        maxZoom: 20
+    }).addTo(map);
+
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}{r}.png', {
+        subdomains: 'abcd',
+        maxZoom: 20,
+        pane: 'overlayPane'
+    }).addTo(map);
+
+    const yellowPin = L.icon({
+        iconUrl: 'data:image/svg+xml;utf8,' + encodeURIComponent(`
+            <svg xmlns="http://www.w3.org/2000/svg" width="34" height="48" viewBox="0 0 34 48" fill="none">
+                <path d="M17 22.8C15.3898 22.8 13.8455 22.1679 12.7069 21.0426C11.5682 19.9174 10.9286 18.3913 10.9286 16.8C10.9286 15.2087 11.5682 13.6826 12.7069 12.5574C13.8455 11.4321 15.3898 10.8 17 10.8C18.6102 10.8 20.1545 11.4321 21.2931 12.5574C22.4318 13.6826 23.0714 15.2087 23.0714 16.8ZM17 0C12.4913 0 8.1673 1.76999 4.97918 4.92061C1.79107 8.07122 0 12.3444 0 16.8C0 29.4 17 48 17 48C17 48 34 29.4 34 16.8C34 12.3444 32.2089 8.07122 29.0208 4.92061C25.8327 1.76999 21.5087 0 17 0Z" fill="#FFC97A"/>
+            </svg>
+        `),
+        iconSize: [28, 28],
+        iconAnchor: [14, 28],
+        popupAnchor: [0, -26]
+    });
+
+    const markers = [];
+    locations.forEach((loc, index) => {
+        const marker = L.marker([loc.lat, loc.lng], { icon: yellowPin })
+            .addTo(map)
+            .bindPopup(buildPartnerModalPopup(loc, index, mapType), {
+                closeButton: false,
+                autoClose: false,
+                closeOnClick: false,
+                className: 'custom-popup',
+                offset: [0, -35]
+            });
+
+        // Remove Leaflet's default click-to-open so we control toggle ourselves
+        marker.off('click');
+
+        marker.on('mouseover', function () {
+            this.openPopup();
+        });
+
+        marker.on('click', function (e) {
+            L.DomEvent.stopPropagation(e);
+            if (this.isPopupOpen()) {
+                this.closePopup();
+            } else {
+                this.openPopup();
+            }
+        });
+
+        markers.push(marker);
+    });
+
+    // Click empty map area to close open popups
+    map.on('click', () => {
+        markers.forEach(marker => marker.closePopup());
+    });
+
+    window.partnerModalMap = map;
+    window.partnerModalMapMarkers = markers;
+
+    setTimeout(() => {
+        map.invalidateSize(true);
+        map.fitBounds(locations.map(l => [l.lat, l.lng]), {
+            padding: [40, 40],
+            maxZoom: 15
+        });
+    }, 120);
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('#groomer_book_space [data-tab="groomer-map-view"]').forEach(btn => {
+        btn.addEventListener('click', () => {
+            setTimeout(() => window.initPartnerModalMap?.(), 50);
+        });
+    });
+});
+
+window.initModalMap = function () {
+    window.initPartnerModalMap?.();
+};
+
+/* -------------------------
    CREATE PILL
 --------------------------*/
 function addPill(label, value, group, type) {

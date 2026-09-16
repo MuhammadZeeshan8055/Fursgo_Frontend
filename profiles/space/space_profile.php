@@ -223,10 +223,12 @@
         /* map card styling */
 
         .custom-popup .leaflet-popup-content-wrapper {
-            padding: 12px;
+            padding: 5px;
             border-radius: 5px;
+            width: min-content;
             background: #FFF;
             box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.05);
+            height: auto;
         }
 
         .custom-popup .leaflet-popup-content {
@@ -240,8 +242,8 @@
 
         .map-top-left-svg {
             position: absolute;
-            top: -1px;
-            left: 10px;
+            top: 0;
+            left: 2px;
         }
 
         a.leaflet-popup-close-button {
@@ -250,6 +252,31 @@
 
         .leaflet-popup.custom-popup.leaflet-zoom-animated {
             bottom: 8px !important;
+        }
+
+        #groomer_book_space .map-wrapper.modal-map-wrapper {
+            position: relative;
+            min-height: 558px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        #groomer_book_space .map-zoom-hint {
+            position: absolute;
+            left: 14px;
+            bottom: 14px;
+            z-index: 1000;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 12px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.55);
+            background: rgba(255, 255, 255, 0.92);
+            box-shadow: 0 4px 16px rgba(31, 31, 31, 0.08);
+            font-family: Lato, sans-serif;
+            font-size: 12px;
+            color: #3B3731;
         }
 
         /* map card styling */
@@ -1940,7 +1967,11 @@
                         </div>
                         <div class="col-lg-6">
                             <div class="map-div mt-5">
-                                <div id="modal-map" style="width:100%; height:558px; border-radius:10px;"></div>
+                                <div class="map-div mt-5">
+                                    <div class="map-wrapper modal-map-wrapper">
+                                        <div id="modal-map" data-map-type="groomer" style="width:100%; height:558px; border-radius:10px;"></div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
@@ -2939,6 +2970,7 @@
 
     <?php include '../../components/footer.php' ?>
 
+    <script>window.BASE_URL = "<?= rtrim(BASE_URL, '/') ?>/";</script>
     <script src="<?= BASE_URL ?>/assets/js/profile.js"></script>
     <script src="<?= BASE_URL ?>/assets/js/common.js"></script>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
@@ -3220,71 +3252,11 @@
 
 
         // tab map js starts
-
-        let modalMap = null;
-
         function initModalMap() {
-            if (modalMap) {
-                modalMap.invalidateSize(true);
-                return;
+            if (typeof window.initPartnerModalMap === 'function') {
+                window.initPartnerModalMap();
             }
-
-            modalMap = L.map('modal-map', {
-                zoomControl: false,
-                attributionControl: false,
-                preferCanvas: true
-            }).setView([51.510131, -0.146812], 14);
-
-            L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', {
-                subdomains: 'abcd',
-                maxZoom: 20
-            }).addTo(modalMap);
-
-            L.tileLayer('https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}{r}.png', {
-                subdomains: 'abcd',
-                maxZoom: 20
-            }).addTo(modalMap);
-
-            const yellowPin = L.icon({
-                iconUrl: 'data:image/svg+xml;utf8,' + encodeURIComponent(`
-            <svg xmlns="http://www.w3.org/2000/svg" width="34" height="48" viewBox="0 0 34 48" fill="none">
-                <path d="M17 22.8C15.3898 22.8 13.8455 22.1679 12.7069 21.0426C11.5682 19.9174 10.9286 18.3913 10.9286 16.8C10.9286 15.2087 11.5682 13.6826 12.7069 12.5574C13.8455 11.4321 15.3898 10.8 17 10.8C18.6102 10.8 20.1545 11.4321 21.2931 12.5574C22.4318 13.6826 23.0714 15.2087 23.0714 16.8ZM17 0C12.4913 0 8.1673 1.76999 4.97918 4.92061C1.79107 8.07122 0 12.3444 0 16.8C0 29.4 17 48 17 48C17 48 34 29.4 34 16.8C34 12.3444 32.2089 8.07122 29.0208 4.92061C25.8327 1.76999 21.5087 0 17 0Z" fill="#FFC97A"/>
-            </svg>
-        `),
-                iconSize: [28, 28],
-                iconAnchor: [14, 28]
-            });
-
-            // 📍 Multiple locations
-            const locations = [{
-                    coords: [51.510131, -0.146812],
-                    name: "Sarah's Grooming Studio"
-                },
-                {
-                    coords: [51.515000, -0.140000],
-                    name: "London Pet Care Center"
-                },
-                {
-                    coords: [51.507500, -0.128000],
-                    name: "City Grooming Hub"
-                }
-            ];
-
-            locations.forEach(loc => {
-                L.marker(loc.coords, {
-                        icon: yellowPin
-                    })
-                    .addTo(modalMap)
-                    .bindTooltip(loc.name, {
-                        direction: 'top',
-                        offset: [0, -24],
-                        opacity: 0.95
-                    });
-            });
-
-            modalMap.invalidateSize(true);
         }
-
         // tab map js ends
     </script>
 
