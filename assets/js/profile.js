@@ -1126,3 +1126,67 @@ document.addEventListener('click', () => {
         }
     });
 });
+
+function initBookingSidebarScrollHint() {
+    const sidebar = document.getElementById('booking-sidebar');
+    if (!sidebar || sidebar.dataset.scrollHintInit === '1') return;
+    sidebar.dataset.scrollHintInit = '1';
+
+    let frame = sidebar.closest('.booking-sidebar-frame');
+    if (!frame) {
+        frame = document.createElement('div');
+        frame.className = 'booking-sidebar-frame';
+        sidebar.parentNode.insertBefore(frame, sidebar);
+        frame.appendChild(sidebar);
+    }
+
+    let hint = frame.querySelector('.booking-sidebar-scroll-hint');
+    if (!hint) {
+        hint = document.createElement('button');
+        hint.type = 'button';
+        hint.className = 'booking-sidebar-scroll-hint';
+        hint.setAttribute('aria-label', 'Scroll to see more booking options');
+        hint.innerHTML = `
+            <span class="booking-sidebar-scroll-hint__chip">
+                More options
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="8" viewBox="0 0 12 8" fill="none" aria-hidden="true">
+                    <path d="M1 1.5L6 6.5L11 1.5" stroke="#9D9B98" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </span>
+        `;
+        frame.appendChild(hint);
+    }
+
+    const updateHint = () => {
+        const canScroll = sidebar.scrollHeight > sidebar.clientHeight + 4;
+        const atBottom = sidebar.scrollTop + sidebar.clientHeight >= sidebar.scrollHeight - 10;
+        frame.classList.toggle('has-more-below', canScroll && !atBottom);
+    };
+
+    hint.addEventListener('click', (event) => {
+        event.preventDefault();
+        sidebar.scrollBy({
+            top: Math.max(180, Math.round(sidebar.clientHeight * 0.55)),
+            behavior: 'smooth',
+        });
+    });
+
+    sidebar.addEventListener('scroll', updateHint, { passive: true });
+    window.addEventListener('resize', updateHint);
+
+    if (typeof ResizeObserver !== 'undefined') {
+        const observer = new ResizeObserver(updateHint);
+        observer.observe(sidebar);
+        const summary = sidebar.querySelector('.booking-summary');
+        if (summary) observer.observe(summary);
+    }
+
+    updateHint();
+    requestAnimationFrame(updateHint);
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initBookingSidebarScrollHint);
+} else {
+    initBookingSidebarScrollHint();
+}
