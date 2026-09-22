@@ -1,0 +1,27 @@
+---
+description: Use only existing FursGo design tokens (colors, fonts, weights)
+alwaysApply: true
+---
+
+# FursGo design tokens
+
+When styling UI in this repo, reuse colors, fonts, and weights already used in `assets/css/common.css`, `assets/css/groomer_space_profile.css`, `assets/css/responsive.css`, and nearby existing components. Do not invent new hex values or typography that are outside the current scheme.
+
+## Preferred colors
+
+- Text: `#3B3731`, muted `#9D9B98`
+- Groomer accent: `#FBAC83` / `var(--groomer-color)`
+- Active / warm highlight: `#FFC97A` / `var(--active-bg)`
+- Space / coral tags: `#FFA899` / `var(--space-color)`, `#F3A99F`
+- Success / availability green: `#A4C25C`, `#D1E3A6`, `#BACF8E`, `#D8E8B7`
+- Surfaces: `#FDFCF8`, `#F7F7F5`, `#FFF`, borders `#D4D4D4` / `#E4E1DB`
+
+## Typography
+
+- Headings: `"Playfair Display"`
+- UI / body: `Lato`
+- Match existing font-size and font-weight patterns from similar components before introducing new ones
+
+## Rule of thumb
+
+If a color/font/weight is not already present in the design system or the screen being edited, pick the closest existing token instead of creating a new one.

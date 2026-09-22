@@ -198,6 +198,20 @@ function spaceCustomTooltipSVG(color = '#CBDCE8', width = 21, height = 22) {
 
 
 document.addEventListener('DOMContentLoaded', function () {
+    function getCartoTileUrl(style) {
+        const key = window.CARTO_API_KEY || '';
+        const base = 'https://{s}.basemaps.cartocdn.com/' + style + '/{z}/{x}/{y}{r}.png';
+        return key ? (base + '?key=' + encodeURIComponent(key)) : base;
+    }
+
+    function getCartoTileOptions(extra) {
+        return Object.assign({
+            subdomains: 'abcd',
+            maxZoom: 20,
+            attribution: '&copy; <a href="https://carto.com/">CARTO</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }, extra || {});
+    }
+
     const mapOptions = {
         zoomControl: false,
         attributionControl: false,
@@ -221,14 +235,12 @@ document.addEventListener('DOMContentLoaded', function () {
     enableCtrlScrollZoom(window.map);
 
     // Grey base map
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', {
-        subdomains: 'abcd', maxZoom: 20
-    }).addTo(window.map);
+    L.tileLayer(getCartoTileUrl('light_nolabels'), getCartoTileOptions()).addTo(window.map);
 
     // Labels overlay
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}{r}.png', {
-        subdomains: 'abcd', maxZoom: 20, pane: 'overlayPane'
-    }).addTo(window.map);
+    L.tileLayer(getCartoTileUrl('light_only_labels'), getCartoTileOptions({
+        pane: 'overlayPane'
+    })).addTo(window.map);
 
     // Initialize SECOND map for space view
     window.spaceMap = L.map('space-map', { ...mapOptions });
@@ -241,14 +253,12 @@ document.addEventListener('DOMContentLoaded', function () {
     enableCtrlScrollZoom(window.spaceMap);
 
     // Grey base map for space map
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', {
-        subdomains: 'abcd', maxZoom: 20
-    }).addTo(window.spaceMap);
+    L.tileLayer(getCartoTileUrl('light_nolabels'), getCartoTileOptions()).addTo(window.spaceMap);
 
     // Labels overlay for space map
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}{r}.png', {
-        subdomains: 'abcd', maxZoom: 20, pane: 'overlayPane'
-    }).addTo(window.spaceMap);
+    L.tileLayer(getCartoTileUrl('light_only_labels'), getCartoTileOptions({
+        pane: 'overlayPane'
+    })).addTo(window.spaceMap);
 
     // Yellow pin
     const yellowPin = L.icon({

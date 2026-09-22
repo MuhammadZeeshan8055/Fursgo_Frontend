@@ -118,7 +118,7 @@
     <!-- footer -->
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script>window.BASE_URL = "<?= rtrim(BASE_URL, '/') ?>";</script>
+    <script>window.BASE_URL = "<?= rtrim(BASE_URL, '/') ?>"; window.CARTO_API_KEY = "<?= CARTO_API_KEY ?>";</script>
     <script src="<?= BASE_URL ?>/assets/js/customer_journey.js"></script>
     <script>
         // Groomer Module and Space Module

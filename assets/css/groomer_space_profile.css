@@ -865,6 +865,12 @@ body.space-profile #booking-sidebar .booking-step .select-trigger-meta svg path 
     stroke: #9D9B98;
 }
 
+body.groomer-profile #booking-sidebar .booking-step .custom-select.open .select-options,
+body.space-profile #booking-sidebar .booking-step .custom-select.open .select-options {
+    display: block;
+    z-index: 30;
+}
+
 body.groomer-profile #booking-sidebar .booking-step .select-options li,
 body.space-profile #booking-sidebar .booking-step .select-options li {
     display: flex;
@@ -2385,12 +2391,14 @@ body.space-profile #groomer_book_space {
     justify-content: center;
     opacity: 0;
     visibility: hidden;
+    pointer-events: none;
     transition: opacity 0.28s ease, visibility 0.28s ease;
 }
 
 .lb-overlay.active {
     opacity: 1;
     visibility: visible;
+    pointer-events: auto;
 }
 
 /* LIGHTBOX MODAL */
@@ -3049,9 +3057,21 @@ label {
 }
 
 /* map css starts  */
-#map .leaflet-tile,
+#map .leaflet-tile {
+    filter: grayscale(100%) brightness(1.1) contrast(0.85) saturate(0%);
+}
+
 #modal-map .leaflet-tile {
     filter: grayscale(100%) brightness(1.1) contrast(0.85) saturate(0%);
+}
+
+#modal-map .leaflet-marker-pane,
+#modal-map .leaflet-marker-icon,
+#modal-map .map-marker-wrap {
+    filter: none !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    z-index: 650 !important;
 }
 
 .leaflet-top.leaflet-left {

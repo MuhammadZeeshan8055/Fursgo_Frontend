@@ -88,8 +88,8 @@
 
             document.documentElement.classList.add('modal-scroll-lock');
             document.body.classList.add('modal-scroll-lock');
+            document.body.style.top = '-' + savedScrollY + 'px';
             addScrollLockListeners();
-            window.scrollTo(0, savedScrollY);
             return;
         }
 
@@ -98,6 +98,7 @@
         scrollLocked = false;
         document.documentElement.classList.remove('modal-scroll-lock');
         document.body.classList.remove('modal-scroll-lock');
+        document.body.style.top = '';
         removeScrollLockListeners();
         window.scrollTo(0, savedScrollY);
     }
@@ -312,7 +313,9 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
 
 document.querySelectorAll('.tab-wrapper').forEach(wrapper => {
     const buttons = wrapper.querySelectorAll('.tablinks');
-    const contents = document.querySelectorAll('.tabcontent');
+    // Scope panels to the nearest modal/section so page tabs don't hide each other
+    const scope = wrapper.closest('.modal, .modal-content, #groomer_book_space') || wrapper.parentElement || document;
+    const contents = scope.querySelectorAll('.tabcontent');
 
     function activateTab(tabName) {
         contents.forEach(c => {

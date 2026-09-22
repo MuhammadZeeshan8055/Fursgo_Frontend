@@ -42,12 +42,23 @@ function formatTimeAmPm({ hours, minutes }) {
     return `${String(hour12).padStart(2, '0')}:${String(minutes).padStart(2, '0')} ${suffix}`;
 }
 
-function addOneHour(parts) {
-    const total = parts.hours * 60 + parts.minutes + 60;
+function addMinutes(parts, minutesToAdd) {
+    const total = parts.hours * 60 + parts.minutes + minutesToAdd;
     return {
         hours: Math.floor(total / 60) % 24,
         minutes: total % 60,
     };
+}
+
+function getSelectedServiceDurationMinutes() {
+    const selected = document.querySelector('#booking-sidebar .custom-select[data-summary="service"] .select-options li.selected');
+    const hours = Number(selected?.dataset.hours);
+    if (hours > 0) return hours * 60;
+
+    const value = selected?.dataset.value || '';
+    if (value === 'half-day') return 4 * 60;
+    if (value === 'full-day') return 8 * 60;
+    return 60;
 }
 
 function getSelectedSlotTimes() {
@@ -55,7 +66,7 @@ function getSelectedSlotTimes() {
     const raw = selectedTime?.dataset.time || selectedTime?.textContent.trim() || '';
     const start = parseTimeParts(raw);
     if (!start) return null;
-    return { start, end: addOneHour(start) };
+    return { start, end: addMinutes(start, getSelectedServiceDurationMinutes()) };
 }
 
 function getSelectedTimeLabel() {
@@ -79,7 +90,7 @@ function updateSelectedTimeRangeDisplay() {
         return;
     }
 
-    rangeEl.textContent = `${formatTimeAmPm(slot.start)} - ${formatTimeAmPm(slot.end)}`;
+    rangeEl.textContent = `${formatTime24(slot.start)}-${formatTime24(slot.end)}`;
 }
 
 function updateBookingCta() {
@@ -273,12 +284,14 @@ document.querySelectorAll('[data-tab]').forEach(tab => {
 // fav button
 const favButton = document.querySelector('.fav');
 
-favButton.addEventListener('click', () => {
-    favButton.classList.toggle('active');
+if (favButton) {
+    favButton.addEventListener('click', () => {
+        favButton.classList.toggle('active');
 
-    const pressed = favButton.getAttribute('aria-pressed') === 'true';
-    favButton.setAttribute('aria-pressed', !pressed);
-});
+        const pressed = favButton.getAttribute('aria-pressed') === 'true';
+        favButton.setAttribute('aria-pressed', !pressed);
+    });
+}
 // fav button
 
 
@@ -501,6 +514,20 @@ function getAssetBaseUrl() {
     return '/';
 }
 
+function getCartoTileUrl(style) {
+    const key = window.CARTO_API_KEY || '';
+    const base = 'https://{s}.basemaps.cartocdn.com/' + style + '/{z}/{x}/{y}{r}.png';
+    return key ? (base + '?key=' + encodeURIComponent(key)) : base;
+}
+
+function getCartoTileOptions(extra) {
+    return Object.assign({
+        subdomains: 'abcd',
+        maxZoom: 20,
+        attribution: '&copy; <a href="https://carto.com/">CARTO</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }, extra || {});
+}
+
 function partnerModalTooltipImage(imageUrl, clipId) {
     return `
     <svg xmlns="http://www.w3.org/2000/svg" width="41" height="60" viewBox="0 0 41 60" style="display:block;">
@@ -581,101 +608,125 @@ function enablePartnerModalMapCtrlZoom(map) {
     }, { passive: false });
 }
 
-window.initPartnerModalMap = function initPartnerModalMap() {
+window.initPartnerModalMap = function initPartnerModalMap(attempt) {
     if (typeof L === 'undefined') return;
 
     const mapEl = document.getElementById('modal-map');
     if (!mapEl) return;
 
-    if (window.partnerModalMap) {
-        setTimeout(() => {
-            window.partnerModalMap.invalidateSize(true);
-        }, 80);
+    attempt = attempt || 0;
+
+    // Wait until Map View is visible so Leaflet gets a real size
+    if (mapEl.offsetWidth < 40 || mapEl.offsetHeight < 40) {
+        if (attempt > 40) return;
+        setTimeout(function () { window.initPartnerModalMap(attempt + 1); }, 120);
         return;
     }
 
+    // Always rebuild — hidden-tab inits leave a blank/zero-size map with no pills
+    if (window.partnerModalMap) {
+        try { window.partnerModalMap.remove(); } catch (e) { /* ignore */ }
+        window.partnerModalMap = null;
+        window.partnerModalMapMarkers = [];
+    }
+    mapEl.innerHTML = '';
+
     const mapType = mapEl.dataset.mapType || (document.body.classList.contains('space-profile') ? 'groomer' : 'space');
-    const base = getAssetBaseUrl();
 
-    const groomerLocations = [
-        {
-            loc_name: "Sarah's Grooming Studio",
-            name: 'Sarah W.',
-            lat: 51.5033,
-            lng: -0.1147,
-            image: base + 'assets/images/card1.png',
-            distance: '2.5 mi',
-            rating: '4.3',
-            reviews: '20'
-        },
-        {
-            loc_name: 'Westminster Pet Spa',
-            name: 'Sarah W.',
-            lat: 51.4995,
-            lng: -0.1248,
-            image: base + 'assets/images/card2.png',
-            distance: '3.1 mi',
-            rating: '4.7',
-            reviews: '45'
-        },
-        {
-            loc_name: 'Sarah Grooming',
-            name: 'Sarah W.',
-            lat: 51.511227,
-            lng: -0.119470,
-            image: base + 'assets/images/card3.png',
-            distance: '1.8 mi',
-            rating: '4.5',
-            reviews: '32'
+    const defaultCoords = mapType === 'space'
+        ? [
+            { lat: 51.5074, lng: -0.1657 },
+            { lat: 51.5112, lng: -0.1426 },
+            { lat: 51.5010, lng: -0.1416 }
+        ]
+        : [
+            { lat: 51.5033, lng: -0.1147 },
+            { lat: 51.4995, lng: -0.1248 },
+            { lat: 51.511227, lng: -0.119470 }
+        ];
+
+    const pinPath = 'M10.2606 13.7612C9.2887 13.7612 8.35662 13.3797 7.66939 12.7006C6.98217 12.0214 6.59609 11.1003 6.59609 10.1399C6.59609 9.17942 6.98217 8.2583 7.66939 7.57916C8.35662 6.90002 9.2887 6.51849 10.2606 6.51849C11.2325 6.51849 12.1645 6.90002 12.8518 7.57916C13.539 8.2583 13.9251 9.17942 13.9251 10.1399C13.9251 10.6154 13.8303 11.0863 13.6461 11.5257C13.462 11.9651 13.192 12.3643 12.8518 12.7006C12.5115 13.0368 12.1075 13.3036 11.6629 13.4856C11.2183 13.6676 10.7418 13.7612 10.2606 13.7612ZM10.2606 0C7.5393 0 4.92949 1.0683 3.00525 2.9699C1.08102 4.87149 0 7.45061 0 10.1399C0 16.5144 7.2092 25.4334 9.54182 28.1524C9.92449 28.5985 10.5967 28.5985 10.9793 28.1524C13.312 25.4334 20.5212 16.5144 20.5212 10.1399C20.5212 7.45061 19.4401 4.87149 17.5159 2.9699C15.5917 1.0683 12.9819 0 10.2606 0Z';
+
+    function escapeHtml(str) {
+        return String(str || '')
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/"/g, '&quot;');
+    }
+
+    function truncateName(name) {
+        const text = String(name || '');
+        if (text.length <= 16) return text;
+        return text.slice(0, 15).trim() + '\u2026';
+    }
+
+    function buildMarkerIcon(loc, active) {
+        const fill = active ? '#3B3731' : '#FFC97A';
+        const price = loc.price ? ('\u00a3' + loc.price + ' p/h') : '';
+        return L.divIcon({
+            className: 'leaflet-div-icon map-marker-wrap' + (active ? ' is-active' : ''),
+            html: '<div class="map-marker">' +
+                '<button type="button" class="map-marker-pill" data-name="' + escapeHtml(loc.loc_name) + '">' +
+                '<span class="map-marker-pill__name">' + escapeHtml(truncateName(loc.loc_name)) + '</span>' +
+                '<span class="map-marker-pill__price">' + escapeHtml(price) + '</span>' +
+                '</button>' +
+                '<span class="map-marker-pin" aria-hidden="true">' +
+                '<svg xmlns="http://www.w3.org/2000/svg" width="21" height="29" viewBox="0 0 21 29" fill="none">' +
+                '<path d="' + pinPath + '" fill="' + fill + '"/>' +
+                '</svg></span></div>',
+            iconSize: [168, 88],
+            iconAnchor: [84, 88]
+        });
+    }
+
+    function locationsFromCards() {
+        const cards = [...document.querySelectorAll('#groomer_book_space .map-space-card')];
+        if (!cards.length) {
+            return mapType === 'space'
+                ? [
+                    { loc_name: 'Furs & Co. Studio', price: '38.00', lat: 51.5074, lng: -0.1657 },
+                    { loc_name: 'Paws & Bubbles', price: '28.00', lat: 51.5112, lng: -0.1426 },
+                    { loc_name: 'The Garden Grooming Spot', price: '38.00', lat: 51.5010, lng: -0.1416 }
+                ]
+                : [
+                    { loc_name: "Ken's Grooming Mobile", price: '58.00', lat: 51.5033, lng: -0.1147 },
+                    { loc_name: "Cathy's Services", price: '42.00', lat: 51.4995, lng: -0.1248 },
+                    { loc_name: "Sarah's Grooming Studio", price: '48.00', lat: 51.511227, lng: -0.119470 }
+                ];
         }
-    ];
 
-    const spaceLocations = [
-        {
-            loc_name: 'Furs & Co. Studio',
-            name: 'Dev É',
-            lat: 51.5074,
-            lng: -0.1657,
-            image: base + 'assets/images/space_card3.png',
-            distance: '2.5 mi',
-            rating: '4.3',
-            reviews: '20'
-        },
-        {
-            loc_name: 'Kensington Gardens',
-            name: 'Kensington Gardens',
-            lat: 51.5074,
-            lng: -0.1850,
-            image: base + 'assets/images/space_card1.png',
-            distance: '3.1 mi',
-            rating: '4.7',
-            reviews: '45'
-        },
-        {
-            loc_name: "Regent's Park",
-            name: "Regent's Park",
-            lat: 51.5313,
-            lng: -0.1568,
-            image: base + 'assets/images/space_card2.png',
-            distance: '1.8 mi',
-            rating: '4.5',
-            reviews: '32'
-        }
-    ];
+        return cards.map(function (card, i) {
+            const coords = defaultCoords[i] || defaultCoords[0];
+            return {
+                loc_name: card.dataset.name,
+                price: card.dataset.price || '',
+                lat: coords.lat,
+                lng: coords.lng
+            };
+        });
+    }
 
-    const locations = mapType === 'space' ? spaceLocations : groomerLocations;
+    const locations = locationsFromCards();
+    if (!locations.length) return;
 
-    const map = L.map('modal-map', {
+    const selectedEl = document.querySelector('#groomer_book_space .map-space-card.is-selected')
+        || document.querySelector('#groomer_book_space .space-result.is-selected');
+    const selectedName = selectedEl ? selectedEl.dataset.name : locations[0].loc_name;
+
+    const map = L.map(mapEl, {
         zoomControl: false,
         attributionControl: false,
-        preferCanvas: true,
+        preferCanvas: false,
         dragging: true,
         scrollWheelZoom: false,
         doubleClickZoom: true,
         boxZoom: true,
         keyboard: true,
-        touchZoom: true
-    });
+        touchZoom: true,
+        zoomAnimation: true,
+        fadeAnimation: true,
+        markerZoomAnimation: true
+    }).setView([locations[0].lat, locations[0].lng], 13);
 
     L.control.zoom({
         position: 'bottomright',
@@ -685,74 +736,54 @@ window.initPartnerModalMap = function initPartnerModalMap() {
 
     enablePartnerModalMapCtrlZoom(map);
 
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', {
-        subdomains: 'abcd',
-        maxZoom: 20
-    }).addTo(map);
-
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}{r}.png', {
-        subdomains: 'abcd',
-        maxZoom: 20,
+    L.tileLayer(getCartoTileUrl('light_nolabels'), getCartoTileOptions()).addTo(map);
+    L.tileLayer(getCartoTileUrl('light_only_labels'), getCartoTileOptions({
         pane: 'overlayPane'
-    }).addTo(map);
-
-    const yellowPin = L.icon({
-        iconUrl: 'data:image/svg+xml;utf8,' + encodeURIComponent(`
-            <svg xmlns="http://www.w3.org/2000/svg" width="34" height="48" viewBox="0 0 34 48" fill="none">
-                <path d="M17 22.8C15.3898 22.8 13.8455 22.1679 12.7069 21.0426C11.5682 19.9174 10.9286 18.3913 10.9286 16.8C10.9286 15.2087 11.5682 13.6826 12.7069 12.5574C13.8455 11.4321 15.3898 10.8 17 10.8C18.6102 10.8 20.1545 11.4321 21.2931 12.5574C22.4318 13.6826 23.0714 15.2087 23.0714 16.8ZM17 0C12.4913 0 8.1673 1.76999 4.97918 4.92061C1.79107 8.07122 0 12.3444 0 16.8C0 29.4 17 48 17 48C17 48 34 29.4 34 16.8C34 12.3444 32.2089 8.07122 29.0208 4.92061C25.8327 1.76999 21.5087 0 17 0Z" fill="#FFC97A"/>
-            </svg>
-        `),
-        iconSize: [28, 28],
-        iconAnchor: [14, 28],
-        popupAnchor: [0, -26]
-    });
+    })).addTo(map);
 
     const markers = [];
-    locations.forEach((loc, index) => {
-        const marker = L.marker([loc.lat, loc.lng], { icon: yellowPin })
-            .addTo(map)
-            .bindPopup(buildPartnerModalPopup(loc, index, mapType), {
-                closeButton: false,
-                autoClose: false,
-                closeOnClick: false,
-                className: 'custom-popup',
-                offset: [0, -35]
-            });
-
-        // Remove Leaflet's default click-to-open so we control toggle ourselves
-        marker.off('click');
-
-        marker.on('mouseover', function () {
-            this.openPopup();
-        });
-
+    locations.forEach(function (loc) {
+        const active = loc.loc_name === selectedName;
+        const marker = L.marker([loc.lat, loc.lng], {
+            icon: buildMarkerIcon(loc, active),
+            zIndexOffset: active ? 800 : 200
+        }).addTo(map);
+        marker._partnerName = loc.loc_name;
+        marker._partnerLoc = loc;
         marker.on('click', function (e) {
             L.DomEvent.stopPropagation(e);
-            if (this.isPopupOpen()) {
-                this.closePopup();
-            } else {
-                this.openPopup();
+            if (typeof window.selectPartnerFromMap === 'function') {
+                window.selectPartnerFromMap(loc.loc_name);
+            } else if (typeof window.setPartnerModalMarkerActive === 'function') {
+                window.setPartnerModalMarkerActive(loc.loc_name);
             }
         });
-
         markers.push(marker);
-    });
-
-    // Click empty map area to close open popups
-    map.on('click', () => {
-        markers.forEach(marker => marker.closePopup());
     });
 
     window.partnerModalMap = map;
     window.partnerModalMapMarkers = markers;
 
-    setTimeout(() => {
-        map.invalidateSize(true);
-        map.fitBounds(locations.map(l => [l.lat, l.lng]), {
-            padding: [40, 40],
-            maxZoom: 15
+    window.setPartnerModalMarkerActive = function (name, opts) {
+        opts = opts || {};
+        markers.forEach(function (marker) {
+            const active = marker._partnerName === name;
+            marker.setIcon(buildMarkerIcon(marker._partnerLoc, active));
+            marker.setZIndexOffset(active ? 800 : 200);
         });
-    }, 120);
+        if (opts.pan === false) return;
+        const match = markers.find(function (m) { return m._partnerName === name; });
+        if (match) map.panTo(match.getLatLng(), { animate: true });
+    };
+
+    setTimeout(function () {
+        map.invalidateSize(true);
+        map.fitBounds(locations.map(function (l) { return [l.lat, l.lng]; }), {
+            padding: [80, 80],
+            maxZoom: 13
+        });
+        if (selectedName) window.setPartnerModalMarkerActive(selectedName, { pan: false });
+    }, 100);
 };
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -771,6 +802,7 @@ window.initModalMap = function () {
    CREATE PILL
 --------------------------*/
 function addPill(label, value, group, type) {
+    if (!selectedSection) return;
 
     // prevent duplicates (checkbox only)
     if (type === 'checkbox' &&
@@ -799,6 +831,7 @@ function addPill(label, value, group, type) {
    REMOVE PILL + INPUT RESET
 --------------------------*/
 function removePill(value) {
+    if (!selectedSection) return;
 
     // remove pill
     const pill = selectedSection.querySelector(`[data-value="${value}"]`);
@@ -889,7 +922,9 @@ document.querySelectorAll('.custom-select[data-multiselect]').forEach(select => 
     const optionItems = select.querySelectorAll('.select-options li');
     const hiddenInput = select.querySelector('input[type="hidden"]');
     const pillContainer = select.closest('.service-type-select')
-        .querySelector('.service-selected-options');
+        ?.querySelector('.service-selected-options');
+
+    if (!trigger || !pillContainer) return;
 
     const selectedText = select.querySelector('.selected-text');
     const selectedPrice = select.querySelector('.selected-price');
@@ -1086,8 +1121,9 @@ document.querySelectorAll('.custom-select[data-singleselect]').forEach(select =>
             trigger.style.borderBottomLeftRadius = '12px';
             trigger.style.borderBottomRightRadius = '12px';
 
-            if (select.closest('#booking-sidebar') && typeof window.updateBookingSummary === 'function') {
-                window.updateBookingSummary();
+            if (select.closest('#booking-sidebar')) {
+                if (typeof window.updateBookingCta === 'function') window.updateBookingCta();
+                if (typeof window.updateBookingSummary === 'function') window.updateBookingSummary();
             }
         });
     });

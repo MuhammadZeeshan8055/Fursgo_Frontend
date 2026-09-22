@@ -1681,10 +1681,18 @@ input::placeholder {
 
 /* modal css
    Do NOT use overflow:hidden on html/body — it breaks position:sticky
-   (settings sidebar) and freezes those elements on browser zoom. */
+   (settings sidebar) and freezes those elements on browser zoom.
+   Use position:fixed on body instead (see common.js syncBodyScrollLock). */
 html.modal-scroll-lock,
 body.modal-scroll-lock {
   overscroll-behavior: none;
+}
+
+body.modal-scroll-lock {
+  position: fixed;
+  left: 0;
+  right: 0;
+  width: 100%;
 }
 
 .modal {
@@ -1698,6 +1706,7 @@ body.modal-scroll-lock {
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(2px);
   overflow-y: auto;
+  overscroll-behavior: contain;
   align-items: flex-start;
   justify-content: center;
   padding: 2rem 1rem;
