@@ -221,8 +221,8 @@
     margin: 0;
     display: inline;
     font-family: "Playfair Display", serif;
-    font-size: 26px;
-    font-weight: 600;
+    font-size: 28px;
+    font-weight: 900;
     color: #3B3731;
 }
 
@@ -232,6 +232,9 @@
     font-family: Lato, sans-serif;
     font-size: 14px;
     font-weight: 500;
+    border-radius: 100px;
+    background: #F8F8F8;
+    padding: 5px 8px;
 }
 
 #groomer_book_space .groomer-tabs {
