@@ -105,7 +105,12 @@ body.cbg-page {
     color 0.3s ease;
 }
 
-.cbg-step-item.active .cbg-step-circle,
+.cbg-step-item.active .cbg-step-circle {
+  color: #fff;
+  background: #FFC97A;
+  border-color: #FFD88C;
+}
+
 .cbg-step-item.completed .cbg-step-circle {
   color: #fff;
   background: #c9dda0;
