@@ -519,6 +519,7 @@ $studioImage = BASE_URL . 'assets/images/card1.png';
                                     </span>
                                     <span class="cbg-groomer-meta">
                                         <span class="cbg-groomer-name">Any groomer</span>
+                                        <span class="cbg-groomer-title">First available · fastest booking</span>
                                     </span>
                                 </span>
                                 <span class="cbg-groomer-select-btn">Select</span>
