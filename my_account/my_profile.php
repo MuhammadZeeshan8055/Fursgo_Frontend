@@ -1,4 +1,7 @@
-<?php include '../function_helper.php'; ?>
+<?php
+include '../function_helper.php';
+include_once __DIR__ . '/../components/calendar.php';
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -13,7 +16,7 @@
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/media_query.css">
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/common.css">
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/my_bookings.css">
-    <link rel="stylesheet" href="<?= BASE_URL ?>/my_account/my_profile.css?v=18">
+    <link rel="stylesheet" href="<?= BASE_URL ?>/my_account/my_profile.css?v=37">
 </head>
 
 <body>
@@ -1063,10 +1066,11 @@
     <script src="<?= BASE_URL ?>/assets/js/common.js"></script>
     <script src="<?= BASE_URL ?>/my_account/my_profile.js?v=4"></script>
     <script src="<?= BASE_URL ?>/my_account/my_pets.js?v=6"></script>
-    <script src="<?= BASE_URL ?>/my_account/my_pets_form.js?v=6"></script>
+    <script src="<?= BASE_URL ?>/my_account/my_pets_form.js?v=19"></script>
     <script src="<?= BASE_URL ?>/my_account/my_favourites.js?v=3"></script>
     <script src="<?= BASE_URL ?>/my_account/my_reviews.js?v=4"></script>
     <script src="<?= BASE_URL ?>/my_account/my_rewards.js?v=1"></script>
+    <?php bcAssets(); ?>
 
 </body>
 

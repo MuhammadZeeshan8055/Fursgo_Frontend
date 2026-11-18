@@ -584,20 +584,31 @@ function bcAssets(): void
                 return y + '-' + pad(m + 1) + '-' + pad(d);
             }
 
-            document.querySelectorAll('.bc-wrapper').forEach(function (wrap) {
+            function initBcWrapper(wrap) {
+                if (!wrap || wrap.getAttribute('data-bc-inited') === '1') return;
+                wrap.setAttribute('data-bc-inited', '1');
+
                 var uid = wrap.id.replace('bc-wrap-', '');
+                function el(id) {
+                    return wrap.querySelector('#' + id) || document.getElementById(id);
+                }
                 var trigger = wrap.querySelector('.bc-trigger');
                 var dropdown = wrap.querySelector('.bc-dropdown');
-                var calView = document.getElementById('bc-cal-' + uid);
-                var pkrView = document.getElementById('bc-picker-' + uid);
-                var gridEl = document.getElementById('bc-grid-' + uid);
-                var hidden = document.getElementById('bc-input-' + uid);
-                var display = document.getElementById('bc-display-' + uid);
+                var calView = el('bc-cal-' + uid);
+                var pkrView = el('bc-picker-' + uid);
+                var gridEl = el('bc-grid-' + uid);
+                var hidden = el('bc-input-' + uid);
+                var display = el('bc-display-' + uid);
                 var ml = wrap.querySelector('.bc-ml');
                 var yl = wrap.querySelector('.bc-yl');
                 var clearBtn = wrap.querySelector('.bc-clear');
-                var yscroll = document.getElementById('bc-yscroll-' + uid);
-                var mgrid = document.getElementById('bc-mgrid-' + uid);
+                var yscroll = el('bc-yscroll-' + uid);
+                var mgrid = el('bc-mgrid-' + uid);
+
+                if (!trigger || !dropdown || !calView || !pkrView || !gridEl || !hidden || !display || !yscroll || !mgrid) {
+                    wrap.removeAttribute('data-bc-inited');
+                    return;
+                }
 
                 var today = new Date();
                 var vm = today.getMonth(),
@@ -802,6 +813,8 @@ function bcAssets(): void
 
                 /* ── Open / close ── */
                 trigger.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
                     if (dropdown.style.display === 'none' || !dropdown.style.display) {
                         open();
                     } else {
@@ -828,7 +841,11 @@ function bcAssets(): void
                 });
 
                 renderGrid();
-            });
+            }
+
+            window.initBcWrapper = initBcWrapper;
+
+            document.querySelectorAll('.bc-wrapper').forEach(initBcWrapper);
         })();
     </script>
 <?php }
